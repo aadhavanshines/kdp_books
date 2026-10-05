@@ -2,7 +2,7 @@
 
 Every day, millions of people type a question into an AI assistant, read the answer, and think, "That's not quite what I wanted." They try again with slightly different words. Sometimes it works. Often it doesn't. Eventually they decide the tool is overhyped, or that they are "just not good with AI."
 
-The truth is simpler, and much more encouraging. Large language models are extraordinarily capable, but they are also extraordinarily literal. They respond to exactly what you give them: the words you choose, the context you include or leave out, the examples you show, the format you ask for. The gap between a mediocre answer and a brilliant one is rarely the model. It is almost always the prompt.
+The truth is simpler, and much more encouraging. Large language models are extraordinarily capable, but they are also extraordinarily literal. They respond to exactly what you give them: the words you choose, the context you include or leave out, the examples you show, the format you ask for. The gap between a mediocre answer and a brilliant one is often the prompt: the context, constraints, examples, and goals you give the model.
 
 That is what this book is about.
 

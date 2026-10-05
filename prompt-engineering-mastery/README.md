@@ -43,7 +43,7 @@ Listing details (title, description, keywords, categories, pricing, and the AI d
 ## Before You Publish
 
 - **Read the whole manuscript.** You are the author and are responsible for its accuracy. Add your own experience and examples where you can; it makes the book more valuable and distinctive.
-- **Review `manuscript/26-about-the-author.md`** with your real background.
+- **Review `manuscript/29-about-the-author.md`** with your real background.
 - If you change anything, rebuild (see below) so the page count, table of contents, and spine width stay correct.
 
 ## Rebuilding

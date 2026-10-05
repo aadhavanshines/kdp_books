@@ -6,7 +6,7 @@ Language models can answer simple questions in a single step. But for problems t
 
 ## Two Kinds of Models, Two Approaches
 
-Today's assistants usually offer two kinds of models, often as a choice between a "fast" and a "thinking" (or "reasoning") mode:
+Today's AI assistants commonly distinguish between faster general-purpose models and models designed to spend additional computation on reasoning, often presented as a choice between a "fast" and a "thinking" (or "reasoning") mode:
 
 - **Standard models** answer immediately. They are quick and inexpensive, and ideal for everyday writing, summarizing, and simple questions.
 - **Reasoning models** think internally before they answer: they consider approaches, work through steps, and check their work, then show you only the result. They are slower but much stronger at math, logic, complex code, planning, and multi-step analysis.
@@ -84,7 +84,7 @@ Example output:
 Answer: Maria pays $15.
 ```
 
-Why does this work? Because a standard model generates text one piece at a time, writing out intermediate steps gives it "space" to work. Each step becomes part of the context that informs the next. Skipping straight to the answer forces it to compress all that reasoning into a single prediction. Reasoning models do this internally, which is why they don't need the instruction.
+Why does this work? A standard model generates text one piece at a time. For standard models, explicitly generating intermediate steps can improve performance on some multi-step problems, because each generated step becomes part of the context for what follows. Jumping straight to the answer leaves no room for those intermediate results. Reasoning models do this work internally, which is why they don't need the instruction.
 
 > **Note:** Older guides often suggest asking the model to reason inside `<thinking>` tags. Some providers may block prompts that explicitly request a model's internal reasoning. Use plain headings such as "Key steps" and "Answer:", or use the assistant's built-in reasoning mode instead.
 

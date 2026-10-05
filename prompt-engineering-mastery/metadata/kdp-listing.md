@@ -40,7 +40,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 ```html
 <b>Get better results from AI, every time.</b>
 
-<p>Most people type a question into an AI assistant, get a generic answer, and give up. The difference between a mediocre answer and a brilliant one is almost never the model. It is the prompt.</p>
+<p>Most people type a question into an AI assistant, get a generic answer, and give up. The difference between a mediocre answer and a brilliant one is often the prompt: the context, constraints, examples, and goals you give the model.</p>
 
 <p>This is more than a book of prompts. It shows ordinary users and professionals how to communicate with, control, evaluate, and build reliable systems around today's AI.</p>
 
