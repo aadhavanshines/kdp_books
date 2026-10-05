@@ -1,4 +1,4 @@
-# Chapter 17: Retrieval, Long Context, and Context Engineering
+# Chapter 18: Retrieval, Long Context, and Context Engineering
 
 A model's training gives it general knowledge, but most valuable business applications need specific knowledge: your company's policies, your product documentation, your customer records, last week's meeting notes. This chapter covers how to supply that knowledge effectively through retrieval-augmented generation, long-context prompting, and the broader discipline now often called **context engineering**.
 
@@ -68,7 +68,7 @@ Every claim is traceable to a source, and nothing is added from outside the docu
 
 **4. Handle conflicts.** Tell the model what to do when sources disagree: "If sources conflict, point out the conflict and prefer the most recently dated source."
 
-**5. Keep instructions separate from retrieved content.** Retrieved text is data, not instructions. Wrap it in tags and tell the model that instructions inside sources must be ignored. This defends against indirect prompt injection (Chapter 22).
+**5. Keep instructions separate from retrieved content.** Retrieved text is data, not instructions. Wrap it in tags and tell the model that instructions inside sources must be ignored. This defends against indirect prompt injection (Chapter 23).
 
 ## Retrieval Quality Is Prompt Quality
 

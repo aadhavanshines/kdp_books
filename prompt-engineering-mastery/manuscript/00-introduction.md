@@ -10,11 +10,15 @@ That is what this book is about.
 
 ## Who This Book Is For
 
-This book is written for three kinds of readers:
+This book is written for anyone who wants better results from AI, at home or at work:
 
-- **Beginners** who use ChatGPT, Claude, Gemini, or Copilot occasionally and want consistently better results for writing, research, studying, and everyday work.
-- **Professionals** who want to build AI into their daily workflow: marketers, analysts, teachers, managers, consultants, writers, and small-business owners.
+- **Beginners** who use ChatGPT, Claude, Gemini, or Copilot occasionally and want consistently better results for writing, research, studying, and everyday life.
+- **Professionals in every field**: doctors and healthcare workers, dentists, lawyers and advocates, engineers, marketers, salespeople, teachers, accountants, HR teams, real estate agents, researchers, designers, and small-business owners.
+- **Creators** such as writers, musicians, artists, and video makers who want to use AI tools while keeping their own voice.
+- **Parents, families, and students** who want AI to help with learning, planning, and everyday tasks, safely.
 - **Builders** such as developers, product managers, and technical founders who are designing AI features, agents, and automated pipelines and need prompts that work thousands of times, not just once.
+
+Chapter 16 contains ready-made prompt playbooks for more than fifteen professions and roles, each with its own examples and safety advice, so you can start applying what you learn to your own work right away.
 
 You do not need any technical background to start. The early chapters assume nothing. The later chapters introduce APIs, structured outputs, retrieval-augmented generation, agents, and evaluation, but they explain each idea from first principles.
 
@@ -26,7 +30,7 @@ The book moves from basic to advanced in four parts.
 
 **Part II: Intermediate Techniques** teaches you to make models reason step by step, produce reliable structured output, and recover when a prompt fails. It ends with a practical library of templates for common tasks.
 
-**Part III: Prompting the Popular AI Tools** is a field guide to the major assistants and generators: ChatGPT, Claude, Gemini, Microsoft Copilot, Perplexity, Meta AI, Grok, DeepSeek, Mistral, and open-weight models, plus coding assistants. Two full chapters then cover prompt engineering for images and for video and audio, with tools such as Midjourney, Stable Diffusion, Sora, Veo, Runway, and Suno. Each tool has its own strengths and quirks, and knowing them saves hours.
+**Part III: Prompting the Popular AI Tools** is a field guide to the major assistants and generators: ChatGPT, Claude, Gemini, Microsoft Copilot, Perplexity, Meta AI, Grok, DeepSeek, Mistral, and open-weight models, plus coding assistants. Two full chapters then cover prompt engineering for images and for video and audio, with tools such as Midjourney, Stable Diffusion, Sora, Veo, Runway, and Suno, and the part ends with prompt playbooks for every profession, from doctors and dentists to sales teams, engineers, parents, advocates, and musicians. Each tool has its own strengths and quirks, and knowing them saves hours.
 
 **Part IV: Advanced Prompt Engineering** covers what professionals do: designing system prompts, working through APIs, grounding models in your own documents, building agents that use tools, connecting AI to browsers, files, and apps through the Model Context Protocol (MCP), designing your own custom agents and multi-agent architectures, testing prompts with evaluations, and defending against prompt injection and other security risks.
 

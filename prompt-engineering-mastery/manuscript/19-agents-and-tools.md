@@ -1,4 +1,4 @@
-# Chapter 18: Agents and Tool Use
+# Chapter 19: Agents and Tool Use
 
 An **AI agent** is a system in which a model doesn't just answer once but works toward a goal over multiple steps: deciding what to do, using tools such as web search, code execution, databases, or APIs, observing the results, and continuing until the task is complete. Agents power coding assistants, research tools, customer service systems, and workflow automation. This chapter explains how to prompt and design them.
 
@@ -302,7 +302,7 @@ know if Friday doesn't work for you.
 [Send] [Edit] [Cancel]
 ```
 
-The `send_email` tool runs only after the person clicks Send. This is the human-confirmation safeguard from Chapter 22, built into the product.
+The `send_email` tool runs only after the person clicks Send. This is the human-confirmation safeguard from Chapter 23, built into the product.
 
 ### Built-in Tools in Chat Apps
 
@@ -334,7 +334,7 @@ Complex workflows sometimes use multiple agents working together:
 
 When one agent delegates to another, the delegation message is a prompt, and it needs full context. Sub-agents don't know what the orchestrator knows. A common failure is vague delegation such as "research the competitors," which leads to duplicated or misdirected work. Good delegation specifies the objective, the scope, the expected output format, and what other agents are covering.
 
-Multi-agent systems are powerful but add cost and complexity. Start with a single agent and add more only when the task clearly benefits. Chapter 20 shows step by step how to design custom agents and choose among these architectures.
+Multi-agent systems are powerful but add cost and complexity. Start with a single agent and add more only when the task clearly benefits. Chapter 21 shows step by step how to design custom agents and choose among these architectures.
 
 ## Long-Running Agents
 
@@ -353,7 +353,7 @@ Agents act in the world, so mistakes have consequences. Build in safeguards:
 - **Human approval** for irreversible or high-impact actions, such as payments, deletions, and external communications.
 - **Sandboxing:** Run code and browsing in isolated environments.
 - **Logging:** Record every action for review.
-- **Injection awareness:** Content the agent reads, such as web pages, emails, and documents, may contain malicious instructions. Chapter 22 covers this in depth.
+- **Injection awareness:** Content the agent reads, such as web pages, emails, and documents, may contain malicious instructions. Chapter 23 covers this in depth.
 
 ## Key Takeaways
 

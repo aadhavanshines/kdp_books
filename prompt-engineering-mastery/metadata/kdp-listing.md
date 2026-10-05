@@ -55,6 +55,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>Master image prompting with Midjourney, Stable Diffusion, Flux, and chat-based image tools, using the vocabulary of photographers and art directors</li>
 <li>Direct AI video like a filmmaker, with shot lists, camera movements, consistent characters, and dialogue, plus music and voice prompting</li>
 <li>Design system prompts, build with APIs, and ground AI in your own documents with RAG</li>
+<li>Use ready-made prompt playbooks for doctors, dentists, lawyers and advocates, engineers, programmers, marketers, salespeople, teachers, parents, musicians, and more, each with field-specific safety advice</li>
 <li>Build agents that use tools, with complete tool-calling examples</li>
 <li>Design your own custom agents and multi-agent architectures, from no-code assistants to coding subagents and SDKs</li>
 <li>Connect AI to your browser, files, and apps with the Model Context Protocol (MCP), including browser control in Chrome</li>
@@ -65,7 +66,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p>Written by an automation and AI professional with more than 15 years of experience building in-house tools for automotive product development and validation.</p>
 
-<p>Whether you are a curious beginner, a busy professional, or a developer building AI features, this book will help you get consistently excellent results from the AI tools you use every day.</p>
+<p>Whether you are a doctor, an engineer, a teacher, a parent, a salesperson, an advocate, a musician, a curious beginner, a busy professional, or a developer building AI features, this book will help you get consistently excellent results from the AI tools you use every day.</p>
 
 <p><i>This book is independent and is not affiliated with, sponsored by, or endorsed by any of the companies whose products it discusses. All product names are trademarks of their respective owners.</i></p>
 
@@ -106,7 +107,7 @@ Pick the closest available matches in KDP's category browser:
 3. how to use AI chatbots at work
 4. generative AI for business productivity
 5. AI agents and RAG for developers
-6. AI image generation prompts
+6. AI prompts for professionals and parents
 7. large language models practical guide
 
 ## AI-Generated Content Disclosure (required)
@@ -141,6 +142,6 @@ Answering this accurately is a KDP content-guideline requirement. The disclosure
   - Paperback cover finish: Matte or Glossy (glossy suits the dark cover)
 - Manuscript: upload `dist/paperback-interior-6x9.pdf`
 - Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf`
-- Suggested list price: **$16.99 USD** (195 pages; check the royalty calculator on the pricing page, since printing costs change)
+- Suggested list price: **$16.99 USD** (225 pages; check the royalty calculator on the pricing page, since printing costs change)
 
 > The paperback cover is sized for exactly the page count in `dist/build-info.json`. KDP's free ISBN barcode is printed automatically in the white box on the back cover. If you edit the manuscript and the page count changes, rebuild so the spine width updates.

@@ -120,6 +120,39 @@ cases.update({
    lambda r: [('diagnoses causes', bool(re.search(r'because|caus|vague|ambig', r, re.I))), ('gives revised prompt', bool(re.search(r'revised|rewrit|improved|try', r, re.I)))]),
 })
 
+cases.update({
+ 'pb_doctor': (P('Write a one-page patient handout explaining').replace('<condition>', 'type 2 diabetes'),
+   lambda r: [('mentions urgent care', bool(re.search(r'urgent|emergency|right away|immediately', r, re.I))), ('3 questions at end', r.count('?') >= 3), ('no dosages', not re.search(r'\d+\s?(mg|units)\b', r, re.I))]),
+ 'pb_dentist': (P('Write post-treatment instructions for a patient'),
+   lambda r: [('numbered list', len(re.findall(r'^\s*\d+[.)]', r, re.M)) >= 4), ('no straw advice', 'straw' in r.lower()), ('phone blank', '_' in r or '[' in r), ('warning signs', bool(re.search(r'call|contact', r, re.I)))]),
+ 'pb_sales_email': (P('Write a short cold email (under 120 words)').replace('<name>', 'Meera Iyer').replace('<role>', 'Operations Head').replace('<company>', 'Lotus Logistics').replace('<one-line description>', 'route-planning software that cuts fuel costs').replace('<pain point>', 'rising fuel costs on city deliveries'),
+   lambda r: [('under ~120 words', len(r.split('\n---')[0].split()) <= 140), ('ends with a question', '?' in r.strip()[-200:]), ('has a number', bool(re.search(r'\d', r)))]),
+ 'pb_objections': (P('I sell <product> to <buyer type>').replace('<product>', 'payroll software').replace('<buyer type>', 'small manufacturing companies'),
+   lambda r: [('8 objections', len(re.findall(r'^\s*(\#+\s*)?\**\d+[.)]', r, re.M)) >= 8), ('forward question', r.count('?') >= 8)]),
+ 'pb_eng_tests': (P('Generate validation test cases for the requirement below').replace('<paste requirement>', 'REQ-12: The wiper motor shall stop within 2 seconds when the wiper switch is turned off.'),
+   lambda r: [('table', r.count('|') > 30), ('boundary/fault cases', bool(re.search(r'boundary|fault|invalid|voltage', r, re.I))), ('requirement ID used', 'REQ-12' in r)]),
+ 'pb_eng_reqs': (P('Review these requirements for a <system>').replace('<system>', 'car window lift controller').replace('<paste requirements>', '1. The window shall close quickly.\n2. The window shall stop if an obstacle is detected.\n3. The window shall close within 4 seconds.\n4. The window shall always close when the car is locked.'),
+   lambda r: [('flags "quickly" as ambiguous', bool(re.search(r'quickly', r, re.I)) and bool(re.search(r'ambiguous|untestable|vague', r, re.I))), ('notices conflict with obstacle', bool(re.search(r'conflict|contradict', r, re.I))), ('suggests missing reqs', bool(re.search(r'missing', r, re.I)))]),
+ 'pb_parent_sky': (P('My <age>-year-old asked me').replace('<age>', '6').replace("<child's question>", 'Why is the sky blue?'),
+   lambda r: [('mentions scattering idea', bool(re.search(r'bounce|scatter', r, re.I))), ('has an activity', bool(re.search(r'activity|try|together', r, re.I)))]),
+ 'pb_parent_tutor': (P("Act as a patient tutor for my <age>-year-old's").replace('<age>', '9').replace('<subject>', 'maths').replace('<problem>', 'A box holds 6 pencils. How many pencils are in 7 boxes?'),
+   lambda r: [('asks a question', '?' in r), ('does not give answer 42', '42' not in r)]),
+ 'pb_legal_timeline': (P('Organize the facts below into a chronological timeline').replace('<paste facts or documents>', 'Email from landlord, 3 March 2026: rent increase notice effective 1 May.\nLease (signed 10 June 2025): rent fixed until 9 June 2026.\nTenant letter, 20 March 2026: objects to the increase.\nLandlord reply, 2 April 2026: says the notice was sent on 1 March.'),
+   lambda r: [('chronological table/list', bool(re.search(r'2025', r))), ('flags date conflict', bool(re.search(r'conflict|discrepan|inconsisten', r, re.I))), ('avoids legal conclusions', not re.search(r'is (unlawful|illegal|invalid)', r, re.I))]),
+ 'pb_legal_concept': (P('Explain <legal concept> to a client').replace('<legal concept>', 'a power of attorney'),
+   lambda r: [('mentions jurisdiction', bool(re.search(r'jurisdiction|country|state|vary', r, re.I))), ('under ~220 words', len(r.split()) <= 240)]),
+ 'pb_musician': (P("I'm writing a <genre> song about <theme>").replace('<genre>', 'folk').replace('<theme>', 'leaving my hometown'),
+   lambda r: [('10 images', len(re.findall(r'^\s*\**\d+[.)]', r, re.M)) >= 10), ('avoids "broken heart"', 'broken heart' not in r.lower().replace('"broken heart"', ''))]),
+ 'pb_teacher': (P('Create a 45-minute lesson plan on <topic>').replace('<topic>', 'fractions').replace('<grade>', '4'),
+   lambda r: [('objective', 'objective' in r.lower()), ('exit ticket', 'exit ticket' in r.lower()), ('support + challenge', bool(re.search(r'support', r, re.I)) and bool(re.search(r'challenge|advanced', r, re.I)))]),
+ 'pb_realestate': (P('Write a property listing for:').replace('<property details>', '3-bedroom flat, 1,450 sq ft, 6th floor, lake view, covered parking, 10 minutes from the metro station, Chennai'),
+   lambda r: [('under ~200 words', len(r.split('\n---')[0].split()) <= 220), ('mentions lake view', 'lake' in r.lower()), ('no discriminatory terms', not re.search(r'\b(families only|bachelors not|perfect for couples|no kids)\b', r, re.I))]),
+ 'pb_hr_jd': (P('Write an inclusive job description for a <role>').replace('<role>', 'warehouse supervisor').replace('<company type>', 'mid-sized logistics company'),
+   lambda r: [('must-have vs nice-to-have', bool(re.search(r'must', r, re.I)) and bool(re.search(r'nice|preferred|bonus', r, re.I))), ('under ~400 words', len(r.split()) <= 440)]),
+ 'pb_donor': (P('Write a 300-word donor appeal for <organization>').replace('<organization>', 'Bright Books Trust').replace('<mission>', 'runs free reading clubs for children').replace('<story>', 'Ravi, 9, could not read a full sentence in June and now reads picture books aloud to his sister').replace('<number>', '1,200 children reached last year').replace('<ask>', 'Rs 1,500 funds one child for a year'),
+   lambda r: [('uses the story', 'Ravi' in r), ('uses the number', '1,200' in r), ('specific ask', '1,500' in r)]),
+})
+
 def run(name):
     prompt = cases[name][0]
     system = cases[name][2] if len(cases[name]) > 2 else 'You are a helpful general-purpose AI assistant.'

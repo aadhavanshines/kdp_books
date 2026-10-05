@@ -56,7 +56,7 @@ A **custom GPT** is a version of ChatGPT configured with your own instructions, 
 - A customer-support assistant loaded with your product documentation.
 - A study tutor for a specific course, loaded with lecture notes.
 
-Writing the instructions for a custom GPT is system prompt design, which Chapter 16 covers in depth. A solid structure is:
+Writing the instructions for a custom GPT is system prompt design, which Chapter 17 covers in depth. A solid structure is:
 
 ```
 # Role and purpose

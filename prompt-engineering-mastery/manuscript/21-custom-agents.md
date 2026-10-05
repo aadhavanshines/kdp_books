@@ -1,6 +1,6 @@
-# Chapter 20: Building Custom Agents with Prompts
+# Chapter 21: Building Custom Agents with Prompts
 
-In Chapter 18 you learned how agents work: a model that thinks, uses tools, observes the results, and repeats until a goal is met. In Chapter 19 you connected agents to browsers, files, and apps. This chapter brings it all together and shows you how to design and build your own custom agents, from a no-code assistant to a team of cooperating specialists, and how to write the prompts that make each part of the architecture work.
+In Chapter 19 you learned how agents work: a model that thinks, uses tools, observes the results, and repeats until a goal is met. In Chapter 20 you connected agents to browsers, files, and apps. This chapter brings it all together and shows you how to design and build your own custom agents, from a no-code assistant to a team of cooperating specialists, and how to write the prompts that make each part of the architecture work.
 
 The central idea of this chapter is simple: **an agent's behavior is mostly defined by prompts.** The system prompt sets its purpose and rules, each tool description explains when a capability is worth using, and every delegation message briefs a teammate who starts with no context. Get those right, and the rest is plumbing.
 
@@ -13,7 +13,7 @@ Every agent, whatever tool or framework you build it with, has the same core par
 - **Model:** The language model that reasons and decides what to do next.
 - **Instructions (system prompt):** The agent's role, goal, rules, workflow, and output format.
 - **Tools:** Functions the agent can call, such as search, databases, email, browsers, and code execution, often connected through MCP.
-- **Knowledge:** Documents and data the agent can look up, usually through retrieval (Chapter 17).
+- **Knowledge:** Documents and data the agent can look up, usually through retrieval (Chapter 18).
 - **Memory:** What the agent keeps between steps or sessions: notes, task lists, past conversations, user preferences.
 - **Orchestration loop:** The think-act-observe cycle that runs until the task is done.
 - **Guardrails:** Permissions, approval steps, input and output checks, and limits on cost and time.
@@ -354,7 +354,7 @@ Agents fail in characteristic ways, and most failures can be fixed in the prompt
 | Workers duplicate effort | Vague delegation | Give each worker a distinct scope and format |
 | Reports success falsely | No verification step | "Verify before reporting; state what you checked" |
 
-Keep a set of 10 to 20 test tasks, including tricky and adversarial ones, and rerun them whenever you change the prompt or the model (Chapter 21). Review security risks such as prompt injection through web pages and documents before giving an agent real permissions (Chapter 22).
+Keep a set of 10 to 20 test tasks, including tricky and adversarial ones, and rerun them whenever you change the prompt or the model (Chapter 22). Review security risks such as prompt injection through web pages and documents before giving an agent real permissions (Chapter 23).
 
 ## The Custom Agent Checklist
 

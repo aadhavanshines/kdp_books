@@ -133,7 +133,7 @@ Best practices for JSON prompts:
 
 Most major AI platforms now offer **structured output** or **JSON mode** features through their APIs. With these, you provide a JSON Schema and the platform guarantees the output conforms to it. When available, use these features rather than relying on prompting alone, since they eliminate parsing errors. Prompting still matters, though: the schema guarantees the shape, but your instructions determine whether the content is correct.
 
-Related **function calling** or **tool use** features let a model return structured arguments for a function you define. Chapter 18 covers these in depth.
+Related **function calling** or **tool use** features let a model return structured arguments for a function you define. Chapter 19 covers these in depth.
 
 ## XML Tags
 

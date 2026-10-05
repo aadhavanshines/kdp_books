@@ -120,7 +120,7 @@ For prompts you'll reuse, follow this loop:
 5. **Revise** the prompt to address the most common or serious failure.
 6. **Repeat** until results are consistently good.
 
-This is a lightweight version of the evaluation process that professionals use, which Chapter 21 covers in depth.
+This is a lightweight version of the evaluation process that professionals use, which Chapter 22 covers in depth.
 
 > **Try It:** Take a prompt you use regularly. Create five varied test inputs, including at least one unusual case. Run the prompt on all five and write down every problem. Fix the most common problem and rerun. You've just done prompt engineering the way professionals do it.
 
