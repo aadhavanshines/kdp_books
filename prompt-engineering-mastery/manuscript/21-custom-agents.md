@@ -269,7 +269,7 @@ At chosen checkpoints, the agent stops and asks a person to approve, edit, or re
 
 You can build useful agents with no programming at all. The main no-code options work the same way: you write instructions (a system prompt), attach knowledge files, and switch on tools.
 
-- **ChatGPT plugins:** Reusable instructions (skills), reference files, and connected apps. Plugins replace custom GPTs, which OpenAI announced in September 2026 it will retire.
+- **ChatGPT plugins:** Reusable instructions (skills), reference files, and connected apps. OpenAI has announced plans to retire custom GPTs and offers a migration path to plugins.
 - **Claude Projects:** Project instructions and documents that apply to every conversation in the project.
 - **Gemini Gems:** Saved instructions for a reusable, specialized Gemini assistant.
 - **Microsoft Copilot Studio:** A builder for organization-wide agents, with instructions that can refer directly to tools, knowledge sources, and other agents, plus connectors to business systems.

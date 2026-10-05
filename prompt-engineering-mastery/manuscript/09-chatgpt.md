@@ -52,9 +52,9 @@ ChatGPT also offers **memory**, which lets it remember details across conversati
 
 ## Custom Assistants: From GPTs to Plugins
 
-For several years, ChatGPT let you build **custom GPTs**: versions of ChatGPT configured with your own instructions, knowledge files, and capabilities. In September 2026, OpenAI announced that custom GPTs will be retired (scheduled at the time of writing for December 11, 2026) and replaced by **plugins**, which combine reusable instructions, called skills, with reference files and connected apps. When a GPT is migrated, its instructions become a skill and its knowledge files become reference files.
+For several years, ChatGPT let you build **custom GPTs**: versions of ChatGPT configured with your own instructions, knowledge files, and capabilities. In 2026, OpenAI announced plans to retire custom GPTs and provide a migration path to **plugins**, which combine reusable instructions with reference files and connected apps. Retirement and migration timing varies by plan and workspace, so check OpenAI's current documentation before relying on a specific date.
 
-The names change; the skill doesn't. Whether you're building a plugin, a Claude Project, or a Gemini Gem, you're writing reusable instructions for a specialized assistant. Examples:
+The names may change; the underlying skill remains the same. Whether you're building a plugin, a Claude Project, or a Gemini Gem, you're writing reusable instructions for a specialized assistant. Examples:
 
 - A brand-voice writer loaded with your style guide.
 - A customer-support assistant loaded with your product documentation.
@@ -166,6 +166,6 @@ Answering these four questions takes a minute and turns a generic plan into one 
 
 - Choose the right mode: fast, reasoning, search, data analysis, or deep research.
 - Set up custom instructions; they improve every conversation.
-- Use plugins (which replace custom GPTs) and Projects for repeated, specialized work.
+- Use plugins and Projects for repeated, specialized work.
 - Tell ChatGPT explicitly when you want prose instead of bullet points.
 - Use the data analysis tool for any real calculation.
