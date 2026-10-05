@@ -95,11 +95,11 @@ If the files don't contain the answer, say so.
 
 **Use the data analysis tool for numbers.** Upload a spreadsheet and ask it to analyze it. Because it runs real code, calculations are far more reliable than in-text arithmetic. Ask it to show the code if you want to verify the method.
 
-**Use canvas for long documents and code.** ChatGPT's canvas lets you edit a document or code side by side with the AI and ask for targeted changes to selected sections, which is useful for iterative writing.
+**Use a side-by-side editing workspace for long documents and code.** When your AI application provides a workspace where the document sits beside the chat, use it to request targeted changes to selected sections rather than regenerating the whole document each time.
 
 **Steer reasoning models with goals, not steps.** For reasoning models, describe the problem, constraints, and desired output clearly, and let the model plan its own approach.
 
-**Branch instead of fighting.** If a conversation goes off track, edit your earlier message to try a different direction instead of piling up corrections.
+**Branch or restart instead of fighting.** If a conversation goes off track, try a fresh version of the request, or use your platform's editing or branching feature if it has one, instead of piling up corrections.
 
 ## Example: From Basic to Advanced
 

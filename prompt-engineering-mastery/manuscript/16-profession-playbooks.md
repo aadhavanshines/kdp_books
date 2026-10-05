@@ -1,4 +1,4 @@
-# Chapter 16: Prompt Playbooks for 20 Professions
+# Chapter 16: Prompt Playbooks for 20 Professions & Roles
 
 The techniques in this book work for everyone, but every profession has its own tasks, vocabulary, and risks. This chapter is a set of ready-made playbooks. Find your field, try the prompts on your own work, and read the safety note: the rules for a doctor, a lawyer, and a musician are very different.
 

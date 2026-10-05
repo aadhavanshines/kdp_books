@@ -259,7 +259,7 @@ dependencies. Then list the top 5 risks with mitigations.
 Here is my task list: <tasks>.
 My most important goal this week is <goal>. I have about <hours>
 of focused time. Sort the tasks into: Do Today, Do This Week,
-Delegate, and Drop. Explain your reasoning briefly for each.
+Delegate, and Drop. Give a one-line reason for each.
 ```
 
 ### Turning Notes into Action

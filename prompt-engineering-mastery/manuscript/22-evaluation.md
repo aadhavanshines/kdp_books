@@ -99,7 +99,7 @@ Run this across your whole test set, and you get a pass rate for each criterion,
 Making model graders reliable:
 
 - **Use specific, binary or narrow-scale criteria.** "PASS/FAIL: mentions the 30-day return window" is more reliable than "Rate helpfulness 1-10."
-- **Ask for reasoning before the verdict.**
+- **Ask for a concise justification before the verdict.**
 - **Provide reference answers or source material** when possible.
 - **Calibrate against humans:** Have people grade a sample, and check that the model grader agrees.
 - **Watch for biases.** Model graders can favor longer answers, answers in certain positions when comparing two options, or answers from their own model family. When comparing two outputs, run the comparison in both orders.

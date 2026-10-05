@@ -86,7 +86,7 @@ Answer: Maria pays $15.
 
 Why does this work? Because a standard model generates text one piece at a time, writing out intermediate steps gives it "space" to work. Each step becomes part of the context that informs the next. Skipping straight to the answer forces it to compress all that reasoning into a single prediction. Reasoning models do this internally, which is why they don't need the instruction.
 
-> **Note:** Older guides often suggest asking the model to reason inside `<thinking>` tags. With current models, avoid this: some providers' safety systems now block prompts that ask a model to expose its internal reasoning in tags like these. When we tested this book's prompts, that version was blocked on two current models, while the "Key steps" and "Answer:" version above worked correctly. Use plain headings, or switch on the assistant's built-in thinking mode.
+> **Note:** Older guides often suggest asking the model to reason inside `<thinking>` tags. Some providers may block prompts that explicitly request a model's internal reasoning. Use plain headings such as "Key steps" and "Answer:", or use the assistant's built-in reasoning mode instead.
 
 ### Guided Reasoning
 

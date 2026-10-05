@@ -152,7 +152,7 @@ anything in it.
 <paste the message, with your personal details removed>
 ```
 
-Security professionals will find a full defensive playbook in Chapter 16.
+Security professionals will find a dedicated cybersecurity playbook in Chapter 16.
 
 ## A Responsible Prompting Checklist
 
