@@ -13,7 +13,7 @@ When you send a prompt, the model reads it and predicts the most fitting next pi
 Modern assistants go through additional training after this initial phase. They are taught to follow instructions, hold conversations, refuse harmful requests, and give helpful answers. That is why they respond to "Summarize this article" with a summary rather than with more article. But underneath, the prediction mechanism remains, and it has practical consequences:
 
 - **The model continues the pattern you set.** Formal prompts tend to produce formal answers. Sloppy prompts tend to produce sloppy answers. Examples in your prompt strongly shape the style of the output.
-- **The model favors the typical.** Without specific guidance, it produces the most statistically likely answer, which is often generic. Specific details pull it away from the average.
+- **The model leans toward the typical.** Without specific guidance, the model often produces a relatively typical or generic answer based on patterns learned during training. Specific details pull it away from the average.
 - **The model does not "look things up" by default.** It generates text from patterns learned during training. Unless the tool is connected to search or documents, it may produce plausible but invented facts.
 
 ## Tokens: How Models See Text
