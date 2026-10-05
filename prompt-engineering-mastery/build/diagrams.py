@@ -370,6 +370,81 @@ def storyboard():
     return img
 
 
+def agent_architecture():
+    img, d = canvas(860)
+    cx, cy = W / 2, 430
+    box(d, (cx - 190, cy - 110, cx + 190, cy + 110), "Model", NAVY, WHITE, sub="reasons and decides",
+        font=f(BOLD, 44))
+    parts = [("Instructions", "system prompt: role, goal, rules"), ("Tools", "search, apps, browser (MCP)"),
+             ("Knowledge", "documents via retrieval"), ("Memory", "notes, history, preferences"),
+             ("Orchestration loop", "think, act, observe, repeat"), ("Guardrails", "approvals, limits, checks")]
+    bw, bh = 400, 150
+    spots = [(40, 60), (40, 355), (40, 650), (W - 40 - bw, 60), (W - 40 - bw, 355), (W - 40 - bw, 650)]
+    for (title, sub_), (x, y) in zip(parts, spots):
+        box(d, (x, y, x + bw, y + bh), title, LIGHT, sub=sub_, font=f(BOLD, 36))
+        sx = x + bw if x < cx else x
+        tx = cx - 190 if x < cx else cx + 190
+        d.line([(sx, y + bh / 2), (tx, cy + (y + bh / 2 - cy) * 0.4)], fill=MID, width=5)
+    return img
+
+
+def agent_patterns():
+    pw, ph, gap = 420, 330, 20
+    img, d = canvas(2 * ph + gap + 40)
+    titles = ["Single agent + tools", "Prompt chain", "Router",
+              "Orchestrator + workers", "Evaluator + optimizer", "Human in the loop"]
+    sm = f(BOLD, 24)
+
+    def b(x0, y0, x1, y1, t, dark=False):
+        d.rounded_rectangle((x0, y0, x1, y1), radius=10, fill=NAVY if dark else LIGHT)
+        d.text(((x0 + x1) / 2, (y0 + y1) / 2), t, font=sm, fill=WHITE if dark else INK, anchor="mm")
+
+    for i, title in enumerate(titles):
+        X = 40 + (i % 3) * (pw + gap)
+        Y = 20 + (i // 3) * (ph + gap)
+        d.rounded_rectangle((X, Y, X + pw, Y + ph), radius=18, fill=PALE, outline=LIGHT, width=3)
+        d.text((X + pw / 2, Y + ph - 50), title, font=f(BOLD, 30), fill=INK, anchor="ma")
+        cx = X + pw / 2
+        if i == 0:
+            b(cx - 70, Y + 40, cx + 70, Y + 100, "Agent", True)
+            for k, t in enumerate(["Tool", "Tool", "Tool"]):
+                tx = X + 40 + k * 125
+                b(tx, Y + 170, tx + 100, Y + 220, t)
+                d.line([(cx, Y + 100), (tx + 50, Y + 170)], fill=MID, width=4)
+        elif i == 1:
+            for k, t in enumerate(["Step 1", "Step 2", "Step 3"]):
+                tx = X + 25 + k * 135
+                b(tx, Y + 110, tx + 105, Y + 170, t, k == 0)
+                if k < 2:
+                    arrow(d, (tx + 105, Y + 140), (tx + 132, Y + 140), width=4, head=14)
+        elif i == 2:
+            b(cx - 70, Y + 30, cx + 70, Y + 90, "Router", True)
+            for k, t in enumerate(["Billing", "Tech", "Human"]):
+                tx = X + 30 + k * 125
+                b(tx, Y + 170, tx + 110, Y + 220, t)
+                arrow(d, (cx, Y + 90), (tx + 55, Y + 166), width=4, head=14)
+        elif i == 3:
+            b(cx - 70, Y + 30, cx + 70, Y + 90, "Lead", True)
+            for k in range(3):
+                tx = X + 30 + k * 125
+                b(tx, Y + 170, tx + 110, Y + 220, "Worker")
+                arrow(d, (cx, Y + 90), (tx + 55, Y + 166), width=4, head=14)
+        elif i == 4:
+            b(X + 40, Y + 100, X + 180, Y + 160, "Generator", True)
+            b(X + pw - 180, Y + 100, X + pw - 40, Y + 160, "Critic")
+            arrow(d, (X + 180, Y + 115), (X + pw - 184, Y + 115), width=4, head=14)
+            arrow(d, (X + pw - 180, Y + 148), (X + 184, Y + 148), color=MID, width=4, head=14)
+            d.text((cx, Y + 190), "revise until it passes", font=f(ITAL, 24), fill=MID, anchor="ma")
+        else:
+            b(X + 25, Y + 110, X + 145, Y + 170, "Agent", True)
+            b(X + 160, Y + 110, X + 270, Y + 170, "Person")
+            b(X + 285, Y + 110, X + 395, Y + 170, "Action")
+            arrow(d, (X + 145, Y + 140), (X + 157, Y + 140), width=4, head=12)
+            arrow(d, (X + 270, Y + 140), (X + 282, Y + 140), width=4, head=12)
+            d.text((X + 215, Y + 190), "approves", font=f(ITAL, 24), fill=MID, anchor="ma")
+    return img
+
+
 DIAGRAMS = {
     "llm-loop.png": llm_loop,
     "context-window.png": context_window,
@@ -383,6 +458,8 @@ DIAGRAMS = {
     "shot-sizes.png": shot_sizes,
     "camera-moves.png": camera_moves,
     "storyboard.png": storyboard,
+    "agent-architecture.png": agent_architecture,
+    "agent-patterns.png": agent_patterns,
 }
 
 

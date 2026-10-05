@@ -100,7 +100,7 @@ Notice the qualities that make this effective:
 
 **5. Avoid excessive emphasis.** Earlier models sometimes needed "CRITICAL" and "YOU MUST" in capital letters. Modern models follow instructions well and can overreact to heavy emphasis, becoming overly cautious. Use normal language and save emphasis for what genuinely matters most.
 
-**6. Version and test it.** Treat your system prompt like code: store versions, record changes, and test against a set of realistic conversations before every update (see Chapter 20).
+**6. Version and test it.** Treat your system prompt like code: store versions, record changes, and test against a set of realistic conversations before every update (see Chapter 21).
 
 ## Working with the API
 

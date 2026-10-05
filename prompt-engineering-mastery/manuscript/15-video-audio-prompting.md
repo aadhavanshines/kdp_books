@@ -47,7 +47,7 @@ The weak prompt gives the model nothing to direct. The strong one specifies the 
 
 ## Camera Movement Vocabulary
 
-Camera movement is the single biggest difference between a flat AI clip and a cinematic one. Use these standard terms:
+Of everything you can add to a video prompt, camera direction does the most to make a clip feel deliberately filmed. Use these standard terms:
 
 | Movement | What the camera does | Effect |
 | --- | --- | --- |
@@ -111,7 +111,7 @@ The biggest challenge in multi-shot AI video is consistency: the same character,
 
 ## Image-to-Video Prompting
 
-When you animate an existing image, the picture already defines the look. Your prompt should describe only **motion**:
+In image-to-video, your starting image has already settled the subject, the setting, and the style. So the prompt should cover only what changes over time, the **motion**:
 
 ```
 The woman slowly turns her head toward the window and smiles;

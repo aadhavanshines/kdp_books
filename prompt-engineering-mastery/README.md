@@ -25,7 +25,7 @@ Listing details (title, description, keywords, categories, pricing, and the AI d
 - **Part I: Foundations**: What prompt engineering is; how LLMs read prompts; the six-part prompt blueprint; core techniques
 - **Part II: Intermediate Techniques**: Reasoning (chain of thought, reflection); structured output; debugging prompts; everyday prompt patterns
 - **Part III: Prompting the Popular AI Tools**: ChatGPT; Claude; Gemini; Copilot, Perplexity, Meta AI, Grok, DeepSeek, Mistral, and open models; coding assistants; prompt engineering for images; prompt engineering for video and audio
-- **Part IV: Advanced Prompt Engineering**: System prompts and APIs; RAG and context engineering; agents and tool use; MCP in practice (browser control, files, apps); evaluation; security and ethics; the future
+- **Part IV: Advanced Prompt Engineering**: System prompts and APIs; RAG and context engineering; agents and tool use; MCP in practice (browser control, files, apps); building custom agents and agent architectures; evaluation; security and ethics; the future
 - Appendices: 50-prompt library, troubleshooting table, glossary, about the author
 
 ## How to Publish on Amazon KDP

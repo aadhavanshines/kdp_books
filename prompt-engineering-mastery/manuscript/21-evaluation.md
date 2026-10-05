@@ -1,4 +1,4 @@
-# Chapter 20: Testing and Evaluating Prompts
+# Chapter 21: Testing and Evaluating Prompts
 
 A prompt that works once in a chat window is a prototype. A prompt that runs thousands of times in a product needs evidence that it works. **Evaluation**, or **evals**, is how professionals measure prompt quality, compare versions, and prevent regressions. It's the single practice that most separates hobbyist prompting from professional prompt engineering.
 
@@ -94,7 +94,7 @@ For a response that offered the customer a refund, the grader might return:
 }
 ```
 
-Run this across your whole test set and you get a pass rate for each criterion, which tells you exactly what to fix next: here, a clearer instruction about refunds.
+Run this across your whole test set, and you get a pass rate for each criterion, which tells you exactly what to fix next: here, a clearer instruction about refunds.
 
 Making model graders reliable:
 

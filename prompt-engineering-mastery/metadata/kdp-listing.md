@@ -56,6 +56,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>Direct AI video like a filmmaker, with shot lists, camera movements, consistent characters, and dialogue, plus music and voice prompting</li>
 <li>Design system prompts, build with APIs, and ground AI in your own documents with RAG</li>
 <li>Build agents that use tools, with complete tool-calling examples</li>
+<li>Design your own custom agents and multi-agent architectures, from no-code assistants to coding subagents and SDKs</li>
 <li>Connect AI to your browser, files, and apps with the Model Context Protocol (MCP), including browser control in Chrome</li>
 <li>Test prompts with evaluations and defend against prompt injection</li>
 </ul>
