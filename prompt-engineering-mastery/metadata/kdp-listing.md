@@ -63,12 +63,20 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p>Every key technique comes with a real example prompt <i>and</i> the response it produces, plus clear diagrams. You also get <b>50 ready-to-use prompt templates</b> for writing, research, learning, analysis, communication, career, and coding, plus a troubleshooting guide and glossary.</p>
 
+<p>Written by an automation and AI professional with decades of experience building in-house tools for automotive product development and validation.</p>
+
 <p>Whether you are a curious beginner, a busy professional, or a developer building AI features, this book will help you get consistently excellent results from the AI tools you use every day.</p>
 
 <p><i>This book is independent and is not affiliated with, sponsored by, or endorsed by any of the companies whose products it discusses. All product names are trademarks of their respective owners.</i></p>
 
 <p><b>Scroll up and start mastering prompt engineering today.</b></p>
 ```
+
+## Author Bio (for Amazon Author Central)
+
+Add this at authorcentral.amazon.com so it appears on the book's Amazon page:
+
+> Aadhavan Muthurengan is an automation and artificial intelligence professional with decades of experience in the automotive industry. Throughout a career focused on product development and validation, Aadhavan has designed and built a wide range of in-house tools that automate complex engineering workflows, speed up testing, and help teams deliver reliable, high-quality results. *Prompt Engineering Mastery* distills that hands-on experience into clear, practical guidance anyone can use to get dependable results from today's AI tools.
 
 ## Publishing Rights
 

@@ -201,8 +201,7 @@ def build_paperback_cover(meta, page_count, out_pdf, out_png=None):
     # About the author line
     by += int(0.1 * DPI)
     fa = font(SERIF_ITALIC, 0.145 * DPI)
-    for line in wrap(d, f"{meta['author']} writes practical guides that help people put artificial "
-                        "intelligence to work in their everyday lives and careers.", fa, bx1 - bx0):
+    for line in wrap(d, meta["author_short_bio"], fa, bx1 - bx0):
         d.text((bx0, by), line, font=fa, fill=SOFT)
         by += int(fa.size * 1.4)
 

@@ -1,10 +1,10 @@
 # About the Author
 
-**Aadhavan Muthurengan** is an author and technology enthusiast with a passion for making artificial intelligence practical, understandable, and useful for everyone.
+**Aadhavan Muthurengan** is an automation and artificial intelligence professional with decades of experience in the automotive industry.
 
-This book grew out of a simple observation: most people who try AI tools never see what those tools can really do, not because the technology falls short, but because no one has shown them how to ask. Aadhavan wrote *Prompt Engineering Mastery* to close that gap, turning the techniques used by professional AI builders into clear steps, real examples, and ready-to-use templates that anyone can follow, whether they are a student, a busy professional, a small-business owner, or a developer.
+Throughout a career focused on product development and validation, Aadhavan has designed and built a wide range of in-house tools that automate complex engineering workflows, speed up testing, and help teams deliver reliable, high-quality results, replacing slow, repetitive work with smart, dependable automation.
 
-Aadhavan believes that the most important AI skill is not programming but clear thinking and clear communication, and that anyone willing to experiment can learn it. That belief shapes every chapter of this book: explain the idea plainly, show a real example, and let the reader try it.
+Working where engineering, automation, and AI meet has given Aadhavan a practical view of the technology: AI delivers real value only when people know how to direct it clearly, and that skill comes from clear thinking, not programming. *Prompt Engineering Mastery* distills this experience into plain explanations, real examples, and ready-to-use templates that anyone can follow.
 
 Family is at the heart of Aadhavan's life. Aadhavan is deeply grateful to a loving father and mother, a supportive wife, and three wonderful children, whose encouragement made this book possible.
 
