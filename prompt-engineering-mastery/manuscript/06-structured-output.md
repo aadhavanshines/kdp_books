@@ -17,9 +17,10 @@ Tables are ideal for comparisons, plans, and data extraction:
 
 ```
 Compare these three project management tools for a 10-person
-marketing team. Output a table with columns: Tool, Best For,
-Key Strength, Main Weakness, Approximate Price per User.
-After the table, add a 2-sentence recommendation.
+marketing team: <tool A>, <tool B>, and <tool C>. Output a table
+with columns: Tool, Best For, Key Strength, Main Weakness,
+Approximate Price per User. After the table, add a 2-sentence
+recommendation.
 ```
 
 Tips for tables:
@@ -50,6 +51,10 @@ Summarize the meeting transcript using exactly this template:
 - <question>
 
 If a section has no content, write "None".
+
+<transcript>
+<paste the transcript>
+</transcript>
 ```
 
 The final line matters. Without it, models may invent content to fill empty sections, or silently drop them.
@@ -138,7 +143,7 @@ XML-style tags, such as `<summary>` and `</summary>`, are a flexible way to stru
 Analyze the customer review below.
 
 <review>
-<review text>
+<paste the review here>
 </review>
 
 Respond in this format:
@@ -150,7 +155,7 @@ Respond in this format:
 Tags are particularly useful when:
 
 - You mix several documents in one prompt (`<contract>`, `<email>`, `<policy>`).
-- You want reasoning separated from the answer (`<thinking>` and `<answer>`).
+- You want supporting evidence separated from the answer (`<quotes>` and `<answer>`).
 - You want to extract specific parts of a long response programmatically.
 
 There's nothing special about particular tag names. Choose descriptive names and use them consistently.

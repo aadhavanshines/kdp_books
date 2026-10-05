@@ -40,9 +40,10 @@ Here is what the strong prompt produces:
 ```
 Example output:
 Cold coffee at 3 pm? Not anymore. This 750 ml insulated steel
-bottle keeps drinks ice-cold for 24 hours and hot for 12, so your
-morning brew and post-gym water stay exactly how you like them.
-It slips into car cup holders and seals tight for the bag.
+bottle keeps drinks ice-cold for 24 hours and hot for 12, so
+your morning brew and post-gym water stay exactly how you like
+them. It slips into car cup holders and seals tight for any bag
+you carry.
 
 - Cold for 24 hours, hot for 12
 - Leak-proof lid, safe in any bag

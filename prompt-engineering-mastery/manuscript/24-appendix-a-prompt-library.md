@@ -16,21 +16,21 @@ to <purpose>. Include <key points>. Tone: <tone>. Length: <length>.
 ```
 Edit this for clarity and concision without changing my voice or
 meaning. Then list your 5 most important changes.
-<text>
+<paste your text>
 ```
 
 **3. Simplify**
 
 ```
 Rewrite this so a 12-year-old could understand it, keeping all
-the key facts: <text>
+the key facts: <paste your text>
 ```
 
 **4. Change tone**
 
 ```
 Rewrite this message to sound <tone, e.g., warmer and more
-confident> while keeping it under <length>: <text>
+confident> while keeping it under <length>: <paste your text>
 ```
 
 **5. Headlines**
@@ -44,7 +44,7 @@ and direct styles. Mark your top 3 and explain why.
 **6. Outline**
 
 ```
-Create a detailed outline for a <length> <document> on <topic>
+Create a detailed outline for a <length> <document type> on <topic>
 for <audience>, with section headings and 2-3 key points each.
 ```
 
@@ -52,14 +52,15 @@ for <audience>, with section headings and 2-3 key points each.
 
 ```
 Turn these bullet notes into well-written paragraphs. Don't add
-facts that aren't in the notes. <notes>
+facts that aren't in the notes. <paste your notes>
 ```
 
 **8. Critique**
 
 ```
 Act as a demanding editor. Identify the 5 biggest weaknesses in
-this draft, in order of importance, with specific fixes. <draft>
+this draft, in order of importance, with specific fixes. <paste
+draft>
 ```
 
 ## Summarizing and Understanding
@@ -68,7 +69,7 @@ this draft, in order of importance, with specific fixes. <draft>
 
 ```
 Summarize this in 3 bullet points for a busy executive deciding
-<decision>. <document>
+<decision>. <paste document>
 ```
 
 **10. Key takeaways and actions**
@@ -76,7 +77,7 @@ Summarize this in 3 bullet points for a busy executive deciding
 ```
 From this document, list: the main conclusion, 5 key facts, and
 any actions or deadlines. Use only information in the text.
-<document>
+<paste document>
 ```
 
 **11. Meeting notes**
@@ -84,7 +85,7 @@ any actions or deadlines. Use only information in the text.
 ```
 Turn this transcript into notes with sections: Decisions, Action
 Items (owner, task, due date), and Open Questions. Write "None"
-for empty sections. <transcript>
+for empty sections. <paste transcript>
 ```
 
 **12. Explain like I'm new**
@@ -107,7 +108,7 @@ table: Section, Before, After, Significance.
 ```
 Answer my question using only the document below. Quote the
 relevant passage first. If the answer isn't there, say so.
-<document> Question: <question>
+<paste document> Question: <question>
 ```
 
 ## Learning
@@ -138,7 +139,7 @@ one at a time. Explain each answer after I respond.
 
 ```
 Create 20 flashcards from this material in a two-column table:
-Question | Answer. <material>
+Question | Answer. <paste material>
 ```
 
 ## Analysis and Decisions
@@ -161,7 +162,7 @@ reasons, with an early warning sign and a prevention step for each.
 
 ```
 Steelman the strongest case against this argument, then tell me
-which objection I most need to address. <argument>
+which objection I most need to address. <paste argument>
 ```
 
 **22. SWOT analysis**
@@ -183,7 +184,7 @@ causes. Then suggest how to verify the most likely cause.
 ```
 Analyze this data. Describe key trends, anomalies, and 3 possible
 explanations. Show calculations. Note what extra data would help.
-<data>
+<paste data>
 ```
 
 ## Communication
@@ -200,7 +201,7 @@ Tone: <tone>. Give a direct version and a diplomatic version.
 ```
 Draft a reply to this customer complaint. Acknowledge the issue,
 apologize once, explain next steps, and keep it under 150 words.
-<complaint>
+<paste complaint>
 ```
 
 **27. Meeting prep**
@@ -239,14 +240,16 @@ the first line, one concrete detail, clear call to action, under
 
 ```
 Rewrite these resume bullets to start with action verbs and show
-measurable results. Ask me for numbers if needed. <bullets>
+measurable results. Ask me for numbers if needed. <paste your
+bullets>
 ```
 
 **32. Cover letter**
 
 ```
-Write a cover letter for <job> at <company>. Match my experience
-<summary> to their top 3 requirements <requirements>. Under 300
+Write a cover letter for <job title> at <company>.
+My experience: <summary>. Their requirements: <requirements>.
+Show how my experience matches their top 3 requirements. Under 300
 words, confident, not generic.
 ```
 
@@ -294,7 +297,7 @@ top 5 risks with mitigations.
 ```
 My goal this week is <goal>, with <hours> focused hours. Sort
 these tasks into Do Today, This Week, Delegate, Drop, with reasons.
-<tasks>
+<paste your tasks>
 ```
 
 **39. Break down a big task**
@@ -307,9 +310,9 @@ them logically and mark which can be done in parallel.
 **40. Weekly review**
 
 ```
-Here's what I did this week and my goals: <notes>. Summarize
-progress, identify what's slipping, and suggest 3 priorities for
-next week.
+Here's what I did this week and my goals: <paste your notes>.
+Summarize progress, identify what's slipping, and suggest 3
+priorities for next week.
 ```
 
 ## Coding and Technical
@@ -318,7 +321,7 @@ next week.
 
 ```
 Explain what this code does, step by step, for a developer new to
-the codebase. Flag edge cases and potential bugs. <code>
+the codebase. Flag edge cases and potential bugs. <paste code>
 ```
 
 **42. Debug**
@@ -326,14 +329,14 @@ the codebase. Flag edge cases and potential bugs. <code>
 ```
 This code fails with the error below. Expected: <expected>.
 I've tried: <attempts>. Find the cause and propose a fix.
-<code> <error>
+<paste code> <paste error>
 ```
 
 **43. Write tests**
 
 ```
 Write unit tests for <function> covering normal cases, boundary
-values, and invalid inputs, using <framework>. <code>
+values, and invalid inputs, using <framework>. <paste code>
 ```
 
 **44. Code review**
@@ -341,14 +344,15 @@ values, and invalid inputs, using <framework>. <code>
 ```
 Review this code for correctness, security, and performance
 issues, in that order. Explain each issue and suggest a fix.
-<code>
+<paste code>
 ```
 
 **45. Spreadsheet formula**
 
 ```
-In <Excel/Google Sheets>, column A has <data>, column B has
-<data>. Write a formula that <goal>, and explain how it works.
+In <Excel/Google Sheets>, column A has <what column A holds>,
+column B has <what column B holds>. Write a formula that <goal>,
+and explain how it works.
 ```
 
 ## Prompts About Prompts
@@ -357,7 +361,7 @@ In <Excel/Google Sheets>, column A has <data>, column B has
 
 ```
 Review this prompt for ambiguity, missing context, and conflicting
-instructions. Then rewrite it to be clearer. <prompt>
+instructions. Then rewrite it to be clearer. <paste prompt>
 ```
 
 **47. Interview me first**
@@ -380,13 +384,13 @@ style, boundaries, and two example exchanges.
 ```
 Generate 20 diverse test inputs for this prompt, including edge
 cases and tricky cases, with a note on what a good output must
-do for each. <prompt>
+do for each. <paste prompt>
 ```
 
 **50. Diagnose a failure**
 
 ```
-I gave you this prompt <prompt> and got this output <output>, but
-I wanted <desired result>. Explain what in the prompt caused the
-gap, and rewrite the prompt to fix it.
+I gave you this prompt <paste prompt> and got this output <paste
+output>, but I wanted <desired result>. Explain what in the
+prompt caused the gap, and rewrite the prompt to fix it.
 ```

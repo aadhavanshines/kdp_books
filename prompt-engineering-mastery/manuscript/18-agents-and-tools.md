@@ -254,14 +254,14 @@ Tool calls (made in parallel):
   get_weather(city="Chennai", days=2)
 
 Tool results:
-  Calendar: busy Sat 10:00-14:00 and Sun 09:00-11:00
+  Calendar: busy Sat 09:00-14:00 and Sun 09:00-11:00
   Weather: Sat rain after 15:00; Sun clear all day
 
 Example output:
 Sunday from 11:30 to 13:30 works best. You're free after your
 morning commitment ends at 11:00, and Sunday is forecast to stay
-clear all day. Saturday afternoon is free but rain is expected
-after 3 pm.
+clear all day. Saturday doesn't work: your only free time is one
+hour before 9:00 and one hour before the rain starts at 3 pm.
 ```
 
 The model combined two sources and explained its reasoning, which is exactly what you want to verify.

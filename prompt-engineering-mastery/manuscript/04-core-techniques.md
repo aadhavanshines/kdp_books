@@ -122,9 +122,13 @@ Useful refinement moves include:
 Instead of asking for one answer, ask for several and select or combine the best:
 
 ```
-Give me 10 possible titles for this blog post. Vary the style:
-some curiosity-driven, some benefit-driven, some direct.
+Give me 10 possible titles for the blog post below. Vary the
+style: some curiosity-driven, some benefit-driven, some direct.
 Then mark the 3 you think are strongest and explain why.
+
+<post>
+<paste the post or a short summary>
+</post>
 ```
 
 A typical response (abridged) looks like this:

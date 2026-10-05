@@ -121,8 +121,8 @@ Notice how the instruction "using only what each page states" and the "not state
 **Research across sites:**
 
 ```
-Visit the official websites of these three project management
-tools and find the price of their cheapest paid plan for a team of
+Visit the official websites of <tool A>, <tool B>, and <tool C>
+and find the price of their cheapest paid plan for a team of
 10. Quote the exact price text from each pricing page and give me
 the URLs.
 ```
@@ -150,7 +150,8 @@ loading and suggest a fix for each.
 Fill in the conference registration form on the open tab using the
 details below. Do not click Submit. When you've finished, list
 every field you filled and anything you weren't sure about.
-<details>
+
+<your details: name, job title, company, email, dietary needs>
 ```
 
 ## Browser Agent Safety

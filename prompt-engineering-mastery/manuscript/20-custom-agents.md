@@ -256,6 +256,9 @@ criterion as PASS or FAIL with a one-line reason:
 2. Under 400 words.
 3. Plain language a non-expert can follow.
 If all pass, reply only "APPROVED". Otherwise list the fixes.
+
+<notes>{source_notes}</notes>
+<draft>{draft}</draft>
 ```
 
 ### Pattern 6: Human in the Loop

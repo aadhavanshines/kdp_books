@@ -154,17 +154,22 @@ Here is the kind of post this prompt produces (an example output; yours will dif
 ```
 Example output:
 Friday, 4:55 pm. Half your team still hasn't logged their hours,
-and you're about to send another reminder in the group chat.
+and you're about to send yet another reminder in the group chat.
+
+Sound familiar? For most agencies, timesheets are the most dreaded
+admin task of the week. They arrive late, they're incomplete, and
+they turn every invoice into a guessing game.
 
 There's a better way. Taskorra now tracks time automatically,
 using calendar events and task activity, so timesheets fill
-themselves in. In our beta, teams saved about 3 hours per person
-every week.
+themselves in while your team gets on with real work. In our beta,
+teams saved about 3 hours per person every week.
 
-No more chasing. No more guessing at invoices. Just accurate
-hours, ready when you need them.
+No more chasing. No more guessing at invoices. No more Monday
+mornings rebuilding last week from memory. Just accurate hours,
+ready whenever you need them.
 
-Try it free for 14 days and get your Fridays back. -> link
+Try Taskorra free for 14 days and get your Fridays back. -> link
 
 #AgencyLife #TimeTracking #Productivity
 ```

@@ -103,6 +103,8 @@ Agents are most reliable when they can check their own work:
 ```
 Explain what this function does, step by step, for a developer
 new to this codebase. Point out any edge cases or potential bugs.
+
+<paste the function, or select it in your editor>
 ```
 
 **Writing tests:**
@@ -121,6 +123,8 @@ Review this diff as a senior engineer. Focus on correctness bugs,
 security issues, and performance problems, in that order. For
 each issue, explain the problem and suggest a fix. Ignore pure
 style preferences.
+
+<paste the diff>
 ```
 
 ```
@@ -140,6 +144,8 @@ Example output:
 Refactor this module to remove duplication between the three
 export functions. Behavior must not change. Show me the
 refactored code and explain each change.
+
+<paste the module, or name the file>
 ```
 
 **Learning a new technology:**

@@ -583,7 +583,7 @@ def build_story(meta, manuscript, styles, image_root):
                 para = Paragraph(inline(block[1]), styles["label" if label else "body"])
                 nxt = blocks[bi + 1][0] if bi + 1 < len(blocks) else None
                 short_leadin = block[1].rstrip().endswith(":") and len(block[1]) < 220
-                if label or (short_leadin and nxt in ("code", "ul", "ol", "table", "image")):
+                if label or (short_leadin and nxt in ("code", "ul", "ol", "table", "image", "callout")):
                     para._guarded = True
                 story.append(para)
             elif kind == "ul":

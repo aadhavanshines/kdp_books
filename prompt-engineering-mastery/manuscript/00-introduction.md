@@ -57,6 +57,6 @@ clear, concise, and friendly. Keep it under 80 words.
 Paragraph: """<paste your text here>"""
 ```
 
-Anything inside angle brackets, such as `<paste your text here>`, is a placeholder for you to replace with your own content.
+Anything inside angle brackets that describes what to insert, such as `<paste your text here>` or `<audience>`, is a placeholder: replace it, brackets included, with your own content. Some prompts also use XML-style tags, which come in matching pairs such as `<article>` and `</article>`. Those are part of the prompt, so type them exactly as shown and put your content between them.
 
 Let's begin.

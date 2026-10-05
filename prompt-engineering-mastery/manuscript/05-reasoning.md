@@ -42,12 +42,16 @@ Why does this work? Because the model generates text one piece at a time, writin
 For more control, separate the reasoning from the final answer:
 
 ```
-Solve the problem below. First, reason through it inside
-<thinking> tags. Then give only the final answer inside
-<answer> tags.
+Solve the problem below. Show your working as numbered steps
+under the heading "Working". Then give the final answer on its
+own line, starting with "Answer:".
+
+Problem: <paste the problem>
 ```
 
-This makes the output easier to read and to process automatically, and you can inspect the reasoning to see where errors occur.
+This makes the output easier to read and to process automatically (a program can simply look for the line starting with "Answer:"), and you can inspect the working to see where errors occur.
+
+> **Note:** Older guides often suggest asking the model to reason inside `<thinking>` tags. Many current models already reason internally, and some providers' safety systems now block prompts that ask the model to expose its internal reasoning in tags like these. When we tested this book's prompts, that version was blocked while the plain "Working" and "Answer:" version above worked perfectly. Use plain headings, or turn on the assistant's built-in thinking mode.
 
 ### Guided Chain of Thought
 
@@ -55,6 +59,14 @@ You can also specify the steps the model should follow, which is useful when you
 
 ```
 Evaluate whether this job candidate meets our requirements.
+
+<job_description>
+<paste the job description>
+</job_description>
+<resume>
+<paste the resume>
+</resume>
+
 Step 1: List each requirement from the job description.
 Step 2: For each requirement, quote the relevant evidence from
 the resume, or write "No evidence".
@@ -99,6 +111,8 @@ In a chat interface, you can approximate it by regenerating the response a few t
 Solve this problem three times independently using different
 approaches. Then compare the answers. If they differ, figure out
 which is correct and explain why.
+
+Problem: <paste the problem>
 ```
 
 Through an API, you can run the same prompt several times in parallel and take a majority vote automatically.
@@ -116,13 +130,20 @@ This works better than asking for a perfect result in one shot, because critiqui
 For higher-stakes work, give the critic explicit criteria:
 
 ```
-Evaluate this draft against these criteria, scoring each 1-5 with
-a one-line justification:
+Evaluate the draft below against these criteria, scoring each 1-5
+with a one-line justification:
 1. Clarity for a non-technical reader
 2. Accuracy relative to the source document
 3. Persuasiveness of the main argument
 4. Appropriate length (target: 400-500 words)
 Then revise to raise any score below 4.
+
+<source>
+<paste the source document>
+</source>
+<draft>
+<paste the draft>
+</draft>
 ```
 
 ## Considering Alternatives
@@ -130,6 +151,9 @@ Then revise to raise any score below 4.
 Models tend to commit to the first approach that seems reasonable. You can widen their thinking explicitly:
 
 ```
+My problem: <describe the problem>
+My situation: <budget, time, team, constraints>
+
 Before recommending a solution, describe three genuinely different
 approaches to this problem, with the main advantage and the main
 risk of each. Then recommend one and explain why it beats the
