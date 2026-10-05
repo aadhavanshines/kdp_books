@@ -93,6 +93,8 @@ def make_styles():
     s["label"] = ParagraphStyle("label", parent=s["body"], spaceAfter=4)
     s["resplabel"] = ParagraphStyle("resplabel", fontName="Sans-Bold", fontSize=7.5, leading=9,
                                     textColor=ACCENT)
+    s["dedication"] = ParagraphStyle("dedication", fontName="Serif-Italic", fontSize=11.5,
+                                     leading=16, alignment=TA_CENTER, textColor=colors.black)
     s["caption"] = ParagraphStyle("caption", parent=s["body"], fontName="Serif-Italic", fontSize=9,
                                   leading=12, alignment=TA_CENTER, textColor=GREY, spaceAfter=0)
     s["h2"] = ParagraphStyle("h2", fontName="Sans-Bold", fontSize=13.5, leading=17,
@@ -212,6 +214,16 @@ class BookDoc(BaseDocTemplate):
 
     def beforeDocument(self):
         self._outline_n = 0
+        self._floats = []
+
+    def handle_frameBegin(self, *args, **kw):
+        super().handle_frameBegin(*args, **kw)
+        pending, self._floats = getattr(self, "_floats", []), []
+        for fig in pending:
+            fig._placed = True
+            fig.scale = 1.0
+            self.frame.add(fig, self.canv, trySplit=0)
+            fig._placed = False
 
     def afterFlowable(self, flowable):
         toc = getattr(flowable, "_toc", None)
@@ -287,7 +299,7 @@ def code_block(code, styles):
         ]
     t = Table(rows, colWidths=[TEXT_W], splitByRow=1, repeatRows=1 if label else 0)
     t.setStyle(TableStyle(style))
-    if len(lines) <= 8:
+    if len(lines) <= 6:
         # Short blocks stay in one piece.
         return [KeepTogether([Spacer(1, 2), t, Spacer(1, 8)])]
     # Long blocks may split; make sure at least a few lines start on this page.
@@ -315,13 +327,17 @@ class Figure(Flowable):
         self.scale = 1.0
         if self._height(1.0, aw) > ah:
             fit = (ah - (self._height(0, aw))) / (self.full_w * self.ratio)
-            if fit >= 0.65:
+            if fit >= 0.85:
                 self.scale = fit
         self.width = aw
         self.height = self._height(self.scale, aw)
         return self.width, self.height
 
     def split(self, aw, ah):
+        # Don't leave a gap: let the text continue and place the figure at the
+        # top of the next page instead (a standard "float").
+        if not getattr(self, "_placed", False):
+            return [FloatMarker(self)]
         return []
 
     def draw(self):
@@ -330,6 +346,21 @@ class Figure(Flowable):
         cap_w, cap_h = self.caption.wrap(self.width, 1000)
         self.canv.drawImage(self.path, (self.width - w) / 2, cap_h + 15, width=w, height=h)
         self.caption.drawOn(self.canv, 0, 10)
+
+
+class FloatMarker(Flowable):
+    """Zero-height placeholder that queues a figure for the top of the next page."""
+
+    def __init__(self, figure):
+        super().__init__()
+        self.figure = figure
+
+    def wrap(self, aw, ah):
+        return 0, 0
+
+    def draw(self):
+        doc = self.canv._doctemplate
+        doc._floats.append(self.figure)
 
 
 def image_block(path, caption, styles):
@@ -420,7 +451,7 @@ def front_matter(meta, styles):
         "Studio Code, and Playwright are trademarks of Microsoft Corporation. Node.js is a trademark of the "
         "OpenJS Foundation. GitHub Copilot is a trademark of GitHub, Inc. Midjourney, "
         "Perplexity, Meta AI, Llama, Grok, DeepSeek, Mistral, Stable Diffusion, Flux, Runway, "
-        "Suno, Udio, ElevenLabs, Cursor, and all other product names are trademarks of their "
+        "Adobe Firefly, Ideogram, Kling, Luma, Pika, Suno, Udio, ElevenLabs, Cursor, and all other product names are trademarks of their "
         "respective owners. This book is independent and is not affiliated with, sponsored by, or "
         "endorsed by any of these companies.",
         "<b>Examples.</b> All companies, products, people, and data in the examples are fictional. "
@@ -430,7 +461,13 @@ def front_matter(meta, styles):
     story += [Marker(plain=True, number=False), Spacer(1, 2.6 * inch)]
     story += [Paragraph(c, styles["small"]) for c in copy]
     story += [PageBreak()]
-    # Page 5: table of contents (may run several pages)
+    # Page 5: dedication, followed by a blank verso
+    if meta.get("dedication"):
+        story += [Marker(plain=True, number=False), Spacer(1, 2.3 * inch)]
+        for line in meta["dedication"]:
+            story.append(Paragraph(line, styles["dedication"]) if line else Spacer(1, 10))
+        story += [PageBreak(), Marker(plain=True, number=False), Spacer(1, 1), PageBreak()]
+    # Next: table of contents (may run several pages)
     toc = TableOfContents(dotsMinLevel=1)
     toc.levelStyles = [styles["toc0"], styles["toc1"]]
     story += [Marker(plain=True, number=False), Spacer(1, 0.6 * inch),
@@ -438,11 +475,79 @@ def front_matter(meta, styles):
     return story
 
 
+class KeepWithNext(CondPageBreak):
+    """Start a new page unless the heading(s) that follow fit together with at
+    least the first lines of the content after them. Prevents stranded headings."""
+
+    def __init__(self, following):
+        super().__init__(0)
+        self.following = following
+
+    def _needed(self, aw, ah):
+        need = 0
+        for f in self.following:
+            if isinstance(f, Marker) or isinstance(f, KeepWithNext):
+                continue
+            if isinstance(f, CondPageBreak):
+                if f.height > ah - need:
+                    return None
+                continue
+            if isinstance(f, Spacer):
+                need += f.height
+                continue
+            if hasattr(self, "canv"):
+                f.canv = self.canv
+            before = f.getSpaceBefore()
+            if getattr(f, "_guarded", False):
+                need += before + f.wrap(aw, ah)[1] + f.getSpaceAfter()
+                continue
+            avail = ah - need - before
+            if avail <= 0:
+                return None
+            h = f.wrap(aw, avail)[1]
+            if isinstance(f, KeepTogether):
+                h = f._H  # KeepTogether reports a sentinel height; the real one is _H
+            if h <= avail:
+                return need + before + h
+            if isinstance(f, Figure):
+                continue  # it will float to the next page
+            if isinstance(f, KeepTogether):
+                return None
+            parts = f.split(aw, avail)
+            if len(parts) < 2:
+                return None
+            if hasattr(self, "canv"):
+                parts[0].canv = self.canv
+            return need + before + parts[0].wrap(aw, avail)[1]
+        return need
+
+    def wrap(self, aw, ah):
+        frame_h = PAGE_H - TOP - BOTTOM
+        if ah < frame_h - 2:  # never force a break at the top of a page
+            need = self._needed(aw, ah)
+            if need is None or need > ah:
+                f = self._doctemplateAttr("frame")
+                if f:
+                    from reportlab.platypus.doctemplate import FrameBreak
+                    f.add_generated_content(FrameBreak)
+        return 0, 0
+
+
+def add_keep_with_next(story):
+    """Insert a KeepWithNext guard before every flowable marked _guarded."""
+    out = []
+    for i, f in enumerate(story):
+        if getattr(f, "_guarded", False) and not getattr(story[i - 1], "_guarded", False):
+            out.append(KeepWithNext(story[i:i + 12]))
+        out.append(f)
+    return out
+
+
 def build_story(meta, manuscript, styles, image_root):
     story = front_matter(meta, styles)
     pending_chapter_prefix = None
     for fname, blocks in manuscript:
-        for block in blocks:
+        for bi, block in enumerate(blocks):
             kind = block[0]
             if kind == "part":
                 num, title = block[1].split(":", 1)
@@ -468,16 +573,19 @@ def build_story(meta, manuscript, styles, image_root):
                     head._toc = (0 if title.startswith("Appendix") or title in (
                         "Introduction", "About the Author") else 1, title)
                 story += [head, HRule(TEXT_W), Spacer(1, 22)]
-            elif kind == "h2":
-                story += [CondPageBreak(1.1 * inch), Paragraph(inline(block[1]), styles["h2"])]
-            elif kind == "h3":
-                story += [CondPageBreak(0.9 * inch), Paragraph(inline(block[1]), styles["h3"])]
+            elif kind in ("h2", "h3"):
+                h = Paragraph(inline(block[1]), styles[kind])
+                h._guarded = True
+                story.append(h)
             elif kind == "p":
-                # A paragraph that is only a bold label introduces what follows; keep them together.
+                # Bold labels and lead-ins ending in ":" belong with what follows them.
                 label = re.fullmatch(r"\*\*[^*]+\*\*", block[1])
-                if label:
-                    story.append(CondPageBreak(1.0 * inch))
-                story.append(Paragraph(inline(block[1]), styles["label" if label else "body"]))
+                para = Paragraph(inline(block[1]), styles["label" if label else "body"])
+                nxt = blocks[bi + 1][0] if bi + 1 < len(blocks) else None
+                short_leadin = block[1].rstrip().endswith(":") and len(block[1]) < 220
+                if label or (short_leadin and nxt in ("code", "ul", "ol", "table", "image")):
+                    para._guarded = True
+                story.append(para)
             elif kind == "ul":
                 for item in block[1]:
                     story.append(Paragraph(inline(item), styles["bullet"], bulletText="•"))
@@ -494,8 +602,7 @@ def build_story(meta, manuscript, styles, image_root):
                 story += callout(block[1], block[2], styles)
             elif kind == "table":
                 story += table_block(block[1], styles)
-    # KDP prefers an even page count; the final page break pads automatically.
-    return story
+    return add_keep_with_next(story)
 
 
 def build_interior(meta, manuscript, out_path, image_root):

@@ -52,7 +52,8 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>Diagnose and fix prompts that fail</li>
 <li>Prompt ChatGPT, Claude, Gemini, Microsoft Copilot, Perplexity, Meta AI, Grok, DeepSeek, Mistral, and open-weight models, each according to its strengths</li>
 <li>Direct AI coding assistants and agents</li>
-<li>Create images, video, and music with Midjourney, Stable Diffusion, Flux, and AI video and audio tools</li>
+<li>Master image prompting with Midjourney, Stable Diffusion, Flux, and chat-based image tools, using the vocabulary of photographers and art directors</li>
+<li>Direct AI video like a filmmaker, with shot lists, camera movements, consistent characters, and dialogue, plus music and voice prompting</li>
 <li>Design system prompts, build with APIs, and ground AI in your own documents with RAG</li>
 <li>Build agents that use tools, with complete tool-calling examples</li>
 <li>Connect AI to your browser, files, and apps with the Model Context Protocol (MCP), including browser control in Chrome</li>
@@ -131,6 +132,6 @@ Answering this accurately is a KDP content-guideline requirement. The disclosure
   - Paperback cover finish: Matte or Glossy (glossy suits the dark cover)
 - Manuscript: upload `dist/paperback-interior-6x9.pdf`
 - Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf`
-- Suggested list price: **$16.99 USD** (181 pages; check the royalty calculator on the pricing page, since printing costs change)
+- Suggested list price: **$16.99 USD** (195 pages; check the royalty calculator on the pricing page, since printing costs change)
 
 > The paperback cover is sized for exactly the page count in `dist/build-info.json`. KDP's free ISBN barcode is printed automatically in the white box on the back cover. If you edit the manuscript and the page count changes, rebuild so the spine width updates.

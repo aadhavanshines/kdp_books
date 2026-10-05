@@ -17,7 +17,9 @@ pens and the cashier charges her the lowest possible price for the
 pens she has to pay for. How much does she pay?
 ```
 
-Asked to answer directly, a model may jump to a wrong number. Asked to reason first, it is more likely to work out how many pens are free, how many must be paid for, and how the pricing groups apply, before calculating the total. Here is the kind of answer you get when you add "Think through this step by step":
+Asked to answer directly, a model may jump to a wrong number. Asked to reason first, it is more likely to work out how many pens are free, how many must be paid for, and how the pricing groups apply, before calculating the total.
+
+Here is the kind of answer you get when you add "Think through this step by step":
 
 ```
 Example output:

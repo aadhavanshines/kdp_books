@@ -189,7 +189,7 @@ busy executive.
 </article>
 ```
 
-Delimiters prevent confusion, especially when the material itself contains instructions or questions, and they are an important defense against prompt injection, which Chapter 20 discusses.
+Delimiters prevent confusion, especially when the material itself contains instructions or questions, and they are an important defense against prompt injection, which Chapter 21 discusses.
 
 ## Order Matters
 

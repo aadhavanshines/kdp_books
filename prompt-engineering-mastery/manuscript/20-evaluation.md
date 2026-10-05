@@ -1,4 +1,4 @@
-# Chapter 19: Testing and Evaluating Prompts
+# Chapter 20: Testing and Evaluating Prompts
 
 A prompt that works once in a chat window is a prototype. A prompt that runs thousands of times in a product needs evidence that it works. **Evaluation**, or **evals**, is how professionals measure prompt quality, compare versions, and prevent regressions. It's the single practice that most separates hobbyist prompting from professional prompt engineering.
 

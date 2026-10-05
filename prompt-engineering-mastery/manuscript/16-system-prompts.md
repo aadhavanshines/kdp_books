@@ -1,6 +1,6 @@
 # Part IV: Advanced Prompt Engineering
 
-# Chapter 15: System Prompts and Building with APIs
+# Chapter 16: System Prompts and Building with APIs
 
 Up to now, you've mostly written prompts for yourself, in a chat window, where you can see the output and correct it. Advanced prompt engineering is about prompts that run without you: inside apps, chatbots, automations, and agents, processing inputs you never see. This chapter covers the foundation of that work: system prompts and API parameters.
 
@@ -100,7 +100,7 @@ Notice the qualities that make this effective:
 
 **5. Avoid excessive emphasis.** Earlier models sometimes needed "CRITICAL" and "YOU MUST" in capital letters. Modern models follow instructions well and can overreact to heavy emphasis, becoming overly cautious. Use normal language and save emphasis for what genuinely matters most.
 
-**6. Version and test it.** Treat your system prompt like code: store versions, record changes, and test against a set of realistic conversations before every update (see Chapter 19).
+**6. Version and test it.** Treat your system prompt like code: store versions, record changes, and test against a set of realistic conversations before every update (see Chapter 20).
 
 ## Working with the API
 
@@ -112,7 +112,7 @@ When you use models through an API, you control far more than in a chat app. A t
 - **Max output tokens:** The maximum length of the response.
 - **Temperature and related sampling settings:** Lower for consistency, higher for variety. Some reasoning models fix or ignore these.
 - **Reasoning or thinking settings:** On reasoning models, how much effort to spend.
-- **Tools:** Functions the model can call (Chapters 17 and 18).
+- **Tools:** Functions the model can call (Chapters 18 and 19).
 - **Structured output schema:** To enforce a JSON format (Chapter 6).
 - **Stop sequences:** Text that, when generated, ends the response.
 

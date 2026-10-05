@@ -1,4 +1,4 @@
-# Chapter 20: Security, Safety, and Responsible Prompting
+# Chapter 21: Security, Safety, and Responsible Prompting
 
 As AI moves from chat windows into products that read emails, browse the web, access databases, and take actions, prompts become a security surface. At the same time, the content AI produces affects real people. This chapter covers the main security threats, especially prompt injection, how to defend against them, and the ethical responsibilities that come with using AI.
 
@@ -69,7 +69,7 @@ Summary of your inbox (5 new emails):
 
 **7. Use provider safety features.** Many providers train models to resist injection and offer classifiers that detect suspicious inputs. Use them, but don't rely on them alone.
 
-**8. Test adversarially.** Include injection attempts in your evaluation test set (Chapter 19), and update defenses as new attack techniques emerge.
+**8. Test adversarially.** Include injection attempts in your evaluation test set (Chapter 20), and update defenses as new attack techniques emerge.
 
 > **Warning:** Never put secrets such as passwords, API keys, or confidential business logic in a system prompt and assume they're safe. Treat system prompts as potentially discoverable. Keep secrets in your application code and enforce access controls outside the model.
 

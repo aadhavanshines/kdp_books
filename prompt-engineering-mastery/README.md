@@ -4,7 +4,7 @@
 
 by **Aadhavan Muthurengan**
 
-A practical guide of about 32,000 words (181 pages in 6 x 9 paperback, with 8 diagrams) that goes from a reader's first prompt to system prompts, RAG, agents, evaluation, and prompt-injection defense, with chapters on each major AI tool and 50 ready-to-use templates.
+A practical guide of about 35,000 words (195 pages in 6 x 9 paperback, with 12 diagrams) that goes from a reader's first prompt to system prompts, RAG, agents, evaluation, and prompt-injection defense, with chapters on each major AI tool and 50 ready-to-use templates.
 
 ## Ready-to-Upload Files (`dist/`)
 
@@ -24,7 +24,7 @@ Listing details (title, description, keywords, categories, pricing, and the AI d
 - Introduction
 - **Part I: Foundations**: What prompt engineering is; how LLMs read prompts; the six-part prompt blueprint; core techniques
 - **Part II: Intermediate Techniques**: Reasoning (chain of thought, reflection); structured output; debugging prompts; everyday prompt patterns
-- **Part III: Prompting the Popular AI Tools**: ChatGPT; Claude; Gemini; Copilot, Perplexity, Meta AI, Grok, DeepSeek, Mistral, and open models; coding assistants; image, video, and audio generators
+- **Part III: Prompting the Popular AI Tools**: ChatGPT; Claude; Gemini; Copilot, Perplexity, Meta AI, Grok, DeepSeek, Mistral, and open models; coding assistants; prompt engineering for images; prompt engineering for video and audio
 - **Part IV: Advanced Prompt Engineering**: System prompts and APIs; RAG and context engineering; agents and tool use; MCP in practice (browser control, files, apps); evaluation; security and ethics; the future
 - Appendices: 50-prompt library, troubleshooting table, glossary, about the author
 
@@ -43,7 +43,7 @@ Listing details (title, description, keywords, categories, pricing, and the AI d
 ## Before You Publish
 
 - **Read the whole manuscript.** You are the author and are responsible for its accuracy. Add your own experience and examples where you can; it makes the book more valuable and distinctive.
-- **Personalize `manuscript/24-about-the-author.md`** with your real background.
+- **Review `manuscript/26-about-the-author.md`** with your real background.
 - If you change anything, rebuild (see below) so the page count, table of contents, and spine width stay correct.
 
 ## Rebuilding

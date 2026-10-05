@@ -226,6 +226,150 @@ def prompt_injection():
     return img
 
 
+def image_prompt_anatomy():
+    rows = [("Subject", "A rain-soaked street in Tokyo at night"),
+            ("Details", "neon signs reflecting in puddles, a lone figure with a clear umbrella"),
+            ("Composition", "cinematic wide shot, figure walking away from the camera"),
+            ("Lens & focus", "shallow depth of field"),
+            ("Color & mood", "cool blue and magenta palette, moody atmosphere"),
+            ("Style", "photorealistic")]
+    img, d = canvas(40 + len(rows) * 112)
+    for i, (k, v) in enumerate(rows):
+        y = 20 + i * 112
+        d.rounded_rectangle((40, y, 380, y + 92), radius=16, fill=NAVY)
+        d.text((210, y + 46), k, font=f(BOLD, 36), fill=WHITE, anchor="mm")
+        d.rounded_rectangle((400, y, W - 40, y + 92), radius=16, fill=LIGHT)
+        lines = wrap(d, '"' + v + '"', f(ITAL, 31), W - 480)
+        ty = y + 46 - (len(lines) - 1) * 19
+        for ln in lines:
+            d.text((430, ty), ln, font=f(ITAL, 31), fill=INK, anchor="lm")
+            ty += 38
+    return img
+
+
+def _person(d, cx, top, h, color=NAVY):
+    r = h * 0.085
+    d.ellipse((cx - r, top, cx + r, top + 2 * r), fill=color)
+    sw = h * 0.17
+    d.rounded_rectangle((cx - sw, top + 2.15 * r, cx + sw, top + h * 0.56), radius=int(h * 0.05),
+                        fill=color)
+    lw = h * 0.065
+    d.rectangle((cx - sw + 4, top + h * 0.55, cx - sw + 4 + 2 * lw, top + h), fill=color)
+    d.rectangle((cx + sw - 4 - 2 * lw, top + h * 0.55, cx + sw - 4, top + h), fill=color)
+
+
+def shot_sizes():
+    fw, fh, gap = 248, 300, 22
+    img, d = canvas(fh + 130)
+    labels = ["Extreme wide", "Wide", "Medium", "Close-up", "Extreme\nclose-up"]
+    for i, lab in enumerate(labels):
+        x0 = 40 + i * (fw + gap)
+        tile = Image.new("RGB", (fw, fh), PALE)
+        td = ImageDraw.Draw(tile)
+        if i == 0:
+            td.polygon([(0, 220), (70, 120), (140, 220)], fill=LIGHT)
+            td.polygon([(100, 220), (190, 90), (260, 220)], fill=LIGHT)
+            td.line([(0, 220), (fw, 220)], fill=MID, width=3)
+            _person(td, 160, 196, 26)
+        elif i == 1:
+            td.line([(0, 270), (fw, 270)], fill=MID, width=3)
+            _person(td, fw / 2, 60, 210)
+        elif i == 2:
+            _person(td, fw / 2, 34, 430)
+        elif i == 3:
+            _person(td, fw / 2, 45, 760)
+        else:
+            td.ellipse((24, 95, fw - 24, 205), fill=WHITE, outline=NAVY, width=6)
+            td.ellipse((fw / 2 - 48, 102, fw / 2 + 48, 198), fill=MID)
+            td.ellipse((fw / 2 - 22, 128, fw / 2 + 22, 172), fill=NAVY)
+        img.paste(tile, (int(x0), 20))
+        d.rectangle((x0, 20, x0 + fw, 20 + fh), outline=INK, width=4)
+        for j, ln in enumerate(lab.split("\n")):
+            d.text((x0 + fw / 2, 20 + fh + 18 + j * 40), ln, font=f(BOLD, 33), fill=INK, anchor="ma")
+    return img
+
+
+def _camera(d, x, y, s=1.0):
+    d.rounded_rectangle((x - 40 * s, y - 26 * s, x + 30 * s, y + 26 * s), radius=8, fill=NAVY)
+    d.polygon([(x + 30 * s, y), (x + 62 * s, y - 22 * s), (x + 62 * s, y + 22 * s)], fill=NAVY)
+
+
+def camera_moves():
+    moves = ["Static", "Pan", "Tilt", "Dolly in", "Tracking", "Crane / drone", "Orbit", "Handheld"]
+    pw, ph, gap = 310, 250, 13
+    img, d = canvas(2 * ph + gap + 40)
+    for i, name in enumerate(moves):
+        x0 = 40 + (i % 4) * (pw + gap)
+        y0 = 20 + (i // 4) * (ph + gap)
+        d.rounded_rectangle((x0, y0, x0 + pw, y0 + ph), radius=18, fill=PALE, outline=LIGHT, width=3)
+        d.text((x0 + pw / 2, y0 + ph - 46), name, font=f(BOLD, 34), fill=INK, anchor="ma")
+        cx, cy = x0 + 95, y0 + 95
+        subj_x = x0 + 240
+        if name not in ("Orbit",):
+            _person(d, subj_x, cy - 55, 110, MID)
+        if name == "Static":
+            _camera(d, cx, cy)
+        elif name == "Pan":
+            _camera(d, cx, cy)
+            d.arc((cx - 70, cy - 70, cx + 70, cy + 70), 200, 340, fill=NAVY, width=6)
+            arrow(d, (cx + 55, cy - 50), (cx + 66, cy - 26), width=6, head=20)
+        elif name == "Tilt":
+            _camera(d, cx, cy + 10)
+            d.arc((cx - 85, cy - 80, cx + 15, cy + 80), 300, 60, fill=NAVY, width=6)
+            arrow(d, (cx + 5, cy - 55), (cx - 8, cy - 70), width=6, head=20)
+        elif name == "Dolly in":
+            _camera(d, cx - 20, cy)
+            arrow(d, (cx + 50, cy + 50), (subj_x - 40, cy + 50), width=6, head=22)
+        elif name == "Tracking":
+            _camera(d, cx, cy + 45, 0.8)
+            arrow(d, (cx - 40, cy + 90), (cx + 170, cy + 90), width=6, head=22)
+            arrow(d, (subj_x - 70, cy - 70), (subj_x + 40, cy - 70), color=MID, width=5, head=18)
+        elif name == "Crane / drone":
+            _camera(d, cx, cy + 30, 0.8)
+            arrow(d, (cx - 60, cy + 60), (cx - 60, cy - 60), width=6, head=22)
+        elif name == "Orbit":
+            sx, sy = x0 + pw / 2, cy
+            _person(d, sx, sy - 50, 100, MID)
+            d.ellipse((sx - 120, sy - 20, sx + 120, sy + 70), outline=NAVY, width=6)
+            arrow(d, (sx + 60, sy + 66), (sx + 20, sy + 70), width=6, head=22)
+            _camera(d, sx - 120, sy + 25, 0.55)
+        elif name == "Handheld":
+            _camera(d, cx, cy)
+            pts = [(cx - 60 + k * 12, cy + 55 + (8 if k % 2 else -8)) for k in range(11)]
+            d.line(pts, fill=NAVY, width=5)
+    return img
+
+
+def storyboard():
+    pw, ph, gap = 410, 300, 25
+    img, d = canvas(ph + 190)
+    caps = [("Shot 1 - 5 s", "Wide, drone rising"), ("Shot 2 - 5 s", "Medium close-up, static"),
+            ("Shot 3 - 5 s", "Close-up, slow orbit")]
+    for i, (a, b) in enumerate(caps):
+        x0 = 40 + i * (pw + gap)
+        tile = Image.new("RGB", (pw, ph), PALE)
+        td = ImageDraw.Draw(tile)
+        if i == 0:
+            td.polygon([(0, 260), (130, 90), (260, 260)], fill=LIGHT)
+            td.polygon([(170, 260), (300, 60), (410, 260)], fill=LIGHT)
+            td.line([(120, 150), (230, 120), (330, 165)], fill=MID, width=4)
+            _person(td, 230, 98, 26, (90, 90, 90))
+            td.ellipse((330, 30, 380, 80), outline=MID, width=4)
+        elif i == 1:
+            _person(td, pw / 2, 40, 420)
+            td.rounded_rectangle((pw / 2 + 60, 60, pw / 2 + 92, 170), radius=8, fill=MID)
+        else:
+            td.ellipse((80, 220, 330, 290), fill=LIGHT)
+            td.rounded_rectangle((165, 70, 245, 250), radius=18, fill=NAVY)
+            td.rectangle((180, 50, 230, 74), fill=MID)
+            td.arc((40, 120, 370, 300), 200, 340, fill=MID, width=5)
+        img.paste(tile, (int(x0), 20))
+        d.rectangle((x0, 20, x0 + pw, 20 + ph), outline=INK, width=4)
+        d.text((x0 + pw / 2, 20 + ph + 20), a, font=f(BOLD, 34), fill=INK, anchor="ma")
+        d.text((x0 + pw / 2, 20 + ph + 66), b, font=f(REG, 31), fill=MID, anchor="ma")
+    return img
+
+
 DIAGRAMS = {
     "llm-loop.png": llm_loop,
     "context-window.png": context_window,
@@ -235,6 +379,10 @@ DIAGRAMS = {
     "agent-loop.png": agent_loop,
     "mcp-architecture.png": mcp_architecture,
     "prompt-injection.png": prompt_injection,
+    "image-prompt-anatomy.png": image_prompt_anatomy,
+    "shot-sizes.png": shot_sizes,
+    "camera-moves.png": camera_moves,
+    "storyboard.png": storyboard,
 }
 
 

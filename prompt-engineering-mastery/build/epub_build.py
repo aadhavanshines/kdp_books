@@ -34,6 +34,8 @@ figcaption { font-size: 0.85em; font-style: italic; color: #555; margin-top: 0.3
 .subtitle { font-style: italic; text-align: center; color: #555; }
 .author { font-family: sans-serif; text-align: center; font-size: 1.3em; margin-top: 3em; }
 .small { font-size: 0.8em; }
+div.dedication { margin-top: 30%; text-align: center; font-style: italic; }
+div.dedication p { margin: 0 0 0.3em; }
 """
 
 
@@ -158,7 +160,11 @@ def build_epub(meta, manuscript, cover_jpg, out_path, image_root):
                           "coincidental.</p>"
                           f"<p>First edition, {meta['year']}.</p></div>")
 
-    spine = [title_page, copyright_page, "nav"]
+    spine = [title_page, copyright_page]
+    if meta.get("dedication"):
+        lines = "".join(f"<p>{html.escape(l)}</p>" if l else "<p>&#160;</p>" for l in meta["dedication"])
+        spine.append(page("dedication", "Dedication", f'<div class="dedication">{lines}</div>'))
+    spine.append("nav")
     toc = []
     current_part = None
     for uid, title, blocks, is_part in split_parts(manuscript):

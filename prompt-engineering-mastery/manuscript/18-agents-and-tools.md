@@ -1,4 +1,4 @@
-# Chapter 17: Agents and Tool Use
+# Chapter 18: Agents and Tool Use
 
 An **AI agent** is a system in which a model doesn't just answer once but works toward a goal over multiple steps: deciding what to do, using tools such as web search, code execution, databases, or APIs, observing the results, and continuing until the task is complete. Agents power coding assistants, research tools, customer service systems, and workflow automation. This chapter explains how to prompt and design them.
 
@@ -304,7 +304,7 @@ know if Friday doesn't work for you.
 [Send] [Edit] [Cancel]
 ```
 
-The `send_email` tool runs only after the person clicks Send. This is the human-confirmation safeguard from Chapter 20, built into the product.
+The `send_email` tool runs only after the person clicks Send. This is the human-confirmation safeguard from Chapter 21, built into the product.
 
 ### Built-in Tools in Chat Apps
 
@@ -355,7 +355,7 @@ Agents act in the world, so mistakes have consequences. Build in safeguards:
 - **Human approval** for irreversible or high-impact actions, such as payments, deletions, and external communications.
 - **Sandboxing:** Run code and browsing in isolated environments.
 - **Logging:** Record every action for review.
-- **Injection awareness:** Content the agent reads, such as web pages, emails, and documents, may contain malicious instructions. Chapter 20 covers this in depth.
+- **Injection awareness:** Content the agent reads, such as web pages, emails, and documents, may contain malicious instructions. Chapter 21 covers this in depth.
 
 ## Key Takeaways
 
