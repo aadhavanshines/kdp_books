@@ -26,7 +26,7 @@ Tips for tables:
 
 - Name the columns explicitly and in order.
 - Keep cell content short; ask for details below the table if needed.
-- For spreadsheets, ask for CSV output or a markdown table you can paste.
+- For spreadsheets, ask for CSV output or a Markdown table you can paste.
 
 ## Lists, Headings, and Templates
 
@@ -114,15 +114,15 @@ There's nothing special about particular tag names. Choose descriptive names and
 
 ## Markdown or Plain Text?
 
-Chat interfaces render **markdown** (headings, bold, bullets) attractively, so assistants use it often. But markdown is not always what you want:
+Chat interfaces render **Markdown** (headings, bold, bullets) attractively, so assistants use it often. But Markdown is not always what you want:
 
 - For emails, text messages, and social posts, ask for **plain text**.
-- For content going into a website or document editor, specify markdown, HTML, or plain text according to the destination.
+- For content going into a website or document editor, specify Markdown, HTML, or plain text according to the destination.
 - For voice assistants or text-to-speech, ask for natural spoken sentences with no formatting symbols.
 
 ```
 Write the reply as plain text suitable for pasting into Gmail.
-Do not use markdown symbols such as asterisks or pound signs.
+Do not use Markdown symbols such as asterisks or pound signs.
 ```
 
 > **Tip:** The style of your prompt influences the style of the response. If you want flowing prose without bullet points, write your prompt in prose, and say explicitly: "Write in full paragraphs; avoid bullet points."

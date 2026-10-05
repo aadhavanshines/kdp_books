@@ -36,7 +36,7 @@ about compatibility, safety, or electrical wiring.
 - Be warm, patient, and concise. Use short paragraphs.
 - For troubleshooting, give one step at a time and ask the customer
   to confirm the result before moving on.
-- Use plain text; the chat widget does not render markdown.
+- Use plain text; the chat widget does not render Markdown.
 
 # Tools
 - Use lookup_order when a customer asks about an order. Always ask
@@ -65,7 +65,7 @@ Notice the qualities that make this effective:
 - **Specific identity and scope:** The model knows exactly what it's for.
 - **Explicit audience:** It can calibrate tone and detail.
 - **Grounding rules:** It knows where knowledge comes from and what to do when it's missing.
-- **Behavioral guidance with reasons:** "The chat widget does not render markdown" explains a formatting rule.
+- **Behavioral guidance with reasons:** "The chat widget does not render Markdown" explains a formatting rule.
 - **Clear escalation paths:** It knows when to hand off to a human.
 - **Safety-critical instructions:** High-stakes situations are handled explicitly.
 - **Examples** that show the desired voice.

@@ -92,7 +92,7 @@ Specify the shape of the output: length, structure, style, and file type.
 
 - Length: "in 3 sentences," "about 300 words," "no more than 5 bullet points."
 - Structure: "a table with columns for Feature, Benefit, and Price."
-- Style: "plain text without markdown," "use H2 headings," "write in the second person."
+- Style: "plain text without Markdown," "use H2 headings," "write in the second person."
 - Machine-readable: "return valid JSON matching this schema."
 
 Format instructions are some of the most reliably followed, so use them. They save you editing time.
@@ -189,7 +189,7 @@ Before sending an important prompt, run through this checklist:
 - Did I separate instructions from material?
 - Did I tell the model what to do when information is missing?
 
-> **Try It:** Take a prompt you use often and rewrite it using the six-part blueprint. Save the improved version in a notes file. You've just started your personal prompt library.
+> **Try It:** Take a prompt you often use and rewrite it using the six-part blueprint. Save the improved version in a notes file. You've just started your personal prompt library.
 
 ## Key Takeaways
 

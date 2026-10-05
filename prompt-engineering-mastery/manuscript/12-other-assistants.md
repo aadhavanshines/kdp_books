@@ -6,7 +6,7 @@ Beyond ChatGPT, Claude, and Gemini, many other AI assistants and models are wide
 
 ## Microsoft Copilot
 
-Microsoft offers Copilot in two main forms: a consumer assistant available on the web, in Windows, and on mobile, and **Microsoft 365 Copilot**, which is built into Word, Excel, PowerPoint, Outlook, and Teams and can draw on your organization's data, such as emails, meetings, chats, and files, according to your permissions.
+Microsoft offers Copilot in two main forms: a consumer assistant available on the web, built into Windows, and on mobile, and **Microsoft 365 Copilot**, which is built into Word, Excel, PowerPoint, Outlook, and Teams and can draw on your organization's data, such as emails, meetings, chats, and files, according to your permissions.
 
 ### Prompting Copilot in Microsoft 365
 

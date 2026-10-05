@@ -18,7 +18,7 @@ Use this table when a prompt isn't working. Find the symptom, then try the fixes
 | Forgets earlier instructions | Long conversation | Restate key points or start fresh with a summary; use persistent instructions |
 | Math errors | In-text arithmetic | Use a code or data analysis tool; check calculations |
 | Outdated information | Knowledge cutoff | Use search-enabled mode or paste current information |
-| Unparseable JSON | No enforced schema | Use structured output features; show the schema; validate in code |
+| Unparsable JSON | No enforced schema | Use structured output features; show the schema; validate in code |
 | Agent stops early or loops | Unclear goal or "done" criteria | Define success explicitly; ask for a plan; tell it to change approach after repeated failure |
 | Agent misuses a tool | Poor tool description | Rewrite the description with when to use it, parameters, and examples |
 | Image ignores details | Key details buried late in prompt | Put the most important elements first; simplify; iterate with edits |

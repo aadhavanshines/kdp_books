@@ -87,7 +87,7 @@ Format your answer as:
 
 ## Giving the Model Room to Ask Questions
 
-When a task is complex and you're not sure you've provided everything, invite the model to ask:
+When a task is complex and you're not sure whether you've provided everything, invite the model to ask:
 
 ```
 I want you to help me write a business plan for a mobile dog
@@ -165,7 +165,7 @@ Chaining gives you a checkpoint at each step, where you can correct course befor
 | Self-review | Accuracy and completeness matter |
 | Prompt chaining | The task has multiple distinct stages |
 
-> **Try It:** Choose a writing task you have this week. Use the ask-first pattern to let the model interview you, then generate three options, choose the best, and refine it with two specific follow-ups. Notice how much closer the final result is to what you wanted compared with a single prompt.
+> **Try It:** Choose a writing task you have this week. Use the ask-first pattern to let the model interview you, then generate three options, choose the best, and refine it with two specific follow-ups. Compare the final result with what a single prompt gives you, and notice how much closer it is to what you wanted.
 
 ## Key Takeaways
 
