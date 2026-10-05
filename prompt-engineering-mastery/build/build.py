@@ -6,6 +6,7 @@ Outputs go to dist/.
 import json
 from pathlib import Path
 
+from diagrams import build_diagrams
 from covers import build_ebook_cover, build_paperback_cover
 from epub_build import build_epub
 from interior_pdf import build_interior
@@ -17,6 +18,7 @@ DIST = ROOT / "dist"
 
 def main():
     meta = json.loads((ROOT / "book.json").read_text())
+    build_diagrams(ROOT / "manuscript" / "images")
     manuscript = load_manuscript(ROOT / "manuscript")
     DIST.mkdir(exist_ok=True)
 
@@ -25,11 +27,11 @@ def main():
     print(f"eBook cover:      {cover_jpg.relative_to(ROOT)}")
 
     epub_path = DIST / "prompt-engineering-mastery.epub"
-    build_epub(meta, manuscript, cover_jpg, epub_path)
+    build_epub(meta, manuscript, cover_jpg, epub_path, ROOT / "manuscript")
     print(f"eBook (EPUB):     {epub_path.relative_to(ROOT)}")
 
     interior = DIST / "paperback-interior-6x9.pdf"
-    pages = build_interior(meta, manuscript, interior)
+    pages = build_interior(meta, manuscript, interior, ROOT / "manuscript")
     print(f"Paperback interior: {interior.relative_to(ROOT)} ({pages} pages)")
 
     cover_pdf = DIST / "paperback-cover.pdf"

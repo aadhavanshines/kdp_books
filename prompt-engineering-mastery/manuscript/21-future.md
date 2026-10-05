@@ -1,4 +1,4 @@
-# Chapter 20: The Future of Prompt Engineering
+# Chapter 21: The Future of Prompt Engineering
 
 You've traveled from the basics of a single prompt to system prompts, retrieval, agents, evaluation, and security. To close, let's look at where prompt engineering is heading and how to keep your skills sharp as the field evolves.
 

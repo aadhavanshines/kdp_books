@@ -22,6 +22,7 @@ def parse_blocks(text):
         return (
             not s
             or s.startswith("#")
+            or s.startswith("![")
             or s.startswith("```")
             or s.startswith(">")
             or s.startswith("|")
@@ -43,6 +44,11 @@ def parse_blocks(text):
                 i += 1
             i += 1
             blocks.append(("code", "\n".join(code)))
+            continue
+        m = re.match(r"^!\[(.*)\]\((.+)\)$", s)
+        if m:
+            blocks.append(("image", m.group(2), m.group(1)))
+            i += 1
             continue
         m = re.match(r"^(#{1,3}) (.*)$", s)
         if m:

@@ -37,6 +37,21 @@ it might have led to that result? Suggest a revised prompt that
 would prevent it.
 ```
 
+```
+Example output:
+Two things in your original prompt pulled me off course:
+1. "Summarize this report" came first and the focus on financial
+   risks came only at the end, after the full report, so I
+   treated it as secondary.
+2. "Keep it short" is vague, so I sized the summary to the long
+   report.
+
+Revised prompt:
+"Summarize ONLY the financial risks in the report below, in
+under 100 words, as 3-5 bullet points. Ignore company history.
+<report>...</report>"
+```
+
 Models are often surprisingly good at spotting ambiguity in prompts. You can also ask a model to improve a prompt before you use it:
 
 ```
@@ -95,6 +110,9 @@ clearer. <prompt>...</prompt>
 
 For prompts you'll reuse, follow this loop:
 
+![The prompt improvement loop.](images/improvement-loop.png)
+
+
 1. **Draft** the prompt using the six-part blueprint.
 2. **Collect test inputs** that represent the range of real cases, including tricky ones.
 3. **Run** the prompt on all test inputs.
@@ -102,7 +120,7 @@ For prompts you'll reuse, follow this loop:
 5. **Revise** the prompt to address the most common or serious failure.
 6. **Repeat** until results are consistently good.
 
-This is a lightweight version of the evaluation process that professionals use, which Chapter 18 covers in depth.
+This is a lightweight version of the evaluation process that professionals use, which Chapter 19 covers in depth.
 
 > **Try It:** Take a prompt you use regularly. Create five varied test inputs, including at least one unusual case. Run the prompt on all five and write down every problem. Fix the most common problem and rerun. You've just done prompt engineering the way professionals do it.
 

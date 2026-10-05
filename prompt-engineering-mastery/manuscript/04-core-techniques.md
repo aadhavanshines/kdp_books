@@ -30,6 +30,8 @@ Message: "How do I change the email address on my account?"
 Title:
 ```
 
+The model completes the pattern with a title in the same style, such as `Change account email address`. Without the examples, you might have received a full sentence, a question, or a polite reply to the customer instead.
+
 Few-shot prompting shines when:
 
 - You need a specific format or style that is hard to describe.
@@ -125,6 +127,19 @@ some curiosity-driven, some benefit-driven, some direct.
 Then mark the 3 you think are strongest and explain why.
 ```
 
+A typical response (abridged) looks like this:
+
+```
+Example output:
+1. Why Your Team Ignores Your Emails (and How to Fix It)
+2. Write Emails People Actually Answer
+3. The 5-Sentence Email Rule
+4. Stop Writing Long Emails: A Manager's Guide
+...
+Strongest three: #2 (clear benefit, short), #1 (curiosity plus
+a promise), #3 (specific and memorable).
+```
+
 This works because the first idea is rarely the best, for models or people. It is especially effective for creative work: names, headlines, hooks, slogans, and strategies.
 
 ## Asking for Self-Review
@@ -135,6 +150,18 @@ Models can often catch their own mistakes if you ask them to check:
 Review your answer above. Check for factual errors, missing steps,
 and anything that contradicts the requirements I gave. List any
 problems you find, then provide a corrected version.
+```
+
+For a short report the model drafted earlier, the review might come back as:
+
+```
+Example output:
+Problems found:
+1. Paragraph 2 says sales grew 12%, but the data you gave shows
+   11.6%. I rounded without saying so.
+2. You asked for a recommendation section; I left it out.
+3. The summary is 140 words; your limit was 100.
+Corrected version: ...
 ```
 
 Self-review isn't foolproof, but it reliably improves quality for writing, code, and analysis. Chapter 5 develops this into more powerful reflection techniques.

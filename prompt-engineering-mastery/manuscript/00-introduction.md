@@ -28,7 +28,7 @@ The book moves from basic to advanced in four parts.
 
 **Part III: Prompting the Popular AI Tools** is a field guide to the major assistants and generators: ChatGPT, Claude, Gemini, Microsoft Copilot, Perplexity, Meta AI, Grok, DeepSeek, Mistral, and open-weight models, plus coding assistants and image, video, and audio generators such as Midjourney, Stable Diffusion, and Suno. Each tool has its own strengths and quirks, and knowing them saves hours.
 
-**Part IV: Advanced Prompt Engineering** covers what professionals do: designing system prompts, working through APIs, grounding models in your own documents, building agents that use tools, testing prompts with evaluations, and defending against prompt injection and other security risks.
+**Part IV: Advanced Prompt Engineering** covers what professionals do: designing system prompts, working through APIs, grounding models in your own documents, building agents that use tools, connecting AI to browsers, files, and apps through the Model Context Protocol (MCP), testing prompts with evaluations, and defending against prompt injection and other security risks.
 
 The appendices give you a quick-reference prompt library, a troubleshooting guide, and a glossary.
 

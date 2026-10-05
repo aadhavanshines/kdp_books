@@ -123,6 +123,17 @@ each issue, explain the problem and suggest a fix. Ignore pure
 style preferences.
 ```
 
+```
+Example output:
+1. Correctness: `applyDiscount` runs before the cart total is
+   loaded, so the discount is applied to 0. Move the call after
+   `await loadCart()`.
+2. Security: the order ID from the URL is used in a SQL string.
+   Use a parameterized query to prevent SQL injection.
+3. Performance: `getUser` is called inside the loop (one database
+   query per item). Fetch the user once before the loop.
+```
+
 **Refactoring:**
 
 ```

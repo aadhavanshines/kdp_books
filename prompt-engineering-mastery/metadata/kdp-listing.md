@@ -54,11 +54,12 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>Direct AI coding assistants and agents</li>
 <li>Create images, video, and music with Midjourney, Stable Diffusion, Flux, and AI video and audio tools</li>
 <li>Design system prompts, build with APIs, and ground AI in your own documents with RAG</li>
-<li>Build agents that use tools, including with the Model Context Protocol (MCP)</li>
+<li>Build agents that use tools, with complete tool-calling examples</li>
+<li>Connect AI to your browser, files, and apps with the Model Context Protocol (MCP), including browser control in Chrome</li>
 <li>Test prompts with evaluations and defend against prompt injection</li>
 </ul>
 
-<p>You also get <b>50 ready-to-use prompt templates</b> for writing, research, learning, analysis, communication, career, and coding, plus a troubleshooting guide and glossary.</p>
+<p>Every key technique comes with a real example prompt <i>and</i> the response it produces, plus clear diagrams. You also get <b>50 ready-to-use prompt templates</b> for writing, research, learning, analysis, communication, career, and coding, plus a troubleshooting guide and glossary.</p>
 
 <p>Whether you are a curious beginner, a busy professional, or a developer building AI features, this book will help you get consistently excellent results from the AI tools you use every day.</p>
 
@@ -130,6 +131,6 @@ Answering this accurately is a KDP content-guideline requirement. The disclosure
   - Paperback cover finish: Matte or Glossy (glossy suits the dark cover)
 - Manuscript: upload `dist/paperback-interior-6x9.pdf`
 - Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf`
-- Suggested list price: **$16.99 USD** (155 pages; check the royalty calculator on the pricing page, since printing costs change)
+- Suggested list price: **$16.99 USD** (181 pages; check the royalty calculator on the pricing page, since printing costs change)
 
 > The paperback cover is sized for exactly the page count in `dist/build-info.json`. KDP's free ISBN barcode is printed automatically in the white box on the back cover. If you edit the manuscript and the page count changes, rebuild so the spine width updates.

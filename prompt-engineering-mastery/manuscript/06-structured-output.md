@@ -54,6 +54,27 @@ If a section has no content, write "None".
 
 The final line matters. Without it, models may invent content to fill empty sections, or silently drop them.
 
+Given a short transcript, the filled-in template looks like this:
+
+```
+Example output:
+**Meeting:** Website relaunch check-in
+**Date:** 14 October
+**Attendees:** Meera, Josh, Ana
+
+### Decisions
+- Launch moves to 3 November to allow extra testing.
+
+### Action Items
+| Owner | Task                        | Due Date   |
+|-------|-----------------------------|------------|
+| Josh  | Fix checkout bug on mobile  | 21 October |
+| Ana   | Final copy review           | 24 October |
+
+### Open Questions
+- None
+```
+
 ## JSON for Applications
 
 When output feeds into software, **JSON** (JavaScript Object Notation) is the most common format. A basic JSON prompt:
@@ -72,6 +93,28 @@ only valid JSON, with no other text:
 
 Email: """<email text>"""
 ```
+
+For example, given this email:
+
+```
+Hi, this is Dana Reyes. My order #A-20417 arrived yesterday but
+the blender jar is cracked. I need a replacement before my
+daughter's party on Saturday. Please help!
+```
+
+the prompt returns:
+
+```
+{
+  "customer_name": "Dana Reyes",
+  "order_number": "A-20417",
+  "issue_type": "product",
+  "urgency": "high",
+  "summary": "Cracked blender jar; needs replacement by Saturday."
+}
+```
+
+A program can now route this ticket automatically: product issues to the returns team, high urgency to the front of the queue.
 
 Best practices for JSON prompts:
 

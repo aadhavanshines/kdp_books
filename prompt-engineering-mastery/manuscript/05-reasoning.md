@@ -11,12 +11,27 @@ Language models can answer simple questions in a single step. But for problems t
 Consider this question:
 
 ```
-A store sells pens at 3 for $4. Maria buys 14 pens. The store
-gives every 4th pen free (the free pens don't count toward the
-3-for-$4 pricing). How much does she pay?
+A store sells pens for $1.50 each or $4 for a pack of 3. During a
+promotion, every 4th pen a customer takes is free. Maria takes 14
+pens and the cashier charges her the lowest possible price for the
+pens she has to pay for. How much does she pay?
 ```
 
-Asked to answer directly, a model may jump to a wrong number. Asked to reason first, it is more likely to work out how many pens are free, how many must be paid for, and how the pricing groups apply, before calculating the total.
+Asked to answer directly, a model may jump to a wrong number. Asked to reason first, it is more likely to work out how many pens are free, how many must be paid for, and how the pricing groups apply, before calculating the total. Here is the kind of answer you get when you add "Think through this step by step":
+
+```
+Example output:
+1. Free pens: every 4th pen is free, so pens 4, 8, and 12 are
+   free. That's 3 free pens.
+2. Pens to pay for: 14 - 3 = 11.
+3. Cheapest pricing: packs of 3 cost $4 (about $1.33 per pen),
+   which beats $1.50 each. 11 pens = 3 packs (9 pens) + 2 single
+   pens.
+4. Cost: 3 x $4 = $12, plus 2 x $1.50 = $3.
+Answer: Maria pays $15.
+```
+
+Each step is visible, so if the answer were wrong you could see exactly which step failed.
 
 Why does this work? Because the model generates text one piece at a time, writing out intermediate steps gives it "space" to work. Each step becomes part of the context that informs the next. Skipping straight to the answer forces it to compress all that reasoning into a single prediction.
 

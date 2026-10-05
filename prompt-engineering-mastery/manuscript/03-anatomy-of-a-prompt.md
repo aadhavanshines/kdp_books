@@ -6,6 +6,10 @@ You now know that models need context and specificity. But what context, exactly
 
 A strong prompt usually contains some combination of six elements. Think of them as six questions you answer for the model:
 
+![The six-part prompt blueprint.](images/blueprint.png)
+
+The table below adds an example of each element:
+
 | Element | Question it answers | Example |
 | --- | --- | --- |
 | Role | Who should the model be? | "You are a senior HR advisor." |
@@ -145,7 +149,27 @@ Example of our brand voice:
 We get it."
 ```
 
-Notice that this prompt is longer than most people write. That is the point. A few extra minutes of writing replaces several rounds of back-and-forth and produces something you can use.
+Here is the kind of post this prompt produces (an example output; yours will differ):
+
+```
+Example output:
+Friday, 4:55 pm. Half your team still hasn't logged their hours,
+and you're about to send another reminder in the group chat.
+
+There's a better way. Taskorra now tracks time automatically,
+using calendar events and task activity, so timesheets fill
+themselves in. In our beta, teams saved about 3 hours per person
+every week.
+
+No more chasing. No more guessing at invoices. Just accurate
+hours, ready when you need them.
+
+Try it free for 14 days and get your Fridays back. -> link
+
+#AgencyLife #TimeTracking #Productivity
+```
+
+Every requirement is met: the pain point comes first, the benefit has a number, the buzzwords are gone, and the call to action is clear. Notice that this prompt is longer than most people write. That is the point. A few extra minutes of writing replaces several rounds of back-and-forth and produces something you can use.
 
 ## Using Delimiters to Separate Parts
 
@@ -165,7 +189,7 @@ busy executive.
 </article>
 ```
 
-Delimiters prevent confusion, especially when the material itself contains instructions or questions, and they are an important defense against prompt injection, which Chapter 19 discusses.
+Delimiters prevent confusion, especially when the material itself contains instructions or questions, and they are an important defense against prompt injection, which Chapter 20 discusses.
 
 ## Order Matters
 

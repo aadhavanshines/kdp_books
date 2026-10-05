@@ -33,6 +33,15 @@ made and why.
 
 Asking for a list of changes helps you learn and lets you reject edits you disagree with.
 
+```
+Example output (the list of changes):
+1. Cut "I just wanted to reach out to say" to "I'm writing to".
+2. Merged two sentences that repeated the deadline.
+3. Moved the request to the first paragraph so it isn't missed.
+4. Replaced "utilize" with "use".
+5. Split a 48-word sentence into two.
+```
+
 ### Changing Tone or Audience
 
 ```
@@ -83,6 +92,18 @@ Explain <topic> to me. I have background in <your background> but
 I'm new to this. Start with a simple analogy, then the core
 concepts, then one real-world example. Finish with 3 questions
 to check my understanding.
+```
+
+For example, asked to explain compound interest to someone with a background in cooking, a model replied:
+
+```
+Example output:
+Think of a sourdough starter. You feed it, it grows, and next
+time you feed the bigger starter, so it grows even more. Money
+works the same way: interest is added to your savings, and next
+year you earn interest on that bigger amount too...
+Check your understanding:
+1. Why does a balance grow faster in year 10 than in year 1?
 ```
 
 ### The Learning Plan
@@ -137,6 +158,22 @@ Write the 7 most likely reasons it failed, ranked by likelihood.
 For each, suggest one early warning sign and one prevention step.
 ```
 
+For a plan to launch a weekend food stall, the first lines of a pre-mortem answer might read:
+
+```
+Example output (first 3 of 7):
+1. Not enough foot traffic at the chosen market.
+   Warning sign: under 50 sales in the first two weekends.
+   Prevention: visit the market on two weekends before booking
+   and count passers-by per hour.
+2. Costs higher than expected (permits, waste, packaging).
+   Warning sign: margin below 40% after week one.
+   Prevention: build a full cost sheet, including permits.
+3. Owner burnout from weekday job plus weekends.
+   Warning sign: skipping prep or opening late.
+   Prevention: recruit a part-time helper before launch.
+```
+
 The pre-mortem is one of the most valuable prompts for any plan, because it bypasses the optimism bias that affects both humans and agreeable AI models.
 
 ### Devil's Advocate
@@ -170,6 +207,20 @@ What I need: <outcome>.
 Constraints: <what I can and can't offer>.
 Tone: <e.g., firm but respectful>.
 Write two versions: one more direct, one more diplomatic.
+```
+
+Here is the "direct" version for a request to a landlord to fix a broken heater:
+
+```
+Example output:
+Subject: Heater repair needed by Friday
+
+Hi Mr. Kumar,
+The heater in my flat stopped working on Monday, and nights are
+now below 10 C. Please arrange a repair by Friday, 18 October.
+I'm available to let a technician in any weekday after 4 pm.
+Thank you,
+Arjun (Flat 3B)
 ```
 
 ### Preparing for a Conversation

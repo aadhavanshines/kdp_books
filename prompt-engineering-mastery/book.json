@@ -21,7 +21,8 @@
     "- Few-shot, chain-of-thought, and reflection techniques",
     "- How to prompt each of today's leading AI chatbots and open models",
     "- Prompting for coding assistants and AI image, video, and music tools",
-    "- System prompts, RAG, agents, tool use, and MCP",
+    "- System prompts, RAG, agents, and tool use",
+    "- Connecting AI to your browser, files, and apps with MCP",
     "- How to test prompts and defend against prompt injection",
     "- 50 ready-to-use prompt templates"
   ]

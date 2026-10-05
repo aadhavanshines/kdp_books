@@ -60,6 +60,24 @@ system is switched on?
 </example>
 ```
 
+Here is how a short conversation with this assistant goes, including a tool call:
+
+```
+Customer: where's my order?? it's been a week
+Ava: I'm sorry for the wait. Let me check on it. Could you share
+your order number? It starts with TV and is in your
+confirmation email.
+Customer: TV-55210
+[Ava calls lookup_order("TV-55210")]
+[Result: shipped Oct 9, carrier delay, new ETA Oct 16]
+Ava: Thanks! Your order shipped on October 9, but the carrier
+reported a delay. The new delivery estimate is October 16. Would
+you like me to create a ticket so our team can follow up with
+the carrier?
+```
+
+Ava asked for the order number before using the tool, used plain text, kept it short, and offered escalation, all because the system prompt said so.
+
 Notice the qualities that make this effective:
 
 - **Specific identity and scope:** The model knows exactly what it's for.
@@ -82,7 +100,7 @@ Notice the qualities that make this effective:
 
 **5. Avoid excessive emphasis.** Earlier models sometimes needed "CRITICAL" and "YOU MUST" in capital letters. Modern models follow instructions well and can overreact to heavy emphasis, becoming overly cautious. Use normal language and save emphasis for what genuinely matters most.
 
-**6. Version and test it.** Treat your system prompt like code: store versions, record changes, and test against a set of realistic conversations before every update (see Chapter 18).
+**6. Version and test it.** Treat your system prompt like code: store versions, record changes, and test against a set of realistic conversations before every update (see Chapter 19).
 
 ## Working with the API
 
@@ -94,7 +112,7 @@ When you use models through an API, you control far more than in a chat app. A t
 - **Max output tokens:** The maximum length of the response.
 - **Temperature and related sampling settings:** Lower for consistency, higher for variety. Some reasoning models fix or ignore these.
 - **Reasoning or thinking settings:** On reasoning models, how much effort to spend.
-- **Tools:** Functions the model can call (Chapter 17).
+- **Tools:** Functions the model can call (Chapters 17 and 18).
 - **Structured output schema:** To enforce a JSON format (Chapter 6).
 - **Stop sequences:** Text that, when generated, ends the response.
 

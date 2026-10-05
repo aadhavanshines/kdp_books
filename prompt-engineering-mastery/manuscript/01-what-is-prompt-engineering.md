@@ -35,6 +35,23 @@ features.
 
 The first prompt forces the model to guess everything: the size, the features, the audience, the length, the style. It will produce a bland average of every water bottle description it has ever seen. The second prompt removes the guessing. The model can spend its ability on writing well instead of inventing facts.
 
+Here is what the strong prompt produces:
+
+```
+Example output:
+Cold coffee at 3 pm? Not anymore. This 750 ml insulated steel
+bottle keeps drinks ice-cold for 24 hours and hot for 12, so your
+morning brew and post-gym water stay exactly how you like them.
+It slips into car cup holders and seals tight for the bag.
+
+- Cold for 24 hours, hot for 12
+- Leak-proof lid, safe in any bag
+- Fits standard car cup holders
+- Six colors, $29
+```
+
+Every fact comes from the prompt, the length and structure are exactly as requested, and the tone fits busy commuters.
+
 This is the first and most important lesson of the book:
 
 > **Tip:** The model cannot read your mind. Anything you know but don't say, it has to guess. Most bad outputs are the result of guessing.

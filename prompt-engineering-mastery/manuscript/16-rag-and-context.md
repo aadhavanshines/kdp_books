@@ -19,6 +19,8 @@ For most applications, the answer is some combination of 1 and 2.
 1. **Retrieve:** When a user asks a question, search a knowledge base for the most relevant passages. This often uses **embeddings**, which are numerical representations of meaning that let you find passages similar in meaning to the question, frequently combined with traditional keyword search.
 2. **Generate:** Insert the retrieved passages into the prompt and ask the model to answer using them.
 
+![How retrieval-augmented generation works.](images/rag-pipeline.png)
+
 A typical RAG prompt:
 
 ```
@@ -45,6 +47,17 @@ Instructions:
 Question: Can I carry over my unused vacation and sick days?
 ```
 
+A well-grounded answer looks like this:
+
+```
+Example output:
+You can carry over up to 5 unused vacation days into next year,
+but they expire on March 31 [policy-12]. Unused sick days do not
+carry over and are not paid out [policy-14].
+```
+
+Every claim is traceable to a source, and nothing is added from outside the documents.
+
 ## Prompting Principles for RAG
 
 **1. Instruct grounding explicitly.** Tell the model to use only the provided sources, and what to do when they're insufficient. Without this, it will blend in general knowledge that may contradict your actual policies.
@@ -55,7 +68,7 @@ Question: Can I carry over my unused vacation and sick days?
 
 **4. Handle conflicts.** Tell the model what to do when sources disagree: "If sources conflict, point out the conflict and prefer the most recently dated source."
 
-**5. Keep instructions separate from retrieved content.** Retrieved text is data, not instructions. Wrap it in tags and tell the model that instructions inside sources must be ignored. This defends against indirect prompt injection (Chapter 19).
+**5. Keep instructions separate from retrieved content.** Retrieved text is data, not instructions. Wrap it in tags and tell the model that instructions inside sources must be ignored. This defends against indirect prompt injection (Chapter 20).
 
 ## Retrieval Quality Is Prompt Quality
 

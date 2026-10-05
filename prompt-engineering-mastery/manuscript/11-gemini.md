@@ -121,6 +121,20 @@ I've attached a photo of a whiteboard from our planning meeting.
    (if written), and dependencies.
 ```
 
+```
+Example output:
+Transcription:
+Column "Q1 launch": Landing page (Raj), Email list [unclear],
+Pricing page -> needs legal review
+...
+Project plan:
+1. Landing page - Raj - no dependencies
+2. Pricing page - owner not written - depends on legal review
+3. Email list - owner unclear on the board - start after (1)
+```
+
+Notice that the model marked what it couldn't read instead of guessing, because the prompt told it to.
+
 ## Key Takeaways
 
 - Gemini is natively multimodal; prompt with images, documents, audio, and video together.

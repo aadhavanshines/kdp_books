@@ -22,6 +22,18 @@ Source: Use emails and Teams chats from the Larkspur project
 channel since March 3, and the latest version of the project plan.
 ```
 
+A response to that prompt might read:
+
+```
+Example output:
+Larkspur project: changes since March 3
+- Design sign-off received March 6 (email from the client).
+- Build is 2 days behind: the API integration is waiting on
+  credentials (Teams chat, March 9).
+- Budget unchanged; one change request pending approval.
+Open issues: API credentials; change request #4.
+```
+
 App-specific tips:
 
 - **Word:** Ask Copilot to draft from referenced files ("Draft a proposal based on /ClientBrief.docx") or to rewrite selected text.

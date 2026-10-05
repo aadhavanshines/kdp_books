@@ -23,6 +23,7 @@ from reportlab.platypus import (
     TableStyle,
     XPreformatted,
 )
+from reportlab.platypus import Image as RLImage
 from reportlab.platypus.flowables import DocIf
 from reportlab.platypus.tableofcontents import TableOfContents
 
@@ -89,11 +90,15 @@ def make_styles():
     s["body"] = ParagraphStyle("body", fontName="Serif", fontSize=10.6, leading=14.6,
                                alignment=TA_JUSTIFY, spaceAfter=6.5, allowWidows=0, bulletFontName="Serif",
                                allowOrphans=0, hyphenationLang=None)
-    s["label"] = ParagraphStyle("label", parent=s["body"], keepWithNext=1, spaceAfter=4)
+    s["label"] = ParagraphStyle("label", parent=s["body"], spaceAfter=4)
+    s["resplabel"] = ParagraphStyle("resplabel", fontName="Sans-Bold", fontSize=7.5, leading=9,
+                                    textColor=ACCENT)
+    s["caption"] = ParagraphStyle("caption", parent=s["body"], fontName="Serif-Italic", fontSize=9,
+                                  leading=12, alignment=TA_CENTER, textColor=GREY, spaceAfter=0)
     s["h2"] = ParagraphStyle("h2", fontName="Sans-Bold", fontSize=13.5, leading=17,
-                             textColor=ACCENT, spaceBefore=14, spaceAfter=6, keepWithNext=1)
+                             textColor=ACCENT, spaceBefore=14, spaceAfter=6)
     s["h3"] = ParagraphStyle("h3", fontName="Sans-Bold", fontSize=11.2, leading=14.5,
-                             textColor=colors.black, spaceBefore=10, spaceAfter=4, keepWithNext=1)
+                             textColor=colors.black, spaceBefore=10, spaceAfter=4)
     s["bullet"] = ParagraphStyle("bullet", parent=s["body"], leftIndent=16, bulletIndent=5,
                                  spaceAfter=3.5, alignment=TA_LEFT)
     s["callout"] = ParagraphStyle("callout", parent=s["body"], fontSize=10, leading=13.8,
@@ -244,22 +249,91 @@ def wrap_code(code):
 
 
 def code_block(code, styles):
-    code = wrap_code(code)
-    esc = code.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-    pre = XPreformatted(esc, styles["code"])
-    t = Table([[pre]], colWidths=[TEXT_W])
-    t.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, -1), LIGHT),
-        ("BOX", (0, 0), (-1, -1), 0.5, RULE),
+    lines = wrap_code(code).split("\n")
+    # Sample responses ("Example output ...:") get a distinct look from prompts.
+    label = None
+    if lines and re.match(r"^Example output.*:$", lines[0].strip()):
+        label, lines = lines[0].strip().rstrip(":"), lines[1:]
+    row_h = CODE_SIZE * 1.32
+    rows = []
+    for line in lines:
+        if line.strip():
+            esc = line.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            rows.append([XPreformatted(esc, styles["code"])])
+        else:
+            rows.append([Spacer(1, row_h)])  # keep blank lines
+    style = [
         ("LEFTPADDING", (0, 0), (-1, -1), CODE_PAD),
         ("RIGHTPADDING", (0, 0), (-1, -1), CODE_PAD),
-        ("TOPPADDING", (0, 0), (-1, -1), 5),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
-    ]))
-    lines = code.count("\n") + 1
-    flow = [Spacer(1, 2), t, Spacer(1, 8)]
-    # Keep short blocks unsplit; long blocks may break across pages.
-    return [KeepTogether(flow)] if lines <= 22 else flow
+        ("TOPPADDING", (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+        ("TOPPADDING", (0, 0), (-1, 0), 5),
+        ("BOTTOMPADDING", (0, -1), (-1, -1), 6),
+    ]
+    if label:
+        rows.insert(0, [Paragraph(label.upper(), styles["resplabel"])])
+        style += [
+            ("BACKGROUND", (0, 0), (-1, -1), colors.white),
+            ("BOX", (0, 0), (-1, -1), 0.6, ACCENT),
+            ("LINEBEFORE", (0, 0), (0, -1), 3, ACCENT),
+            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#EAF0F7")),
+            ("BOTTOMPADDING", (0, 0), (-1, 0), 4),
+            ("TOPPADDING", (0, 1), (-1, 1), 4),
+        ]
+    else:
+        style += [
+            ("BACKGROUND", (0, 0), (-1, -1), LIGHT),
+            ("BOX", (0, 0), (-1, -1), 0.5, RULE),
+        ]
+    t = Table(rows, colWidths=[TEXT_W], splitByRow=1, repeatRows=1 if label else 0)
+    t.setStyle(TableStyle(style))
+    if len(lines) <= 8:
+        # Short blocks stay in one piece.
+        return [KeepTogether([Spacer(1, 2), t, Spacer(1, 8)])]
+    # Long blocks may split; make sure at least a few lines start on this page.
+    return [CondPageBreak(5 * row_h + 12), Spacer(1, 2), t, Spacer(1, 8)]
+
+
+class Figure(Flowable):
+    """Image plus centered caption that shrinks (down to 65%) to fit the space left on a page."""
+
+    def __init__(self, path, caption, style, max_h=3.4 * inch):
+        super().__init__()
+        from PIL import Image as PILImage
+        w_px, h_px = PILImage.open(path).size
+        self.path = str(path)
+        self.ratio = h_px / w_px
+        self.full_w = min(TEXT_W, max_h / self.ratio)
+        self.caption = Paragraph(inline(caption), style)
+        self.scale = 1.0
+
+    def _height(self, scale, aw):
+        _, cap_h = self.caption.wrap(aw, 1000)
+        return 6 + self.full_w * scale * self.ratio + 5 + cap_h + 10
+
+    def wrap(self, aw, ah):
+        self.scale = 1.0
+        if self._height(1.0, aw) > ah:
+            fit = (ah - (self._height(0, aw))) / (self.full_w * self.ratio)
+            if fit >= 0.65:
+                self.scale = fit
+        self.width = aw
+        self.height = self._height(self.scale, aw)
+        return self.width, self.height
+
+    def split(self, aw, ah):
+        return []
+
+    def draw(self):
+        w = self.full_w * self.scale
+        h = w * self.ratio
+        cap_w, cap_h = self.caption.wrap(self.width, 1000)
+        self.canv.drawImage(self.path, (self.width - w) / 2, cap_h + 15, width=w, height=h)
+        self.caption.drawOn(self.canv, 0, 10)
+
+
+def image_block(path, caption, styles):
+    return [Figure(path, caption, styles["caption"])]
 
 
 def callout(kind, text, styles):
@@ -280,12 +354,21 @@ def callout(kind, text, styles):
 def table_block(rows, styles):
     ncols = max(len(r) for r in rows)
     rows = [r + [""] * (ncols - len(r)) for r in rows]
-    weights = []
+    weights, mins = [], []
     for c in range(ncols):
         longest = max(len(r[c]) for r in rows)
         weights.append(min(max(longest, 8), 60))
+        word = max((w for r in rows for w in re.sub(r"[*`]", "", r[c]).split()), key=len, default="")
+        font = "Sans-Bold" if any(word in w for w in rows[0][c].split()) else "Serif"
+        mins.append(pdfmetrics.stringWidth(word, font, 8.8) + 10)
     total = sum(weights)
-    widths = [TEXT_W * w / total for w in weights]
+    widths = [max(TEXT_W * w / total, m) for w, m in zip(weights, mins)]
+    excess = sum(widths) - TEXT_W
+    if excess > 0:
+        flex = [i for i in range(ncols) if widths[i] > mins[i]]
+        room = sum(widths[i] - mins[i] for i in flex)
+        for i in flex:
+            widths[i] -= excess * (widths[i] - mins[i]) / room
     data = []
     for ri, r in enumerate(rows):
         st = styles["cellhead"] if ri == 0 else styles["cell"]
@@ -333,8 +416,9 @@ def front_matter(meta, styles):
         "financial, or other professional advice.",
         "<b>Trademarks.</b> ChatGPT, GPT, Sora, and DALL&middot;E are trademarks of OpenAI. Claude is a "
         "trademark of Anthropic. Gemini, Google, Gmail, Imagen, Veo, and YouTube are trademarks of "
-        "Google LLC. Microsoft, Copilot, Word, Excel, PowerPoint, Outlook, and Teams are trademarks "
-        "of Microsoft Corporation. GitHub Copilot is a trademark of GitHub, Inc. Midjourney, "
+        "Google LLC, as is Chrome. Microsoft, Copilot, Word, Excel, PowerPoint, Outlook, Teams, Visual "
+        "Studio Code, and Playwright are trademarks of Microsoft Corporation. Node.js is a trademark of the "
+        "OpenJS Foundation. GitHub Copilot is a trademark of GitHub, Inc. Midjourney, "
         "Perplexity, Meta AI, Llama, Grok, DeepSeek, Mistral, Stable Diffusion, Flux, Runway, "
         "Suno, Udio, ElevenLabs, Cursor, and all other product names are trademarks of their "
         "respective owners. This book is independent and is not affiliated with, sponsored by, or "
@@ -354,7 +438,7 @@ def front_matter(meta, styles):
     return story
 
 
-def build_story(meta, manuscript, styles):
+def build_story(meta, manuscript, styles, image_root):
     story = front_matter(meta, styles)
     pending_chapter_prefix = None
     for fname, blocks in manuscript:
@@ -391,6 +475,8 @@ def build_story(meta, manuscript, styles):
             elif kind == "p":
                 # A paragraph that is only a bold label introduces what follows; keep them together.
                 label = re.fullmatch(r"\*\*[^*]+\*\*", block[1])
+                if label:
+                    story.append(CondPageBreak(1.0 * inch))
                 story.append(Paragraph(inline(block[1]), styles["label" if label else "body"]))
             elif kind == "ul":
                 for item in block[1]:
@@ -400,6 +486,8 @@ def build_story(meta, manuscript, styles):
                 for n, item in enumerate(block[1], 1):
                     story.append(Paragraph(inline(item), styles["bullet"], bulletText=f"{n}."))
                 story.append(Spacer(1, 4))
+            elif kind == "image":
+                story += image_block(image_root / block[1], block[2], styles)
             elif kind == "code":
                 story += code_block(block[1], styles)
             elif kind == "callout":
@@ -410,10 +498,10 @@ def build_story(meta, manuscript, styles):
     return story
 
 
-def build_interior(meta, manuscript, out_path):
+def build_interior(meta, manuscript, out_path, image_root):
     register_fonts()
     styles = make_styles()
     doc = BookDoc(str(out_path), meta)
-    story = build_story(meta, manuscript, styles)
+    story = build_story(meta, manuscript, styles, image_root)
     doc.multiBuild(story)
     return doc.page

@@ -22,6 +22,13 @@ table { border-collapse: collapse; width: 100%; margin: 0.6em 0 1em; font-size: 
 th { background: #1F3A5F; color: #fff; font-family: sans-serif; text-align: left; padding: 0.3em; }
 td { border: 1px solid #B8C2CF; padding: 0.3em; vertical-align: top; }
 li { margin-bottom: 0.3em; }
+div.response { border: 1px solid #1F3A5F; border-left: 4px solid #1F3A5F; margin: 0.8em 0 1em; }
+div.response p.resplabel { background: #EAF0F7; color: #1F3A5F; font-family: sans-serif; font-weight: bold;
+      font-size: 0.7em; letter-spacing: 0.06em; text-transform: uppercase; margin: 0; padding: 0.3em 0.6em; }
+div.response pre { background: #fff; border: none; margin: 0; }
+figure { margin: 1em 0; text-align: center; }
+figure img { max-width: 100%; height: auto; }
+figcaption { font-size: 0.85em; font-style: italic; color: #555; margin-top: 0.3em; }
 .center { text-align: center; }
 .title { font-family: sans-serif; color: #1F3A5F; font-size: 2.2em; text-align: center; margin-top: 25%; }
 .subtitle { font-style: italic; text-align: center; color: #555; }
@@ -66,8 +73,18 @@ def blocks_to_html(blocks):
         elif kind in ("ul", "ol"):
             items = "".join(f"<li>{inline(i)}</li>" for i in b[1])
             out.append(f"<{kind}>{items}</{kind}>")
+        elif kind == "image":
+            cap = html.escape(b[2])
+            out.append(f'<figure><img src="{html.escape(b[1])}" alt="{cap}"/>'
+                       f'<figcaption>{inline(b[2])}</figcaption></figure>')
         elif kind == "code":
-            out.append(f"<pre>{html.escape(b[1])}</pre>")
+            first, _, rest = b[1].partition("\n")
+            if re.match(r"^Example output.*:$", first.strip()):
+                label = html.escape(first.strip().rstrip(":"))
+                out.append(f'<div class="response"><p class="resplabel">{label}</p>'
+                           f"<pre>{html.escape(rest)}</pre></div>")
+            else:
+                out.append(f"<pre>{html.escape(b[1])}</pre>")
         elif kind == "callout":
             label = f"<strong>{b[1]}:</strong> " if b[1] else ""
             out.append(f'<div class="callout"><p>{label}{inline(b[2])}</p></div>')
@@ -91,7 +108,7 @@ def split_parts(manuscript):
     return sections
 
 
-def build_epub(meta, manuscript, cover_jpg, out_path):
+def build_epub(meta, manuscript, cover_jpg, out_path, image_root):
     book = epub.EpubBook()
     book.set_identifier(meta["identifier"])
     book.set_title(meta["title"])
@@ -100,6 +117,13 @@ def build_epub(meta, manuscript, cover_jpg, out_path):
     book.add_metadata("DC", "description", meta["subtitle"])
     book.add_metadata("DC", "rights", f"Copyright {meta['year']} {meta['author']}. All rights reserved.")
     book.set_cover("cover.jpg", open(cover_jpg, "rb").read(), create_page=False)
+
+    for _, blocks in manuscript:
+        for b in blocks:
+            if b[0] == "image":
+                book.add_item(epub.EpubImage(uid=b[1].replace("/", "-").replace(".", "-"),
+                                             file_name=b[1], media_type="image/png",
+                                             content=(image_root / b[1]).read_bytes()))
 
     style = epub.EpubItem(uid="style", file_name="style/book.css", media_type="text/css",
                           content=CSS.encode())

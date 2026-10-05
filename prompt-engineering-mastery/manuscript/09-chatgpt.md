@@ -142,6 +142,22 @@ Before you write the plan, ask me any questions you need answered.
 
 The advanced prompt includes a role, personal context, constraints, goals, explicit requirements, format, and an invitation to ask questions. It produces a plan designed for one specific person.
 
+Because the prompt invites questions, the first reply is not the plan but an interview:
+
+```
+Example output:
+Before I build your plan, a few quick questions:
+1. Can you do push-ups and bodyweight squats with good form now?
+   Roughly how many?
+2. Is your lower-back stiffness worse in the morning, or after
+   long periods of sitting?
+3. Do you have anything to do pull or row movements with, like a
+   sturdy table edge or a door anchor for the band?
+4. Do you prefer full-body sessions, or upper/lower splits?
+```
+
+Answering these four questions takes a minute and turns a generic plan into one designed for you.
+
 ## Key Takeaways
 
 - Choose the right mode: fast, reasoning, search, data analysis, or deep research.

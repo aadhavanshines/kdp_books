@@ -146,6 +146,21 @@ This is for initial understanding only; the client will consult a
 licensed attorney before signing.
 ```
 
+An abridged response might begin:
+
+```
+Example output:
+<quotes>
+"Payment is due within 15 days of invoice. Late payments accrue
+interest at 2% per month." (Section 4.2)
+</quotes>
+Plain English: You must pay within 15 days. If you're late, you
+owe an extra 2% each month, roughly 24% to 27% a year.
+Concern: HIGH. 15 days is shorter than the common 30, and the
+late fee is steep. Ask whether 30 days and a lower rate are
+possible.
+```
+
 > **Warning:** AI contract review is a starting point for understanding, not legal advice. Always have important contracts reviewed by a qualified professional.
 
 ## Key Takeaways

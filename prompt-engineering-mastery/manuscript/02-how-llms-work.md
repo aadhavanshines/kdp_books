@@ -8,6 +8,8 @@ A **large language model (LLM)** is a program trained on a vast amount of text: 
 
 When you send a prompt, the model reads it and predicts the most fitting next piece of text, adds it, then predicts the next piece, and so on, one step at a time, until the response is complete. Everything an AI assistant does, from writing poems to debugging code to planning a trip, emerges from this repeated prediction.
 
+![A language model writes its answer one token at a time, feeding each new token back in before predicting the next.](images/llm-loop.png)
+
 Modern assistants go through additional training after this initial phase. They are taught to follow instructions, hold conversations, refuse harmful requests, and give helpful answers. That is why they respond to "Summarize this article" with a summary rather than with more article. But underneath, the prediction mechanism remains, and it has practical consequences:
 
 - **The model continues the pattern you set.** Formal prompts tend to produce formal answers. Sloppy prompts tend to produce sloppy answers. Examples in your prompt strongly shape the style of the output.
@@ -26,7 +28,11 @@ Tokens matter for three reasons:
 
 ## The Context Window: The Model's Working Memory
 
-The **context window** is the total amount of text a model can consider at once, including your prompt, any documents you attach, the conversation history, and the response it is writing. Context windows have grown dramatically, and many current models can handle hundreds of thousands of tokens, equivalent to several long books.
+The **context window** is the total amount of text a model can consider at once, including your prompt, any documents you attach, the conversation history, and the response it is writing.
+
+![Everything shares one context window: hidden instructions, the conversation so far, attached documents, your message, and the reply being written.](images/context-window.png)
+
+ Context windows have grown dramatically, and many current models can handle hundreds of thousands of tokens, equivalent to several long books.
 
 Some key facts about context:
 
