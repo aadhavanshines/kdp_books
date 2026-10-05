@@ -1,6 +1,6 @@
 # About the Author
 
-**Aadhavan Muthurengan** is an automation and artificial intelligence professional with decades of experience in the automotive industry.
+**Aadhavan Muthurengan** is an automation and artificial intelligence professional with more than 15 years of experience in the automotive industry.
 
 Throughout a career focused on product development and validation, Aadhavan has designed and built a wide range of in-house tools that automate complex engineering workflows, speed up testing, and help teams deliver reliable, high-quality results, replacing slow, repetitive work with smart, dependable automation.
 
