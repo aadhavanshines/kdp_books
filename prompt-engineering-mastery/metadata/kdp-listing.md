@@ -12,7 +12,7 @@ Prompt Engineering Mastery
 
 ## Subtitle
 
-The Complete Beginner-to-Advanced Guide to Getting Better Results from Today's Most Popular AI Chatbots, Coding Assistants, and Image Generators
+The Complete Beginner-to-Advanced Guide to Getting Better Results from AI Chatbots, Coding Assistants, Image Generators, and Agents
 
 > Product names such as ChatGPT or Midjourney are deliberately kept out of the title, subtitle, cover, and keywords. They are trademarks of other companies, and leaving them out avoids trademark and "misleading metadata" problems during KDP review. Naming the tools in the description and inside the book to describe what it covers is fine, because the book carries a clear "not affiliated" notice.
 
@@ -42,6 +42,8 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p>Most people type a question into an AI assistant, get a generic answer, and give up. The difference between a mediocre answer and a brilliant one is almost never the model. It is the prompt.</p>
 
+<p>This is more than a book of prompts. It shows ordinary users and professionals how to communicate with, control, evaluate, and build reliable systems around today's AI.</p>
+
 <p><i>Prompt Engineering Mastery</i> takes you step by step from your very first prompt to the techniques professionals use to build AI products and agents. It is written in plain language, packed with copy-and-paste examples, and requires no technical background.</p>
 
 <p><b>Inside, you will learn how to:</b></p>
@@ -59,7 +61,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>Build agents that use tools, with complete tool-calling examples</li>
 <li>Design your own custom agents and multi-agent architectures, from no-code assistants to coding subagents and SDKs</li>
 <li>Connect AI to your browser, files, and apps with the Model Context Protocol (MCP), including browser control in Chrome</li>
-<li>Test prompts with evaluations and defend against prompt injection</li>
+<li>Test prompts with evaluations, defend against prompt injection, and protect yourself and your family from AI-powered scams</li>
 </ul>
 
 <p>Every key technique comes with a real example prompt <i>and</i> the response it produces, plus clear diagrams. You also get <b>50 ready-to-use prompt templates</b> for writing, research, learning, analysis, communication, career, and coding, plus a troubleshooting guide and glossary.</p>
@@ -142,6 +144,6 @@ Answering this accurately is a KDP content-guideline requirement. The disclosure
   - Paperback cover finish: Matte or Glossy (glossy suits the dark cover)
 - Manuscript: upload `dist/paperback-interior-6x9.pdf`
 - Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf`
-- Suggested list price: **$16.99 USD** (225 pages; check the royalty calculator on the pricing page, since printing costs change)
+- Suggested list price: **$16.99 USD** (239 pages; check the royalty calculator on the pricing page, since printing costs change)
 
 > The paperback cover is sized for exactly the page count in `dist/build-info.json`. KDP's free ISBN barcode is printed automatically in the white box on the back cover. If you edit the manuscript and the page count changes, rebuild so the spine width updates.

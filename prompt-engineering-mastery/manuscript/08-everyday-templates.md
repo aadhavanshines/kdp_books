@@ -279,7 +279,7 @@ The patterns in this chapter will be most valuable when customized to your work.
 1. Create a document or notes folder for prompts.
 2. Each time a prompt produces excellent results, save it with a name, a description of when to use it, and placeholders for the parts that change.
 3. Record notes about what you changed and why.
-4. Turn your most-used prompts into persistent assistants using features like custom GPTs, Claude Projects, or Gemini Gems, which the next part of this book covers.
+4. Turn your most-used prompts into persistent assistants using features like ChatGPT plugins, Claude Projects, or Gemini Gems, which the next part of this book covers.
 
 > **Try It:** Pick the three tasks you do most often at work. Adapt a pattern from this chapter for each, test them on real work this week, and save the improved versions to your library.
 

@@ -1,10 +1,33 @@
-# Chapter 16: Prompt Playbooks for Every Profession
+# Chapter 16: Prompt Playbooks for 20 Professions
 
 The techniques in this book work for everyone, but every profession has its own tasks, vocabulary, and risks. This chapter is a set of ready-made playbooks. Find your field, try the prompts on your own work, and read the safety note: the rules for a doctor, a lawyer, and a musician are very different.
 
 Each playbook follows the same pattern: the best uses of AI in that field, two or three prompts you can adapt, and what to watch out for. Many readers wear several hats, such as a parent who runs a small business, so browse more than one.
 
 > **Note:** For every profession, the same golden rule applies: AI drafts, you decide. You remain responsible for anything you send, sign, prescribe, publish, or perform.
+
+| Profession | Top uses |
+| --- | --- |
+| Programmers | Debugging, tests, documentation |
+| Doctors and healthcare | Patient education, literature summaries |
+| Dentists | Aftercare instructions, patient communication |
+| Marketing | Content calendars, ad and email copy |
+| Sales | Outreach, objection handling, call practice |
+| Engineers | Requirement reviews, test cases, FMEA |
+| Cybersecurity | Alert triage, phishing analysis, incident reports |
+| Parents and families | Explaining topics, homework help, meal plans |
+| Advocates and legal | Timelines, plain-language explanations, drafts |
+| Musicians | Song ideas, practice plans, artist bios |
+| Teachers | Lesson plans, rubrics, differentiation |
+| Students | Quizzing, study plans, feedback |
+| Small business owners | Planning, customer messages, policies |
+| Finance and accounting | Variance analysis, commentary, formulas |
+| Human resources | Job descriptions, onboarding, policies |
+| Writers and creators | Outlines, editing, repurposing content |
+| Designers and architects | Design directions, mood boards, briefs |
+| Real estate | Listings, client follow-ups |
+| Researchers | Literature mapping, paper summaries |
+| Nonprofits | Grant applications, donor appeals |
 
 ## Programmers and Developers
 
@@ -194,6 +217,46 @@ Example output:
 ```
 
 > **Warning:** AI does not replace engineering judgment, certified analysis, or safety standards. Treat its output as a starting checklist for the team, and keep confidential designs out of tools your company hasn't approved.
+
+## Cybersecurity Professionals
+
+**Best uses:** triaging alerts and logs, analyzing suspicious emails, drafting incident reports and post-incident reviews, reviewing code and configurations for security weaknesses, threat modeling, writing security policies, and creating awareness training. This playbook is about defending systems you are responsible for.
+
+```
+You are a security analyst. Analyze the email below for signs of
+phishing. List each indicator you find (sender, links, urgency,
+requests, attachments), rate the overall risk as Low, Medium, or
+High, and recommend what the recipient should do. Do not open or
+visit any link.
+
+<email>
+<paste the email headers and body>
+</email>
+```
+
+```
+Here are firewall and authentication log entries from the last
+hour (sanitized): <paste logs>. Summarize what happened in
+chronological order, flag anything that looks like an attack or
+misconfiguration, and suggest the next 3 investigation steps.
+Mark anything you're unsure about.
+```
+
+```
+Help me threat-model a new <system>, which <description>. Using
+the STRIDE categories (spoofing, tampering, repudiation,
+information disclosure, denial of service, elevation of
+privilege), list the most likely threats, their impact, and a
+mitigation for each, in a table.
+```
+
+```
+Turn these incident notes into a blameless post-incident report
+with: summary, timeline, impact, root cause, what went well, what
+to improve, and action items with owners. <paste notes>
+```
+
+> **Warning:** Remove secrets, credentials, internal hostnames, and personal data from logs before pasting them into any AI tool not approved by your organization. Use AI to assist analysis, not to make final decisions on incidents. Prompts in this playbook are for defending systems you own or are authorized to protect.
 
 ## Parents and Families
 

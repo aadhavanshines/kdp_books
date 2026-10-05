@@ -90,8 +90,8 @@ HANDBOOK = ("Employee Handbook 2026\n4.2 Leave carry-over: up to 5 unused days m
             "4.3 Days beyond 5 are not carried over or paid out.\n6.1 Expenses: submit receipts within 30 days.")
 cases.pop('ch5_pens_tags')  # replaced in the book by the plain-wording version below
 cases.update({
- 'ch5_pens_plain': (P('Solve the problem below. Show your working').replace('<paste the problem>', P('A store sells pens')),
-   lambda r: [('has Working', 'working' in r.lower()), ('Answer: line', bool(re.search(r'^\**Answer:?\**', r, re.M | re.I))), ('answer $15', '15' in r.split('Answer')[-1])]),
+ 'ch5_keysteps': (P('Solve the problem below. Before answering').replace('<paste the problem>', P('A store sells pens')),
+   lambda r: [('has Key steps', 'key steps' in r.lower()), ('Answer: line', bool(re.search(r'^\W*Answer:?', r, re.M | re.I))), ('answer $15', '15' in r.split('Answer')[-1])]),
  'ch16_ava_order': ("where's my order?? it's been a week", lambda r: [('asks for order number', 'order number' in r.lower()), ('plain text (no markdown)', '**' not in r and '##' not in r)], AVA),
  'ch16_ava_refund': ("This thermostat is junk, I want a refund right now!", lambda r: [('does not grant refund', not re.search(r"(I've|I have|I will|I'll) (issue|process)", r, re.I)), ('mentions human agent/ticket', bool(re.search(r'agent|team|ticket', r, re.I)))], AVA),
  'ch16_ava_safety': ("my thermostat is sparking and there's a burning smell", lambda r: [('says turn off power', bool(re.search(r'breaker|power', r, re.I))), ('electrician', 'electrician' in r.lower())], AVA),
@@ -151,6 +151,20 @@ cases.update({
    lambda r: [('must-have vs nice-to-have', bool(re.search(r'must', r, re.I)) and bool(re.search(r'nice|preferred|bonus', r, re.I))), ('under ~400 words', len(r.split()) <= 440)]),
  'pb_donor': (P('Write a 300-word donor appeal for <organization>').replace('<organization>', 'Bright Books Trust').replace('<mission>', 'runs free reading clubs for children').replace('<story>', 'Ravi, 9, could not read a full sentence in June and now reads picture books aloud to his sister').replace('<number>', '1,200 children reached last year').replace('<ask>', 'Rs 1,500 funds one child for a year'),
    lambda r: [('uses the story', 'Ravi' in r), ('uses the number', '1,200' in r), ('specific ask', '1,500' in r)]),
+})
+
+PHISH = ("From: IT Support <it-helpdesk@micros0ft-support.example>\nSubject: URGENT: Password expires in 2 hours\n\n"
+         "Dear user, your mailbox password expires today. Click http://micros0ft-login.example/reset and enter your current password "
+         "within 2 hours or your account will be deleted.")
+cases.update({
+ 'pb_cyber_phish': (P('You are a security analyst. Analyze the email below').replace('<paste the email headers and body>', PHISH),
+   lambda r: [('rates High risk', bool(re.search(r'high', r, re.I))), ('spots lookalike domain', bool(re.search(r'micros0ft|look-?alike|spoof|typosquat', r, re.I))), ('spots urgency', 'urgen' in r.lower()), ('advises not to click', bool(re.search(r"don't|do not|avoid", r, re.I)))]),
+ 'pb_cyber_stride': (P('Help me threat-model a new <system>').replace('<system>', 'patient appointment booking web app').replace('<description>', 'lets patients log in, book visits, and receive SMS reminders'),
+   lambda r: [('table', r.count('|') > 20), ('covers spoofing', 'spoof' in r.lower()), ('covers elevation of privilege', 'privilege' in r.lower())]),
+ 'ch23_scamcheck': (P('I received the message below. List any signs').replace('<paste the message, with your personal details removed>', 'Hi Amma, it is me. I lost my phone and I am using a friend\'s number. I need Rs 40,000 urgently for a hospital bill, please send to this UPI ID right now and don\'t tell Appa.'),
+   lambda r: [('identifies scam signs', bool(re.search(r'scam|urgen|pressure', r, re.I))), ('advises calling back on known number', bool(re.search(r'call|known number|original number|usual number', r, re.I)))]),
+ 'ch7_bakery': (P('Write 3 Instagram captions for my home bakery'),
+   lambda r: [('3 captions', len(re.findall(r'(?i)monday|wednesday|friday', r)) >= 3), ('WhatsApp CTA', r.lower().count('whatsapp') >= 3), ('#CoimbatoreBakes', '#CoimbatoreBakes' in r), ('<= 3 hashtags each', all(len(re.findall(r'#\w+', block)) <= 3 for block in re.split(r'(?i)\n(?=\**\s*(?:monday|wednesday|friday))', r) if block.strip()))]),
 })
 
 def run(name):

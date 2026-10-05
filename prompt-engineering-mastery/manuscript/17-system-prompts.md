@@ -6,7 +6,7 @@ Up to now, you've mostly written prompts for yourself, in a chat window, where y
 
 ## What a System Prompt Does
 
-The **system prompt** sets the model's behavior for an entire conversation or application. It defines who the assistant is, what it does, how it behaves, and what it won't do. Users usually never see it. When you build a custom GPT, a Claude Project, a Gemini Gem, or an API application, you are writing a system prompt.
+The **system prompt** sets the model's behavior for an entire conversation or application. It defines who the assistant is, what it does, how it behaves, and what it won't do. Users usually never see it. When you build a ChatGPT plugin, a Claude Project, a Gemini Gem, or an API application, you are writing a system prompt.
 
 A good system prompt has to handle not just the requests you expect, but also the strange, ambiguous, and adversarial ones you don't. That's what makes it harder than a one-off prompt.
 

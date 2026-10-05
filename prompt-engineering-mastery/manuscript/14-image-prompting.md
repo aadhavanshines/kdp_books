@@ -253,7 +253,7 @@ the reflections in the windows match the new sky.
 
 ## Rights, Safety, and Disclosure
 
-> **Warning:** Respect copyright, trademarks, and people's likenesses. Don't generate images of real people without consent, don't recreate logos or copyrighted characters, and don't present AI images as real photographs where that could mislead. Check each tool's terms for commercial use. If you publish AI images in a book, for example on Amazon KDP, disclose them as AI-generated when asked.
+> **Warning:** Respect copyright, trademarks, and people's likenesses. Don't generate images of real people without consent, don't recreate logos or copyrighted characters, and don't present AI images as real photographs where that could mislead. Check each tool's terms for commercial use. If you publish AI images in a book, for example on Amazon KDP, disclose them as AI-generated; as of this book's publication, KDP requires it.
 
 ## A Visual Prompt Worksheet
 

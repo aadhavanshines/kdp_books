@@ -18,7 +18,7 @@ This book is written for anyone who wants better results from AI, at home or at 
 - **Parents, families, and students** who want AI to help with learning, planning, and everyday tasks, safely.
 - **Builders** such as developers, product managers, and technical founders who are designing AI features, agents, and automated pipelines and need prompts that work thousands of times, not just once.
 
-Chapter 16 contains ready-made prompt playbooks for more than fifteen professions and roles, each with its own examples and safety advice, so you can start applying what you learn to your own work right away.
+Chapter 16 contains ready-made prompt playbooks for 20 professions and roles, from medicine, law, and engineering to cybersecurity, music, and parenting, each with its own examples and safety advice, so you can start applying what you learn to your own work right away.
 
 You do not need any technical background to start. The early chapters assume nothing. The later chapters introduce APIs, structured outputs, retrieval-augmented generation, agents, and evaluation, but they explain each idea from first principles.
 
@@ -30,11 +30,26 @@ The book moves from basic to advanced in four parts.
 
 **Part II: Intermediate Techniques** teaches you to make models reason step by step, produce reliable structured output, and recover when a prompt fails. It ends with a practical library of templates for common tasks.
 
-**Part III: Prompting the Popular AI Tools** is a field guide to the major assistants and generators: ChatGPT, Claude, Gemini, Microsoft Copilot, Perplexity, Meta AI, Grok, DeepSeek, Mistral, and open-weight models, plus coding assistants. Two full chapters then cover prompt engineering for images and for video and audio, with tools such as Midjourney, Stable Diffusion, Sora, Veo, Runway, and Suno, and the part ends with prompt playbooks for every profession, from doctors and dentists to sales teams, engineers, parents, advocates, and musicians. Each tool has its own strengths and quirks, and knowing them saves hours.
+**Part III: Prompting the Popular AI Tools** is a field guide to the major assistants and generators: ChatGPT, Claude, Gemini, Microsoft Copilot, Perplexity, Meta AI, Grok, DeepSeek, Mistral, and open-weight models, plus coding assistants. Two full chapters then cover prompt engineering for images and for video and audio, with tools such as Midjourney, Stable Diffusion, Veo, Runway, and Suno, and the part ends with prompt playbooks for every profession, from doctors and dentists to sales teams, engineers, parents, advocates, and musicians. Each tool has its own strengths and quirks, and knowing them saves hours.
 
 **Part IV: Advanced Prompt Engineering** covers what professionals do: designing system prompts, working through APIs, grounding models in your own documents, building agents that use tools, connecting AI to browsers, files, and apps through the Model Context Protocol (MCP), designing your own custom agents and multi-agent architectures, testing prompts with evaluations, and defending against prompt injection and other security risks.
 
-The appendices give you a quick-reference prompt library, a troubleshooting guide, and a glossary.
+The appendices give you a quick-reference prompt library, a troubleshooting guide, a glossary, and a list of official sources for keeping up with each tool.
+
+## Choose Your Reading Path
+
+You don't have to read this book cover to cover. Each chapter opening is labeled **Beginner**, **Intermediate**, **Advanced**, or **Builder**, or **All levels** when it suits every reader. Start with the path that fits you:
+
+| If you are... | Start with | Then read |
+| --- | --- | --- |
+| New to AI | Chapters 1-4 | 8, then the tool chapters you use (9-12) |
+| A professional using AI at work | Chapters 3-8 | 16 (your profession's playbook), then 23 |
+| A creator (images, video, music, writing) | Chapters 3-4 | 14-15, then 16 |
+| A developer | Chapters 5-7 and 13 | 17-22 |
+| Building AI products or agents | Chapters 17-21 | 22-23 |
+| A parent or teacher | Chapters 1-4 | 8, 16, and 23 |
+
+Whatever your path, keep Appendix A, the prompt library, close at hand.
 
 ## A Note on a Fast-Moving Field
 

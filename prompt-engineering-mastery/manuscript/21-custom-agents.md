@@ -269,7 +269,7 @@ At chosen checkpoints, the agent stops and asks a person to approve, edit, or re
 
 You can build useful agents with no programming at all. The main no-code options work the same way: you write instructions (a system prompt), attach knowledge files, and switch on tools.
 
-- **Custom GPTs (ChatGPT):** Instructions, knowledge files, and capabilities such as web search, image generation, data analysis, and connections to outside services.
+- **ChatGPT plugins:** Reusable instructions (skills), reference files, and connected apps. Plugins replace custom GPTs, which OpenAI announced in September 2026 it will retire.
 - **Claude Projects:** Project instructions and documents that apply to every conversation in the project.
 - **Gemini Gems:** Saved instructions for a reusable, specialized Gemini assistant.
 - **Microsoft Copilot Studio:** A builder for organization-wide agents, with instructions that can refer directly to tools, knowledge sources, and other agents, plus connectors to business systems.
@@ -367,7 +367,7 @@ Keep a set of 10 to 20 test tasks, including tricky and adversarial ones, and re
 - For multi-agent designs, does every delegation include scope, format, and what to ignore?
 - Have you tested it on realistic and adversarial tasks and read the traces?
 
-> **Try It:** Pick a task you repeat every week, such as summarizing a report, answering a common question, or preparing a meeting brief. Write the one-page specification, turn it into a system prompt with the template in this chapter, and set it up as a custom GPT, Claude Project, or Gem. Test it on three real examples and improve one instruction after each test.
+> **Try It:** Pick a task you repeat every week, such as summarizing a report, answering a common question, or preparing a meeting brief. Write the one-page specification, turn it into a system prompt with the template in this chapter, and set it up as a ChatGPT plugin, Claude Project, or Gem. Test it on three real examples and improve one instruction after each test.
 
 ## Key Takeaways
 
@@ -376,5 +376,5 @@ Keep a set of 10 to 20 test tasks, including tricky and adversarial ones, and re
 - Use the agent system prompt template: role, success criteria, context, tools, workflow, rules, output, and examples.
 - Choose the simplest architecture that works: single agent, prompt chain, router, orchestrator-workers, evaluator-optimizer, plus human approval where needed.
 - Delegation messages and tool descriptions are prompts; write them with full context.
-- Build without code using custom GPTs, Projects, Gems, or Copilot Studio; in coding tools with subagent files; or with code using an agent SDK.
+- Build without code using ChatGPT plugins, Claude Projects, Gemini Gems, or Copilot Studio; in coding tools with subagent files; or with code using an agent SDK.
 - Test on realistic tasks, read the traces, and fix failures in the prompt.

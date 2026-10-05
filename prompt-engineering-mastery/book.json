@@ -1,8 +1,8 @@
 {
   "title": "Prompt Engineering Mastery",
-  "subtitle": "The Complete Beginner-to-Advanced Guide to Getting Better Results from Today's Most Popular AI Chatbots, Coding Assistants, and Image Generators",
+  "subtitle": "The Complete Beginner-to-Advanced Guide to Getting Better Results from AI Chatbots, Coding Assistants, Image Generators, and Agents",
   "short_subtitle": "From Basic to Advanced",
-  "cover_tagline": "The Complete Guide to Getting Better Results from Today's Most Popular AI Tools",
+  "cover_tagline": "The Complete Guide to Getting Better Results from AI Chatbots, Image Tools, and Agents",
   "author": "Aadhavan Muthurengan",
   "language": "en",
   "year": 2026,
@@ -19,7 +19,7 @@
     "Inside you will learn:",
     "- The six-part blueprint for writing any prompt",
     "- Few-shot, chain-of-thought, and reflection techniques",
-    "- How to prompt each of today's leading AI chatbots and open models",
+    "- How to prompt the leading AI chatbots and open models",
     "- Prompting for coding assistants and AI image, video, and music tools",
     "- Playbooks for doctors, engineers, sales, parents, lawyers, musicians, and more",
     "- System prompts, RAG, tool use, and custom agent design",
@@ -39,5 +39,31 @@
     "",
     "This book is for you."
   ],
-  "author_short_bio": "Aadhavan Muthurengan is an automation and AI professional with more than 15 years of experience in the automotive industry, where Aadhavan has built in-house tools that transformed product development and validation."
+  "author_short_bio": "Aadhavan Muthurengan is an automation and AI professional with more than 15 years of experience in the automotive industry, where Aadhavan has built in-house tools that transformed product development and validation.",
+  "levels": {
+    "1": "Beginner",
+    "2": "Beginner",
+    "3": "Beginner",
+    "4": "Beginner",
+    "5": "Intermediate",
+    "6": "Intermediate",
+    "7": "Intermediate",
+    "8": "Beginner",
+    "9": "All levels",
+    "10": "All levels",
+    "11": "All levels",
+    "12": "All levels",
+    "13": "Intermediate",
+    "14": "All levels",
+    "15": "All levels",
+    "16": "All levels",
+    "17": "Advanced",
+    "18": "Advanced",
+    "19": "Advanced / Builder",
+    "20": "Advanced / Builder",
+    "21": "Builder",
+    "22": "Advanced / Builder",
+    "23": "All levels",
+    "24": "All levels"
+  }
 }

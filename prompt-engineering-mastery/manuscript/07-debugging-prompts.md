@@ -106,6 +106,54 @@ clearer. <prompt>...</prompt>
 
 **Fixes:** Use more varied examples. Explicitly say that the examples demonstrate style or format only. Describe the underlying pattern in words in addition to showing examples.
 
+## Case Study: From a Failed Prompt to a Useful One
+
+Here is the whole debugging process applied to one real-world task.
+
+**The problem.** Lakshmi runs a small home bakery and wants AI to write her Instagram captions for the week.
+
+**The failed prompt:**
+
+```
+Write Instagram captions for my bakery.
+```
+
+```
+Example output:
+1. Freshly baked happiness, just for you! #bakery #yum #love
+2. Life is short, eat the cake! #dessert #sweet #foodie
+3. Baked with love, served with a smile! #homemade #treats
+```
+
+**The diagnosis.** Using the five-question diagnosis from Appendix B: the model had no information about her products, her customers, or her voice, so it produced the most generic captions imaginable. It didn't know how many captions she needed, which days she posts, or what she wanted readers to do.
+
+**The improved prompt:**
+
+```
+Write 3 Instagram captions for my home bakery in Coimbatore for
+this week (Monday, Wednesday, Friday posts).
+
+This week's products: eggless chocolate brownies, ragi cookies,
+and a mango cheesecake (weekend orders only).
+Customers: busy parents and office workers who order for
+birthdays and family treats.
+My voice: warm, a little playful, like a neighbor who bakes.
+Each caption: 2-3 short sentences, one specific detail about the
+product (taste, texture, or ingredient), and a call to action to
+order by WhatsApp. Maximum 3 hashtags, including #CoimbatoreBakes.
+```
+
+```
+Example output:
+Monday: Fudgy in the middle, crackly on top, and completely
+eggless. These chocolate brownies disappear fast at office
+parties. WhatsApp me to reserve a box! #CoimbatoreBakes
+#EgglessBrownies #HomeBaker
+...
+```
+
+**The result.** The captions now mention real products and real details, speak to her actual customers, sound like her, and ask readers to do something specific. Nothing about the AI changed; the prompt supplied what the model couldn't know. That's the pattern behind almost every fix in this chapter.
+
 ## The Prompt Improvement Loop
 
 For prompts you'll reuse, follow this loop:

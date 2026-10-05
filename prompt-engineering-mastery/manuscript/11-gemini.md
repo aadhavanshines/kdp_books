@@ -82,7 +82,7 @@ For important matters like travel, legal, or medical information, always confirm
 
 ## Gems: Custom Gemini Assistants
 
-**Gems** are customized versions of Gemini with saved instructions, similar to custom GPTs. Create Gems for repeated tasks, such as a writing coach, a coding helper with your preferred stack, or a meal planner that knows your dietary needs. Write their instructions using the system prompt principles in Chapter 17.
+**Gems** are customized versions of Gemini with saved instructions, similar to ChatGPT plugins. Create Gems for repeated tasks, such as a writing coach, a coding helper with your preferred stack, or a meal planner that knows your dietary needs. Write their instructions using the system prompt principles in Chapter 17.
 
 ## Deep Research and Long Context
 

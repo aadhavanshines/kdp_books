@@ -1,10 +1,10 @@
 # Prompt Engineering Mastery
 
-**The Complete Beginner-to-Advanced Guide to Getting Better Results from Today's Most Popular AI Chatbots, Coding Assistants, and Image Generators**
+**The Complete Beginner-to-Advanced Guide to Getting Better Results from AI Chatbots, Coding Assistants, Image Generators, and Agents**
 
 by **Aadhavan Muthurengan**
 
-A practical guide of about 41,000 words (225 pages in 6 x 9 paperback, with 14 diagrams) that goes from a reader's first prompt to system prompts, RAG, agents, evaluation, and prompt-injection defense, with chapters on each major AI tool and 50 ready-to-use templates.
+A practical guide of about 44,000 words (239 pages in 6 x 9 paperback, with 14 diagrams) that goes from a reader's first prompt to system prompts, RAG, agents, evaluation, and prompt-injection defense, with chapters on each major AI tool and 50 ready-to-use templates.
 
 ## Ready-to-Upload Files (`dist/`)
 
@@ -26,7 +26,7 @@ Listing details (title, description, keywords, categories, pricing, and the AI d
 - **Part II: Intermediate Techniques**: Reasoning (chain of thought, reflection); structured output; debugging prompts; everyday prompt patterns
 - **Part III: Prompting the Popular AI Tools**: ChatGPT; Claude; Gemini; Copilot, Perplexity, Meta AI, Grok, DeepSeek, Mistral, and open models; coding assistants; prompt engineering for images; prompt engineering for video and audio; prompt playbooks for every profession
 - **Part IV: Advanced Prompt Engineering**: System prompts and APIs; RAG and context engineering; agents and tool use; MCP in practice (browser control, files, apps); building custom agents and agent architectures; evaluation; security and ethics; the future
-- Appendices: 50-prompt library, troubleshooting table, glossary, about the author
+- Appendices: 50-prompt library, troubleshooting table, glossary, sources and further reading, about the author
 
 ## How to Publish on Amazon KDP
 

@@ -53,6 +53,9 @@ def inline(text):
     return "".join(out)
 
 
+LEVELS = {}
+
+
 def blocks_to_html(blocks):
     out = []
     for b in blocks:
@@ -64,7 +67,9 @@ def blocks_to_html(blocks):
         elif kind == "chapter":
             m = re.match(r"^Chapter (\d+): (.*)$", b[1])
             if m:
-                out.append(f'<p class="chapnum">CHAPTER {m.group(1)}</p>')
+                level = LEVELS.get(m.group(1))
+                suffix = f" &#183; {html.escape(level.upper())}" if level else ""
+                out.append(f'<p class="chapnum">CHAPTER {m.group(1)}{suffix}</p>')
                 out.append(f"<h1>{html.escape(m.group(2))}</h1>")
             else:
                 out.append(f"<h1>{html.escape(b[1])}</h1>")
@@ -111,6 +116,7 @@ def split_parts(manuscript):
 
 
 def build_epub(meta, manuscript, cover_jpg, out_path, image_root):
+    LEVELS.update(meta.get("levels", {}))
     book = epub.EpubBook()
     book.set_identifier(meta["identifier"])
     book.set_title(meta["title"])

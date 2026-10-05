@@ -2,13 +2,35 @@
 
 # Chapter 5: Prompting for Reasoning
 
-Language models can answer simple questions in a single step. But for problems that involve calculation, logic, planning, or weighing trade-offs, how you prompt for reasoning makes a dramatic difference. This chapter covers the techniques that help models think more carefully, and how those techniques change with modern reasoning models.
+Language models can answer simple questions in a single step. But for problems that involve calculation, logic, planning, or weighing trade-offs, how you prompt for reasoning makes a dramatic difference. This chapter shows how to get careful, reliable reasoning, and how the right approach depends on the kind of model you are using.
 
-## Chain-of-Thought Prompting
+## Two Kinds of Models, Two Approaches
 
-**Chain-of-thought (CoT) prompting** asks the model to work through a problem step by step before giving its final answer. The simplest version adds a phrase such as "Think through this step by step."
+Today's assistants usually offer two kinds of models, often as a choice between a "fast" and a "thinking" (or "reasoning") mode:
 
-Consider this question:
+- **Standard models** answer immediately. They are quick and inexpensive, and ideal for everyday writing, summarizing, and simple questions.
+- **Reasoning models** think internally before they answer: they consider approaches, work through steps, and check their work, then show you only the result. They are slower but much stronger at math, logic, complex code, planning, and multi-step analysis.
+
+| | Standard (fast) models | Reasoning (thinking) models |
+| --- | --- | --- |
+| Best for | Everyday tasks a smart person could do immediately | Problems a smart person would need to sit and think about |
+| Say "think step by step"? | Yes, it often helps | No, they already do |
+| Your main job | Give room to reason, or guide the steps | Define the goal, constraints, and how to verify |
+| What to ask for | Visible steps, then the answer | A concise summary of key steps, then the answer |
+
+The rest of this chapter starts with the modern approach for reasoning models, then covers the classic technique that still helps standard models, and finishes with methods that make any model more reliable.
+
+## Prompting Reasoning Models: Goals, Constraints, and Verification
+
+With a reasoning model, you don't need to teach it *how* to think. Your job is to define the problem so completely that its thinking goes in the right direction:
+
+- **Describe the whole problem.** Include every fact, rule, and constraint. Missing information is still the most common cause of wrong answers.
+- **State what success looks like.** "The schedule must satisfy all ten constraints" gives the model something to check against.
+- **Ask it to verify.** "Check your answer against every condition before replying" encourages self-correction.
+- **Avoid micromanaging.** Very prescriptive step lists can force the model down a worse path than the one it would choose. High-level guidance such as "consider more than one approach" works better.
+- **Ask for the output you need, not a transcript of its thinking.** A concise summary of the key steps and assumptions is easier to check than pages of reasoning, and some providers block prompts that try to extract a model's internal reasoning.
+
+Consider this problem:
 
 ```
 A store sells pens for $1.50 each or $4 for a pack of 3. During a
@@ -17,9 +39,38 @@ pens and the cashier charges her the lowest possible price for the
 pens she has to pay for. How much does she pay?
 ```
 
-Asked to answer directly, a model may jump to a wrong number. Asked to reason first, it is more likely to work out how many pens are free, how many must be paid for, and how the pricing groups apply, before calculating the total.
+A good prompt for a reasoning model adds verification and a clear output format:
 
-Here is the kind of answer you get when you add "Think through this step by step":
+```
+Solve the problem below. Before answering, check your result
+against every condition in the problem. Reply with a short
+summary of the key steps and any assumptions under the heading
+"Key steps", then give the final answer on its own line starting
+with "Answer:".
+
+Problem: <paste the problem>
+```
+
+```
+Example output:
+Key steps
+- Every 4th pen is free: pens 4, 8, and 12, so 3 are free.
+- Maria pays for 14 - 3 = 11 pens.
+- Packs are cheaper per pen ($1.33 vs $1.50), so: 3 packs
+  (9 pens) for $12, plus 2 single pens for $3.
+- Checked: 9 + 2 = 11 paid pens; no cheaper combination exists.
+Answer: $15
+```
+
+The answer is easy to read, a program can find it by looking for the line starting with "Answer:", and the short summary lets you check the logic without wading through everything the model considered.
+
+> **Tip:** Use reasoning modes for problems where a smart person would need to sit and think, such as math, complex code, strategy, scheduling with many constraints, and tricky analysis. For everyday tasks, a fast model is quicker and just as good.
+
+## Classic Chain-of-Thought (for Standard Models)
+
+**Chain-of-thought (CoT) prompting** asks a model to work through a problem step by step before giving its final answer. With standard models, simply adding "Think through this step by step" to the pen problem changes the result. Asked to answer directly, a fast model may jump to a wrong number; asked to reason first, it works out how many pens are free, how many must be paid for, and how the pricing applies.
+
+Here is a typical step-by-step answer:
 
 ```
 Example output:
@@ -33,29 +84,13 @@ Example output:
 Answer: Maria pays $15.
 ```
 
-Each step is visible, so if the answer were wrong you could see exactly which step failed.
+Why does this work? Because a standard model generates text one piece at a time, writing out intermediate steps gives it "space" to work. Each step becomes part of the context that informs the next. Skipping straight to the answer forces it to compress all that reasoning into a single prediction. Reasoning models do this internally, which is why they don't need the instruction.
 
-Why does this work? Because the model generates text one piece at a time, writing out intermediate steps gives it "space" to work. Each step becomes part of the context that informs the next. Skipping straight to the answer forces it to compress all that reasoning into a single prediction.
+> **Note:** Older guides often suggest asking the model to reason inside `<thinking>` tags. With current models, avoid this: some providers' safety systems now block prompts that ask a model to expose its internal reasoning in tags like these. When we tested this book's prompts, that version was blocked on two current models, while the "Key steps" and "Answer:" version above worked correctly. Use plain headings, or switch on the assistant's built-in thinking mode.
 
-### Structured Chain of Thought
+### Guided Reasoning
 
-For more control, separate the reasoning from the final answer:
-
-```
-Solve the problem below. Show your working as numbered steps
-under the heading "Working". Then give the final answer on its
-own line, starting with "Answer:".
-
-Problem: <paste the problem>
-```
-
-This makes the output easier to read and to process automatically (a program can simply look for the line starting with "Answer:"), and you can inspect the working to see where errors occur.
-
-> **Note:** Older guides often suggest asking the model to reason inside `<thinking>` tags. Many current models already reason internally, and some providers' safety systems now block prompts that ask the model to expose its internal reasoning in tags like these. When we tested this book's prompts, that version was blocked while the plain "Working" and "Answer:" version above worked perfectly. Use plain headings, or turn on the assistant's built-in thinking mode.
-
-### Guided Chain of Thought
-
-You can also specify the steps the model should follow, which is useful when you know the right method:
+When you know the right method, you can specify the steps the model should follow. This works with both kinds of models, and it's especially valuable for decisions that people will review:
 
 ```
 Evaluate whether this job candidate meets our requirements.
@@ -75,19 +110,7 @@ Step 4: Give an overall recommendation with a one-paragraph
 justification.
 ```
 
-Guided reasoning makes the process transparent and consistent across many inputs, which is important for evaluations, audits, and decisions that people will review.
-
-## Reasoning Models Change the Rules
-
-As Chapter 2 explained, reasoning models think internally before they answer. Many assistants offer a "thinking" or "reasoning" mode, sometimes with selectable effort levels. With these models:
-
-- **You usually don't need "think step by step."** They already do.
-- **Avoid micromanaging the reasoning.** Very prescriptive step lists can sometimes reduce performance by forcing the model down a path less effective than the one it would have chosen. Prefer high-level guidance: "Consider several approaches before choosing one" or "Check your answer against all the constraints."
-- **Invest in the problem description.** Clear goals, complete constraints, and explicit success criteria matter even more.
-- **Ask for the final output you need**, not a transcript of thinking. The model's visible answer can be concise even when its internal reasoning was long.
-- **Use them selectively.** Reasoning takes more time and often costs more. For simple tasks like rewriting an email, a standard model is faster and just as good.
-
-> **Tip:** A good rule of thumb: use reasoning modes for problems where a smart person would need to sit and think, such as math, complex code, strategy, scheduling with many constraints, and tricky analysis. Use fast modes for tasks a smart person could do immediately.
+Guided reasoning makes the process transparent and consistent across many inputs, which is important for evaluations, audits, and decisions that people will review. Here the steps describe the *output* you need, evidence and ratings for each requirement, rather than how the model should think, so they help reasoning models too.
 
 ## Decomposition: Breaking Down Hard Problems
 
@@ -189,8 +212,9 @@ This turns a confident-sounding answer into an honest one and shows you exactly 
 
 ## Key Takeaways
 
-- Chain-of-thought gives the model room to reason and improves accuracy on complex problems.
-- Separate reasoning from final answers for clarity, and guide the steps when you know the method.
-- With reasoning models, focus on goals and constraints rather than micromanaging the thinking.
+- Know which kind of model you're using: standard models benefit from step-by-step prompting; reasoning models think on their own.
+- For reasoning models, define the goal, every constraint, and how to verify the answer, and ask for a concise summary of key steps rather than a transcript.
+- Classic chain-of-thought still improves accuracy on standard models; avoid prompts that ask a model to expose its internal reasoning in special tags.
+- Guide the steps when you know the method, especially for decisions people will review.
 - Decomposition, self-consistency, and reflection loops further improve reliability.
 - Ask for alternatives, assumptions, and uncertainty to get honest, balanced reasoning.

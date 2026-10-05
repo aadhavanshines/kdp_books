@@ -113,7 +113,7 @@ You are responsible for what you publish, send, or decide, even when AI wrote it
 
 Be honest about AI's role where it matters:
 
-- Many publishers, schools, employers, and platforms have AI disclosure policies. For example, Amazon KDP requires authors to disclose AI-generated content when publishing.
+- Many publishers, schools, employers, and platforms have AI disclosure policies. For example, as of this book's publication, Amazon KDP requires authors to disclose AI-generated text, images, and translations when publishing.
 - Don't use AI to impersonate real people, create deceptive content, or generate fake reviews or testimonials.
 - In customer-facing applications, make it clear when people are interacting with an AI.
 
@@ -122,6 +122,37 @@ Be honest about AI's role where it matters:
 - Respect copyright: don't use AI to reproduce copyrighted works or to imitate living artists in ways that violate their rights or platform policies.
 - Understand that copyright protection for purely AI-generated content is limited or uncertain in many jurisdictions; human creative contribution matters.
 - Check the terms of service for commercial use of outputs from each tool.
+
+## Protecting Yourself from AI-Powered Scams
+
+The same technology that helps you also helps criminals. Security is no longer only about protecting AI systems; it is also about protecting yourself, your family, and your organization from scams that use AI. The most common forms are:
+
+- **Voice cloning:** A few seconds of someone's voice from a social media video can be enough to imitate them. Scammers call parents or grandparents pretending to be a family member in an emergency who urgently needs money.
+- **Deepfake video calls:** Criminals have impersonated company executives on video calls to trick employees into transferring money.
+- **Flawless phishing:** AI writes convincing, personalized emails and messages in perfect language, so spelling mistakes are no longer a reliable warning sign.
+- **Fake websites, reviews, and profiles:** AI can generate realistic shops, product reviews, and social media profiles in minutes.
+
+Habits that protect you:
+
+1. **Slow down when there is urgency.** Pressure to act immediately is the most common sign of a scam, with or without AI.
+2. **Verify through a second channel.** If a call or message asks for money or sensitive information, hang up and call back on a number you already know, not one given in the message.
+3. **Agree on a family code word** that only your family knows, and ask for it in any unexpected emergency call.
+4. **Never share one-time passwords or PINs**, whoever asks.
+5. **Check links before clicking** and type important website addresses yourself.
+6. **Report and warn others.** Report scams to your bank and your country's cybercrime authority, and tell family members, especially older relatives.
+
+You can also use AI to help you spot a scam, as long as you remove personal details first:
+
+```
+I received the message below. List any signs that it could be a
+scam, explain what the sender probably wants, and tell me the
+safest way to check whether it's genuine. Don't click or visit
+anything in it.
+
+<paste the message, with your personal details removed>
+```
+
+Security professionals will find a full defensive playbook in Chapter 16.
 
 ## A Responsible Prompting Checklist
 
@@ -139,3 +170,4 @@ Be honest about AI's role where it matters:
 - Defend in layers: delimit untrusted data, minimize privileges, confirm sensitive actions, validate outputs, monitor, and test.
 - Never treat system prompts as a place to hide secrets.
 - Protect privacy, test for bias, verify accuracy, disclose AI use, and respect intellectual property.
+- Protect yourself and your family from AI-powered scams: slow down, verify through a second channel, and agree on a family code word.

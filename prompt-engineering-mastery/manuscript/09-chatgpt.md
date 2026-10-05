@@ -4,6 +4,8 @@
 
 ChatGPT, from OpenAI, is the assistant that brought generative AI into the mainstream, and it remains one of the most widely used. This chapter covers how to get the most from it. Everything you learned in Parts I and II applies here; the focus now is on ChatGPT's particular features and habits.
 
+> **Current as of October 2026:** The chapters in Part III describe AI products as they were in October 2026, when this book was completed. Features, names, and plans change often; the prompting principles behind them don't. When something on your screen looks different, apply the same principle, and check the provider's current documentation listed in Appendix D.
+
 > **Note:** ChatGPT's model lineup, plan tiers, and feature names change often. The techniques below apply across versions. Check OpenAI's help center for the current details of any feature.
 
 ## Understanding ChatGPT's Modes
@@ -48,15 +50,17 @@ executives. I'm based in the UK and use British spelling.
 
 ChatGPT also offers **memory**, which lets it remember details across conversations. Memory is convenient, but review what it has saved periodically in settings, and remember that saved details influence future answers. You can also ask it directly: "What do you remember about me?" or "Forget that I work at Company X."
 
-## Custom GPTs
+## Custom Assistants: From GPTs to Plugins
 
-A **custom GPT** is a version of ChatGPT configured with your own instructions, knowledge files, and capabilities, designed for a specific purpose. You can build one without code through the GPT builder. Examples:
+For several years, ChatGPT let you build **custom GPTs**: versions of ChatGPT configured with your own instructions, knowledge files, and capabilities. In September 2026, OpenAI announced that custom GPTs will be retired (scheduled at the time of writing for December 11, 2026) and replaced by **plugins**, which combine reusable instructions, called skills, with reference files and connected apps. When a GPT is migrated, its instructions become a skill and its knowledge files become reference files.
+
+The names change; the skill doesn't. Whether you're building a plugin, a Claude Project, or a Gemini Gem, you're writing reusable instructions for a specialized assistant. Examples:
 
 - A brand-voice writer loaded with your style guide.
 - A customer-support assistant loaded with your product documentation.
 - A study tutor for a specific course, loaded with lecture notes.
 
-Writing the instructions for a custom GPT is system prompt design, which Chapter 17 covers in depth. A solid structure is:
+Writing the instructions for a custom assistant is system prompt design, which Chapter 17 covers in depth. A solid structure is:
 
 ```
 # Role and purpose
@@ -77,7 +81,7 @@ If the files don't contain the answer, say so.
 <what to decline, when to refer to a human>
 ```
 
-> **Tip:** Test your custom GPT with realistic and tricky requests before sharing it. Ask a colleague to try to confuse it. Every failure reveals an instruction you need to add or clarify.
+> **Tip:** Test your custom assistant with realistic and tricky requests before sharing it. Ask a colleague to try to confuse it. Every failure reveals an instruction you need to add or clarify.
 
 ## Projects
 
@@ -162,6 +166,6 @@ Answering these four questions takes a minute and turns a generic plan into one 
 
 - Choose the right mode: fast, reasoning, search, data analysis, or deep research.
 - Set up custom instructions; they improve every conversation.
-- Use custom GPTs and Projects for repeated, specialized work.
+- Use plugins (which replace custom GPTs) and Projects for repeated, specialized work.
 - Tell ChatGPT explicitly when you want prose instead of bullet points.
 - Use the data analysis tool for any real calculation.

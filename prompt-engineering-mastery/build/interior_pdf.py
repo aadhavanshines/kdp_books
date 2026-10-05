@@ -415,6 +415,9 @@ def table_block(rows, styles):
         ("TOPPADDING", (0, 0), (-1, -1), 3),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
     ]))
+    if len(rows) <= 8:
+        # Short tables read best in one piece.
+        return [KeepTogether([Spacer(1, 4), t, Spacer(1, 10)])]
     return [Spacer(1, 4), t, Spacer(1, 10)]
 
 
@@ -452,7 +455,8 @@ def front_matter(meta, styles):
         "OpenJS Foundation. GitHub Copilot is a trademark of GitHub, Inc. Midjourney, "
         "Perplexity, Meta AI, Llama, Grok, DeepSeek, Mistral, Stable Diffusion, Flux, Runway, "
         "Adobe Firefly, Ideogram, Kling, Luma, Pika, Suno, Udio, ElevenLabs, Cursor, and all other product names are trademarks of their "
-        "respective owners. This book is independent and is not affiliated with, sponsored by, or "
+        "respective owners. Product names, trademarks, and service descriptions are used solely for identification and "
+        "educational discussion. This book is independent and is not affiliated with, sponsored by, or "
         "endorsed by any of these companies.",
         "<b>Examples.</b> All companies, products, people, and data in the examples are fictional. "
         "Any resemblance to real organizations or persons is coincidental.",
@@ -565,7 +569,9 @@ def build_story(meta, manuscript, styles, image_root):
                 story.append(Marker(plain="opener", front=False, chapter=(m.group(2) if m else title)))
                 story.append(Spacer(1, 1.3 * inch))
                 if m:
-                    story.append(Paragraph(f"CHAPTER {m.group(1)}", styles["chapnum"]))
+                    level = meta.get("levels", {}).get(m.group(1))
+                    label = f"CHAPTER {m.group(1)}" + (f"&nbsp;&nbsp;&middot;&nbsp;&nbsp;{level.upper()}" if level else "")
+                    story.append(Paragraph(label, styles["chapnum"]))
                     head = Paragraph(m.group(2), styles["chaptitle"])
                     head._toc = (1, f"{m.group(1)}. {m.group(2)}")
                 else:
@@ -579,7 +585,7 @@ def build_story(meta, manuscript, styles, image_root):
                 story.append(h)
             elif kind == "p":
                 # Bold labels and lead-ins ending in ":" belong with what follows them.
-                label = re.fullmatch(r"\*\*[^*]+\*\*", block[1])
+                label = re.fullmatch(r"\*\*[^*]+\*\*", block[1]) or re.match(r"\*\*Prompt \d+:", block[1])
                 para = Paragraph(inline(block[1]), styles["label" if label else "body"])
                 nxt = blocks[bi + 1][0] if bi + 1 < len(blocks) else None
                 short_leadin = block[1].rstrip().endswith(":") and len(block[1]) < 220

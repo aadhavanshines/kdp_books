@@ -1,6 +1,6 @@
 # Chapter 15: Prompt Engineering for Video and Audio
 
-AI video generators such as OpenAI's Sora, Google's Veo, Runway, Kling, Luma, and Pika turn text or images into moving footage, and some now generate synchronized sound and dialogue too. Audio tools such as Suno, Udio, and ElevenLabs create music and lifelike voices. These tools reward a different kind of prompting: you are no longer describing a single frame but directing a short scene. This chapter teaches you to think like a film director.
+AI video generators such as Google's Veo, Runway, Kling, Luma, and Pika turn text or images into moving footage, and some now generate synchronized sound and dialogue too. This field changes especially fast: OpenAI's once-prominent Sora app, for example, shut down in 2026. The directing skills in this chapter carry over to whichever tools you use. Audio tools such as Suno, Udio, and ElevenLabs create music and lifelike voices. These tools reward a different kind of prompting: you are no longer describing a single frame but directing a short scene. This chapter teaches you to think like a film director.
 
 ## From Picture to Scene
 

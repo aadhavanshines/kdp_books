@@ -77,7 +77,7 @@ But you cannot eliminate hallucinations entirely with prompting. Verification re
 
 Most chat-based models organize the conversation into messages with different roles:
 
-- **System message (or system prompt):** Instructions that set the model's overall behavior, persona, and rules. In apps, this is often written by the developer and hidden. Features like custom instructions, custom GPTs, Claude Projects, and Gemini Gems let you write your own persistent instructions that work similarly.
+- **System message (or system prompt):** Instructions that set the model's overall behavior, persona, and rules. In apps, this is often written by the developer and hidden. Features like custom instructions, ChatGPT plugins, Claude Projects, and Gemini Gems let you write your own persistent instructions that work similarly.
 - **User messages:** What you type.
 - **Assistant messages:** What the model replies.
 
