@@ -129,6 +129,9 @@ def build_epub(meta, manuscript, cover_jpg, out_path):
                           "including ChatGPT, Claude, Gemini, Copilot, Midjourney, and others mentioned, "
                           "are trademarks of their respective owners. This book is independent and not "
                           "affiliated with, sponsored by, or endorsed by any of these companies.</p>"
+                          "<p><strong>Examples.</strong> All companies, products, people, and data in the "
+                          "examples are fictional. Any resemblance to real organizations or persons is "
+                          "coincidental.</p>"
                           f"<p>First edition, {meta['year']}.</p></div>")
 
     spine = [title_page, copyright_page, "nav"]

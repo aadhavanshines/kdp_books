@@ -18,14 +18,14 @@ Claude is particularly well suited to:
 
 Recent Claude models are trained to follow instructions precisely. This is a strength, but it means you get what you ask for, not necessarily what you meant. If you want Claude to go beyond the literal request, say so.
 
-- Instead of: "Create an analytics dashboard."
-- Try: "Create an analytics dashboard. Include as many relevant features and interactions as you can. Go beyond the basics to make it fully featured."
+- Instead of: "Make a packing list for my trip."
+- Try: "Make a packing list for my 10-day hiking trip in Scotland in October. Be thorough: think about weather changes, first aid, navigation, and things first-timers usually forget, and group the items by category."
 
 Similarly, if you want Claude to take action, such as editing a file, rather than suggesting changes, say "Make these changes" rather than "Can you suggest some changes?"
 
 ## Use XML Tags to Structure Prompts
 
-Anthropic's own guidance recommends XML tags for organizing complex prompts. Tags help Claude separate instructions, context, examples, and data, and they make outputs easier to parse.
+XML tags are a well-established way to organize complex prompts for Claude, and Anthropic's documentation encourages them for organizing complex prompts. Tags help Claude separate instructions, context, examples, and data, and they make outputs easier to parse.
 
 ```
 <context>
@@ -84,10 +84,10 @@ in <answer> tags, referring to the quotes.
 
 Claude responds especially well to context about why an instruction exists. Instead of a bare rule, give the reason:
 
-- Less effective: "NEVER use ellipses."
-- More effective: "Your response will be read aloud by a text-to-speech engine, so never use ellipses, since the engine can't pronounce them."
+- Less effective: "Keep every answer under 3 sentences."
+- More effective: "Keep every answer under 3 sentences, because our customers read these replies on a smartwatch screen."
 
-With the reason, Claude can generalize correctly to related cases, such as avoiding other symbols the engine can't read.
+With the reason, Claude can generalize correctly to related cases, such as also avoiding wide tables and long links that would not fit on a small screen.
 
 ## Projects and Styles
 
@@ -105,7 +105,7 @@ For difficult problems, enable Claude's extended thinking. Prompting tips:
 
 ## Controlling Format and Style
 
-- **Say what to do, not what not to do.** "Write in smoothly flowing prose paragraphs" works better than "Don't use markdown."
+- **Say what to do, not what not to do.** "Write your answer as connected paragraphs of plain prose" works better than "No bullet points or headings."
 - **Match your prompt style to the desired output.** A prompt written in prose with little markdown tends to produce prose output.
 - **Use format tags:** "Write the body of the essay in `<essay>` tags."
 

@@ -12,7 +12,9 @@ Prompt Engineering Mastery
 
 ## Subtitle
 
-The Complete Beginner-to-Advanced Guide to Prompting ChatGPT, Claude, Gemini, Copilot, Midjourney, and Other Popular AI Tools
+The Complete Beginner-to-Advanced Guide to Getting Better Results from Today's Most Popular AI Chatbots, Coding Assistants, and Image Generators
+
+> Product names such as ChatGPT or Midjourney are deliberately kept out of the title, subtitle, cover, and keywords. They are trademarks of other companies, and leaving them out avoids trademark and "misleading metadata" problems during KDP review. Naming the tools in the description and inside the book to describe what it covers is fine, because the book carries a clear "not affiliated" notice.
 
 ## Series
 
@@ -60,6 +62,8 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p>Whether you are a curious beginner, a busy professional, or a developer building AI features, this book will help you get consistently excellent results from the AI tools you use every day.</p>
 
+<p><i>This book is independent and is not affiliated with, sponsored by, or endorsed by any of the companies whose products it discusses. All product names are trademarks of their respective owners.</i></p>
+
 <p><b>Scroll up and start mastering prompt engineering today.</b></p>
 ```
 
@@ -87,11 +91,11 @@ Pick the closest available matches in KDP's category browser:
 ## Keywords (7 boxes)
 
 1. prompt engineering for beginners
-2. ChatGPT prompts guide
-3. Claude and Gemini AI prompts
+2. AI prompts guide and templates
+3. how to use AI chatbots at work
 4. generative AI for business productivity
 5. AI agents and RAG for developers
-6. Midjourney image prompts
+6. AI image generation prompts
 7. large language models practical guide
 
 ## AI-Generated Content Disclosure (required)

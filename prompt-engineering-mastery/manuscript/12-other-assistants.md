@@ -13,12 +13,12 @@ Microsoft offers Copilot in two main forms: a consumer assistant available on th
 Microsoft's guidance for effective prompts emphasizes four elements: **goal**, **context**, **expectations**, and **source**. Being explicit about the *source* is especially important, because Copilot can search your work data:
 
 ```
-Goal: Summarize the status of the Riverside project.
+Goal: Summarize the status of the Larkspur project.
 Context: I'm meeting the client tomorrow and need to know what's
 changed since our last meeting on March 3.
 Expectations: A bulleted summary of under 200 words, plus a list
 of open issues.
-Source: Use emails and Teams chats from the Riverside project
+Source: Use emails and Teams chats from the Larkspur project
 channel since March 3, and the latest version of the project plan.
 ```
 

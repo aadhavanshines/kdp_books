@@ -339,6 +339,8 @@ def front_matter(meta, styles):
         "Suno, Udio, ElevenLabs, Cursor, and all other product names are trademarks of their "
         "respective owners. This book is independent and is not affiliated with, sponsored by, or "
         "endorsed by any of these companies.",
+        "<b>Examples.</b> All companies, products, people, and data in the examples are fictional. "
+        "Any resemblance to real organizations or persons is coincidental.",
         f"First edition, {y}.",
     ]
     story += [Marker(plain=True, number=False), Spacer(1, 2.6 * inch)]

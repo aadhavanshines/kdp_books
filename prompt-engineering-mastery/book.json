@@ -1,13 +1,16 @@
 {
   "title": "Prompt Engineering Mastery",
-  "subtitle": "The Complete Beginner-to-Advanced Guide to Prompting ChatGPT, Claude, Gemini, Copilot, Midjourney, and Other Popular AI Tools",
+  "subtitle": "The Complete Beginner-to-Advanced Guide to Getting Better Results from Today's Most Popular AI Chatbots, Coding Assistants, and Image Generators",
   "short_subtitle": "From Basic to Advanced",
-  "cover_tagline": "The Complete Guide to Prompting ChatGPT, Claude, Gemini, Copilot, Midjourney & More",
+  "cover_tagline": "The Complete Guide to Getting Better Results from Today's Most Popular AI Tools",
   "author": "Aadhavan Muthurengan",
   "language": "en",
   "year": 2026,
   "identifier": "prompt-engineering-mastery-aadhavan-muthurengan-2026",
-  "trim": {"width_in": 6.0, "height_in": 9.0},
+  "trim": {
+    "width_in": 6.0,
+    "height_in": 9.0
+  },
   "paper": "white",
   "back_cover_blurb": [
     "Get better results from AI, every time.",
@@ -16,8 +19,8 @@
     "Inside you will learn:",
     "- The six-part blueprint for writing any prompt",
     "- Few-shot, chain-of-thought, and reflection techniques",
-    "- How to prompt ChatGPT, Claude, Gemini, Copilot, Perplexity, Grok, DeepSeek, and open models",
-    "- Prompting for coding assistants, Midjourney, Stable Diffusion, and AI video and music tools",
+    "- How to prompt each of today's leading AI chatbots and open models",
+    "- Prompting for coding assistants and AI image, video, and music tools",
     "- System prompts, RAG, agents, tool use, and MCP",
     "- How to test prompts and defend against prompt injection",
     "- 50 ready-to-use prompt templates"

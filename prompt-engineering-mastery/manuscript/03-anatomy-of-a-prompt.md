@@ -104,8 +104,8 @@ Showing is often more effective than telling. One or more examples of the desire
 ```
 Write product taglines in this style:
 
-Example 1: "Coffee that keeps up with you."
-Example 2: "Shoes for the long way home."
+Example 1 (our tea brand): "Slow down. Steep. Breathe."
+Example 2 (our candle brand): "Light it. Let the day go."
 
 Now write 5 taglines for a lightweight travel backpack.
 ```
@@ -123,7 +123,7 @@ companies.
 Task: Write a LinkedIn post announcing our new feature.
 
 Context:
-- Company: FlowDesk, a project management tool for agencies.
+- Company: Taskorra, a project management tool for agencies.
 - Feature: automatic time tracking that logs hours from calendar
   events and task activity.
 - Audience: agency owners and operations managers who hate chasing

@@ -1,6 +1,6 @@
 # Prompt Engineering Mastery
 
-**The Complete Beginner-to-Advanced Guide to Prompting ChatGPT, Claude, Gemini, Copilot, Midjourney, and Other Popular AI Tools**
+**The Complete Beginner-to-Advanced Guide to Getting Better Results from Today's Most Popular AI Chatbots, Coding Assistants, and Image Generators**
 
 by **Aadhavan Muthurengan**
 
