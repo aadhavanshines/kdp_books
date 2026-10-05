@@ -57,18 +57,16 @@ Tag names are not special keywords. Use clear, consistent names and refer to the
 Claude excels at long-context tasks. To get the best results:
 
 1. **Put documents first, questions last.** Place long documents near the top of the prompt and your instructions and question at the end.
-2. **Wrap each document in tags with metadata:**
+2. **Wrap each document in its own tags and label it** with an ID, a title, and a type, so you and Claude can refer to it precisely:
 
 ```
 <documents>
-  <document index="1">
-    <source>2025_annual_report.pdf</source>
-    <document_content>...</document_content>
-  </document>
-  <document index="2">
-    <source>competitor_analysis.docx</source>
-    <document_content>...</document_content>
-  </document>
+  <doc id="A" title="Board meeting minutes, May" type="minutes">
+  ...
+  </doc>
+  <doc id="B" title="Supplier contract renewal" type="contract">
+  ...
+  </doc>
 </documents>
 ```
 
@@ -106,7 +104,7 @@ For difficult problems, enable Claude's extended thinking. Prompting tips:
 ## Controlling Format and Style
 
 - **Say what to do, not what not to do.** "Write your answer as connected paragraphs of plain prose" works better than "No bullet points or headings."
-- **Match your prompt style to the desired output.** A prompt written in prose with little markdown tends to produce prose output.
+- **Write the prompt the way you want the answer written.** A request written in plain paragraphs, with few bullets or headings, tends to get plain paragraphs back.
 - **Use format tags:** "Write the body of the essay in `<essay>` tags."
 
 ## Artifacts and Building with Claude
