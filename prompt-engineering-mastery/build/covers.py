@@ -53,6 +53,20 @@ def wrap(draw, text, f, max_w):
     return lines
 
 
+def balanced_wrap(draw, text, f, max_w):
+    """Wrap into the fewest lines, then narrow the width so lines are even (no lone last word)."""
+    lines = wrap(draw, text, f, max_w)
+    lo, hi = 0.0, max_w
+    while hi - lo > 1:
+        mid = (lo + hi) / 2
+        trial = wrap(draw, text, f, mid)
+        if len(trial) == len(lines) and all(draw.textlength(l, font=f) <= mid for l in trial):
+            hi = mid
+        else:
+            lo = mid
+    return wrap(draw, text, f, hi)
+
+
 def gradient(img, box):
     x0, y0, x1, y1 = box
     d = ImageDraw.Draw(img)
@@ -144,7 +158,7 @@ def _front_text(img, x0, y0, w, h, s, margin, text_w, meta):
     ty += int(92 * s + 60 * s)
 
     ft = font(SERIF_ITALIC, 58 * s)
-    for line in wrap(d, meta["cover_tagline"], ft, text_w * 0.95):
+    for line in balanced_wrap(d, meta["cover_tagline"], ft, text_w * 0.95):
         d.text((x0 + w / 2, ty), line, font=ft, fill=SOFT, anchor="mt")
         ty += int(ft.size * 1.25)
     return ty

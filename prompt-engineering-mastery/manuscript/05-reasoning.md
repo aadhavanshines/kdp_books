@@ -214,7 +214,7 @@ This turns a confident-sounding answer into an honest one and shows you exactly 
 
 - Know which kind of model you're using: standard models benefit from step-by-step prompting; reasoning models think on their own.
 - For reasoning models, define the goal, every constraint, and how to verify the answer, and ask for a concise summary of key steps rather than a transcript.
-- Classic chain-of-thought still improves accuracy on standard models; avoid prompts that ask a model to expose its internal reasoning in special tags.
+- Explicit step-by-step reasoning can improve performance on some standard models and tasks; test it rather than assuming it will always help, and avoid prompts that ask a model to expose its internal reasoning in special tags.
 - Guide the steps when you know the method, especially for decisions people will review.
 - Decomposition, self-consistency, and reflection loops further improve reliability.
 - Ask for alternatives, assumptions, and uncertainty to get honest, balanced reasoning.
