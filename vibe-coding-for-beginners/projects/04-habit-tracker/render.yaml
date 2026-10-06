@@ -1,0 +1,17 @@
+# Render Blueprint. A persistent disk requires a paid instance type.
+services:
+  - type: web
+    name: habit-tracker
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn "app:create_app()" --bind 0.0.0.0:$PORT --workers 2 --access-logfile -
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: DATABASE_PATH
+        value: /var/data/habits.db
+    disk:
+      name: habit-data
+      mountPath: /var/data
+      sizeGB: 1

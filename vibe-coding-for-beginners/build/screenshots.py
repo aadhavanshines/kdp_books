@@ -1,0 +1,155 @@
+"""Capture real screenshots of the book's five projects (needs Playwright + Chromium).
+
+Usage: CHROMIUM_PATH=/path/to/chromium python3 build/screenshots.py
+Writes manuscript/images/shot-*.png. Not part of build.py because it needs a browser.
+"""
+import datetime as dt
+import json
+import os
+import shutil
+import socket
+import subprocess
+import sys
+import tempfile
+import threading
+import time
+import urllib.request
+from pathlib import Path
+
+from playwright.sync_api import sync_playwright
+
+ROOT = Path(__file__).resolve().parent.parent
+PROJ = ROOT / "projects"
+OUT = ROOT / "manuscript" / "images"
+SCALE = 2.5  # device pixels per CSS pixel, so ~300 DPI at the printed size
+
+
+def free_port():
+    with socket.socket() as s:
+        s.bind(("127.0.0.1", 0))
+        return s.getsockname()[1]
+
+
+def trim_bottom(path):
+    """Cut away empty rows at the bottom (same color as the last row), keeping a small margin."""
+    from PIL import Image
+    img = Image.open(path).convert("RGB")
+    w, h = img.size
+    bg = img.getpixel((w // 2, h - 1))
+    y = h - 1
+    while y > 0 and all(img.getpixel((x, y)) == bg for x in range(0, w, 7)):
+        y -= 1
+    img.crop((0, 0, w, min(h, y + 40))).save(path)
+
+
+def shoot(page, name, selector="main"):
+    path = OUT / f"shot-{name}.png"
+    page.locator(selector).first.screenshot(path=str(path))
+    trim_bottom(path)
+    print("wrote", path.name)
+
+
+def tip(browser):
+    page = browser.new_page(viewport={"width": 420, "height": 900}, device_scale_factor=SCALE, locale="en-US")
+    page.goto((PROJ / "01-tip-calculator" / "index.html").as_uri())
+    page.fill("#bill", "100")
+    page.fill("#people", "3")
+    page.check("#roundUp")
+    shoot(page, "tip-calculator")
+
+
+def todo(browser):
+    ctx = browser.new_context(viewport={"width": 560, "height": 700}, device_scale_factor=SCALE, locale="en-US",
+                              timezone_id="America/New_York")
+    page = ctx.new_page()
+    page.clock.set_fixed_time(dt.datetime(2026, 10, 6, 10, 0))
+    page.goto((PROJ / "02-todo-app" / "index.html").as_uri())
+    for text, due in [("Buy milk", ""), ("Call the dentist", "2026-10-03"), ("Finish chapter 3", "2026-10-06"),
+                      ("Book train tickets", "2026-10-09")]:
+        page.fill("#new-task", text)
+        page.fill("#new-due", due)
+        page.press("#new-task", "Enter")
+    page.locator("#task-list li", has_text="Buy milk").locator("input[type=checkbox]").check()
+    shoot(page, "todo-app", ".card")
+    ctx.close()
+
+
+def habits(browser):
+    tmp = Path(tempfile.mkdtemp())
+    shutil.copytree(PROJ / "04-habit-tracker", tmp / "app")
+    port = free_port()
+    env = dict(os.environ, PORT=str(port), DATABASE_PATH=str(tmp / "habits.db"))
+    proc = subprocess.Popen([sys.executable, "app.py"], cwd=tmp / "app", env=env,
+                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    url = f"http://127.0.0.1:{port}"
+    for _ in range(50):
+        try:
+            urllib.request.urlopen(url + "/api/habits")
+            break
+        except OSError:
+            time.sleep(0.1)
+    today = dt.date.today()
+    for name, back in [("Drink water", [0, 1, 2, 3, 5]), ("Read 20 pages", [1, 2, 3, 4, 5, 6])]:
+        req = urllib.request.Request(url + "/api/habits", data=json.dumps({"name": name}).encode(),
+                                     headers={"Content-Type": "application/json"})
+        hid = json.load(urllib.request.urlopen(req))["id"]
+        for b in back:
+            d = (today - dt.timedelta(days=b)).isoformat()
+            urllib.request.urlopen(urllib.request.Request(
+                f"{url}/api/habits/{hid}/toggle", data=json.dumps({"date": d}).encode(),
+                headers={"Content-Type": "application/json"}))
+    page = browser.new_page(viewport={"width": 600, "height": 700}, device_scale_factor=SCALE, locale="en-US")
+    page.goto(url)
+    page.wait_for_selector(".habit")
+    shoot(page, "habit-tracker")
+    proc.terminate()
+    proc.wait()
+
+
+def study_buddy(browser):
+    sys.path.insert(0, str(PROJ / "05-study-buddy"))
+    from werkzeug.serving import make_server
+    import app as app_module
+
+    cards = [{"question": "What does photosynthesis turn light energy into?",
+              "answer": "Chemical energy, stored as glucose."},
+             {"question": "Where in the plant cell does photosynthesis happen?", "answer": "In the chloroplasts."},
+             {"question": "Which gas do plants take in for photosynthesis?", "answer": "Carbon dioxide."}]
+
+    class Fake:
+        class messages:
+            @staticmethod
+            def create(**kw):
+                class B:
+                    type = "text"
+                    text = json.dumps({"flashcards": cards})
+
+                class R:
+                    stop_reason = "end_turn"
+                    content = [B()]
+                return R()
+
+    srv = make_server("127.0.0.1", 0, app_module.create_app(client=Fake()))
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    page = browser.new_page(viewport={"width": 560, "height": 900}, device_scale_factor=SCALE, locale="en-US")
+    page.goto(f"http://127.0.0.1:{srv.server_port}")
+    page.fill("#notes", "Photosynthesis is how plants turn light energy into chemical energy. It happens in the "
+                        "chloroplasts. Plants take in carbon dioxide and water and release oxygen.")
+    page.click("#make")
+    page.wait_for_selector("#card-view:not([hidden])")
+    page.click("#next")
+    shoot(page, "study-buddy")
+    srv.shutdown()
+
+
+def main():
+    OUT.mkdir(parents=True, exist_ok=True)
+    with sync_playwright() as p:
+        browser = p.chromium.launch(executable_path=os.environ.get("CHROMIUM_PATH") or None)
+        for fn in (tip, todo, habits, study_buddy):
+            fn(browser)
+        browser.close()
+
+
+if __name__ == "__main__":
+    main()

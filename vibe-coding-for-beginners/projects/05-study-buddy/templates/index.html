@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Study Buddy</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main>
+  <h1>Study Buddy</h1>
+  <section id="input-view">
+    <label for="notes">Paste your study notes</label>
+    <textarea id="notes" rows="10" placeholder="Paste notes here…"></textarea>
+    <div class="row"><span id="count">0 / 20,000</span>
+      <button id="make">Make flashcards</button></div>
+  </section>
+  <p id="message" role="alert" hidden></p>
+  <section id="card-view" hidden>
+    <button id="card" aria-live="polite" title="Click to flip">
+      <span id="card-label"></span><span id="card-text"></span>
+    </button>
+    <div class="row">
+      <button id="prev">Previous</button>
+      <span id="counter"></span>
+      <button id="next">Next</button>
+    </div>
+  </section>
+</main>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

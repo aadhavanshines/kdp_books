@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main>
+    <h1>Habit Tracker</h1>
+    <form id="add-form">
+      <input id="name" type="text" maxlength="30" placeholder="New habit, e.g. Drink water" required>
+      <button type="submit">Add</button>
+    </form>
+    <p id="error" role="alert"></p>
+    <ul id="habits"></ul>
+    <p id="empty" hidden>No habits yet. Add one above.</p>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

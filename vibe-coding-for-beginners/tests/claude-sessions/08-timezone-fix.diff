@@ -1,0 +1,129 @@
+diff --git a/app.py b/app.py
+index 80a7f0d..7af6711 100644
+--- a/app.py
++++ b/app.py
+@@ -60,6 +60,22 @@ def create_app(db_path=None, today_func=date.today):
+         conn.executescript(SCHEMA)
+     conn.close()
+ 
++    def current_today():
++        """The user's own today: the date their browser sends, if plausible.
++
++        The server may be in any timezone (e.g. UTC), so its date can differ
++        from the user's. Real timezones span UTC-12..UTC+14, so a client date
++        more than a day from the server's is bogus and is ignored.
++        """
++        server_today = app.config["TODAY"]()
++        try:
++            client = date.fromisoformat(request.headers.get("X-Client-Date", ""))
++        except ValueError:
++            return server_today
++        if abs((client - server_today).days) > 1:
++            return server_today
++        return client
++
+     def habit_json(row, today):
+         rows = get_db().execute(
+             "SELECT day FROM completions WHERE habit_id = ?", (row["id"],)
+@@ -84,7 +100,7 @@ def create_app(db_path=None, today_func=date.today):
+ 
+     @app.get("/api/habits")
+     def list_habits():
+-        today = app.config["TODAY"]()
++        today = current_today()
+         rows = get_db().execute("SELECT * FROM habits ORDER BY id").fetchall()
+         return jsonify([habit_json(r, today) for r in rows])
+ 
+@@ -104,7 +120,7 @@ def create_app(db_path=None, today_func=date.today):
+         except sqlite3.IntegrityError:
+             return jsonify(error="a habit with that name already exists"), 409
+         row = db.execute("SELECT * FROM habits WHERE id = ?", (cur.lastrowid,)).fetchone()
+-        return jsonify(habit_json(row, app.config["TODAY"]())), 201
++        return jsonify(habit_json(row, current_today())), 201
+ 
+     @app.delete("/api/habits/<int:habit_id>")
+     def delete_habit(habit_id):
+@@ -127,7 +143,7 @@ def create_app(db_path=None, today_func=date.today):
+             day = datetime.strptime(raw, "%Y-%m-%d").date()
+         except (TypeError, ValueError):
+             return jsonify(error="date must be YYYY-MM-DD"), 400
+-        today = app.config["TODAY"]()
++        today = current_today()
+         if day > today:
+             return jsonify(error="date cannot be in the future"), 400
+         cur = db.execute(
+diff --git a/static/app.js b/static/app.js
+index 78a5028..1239c1c 100644
+--- a/static/app.js
++++ b/static/app.js
+@@ -4,9 +4,16 @@ const errorBox = document.getElementById("error");
+ const form = document.getElementById("add-form");
+ const nameInput = document.getElementById("name");
+ 
++// The user's own calendar date; the server may be in a different timezone.
++function localToday() {
++  const n = new Date();
++  const pad = (v) => String(v).padStart(2, "0");
++  return `${n.getFullYear()}-${pad(n.getMonth() + 1)}-${pad(n.getDate())}`;
++}
++
+ async function api(path, options = {}) {
+   const res = await fetch(path, {
+-    headers: { "Content-Type": "application/json" },
++    headers: { "Content-Type": "application/json", "X-Client-Date": localToday() },
+     ...options,
+   });
+   const body = res.status === 204 ? null : await res.json();
+diff --git a/test_app.py b/test_app.py
+index f530fff..50fdc7b 100644
+--- a/test_app.py
++++ b/test_app.py
+@@ -148,3 +148,48 @@ def test_old_days_count_for_best_but_not_shown(client):
+     h = r.get_json()
+     assert h["best_streak"] == 5 and h["current_streak"] == 0
+     assert not any(d["done"] for d in h["days"])
++
++
++# ---- user's own "today" (server runs in UTC) ----
++
++# 8 p.m. Tuesday 4 March in California is already Wednesday 5 March in UTC.
++UTC_TODAY = date(2025, 3, 5)
++USER_TODAY = date(2025, 3, 4)
++HDR = {"X-Client-Date": USER_TODAY.isoformat()}
++
++
++@pytest.fixture
++def utc_client(tmp_path):
++    app = create_app(str(tmp_path / "utc.db"), today_func=lambda: UTC_TODAY)
++    return app.test_client()
++
++
++def test_today_is_users_date_not_server_date(utc_client):
++    h = utc_client.post("/api/habits", json={"name": "Read"}, headers=HDR).get_json()
++    assert h["days"][-1]["date"] == USER_TODAY.isoformat()
++    listed = utc_client.get("/api/habits", headers=HDR).get_json()
++    assert listed[0]["days"][-1]["date"] == USER_TODAY.isoformat()
++
++
++def test_ticking_users_today_counts_as_today(utc_client):
++    hid = utc_client.post("/api/habits", json={"name": "Read"}, headers=HDR).get_json()["id"]
++    r = utc_client.post(f"/api/habits/{hid}/toggle",
++                        json={"date": USER_TODAY.isoformat()}, headers=HDR)
++    assert r.status_code == 200
++    h = r.get_json()
++    assert h["days"][-1] == {"date": USER_TODAY.isoformat(), "done": True}
++    assert h["current_streak"] == 1
++
++
++def test_future_is_relative_to_users_date(utc_client):
++    hid = utc_client.post("/api/habits", json={"name": "Read"}, headers=HDR).get_json()["id"]
++    r = utc_client.post(f"/api/habits/{hid}/toggle",
++                        json={"date": UTC_TODAY.isoformat()}, headers=HDR)
++    assert r.status_code == 400
++
++
++@pytest.mark.parametrize("bad", ["garbage", "2025-13-45", "2030-01-01", "1999-01-01"])
++def test_bad_client_date_falls_back_to_server_date(utc_client, bad):
++    h = utc_client.post("/api/habits", json={"name": "Read"},
++                        headers={"X-Client-Date": bad}).get_json()
++    assert h["days"][-1]["date"] == UTC_TODAY.isoformat()

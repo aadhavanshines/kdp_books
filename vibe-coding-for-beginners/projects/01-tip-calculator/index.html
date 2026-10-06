@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tip Calculator</title>
+<style>
+  :root {
+    --bg: #f3f6fb;
+    --card: #ffffff;
+    --text: #1f2a3c;
+    --muted: #6b778c;
+    --accent: #14b8a6;
+    --accent-dark: #0f8f81;
+    --border: #d9e0ec;
+    --soft: #e6faf7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111827;
+      --card: #1b2434;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: #334155;
+      --soft: #12342f;
+      --accent-dark: #5eead4;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px 16px;
+  }
+  main {
+    width: 100%;
+    max-width: 420px;
+  }
+  h1 { font-size: 1.5rem; margin: 4px 0 16px; text-align: center; }
+  .card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 6px 24px rgba(20, 30, 60, 0.08);
+    margin-bottom: 16px;
+  }
+  label, .label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .field { margin-bottom: 20px; }
+  .field:last-child { margin-bottom: 0; }
+  .input-wrap { position: relative; }
+  .input-wrap .prefix {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); font-size: 1.2rem; pointer-events: none;
+  }
+  input[type=number] {
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 12px 14px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text);
+    font-family: inherit;
+  }
+  .input-wrap input { padding-left: 32px; }
+  input:focus { outline: none; border-color: var(--accent); }
+  .tips {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .tips button {
+    font: inherit;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 12px 0;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .tips button[aria-pressed=true] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .custom-wrap { margin-top: 10px; position: relative; }
+  .custom-wrap .suffix {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); font-size: 1.1rem; pointer-events: none;
+  }
+  .custom-wrap input { font-size: 1.05rem; padding: 10px 36px 10px 14px; }
+  .custom-wrap[hidden] { display: none; }
+  .stepper { display: flex; align-items: center; gap: 12px; }
+  .stepper button {
+    width: 48px; height: 48px; flex: none;
+    font-size: 1.6rem; line-height: 1;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    background: transparent; color: var(--text); cursor: pointer;
+  }
+  .stepper input { text-align: center; }
+  .results .row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .results .row span:first-child { color: var(--muted); }
+  .results .row span:last-child { font-weight: 700; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+  .each {
+    margin-top: 14px;
+    background: var(--soft);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+  }
+  .each .small { color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+  .each .big {
+    font-size: 2.4rem; font-weight: 800; color: var(--accent-dark);
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+  }
+  .check {
+    display: flex; align-items: center; gap: 12px;
+    margin: 20px 0 0; padding: 12px 14px;
+    border: 2px solid var(--border); border-radius: 12px;
+    font-size: 1rem; color: var(--text); cursor: pointer;
+  }
+  .check input { width: 22px; height: 22px; accent-color: var(--accent); flex: none; margin: 0; }
+  .results .row[hidden] { display: none; }
+  button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Tip Calculator</h1>
+
+  <div class="card">
+    <div class="field">
+      <label for="bill">Bill amount</label>
+      <div class="input-wrap">
+        <span class="prefix">$</span>
+        <input id="bill" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="label" id="tip-label">Tip</span>
+      <div class="tips" role="group" aria-labelledby="tip-label">
+        <button type="button" data-tip="10" aria-pressed="false">10%</button>
+        <button type="button" data-tip="15" aria-pressed="false">15%</button>
+        <button type="button" data-tip="18" aria-pressed="true">18%</button>
+        <button type="button" data-tip="20" aria-pressed="false">20%</button>
+        <button type="button" data-tip="custom" aria-pressed="false" style="grid-column: span 2">Custom</button>
+      </div>
+      <div class="custom-wrap" id="customWrap" hidden>
+        <input id="custom" type="number" inputmode="decimal" min="0" step="any" placeholder="Custom tip" aria-label="Custom tip percent">
+        <span class="suffix">%</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="people">Number of people</label>
+      <div class="stepper">
+        <button type="button" id="minus" aria-label="Fewer people">&minus;</button>
+        <input id="people" type="number" inputmode="numeric" min="1" step="1" value="1">
+        <button type="button" id="plus" aria-label="More people">+</button>
+      </div>
+    </div>
+
+    <label class="check">
+      <input type="checkbox" id="roundUp">
+      <span>Round up each share</span>
+    </label>
+  </div>
+
+  <div class="card results" aria-live="polite">
+    <div class="row"><span>Tip</span><span id="tipAmt">$0.00</span></div>
+    <div class="row" id="extraRow" hidden><span>Extra tip from rounding</span><span id="extraAmt">$0.00</span></div>
+    <div class="row"><span>Total</span><span id="total">$0.00</span></div>
+    <div class="each">
+      <div class="small">EACH PERSON PAYS</div>
+      <div class="big" id="each">$0.00</div>
+    </div>
+  </div>
+</main>
+
+<script>
+(function () {
+  var bill = document.getElementById('bill');
+  var custom = document.getElementById('custom');
+  var customWrap = document.getElementById('customWrap');
+  var people = document.getElementById('people');
+  var roundUp = document.getElementById('roundUp');
+  var extraRow = document.getElementById('extraRow');
+  var buttons = document.querySelectorAll('.tips button');
+  var tipPct = 18; // number, or 'custom'
+
+  var fmt = new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD' });
+
+  function num(v) {
+    var n = parseFloat(v);
+    return isFinite(n) && n > 0 ? n : 0;
+  }
+
+  // All money math is in whole cents to avoid floating-point surprises.
+  function calc(bill, pct, n, roundUp) {
+    var billC = Math.round(bill * 100);
+    var tipC = Math.round(billC * pct / 100);
+    var totalC = billC + tipC;
+    var extraC = 0, eachC;
+    if (roundUp) {
+      var dollars = Math.floor((totalC + 100 * n - 1) / (100 * n)); // ceil(total / n) in whole dollars
+      eachC = dollars * 100;
+      extraC = eachC * n - totalC;
+      totalC += extraC;
+    } else {
+      eachC = totalC / n;
+    }
+    return { tip: tipC / 100, extra: extraC / 100, total: totalC / 100, each: eachC / 100 };
+  }
+
+  function update() {
+    var pct = tipPct === 'custom' ? num(custom.value) : tipPct;
+    var n = Math.max(1, Math.floor(num(people.value)));
+    var r = calc(num(bill.value), pct, n, roundUp.checked);
+    document.getElementById('tipAmt').textContent = fmt.format(r.tip);
+    extraRow.hidden = !roundUp.checked;
+    document.getElementById('extraAmt').textContent = fmt.format(r.extra);
+    document.getElementById('total').textContent = fmt.format(r.total);
+    document.getElementById('each').textContent = fmt.format(r.each);
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var v = btn.getAttribute('data-tip');
+      tipPct = v === 'custom' ? 'custom' : Number(v);
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      customWrap.hidden = tipPct !== 'custom';
+      if (tipPct === 'custom') custom.focus();
+      update();
+    });
+  });
+
+  function step(d) {
+    var n = Math.max(1, Math.floor(num(people.value)) + d);
+    people.value = n;
+    update();
+  }
+  document.getElementById('minus').addEventListener('click', function () { step(-1); });
+  document.getElementById('plus').addEventListener('click', function () { step(1); });
+
+  [bill, custom, people].forEach(function (el) { el.addEventListener('input', update); });
+  roundUp.addEventListener('change', update);
+  people.addEventListener('blur', function () {
+    people.value = Math.max(1, Math.floor(num(people.value)));
+    update();
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>

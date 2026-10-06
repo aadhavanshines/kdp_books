@@ -1,0 +1,225 @@
+diff --git a/README.md b/README.md
+index ce04ed5..1cd0557 100644
+--- a/README.md
++++ b/README.md
+@@ -15,6 +15,22 @@ python app.py
+ 
+ Open http://127.0.0.1:5000.
+ 
++### Sharing on your home network
++
++By default the app only listens on your own computer. To let classmates on the same
++Wi-Fi use it:
++
++```bash
++STUDY_BUDDY_HOST=0.0.0.0 python app.py
++```
++
++Then they open `http://<your-computer's-LAN-IP>:5000`. Remember that every flashcard
++request is paid for by your API key. The app limits each device to 6 requests/minute
++(30/minute overall), but only share with people you trust, and stop the app when done.
++It uses Flask's development server over plain HTTP, so don't expose it to the internet
++(no port forwarding). Never run it with `flask run --debug` or `debug=True` when it is
++reachable by others.
++
+ Optional: set `STUDY_BUDDY_MODEL` to use a different Claude model (default `claude-opus-5-5`).
+ 
+ ## Tests
+diff --git a/app.py b/app.py
+index 0474ad5..6458c66 100644
+--- a/app.py
++++ b/app.py
+@@ -1,11 +1,58 @@
++import os
++import threading
++import time
++from collections import defaultdict, deque
++
+ from flask import Flask, jsonify, render_template, request
+ 
+ from flashcards import FlashcardError, generate_flashcards, make_client, validate_notes
+ 
++# 20,000 characters can be up to ~80 KB of JSON-escaped UTF-8; leave headroom.
++MAX_REQUEST_BYTES = 200_000
++
++
++class RateLimiter:
++    """Sliding-window limiter: at most `limit` hits per `window` seconds per key."""
++
++    def __init__(self, limit, window=60.0):
++        self.limit, self.window = limit, window
++        self.hits = defaultdict(deque)
++        self.lock = threading.Lock()
+ 
+-def create_app(client=None):
++    def allow(self, key):
++        now = time.monotonic()
++        with self.lock:
++            q = self.hits[key]
++            while q and now - q[0] > self.window:
++                q.popleft()
++            if len(q) >= self.limit:
++                return False
++            q.append(now)
++            return True
++
++
++def create_app(client=None, per_ip_limit=6, global_limit=30):
+     """Create the app. Pass a client (e.g. a fake in tests) to skip the real one."""
+     app = Flask(__name__)
++    app.config["MAX_CONTENT_LENGTH"] = MAX_REQUEST_BYTES
++    per_ip = RateLimiter(per_ip_limit)
++    overall = RateLimiter(global_limit)
++
++    @app.after_request
++    def security_headers(resp):
++        resp.headers["Content-Security-Policy"] = (
++            "default-src 'none'; script-src 'self'; style-src 'self'; "
++            "connect-src 'self'; img-src 'self'; base-uri 'none'; "
++            "form-action 'none'; frame-ancestors 'none'"
++        )
++        resp.headers["X-Content-Type-Options"] = "nosniff"
++        resp.headers["X-Frame-Options"] = "DENY"
++        resp.headers["Referrer-Policy"] = "no-referrer"
++        return resp
++
++    @app.errorhandler(413)
++    def too_large(_):
++        return jsonify(error="That request is too large. Please use shorter notes."), 413
+ 
+     @app.get("/")
+     def index():
+@@ -14,9 +61,19 @@ def create_app(client=None):
+     @app.post("/api/flashcards")
+     def flashcards():
+         data = request.get_json(silent=True) or {}
+-        notes = data.get("notes")
++        notes = data.get("notes") if isinstance(data, dict) else None
+         try:
+             notes = validate_notes(notes if isinstance(notes, str) else "")
++            # Checked after validation so bad input doesn't use up the quota,
++            # but before the (paid) API call. remote_addr only: X-Forwarded-For
++            # is client-controlled and would let anyone dodge the limit.
++            if not (per_ip.allow(request.remote_addr) and overall.allow("all")):
++                resp = jsonify(
++                    error="Too many requests. Please wait a minute and try again."
++                )
++                resp.status_code = 429
++                resp.headers["Retry-After"] = "60"
++                return resp
+             cards = generate_flashcards(notes, client or make_client())
+         except FlashcardError as e:
+             return jsonify(error=str(e)), e.status
+@@ -26,4 +83,11 @@ def create_app(client=None):
+ 
+ 
+ if __name__ == "__main__":
+-    create_app().run(debug=True)
++    # Local-only by default. To share on your home network, run:
++    #   STUDY_BUDDY_HOST=0.0.0.0 python app.py
++    # The Werkzeug debugger is never enabled: it allows remote code execution.
++    create_app().run(
++        host=os.environ.get("STUDY_BUDDY_HOST", "127.0.0.1"),
++        port=int(os.environ.get("PORT", "5000")),
++        debug=False,
++    )
+diff --git a/flashcards.py b/flashcards.py
+index 4ace780..225b740 100644
+--- a/flashcards.py
++++ b/flashcards.py
+@@ -64,7 +64,7 @@ def make_client():
+             "Set it and restart the app.",
+             status=500,
+         )
+-    return anthropic.Anthropic()
++    return anthropic.Anthropic(timeout=60.0)
+ 
+ 
+ def generate_flashcards(notes, client):
+@@ -80,6 +80,18 @@ def generate_flashcards(notes, client):
+                 "format": {"type": "json_schema", "schema": FLASHCARD_SCHEMA},
+             },
+         )
++    except (anthropic.AuthenticationError, anthropic.PermissionDeniedError):
++        raise FlashcardError(
++            "Claude rejected the API key. Check that ANTHROPIC_API_KEY is "
++            "correct, active and has access, then restart the app.",
++            502,
++        )
++    except anthropic.RateLimitError:
++        raise FlashcardError(
++            "Claude is busy or the API rate limit was hit. "
++            "Please wait a minute and try again.",
++            429,
++        )
+     except anthropic.APIError:
+         raise FlashcardError(
+             "Sorry, we couldn't reach Claude just now. Please try again.", 502
+diff --git a/tests/test_app.py b/tests/test_app.py
+index 8a8b4bf..571ccba 100644
+--- a/tests/test_app.py
++++ b/tests/test_app.py
+@@ -113,3 +113,63 @@ def test_more_than_ten_cards_are_capped():
+     many = [{"question": f"Q{i}", "answer": f"A{i}"} for i in range(15)]
+     r = post(FakeClient(reply(many)), "some notes")
+     assert len(r.get_json()["flashcards"]) == 10
++
++
++def status_error(cls, code):
++    req = httpx.Request("POST", "https://x")
++    return cls("boom", response=httpx.Response(code, request=req), body=None)
++
++
++def test_rejected_api_key_message():
++    err = status_error(anthropic.AuthenticationError, 401)
++    r = post(FakeClient(error=err), "some notes")
++    assert r.status_code == 502
++    msg = r.get_json()["error"]
++    assert "rejected the API key" in msg and "ANTHROPIC_API_KEY" in msg
++
++
++def test_rate_limit_message():
++    err = status_error(anthropic.RateLimitError, 429)
++    r = post(FakeClient(error=err), "some notes")
++    assert r.status_code == 429
++    assert "wait a minute" in r.get_json()["error"]
++
++
++def test_other_api_errors_keep_general_message():
++    err = status_error(anthropic.InternalServerError, 500)
++    r = post(FakeClient(error=err), "some notes")
++    assert r.status_code == 502
++    msg = r.get_json()["error"]
++    assert "try again" in msg and "API key" not in msg and "minute" not in msg
++
++
++def test_per_ip_rate_limit_blocks_before_api_call():
++    fake = FakeClient(reply(CARDS))
++    c = create_app(fake, per_ip_limit=2).test_client()
++    codes = [c.post("/api/flashcards", json={"notes": "n"}).status_code for _ in range(3)]
++    assert codes == [200, 200, 429]
++    assert len(fake.calls) == 2
++
++
++def test_invalid_input_does_not_use_rate_limit_quota():
++    c = create_app(FakeClient(reply(CARDS)), per_ip_limit=1).test_client()
++    assert c.post("/api/flashcards", json={"notes": ""}).status_code == 400
++    assert c.post("/api/flashcards", json={"notes": "n"}).status_code == 200
++
++
++def test_oversized_request_rejected():
++    r = create_app(FakeClient(reply(CARDS))).test_client().post(
++        "/api/flashcards", json={"notes": "x" * 300_000}
++    )
++    assert r.status_code == 413
++
++
++def test_non_object_json_body_is_handled():
++    c = create_app(FakeClient(reply(CARDS))).test_client()
++    assert c.post("/api/flashcards", json=["a"]).status_code == 400
++
++
++def test_security_headers_present():
++    r = create_app(FakeClient()).test_client().get("/")
++    assert "script-src 'self'" in r.headers["Content-Security-Policy"]
++    assert r.headers["X-Content-Type-Options"] == "nosniff"

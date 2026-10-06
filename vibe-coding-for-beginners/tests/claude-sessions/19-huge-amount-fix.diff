@@ -1,0 +1,33 @@
+diff --git a/expenses.py b/expenses.py
+index 9f93e51..5a32042 100644
+--- a/expenses.py
++++ b/expenses.py
+@@ -26,9 +26,13 @@ def parse_amount(text):
+         raise ExpenseError(f"'{text}' is not a valid amount. Use a number like 12.50.")
+     if amount <= 0:
+         raise ExpenseError("Amount must be greater than zero.")
+-    if amount != amount.quantize(Decimal("0.01")):
++    try:
++        rounded = amount.quantize(Decimal("0.01"))
++    except InvalidOperation:
++        raise ExpenseError(f"'{text}' is too large an amount.")
++    if amount != rounded:
+         raise ExpenseError("Amount can have at most 2 decimal places.")
+-    return amount.quantize(Decimal("0.01"))
++    return rounded
+ 
+ 
+ def parse_date(text):
+diff --git a/test_expenses.py b/test_expenses.py
+index a8ecd62..f306d84 100644
+--- a/test_expenses.py
++++ b/test_expenses.py
+@@ -43,7 +43,7 @@ def test_csv_has_header_once(csv_path):
+     assert len(lines) == 3
+ 
+ 
+-@pytest.mark.parametrize("amount", ["-5", "0", "abc", "nan", "inf", "1.234", ""])
++@pytest.mark.parametrize("amount", ["-5", "0", "abc", "nan", "inf", "1.234", "", "1e30"])
+ def test_bad_amount(csv_path, capsys, amount):
+     assert run(csv_path, "add", amount, "food") == 1
+     assert "Error:" in capsys.readouterr().err
