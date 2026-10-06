@@ -374,6 +374,31 @@ def quickbite_architecture():
     return img
 
 
+def payment_flow():
+    img, d = canvas(1240)
+    cols = [(40, 420, "Browser"), (500, 880, "Your server"), (960, W - 40, "Razorpay or Stripe")]
+    for x0, x1, name in cols:
+        box(d, (x0, 30, x1, 130), name, NAVY if name == "Your server" else LIGHT,
+            WHITE if name == "Your server" else INK, font=f(BOLD, 36))
+        cx = (x0 + x1) / 2
+        d.line([(cx, 130), (cx, 1220)], fill=(200, 208, 218), width=4)
+    xb, xs, xp = 230, 690, 1150
+    steps = [
+        (xb, xs, 200, "1. dish IDs and quantities"),
+        (xs, xp, 330, "2. create order for the server's amount"),
+        (xp, xs, 460, "3. order ID"),
+        (xs, xb, 560, "4. order ID and public key"),
+        (xb, xp, 690, "5. customer pays (UPI or card)"),
+        (xp, xs, 820, "6. signed webhook"),
+    ]
+    for x0, x1, y, label in steps:
+        arrow(d, (x0, y), (x1 + (-12 if x1 > x0 else 12), y), color=NAVY if x1 > x0 else MID)
+        d.text(((x0 + x1) / 2, y - 48), label, font=f(REG, 28), fill=INK, anchor="ma")
+    box(d, (470, 900, 910, 1180), "7. Verify, then mark paid", PALE, outline=MID, font=f(BOLD, 32),
+        sub="signature correct, amount and currency match, not already processed")
+    return img
+
+
 DIAGRAMS = {
     "vibe-loop.png": vibe_loop,
     "web-app-anatomy.png": web_app_anatomy,
@@ -391,6 +416,7 @@ DIAGRAMS = {
     "store-release.png": store_release,
     "sdlc-cycle.png": sdlc_cycle,
     "quickbite-architecture.png": quickbite_architecture,
+    "payment-flow.png": payment_flow,
 }
 
 
