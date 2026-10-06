@@ -419,10 +419,11 @@ def table_block(rows, styles):
         ("TOPPADDING", (0, 0), (-1, -1), 3),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
     ]))
-    if len(rows) <= 8:
+    if len(rows) <= 5:
         # Short tables read best in one piece.
         return [KeepTogether([Spacer(1, 4), t, Spacer(1, 10)])]
-    return [Spacer(1, 4), t, Spacer(1, 10)]
+    # Longer tables may split (the header row repeats), but start only if a few rows fit.
+    return [CondPageBreak(1.4 * inch), Spacer(1, 4), t, Spacer(1, 10)]
 
 
 def front_matter(meta, styles):
@@ -453,7 +454,7 @@ def front_matter(meta, styles):
         "arising from the use of this information. Nothing in this book is legal, medical, "
         "financial, or other professional advice.",
         "<b>Trademarks.</b> " + meta["trademarks"],
-        "<b>Examples.</b> All companies, products, people, and data in the examples are fictional. "
+        "<b>Examples.</b> The people, habits, expenses, and other data in the example projects are fictional. "
         "Any resemblance to real organizations or persons is coincidental.",
         f"First edition, {y}.",
     ]
@@ -583,13 +584,19 @@ def build_story(meta, manuscript, styles, image_root):
                 label = re.fullmatch(r"\*\*[^*]+\*\*", block[1]) or re.match(r"\*\*Prompt \d+:", block[1])
                 para = Paragraph(inline(block[1]), styles["label" if label else "body"])
                 nxt = blocks[bi + 1][0] if bi + 1 < len(blocks) else None
-                short_leadin = block[1].rstrip().endswith(":") and len(block[1]) < 220
-                if label or (short_leadin and nxt in ("code", "ul", "ol", "table", "image", "callout")):
+                short_leadin = block[1].rstrip().endswith(":") and len(block[1]) < 600
+                nxt_bold = nxt == "p" and blocks[bi + 1][1].startswith("**")
+                if label or (short_leadin and (nxt in ("code", "ul", "ol", "table", "image", "callout") or nxt_bold)):
                     para._guarded = True
                 story.append(para)
             elif kind == "ul":
-                for item in block[1]:
-                    story.append(Paragraph(inline(item), styles["bullet"], bulletText="•"))
+                nxt = blocks[bi + 1][0] if bi + 1 < len(blocks) else None
+                for k, item in enumerate(block[1]):
+                    bp = Paragraph(inline(item), styles["bullet"], bulletText="•")
+                    # A last bullet that introduces a code block stays with it.
+                    if k == len(block[1]) - 1 and item.rstrip().endswith(":") and nxt == "code":
+                        bp._guarded = True
+                    story.append(bp)
                 story.append(Spacer(1, 4))
             elif kind == "ol":
                 for n, item in enumerate(block[1], 1):

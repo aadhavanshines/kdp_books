@@ -1,4 +1,4 @@
-# Part III: Shipping and Leveling Up
+# Part III: Ship It and Level Up
 
 # Chapter 13: Project 5: An AI-Powered App with the Claude API
 

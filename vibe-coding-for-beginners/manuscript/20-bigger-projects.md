@@ -88,7 +88,7 @@ Claude Code can create one for you:
 claude --worktree dark-mode
 ```
 
-This starts a session in a new worktree (inside `.claude/worktrees/`) on a branch of its own. Run the command again with a different name in another terminal to start a second, fully separate session. When each piece of work is finished and tested, merge its branch as usual. The desktop app can also run several sessions side by side, each in its own worktree.
+This starts a session in a new worktree (inside `.claude/worktrees/`) on a branch of its own. For a second, fully separate session, open another terminal and repeat the command with a new name. When each piece of work is finished and tested, merge its branch as usual. The desktop app can also run several sessions side by side, each in its own worktree.
 
 A useful pattern with parallel sessions is **writer and reviewer**: one session implements a feature; a second, fresh session reviews it ("Review the changes on the dark-mode branch for bugs and edge cases"); and you pass the review back to the first session to address. The reviewer, unlike the writer, has no attachment to the code.
 

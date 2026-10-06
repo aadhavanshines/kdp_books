@@ -241,7 +241,7 @@ Commit these changes with a clear message explaining why.
 
 ```
 Discard all uncommitted changes and remove any new files you
-created since the last commit. Show me git status afterwards.
+created since the last commit. Show me git status afterward.
 ```
 
 **Prompt 31: Open a pull request.** *Use for any finished feature on a branch.*

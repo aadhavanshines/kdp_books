@@ -134,8 +134,21 @@ This is the most important lesson about hooks: **a hook only guards the actions 
 **The fix: deny rules.** Claude Code's permission rules for files are smarter than a simple hook. A deny rule for `Edit(.env)` also applies to terminal commands that Claude Code recognizes as writing to that file, including `>>` redirection. These rules were added to the project's settings by hand. Guardrails are worth writing yourself, or at least reviewing line by line:
 
 ```
-@include projects/04-habit-tracker/.claude/settings.json#L1-L11
+{
+  "permissions": {
+    "deny": [
+      "Read(.env)",
+      "Read(.env.*)",
+      "Edit(.env)",
+      "Edit(.env.*)",
+      "Edit(habits.db)",
+      "Edit(.venv/**)"
+    ]
+  }
+}
 ```
+
+(In the project's real `.claude/settings.json`, this `permissions` section sits alongside the `hooks` section.)
 
 **Test 1, again.** Same request, fresh session:
 

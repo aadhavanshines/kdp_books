@@ -100,7 +100,7 @@ You list these in a file called `.gitignore`, and Git ignores anything that matc
 
 When you start a new project, ask Claude to "create a suitable .gitignore." It knows the right patterns for most languages and tools.
 
-> **Warning:** If a secret is ever committed, deleting the file afterwards isn't enough: it's still in the history, and if the repository is on GitHub, you should assume someone has seen it. Revoke the key (create a new one and disable the old one) immediately. Chapter 21 covers secrets in detail.
+> **Warning:** If a secret is ever committed, deleting the file afterward isn't enough: it's still in the history, and if the repository is on GitHub, you should assume someone has seen it. Revoke the key (create a new one and disable the old one) immediately. Chapter 21 covers secrets in detail.
 
 ## Putting Your Project on GitHub
 
@@ -121,7 +121,7 @@ Create a private GitHub repository for this project and push all
 my commits to it.
 ```
 
-Claude will use `gh repo create` and `git push`. Open github.com and you'll see your project, with its full history.
+Claude will use `gh repo create` and `git push`. Open github.com, and you'll see your project, with its full history.
 
 > **Tip:** Start with **private** repositories. You can make a project public later, after checking that it contains no secrets or personal data.
 

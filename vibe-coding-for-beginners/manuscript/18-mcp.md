@@ -34,7 +34,7 @@ Added HTTP MCP server claude-code-docs with URL:
 https://code.claude.com/docs/mcp to local config
 ```
 
-The parts of the command: `claude mcp add` registers a server; `--transport http` says it's a remote server reached by URL; `claude-code-docs` is a name you choose; and the URL is where the server lives. Check that it's working:
+Here's what each piece means: `claude mcp add` tells Claude Code about a new server; `--transport http` says it's a remote server reached by URL; `claude-code-docs` is a name you choose; and the URL is where the server lives. Check that it's working:
 
 ```
 claude mcp list
@@ -72,7 +72,7 @@ The most useful MCP server for vibe coders is probably **Playwright**, which giv
 claude mcp add playwright -- npx -y @playwright/mcp@latest
 ```
 
-Everything after the `--` is the command Claude Code runs to start the server. `npx` downloads and runs the Playwright MCP package; `-y` skips the confirmation prompt. The first connection can take a moment while it downloads.
+Everything after the `--` is how Claude Code launches the server program. `npx` downloads and runs the Playwright MCP package; `-y` skips the confirmation prompt. The first connection can take a moment while it downloads.
 
 > **Note:** In the environment used to test this book, the browser ran on a server with no screen, which needed two extra options (`--headless` and `--no-sandbox`). On a normal computer, the command above is all you need, and you'll see a browser window open and move by itself.
 

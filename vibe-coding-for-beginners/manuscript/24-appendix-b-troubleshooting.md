@@ -53,7 +53,7 @@ When something goes wrong, find the closest match below. If nothing fits, copy t
 | --- | --- | --- |
 | "Please tell me who you are" on commit | Git doesn't know your name yet | Run the two `git config --global` commands from Chapter 4. |
 | `git push` is rejected | GitHub has commits you don't have | Ask Claude: "Pull the latest changes, resolve any conflicts, and push." |
-| Merge conflict | Two branches changed the same lines | Ask Claude to resolve it and explain each decision; run the tests afterwards. |
+| Merge conflict | Two branches changed the same lines | Ask Claude to resolve it and explain each decision; run the tests afterward. |
 | A secret was committed | It was in a file that wasn't ignored | Rotate the secret immediately; then ask Claude to remove it from the history. |
 | `gh: command not found` | GitHub CLI not installed | Install it from cli.github.com and run `gh auth login`. |
 

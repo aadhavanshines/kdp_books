@@ -120,7 +120,7 @@ Claude couldn't open a real browser, so it found another way to test the logic: 
 
 ## How the Three Files Work Together
 
-Open the folder in your editor and you'll see the classic three-file structure of a web page:
+Open the folder in your editor, and you'll see the classic three-file structure of a web page:
 
 - **`index.html`** is the skeleton: the input box, the empty list, and the footer. At the bottom, it loads the other two files.
 - **`style.css`** is the paint: colors, spacing, the strikethrough on finished tasks.
@@ -171,10 +171,10 @@ Double-click editing still edits only the text.
 
 ![The to-do app with due dates. The overdue task is shown in red, and the finished task is crossed out.](images/shot-todo-app.png)
 
-Dates are one of the most common sources of bugs in all of software, because "today" depends on where you are in the world. A date like "2026-10-09" can be read as midnight in Coordinated Universal Time (UTC), the world's reference clock, and midnight UTC is still the evening of October 8 in California. Look at how Claude handled it:
+Dates are one of the most common sources of bugs in all software, because "today" depends on where you are in the world. A date like "2026-10-09" can be read as midnight in Coordinated Universal Time (UTC), the world's reference clock, and midnight UTC is still the evening of October 8 in California. Look at how Claude handled it:
 
 ```
-@include projects/02-todo-app/app.js#L75-L82
+@include projects/02-todo-app/app.js#L75-L81
 ```
 
 The comment says it all: the date is built in **local time**, "so no timezone shift." To be sure, this book's tests ran the app with the clock frozen at 9 p.m. in both Los Angeles and Tokyo, the kind of situation where date bugs appear, and the labels were correct in both. Claude got this one right. In Chapter 10, you'll see a time zone bug that Claude didn't catch at first, and how to track it down.

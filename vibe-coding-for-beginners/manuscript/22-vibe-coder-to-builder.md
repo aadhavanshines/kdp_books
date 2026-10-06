@@ -1,6 +1,6 @@
 # Chapter 22: From Vibe Coder to Builder
 
-You started this book with an empty folder. Since then you've built a tip calculator, a to-do app, an expense tracker, a full-stack habit tracker, and an AI-powered flashcard tool. You've debugged a time zone bug, written specs, set up guardrails, connected a browser, and put apps online. That's a lot of ground.
+You started this book with an empty folder. Since then, you've built a tip calculator, a to-do app, an expense tracker, a full-stack habit tracker, and an AI-powered flashcard tool. You've debugged a time zone bug, written specs, set up guardrails, connected a browser, and put apps online. That's a lot of ground.
 
 This last chapter is about what comes next: the habits that keep improving your results, a plan for practice, ideas for projects, and how to keep up as the tools change.
 

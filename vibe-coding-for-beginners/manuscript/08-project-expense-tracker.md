@@ -123,7 +123,7 @@ food            20.75
 TOTAL           60.75
 ```
 
-The two food expenses were combined, biggest category first, exactly as requested. Now try to break it:
+The two food expenses were combined, with the biggest category first, exactly as requested. Now try to break it:
 
 ```
 python expenses.py add -5 food "Refund?"

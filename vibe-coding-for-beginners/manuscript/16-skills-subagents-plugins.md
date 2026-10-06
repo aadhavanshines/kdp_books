@@ -185,7 +185,7 @@ That plugin adds commands for committing, pushing, and opening pull requests.
 
 > **Warning:** A plugin can run code on your computer with your permissions, through its hooks and servers. Install plugins only from sources you trust, read what a plugin contains before installing it, and prefer Anthropic's official marketplace when you're starting out.
 
-> **Try It:** Create a personal skill in `~/.claude/skills/explain/SKILL.md` using the example in this chapter, then try `/explain` on a file in each of your projects. Afterwards, create a "test-writer" subagent that looks at recent changes and writes missing tests, and try it on the expense tracker.
+> **Try It:** Create a personal skill in `~/.claude/skills/explain/SKILL.md` using the example in this chapter, then try `/explain` on a file in each of your projects. Afterward, create a "test-writer" subagent that looks at recent changes and writes missing tests, and try it on the expense tracker.
 
 ## Key Takeaways
 

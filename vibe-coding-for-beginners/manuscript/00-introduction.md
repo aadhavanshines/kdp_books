@@ -42,7 +42,7 @@ You don't need any programming experience. You do need curiosity, patience for t
 
 **Part II: Building Real Apps** walks through the first four projects, plus the core skills of good prompting, debugging, testing, and saving your work with Git.
 
-**Part III: Shipping and Leveling Up** covers building an AI-powered app, putting apps online, and Claude Code's power features: project memory, skills, subagents, hooks, and MCP.
+**Part III: Ship It and Level Up** covers building an AI-powered app, putting apps online, and Claude Code's power features: project memory, skills, subagents, hooks, and MCP.
 
 **Part IV: Working Like a Pro** covers automation, larger codebases, security, and the habits that turn a vibe coder into a builder.
 

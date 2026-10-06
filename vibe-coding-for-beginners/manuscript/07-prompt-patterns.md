@@ -91,7 +91,7 @@ You saw this pay off in Chapter 5, when "check your math and tell me the results
 
 If Claude starts going the wrong way, stop it with Esc and redirect immediately. Waiting until it finishes means more to undo.
 
-If you've corrected Claude twice on the same issue and it's still wrong, the conversation is probably cluttered with failed attempts. At that point:
+If you've corrected Claude twice on the same issue, and it's still wrong, the conversation is probably cluttered with failed attempts. At that point:
 
 1. Rewind (Esc twice) or use Git to get back to a good state.
 2. Type `/clear` to start a fresh conversation.
