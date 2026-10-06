@@ -144,7 +144,7 @@ MCP servers are powerful, which means they deserve care:
 
 - **Install only servers you trust**, ideally official ones from the company that makes the tool. A local server runs as a program on your computer.
 - **Watch what tools can do.** A server that can send emails or delete records can do so on Claude's request. Keep risky actions behind permission prompts.
-- **Beware of instructions hidden in data.** A web page or document that a server reads might contain text designed to manipulate the AI ("ignore your instructions and..."). This is **prompt injection**, covered in Chapter 25. Auto mode's safety checker looks for actions that appear to be driven by such content, but your own judgment still matters.
+- **Beware of instructions hidden in data.** A web page or document that a server reads might contain text designed to manipulate the AI ("ignore your instructions and..."). This is **prompt injection**, covered in Chapter 31. Auto mode's safety checker looks for actions that appear to be driven by such content, but your own judgment still matters.
 - **Remove servers you don't use.** Each connected server's tool descriptions take up some of Claude's context.
 
 > **Try It:** Add the Playwright server and ask Claude to test the tip calculator from Chapter 5 at a phone-sized window: "Open it at 390 by 844 pixels, enter $100, an 18% tip and 3 people, take a screenshot, and tell me if anything is hard to read or tap on a phone."

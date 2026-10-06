@@ -84,7 +84,7 @@ If the AI writes the code, what do you need to know? Five things, and they map o
 2. **Understanding the shape of software**: knowing what files, servers, databases, and APIs are, so you can ask for the right things and spot nonsense (Chapter 2).
 3. **Verifying**: testing that the code does what you meant (Chapters 11 and 12).
 4. **Staying in control**: saving versions, undoing mistakes, and limiting what the AI is allowed to do (Chapters 13 and 18).
-5. **Staying safe**: protecting secrets, users, and money (Chapters 14, 15, and 25).
+5. **Staying safe**: protecting secrets, users, and money (Chapters 14, 15, and 31).
 
 Notice that none of these is "memorize Python syntax." You'll pick up a lot of programming knowledge along the way, because you'll see and question real code, but you'll learn it in context, when you need it.
 

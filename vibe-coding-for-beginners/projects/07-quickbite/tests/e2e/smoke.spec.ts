@@ -19,7 +19,13 @@ test('landing and home pages have no serious accessibility violations', async ({
         .first()
         .click();
     else await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    // Not 'networkidle': the Firebase backend keeps a realtime connection open.
+    if (step === 'landing') {
+      await expect(page.getByRole('button', { name: /Koramangala/ }).first()).toBeVisible();
+    } else {
+      const list = page.getByRole('region', { name: /online food delivery in Koramangala/ });
+      await expect(list.getByRole('link').first()).toBeVisible();
+    }
     const results = await new AxeBuilder({ page }).analyze();
     const serious = results.violations.filter(
       (v) => v.impact === 'serious' || v.impact === 'critical',

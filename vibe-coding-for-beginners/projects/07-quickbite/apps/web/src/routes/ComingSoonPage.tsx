@@ -18,18 +18,6 @@ function ComingSoon({ title, description }: { title: string; description: string
   );
 }
 
-export const AccountPage = () => (
-  <ComingSoon
-    title="Sign in is on its way"
-    description="Email sign-in with a one-time link arrives with the Firebase backend (build phase 3)."
-  />
-);
-export const OrdersPage = () => (
-  <ComingSoon
-    title="No orders yet"
-    description="Order history and live tracking arrive with server-side orders (build phase 4)."
-  />
-);
 export const HelpPage = () => (
   <ComingSoon
     title="Help & support"

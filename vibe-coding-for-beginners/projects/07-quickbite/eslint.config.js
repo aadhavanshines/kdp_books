@@ -5,7 +5,17 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['**/dist', '**/coverage', 'playwright-report', 'test-results', 'apps/web/public'] },
+  {
+    ignores: [
+      '**/dist',
+      '**/coverage',
+      'playwright-report',
+      'test-results',
+      'apps/web/public',
+      'firebase/functions/lib',
+      'supabase/functions/_shared/server.js',
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -34,7 +44,15 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/*.{js,mjs}', 'packages/seed/**', 'tests/**', '*.config.ts'],
+    files: [
+      '**/*.{js,mjs}',
+      'packages/seed/**',
+      'packages/server/**',
+      'firebase/**',
+      'supabase/**',
+      'tests/**',
+      '*.config.ts',
+    ],
     languageOptions: { globals: { ...globals.node } },
   },
   {

@@ -23,11 +23,20 @@ async function load(name: BackendName): Promise<Backend> {
       const { createMemoryBackend } = await import('./memory');
       return createMemoryBackend();
     }
-    case 'firebase':
-    case 'supabase':
-      throw new Error(
-        `The ${name} backend arrives in a later build phase. Use VITE_BACKEND=memory for now.`,
-      );
+    case 'firebase': {
+      const [{ createFirebaseBackend }, { firebaseOptionsFromEnv }] = await Promise.all([
+        import('./firebase'),
+        import('./firebase/config'),
+      ]);
+      return createFirebaseBackend(firebaseOptionsFromEnv(import.meta.env));
+    }
+    case 'supabase': {
+      const [{ createSupabaseBackend }, { supabaseOptionsFromEnv }] = await Promise.all([
+        import('./supabase'),
+        import('./supabase/config'),
+      ]);
+      return createSupabaseBackend(supabaseOptionsFromEnv(import.meta.env));
+    }
   }
 }
 
@@ -37,3 +46,4 @@ export function setBackendForTests(backend: Backend | null) {
 }
 
 export type * from './types';
+export { SignInRequiredError, isSignInRequired } from './errors';

@@ -3,6 +3,7 @@ import { Outlet, ScrollRestoration, useLocation } from 'react-router';
 import { PageSpinner } from '../../components/ui/PageSpinner';
 import { CartBar } from '../../features/cart/CartBar';
 import { ReplaceCartDialog } from '../../features/cart/ReplaceCartDialog';
+import { DemoBanner } from '../../features/payments/DemoBanner';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
@@ -17,6 +18,7 @@ export function Layout() {
       >
         Skip to content
       </a>
+      <DemoBanner />
       <Header />
       <main id="main" className="flex-1">
         <Suspense fallback={<PageSpinner />}>

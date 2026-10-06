@@ -1,0 +1,10 @@
+{
+  // Tests that use Node (node:crypto, the official provider SDKs) to check the
+  // web-standard server code independently.
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023", "DOM"],
+    "types": ["node"]
+  },
+  "include": [".", "../src"]
+}

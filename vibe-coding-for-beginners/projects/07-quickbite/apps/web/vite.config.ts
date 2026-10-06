@@ -9,5 +9,7 @@ export default defineConfig({
   build: {
     target: 'es2022',
     sourcemap: true,
+    // Small fonts would otherwise become data: URIs, which the CSP (font-src 'self') refuses.
+    assetsInlineLimit: (file) => (/\.woff2?$/.test(file) ? false : undefined),
   },
 });

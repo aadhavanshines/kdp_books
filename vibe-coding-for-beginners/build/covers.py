@@ -296,9 +296,17 @@ def build_paperback_cover(meta, page_count, out_pdf, out_png=None):
         strip_len = H - 2 * round((BLEED + 0.4) * DPI)
         strip = Image.new("RGBA", (strip_len, spine_w), (0, 0, 0, 0))
         sd = ImageDraw.Draw(strip)
-        ft = font(SANS_BOLD, text_h * 0.62)
-        fa2 = font(SANS, text_h * 0.5)
         title = meta["title"].upper()
+        # Size the text from the spine width, then shrink both until the title and the author
+        # fit along the spine with a clear gap between them (wide spines would otherwise overlap).
+        scale, gap = 1.0, round(0.35 * DPI)
+        while True:
+            ft = font(SANS_BOLD, text_h * 0.62 * scale)
+            fa2 = font(SANS, text_h * 0.5 * scale)
+            used = sd.textlength(title, font=ft) + sd.textlength(meta["author"].upper(), font=fa2)
+            if used + gap <= strip_len or scale < 0.3:
+                break
+            scale -= 0.02
         sd.text((0, spine_w / 2), title, font=ft, fill=WHITE, anchor="lm")
         sd.text((strip_len, spine_w / 2), meta["author"].upper(), font=fa2, fill=AMBER, anchor="rm")
         # Spine text reads top-to-bottom (rotate 270 degrees).

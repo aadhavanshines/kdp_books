@@ -1,0 +1,14 @@
+rules_version = '2';
+
+// Images are public to read. Nobody can write from a browser: images are
+// uploaded by the seed script and admin tools, which use the Admin SDK.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /images/{allPaths=**} {
+      allow read: if true;
+    }
+    match /{allPaths=**} {
+      allow write: if false;
+    }
+  }
+}

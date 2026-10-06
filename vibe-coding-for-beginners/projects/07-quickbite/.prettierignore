@@ -5,3 +5,5 @@ playwright-report
 test-results
 apps/web/public/images
 docs/PLAN.md
+firebase/functions/lib
+supabase/functions/_shared/server.js

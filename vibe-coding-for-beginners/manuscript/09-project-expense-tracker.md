@@ -147,7 +147,7 @@ Open `test_expenses.py`. Tests are often the easiest code to read, because each 
 @include projects/03-expense-tracker/test_expenses.py#L46-L50
 ```
 
-Read it like a sentence: "For each of these bad amounts (negative five, zero, letters, not-a-number, infinity, too many decimals, nothing at all, and an absurdly huge number), adding an expense should fail with exit code 1, print an error, and not create the file." One short test checks eight situations. (The last one, `1e30`, wasn't in Claude's original tests. It was added in Chapter 23, after an automated review found that a huge amount crashed the program, a good reminder that even 25 passing tests don't cover everything.) This is what lets you change the code later with confidence: if you break any of these behaviors, a test will tell you.
+Read it like a sentence: "For each of these bad amounts (negative five, zero, letters, not-a-number, infinity, too many decimals, nothing at all, and an absurdly huge number), adding an expense should fail with exit code 1, print an error, and not create the file." One short test checks eight situations. (The last one, `1e30`, wasn't in Claude's original tests. It was added in Chapter 29, after an automated review found that a huge amount crashed the program, a good reminder that even 25 passing tests don't cover everything.) This is what lets you change the code later with confidence: if you break any of these behaviors, a test will tell you.
 
 And here is the code those tests check:
 

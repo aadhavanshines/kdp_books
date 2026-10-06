@@ -1,26 +1,10 @@
 import { forwardRef, type ButtonHTMLAttributes } from 'react';
 import { cn } from '../../lib/cn';
-
-type Variant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'subtle';
-type Size = 'sm' | 'md' | 'lg';
-
-const variants: Record<Variant, string> = {
-  primary: 'bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800 shadow-sm',
-  secondary: 'bg-ink text-white hover:bg-ink-soft',
-  outline: 'border border-line bg-white text-ink hover:border-ink/30 hover:bg-sunken',
-  ghost: 'text-ink hover:bg-sunken',
-  subtle: 'bg-brand-50 text-brand-700 hover:bg-brand-100',
-};
-
-const sizes: Record<Size, string> = {
-  sm: 'h-9 px-3 text-sm gap-1.5 rounded-lg',
-  md: 'h-11 px-4 text-[15px] gap-2 rounded-xl',
-  lg: 'h-13 px-6 text-base gap-2 rounded-xl',
-};
+import { buttonClass, type ButtonSize, type ButtonVariant } from './buttonClass';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: Variant;
-  size?: Size;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
   block?: boolean;
 }
 
@@ -32,13 +16,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     <button
       ref={ref}
       type={type}
-      className={cn(
-        'inline-flex shrink-0 items-center justify-center font-bold whitespace-nowrap transition-colors duration-150 select-none disabled:pointer-events-none disabled:opacity-50',
-        variants[variant],
-        sizes[size],
-        block && 'w-full',
-        className,
-      )}
+      className={buttonClass({ variant, size, block, className })}
       {...props}
     />
   );

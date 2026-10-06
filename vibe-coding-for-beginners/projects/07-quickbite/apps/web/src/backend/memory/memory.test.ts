@@ -35,11 +35,54 @@ describe('memory backend', () => {
   });
 });
 
+describe('memory backend: auth and private data', () => {
+  it('signs in with an email link and keeps data per account', async () => {
+    const backend = createMemoryBackend({ latencyMs: 0, storage: null });
+    await expect(backend.addresses.list()).rejects.toThrow(/sign in/i);
+    await expect(backend.profile.get()).rejects.toThrow(/sign in/i);
+
+    const { devLink } = await backend.auth.sendSignInLink(
+      'Asha@Example.com',
+      'http://localhost/login/finish?next=%2Fcheckout',
+    );
+    expect(devLink && backend.auth.isSignInLink(devLink)).toBe(true);
+    await expect(backend.auth.completeSignIn('someone@else.com', devLink!)).rejects.toThrow();
+    const user = await backend.auth.completeSignIn('asha@example.com', devLink!);
+    expect(backend.auth.currentUser()).toEqual(user);
+
+    await backend.profile.save({ name: 'Asha Rao', phone: '9876543210' });
+    expect(await backend.profile.get()).toEqual({ name: 'Asha Rao', phone: '9876543210' });
+
+    await backend.auth.signOut();
+    expect(backend.auth.currentUser()).toBeNull();
+    const other = await backend.auth.sendSignInLink('ravi@example.com', 'http://localhost/x');
+    await backend.auth.completeSignIn('ravi@example.com', other.devLink!);
+    expect(await backend.profile.get()).toBeNull();
+  });
+
+  it('tells listeners about the session', async () => {
+    const backend = createMemoryBackend({ latencyMs: 0, storage: null, user: null });
+    const seen: (string | null)[] = [];
+    const stop = backend.auth.onChange((u) => seen.push(u?.email ?? null));
+    await Promise.resolve();
+    const { devLink } = await backend.auth.sendSignInLink('a@b.co', 'http://localhost/x');
+    await backend.auth.completeSignIn('a@b.co', devLink!);
+    stop();
+    await backend.auth.signOut();
+    expect(seen).toEqual([null, 'a@b.co']);
+  });
+});
+
 describe('memory backend: quotes behave like the server will', () => {
   const storage = new Map<string, string>();
   const backend = createMemoryBackend({
     latencyMs: 0,
-    storage: { getItem: (k) => storage.get(k) ?? null, setItem: (k, v) => void storage.set(k, v) },
+    storage: {
+      getItem: (k) => storage.get(k) ?? null,
+      setItem: (k, v) => void storage.set(k, v),
+      removeItem: (k) => void storage.delete(k),
+    },
+    user: { uid: 'u1', email: 'asha@example.com' },
   });
 
   async function setup() {

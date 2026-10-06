@@ -48,9 +48,12 @@ SHOTS = {
     "14-version": {"stop": "(Claude Code)"},
     "15-mcp-add": {},
     "16-headless": {},
+    # QuickBite phase 7, run interactively; frames captured every 30 seconds while Claude worked.
+    "17-working": {"start": "Now the fixtures guard", "stop": "Caramelizing"},
+    "19-phase7-done": {"start": "Two problems the CSP test caught", "stop": "Baked for"},
 }
 DROP_ALWAYS = ["weekly limit", "tmux detected", "tmux focus-events", "Anthropic Interviewer",
-               "Your voice can help"]
+               "Your voice can help", "Auto-update failed", "Tip: Use /btw"]
 
 
 def load_lines(path, lines=None, start=None, stop=None, drop=()):

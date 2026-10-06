@@ -10,9 +10,9 @@ This book teaches you to vibe code well, using **Claude Code**, Anthropic's AI c
 
 **Everything is real.** Every prompt in the project chapters was run in Claude Code while this book was being written. The replies you see are Claude's actual words, shortened in places to save space but not rewritten. When Claude made a mistake, said it hadn't tested something, or worked around a safety rule, you'll see that too, because those moments teach more than any perfect demo.
 
-**Everything is tested.** All six apps you'll build were checked independently: in a real web browser, on phone-sized screens, with an accessibility checker, in different time zones, through the real Anthropic software library, and by running the production server. The code listings in this book are printed directly from those tested files.
+**Everything is tested.** All seven apps you'll build were checked independently: in a real web browser, on phone-sized screens, with an accessibility checker, in different time zones, through the real Anthropic software library, by running the production server, by probing security rules as an attacker, and by checking payment code against Stripe's and Razorpay's official libraries. The code listings in this book are printed directly from those tested files.
 
-**It goes from basic to advanced.** You'll start by learning what a file and a terminal are. By the end, you'll be teaching Claude your project's rules, building custom commands and AI reviewers, adding automatic safety checks, connecting Claude to a web browser, putting apps online, building a mobile app for iPhone and Android, preparing it for the app stores, and managing releases like a professional team.
+**It goes from basic to advanced.** You'll start by learning what a file and a terminal are. By the end, you'll be teaching Claude your project's rules, building custom commands and AI reviewers, adding automatic safety checks, connecting Claude to a web browser, putting apps online, building a mobile app for iPhone and Android, preparing it for the app stores, building a production-quality food delivery app with real backends and payment providers, and managing releases like a professional team.
 
 > **Note:** Claude's replies vary from run to run, even for the same prompt. Your code and wording will differ from what's printed here. That's normal. What matters is the process: how you ask, how you check, and how you correct course.
 
@@ -36,6 +36,7 @@ You don't need any programming experience. You do need curiosity, patience for t
 | 4. Habit Tracker | A full web app with a database and streaks | Specs, back ends, debugging, deployment, guardrails |
 | 5. Study Buddy | Turns your notes into flashcards using Claude | Calling an AI from your own app, API keys, security |
 | 6. Sip | A water tracker app for iPhone and Android | Mobile apps with Expo, testing on phone-sized screens, app store submission |
+| 7. QuickBite | A production-quality food delivery app, in the style of Swiggy and Zomato | Planning a real product, design systems, Supabase and Firebase, Razorpay and Stripe payments, launching on Firebase Hosting |
 
 ## How This Book Is Organized
 
@@ -47,7 +48,9 @@ You don't need any programming experience. You do need curiosity, patience for t
 
 **Part IV: Mobile Apps** builds an app for Android and iPhone from one codebase, and takes it through the release process for Google Play and the Apple App Store.
 
-**Part V: Working Like a Pro** covers the software development lifecycle (from idea to versioned release and maintenance), automation, larger codebases, security, and the habits that turn a vibe coder into a builder.
+**Part V: Production Apps, End to End** starts with how to choose the Claude model and effort level for accurate results, measured in a real experiment. Then it builds QuickBite from plan to launch: a polished interface, two backends (Firebase and Supabase) with security rules, Razorpay and Stripe payments verified against the providers' own libraries, and hosting on a `web.app` address.
+
+**Part VI: Working Like a Pro** covers the software development lifecycle (from idea to versioned release and maintenance), automation, larger codebases, security, and the habits that turn a vibe coder into a builder.
 
 The **appendices** contain a best practices checklist, a library of 40 prompts, a troubleshooting guide, a Claude Code cheat sheet, a glossary, and a list of official resources.
 
@@ -57,9 +60,10 @@ The **appendices** contain a best practices checklist, a library of 40 prompts, 
 | --- | --- |
 | New to coding | Every chapter, in order. Don't skip Chapter 2. |
 | Comfortable with computers but new to coding | Skim Chapter 2, then read in order from Chapter 3. |
-| A developer new to Claude Code | Chapters 3, 4, and 7, then Parts III to V. |
+| A developer new to Claude Code | Chapters 3, 4, and 7, then Parts III to VI. |
 | Mainly interested in AI apps | Chapters 1 to 7, then Chapter 14. |
 | Mainly interested in mobile apps | Chapters 1 to 8, then Chapters 20 and 21. |
+| Building a product to launch | Chapters 1 to 13, then Part V and Chapter 28. |
 
 ## Conventions Used in This Book
 

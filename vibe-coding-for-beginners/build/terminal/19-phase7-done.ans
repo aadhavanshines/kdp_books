@@ -1,0 +1,42 @@
+    repository variables exist.
+  - [1mPolicy pages:[0m About, Contact, Terms, Privacy, Refunds & cancellations and Shipping are linked
+    from the footer.
+  - [1mLaunch checklist:[0m [38;2;177;185;249mdocs/LAUNCH.md[39m is the step-by-step list.
+
+  [1mTwo problems the CSP test caught[0m
+  - [1mAuth script:[0m Firebase Auth's default setup loaded a Google script for popup sign-in, which we
+    don't use. I switched to email-link-only auth instead of allowing that host.
+  - [1mInlined fonts:[0m Vite was embedding small fonts as [38;2;177;185;249mdata:[39m URIs. I stopped that instead of loosening
+    [38;2;177;185;249mfont-src[39m.
+
+  [1mWhat you need to do or know[0m
+  - [1mFunctions via Hosting:[0m the app calls functions through Hosting at [38;2;177;185;249m/api/*[39m rather than the
+    cloudfunctions.net address. It's a small change to the Firebase adapter, and it keeps the CSP
+    free of a functions host.
+  - [1mBusiness details:[0m the pages use placeholders in [38;2;177;185;249mapps/web/src/config/business.ts[39m for your
+    registered name, address, phone, email and grievance officer. I didn't invent any. [38;2;177;185;249mpnpm [39m
+    [38;2;177;185;249mlaunch:check[39m fails until they're filled in, and the live deploy runs it. The policy text is a
+    draft and not legal advice, so have it reviewed.
+  - [1mRefunds:[0m they're manual from the Razorpay dashboard, and the refund policy says so.
+  - [1mDemo simulator:[0m the order simulator still moves paid orders to "delivered" on a timer, and the
+    seed restaurants are fictional. [38;2;177;185;249mdocs/LAUNCH.md[39m says not to take real money until both are dealt
+    with.
+  - [1mStripe:[0m not bound yet. Create the three Stripe secrets and add them to [38;2;177;185;249msecrets.ts[39m when you want
+    it.
+  - [1mStyle CSP:[0m [38;2;177;185;249mstyle-src[39m keeps [38;2;177;185;249m'unsafe-inline'[39m because Razorpay and Stripe inject inline styles.
+    Script rules stay strict.
+
+  [1mNot verified[0m
+  - A real deploy and Secret Manager binding.
+  - Razorpay's account review.
+  - Real provider scripts loading.
+  - Preview-channel behaviour: the workflow's YAML parses, but it has never run.
+
+  [38;2;177;185;249mdocs/LAUNCH.md[39m marks these as the points where you must check things yourself.
+
+[38;2;153;153;153m✻[39m [38;2;153;153;153mBaked for 23m 24s · done 8:24 PM[39m
+                                                          [38;2;255;107;128m✘ Auto-update failed · Run [1mclaude doctor[0m
+[38;2;136;136;136m────────────────────────────────────────────────────────────────────────────────────────────────────
+[39m❯ [2mpush it and open a pull request[0m
+[38;2;136;136;136m────────────────────────────────────────────────────────────────────────────────────────────────────
+[39m  [38;2;255;193;7m⏵⏵ auto mode on[38;2;153;153;153m (shift+tab to cycle) · ← for agents[39m

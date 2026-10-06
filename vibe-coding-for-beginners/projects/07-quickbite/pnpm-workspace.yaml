@@ -1,6 +1,8 @@
 packages:
   - apps/*
   - packages/*
+  - firebase/functions
+  - supabase
 onlyBuiltDependencies:
   - esbuild
   - sharp

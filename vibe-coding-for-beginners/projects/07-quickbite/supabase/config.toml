@@ -1,0 +1,91 @@
+# Local Supabase stack for QuickBite (`supabase start`, needs Docker).
+# Ports are the CLI defaults: API 54321, database 54322, Studio 54323, Mailpit 54324.
+project_id = "quickbite"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 17
+
+[db.seed]
+# The catalog is loaded by `pnpm seed:supabase` (generated from packages/seed).
+enabled = false
+
+[realtime]
+enabled = true
+
+[studio]
+enabled = true
+port = 54323
+api_url = "http://127.0.0.1"
+
+# Mailpit: every email the local stack sends lands here (http://127.0.0.1:54324).
+[inbucket]
+enabled = true
+port = 54324
+
+[storage]
+enabled = false
+
+[analytics]
+enabled = false
+
+[auth]
+enabled = true
+site_url = "http://localhost:5173"
+additional_redirect_urls = [
+  "http://localhost:5173/**",
+  "http://127.0.0.1:5173/**",
+  "http://localhost:4173/**",
+  "http://127.0.0.1:4173/**",
+]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+enable_signup = true
+enable_anonymous_sign_ins = false
+
+[auth.rate_limit]
+# Generous locally so test suites can sign in many customers.
+email_sent = 1000
+token_verifications = 1000
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+# Passwordless: the emailed link or code is the confirmation.
+enable_confirmations = false
+max_frequency = "1s"
+otp_length = 6
+otp_expiry = 3600
+
+# One email for new and returning customers: a sign-in link and the same
+# 6-digit code (see templates/sign-in.html). Set the same template in the
+# dashboard of a hosted project (Authentication → Email Templates).
+[auth.email.template.magic_link]
+subject = "Your QuickBite sign-in code"
+content_path = "./supabase/templates/sign-in.html"
+
+[auth.email.template.confirmation]
+subject = "Your QuickBite sign-in code"
+content_path = "./supabase/templates/sign-in.html"
+
+[edge_runtime]
+enabled = true
+policy = "per_worker"
+deno_version = 2
+
+# Called by payment providers and pg_cron, which have no user session: these
+# functions check a webhook signature or a shared secret instead.
+[functions.payment-webhook]
+verify_jwt = false
+
+[functions.scheduled-jobs]
+verify_jwt = false

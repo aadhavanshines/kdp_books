@@ -82,3 +82,25 @@ export function searchCatalog(
     dishes: dishHits.sort((a, b) => b.score - a.score).slice(0, limit),
   };
 }
+
+/**
+ * Word prefixes used to look dishes up in databases without full-text search
+ * (Firestore). "Butter Chicken" → ["bu", "but", …, "butter", "ch", …, "chicken"].
+ */
+export function searchTokens(text: string, maxLength = 15): string[] {
+  const tokens = new Set<string>();
+  for (const word of normalizeText(text).split(' ')) {
+    for (let n = 2; n <= Math.min(word.length, maxLength); n++) tokens.add(word.slice(0, n));
+  }
+  return [...tokens];
+}
+
+/** The token a backend should look up for a query: its longest word, as a prefix. */
+export function primarySearchToken(query: string, maxLength = 15): string | null {
+  const words = normalizeText(query)
+    .split(' ')
+    .filter((w) => w.length >= 2);
+  if (words.length === 0) return null;
+  const longest = words.reduce((a, b) => (b.length > a.length ? b : a));
+  return longest.slice(0, maxLength);
+}

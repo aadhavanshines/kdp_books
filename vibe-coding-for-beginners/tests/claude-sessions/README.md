@@ -2,7 +2,7 @@
 
 Every prompt below was run with Claude Code (`claude -p`) while writing this book, in auto permission mode unless the chapter says otherwise. The replies are Claude's own words, unedited. Costs are API list-price estimates reported by Claude Code.
 
-39 sessions; total cost of the 38 logged with cost data: $15.77.
+47 sessions plus the 20-run model experiment; total cost of the logged sessions and the experiment: $101.15.
 
 ## 01. Ch. 4: a first web page
 
@@ -876,7 +876,7 @@ The filter, the done state (strikethrough and grey text) and the counter all wor
 
 *Turns: 18, cost: $0.10*
 
-## 26. Ch. 23: fixing the 1e30 crash found by the review script
+## 26. Ch. 29: fixing the 1e30 crash found by the review script
 
 **Prompt:**
 
@@ -898,7 +898,7 @@ I haven't committed anything.
 
 *Turns: 6, cost: $0.11*
 
-## Ch. 23: the fan-out review script
+## Ch. 29: the fan-out review script
 
 Command (run in a folder containing the expense tracker):
 
@@ -1389,7 +1389,7 @@ Before the first upload, make sure you own that ID in the sense that matters. On
 
 *Turns: 4, cost: $1.40*
 
-## 38. Ch. 22: setting up the release process (1.0.0)
+## 38. Ch. 28: setting up the release process (1.0.0)
 
 **Prompt:**
 
@@ -1429,7 +1429,7 @@ Nothing has been pushed, since there's no remote configured. Once you add one, r
 
 *Turns: 7, cost: $0.16*
 
-## 39. Ch. 22: a feature request from start to finish (1.1.0)
+## 39. Ch. 28: a feature request from start to finish (1.1.0)
 
 **Prompt:**
 
@@ -1486,3 +1486,551 @@ Habit renaming is released as **v1.1.0**, merged into `master` and tagged `v1.1.
 Nothing has been pushed, since there's no remote. Delete `PR.md` once it's been used.
 
 *Turns: 5, cost: $0.31*
+
+## 40. Ch. 23: planning QuickBite (Opus, high effort, plan mode)
+
+**Prompt:**
+
+```
+I want to build QuickBite, a food delivery web app, and I want it
+to be production quality: it should look and feel like the apps
+people use every day, such as Swiggy, Zomato, or Amazon, not like
+a school project. It will run first in India, so prices are in
+rupees, and later in other countries.
+
+Customers can:
+- Sign in with email (magic link or one-time code is fine).
+- Browse restaurants near a chosen area, with photos, ratings,
+  delivery time, cost for two, cuisines, and offers.
+- Search dishes and restaurants, and filter (rating 4+, pure veg,
+  fast delivery, offers).
+- Open a restaurant menu with veg/non-veg markers, add items, and
+  change quantities from a cart that follows them around.
+- Check out with a delivery address, a coupon, and a clear bill
+  (item total, delivery fee, taxes, discount).
+- Pay online with Razorpay (UPI, cards) in India, or Stripe for
+  international cards.
+- See the order status update from "placed" to "delivered".
+
+Technical requirements:
+- React, TypeScript, Vite, and Tailwind CSS, mobile first, and
+  great on desktop too.
+- Two interchangeable backends behind one interface, chosen with
+  an environment variable: Supabase (Postgres, Auth, Row Level
+  Security) and Firebase (Auth, Firestore, security rules, Cloud
+  Functions).
+- Payments must be safe: the server calculates every price, the
+  client never decides what it pays, and orders are marked paid
+  only after verifying the provider's signature (payment
+  signature or webhook). No secret keys in the browser.
+- Hosted on Firebase Hosting (a web.app address).
+- Tests at every level, and everything must run and be testable
+  locally without real accounts: Firebase emulators, a fake
+  payment mode, and seed data.
+
+I'm a beginner, so explain your choices simply. Make a plan
+first: the architecture, the data model, the security rules, the
+payment flow, the folder structure, the design system, the
+testing approach, and the build phases (each phase should leave
+the app working). Don't write code yet.
+```
+
+**Claude's reply:**
+
+The plan is ready in `/root/.claude/plans/i-want-to-build-wobbly-tower.md`. I haven't written any code yet; the repository is still empty.
+
+**How it fits together**
+- **Two backends, one interface:** the app talks to a single TypeScript interface, and `VITE_BACKEND=firebase|supabase` decides which backend sits behind it. Only that backend's code is shipped to the browser. A third, in-memory option serves sample data, so the app runs before any backend exists and component tests run instantly.
+- **Logic written once:** prices, coupons and order statuses live in one shared package, `packages/core`. The order and payment steps live in another, `packages/server`. Cloud Functions (Firebase) and Edge Functions (Supabase) are thin wrappers around them. That means the bill can't come out differently on the two backends.
+- **Money is stored as whole paise** (₹249 is stored as 24900), never as decimals. This avoids rounding errors, and it's the format Razorpay and Stripe use.
+
+**Payment safety**
+- The browser only sends dish IDs and quantities, never a price.
+- The server reads the prices from the database, builds the bill, and creates the Razorpay or Stripe order for that amount.
+- An order is marked paid only after the provider's signature checks out *and* the amount paid matches the order total. Both steps happen in one database transaction, and a repeated payment message has no effect.
+- **Fake payment mode** pretends to be the payment provider: it sends a signed message to the same code that checks real payments. Local runs and tests therefore use the real security checks, with no Razorpay or Stripe account.
+- Secret keys stay on the server, in Firebase Secret Manager or Supabase secrets.
+
+**Security rules:** everything is blocked unless a rule allows it. Anyone can read restaurants and menus. Signed-in users can edit only their own profile and addresses, and can read but never write their own orders. Payments and private coupon data can only be touched by server code.
+
+**Build phases:**
+
+| Phase | What it adds |
+|---|---|
+| 0 | Project foundation |
+| 1 | Browsing |
+| 2 | Cart and bill |
+| 3 | Firebase sign-in and data |
+| 4 | Server-side orders and fake payment; the full app works locally after this |
+| 5 | Supabase backend |
+| 6 | Real Razorpay and Stripe in test mode |
+| 7 | Launch on web.app |
+| 8 | Other countries |
+
+Each phase ends with a working, tested app.
+
+**Assumptions to confirm before I start:**
+1. **No restaurant, rider or admin apps in version 1.** Order status moves from "placed" to "delivered" through a demo simulator, so there's something to watch.
+2. **One restaurant per cart.** Adding a dish from another restaurant asks "Replace cart?", like Swiggy.
+3. **No cash on delivery, refunds, written reviews or map pin-drop at first.** Customers pick their area from a list or use "Use my location".
+4. **Firebase is built first**, because the site is hosted there anyway. Supabase follows in phase 5.
+5. **The live demo on web.app can run in fake-payment mode**, with a "no real money" banner, until you have Razorpay KYC.
+
+**Before going live:**
+- **Firebase billing:** Cloud Functions need Firebase's pay-as-you-go plan, which has a free allowance. You don't need it for local development.
+- **Tax rates:** the GST rates (5% on food, 18% on fees) are configurable defaults; have an accountant confirm them.
+
+Tell me if any of these should change, or say go and I'll start Phase 0.
+
+*Model: claude-opus-5-5. Turns: 3, cost: $0.84*
+
+## 41. Ch. 24: QuickBite phases 0 to 2 (stopped by a usage limit)
+
+**Prompt:**
+
+```
+Go. Your assumptions are all right. Save the plan in the repo as
+docs/PLAN.md, then build phases 0, 1 and 2, committing after each
+phase.
+
+Things to know about this machine:
+- There's no access to image websites, so you can't download food
+  photos. Create appetizing, consistent artwork for the seed data
+  yourself (for example, illustrated dishes on soft colored
+  backgrounds), and keep the image pipeline ready for real photos.
+- npm/pnpm installs work. A Chromium for Playwright is at
+  /opt/pw-browsers/chromium.
+- Docker can't pull images here, so `supabase start` won't work.
+  A local PostgreSQL 16 is installed in /usr/lib/postgresql/16/bin
+  if you need one later.
+
+When phase 2 is done, run every check and show me the app on a
+phone-sized and a desktop-sized screen in the browser: take
+screenshots of the home page, a restaurant menu and the cart, and
+tell me honestly how close it looks to Swiggy or Zomato quality,
+and what's still missing.
+```
+
+**Claude's reply:**
+
+You've hit your session limit · resets 9:50am (UTC)
+
+*Model: claude-opus-5-5. Turns: 97, cost: $11.22*
+
+## 42. Ch. 24: QuickBite phases 1 and 2, resumed
+
+**Prompt:**
+
+```
+You were cut off by a usage limit partway through phase 1. Check
+the working tree, finish phases 1 and 2, and commit after each.
+Then do what I asked at the end: run every check, take the
+screenshots on a phone-sized and a desktop-sized screen, and tell
+me honestly how close it looks to Swiggy or Zomato quality.
+```
+
+**Claude's reply:**
+
+Phases 0, 1 and 2 are built and committed, and every check passes. I've sent six screenshots, phone and desktop: home, a restaurant menu with items in the cart, and checkout with a coupon applied. The commits are on the branch `build/phases-0-2` (I branched rather than committing to `master`):
+
+```
+3488548 Phase 2: cart, coupons and an itemised bill
+72afc70 Phase 1: browse restaurants, menus and dishes
+6a0c30d Phase 0: foundations for QuickBite
+```
+
+## After the cut-off
+Phase 1 was written but not committed, and four of its end-to-end tests were failing. One cause was a type error in a test helper: it broke the build, so the tests had been running against an old version of the app. Fixing it also exposed real accessibility problems, which are now fixed:
+- some small text was too low-contrast to read comfortably;
+- a sideways-scrolling row couldn't be reached with the keyboard;
+- the bill's list markup was invalid.
+
+## Results of every check (`pnpm check`)
+
+| Check | Result |
+|---|---|
+| Lint and formatting | clean |
+| Typecheck | clean |
+| Unit and component tests | 75 passed |
+| Production build | succeeds (main code about 74 KB compressed) |
+| End-to-end tests | 14 passed (7 tests on a phone and on a desktop screen) |
+
+The end-to-end tests include accessibility scans with axe and pass repeatedly. One earlier test failed only sometimes; it was a genuine contrast problem, now fixed.
+
+## What works now
+- **Choosing an area:** pick from a list or use your current location.
+- **Home:** offer banners, a "What's on your mind?" cuisine row, top-rated restaurants, and filters (rating 4+, pure veg, fast delivery, offers) plus sorting. Filters stay in the web address, so refresh and back keep them.
+- **Search:** finds dishes and restaurants together.
+- **Menus:** veg/non-veg marks, Bestseller tags, menu search, and a category list (a side rail on desktop, a floating MENU button on phones).
+- **Cart:**
+  - The ADD button turns into a − 2 + stepper.
+  - There's one restaurant per cart, with a "Replace cart?" prompt.
+  - The cart shows as a sticky bar on phones and a side panel on desktop, and it survives reloads.
+- **Checkout:** an address form with validation, a coupon list that says why a coupon doesn't apply (for example "Add ₹49 more"), and a bill with a GST breakdown.
+- **The browser never sets a price:** the bill comes back from the backend, which looks every price up itself. That's the same rule the real server will follow.
+- **"Proceed to pay"** opens a note saying online payment is the next step. Nothing is charged yet.
+- **Artwork:** every dish and restaurant image is illustrated food I generated, with no downloaded photos. Dropping real photos into `packages/seed/photos/` replaces them with no code changes.
+
+## How close to Swiggy or Zomato?
+**Layout and flow: close.** The home grid, restaurant cards with an offer strip over the image, the ADD-to-stepper button, the sticky "View Cart" bar and the bill all use the same patterns as Swiggy, and they hold up on desktop. I'd put the layout at roughly 80–85% of their polish.
+
+**Overall: noticeably below them**, for these reasons:
+- **Images:** the illustrations are consistent and pleasant, but they look like a demo. Real food photography is most of why those apps feel appetizing.
+- **Restaurant variety:** there are 21 restaurant chains, so the same 21 cover images repeat in every area, and the "Top-rated" row repeats restaurants from the main list.
+- **Missing details:**
+  - A dish detail popup with a large photo.
+  - Customising a dish (size, add-ons).
+  - Ratings on individual dishes, and "frequently ordered" rows.
+  - Smooth page transitions and skeleton loaders on the search screen.
+- **Address:** there's no map pin. Each saved address is placed at the centre of its area, so delivery distances are approximate.
+- **On phones:** the floating MENU button can sit over a dish photo, and the header logo takes space that Swiggy gives to the location.
+
+## Still missing (later phases)
+- Sign-in, the Firebase and Supabase backends, real payments and order tracking.
+- Text translations for other countries.
+- Dark mode.
+- Deploying to web.app.
+
+All of these are later phases in the plan. Today the app runs entirely on built-in sample data in the browser.
+
+## Running it
+Run `pnpm install`, then `pnpm dev`, and open http://localhost:5173. `pnpm check` runs every check. `pnpm screenshots` (with `pnpm preview` running in another terminal) regenerates the screenshots into `screenshots/`.
+
+*Model: claude-opus-5-5. Turns: 57, cost: $19.42*
+
+## 43. Ch. 25: QuickBite phases 3 and 4, Firebase and server-side orders
+
+**Prompt:**
+
+```
+Read docs/PLAN.md and the git log, then build phases 3 and 4:
+Firebase sign-in and data, then server-side orders with the fake
+payment mode, so the whole app works end to end locally. Commit
+after each phase.
+
+Things to know about this machine:
+- Java 21 and firebase-tools work, and the Firestore, Auth and UI
+  emulator downloads are already in ~/.cache/firebase/emulators.
+  The emulators can't reach the internet, which is fine.
+- npm/pnpm installs work. Chromium is at /opt/pw-browsers/chromium.
+- Razorpay and Stripe servers can't be reached from here.
+
+Before you finish, prove it works: run the security rules tests,
+the server tests (including tampered signatures, wrong amounts and
+repeated webhooks), and an end-to-end browser test against the
+emulators that signs in, orders, pays in fake mode and watches the
+order reach "placed". Tell me exactly what you verified and what
+you couldn't.
+```
+
+**Claude's reply:**
+
+Phases 3 and 4 are built and committed (`946f749` for phase 3, `21fb133` for phase 4). The whole app now runs locally on the Firebase emulators: sign in, browse, check out, pay in fake mode, and watch the order go live to "Delivered". All four test suites you asked for pass. One limitation up front: the Firebase E2E suite hit a one-off timeout on its first green-path run (details below), and that test passed when I re-ran it.
+
+## What I verified (final clean run after the phase 4 commit)
+
+| Check | Result |
+|---|---|
+| Lint, format, typecheck (all 5 packages), memory and Firebase builds | pass |
+| Unit and component tests (`pnpm test`) | 114 pass |
+| **Security rules** (`pnpm test:rules`) | 12 pass |
+| **Backend contract suite**, same tests run against memory and Firebase (`pnpm test:contract`) | 46 pass (23 × 2) |
+| **E2E on memory backend** (`pnpm test:e2e`) | 20 pass |
+| **E2E on Firebase emulators** (`pnpm test:e2e:firebase`) | 20 pass |
+
+- **Server tests:** these run in the unit suite. They check that:
+  - an order is not placed if the signature is tampered, made with the wrong secret, missing, malformed, or more than 5 minutes old or ahead;
+  - a webhook with the wrong amount (off by 1 paisa, too high, ₹1, zero) or the wrong currency leaves the order unpaid and flags it for review;
+  - repeating a webhook 3 times in a row, or sending it 5 times at once, records exactly one payment;
+  - idempotency, the 10-orders-a-minute limit and the once-per-customer coupon limit work.
+- **Checking the tests can fail:** I deliberately broke the amount check, the signature compare and the duplicate-webhook check, one at a time. 5, 2 and 2 tests failed respectively. I also ran the rules tests against wide-open rules, and 10 of 12 failed.
+- **Browser test on Firebase:** on both a phone and a desktop screen it:
+  - signs in with an email link read from the Auth emulator;
+  - adds dishes, adds an address and applies WELCOME50;
+  - checks that the payment sheet shows the amount the server set and pays in fake mode;
+  - watches the order reach "Order placed", then "Delivered" (all five steps done), and then appear in order history.
+
+  A second test declines the payment, retries and reaches "Order placed". The server log for that run shows 6 signed webhooks and 0 rejected calls.
+- **`pnpm dev:firebase`:** it started, served the app and the Emulator UI, and rejected an unsigned webhook with a 400 over real HTTP. Ctrl+C stopped everything within 2 seconds.
+
+## Bugs the end-to-end runs caught (fixed)
+
+- **Quotes broke in the browser on Firebase.** The callable client sends a missing coupon as `null` and the server rejected it, so the bill never loaded at checkout. My Node-based contract tests hadn't caught it; they now cover it.
+- **A sign-in race in the memory backend.**
+- **A flaky locator:** "Saved" also matched the "Saved addresses" heading.
+- **Leftover simulator processes:** they kept running after the test runner stopped.
+- **The first green-path Firebase run had one timeout.** The first payment call starts the function from cold, which took longer than the test's 5-second wait. I raised that wait to 20 seconds; it passed on the re-run.
+
+## What I couldn't verify
+
+- **Storage rules** are written but untested: the Storage emulator's rules engine isn't in the emulator cache and can't be downloaded here.
+- **Scheduled functions don't fire on the emulator.** The code they run is unit-tested and runs through `pnpm sim` in dev and E2E, but the scheduling itself has never executed.
+- **No real deploy:** I haven't deployed the functions or sent a real sign-in email.
+- **The new CI job was never run**, since there's no GitHub here.
+- **E2E covers Chromium only.**
+- **Out of scope:** Razorpay and Stripe (phase 6), Supabase (phase 5), and App Check and CSP (phase 7).
+
+## Decisions to review
+
+- **A webhook with the wrong amount gets a 200 response, not an error.** The order is not placed, is flagged for review, and the payment is recorded as a mismatch. With an error, the provider would keep retrying a webhook that can never succeed. A bad signature gets a 400 and nothing is recorded.
+- **The server works out an address's location from its area and ignores coordinates from the browser.** The rules also forbid storing coordinates, so a customer can't move an address to get cheaper delivery.
+- **Checkout now requires sign-in**, and the existing cart E2E test signs in first.
+- **If a coupon stops applying between the quote and placing the order, the order is refused** instead of charging a different total than the customer saw.
+
+*Model: claude-opus-5-5. Turns: 135, cost: $13.81*
+
+## 44. Ch. 25: QuickBite phase 5, Supabase
+
+**Prompt:**
+
+```
+Read docs/PLAN.md and the git log, then build phase 5: the
+Supabase backend, so the app works with VITE_BACKEND=supabase.
+Commit when it's done.
+
+Things to know about this machine:
+- Docker can't pull images, so `supabase start` won't work here.
+  PostgreSQL 16 is installed in /usr/lib/postgresql/16/bin, so you
+  can run a real Postgres server for the migrations and the Row
+  Level Security tests. Supabase's own schemas (auth, roles such
+  as anon, authenticated and service_role, and auth.uid()) won't
+  exist there, so create a small, clearly labelled stand-in for
+  tests only.
+- Deno may not be installable; check before relying on it.
+- npm/pnpm installs work. Chromium is at /opt/pw-browsers/chromium.
+
+Before you finish, run the migrations from scratch, the RLS tests
+(user A vs user B vs anonymous, and attempts to write orders,
+prices or payments directly), and the same contract suite you run
+against the other backends, as far as this machine allows. Tell
+me exactly what you verified and what still needs a real Supabase
+project to check.
+```
+
+**Claude's reply:**
+
+Phase 5 is committed (`6664ebc`) and the app runs with `VITE_BACKEND=supabase`. Everything I could run passes, but Docker isn't available here, so it has **not** run on a real Supabase stack. Two pieces (Realtime and PostgREST) were never exercised.
+
+## What runs where
+
+**Real on this machine:** PostgreSQL 16, Supabase Auth (GoTrue, which I built from its current source), Mailpit (the mail catcher Supabase's CLI uses, also built from source), and Deno 2.9 running the real Edge Function files from the esbuild bundle.
+
+**Not obtainable:** PostgREST and Realtime. The release downloads, container images, Stackage and a source build of PostgREST all failed. For the full-stack runs I wrote two test-only stand-ins and kept them in the scratchpad, out of the repo:
+- **REST stand-in:** handles only the requests the adapter sends. Each request runs as the JWT's role with its claims set, so Postgres itself enforces RLS.
+- **Gateway stand-in:** routes requests the way Supabase's gateway does.
+
+The committed stand-in that the user asked for, `tests/supabase/standin/`, is clearly labelled and covers only Supabase's roles, default grants and auth schema.
+
+## What I verified
+
+- **Migrations from scratch:** applied two ways — on a fresh database with my stand-in, and on top of the real Auth migrations. The repo's seed script then loaded 2,727 rows.
+- **RLS tests, 24/24**, as anonymous, user A and user B. Covered:
+  - anonymous: can read only the catalog, active coupons and search
+  - A and B: each reads and edits only their own profile and addresses, and can't set `user_id`
+  - each customer reads only their own orders and order items
+  - direct writes are denied for orders, order items, prices, payments, webhook events and coupon redemptions
+  - every table has RLS on, and the search function is the only function browsers can call
+- **Order workflow on Postgres, 11/11:** includes concurrent same-key checkouts producing one order and duplicate webhooks applied exactly once. Without the transaction retries, both concurrency tests fail.
+- **Edge Function handlers over HTTP, 7/7.**
+- The 42 database tests above also pass against the real Auth schema.
+- **Shared contract suite on Supabase: 23/23.** Same suite as the other backends.
+- **E2E on Supabase: 22/22** (phone and desktop). Covers both sign-in paths, coupon checkout, fake payment tracked to "Delivered", retry after a failed payment, and the accessibility checks.
+- **No regressions:**
+  - lint, formatting and typecheck all pass
+  - unit tests: 121
+  - Firestore rules: 12
+  - contract suite on memory and Firebase: 46
+  - e2e: memory 20/20, Firebase 20/20
+
+## What still needs a real Supabase project (or `supabase start`)
+
+1. **Realtime.** Live order updates are untested. On the harness the tracking page updated through its polling fallback, so the "live" contract and e2e tests passed without Realtime.
+2. **PostgREST.** My stand-in may not match its real behaviour.
+3. **Edge runtime and `supabase functions serve`.** I ran the functions on plain Deno, not Supabase's runtime.
+4. **Hosted-project settings:**
+   - the `SUPABASE_DB_URL` connection from inside Edge Functions
+   - the pg_cron/pg_net job and its Vault secrets
+   - the email template set in the dashboard
+   - redirect URLs
+5. **`supabase/config.toml`** has not been parsed by the CLI.
+6. **The new `supabase` CI job** has never run. Its first step needs no Docker, but the `supabase start` steps are unverified. One thing to watch: the database tests switch roles with `set local role`, which needs the `postgres` user to be allowed to use those roles on a real stack.
+
+## Things to know
+
+- **Plan deviation (§4):** there are no `create_order` / `mark_order_paid` SECURITY DEFINER functions. The Edge Functions run the same TypeScript order code as Firebase inside one serializable Postgres transaction, so the money logic isn't written twice. Browsers still can't write orders or payments. If you'd rather have the SQL functions, say so.
+- **Sign-in:** emails carry a 6-digit code, both inside the link and printed for typing. The sign-in page now has a code box when the backend supports it. A hosted project needs `supabase/templates/sign-in.html` set as its Magic Link and Confirm Signup templates; the README has the deploy steps.
+- **Bundle size (follow-up, not caused by this phase):** every build still emits all backend chunks. Only the chosen one loads at runtime, but the plan says only one SDK should be in the bundle. The Firebase chunk was already emitted in memory builds before this phase; this phase adds a Supabase chunk to every build too.
+
+*Model: claude-opus-5-5. Turns: 178, cost: $15.42*
+
+## 45. Ch. 26: QuickBite phase 6, Razorpay and Stripe (Opus, high effort; stopped by a usage limit)
+
+**Prompt:**
+
+```
+Read docs/PLAN.md and the git log, then build phase 6: real
+Razorpay and Stripe payments, in test mode, on both backends.
+Commit when it's done.
+
+Important facts:
+- This machine can't reach Razorpay's or Stripe's servers, so
+  nothing can be checked live here. Build the gateways so they're
+  fully testable offline: the HTTP calls to the providers should
+  be replaceable in tests, and the signature checks must use the
+  providers' documented algorithms exactly, tested with known
+  good, tampered and replayed messages.
+- Add a script I can run on my own computer with my own TEST keys
+  that creates a real test-mode order or payment on each provider
+  and checks the response, so the live part can be verified
+  outside this machine. Never use live keys in tests.
+- Stripe is invite-only for new businesses in India, so Razorpay
+  is the main gateway for India and Stripe is for international
+  customers. Make the choice per region, as the plan says.
+
+Before you finish, run every test suite and tell me exactly what
+you verified, what can only be verified with real test keys, and
+anything in the providers' rules you are unsure about.
+```
+
+**Claude's reply:**
+
+You've hit your session limit · resets 7:30pm (UTC)
+
+*Model: claude-opus-5-5. Turns: 34, cost: $2.94*
+
+## 46. Ch. 26: QuickBite phase 6, resumed
+
+**Prompt:**
+
+```
+You were cut off by a usage limit partway through phase 6. Check
+the working tree and continue from where you stopped, then finish
+the phase as I asked: run every test suite and tell me exactly
+what you verified, what can only be verified with real test keys,
+and anything in the providers' rules you are unsure about.
+```
+
+**Claude's reply:**
+
+Phase 6 is built and committed as `7bbd41a` on `build/phases-0-2`. Razorpay is used for India and Stripe for international regions, chosen per region on the server, on both backends. Fake payments are still the default for local work and tests. Everything passed here except the three Supabase suites that need a full local Supabase stack, which I couldn't run (see below).
+
+When you resumed, the tree had the core types and the three gateways written but nothing wired up. I carried on from there.
+
+**How to turn it on:** set `PAYMENTS_MODE=real` with your Razorpay and/or Stripe test keys. The server refuses live keys unless `PAYMENTS_LIVE=true`, and with that set it refuses test keys, so the two can't mix. `PAYMENTS_REGION_PROVIDERS=IN=stripe` lets you try Stripe on the India region in test mode, since no Stripe region exists in the seed data yet.
+
+## Test suites
+
+| Suite | Result |
+|---|---|
+| lint, format check, typecheck (all packages) | clean |
+| `pnpm test` (unit and component) | 180 passed (121 before this phase) |
+| `pnpm build` | builds; one chunk-size warning |
+| `pnpm test:e2e` (memory backend) | 20 passed, 2 skipped |
+| `pnpm test:rules` (Firestore emulator) | 12 passed |
+| `pnpm test:contract` (memory + Firebase emulators) | 50 passed |
+| `pnpm test:e2e:firebase` | 20 passed, 2 skipped |
+| `pnpm test:supabase:standin` (real PostgreSQL) | 45 passed |
+| `test:supabase:db`, `test:contract:supabase`, `test:e2e:supabase` | **not run** |
+
+The 4 skipped e2e tests are the sign-in-code tests the suite only runs on Supabase. The three unrun suites need Docker plus the Supabase CLI and Deno, which this machine doesn't have; CI runs them.
+
+## What I verified offline
+
+- **Signatures match the providers' own code.** For every good, tampered and malformed message, my code reaches the same verdict as the official `razorpay` 2.9.8 and `stripe` 23.0.0 libraries. Signatures made by each side verify with the other. To check the tests can fail, I deliberately broke both algorithms: they failed, then I restored them.
+- **Tampering is refused and nothing is recorded.** This covers a changed amount, a re-serialised body, the wrong secret, a flipped hex digit, a timestamp swap and a `v0`-only header. It also covers another order's payment presented for this order, and another customer's order.
+- **Replays:**
+  - **Stripe:** within the 5-minute window a replay is skipped by event id; after it, the message is refused.
+  - **Razorpay:** the replay key comes from the signed body, so a forged `x-razorpay-event-id` header doesn't help. Events older than 3 days are refused.
+  - **Both channels:** the browser confirmation and the webhook can't double-place an order.
+- **HTTP calls are replaceable.** The gateways take an injected `fetch`. Tests use simulators of the Razorpay and Stripe APIs that check request formats and credentials.
+- **Full flows:**
+  - payment and webhook
+  - decline then retry on the same Razorpay order / Stripe payment
+  - amount or currency mismatch is not placed and is flagged
+  - provider outage, then retry
+  - concurrent retries end up with one provider order
+  - region selection
+  - the same flows over HTTP through the Supabase Edge handlers on PostgreSQL
+
+Building this also caught two bugs in my own code, both fixed: the "Opening Razorpay checkout…" status never appeared, and one live-check step would have passed on a proxy error.
+
+## What needs your test keys
+
+Put the keys in `.env.payments.local` (git-ignored) and run `pnpm payments:check`. It refuses to run if any live key is present.
+
+- **Default:** creates and reads back a ₹1 Razorpay test order and checks error handling. On Stripe it makes a real test card payment (`pm_card_visa`), a declined one, and checks the idempotent create.
+- **`--browser`:** you pay that ₹1 order in Razorpay Checkout, and my code verifies the real signature and capture. This is the one check that proves the payment-signature code against Razorpay's actual output.
+- **`--webhooks`:** verifies real webhook signatures. For Stripe, run `stripe listen` and forward to the script. For Razorpay, use a tunnel (e.g. ngrok) and a test-mode webhook set up in the Dashboard.
+
+Also untested here: Checkout.js and Stripe.js in a real browser (tests used stand-ins), and deployed webhook URLs on Firebase and Supabase.
+
+## Provider rules I'm unsure about
+
+- **Razorpay capture:** I assume automatic capture is on. With it off, the browser path captures the payment itself, but a customer who closes the tab leaves it authorised and the webhook path won't place the order. The README says to keep it on.
+- **Razorpay retries:** I assume webhook retries stop within about 24 hours and keep the original `created_at`; the 3-day cut-off depends on that. I didn't send the `payment_capture` order parameter because I'm unsure it's still supported.
+- **Query-string webhook URLs:** I assume both providers accept `?provider=…`. A path form (`…/paymentWebhook/razorpay`) also works if they don't.
+- **Stripe API version:** pinned to `2026-09-30.endive`, taken from stripe-node 23. Your webhook endpoint should use the same version.
+- **Stripe future timestamps:** my check is stricter than Stripe's library and also refuses timestamps more than 5 minutes in the future.
+- **Phase 8 currencies:** Stripe has per-currency minimum charges and special rules for some currencies, which matter once non-INR regions exist. The live check uses USD by default; set `LIVE_CHECK_STRIPE_CURRENCY` if your account needs another.
+- **Test UPI ids:** I didn't hard-code test details; the browser page points to Razorpay's test-mode docs.
+
+**Left for phase 7:** binding the keys through Firebase Secret Manager (the functions still read environment variables), the Content-Security-Policy (the README lists the provider hosts it must allow), and rate limits on the two new endpoints.
+
+*Model: claude-opus-5-5. Turns: 56, cost: $10.57*
+
+## 47. Ch. 27: QuickBite phase 7, launch on Firebase Hosting (interactive session)
+
+**Prompt:**
+
+```
+<pasted_content id="02f8">
+Read docs/PLAN.md and the git log, then build phase 7, getting QuickBite ready to launch on Firebase Hosting (a web.app address). Include: firebase.json with the single-page-app routing, the functions and webhook routes, security headers including a Content-Security-Policy that allows only what we use, and long caching for hashed files; secrets through Firebase Secret Manager; a GitHub Actions workflow that deploys a preview channel for every pull request and the live site from main; the pages Razorpay requires before it activates an account (about, contact, terms, privacy, refunds and cancellations, and shipping or delivery); and docs/LAUNCH.md, a step-by-step launch checklist. I don't have a Firebase project yet and this machine can't deploy, so prove it works with the Hosting emulator: check the routes, the headers, and that the app and payments still work under the CSP. Commit when done.
+</pasted_content id="02f8">
+```
+
+**Claude's reply:**
+
+Phase 7 is built and committed. I proved it on the Hosting emulator with the real `firebase.json` (`pnpm test:hosting`), but I could not deploy, so a few things are unchecked (listed below).
+
+**What `pnpm test:hosting` showed**
+- **Routes, rewrites, headers and caching:** 63 checks pass.
+  - Every app route, including deep links and the six policy pages, serves the app.
+  - The callable functions answer at `/api/*` and webhooks at `/webhooks/<provider>`. Unsigned webhooks are rejected.
+  - All the security headers are present.
+  - Hashed assets are cached for a year, and the app page is always revalidated.
+- **App under the CSP:** the whole Firebase end-to-end suite passes in a browser under the real policy, including sign-in, checkout, fake payment and order tracking. Any blocked request fails the test. A negative control confirms inline scripts, unlisted hosts and `eval` are actually blocked.
+- **Razorpay and Stripe under the CSP:** this machine can't reach either provider, so I answered their scripts and frames with small stand-ins at their real addresses. The browser checks the policy before making a request, so a stand-in loading shows the policy allows that address, and the app's own payment code ran against them. The real provider scripts were not loaded.
+- **Other checks:** lint, typecheck, 189 unit tests, the memory-backend e2e and the Firebase contract suite pass.
+
+**What was added**
+- **Hosting config:** `firebase.json` has the single-page-app fallback, the function and webhook routes, the headers and CSP, and the caching rules. Source maps are left out of the deploy.
+- **Secrets:** the Razorpay keys are Secret Manager secrets named in `firebase/functions/src/secrets.ts`. The emulators never contact Secret Manager.
+- **Deploy workflow:** `.github/workflows/deploy.yml` makes a preview channel per pull request and deploys live from `main` behind a `production` approval. It skips with a warning until the repository variables exist.
+- **Policy pages:** About, Contact, Terms, Privacy, Refunds & cancellations and Shipping are linked from the footer.
+- **Launch checklist:** `docs/LAUNCH.md` is the step-by-step list.
+
+**Two problems the CSP test caught**
+- **Auth script:** Firebase Auth's default setup loaded a Google script for popup sign-in, which we don't use. I switched to email-link-only auth instead of allowing that host.
+- **Inlined fonts:** Vite was embedding small fonts as `data:` URIs. I stopped that instead of loosening `font-src`.
+
+**What you need to do or know**
+- **Functions via Hosting:** the app calls functions through Hosting at `/api/*` rather than the cloudfunctions.net address. It's a small change to the Firebase adapter, and it keeps the CSP free of a functions host.
+- **Business details:** the pages use placeholders in `apps/web/src/config/business.ts` for your registered name, address, phone, email and grievance officer. I didn't invent any. `pnpm launch:check` fails until they're filled in, and the live deploy runs it. The policy text is a draft and not legal advice, so have it reviewed.
+- **Refunds:** they're manual from the Razorpay dashboard, and the refund policy says so.
+- **Demo simulator:** the order simulator still moves paid orders to "delivered" on a timer, and the seed restaurants are fictional. `docs/LAUNCH.md` says not to take real money until both are dealt with.
+- **Stripe:** not bound yet. Create the three Stripe secrets and add them to `secrets.ts` when you want it.
+- **Style CSP:** `style-src` keeps `'unsafe-inline'` because Razorpay and Stripe inject inline styles. Script rules stay strict.
+
+**Not verified**
+- A real deploy and Secret Manager binding.
+- Razorpay's account review.
+- Real provider scripts loading.
+- Preview-channel behaviour: the workflow's YAML parses, but it has never run.
+
+`docs/LAUNCH.md` marks these as the points where you must check things yourself.
+
+*Model: claude-sonnet-5-5 (the session default). Cost: $2.52*
+
+## Ch. 22: the model-choice experiment
+
+Twenty headless runs (two tasks, five model and effort settings, two runs each), scored by 36 hidden tests. Prompts, the specification, the buggy code, the hidden tests, a reference implementation and every result (pass counts, cost, turns, time, failures) are in `tests/model-experiment/`. Total cost: $8.65.

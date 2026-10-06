@@ -12,3 +12,6 @@ screenshots/
 .DS_Store
 *.log
 art-preview.png
+.firebase/
+firebase-export-*/
+firebase.local-csp.json

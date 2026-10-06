@@ -3,6 +3,8 @@ export * from './money';
 export * from './geo';
 export * from './coupons';
 export * from './pricing';
+export * from './quote';
+export * from './orders';
 export * from './restaurants';
 export * from './search';
 export * from './orderStatus';

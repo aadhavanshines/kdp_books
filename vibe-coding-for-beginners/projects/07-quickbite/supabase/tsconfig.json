@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    // Web-standard APIs only: the server code runs on Node (tests, seed, simulator) and Deno (Edge Functions).
+    "lib": ["ES2023", "DOM"],
+    "types": ["node"]
+  },
+  "include": ["server", "scripts"]
+}

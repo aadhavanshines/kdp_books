@@ -117,7 +117,7 @@ For a personal toy, a few manual checks may be enough. For anything you share, a
 - at least one end-to-end test of the most important user journey,
 - and a manual check on the devices your users actually use.
 
-The projects in this book reached that bar. Across the six apps, Claude wrote more than 120 tests of its own, and the book's independent checks added 40 more, including browser tests in several time zones, on phone-sized screens, and with an accessibility checker.
+The projects in this book reached that bar. Across the seven apps, Claude wrote more than 400 tests of its own, and the book's independent checks added more, including browser tests in several time zones, on phone-sized screens, with an accessibility checker, security probes, and payment signatures checked against the providers' official libraries.
 
 > **Try It:** Pick the habit tracker or the to-do app and ask Claude, "What are the five most important behaviors of this app that don't have a test yet? Write tests for them and run them." Read the tests it writes. Do they match how you expect the app to behave?
 

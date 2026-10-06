@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from './fixtures';
+import { completeSignIn, expect, test, uniqueEmail } from './fixtures';
 
 test('add dishes, check out with an address and a coupon', async ({ page, isMobile }) => {
   await page.goto('/restaurant/tandoor-tales-koramangala');
@@ -15,6 +15,12 @@ test('add dishes, check out with an address and a coupon', async ({ page, isMobi
 
   // The cart survives a reload.
   await page.reload();
+  await expect(page.getByText('Garlic Naan')).toBeVisible();
+
+  // Ordering needs an account: sign in and come straight back to checkout.
+  await page.getByRole('link', { name: 'Sign in to continue' }).click();
+  await completeSignIn(page, uniqueEmail('cart'));
+  await expect(page.getByRole('heading', { name: 'Checkout' })).toBeVisible();
   await expect(page.getByText('Garlic Naan')).toBeVisible();
 
   await page

@@ -1,0 +1,139 @@
+name: Deploy
+
+# Every pull request gets a preview channel (a temporary web.app address, deleted after 7 days).
+# Every push to main deploys the live site, plus the functions, rules and indexes.
+# One-time setup: docs/LAUNCH.md. Nothing here runs until the repository variables and secrets exist.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write # the preview action comments the preview link on the PR
+  checks: write
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  # Repository variables (Settings → Secrets and variables → Actions → Variables).
+  # A pull request preview uses the PREVIEW_* values when set (a separate staging
+  # project is the safe choice once the live site takes real money), else the same project.
+  PROJECT_ID: ${{ github.event_name == 'pull_request' && vars.PREVIEW_FIREBASE_PROJECT_ID || vars.FIREBASE_PROJECT_ID }}
+  API_KEY: ${{ github.event_name == 'pull_request' && vars.PREVIEW_FIREBASE_API_KEY || vars.FIREBASE_API_KEY }}
+  APP_ID: ${{ github.event_name == 'pull_request' && vars.PREVIEW_FIREBASE_APP_ID || vars.FIREBASE_APP_ID }}
+
+jobs:
+  build:
+    # Pull requests from forks have no access to secrets, so they get CI only.
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      configured: ${{ steps.config.outputs.configured }}
+    steps:
+      - id: config
+        name: Check the repository is set up for deploys
+        run: |
+          if [ -z "$PROJECT_ID" ] || [ -z "$API_KEY" ] || [ -z "$APP_ID" ]; then
+            echo "::warning::FIREBASE_PROJECT_ID, FIREBASE_API_KEY and FIREBASE_APP_ID are not set; skipping the deploy (docs/LAUNCH.md, step 4)."
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.config.outputs.configured == 'true'
+        uses: actions/checkout@v4
+      - if: steps.config.outputs.configured == 'true'
+        uses: pnpm/action-setup@v4
+      - if: steps.config.outputs.configured == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - if: steps.config.outputs.configured == 'true'
+        run: pnpm install --frozen-lockfile
+      - if: steps.config.outputs.configured == 'true'
+        run: pnpm typecheck && pnpm test
+      - name: Business details must be real before the live site
+        if: steps.config.outputs.configured == 'true' && github.event_name == 'push'
+        run: pnpm launch:check
+      - name: Build the site
+        if: steps.config.outputs.configured == 'true'
+        run: pnpm build
+        env:
+          VITE_BACKEND: firebase
+          VITE_FIREBASE_PROJECT_ID: ${{ env.PROJECT_ID }}
+          VITE_FIREBASE_API_KEY: ${{ env.API_KEY }}
+          VITE_FIREBASE_APP_ID: ${{ env.APP_ID }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ env.PROJECT_ID }}.firebaseapp.com
+          VITE_FIREBASE_FUNCTIONS_REGION: asia-south1
+          # Functions are called at <site>/api/<name> (firebase.json rewrites), so the CSP needs no functions host.
+          VITE_FIREBASE_FUNCTIONS_VIA_HOSTING: 'true'
+          # test shows the "Test mode" banner; set the PAYMENTS_LIVE variable to true at launch (docs/LAUNCH.md).
+          VITE_PAYMENTS_MODE: ${{ github.event_name == 'push' && vars.PAYMENTS_LIVE == 'true' && 'live' || 'test' }}
+      - if: steps.config.outputs.configured == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: |
+            apps/web/dist
+            firebase.json
+            firebase
+            !firebase/functions/node_modules
+          retention-days: 1
+          include-hidden-files: true
+
+  preview:
+    name: Preview channel
+    needs: build
+    if: needs.build.outputs.configured == 'true' && github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.PREVIEW_FIREBASE_SERVICE_ACCOUNT || secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ env.PROJECT_ID }}
+          expires: 7d
+          # Channel name defaults to pr<number>; each push to the PR updates the same link.
+
+  live:
+    name: Live site
+    needs: build
+    if: needs.build.outputs.configured == 'true' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production # add required reviewers on this environment for a manual approval step
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      - name: Non-secret function settings
+        # Secrets (Razorpay keys) come from Secret Manager, never from here.
+        run: |
+          printf 'PAYMENTS_MODE=real\nPAYMENTS_LIVE=%s\n' "${{ vars.PAYMENTS_LIVE == 'true' && 'true' || 'false' }}" \
+            > "firebase/functions/.env.${PROJECT_ID}"
+      - name: Deploy functions, rules, indexes and the site
+        run: >
+          pnpm exec firebase deploy
+          --project "$PROJECT_ID"
+          --only functions,firestore,storage,hosting
+          --non-interactive --force

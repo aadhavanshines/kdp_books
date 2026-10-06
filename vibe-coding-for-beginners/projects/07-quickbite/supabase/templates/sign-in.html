@@ -1,0 +1,30 @@
+<!--
+  QuickBite sign-in email (Supabase Auth "Magic Link" and "Confirm signup" templates).
+  The link opens the app's /login/finish page with the one-time code in the
+  URL fragment (never sent to a server); the page verifies it together with
+  the email address, like typing the code by hand.
+-->
+<h2>Sign in to QuickBite</h2>
+<p>Tap the button to sign in. The link and the code work once and expire after an hour.</p>
+<p>
+  <a
+    href="{{ .RedirectTo }}#otp={{ .Token }}"
+    style="
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: #e2461f;
+      color: #ffffff;
+      font-weight: 700;
+      text-decoration: none;
+    "
+    >Sign in to QuickBite</a
+  >
+</p>
+<p>
+  Or enter this code on the sign-in page:
+  <strong style="font-size: 20px; letter-spacing: 4px">{{ .Token }}</strong>
+</p>
+<p style="color: #78716c; font-size: 13px">
+  If you didn't ask to sign in, you can ignore this email.
+</p>

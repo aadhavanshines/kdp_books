@@ -4,7 +4,7 @@
 
 by **Aadhavan Muthurengan**
 
-A beginner-to-advanced guide (about 53,000 words plus code listings; 275 pages in 6 x 9 paperback, with 15 diagrams and 6 app screenshots). Readers build six real apps with Claude Code, including a mobile app for Android and iPhone, then learn UI/UX and accessibility, CLAUDE.md, skills, subagents, hooks, MCP, app store shipping, the software development lifecycle, automation, deployment, security, and best practices.
+A beginner-to-advanced guide (about 65,000 words plus code listings; 339 pages in 6 x 9 paperback, with 17 diagrams, 9 app screenshots, and 17 screenshots of the real Claude Code terminal). Readers build seven real apps with Claude Code, including a mobile app for Android and iPhone and a production-quality food delivery app (Firebase and Supabase, Razorpay and Stripe, Firebase Hosting), learn how to choose a model for accuracy (with a measured experiment), then learn UI/UX and accessibility, CLAUDE.md, skills, subagents, hooks, MCP, app store shipping, the software development lifecycle, automation, deployment, security, and best practices.
 
 ## What makes it different: everything is real and tested
 
@@ -18,9 +18,10 @@ A beginner-to-advanced guide (about 53,000 words plus code listings; 275 pages i
 | 1. Tip calculator (Ch. 5) | `projects/01-tip-calculator` | checked math in session | browser |
 | 2. To-do app (Ch. 6 and 8) | `projects/02-todo-app` (Chapter 6 version in `before-redesign/`) | simulated browser in session; real-browser script after Ch. 8 | browser, 2 time zones, touch targets, axe-core |
 | 3. Expense tracker (Ch. 9) | `projects/03-expense-tracker` | 26 pytest tests | CLI end to end |
-| 4. Habit tracker (Ch. 10 to 23) | `projects/04-habit-tracker` (released as 1.1.0 in Ch. 22) | 44 pytest tests | browser, UTC-server bug, production server, rename and version |
+| 4. Habit tracker (Ch. 10 to 29) | `projects/04-habit-tracker` (released as 1.1.0 in Ch. 28) | 44 pytest tests | browser, UTC-server bug, production server, rename and version |
 | 5. Study Buddy (Ch. 14) | `projects/05-study-buddy` | 24 pytest tests | real SDK request shape, errors, browser, rate limit |
 | 6. Sip mobile app (Ch. 20 and 21) | `projects/06-sip` (Expo, React Native, TypeScript) | 32 Jest tests in 4 time zones; TypeScript check | web build on a phone-sized screen: logging, settings, local midnight, touch targets, dark mode, axe-core; Android prebuild permissions |
+| 7. QuickBite (Ch. 23 to 27) | `projects/07-quickbite` (React, TypeScript, Firebase, Supabase, Razorpay, Stripe) | 189 unit, 12 Firestore rules, 50 contract, 45 Supabase database, 20 + 20 end-to-end, and Hosting checks under the real CSP | all of Claude's suites re-run independently; payment signatures cross-checked against the official `stripe` and `razorpay` SDKs (`tests/quickbite/`); anonymous attack probe on Firestore; bill arithmetic checked by hand |
 
 Run all checks:
 
@@ -36,6 +37,8 @@ The Sip tests need the app's web build first; they're skipped otherwise:
 cd projects/06-sip && npm install && npx tsc --noEmit && npm test && npx expo export --platform web && cd ../..
 AXE_PATH=/path/to/node_modules/axe-core/axe.min.js python -m pytest tests   # AXE_PATH enables the accessibility scans
 ```
+
+QuickBite has its own test commands (it needs Node 22, pnpm, and Java 21 for the Firebase emulators); see `projects/07-quickbite/README.md`. The main ones: `pnpm test`, `pnpm test:rules`, `pnpm test:contract`, `pnpm test:e2e:firebase`, `pnpm test:hosting`, and `pnpm test:supabase:standin` (needs PostgreSQL 16). Live Razorpay and Stripe checks need your own test keys: `pnpm payments:check`. The model-choice experiment from Chapter 22 is in `tests/model-experiment/`.
 
 Native Android and iOS builds were not run for the book (they need developer accounts and Expo's build service); `projects/06-sip/RELEASE-CHECKLIST.md` lists those steps.
 

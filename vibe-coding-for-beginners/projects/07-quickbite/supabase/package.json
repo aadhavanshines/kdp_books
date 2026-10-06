@@ -1,0 +1,24 @@
+{
+  "name": "@quickbite/supabase",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./server/index.ts",
+    "./rows": "./server/rows.ts"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@quickbite/core": "workspace:*",
+    "@quickbite/server": "workspace:*"
+  },
+  "devDependencies": {
+    "@quickbite/seed": "workspace:*",
+    "esbuild": "^0.28.2",
+    "postgres": "3.4.9",
+    "tsx": "^4.23.15"
+  }
+}

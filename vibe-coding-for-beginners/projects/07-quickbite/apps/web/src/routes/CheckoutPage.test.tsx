@@ -1,11 +1,13 @@
-import { screen, within } from '@testing-library/react';
+import { act, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { beforeEach, describe, expect, it } from 'vitest';
-import { getBackend } from '../backend';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { Backend } from '../backend';
+import { getBackend, setBackendForTests } from '../backend';
+import { createMemoryBackend } from '../backend/memory';
 import { useCart } from '../features/cart/cartStore';
 import { useCheckoutStore } from '../features/checkout/checkoutStore';
 import { useLocationStore } from '../features/location/locationStore';
-import { renderRoute } from '../test/render';
+import { renderRoute, TEST_USER } from '../test/render';
 import { CheckoutPage } from './CheckoutPage';
 
 async function fillCart() {
@@ -65,9 +67,18 @@ describe('CheckoutPage', () => {
     expect(screen.getByTestId('to-pay').textContent).not.toBe(before);
   });
 
-  it('explains a coupon that does not exist', async () => {
+  it('asks signed-out customers to sign in before showing addresses', async () => {
+    renderRoute(<CheckoutPage />, { path: '/checkout', user: null });
     await fillCart();
-    const backend = await getBackend();
+    const link = await screen.findByRole('link', { name: 'Sign in to continue' });
+    expect(link).toHaveAttribute('href', '/login?next=%2Fcheckout');
+    expect(screen.queryByRole('heading', { name: 'Delivery address' })).not.toBeInTheDocument();
+  });
+
+  it('explains a coupon that does not exist', async () => {
+    const backend = createMemoryBackend({ latencyMs: 0, user: TEST_USER });
+    setBackendForTests(backend);
+    await fillCart();
     const address = await backend.addresses.save({
       label: 'Home',
       name: 'Asha',
@@ -80,7 +91,76 @@ describe('CheckoutPage', () => {
     });
     useCheckoutStore.setState({ addressId: address.id });
     useCart.getState().setCoupon('NOPE123');
-    renderRoute(<CheckoutPage />, { path: '/checkout' });
+    renderRoute(<CheckoutPage />, { path: '/checkout', backend });
     expect(await screen.findByText(/NOPE123: That code doesn’t exist/)).toBeInTheDocument();
+  });
+
+  describe('with Razorpay', () => {
+    afterEach(() => {
+      delete (window as unknown as Record<string, unknown>).Razorpay;
+    });
+
+    it('keeps the cart and explains a declined payment; paying again reuses the order', async () => {
+      const base = createMemoryBackend({ latencyMs: 0, user: TEST_USER });
+      const place = vi.fn(async () => ({
+        ok: true as const,
+        orderId: 'ord_rzp',
+        payment: {
+          provider: 'razorpay' as const,
+          providerOrderId: 'order_Same1',
+          amount: 100,
+          currency: 'INR',
+          keyId: 'rzp_test_key',
+        },
+      }));
+      const backend: Backend = { ...base, orders: { ...base.orders, place } };
+      setBackendForTests(backend);
+      await fillCart();
+      const address = await backend.addresses.save({
+        label: 'Home',
+        name: 'Asha',
+        phone: '9876543210',
+        line1: 'Flat 1',
+        line2: 'Main Rd',
+        landmark: '',
+        areaId: 'blr-koramangala',
+        pincode: '560095',
+      });
+      useCheckoutStore.setState({ addressId: address.id });
+      const opened: { ondismiss: () => void; fail?: (f: unknown) => void }[] = [];
+      (window as unknown as Record<string, unknown>).Razorpay = class {
+        private readonly entry;
+        constructor(o: { modal: { ondismiss: () => void } }) {
+          this.entry = { ondismiss: o.modal.ondismiss } as (typeof opened)[number];
+          opened.push(this.entry);
+        }
+        on(_e: string, listener: (f: unknown) => void) {
+          this.entry.fail = listener;
+        }
+        open() {}
+      };
+      renderRoute(<CheckoutPage />, { path: '/checkout', backend });
+
+      const payButton = (await screen.findAllByRole('button', { name: /Proceed to pay/ }))[0]!;
+      await waitFor(() => expect(payButton).toBeEnabled());
+      await userEvent.click(payButton);
+      await waitFor(() => expect(opened).toHaveLength(1));
+      act(() => {
+        opened[0]!.fail!({ error: { description: 'Card declined by bank' } });
+        opened[0]!.ondismiss();
+      });
+      expect(await screen.findByRole('alert')).toHaveTextContent(
+        'Payment failed: Card declined by bank. You can try again.',
+      );
+      expect(useCart.getState().lines).not.toHaveLength(0);
+
+      await userEvent.click(payButton);
+      await waitFor(() => expect(opened).toHaveLength(2));
+      // The same checkout attempt: the same idempotency key, so the same order.
+      const keys = place.mock.calls.map(
+        (c) => (c as unknown as [{ idempotencyKey: string }])[0].idempotencyKey,
+      );
+      expect(keys[0]).toBe(keys[1]);
+    });
   });
 });

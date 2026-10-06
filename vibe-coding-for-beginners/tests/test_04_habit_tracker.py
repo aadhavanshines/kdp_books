@@ -82,7 +82,7 @@ def test_today_is_the_users_today(browser, server):
 
 
 def test_rename_keeps_the_streak_and_version_shows(page, server):
-    """Chapter 22: the rename feature request, released as 1.1.0."""
+    """Chapter 28: the rename feature request, released as 1.1.0."""
     page.goto(server)
     assert page.text_content("footer").strip().endswith("v1.1.0")
     page.fill("#name", "Excercise")

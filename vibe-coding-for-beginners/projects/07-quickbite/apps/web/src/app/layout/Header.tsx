@@ -3,6 +3,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { Link, NavLink } from 'react-router';
 import { Logo } from '../../components/Logo';
 import { cn } from '../../lib/cn';
+import { useSession } from '../../features/auth/sessionStore';
 import { useArea } from '../../features/catalog/queries';
 import { LocationSheet } from '../../features/location/LocationSheet';
 import { useLocationStore } from '../../features/location/locationStore';
@@ -13,6 +14,7 @@ export function Header() {
   const { data: area } = useArea(areaId);
   const [locationOpen, setLocationOpen] = useState(false);
   const scrolled = useScrolled();
+  const signedIn = useSession((s) => Boolean(s.user));
 
   return (
     <header
@@ -63,7 +65,11 @@ export function Header() {
             desktopOnly
           />
           <HeaderLink to="/help" icon={<LifeBuoy className="size-5" />} label="Help" desktopOnly />
-          <HeaderLink to="/account" icon={<UserRound className="size-5" />} label="Sign in" />
+          <HeaderLink
+            to={signedIn ? '/account' : '/login'}
+            icon={<UserRound className="size-5" />}
+            label={signedIn ? 'Account' : 'Sign in'}
+          />
           <CartNavLink />
         </nav>
       </div>

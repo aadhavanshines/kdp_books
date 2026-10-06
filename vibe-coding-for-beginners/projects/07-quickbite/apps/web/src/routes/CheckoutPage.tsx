@@ -11,14 +11,16 @@ import {
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { Button } from '../components/ui/Button';
+import { buttonClass } from '../components/ui/buttonClass';
 import { EmptyState } from '../components/ui/EmptyState';
 import { Img } from '../components/ui/Img';
-import { Sheet } from '../components/ui/Sheet';
 import { Skeleton } from '../components/ui/Skeleton';
 import { VegMark } from '../components/ui/VegMark';
 import { AddressIcon, AddressSheet } from '../features/addresses/AddressPicker';
 import { formatAddress } from '../features/addresses/formatAddress';
 import { useAddresses } from '../features/addresses/queries';
+import { useSignInHref } from '../features/auth/useSignInHref';
+import { useSession } from '../features/auth/sessionStore';
 import { useArea } from '../features/catalog/queries';
 import { QtyStepper } from '../features/cart/AddButton';
 import { displaySubtotal, itemCount } from '../features/cart/cartLogic';
@@ -29,7 +31,9 @@ import { couponRejectionMessage } from '../features/checkout/couponMessages';
 import { CouponSheet } from '../features/checkout/CouponSheet';
 import { useQuote } from '../features/checkout/useQuote';
 import { useLocationStore } from '../features/location/locationStore';
-import type { QuoteError } from '../backend';
+import { usePlaceOrder } from '../features/orders/queries';
+import { PaymentFlow, type PaymentResult } from '../features/payments/PaymentFlow';
+import type { PaymentStart, PlaceOrderError, QuoteError } from '../backend';
 import { cn } from '../lib/cn';
 import { formatPrice } from '../lib/format';
 
@@ -43,11 +47,29 @@ const QUOTE_ERRORS: Record<QuoteError, string> = {
   ADDRESS_NOT_FOUND: 'Please choose your delivery address again.',
 };
 
+const PLACE_ERRORS: Record<PlaceOrderError, string> = {
+  ...QUOTE_ERRORS,
+  COUPON_NOT_APPLICABLE: 'Your coupon no longer applies to this order. Remove it and try again.',
+  RATE_LIMITED: 'Too many orders in a short time. Please wait a minute and try again.',
+  UNAVAILABLE_ITEMS: 'Some items just became unavailable. Review your cart and try again.',
+  PAYMENTS_UNAVAILABLE: 'Online payment isn’t available in this area yet.',
+  ALREADY_PAID: 'You’ve already paid for this order. You can follow it in Your orders.',
+  CHECKOUT_EXPIRED: 'That checkout timed out before it was paid. Tap pay again to start a new one.',
+};
+
+interface PendingPayment {
+  orderId: string;
+  start: PaymentStart;
+}
+
 export function CheckoutPage() {
   const cart = useCart();
   const navigate = useNavigate();
   const areaId = useLocationStore((s) => s.areaId);
   const { data: area } = useArea(areaId);
+  const session = useSession();
+  const signedIn = Boolean(session.user);
+  const signInHref = useSignInHref();
   const { data: addresses, isLoading: addressesLoading } = useAddresses();
   const storedAddressId = useCheckoutStore((s) => s.addressId);
   const setAddressId = useCheckoutStore((s) => s.setAddressId);
@@ -55,7 +77,11 @@ export function CheckoutPage() {
   const quote = useQuote(address?.id ?? null);
   const [addressOpen, setAddressOpen] = useState(false);
   const [couponOpen, setCouponOpen] = useState(false);
-  const [payOpen, setPayOpen] = useState(false);
+  const keyFor = useCheckoutStore((s) => s.keyFor);
+  const finishAttempt = useCheckoutStore((s) => s.finishAttempt);
+  const place = usePlaceOrder();
+  const [payment, setPayment] = useState<PendingPayment | null>(null);
+  const [placeError, setPlaceError] = useState<string | null>(null);
 
   if (cart.lines.length === 0 || !cart.restaurant) {
     return (
@@ -80,7 +106,66 @@ export function CheckoutPage() {
         ? couponRejectionMessage(q.bill.couponRejection)
         : null
     : null;
-  const canPay = Boolean(address && bill && !quote.isFetching);
+  const canPay = Boolean(signedIn && address && bill && !quote.isFetching && !place.isPending);
+
+  /** Creates the order on the server (which prices it again), then opens the payment. */
+  const startPayment = () => {
+    if (!address || !bill || !cart.restaurant) return;
+    setPlaceError(null);
+    const request = {
+      restaurantId: cart.restaurant.id,
+      items: cart.lines.map((l) => ({ itemId: l.itemId, qty: l.qty })),
+      addressId: address.id,
+      couponCode: bill.appliedCouponCode ?? undefined,
+      note: cart.note.trim() || undefined,
+    };
+    const idempotencyKey = keyFor(JSON.stringify(request));
+    place.mutate(
+      { ...request, idempotencyKey },
+      {
+        onSuccess: (result) => {
+          if (!result.ok) {
+            setPlaceError(PLACE_ERRORS[result.error]);
+            // That checkout is over: the next tap starts a new one.
+            if (result.error === 'ALREADY_PAID' || result.error === 'CHECKOUT_EXPIRED') {
+              finishAttempt();
+            }
+            void quote.refetch();
+            return;
+          }
+          setPayment({ orderId: result.orderId, start: result.payment });
+        },
+        onError: () => setPlaceError('We couldn’t place your order. Please try again.'),
+      },
+    );
+  };
+
+  const onPaymentFinished = (result: PaymentResult) => {
+    const { orderId, start } = payment!;
+    setPayment(null);
+    if (result.status === 'paid') {
+      navigate(`/orders/${orderId}`, { state: { justPaid: true } });
+      cart.clear();
+      finishAttempt();
+    } else if (result.status === 'failed' && start.provider === 'fake') {
+      // The test sheet's "failed payment" shows the order page with its retry button.
+      navigate(`/orders/${orderId}`, { state: { justPaid: false } });
+    } else if (result.message || result.status === 'failed') {
+      // Same cart, same checkout: paying again reuses this order and its provider payment.
+      setPlaceError(
+        `Payment failed${result.message ? `: ${result.message}` : ''}. You can try again.`,
+      );
+    }
+  };
+  const payLabel = place.isPending
+    ? 'Placing your order…'
+    : bill
+      ? `Proceed to pay ${formatPrice(bill.grandTotal)}`
+      : !signedIn
+        ? 'Sign in to continue'
+        : address
+          ? 'Calculating total…'
+          : 'Add an address to continue';
 
   return (
     <div className="bg-sunken pb-32 lg:pb-16">
@@ -100,46 +185,68 @@ export function CheckoutPage() {
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-6">
           {/* Left column on desktop: delivery and payment steps. */}
           <div className="order-2 space-y-4 lg:order-1">
-            <section
-              aria-labelledby="address-heading"
-              className="rounded-3xl bg-white p-5 shadow-sm"
-            >
-              <div className="flex items-center justify-between gap-3">
-                <h2 id="address-heading" className="font-extrabold">
-                  Delivery address
+            {!signedIn && (
+              <section
+                aria-labelledby="account-heading"
+                className="rounded-3xl bg-white p-5 shadow-sm"
+              >
+                <h2 id="account-heading" className="font-extrabold">
+                  Account
                 </h2>
-                {address && (
-                  <button
-                    type="button"
-                    onClick={() => setAddressOpen(true)}
-                    className="text-sm font-extrabold text-brand-600"
-                  >
-                    CHANGE
-                  </button>
-                )}
-              </div>
-              {addressesLoading ? (
-                <Skeleton className="mt-4 h-16 w-full" />
-              ) : address ? (
-                <div className="mt-3 flex gap-3">
-                  <AddressIcon label={address.label} className="mt-0.5 size-5 shrink-0 text-ink" />
-                  <div>
-                    <p className="font-bold">{address.label}</p>
-                    <p className="text-sm text-muted">{formatAddress(address)}</p>
-                    <p className="mt-1 text-sm text-muted">
-                      {address.name} · {address.phone}
-                    </p>
+                <p className="mt-2 text-sm text-muted">
+                  To place your order, sign in to your account or create one. It only takes your
+                  email.
+                </p>
+                <Link to={signInHref} className={buttonClass({ className: 'mt-3' })}>
+                  Sign in to continue
+                </Link>
+              </section>
+            )}
+            {signedIn && (
+              <section
+                aria-labelledby="address-heading"
+                className="rounded-3xl bg-white p-5 shadow-sm"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <h2 id="address-heading" className="font-extrabold">
+                    Delivery address
+                  </h2>
+                  {address && (
+                    <button
+                      type="button"
+                      onClick={() => setAddressOpen(true)}
+                      className="text-sm font-extrabold text-brand-600"
+                    >
+                      CHANGE
+                    </button>
+                  )}
+                </div>
+                {addressesLoading ? (
+                  <Skeleton className="mt-4 h-16 w-full" />
+                ) : address ? (
+                  <div className="mt-3 flex gap-3">
+                    <AddressIcon
+                      label={address.label}
+                      className="mt-0.5 size-5 shrink-0 text-ink"
+                    />
+                    <div>
+                      <p className="font-bold">{address.label}</p>
+                      <p className="text-sm text-muted">{formatAddress(address)}</p>
+                      <p className="mt-1 text-sm text-muted">
+                        {address.name} · {address.phone}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div className="mt-3">
-                  <p className="text-sm text-muted">Add where you’d like your food delivered.</p>
-                  <Button className="mt-3" onClick={() => setAddressOpen(true)}>
-                    Add delivery address
-                  </Button>
-                </div>
-              )}
-            </section>
+                ) : (
+                  <div className="mt-3">
+                    <p className="text-sm text-muted">Add where you’d like your food delivered.</p>
+                    <Button className="mt-3" onClick={() => setAddressOpen(true)}>
+                      Add delivery address
+                    </Button>
+                  </div>
+                )}
+              </section>
+            )}
 
             <section
               aria-labelledby="payment-heading"
@@ -158,15 +265,16 @@ export function CheckoutPage() {
                 block
                 className="mt-4 hidden lg:flex"
                 disabled={!canPay}
-                onClick={() => setPayOpen(true)}
+                onClick={startPayment}
               >
                 <Lock className="size-4" aria-hidden />
-                {bill
-                  ? `Proceed to pay ${formatPrice(bill.grandTotal)}`
-                  : address
-                    ? 'Calculating total…'
-                    : 'Add an address to continue'}
+                {payLabel}
               </Button>
+              {placeError && (
+                <p role="alert" className="mt-3 text-sm font-semibold text-danger">
+                  {placeError}
+                </p>
+              )}
             </section>
           </div>
 
@@ -260,14 +368,16 @@ export function CheckoutPage() {
               )}
             </section>
 
-            {!address ? (
+            {!signedIn || !address ? (
               <section className="rounded-3xl bg-white p-5 shadow-sm">
                 <div className="tabular flex items-baseline justify-between text-[15px]">
                   <span className="text-ink-soft">Item total ({itemCount(cart)} items)</span>
                   <span className="font-semibold">{formatPrice(displaySubtotal(cart))}</span>
                 </div>
                 <p className="mt-2 text-sm text-muted">
-                  Add a delivery address to see the delivery fee, taxes and your total.
+                  {signedIn
+                    ? 'Add a delivery address to see the delivery fee, taxes and your total.'
+                    : 'Sign in and add a delivery address to see the delivery fee, taxes and your total.'}
                 </p>
               </section>
             ) : q && !q.ok ? (
@@ -303,9 +413,13 @@ export function CheckoutPage() {
               <p className="text-xs font-bold text-brand-600">TO PAY</p>
             </div>
           )}
-          {address ? (
-            <Button size="lg" block disabled={!canPay} onClick={() => setPayOpen(true)}>
-              Proceed to pay
+          {!signedIn ? (
+            <Link to={signInHref} className={buttonClass({ size: 'lg', block: true })}>
+              Sign in to proceed
+            </Link>
+          ) : address ? (
+            <Button size="lg" block disabled={!canPay} onClick={startPayment}>
+              {place.isPending ? 'Placing order…' : 'Proceed to pay'}
             </Button>
           ) : (
             <Button size="lg" block onClick={() => setAddressOpen(true)}>
@@ -330,24 +444,18 @@ export function CheckoutPage() {
         regionId={area?.regionId ?? 'IN'}
         onApply={(code) => cart.setCoupon(code)}
       />
-      <Sheet
-        open={payOpen}
-        onOpenChange={setPayOpen}
-        title="Online payment is coming next"
-        footer={
-          <Button block onClick={() => setPayOpen(false)}>
-            Got it
-          </Button>
-        }
-      >
-        <p className="text-[15px] text-ink-soft">
-          This build stops just before payment. In the next phases the server will re-price this
-          order, create a Razorpay (UPI, cards) or Stripe payment for exactly{' '}
-          {bill ? <strong>{formatPrice(bill.grandTotal)}</strong> : 'the total'}, and only mark it
-          paid after verifying the payment signature.
-        </p>
-        <p className="mt-3 text-sm text-muted">Your cart and address are saved on this device.</p>
-      </Sheet>
+      {payment && (
+        <PaymentFlow
+          orderId={payment.orderId}
+          start={payment.start}
+          prefill={{
+            name: address?.name,
+            phone: address?.phone,
+            email: session.user?.email ?? undefined,
+          }}
+          onFinished={onPaymentFinished}
+        />
+      )}
     </div>
   );
 }

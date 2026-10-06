@@ -34,3 +34,77 @@ jobs:
           name: playwright-report
           path: playwright-report
           retention-days: 7
+
+  firebase:
+    # Security rules, the backend contract suite and end-to-end tests on the Firebase emulators.
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/firebase/emulators
+          key: firebase-emulators-${{ hashFiles('pnpm-lock.yaml') }}
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test:rules
+      - run: pnpm test:contract
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e:firebase
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-firebase
+          path: playwright-report
+          retention-days: 7
+
+  supabase:
+    # Migrations, Row Level Security, the server on Postgres, the contract suite
+    # and end-to-end tests on a local Supabase stack.
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: pnpm install --frozen-lockfile
+      # Plain PostgreSQL (preinstalled on the runner): migrations from scratch + RLS, no Docker.
+      - run: pnpm test:supabase:standin
+      - run: supabase start
+      - run: pnpm build:supabase && pnpm seed:supabase
+      - run: pnpm test:supabase:db
+      - name: Serve the Edge Functions
+        run: |
+          supabase functions serve > functions.log 2>&1 &
+          for i in $(seq 1 120); do
+            curl -sf -X OPTIONS http://127.0.0.1:54321/functions/v1/quote-order && exit 0
+            sleep 1
+          done
+          cat functions.log; exit 1
+      - run: pnpm test:contract:supabase
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e:supabase
+        env:
+          SUPABASE_STACK: external
+      - if: failure()
+        run: cat functions.log || true
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-supabase
+          path: playwright-report
+          retention-days: 7

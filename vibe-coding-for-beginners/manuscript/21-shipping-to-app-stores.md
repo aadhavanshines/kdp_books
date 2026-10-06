@@ -32,7 +32,7 @@ Two account details are worth knowing early. First, Google treats **personal** a
 
 Every store app has two kinds of numbers and one name that never changes:
 
-- The **version** (such as 1.0.0) is what users see. You choose it, following the semantic versioning rules in Chapter 22.
+- The **version** (such as 1.0.0) is what users see. You choose it, following the semantic versioning rules in Chapter 28.
 - The **build number** (`versionCode` on Android, `buildNumber` on iOS) is a whole number that must increase with every upload, even for the same version. Nobody sees it but the stores.
 - The **application ID** (the Android **package name** and the iOS **bundle identifier**), such as `com.vibecodingbook.sip`, identifies your app forever. You can't change it after the first upload. By convention, it's your web domain written backward, followed by the app's name.
 

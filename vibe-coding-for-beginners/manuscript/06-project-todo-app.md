@@ -83,7 +83,7 @@ A plan like this is valuable even if you don't understand every word, because it
 
 - **"Fall back to an empty list if the data is bad"**: what happens if saved data is corrupted? Good: the app won't crash.
 - **"Saving empty text deletes the task"**: is that what you want? Maybe. If not, now is the time to say so.
-- **"Typed text can't inject HTML"**: a security detail you might never have thought of. If someone types `<b>hi</b>` as a task, it should appear as those characters, not as bold text. You'll learn why this matters in Chapter 25.
+- **"Typed text can't inject HTML"**: a security detail you might never have thought of. If someone types `<b>hi</b>` as a task, it should appear as those characters, not as bold text. You'll learn why this matters in Chapter 31.
 
 In the terminal, the plan appears in a box with a question underneath. Here's the real screen when the planning prompt was run again in an interactive session:
 

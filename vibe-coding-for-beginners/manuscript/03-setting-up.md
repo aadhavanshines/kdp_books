@@ -11,7 +11,7 @@ Claude Code needs an account. There are two main ways to get one:
 
 Companies can also use Claude Code through cloud providers such as Amazon Bedrock, Google Cloud, and Microsoft Foundry, but that's beyond the needs of most readers.
 
-> **Note:** For a sense of scale, all the Claude Code sessions recorded while writing this book (nearly forty sessions, which built, tested, fixed, and extended the six projects, and prepared one of them for the app stores) would have cost about $16 in total at API list prices. A subscription covers that kind of usage easily. Larger projects and longer sessions use more, and Chapter 24 shows how to keep usage efficient.
+> **Note:** For a sense of scale, all the Claude Code sessions recorded while writing this book (about seventy sessions, including a model-comparison experiment) would have cost about $100 in total at API list prices. Three-quarters of that was the production app in Part V, built mostly with the most capable model; the first six projects together cost about $16. A subscription covers small projects easily, but a large project on the strongest model can reach your plan's usage limits, as happened twice while writing this book. Chapters 22 and 30 show how to choose models and keep usage efficient.
 
 Plans and prices change, so check claude.com/pricing for the current options before you sign up.
 

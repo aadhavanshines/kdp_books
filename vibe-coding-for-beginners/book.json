@@ -15,7 +15,7 @@
   "cover_tagline": "Build Real Apps with Claude Code, from Your First Prompt to Tested, Deployed Software",
   "cover_prompt": "> build me an app_",
   "cover_features": [
-    "6 REAL APPS",
+    "7 REAL APPS",
     "REAL SESSIONS",
     "TESTED CODE"
   ],
@@ -30,24 +30,20 @@
   },
   "paper": "white",
   "reuse_note": "Readers may freely use and adapt the example prompts and project code in this book for their own work.",
-  "trademarks": "Claude, Claude Code, and Anthropic are trademarks of Anthropic. GitHub and GitHub Actions are trademarks of GitHub, Inc. Python is a trademark of the Python Software Foundation. Visual Studio Code, Windows, and Playwright are trademarks of Microsoft Corporation. Apple, macOS, iPhone, iOS, App Store, TestFlight, Xcode, Swift, and VoiceOver are trademarks of Apple Inc. Linux is a trademark of Linus Torvalds. Google, Android, Google Play, Android Studio, Chrome, Flutter, and TalkBack are trademarks of Google LLC. Expo and EAS are trademarks of 650 Industries, Inc. React and React Native are trademarks of Meta Platforms, Inc. Kotlin is a trademark of JetBrains s.r.o. axe-core is a trademark of Deque Systems, Inc. Flask is a trademark of the Pallets project. Node.js is a trademark of the OpenJS Foundation. Render, Railway, Netlify, Notion, and all other product names are trademarks of their respective owners. Product names are used solely for identification and educational discussion. This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic or any of these companies.",
+  "trademarks": "Claude, Claude Code, and Anthropic are trademarks of Anthropic. GitHub and GitHub Actions are trademarks of GitHub, Inc. Python is a trademark of the Python Software Foundation. Visual Studio Code, Windows, and Playwright are trademarks of Microsoft Corporation. Apple, macOS, iPhone, iOS, App Store, TestFlight, Xcode, Swift, and VoiceOver are trademarks of Apple Inc. Linux is a trademark of Linus Torvalds. Google, Android, Google Play, Android Studio, Chrome, Flutter, and TalkBack are trademarks of Google LLC. Expo and EAS are trademarks of 650 Industries, Inc. React and React Native are trademarks of Meta Platforms, Inc. Kotlin is a trademark of JetBrains s.r.o. axe-core is a trademark of Deque Systems, Inc. Firebase and Cloud Functions are trademarks of Google LLC. Supabase is a trademark of Supabase, Inc. Razorpay is a trademark of Razorpay Software Private Limited. Stripe is a trademark of Stripe, Inc. Swiggy, Zomato, and Amazon are trademarks of their respective owners and are mentioned only as familiar examples of app quality. Flask is a trademark of the Pallets project. Node.js is a trademark of the OpenJS Foundation. Render, Railway, Netlify, Notion, and all other product names are trademarks of their respective owners. Product names are used solely for identification and educational discussion. This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic or any of these companies.",
   "back_cover_blurb": [
     "Describe it. Build it. Ship it.",
-    "Vibe coding means building software by describing what you want in plain English and letting an AI write the code. It is how a new generation of creators, students, and professionals is turning ideas into working apps, often in an afternoon.",
-    "This book teaches you to do it well, with Claude Code. You will build six real, tested apps, from a tip calculator to a full-stack web app, an AI flashcard tool, and a mobile app for iPhone and Android, and every prompt and reply in those chapters comes from a real session. No programming background required.",
+    "Vibe coding means building software by describing what you want in plain English and letting an AI write the code. This book teaches you to do it well, with Claude Code.",
+    "You will build seven real, tested apps, from a tip calculator to a mobile app and QuickBite, a production-quality food delivery app with Razorpay and Stripe payments. Every prompt and reply in those chapters comes from a real session. No programming background required.",
     "Inside you will learn:",
-    "- How software works, explained just enough for vibe coders",
-    "- Installing Claude Code and having your first conversation",
-    "- Prompt patterns that turn vague ideas into working code",
-    "- UI and UX design that works for everyone, with accessibility",
-    "- Debugging, testing, and saving your work with Git",
-    "- Building an AI-powered app with the Claude API",
-    "- Building Android and iPhone apps from one codebase",
-    "- Putting apps online, and shipping to Google Play and the App Store",
+    "- Prompt patterns, testing, debugging, and Git",
+    "- UI and UX design that works for everyone",
+    "- AI-powered apps, and Android and iPhone apps",
+    "- Choosing the right Claude model for accurate code",
+    "- Supabase, Firebase, Razorpay, and Stripe, end to end",
+    "- Launching on web.app, Google Play, and the App Store",
     "- CLAUDE.md, skills, subagents, hooks, and MCP",
-    "- The software development lifecycle: versions, changelogs, releases",
-    "- Security habits that keep your code and keys safe",
-    "- Best practices checklist, 40-prompt library, and cheat sheet"
+    "- The software lifecycle, security, and best practices"
   ],
   "dedication": [
     "To my father and my mother,",
@@ -84,10 +80,16 @@
     "19": "Advanced",
     "20": "Advanced",
     "21": "Advanced",
-    "22": "Intermediate",
+    "22": "All levels",
     "23": "Advanced",
     "24": "Advanced",
-    "25": "All levels",
-    "26": "All levels"
+    "25": "Advanced",
+    "26": "Advanced",
+    "27": "Advanced",
+    "28": "Intermediate",
+    "29": "Advanced",
+    "30": "Advanced",
+    "31": "All levels",
+    "32": "All levels"
   }
 }

@@ -1,6 +1,7 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { getBackend } from '../../backend';
+import { useUid } from '../auth/sessionStore';
 import { useCart } from '../cart/cartStore';
 
 /**
@@ -8,6 +9,7 @@ import { useCart } from '../cart/cartStore';
  * the address id are sent; every price comes back from the backend.
  */
 export function useQuote(addressId: string | null) {
+  const uid = useUid();
   const restaurantId = useCart((s) => s.restaurant?.id ?? null);
   const lines = useCart((s) => s.lines);
   const couponCode = useCart((s) => s.couponCode);
@@ -17,7 +19,7 @@ export function useQuote(addressId: string | null) {
 
   const items = lines.map((l) => ({ itemId: l.itemId, qty: l.qty }));
   const query = useQuery({
-    queryKey: ['quote', restaurantId, items, couponCode, addressId],
+    queryKey: ['quote', uid, restaurantId, items, couponCode, addressId],
     queryFn: async () =>
       (await getBackend()).orders.quote({
         restaurantId: restaurantId!,
@@ -25,7 +27,7 @@ export function useQuote(addressId: string | null) {
         couponCode: couponCode ?? undefined,
         addressId: addressId!,
       }),
-    enabled: Boolean(restaurantId && addressId && items.length),
+    enabled: Boolean(uid && restaurantId && addressId && items.length),
     placeholderData: keepPreviousData,
     staleTime: 30_000,
   });

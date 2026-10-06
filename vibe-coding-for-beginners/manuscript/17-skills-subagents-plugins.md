@@ -162,7 +162,7 @@ Missing tests
    delete tests already exist.
 ```
 
-Both planted problems were caught, with locations, plain-language explanations, and fixes. Notice the judgment in the first finding: the reviewer recognized that this particular query happens to be safe today, because only whole numbers can reach it, but flagged the pattern as dangerous anyway. That's the kind of nuance a good human reviewer brings. Chapter 25 explains SQL injection and why the "parameterized" version matters.
+Both planted problems were caught, with locations, plain-language explanations, and fixes. Notice the judgment in the first finding: the reviewer recognized that this particular query happens to be safe today, because only whole numbers can reach it, but flagged the pattern as dangerous anyway. That's the kind of nuance a good human reviewer brings. Chapter 31 explains SQL injection and why the "parameterized" version matters.
 
 > **Tip:** Pair a writer and a reviewer. After Claude finishes a feature, run the reviewer in its fresh context before you commit. A second opinion from a helper that didn't write the code catches things the author misses.
 

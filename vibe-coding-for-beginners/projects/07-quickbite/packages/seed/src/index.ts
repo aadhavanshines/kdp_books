@@ -8,3 +8,4 @@ export {
 } from './catalog.ts';
 export { BRANDS, type SeedBrand } from './brands.ts';
 export * from './images.ts';
+export { firestoreSeedDocs, type SeedDoc } from './firestoreDocs.ts';

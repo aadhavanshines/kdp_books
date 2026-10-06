@@ -5,9 +5,8 @@ const columns = [
   {
     title: 'Company',
     links: [
-      ['About us', '/help'],
-      ['Careers', '/help'],
-      ['Blog', '/help'],
+      ['About us', '/about'],
+      ['Contact us', '/contact'],
     ],
   },
   {
@@ -21,9 +20,10 @@ const columns = [
   {
     title: 'Legal',
     links: [
-      ['Terms & conditions', '/help'],
-      ['Privacy policy', '/help'],
-      ['Refund policy', '/help'],
+      ['Terms & conditions', '/terms'],
+      ['Privacy policy', '/privacy'],
+      ['Refunds & cancellations', '/refunds'],
+      ['Shipping & delivery', '/shipping'],
     ],
   },
 ] as const;

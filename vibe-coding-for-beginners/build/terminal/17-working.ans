@@ -1,0 +1,42 @@
+
+  [38;2;153;153;153mRan [1m6[0m[38;2;153;153;153m shell commands [39m
+
+[38;2;255;255;255m●[39m Status: Hosting config, secrets, and legal pages are written. Next is the emulator proof script,
+  so I'm checking the [38;2;177;185;249mPaymentStart[39m shape it needs to stand in for Razorpay.
+
+  [38;2;153;153;153mRan [1m3[0m[38;2;153;153;153m shell commands [39m
+
+[38;2;255;255;255m●[39m Now the fixtures guard, the CSP spec, and the orchestration scripts.
+
+  [38;2;153;153;153mRead [1m1[0m[38;2;153;153;153m file, ran [1m2[0m[38;2;153;153;153m shell commands [39m
+
+[38;2;255;255;255m●[39m Now run the hosting check.
+
+  [38;2;153;153;153mRan [1m6[0m[38;2;153;153;153m shell commands [39m
+
+[38;2;255;255;255m●[39m The routing and function rewrites now pass through the emulator; the last failure is just my check
+  script passing a bare filename to [38;2;177;185;249mcache()[39m. I'll fix that and rerun.[38;2;80;80;80m · summary[39m
+
+  [38;2;153;153;153mRan [1m1[0m[38;2;153;153;153m shell command [39m
+
+[38;2;255;255;255m●[39m Pass 1 is fully green, so routes, headers and caching are proven. Pass 2 has 32 failures in the
+  browser suite, so I'm looking at why.
+
+  [38;2;153;153;153mRan [1m1[0m[38;2;153;153;153m shell command [39m
+
+[38;2;255;255;255m●[39m Browser not installed at that path; README mentions PLAYWRIGHT_BROWSERS_PATH. Finding the
+  installed Chromium.
+
+[38;2;153;153;153m●[39m Listing [1m1[0m directory, running [1m1[0m shell command[38;2;153;153;153m · 1m 23s[39m…
+[38;2;153;153;153m  ⎿  $ PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers timeout 595 pnpm test:hosting > /tmp/h.log 2>&1; [39m
+     [38;2;153;153;153mecho exit $?; grep -n "passed\|failed\|flaky\|skipped" /tmp/h.log | tail; grep -n "^ ✘\|^ [39m
+     [38;2;153;153;153m[0-9]*) " /tmp/h.log | head -30 (1m 23s)[39m
+     [38;2;153;153;153m(ctrl+b to run in background)[39m
+
+[38;2;215;119;87m✶[39m [38;2;235;159;127mCaramelizing…[38;2;215;119;87m [38;2;153;153;153m(9m 58s · ↓[39m [38;2;153;153;153m42.8k tokens)[39m
+[38;2;153;153;153m  ⎿  Tip: Use /btw to ask a quick side question without interrupting Claude's current work[39m
+                                                          [38;2;255;107;128m✘ Auto-update failed · Run [1mclaude doctor[0m
+[38;2;136;136;136m────────────────────────────────────────────────────────────────────────────────────────────────────
+[38;2;153;153;153m❯ [39m
+[38;2;136;136;136m────────────────────────────────────────────────────────────────────────────────────────────────────
+[39m  [38;2;255;193;7m⏵⏵ auto mode on[38;2;153;153;153m (shift+tab to cycle) · esc to interrupt · ← for agents[39m

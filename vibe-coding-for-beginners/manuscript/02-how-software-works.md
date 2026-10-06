@@ -73,7 +73,7 @@ Programmers rarely build everything from scratch. They use **packages** (also ca
 
 Your project's **dependencies** are the packages it needs. They're usually listed in a file, such as `requirements.txt` for Python or `package.json` for JavaScript, so anyone can install them with one command. A **package manager** does the installing: `pip` for Python, `npm` for JavaScript.
 
-> **Warning:** Packages are code written by strangers, and they run with the same access as your own code. Stick to well-known packages, and be suspicious if the AI suggests one you can't find much information about. Chapter 25 explains why.
+> **Warning:** Packages are code written by strangers, and they run with the same access as your own code. Stick to well-known packages, and be suspicious if the AI suggests one you can't find much information about. Chapter 31 explains why.
 
 ## Where Apps Run: Local and Online
 
@@ -101,7 +101,7 @@ But it doesn't run your app in its head. It writes code that is *likely* to be c
 
 Two more terms you'll hear often:
 
-- **Context window**: everything the AI can "see" at once: your conversation, the files it has read, and the results of commands. It's large, but not infinite, and Chapter 24 shows you how to manage it.
+- **Context window**: everything the AI can "see" at once: your conversation, the files it has read, and the results of commands. It's large, but not infinite, and Chapter 30 shows you how to manage it.
 - **Token**: the unit AI models use to measure text. A token is roughly three-quarters of a word. Usage and pricing are measured in tokens.
 
 > **Try It:** Open your computer's terminal now. Type `pwd` and press Enter to see where you are, then type `ls` (or `dir` on Windows) to list the files there. That's it: you've used the command line.

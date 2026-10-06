@@ -1,0 +1,117 @@
+rules_version = '2';
+
+// QuickBite Firestore security rules.
+//
+// Deny by default, then open only what each role needs (docs/PLAN.md §4):
+//   - the catalog is public and read-only,
+//   - a signed-in customer reads and writes only their own profile and addresses,
+//   - orders are read-only to their owner and written only by Cloud Functions,
+//   - coupons, payments, webhook events and redemptions are server-only.
+// Cloud Functions use the Admin SDK, which bypasses these rules on purpose.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function isText(value, min, max) {
+      return value is string && value.size() >= min && value.size() <= max;
+    }
+
+    // ---- Public catalog (read-only) ------------------------------------------
+    match /regions/{regionId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /areas/{areaId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /restaurants/{restaurantId} {
+      allow read: if true;
+      allow write: if false;
+
+      match /categories/{categoryId} {
+        allow read: if true;
+        allow write: if false;
+      }
+      match /menuItems/{itemId} {
+        allow read: if true;
+        allow write: if false;
+      }
+    }
+    // Dish search queries every restaurant's menuItems at once.
+    match /{path=**}/menuItems/{itemId} {
+      allow read: if true;
+    }
+    // Display fields of coupons that are shown to customers.
+    match /publicCoupons/{code} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // ---- Customer data ---------------------------------------------------------
+    match /users/{uid} {
+      function validProfile(data) {
+        return data.keys().hasOnly(['name', 'phone', 'email', 'updatedAt'])
+          && data.keys().hasAll(['name', 'phone', 'updatedAt'])
+          && isText(data.name, 0, 60)
+          && isText(data.phone, 0, 15)
+          && (!('email' in data) || data.email == request.auth.token.email)
+          && data.updatedAt == request.time;
+      }
+
+      allow read: if isOwner(uid);
+      allow create, update: if isOwner(uid) && validProfile(request.resource.data);
+      allow delete: if false;
+
+      match /addresses/{addressId} {
+        // Coordinates are not stored: the server works them out from the area,
+        // so a customer can't move an address closer to get a cheaper delivery.
+        function validAddress(data) {
+          return data.keys().hasOnly([
+              'label', 'name', 'phone', 'line1', 'line2', 'landmark', 'areaId', 'pincode',
+              'createdAt', 'updatedAt'
+            ])
+            && data.keys().hasAll([
+              'label', 'name', 'phone', 'line1', 'line2', 'landmark', 'areaId', 'pincode',
+              'createdAt', 'updatedAt'
+            ])
+            && data.label in ['Home', 'Work', 'Other']
+            && isText(data.name, 2, 60)
+            && isText(data.phone, 10, 10)
+            && isText(data.line1, 3, 120)
+            && isText(data.line2, 3, 120)
+            && isText(data.landmark, 0, 80)
+            && isText(data.areaId, 1, 64)
+            && exists(/databases/$(database)/documents/areas/$(data.areaId))
+            && data.pincode is string && data.pincode.matches('^[1-9][0-9]{5}$')
+            && data.createdAt is timestamp
+            && data.updatedAt == request.time;
+        }
+
+        allow read, delete: if isOwner(uid);
+        allow create: if isOwner(uid)
+          && validAddress(request.resource.data)
+          && request.resource.data.createdAt == request.time;
+        allow update: if isOwner(uid)
+          && validAddress(request.resource.data)
+          && request.resource.data.createdAt == resource.data.createdAt;
+      }
+    }
+
+    // ---- Orders: read your own, never write ------------------------------------
+    match /orders/{orderId} {
+      allow read: if signedIn() && resource.data.userId == request.auth.uid;
+      allow write: if false;
+    }
+
+    // Everything else (coupons, payments, webhookEvents, couponRedemptions,
+    // idempotencyKeys…) matches no rule above and is therefore denied.
+  }
+}

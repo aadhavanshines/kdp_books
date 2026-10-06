@@ -44,7 +44,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p>But getting an AI to produce code is easy. Getting code that actually works, keeps working, protects your data, and does what you meant is a skill. <i>Vibe Coding for Beginners</i> teaches that skill, step by step, using Claude Code.</p>
 
-<p><b>Everything in this book is real.</b> You will build six apps, and every prompt and reply in those chapters comes from a real Claude Code session, including the moments when the AI made a mistake, admitted it hadn't tested something, or slipped past a safety rule. Every app was independently tested, and every code listing is printed from the tested files.</p>
+<p><b>Everything in this book is real.</b> You will build seven apps, and every prompt and reply in those chapters comes from a real Claude Code session, including the moments when the AI made a mistake, admitted it hadn't tested something, or slipped past a safety rule. Every app was independently tested, and every code listing is printed from the tested files.</p>
 
 <p><b>You will build:</b></p>
 <ul>
@@ -54,6 +54,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>A full-stack habit tracker with a database, ready to deploy online</li>
 <li>Study Buddy, an AI-powered app that turns your notes into flashcards</li>
 <li>Sip, a water tracker app for iPhone and Android, prepared for Google Play and the App Store</li>
+<li>QuickBite, a production-quality food delivery app in the style of Swiggy and Zomato, with Firebase and Supabase backends, Razorpay and Stripe payments, and hosting on Firebase</li>
 </ul>
 
 <p><b>Inside, you will learn how to:</b></p>
@@ -61,6 +62,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>Understand how software works, just enough to direct an AI with confidence</li>
 <li>Install Claude Code and have your first conversation</li>
 <li>Write prompts and specs that turn vague ideas into working apps</li>
+<li>Choose the right Claude model and effort level for accurate code, based on a real, measured experiment</li>
 <li>Design apps that are clear, touch-friendly, and accessible to everyone</li>
 <li>Use plan mode, checkpoints, and Git so you can always undo mistakes</li>
 <li>Debug like a pro, including a real time zone bug traced from a user's complaint to a tested fix</li>
@@ -68,6 +70,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>Build an app that calls the Claude API, with structured output and safe API keys</li>
 <li>Put your apps online with persistent storage and automatic tests</li>
 <li>Build Android and iOS apps from one codebase, and ship them through testing, review, and release on Google Play and the App Store</li>
+<li>Build production apps end to end: design systems, security rules tested as an attacker, server-side pricing, verified payment signatures, and a launch checklist</li>
 <li>Run the software development lifecycle like a pro: specs, branches, semantic versions, changelogs, and tagged releases</li>
 <li>Teach Claude your project with CLAUDE.md, and build skills, subagents, and hooks</li>
 <li>Connect a real web browser and other tools with MCP</li>
@@ -119,7 +122,7 @@ Trademarked product names are kept out of the keywords; the title already contai
 4. learn to code with AI step by step
 5. android and iOS app development for beginners
 6. python web app projects for beginners
-7. AI pair programming guide
+7. build food delivery app with payments
 
 ## AI-Generated Content Disclosure (required)
 
