@@ -14,7 +14,9 @@ Both permissions and hooks are configured in **settings files**, written in JSON
 | `.claude/settings.json` in the project | This project | Yes, commit it |
 | `.claude/settings.local.json` in the project | This project, just you | No |
 
-You can edit these files directly, ask Claude to write them, or use the built-in screens: `/permissions` to manage permission rules and `/hooks` to see which hooks are configured.
+You can edit these files directly, ask Claude to write them, or use the built-in screens: `/permissions` to manage permission rules and `/hooks` to see which hooks are configured. Here's `/hooks` in the habit tracker once the hooks from this chapter were in place:
+
+![The /hooks screen for the habit tracker: a PreToolUse hook on file edits and a Stop hook. The screen is read-only; you change hooks by editing settings.json or asking Claude.](images/term-12-hooks.png)
 
 > **Note:** Claude Code treats its own configuration folder, `.claude`, as protected. In Manual and Accept edits modes, Claude must ask before changing anything there; in auto mode, such changes get an extra review by the safety checker. Either way, read any change to these files carefully: they're what keeps Claude in check.
 

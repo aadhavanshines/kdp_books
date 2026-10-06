@@ -10,7 +10,9 @@ Add `-p` (short for "print") to run Claude Code once, non-interactively: it does
 claude -p "Explain what this project does in three sentences"
 ```
 
-That's **headless mode**, and it's how every project session in this book was run and recorded. You can also feed it input from another command with a **pipe** (`|`), which sends one command's output into the next. For example, to get a plain-English summary of your project's history:
+![A headless question about the habit tracker. Claude answers and returns you to the command prompt.](images/term-16-headless.png)
+
+That's **headless mode**, and it's how the project sessions in this book were run and recorded. (The terminal screenshots come from ordinary interactive sessions.) You can also feed it input from another command with a **pipe** (`|`), which sends one command's output into the next. For example, to get a plain-English summary of your project's history:
 
 ```
 git log --oneline | claude -p "Summarize these commits for a non-technical reader in at most 5 short bullet points. No preamble."

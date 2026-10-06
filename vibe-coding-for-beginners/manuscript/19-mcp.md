@@ -26,13 +26,9 @@ Anthropic runs a remote MCP server that searches the Claude Code documentation. 
 claude mcp add --transport http claude-code-docs https://code.claude.com/docs/mcp
 ```
 
-When this was run for the book, Claude Code confirmed:
+When this was run for the book, Claude Code confirmed it:
 
-```
-Terminal output:
-Added HTTP MCP server claude-code-docs with URL:
-https://code.claude.com/docs/mcp to local config
-```
+![Adding the documentation server, then checking it with claude mcp list. The server shows as Connected.](images/term-15-mcp-add.png)
 
 Here's what each piece means: `claude mcp add` tells Claude Code about a new server; `--transport http` says it's a remote server reached by URL; `claude-code-docs` is a name you choose; and the URL is where the server lives. Check that it's working:
 

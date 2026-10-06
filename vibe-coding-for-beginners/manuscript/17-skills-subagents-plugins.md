@@ -49,6 +49,10 @@ To test the skill, a debug line was left in the habit tracker's code, the kind o
 print("DEBUG adding habit:", name)
 ```
 
+To see which skills Claude Code knows about, type `/skills`. Type part of a name to filter the list:
+
+![The /skills screen filtered to "ship": the project's ship-check skill is listed, with the note that only you can start it ("user-only").](images/term-13-skills.png)
+
 Then `/ship-check` was run. Claude's report:
 
 ```

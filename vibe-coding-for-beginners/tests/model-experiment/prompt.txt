@@ -1,0 +1,3 @@
+Read BILLING_RULES.md and implement computeBill in src/bill.ts
+exactly as specified. Write your own tests in src/bill.test.ts and
+run them with npm test before you finish.

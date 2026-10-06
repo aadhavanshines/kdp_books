@@ -85,7 +85,11 @@ A plan like this is valuable even if you don't understand every word, because it
 - **"Saving empty text deletes the task"**: is that what you want? Maybe. If not, now is the time to say so.
 - **"Typed text can't inject HTML"**: a security detail you might never have thought of. If someone types `<b>hi</b>` as a task, it should appear as those characters, not as bold text. You'll learn why this matters in Chapter 25.
 
-If you want to change the plan, just say what to change. You can also press **Ctrl+G** to open the plan in your text editor and edit it directly. When you're happy, approve it:
+In the terminal, the plan appears in a box with a question underneath. Here's the real screen when the planning prompt was run again in an interactive session:
+
+![Plan mode finished: Claude shows its plan and asks whether to proceed. Choose to proceed in auto mode, to approve each edit yourself, or to tell Claude what to change.](images/term-11-plan-approve.png)
+
+If you want to change the plan, choose "Tell Claude what to change," or just say what to change. You can also press **Ctrl+G** to open the plan in your text editor and edit it directly. When you're happy, approve it by choosing one of the "Yes" options, or, if you're typing, with a message like this:
 
 ```
 Looks good. Go ahead and build it.

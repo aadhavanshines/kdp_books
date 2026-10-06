@@ -1,0 +1,34 @@
+
+[38;5;174m ▐[48;5;16m▛███▛█[39m[49m   [1mClaude Code[0m [38;5;246mv2.1.291[39m
+[38;5;174m▝▜[48;5;16m█████[49m█▀[39m  [38;5;246mSonnet 5.5 · Claude API[39m
+[38;5;174m ▝▝   ▝▝ [39m  [38;5;246m~/projects/habit-tracker[39m
+
+[38;5;174m▎[39m [38;5;174mYour voice can help guide AI[39m
+[38;5;174m▎[39m Take 15 min to share your experiences with Anthropic Interviewer. [94m]8;id=1t1x4c9;https://clau.de/yourthoughts\Start now[39m]8;;\
+
+[38;5;246m[48;5;237m❯[39m [38;5;231m/agents[39m
+[38;5;246m[49m  ⎿  [39mThe /agents wizard has been removed.
+
+     Ask Claude to create or update subagents for you (e.g. "create a code-reviewer subagent
+     that ..."),
+     or edit the files directly:
+       • .claude/agents/       (this project)
+       • ~/.claude/agents/     (all projects)
+
+     Docs: [94m]8;id=zu4zy1;https://code.claude.com/docs/en/sub-agents\https://code.claude.com/docs/en/sub-agents[39m]8;;\
+
+
+
+
+
+
+[38;5;153m▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+[39m   [1m[38;5;153mSkills[0m
+   [38;5;246m1/15 skills · type to filter · ↓/enter to select · esc to clear[39m
+
+   [38;5;153m╭────────────────────────────────────────────────────────────────────────────────────╮[39m
+   [38;5;153m│[39m ⌕ ship                                                                             [38;5;153m│[39m
+   [38;5;153m╰────────────────────────────────────────────────────────────────────────────────────╯[39m
+   [38;5;246m❯[39m [38;5;114m✔[39m ship-check   [38;5;246mlocked by author · user-only · project · ~40 tok[39m
+
+   [38;5;246m/deep-research runs a workflow, not your claude.ai skill.[39m

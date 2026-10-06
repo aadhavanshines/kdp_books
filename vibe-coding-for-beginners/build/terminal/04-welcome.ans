@@ -1,0 +1,30 @@
+
+[38;2;215;119;87m ▐[48;2;0;0;0m▛███▛█[39m[49m   [1mClaude Code[0m [38;2;153;153;153mv2.1.291[39m
+[38;2;215;119;87m▝▜[48;2;0;0;0m█████[49m█▀[39m  [38;2;153;153;153mOpus 5.5 · Claude API[39m
+[38;2;215;119;87m ▝▝   ▝▝ [39m  [38;2;153;153;153m~/projects/tip-calculator[39m
+
+[38;2;215;119;87m▎[39m [1mAuto mode is now Claude Code's default permission mode.[0m
+[38;2;215;119;87m▎[39m [38;2;153;153;153mAuto mode lets Claude handle permission prompts automatically. Claude checks each tool [39m
+[38;2;215;119;87m▎[39m [38;2;153;153;153mcall for risky actions and prompt injection before executing, runs the ones it assesses as
+[38;2;215;119;87m▎[39m [38;2;153;153;153mlower-risk, and blocks the rest.[39m
+[38;2;215;119;87m▎[39m [38;2;153;153;153mhttps://code.claude.com/docs/en/permission-modes[39m
+  [38;2;153;153;153m1 more notice hidden[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  [38;2;255;193;7mYou've used 94% of your weekly limit · resets 10am (UTC)[39m
+[38;2;136;136;136m────────────────────────────────────────────────────────────────────────────────────────────
+[39m❯ [2mTry "write a test for <filepath>"[0m
+[38;2;136;136;136m────────────────────────────────────────────────────────────────────────────────────────────
+[39m  [38;2;255;193;7m⏵⏵ auto mode on[38;2;153;153;153m (shift+tab to cycle) · ← for agents[39m

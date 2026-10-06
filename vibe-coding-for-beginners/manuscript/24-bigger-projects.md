@@ -42,6 +42,10 @@ In Chapter 2, you learned that Claude's **context window** holds everything it c
 
 ![The context window fills with setup, conversation, files, and command output. Managing it keeps Claude sharp.](images/context-window.png)
 
+Type `/context` to see it for yourself. Here's a fresh session, with almost all of the window still free:
+
+![The /context screen. Each symbol is a slice of the context window; the categories on the right show what's using it.](images/term-10-context.png)
+
 Your tools for managing it:
 
 - **`/context`** shows how full the context window is and what's using the space.

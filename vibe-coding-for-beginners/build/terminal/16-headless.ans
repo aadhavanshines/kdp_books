@@ -1,0 +1,12 @@
+$ claude -p "In one sentence, what does this project do?"
+It's a small web app for tracking daily habits: you check off habits each day and it shows your curr
+ent and best streaks, using a Flask and SQLite backend with a plain HTML/JS frontend.
+$
+
+
+
+
+
+
+
+

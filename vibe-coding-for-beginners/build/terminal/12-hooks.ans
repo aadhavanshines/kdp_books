@@ -1,0 +1,34 @@
+
+[38;5;174m ▐[48;5;16m▛███▛█[39m[49m   [1mClaude Code[0m [38;5;246mv2.1.291[39m
+[38;5;174m▝▜[48;5;16m█████[49m█▀[39m  [38;5;246mSonnet 5.5 · Claude API[39m
+[38;5;174m ▝▝   ▝▝ [39m  [38;5;246m~/projects/habit-tracker[39m
+
+[38;5;174m▎[39m [38;5;174mYour voice can help guide AI[39m
+[38;5;174m▎[39m Take 15 min to share your experiences with Anthropic Interviewer. [94m]8;id=1t1x4c9;https://clau.de/yourthoughts\Start now[39m]8;;\
+
+
+
+
+
+
+
+
+
+
+
+ [38;5;246mtmux detected · scroll with PgUp/PgDn · or add 'set -g mouse on' to ~/.tmux.conf for whe…[38;5;153m ▔
+[39m   [1m[38;5;153mHooks[0m
+   [38;5;246m2 hooks on 2 events[39m
+
+   [38;5;246mThis menu is read-only. To add or change a hook, edit settings.json or ask Claude. [39m
+   [38;5;246m]8;id=1pj8vua;https://code.claude.com/docs/en/hooks\Learn more[39m]8;;\
+
+     [1mPreToolUse[0m[38;5;246m  before tool execution[39m
+   [38;5;153m❯[39m [38;5;246m[Project][39m [38;5;153mif command -v python3 >/dev/null 2>&1…[39m   [38;5;246mEdit|Write|MultiEdit|NotebookEdit[39m
+
+     [1mStop[0m[38;5;246m  right before Claude concludes its response[39m
+     [38;5;246m[Project][39m if command -v python3 >/dev/null 2>&1…   [38;5;246mcommand[39m
+
+     All events
+
+   [3m[38;5;246mEnter to view · Esc to close[0m

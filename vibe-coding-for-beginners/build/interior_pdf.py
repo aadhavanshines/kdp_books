@@ -221,11 +221,19 @@ class BookDoc(BaseDocTemplate):
     def handle_frameBegin(self, *args, **kw):
         super().handle_frameBegin(*args, **kw)
         pending, self._floats = getattr(self, "_floats", []), []
-        for fig in pending:
+        used, limit = 0, (PAGE_H - TOP - BOTTOM) * 0.68
+        for i, fig in enumerate(pending):
             fig._placed = True
             fig.scale = 1.0
-            self.frame.add(fig, self.canv, trySplit=0)
+            h = fig.wrap(TEXT_W, PAGE_H)[1]
+            # Leave at least a third of the page for text, so text between figures always
+            # gets placed; carry any figure that doesn't fit to the next page.
+            placed = (i == 0 or used + h <= limit) and self.frame.add(fig, self.canv, trySplit=0)
             fig._placed = False
+            if not placed:
+                self._floats = pending[i:] + self._floats
+                break
+            used += h
 
     def afterFlowable(self, flowable):
         toc = getattr(flowable, "_toc", None)

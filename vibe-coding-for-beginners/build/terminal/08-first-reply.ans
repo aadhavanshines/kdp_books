@@ -1,0 +1,32 @@
+
+[38;5;231m●[39m I created [38;5;153m/root/projects/hello/hello.html[39m.
+
+  [1mHow to open it[0m
+
+  Find the file on your computer and double-click it. It opens in your web browser. You can
+  also right-click it and choose "Open with" and then Chrome, Firefox, or Safari.
+
+  [1mWhat each part does[0m
+
+  - [1m[38;5;153m<!DOCTYPE html>[0m tells the browser "this is a web page."
+  - [1m[38;5;153m<html> ... </html>[0m wraps the whole page.
+  - [1m[38;5;153m<head>[0m holds information about the page that isn't shown on it. Here that is the
+    [38;5;153m<title>[39m, the text on the browser tab ("Hello Sam").
+  - [1m[38;5;153m<body>[0m holds everything you actually see on the page.
+  - [1m[38;5;153m<h1>Hello, Sam!</h1>[0m is the big heading that greets you.
+  - [1m[38;5;153m<p id="date"></p>[0m is an empty paragraph with the name "date". It's a blank spot reserved
+    for the date.
+  - [1m[38;5;153m<script> ... </script>[0m holds a small program that runs when the page loads:
+    - [38;5;153mnew Date()[39m asks the computer for the current date and time.
+    - [38;5;153mgetElementById("date")[39m finds the blank paragraph by its name.
+    - [38;5;153mtextContent = ...[39m writes "Today is" plus the nicely formatted date into that
+      paragraph, for example "Tuesday, October 6, 2026".
+
+  The date is worked out each time you open the page, so it's always today's date.
+
+[38;5;246m✻[39m [38;5;246mCrunched for 7s · done 2:27 PM[39m
+
+[38;5;244m────────────────────────────────────────────────────────────────────────────────────────────
+[39m❯ 
+[38;5;244m────────────────────────────────────────────────────────────────────────────────────────────
+[39m  [38;5;246m⏸ manual mode on · ? for shortcuts · ← for agents[39m

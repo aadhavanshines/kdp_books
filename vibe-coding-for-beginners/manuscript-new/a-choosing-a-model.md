@@ -15,9 +15,13 @@ Claude Code can run on several **models**, each a different version of Claude wi
 | Claude Opus 5.5 | `opus` | Complex reasoning: architecture, tricky bugs, security |
 | Claude Fable 5.1 | `fable` | The largest and longest tasks, worked through with little supervision |
 
-An **alias** like `opus` always points to the latest version of that model, so you don't need to remember version numbers. Which model you start on by default depends on your plan and your organization's settings; type `/model` to see it. In the environment used to write this book, the default was Sonnet 5.5, so every project before this part of the book was built with Sonnet.
+An **alias** like `opus` always points to the latest version of that model, so you don't need to remember version numbers. Which model you start on by default depends on your plan and your organization's settings. On most paid plans, it's Opus 5.5. The project sessions earlier in this book ran in a cloud environment whose default was Sonnet 5.5, so every project before this part of the book was built with Sonnet.
 
 The second setting is **effort**: how much the model thinks before and during each step. The levels are `low`, `medium`, `high`, `xhigh`, and `max`. Higher effort means more careful reasoning, more checking, and more cost and time. Opus 5.5 and Sonnet 5.5 start at `medium`.
+
+Type `/model` to see the choices:
+
+![The /model picker on a standard account, where the default is Opus 5.5. Use the arrow keys to pick a model, and left and right to change the effort.](images/term-09-model-picker.png)
 
 You can change both at any time:
 

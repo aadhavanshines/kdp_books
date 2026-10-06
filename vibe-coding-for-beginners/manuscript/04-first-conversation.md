@@ -62,17 +62,23 @@ And here is the file it created:
 @include projects/00-hello/hello.html
 ```
 
+Here's the same prompt run again, this time in a terminal you can see. Notice that the wording of the reply is different, as the Note above warned, but the substance is the same:
+
+![Claude's reply in the terminal when the prompt was run a second time. The "Crunched for 7s" line at the end shows how long Claude worked.](images/term-08-first-reply.png)
+
 Open the file by double-clicking it in your file browser, or by typing `open hello.html` on macOS or `start hello.html` on Windows. You should see your greeting and today's date.
 
 Notice two things about Claude's reply. First, it told you plainly that it **hadn't tested the page in a browser**. Claude is generally honest about what it has and hasn't checked, and you should read these statements carefully: they tell you what *you* need to verify. Second, it explained the code at the level you asked for. You can always ask for more or less detail.
 
 ## Approving Actions
 
-If you're in Manual mode (press Shift+Tab until the status bar says so), Claude stops and asks before creating or changing a file or running a command. You'll see what it wants to do, such as the full content of a new file or the exact command, followed by choices along these lines:
+If you're in Manual mode (press Shift+Tab until the status bar says so), Claude stops and asks before creating or changing a file or running a command. You'll see what it wants to do, such as the full content of a new file or the exact command, followed by choices:
+
+![Manual mode in action: before creating hello.html, Claude shows the complete file and asks for permission.](images/term-07-permission-create.png)
 
 - **Yes**: allow this one action.
-- **Yes, and don't ask again** for this kind of action (for example, all file edits during this session).
-- **No**: decline. You can press Tab to add a note telling Claude what to do instead.
+- **Yes, and switch to accept edits**: allow it, and stop asking about file edits for the rest of this session. The exact wording depends on the action; for a command, the second option offers to allow similar commands without asking.
+- **No**: decline. Press Tab to amend instead, adding a note that tells Claude what to do differently.
 
 Read each request before you approve it. Early on, you'll learn a lot about how software is built just by watching what Claude wants to do. Later, once you trust the pattern, you can switch to Accept edits or Auto mode and let it work more freely.
 

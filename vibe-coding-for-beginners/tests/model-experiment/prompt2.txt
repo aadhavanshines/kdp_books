@@ -1,0 +1,5 @@
+Customers report that some QuickBite bills are wrong, but nobody
+knows which ones. BILLING_RULES.md is the specification. Review
+src/bill.ts against it, fix every bug you find, and add tests in
+src/bill.test.ts that would have caught them. Run the tests before
+you finish.

@@ -1,0 +1,381 @@
+import {
+  ArrowLeft,
+  BadgePercent,
+  ChevronRight,
+  CircleAlert,
+  Lock,
+  PartyPopper,
+  ShieldCheck,
+  X,
+} from 'lucide-react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router';
+import { Button } from '../components/ui/Button';
+import { EmptyState } from '../components/ui/EmptyState';
+import { Img } from '../components/ui/Img';
+import { Sheet } from '../components/ui/Sheet';
+import { Skeleton } from '../components/ui/Skeleton';
+import { VegMark } from '../components/ui/VegMark';
+import { AddressIcon, AddressSheet } from '../features/addresses/AddressPicker';
+import { formatAddress } from '../features/addresses/formatAddress';
+import { useAddresses } from '../features/addresses/queries';
+import { useArea } from '../features/catalog/queries';
+import { QtyStepper } from '../features/cart/AddButton';
+import { displaySubtotal, itemCount } from '../features/cart/cartLogic';
+import { useCart } from '../features/cart/cartStore';
+import { BillDetails } from '../features/checkout/BillDetails';
+import { useCheckoutStore } from '../features/checkout/checkoutStore';
+import { couponRejectionMessage } from '../features/checkout/couponMessages';
+import { CouponSheet } from '../features/checkout/CouponSheet';
+import { useQuote } from '../features/checkout/useQuote';
+import { useLocationStore } from '../features/location/locationStore';
+import type { QuoteError } from '../backend';
+import { cn } from '../lib/cn';
+import { formatPrice } from '../lib/format';
+
+const QUOTE_ERRORS: Record<QuoteError, string> = {
+  EMPTY_CART: 'Your cart is empty.',
+  INVALID_QUANTITY: 'One of the quantities is not allowed.',
+  NOT_DELIVERABLE:
+    'This restaurant doesn’t deliver to the selected address. Choose an address closer to the restaurant.',
+  RESTAURANT_NOT_FOUND: 'This restaurant is no longer available.',
+  RESTAURANT_CLOSED: 'This restaurant has just closed. You can order again when it reopens.',
+  ADDRESS_NOT_FOUND: 'Please choose your delivery address again.',
+};
+
+export function CheckoutPage() {
+  const cart = useCart();
+  const navigate = useNavigate();
+  const areaId = useLocationStore((s) => s.areaId);
+  const { data: area } = useArea(areaId);
+  const { data: addresses, isLoading: addressesLoading } = useAddresses();
+  const storedAddressId = useCheckoutStore((s) => s.addressId);
+  const setAddressId = useCheckoutStore((s) => s.setAddressId);
+  const address = addresses?.find((a) => a.id === storedAddressId) ?? addresses?.[0] ?? null;
+  const quote = useQuote(address?.id ?? null);
+  const [addressOpen, setAddressOpen] = useState(false);
+  const [couponOpen, setCouponOpen] = useState(false);
+  const [payOpen, setPayOpen] = useState(false);
+
+  if (cart.lines.length === 0 || !cart.restaurant) {
+    return (
+      <EmptyState
+        title="Your cart is empty"
+        description="You can go to the home page to view more restaurants."
+        action={
+          <Link to="/">
+            <Button>See restaurants near you</Button>
+          </Link>
+        }
+      />
+    );
+  }
+
+  const q = quote.data;
+  const bill = q?.ok ? q.bill : null;
+  const couponIssue = q?.ok
+    ? q.couponNotFound
+      ? couponRejectionMessage({ reason: 'NOT_FOUND' })
+      : q.bill.couponRejection
+        ? couponRejectionMessage(q.bill.couponRejection)
+        : null
+    : null;
+  const canPay = Boolean(address && bill && !quote.isFetching);
+
+  return (
+    <div className="bg-sunken pb-32 lg:pb-16">
+      <div className="container-page max-w-5xl pt-4 md:pt-8">
+        <div className="mb-4 flex items-center gap-2 md:mb-6">
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="inline-flex size-10 items-center justify-center rounded-full hover:bg-white"
+            aria-label="Go back"
+          >
+            <ArrowLeft className="size-5" />
+          </button>
+          <h1 className="text-2xl font-extrabold md:text-3xl">Checkout</h1>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-6">
+          {/* Left column on desktop: delivery and payment steps. */}
+          <div className="order-2 space-y-4 lg:order-1">
+            <section
+              aria-labelledby="address-heading"
+              className="rounded-3xl bg-white p-5 shadow-sm"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <h2 id="address-heading" className="font-extrabold">
+                  Delivery address
+                </h2>
+                {address && (
+                  <button
+                    type="button"
+                    onClick={() => setAddressOpen(true)}
+                    className="text-sm font-extrabold text-brand-600"
+                  >
+                    CHANGE
+                  </button>
+                )}
+              </div>
+              {addressesLoading ? (
+                <Skeleton className="mt-4 h-16 w-full" />
+              ) : address ? (
+                <div className="mt-3 flex gap-3">
+                  <AddressIcon label={address.label} className="mt-0.5 size-5 shrink-0 text-ink" />
+                  <div>
+                    <p className="font-bold">{address.label}</p>
+                    <p className="text-sm text-muted">{formatAddress(address)}</p>
+                    <p className="mt-1 text-sm text-muted">
+                      {address.name} · {address.phone}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="mt-3">
+                  <p className="text-sm text-muted">Add where you’d like your food delivered.</p>
+                  <Button className="mt-3" onClick={() => setAddressOpen(true)}>
+                    Add delivery address
+                  </Button>
+                </div>
+              )}
+            </section>
+
+            <section
+              aria-labelledby="payment-heading"
+              className="rounded-3xl bg-white p-5 shadow-sm"
+            >
+              <h2 id="payment-heading" className="font-extrabold">
+                Payment
+              </h2>
+              <p className="mt-2 flex items-start gap-2 text-sm text-muted">
+                <ShieldCheck className="mt-0.5 size-4 shrink-0 text-success" aria-hidden />
+                Pay securely with UPI or cards. The amount is calculated on our servers and the
+                payment is verified before your order is placed.
+              </p>
+              <Button
+                size="lg"
+                block
+                className="mt-4 hidden lg:flex"
+                disabled={!canPay}
+                onClick={() => setPayOpen(true)}
+              >
+                <Lock className="size-4" aria-hidden />
+                {bill
+                  ? `Proceed to pay ${formatPrice(bill.grandTotal)}`
+                  : address
+                    ? 'Calculating total…'
+                    : 'Add an address to continue'}
+              </Button>
+            </section>
+          </div>
+
+          {/* Right column on desktop (top on phones): cart, coupon and bill. */}
+          <div className="order-1 space-y-4 lg:sticky lg:top-28 lg:order-2 lg:self-start">
+            <section aria-label="Your order" className="rounded-3xl bg-white p-5 shadow-sm">
+              <Link to={`/restaurant/${cart.restaurant.slug}`} className="flex items-center gap-3">
+                <Img
+                  src={cart.restaurant.imageUrl}
+                  kind="cover"
+                  alt=""
+                  sizes="64px"
+                  className="size-12 rounded-xl"
+                />
+                <span className="min-w-0">
+                  <span className="block truncate font-extrabold">{cart.restaurant.name}</span>
+                  <span className="block text-sm text-muted">{cart.restaurant.locality}</span>
+                </span>
+              </Link>
+              {quote.pricesChanged && (
+                <Notice tone="warning" onDismiss={quote.dismissPricesChanged}>
+                  Some prices or items changed since you added them. Your cart now shows the latest
+                  menu.
+                </Notice>
+              )}
+              <ul className="mt-4 space-y-4">
+                {cart.lines.map((l) => (
+                  <li key={l.itemId} className="flex items-center gap-3">
+                    <VegMark veg={l.isVeg} className="size-3.5" />
+                    <span className="min-w-0 flex-1 text-[15px] font-semibold">{l.name}</span>
+                    <QtyStepper itemId={l.itemId} name={l.name} qty={l.qty} />
+                    <span className="tabular w-16 text-right text-[15px] font-semibold">
+                      {formatPrice(l.price * l.qty)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <label className="mt-5 block">
+                <span className="sr-only">Cooking instructions</span>
+                <textarea
+                  value={cart.note}
+                  onChange={(e) => cart.setNote(e.target.value)}
+                  placeholder="Any suggestions? We’ll pass them on to the restaurant (optional)"
+                  rows={2}
+                  className="w-full resize-none rounded-xl bg-sunken px-4 py-3 text-sm placeholder:text-muted focus:bg-white focus:ring-2 focus:ring-brand-200 focus:outline-none"
+                />
+              </label>
+              <Link
+                to={`/restaurant/${cart.restaurant.slug}`}
+                className="mt-2 inline-block text-sm font-bold text-brand-600"
+              >
+                + Add more items
+              </Link>
+            </section>
+
+            <section aria-label="Coupons" className="rounded-3xl bg-white shadow-sm">
+              {cart.couponCode && bill?.appliedCouponCode ? (
+                <div className="flex items-center gap-3 p-5">
+                  <PartyPopper className="size-6 shrink-0 text-success" aria-hidden />
+                  <div className="min-w-0 flex-1">
+                    <p className="font-extrabold">‘{bill.appliedCouponCode}’ applied</p>
+                    <p className="text-sm font-semibold text-success">
+                      You save {formatPrice(bill.savings)} on this order
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => cart.setCoupon(null)}
+                    className="text-sm font-extrabold text-brand-600"
+                  >
+                    REMOVE
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setCouponOpen(true)}
+                  className="flex w-full items-center gap-3 p-5 text-left"
+                >
+                  <BadgePercent className="size-6 shrink-0 text-brand-600" aria-hidden />
+                  <span className="flex-1">
+                    <span className="block font-extrabold">Apply coupon</span>
+                    {couponIssue && cart.couponCode && (
+                      <span className="block text-sm font-semibold text-warning-strong">
+                        {cart.couponCode}: {couponIssue}
+                      </span>
+                    )}
+                  </span>
+                  <ChevronRight className="size-5 text-muted" aria-hidden />
+                </button>
+              )}
+            </section>
+
+            {!address ? (
+              <section className="rounded-3xl bg-white p-5 shadow-sm">
+                <div className="tabular flex items-baseline justify-between text-[15px]">
+                  <span className="text-ink-soft">Item total ({itemCount(cart)} items)</span>
+                  <span className="font-semibold">{formatPrice(displaySubtotal(cart))}</span>
+                </div>
+                <p className="mt-2 text-sm text-muted">
+                  Add a delivery address to see the delivery fee, taxes and your total.
+                </p>
+              </section>
+            ) : q && !q.ok ? (
+              <Notice tone="danger">{QUOTE_ERRORS[q.error]}</Notice>
+            ) : bill && q?.ok ? (
+              <div className={cn('transition-opacity', quote.isFetching && 'opacity-60')}>
+                <BillDetails bill={bill} distanceKm={q.distanceKm} />
+                {bill.savings > 0 && (
+                  <p className="mt-3 rounded-2xl bg-success/10 px-4 py-3 text-center text-sm font-bold text-success-strong">
+                    🎉 You’re saving {formatPrice(bill.savings)} on this order
+                  </p>
+                )}
+              </div>
+            ) : quote.isError ? (
+              <Notice tone="danger">
+                We couldn’t calculate your bill. Check your connection and try again.
+              </Notice>
+            ) : (
+              <Skeleton className="h-64 w-full rounded-3xl" />
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Sticky pay bar on phones and tablets. */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white px-4 pt-3 pb-3 pb-safe shadow-bar lg:hidden">
+        <div className="mx-auto flex max-w-xl items-center gap-4">
+          {bill && (
+            <div className="shrink-0">
+              <p className="tabular text-lg leading-tight font-extrabold">
+                {formatPrice(bill.grandTotal)}
+              </p>
+              <p className="text-xs font-bold text-brand-600">TO PAY</p>
+            </div>
+          )}
+          {address ? (
+            <Button size="lg" block disabled={!canPay} onClick={() => setPayOpen(true)}>
+              Proceed to pay
+            </Button>
+          ) : (
+            <Button size="lg" block onClick={() => setAddressOpen(true)}>
+              Add address to proceed
+            </Button>
+          )}
+        </div>
+      </div>
+
+      <AddressSheet
+        open={addressOpen}
+        onOpenChange={setAddressOpen}
+        selectedId={address?.id ?? null}
+        onSelect={(a) => setAddressId(a.id)}
+        defaultAreaId={area?.id ?? areaId}
+      />
+      <CouponSheet
+        open={couponOpen}
+        onOpenChange={setCouponOpen}
+        brandId={cart.restaurant.brandId}
+        itemTotal={displaySubtotal(cart)}
+        regionId={area?.regionId ?? 'IN'}
+        onApply={(code) => cart.setCoupon(code)}
+      />
+      <Sheet
+        open={payOpen}
+        onOpenChange={setPayOpen}
+        title="Online payment is coming next"
+        footer={
+          <Button block onClick={() => setPayOpen(false)}>
+            Got it
+          </Button>
+        }
+      >
+        <p className="text-[15px] text-ink-soft">
+          This build stops just before payment. In the next phases the server will re-price this
+          order, create a Razorpay (UPI, cards) or Stripe payment for exactly{' '}
+          {bill ? <strong>{formatPrice(bill.grandTotal)}</strong> : 'the total'}, and only mark it
+          paid after verifying the payment signature.
+        </p>
+        <p className="mt-3 text-sm text-muted">Your cart and address are saved on this device.</p>
+      </Sheet>
+    </div>
+  );
+}
+
+function Notice({
+  tone,
+  children,
+  onDismiss,
+}: {
+  tone: 'warning' | 'danger';
+  children: React.ReactNode;
+  onDismiss?: () => void;
+}) {
+  return (
+    <div
+      role="status"
+      className={cn(
+        'mt-3 flex items-start gap-2 rounded-2xl px-4 py-3 text-sm font-semibold',
+        tone === 'warning' ? 'bg-warning/10 text-warning-strong' : 'bg-danger/10 text-danger',
+      )}
+    >
+      <CircleAlert className="mt-0.5 size-4 shrink-0" aria-hidden />
+      <span className="flex-1">{children}</span>
+      {onDismiss && (
+        <button type="button" onClick={onDismiss} aria-label="Dismiss">
+          <X className="size-4" />
+        </button>
+      )}
+    </div>
+  );
+}

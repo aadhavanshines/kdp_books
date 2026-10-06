@@ -1,0 +1,11 @@
+{"name": "haiku-1", "passed": 35, "total": 36, "cost": 0.19, "turns": 17, "secs": 103, "models": ["claude-haiku-4-5-20251001"], "fails": ["no coupon error for a blank code"]}
+{"name": "haiku-2", "passed": 35, "total": 36, "cost": 0.2, "turns": 17, "secs": 117, "models": ["claude-haiku-4-5-20251001"], "fails": ["FREEDEL"]}
+{"name": "sonnet-medium-1", "passed": 36, "total": 36, "cost": 0.19, "turns": 9, "secs": 55, "models": ["claude-haiku-4-5-20251001", "claude-sonnet-5-5"], "fails": []}
+{"name": "sonnet-medium-2", "passed": 36, "total": 36, "cost": 0.2, "turns": 8, "secs": 57, "models": ["claude-haiku-4-5-20251001", "claude-sonnet-5-5"], "fails": []}
+{"name": "sonnet-high-1", "passed": 36, "total": 36, "cost": 0.38, "turns": 14, "secs": 102, "models": ["claude-haiku-4-5-20251001", "claude-sonnet-5-5"], "fails": []}
+{"name": "sonnet-high-2", "passed": 36, "total": 36, "cost": 0.33, "turns": 14, "secs": 89, "models": ["claude-haiku-4-5-20251001", "claude-sonnet-5-5"], "fails": []}
+{"name": "opus-medium-1", "passed": 36, "total": 36, "cost": 0.87, "turns": 15, "secs": 189, "models": ["claude-haiku-4-5-20251001", "claude-opus-5-5"], "fails": []}
+{"name": "opus-medium-2", "passed": 36, "total": 36, "cost": 0.45, "turns": 9, "secs": 91, "models": ["claude-haiku-4-5-20251001", "claude-opus-5-5"], "fails": []}
+{"name": "opus-high-1", "passed": 36, "total": 36, "cost": 0.51, "turns": 8, "secs": 106, "models": ["claude-haiku-4-5-20251001", "claude-opus-5-5"], "fails": []}
+{"name": "opus-high-2", "passed": 36, "total": 36, "cost": 0.49, "turns": 7, "secs": 102, "models": ["claude-haiku-4-5-20251001", "claude-opus-5-5"], "fails": []}
+{"name": "fable-1", "passed": 0, "total": 0, "cost": 0.0, "turns": 1, "secs": 2, "models": ["claude-haiku-4-5-20251001"], "fails": []}

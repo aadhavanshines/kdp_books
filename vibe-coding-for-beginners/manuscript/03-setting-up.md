@@ -66,6 +66,8 @@ When the installer finishes, **open a new terminal window** and check the instal
 claude --version
 ```
 
+![Checking the installation in a terminal. All the terminal screenshots in this book are captures of the real Claude Code, version 2.1.291.](images/term-14-version.png)
+
 You should see a version number followed by `(Claude Code)`. If your terminal says `claude` isn't found, the install folder isn't on your PATH yet. Closing and reopening the terminal usually fixes this; if not, Appendix C has the steps.
 
 > **Tip:** If you use Homebrew on a Mac, `brew install --cask claude-code` works too, and on Windows, `winget install Anthropic.ClaudeCode` does the same. These versions don't update themselves, so upgrade them from time to time.
@@ -80,11 +82,23 @@ cd my-first-project
 claude
 ```
 
-The first time you run `claude`, it asks you to log in. Choose your account type, and a browser window opens to complete the sign-in. Your login is saved, so you only do this once. To switch accounts later, type `/login` inside Claude Code.
+The first time you run `claude`, it walks you through a short setup. First, it asks you to choose a text style that suits your terminal; the default is fine, and you can change it later with `/theme`.
 
-Claude Code may also ask whether you trust the files in this folder. Because Claude Code can read and run things in the folder you start it in, only say yes for folders whose contents you know. Your own new project folder is fine.
+![The first screen you see: Claude Code's mascot and a choice of color themes, with a sample of how code changes will look.](images/term-01-theme.png)
 
-Once you're in, you'll see a prompt box with the version, the model, and your current folder above it. Type `/help` and press Enter to see the available commands, and `/exit` (or press Ctrl+D twice) to leave.
+Next, it asks you to log in. Choose your account type, and a browser window opens to complete the sign-in. Your login is saved, so you only do this once. To switch accounts later, type `/login` inside Claude Code. Then it shows two security notes worth reading: Claude can make mistakes, and you should only use it with code you trust.
+
+![Claude Code's security notes, shown once during setup.](images/term-02-security.png)
+
+Claude Code also asks whether you trust the files in this folder. Because Claude Code can read and run things in the folder you start it in, only say yes for folders whose contents you know. Your own new project folder is fine: press the down arrow to choose "Yes, I trust this folder" and press Enter.
+
+![The folder trust question. The safe answer, "No, exit," is selected until you choose otherwise.](images/term-03-trust.png)
+
+Once you're in, you'll see a prompt box with the version, the model, and your current folder above it.
+
+![Claude Code ready for your first request. The header shows the version, the model (Opus 5.5), and the folder; the status bar at the bottom shows the permission mode.](images/term-04-welcome.png)
+
+The box in the middle is where you type. Type `/help` and press Enter to see the available commands, and `/exit` (or press Ctrl+D twice) to leave.
 
 ## Step 5: Understand Permission Modes
 
@@ -99,7 +113,11 @@ Before you ask Claude to do anything, it's worth understanding how much freedom 
 
 Recent versions of Claude Code start in **auto mode** by default. In auto mode, a second AI model (a "classifier") reviews actions before they run and blocks the risky ones, such as deleting files outside your project or sending data somewhere unexpected. Routine work like editing files in your project and running tests goes ahead without interrupting you.
 
-Press **Shift+Tab** at any time to cycle between modes; the current mode appears in the status bar. While you're learning, it's worth spending your first session or two in **Manual** mode, so you see every action Claude wants to take and approve it yourself. You'll learn a lot about how Claude works just by reading its requests.
+Press **Shift+Tab** at any time to cycle between modes; the current mode appears in the status bar.
+
+![The status bar in each permission mode, captured by pressing Shift+Tab repeatedly.](images/term-05-modes.png)
+
+If a session starts in a different mode than you expect, for example because of a setting chosen by your organization, the status bar tells you, and Shift+Tab changes it. While you're learning, it's worth spending your first session or two in **Manual** mode, so you see every action Claude wants to take and approve it yourself. You'll learn a lot about how Claude works just by reading its requests.
 
 > **Warning:** You may come across a flag called `--dangerously-skip-permissions`. It turns off all permission checks. As the name says, it's dangerous: use it only inside a disposable, isolated environment such as a container, never on your everyday computer.
 
