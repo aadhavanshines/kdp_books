@@ -350,6 +350,30 @@ def sdlc_cycle():
                  h=940, rx=470, ry=340, hw=200, hh=70, center=["each release", "starts the next", "cycle"])
 
 
+def quickbite_architecture():
+    img, d = canvas(1260)
+    box(d, (40, 30, W - 40, 200), "Browser: the QuickBite app", NAVY, WHITE,
+        sub="served by Firebase Hosting; sends dish IDs and quantities, never prices")
+    arrow(d, (W / 2, 200), (W / 2, 262))
+    box(d, (240, 270, W - 240, 390), "One Backend interface", LIGHT, sub="chosen with VITE_BACKEND", font=f(BOLD, 36))
+    for x0, x1, title, sub in [(40, 660, "Firebase", "Auth, Firestore, security rules, Cloud Functions"),
+                               (720, W - 40, "Supabase", "Auth, Postgres, Row Level Security, Edge Functions")]:
+        cx = (x0 + x1) / 2
+        poly_arrow(d, [(W / 2, 390), (W / 2, 425), (cx, 425), (cx, 452)], color=MID)
+        box(d, (x0, 460, x1, 640), title, LIGHT, sub=sub, font=f(BOLD, 38))
+        arrow(d, (cx, 640), (cx, 742), color=MID)
+    box(d, (40, 750, W - 40, 930), "Shared server logic, written once", NAVY, WHITE,
+        sub="prices from the database, coupons, taxes, orders, payment checks")
+    for x0, x1, title, sub in [(40, 660, "Razorpay", "India: UPI, cards, netbanking"),
+                               (720, W - 40, "Stripe", "International cards")]:
+        cx = (x0 + x1) / 2
+        arrow(d, (cx - 60, 930), (cx - 60, 1062))
+        arrow(d, (cx + 60, 1062), (cx + 60, 938), color=MID)
+        box(d, (x0, 1070, x1, 1230), title, PALE, sub=sub, outline=MID, font=f(BOLD, 36))
+    d.text((W / 2, 980), "create order  /  signed payment messages", font=f(ITAL, 28), fill=MID, anchor="ma")
+    return img
+
+
 DIAGRAMS = {
     "vibe-loop.png": vibe_loop,
     "web-app-anatomy.png": web_app_anatomy,
@@ -366,6 +390,7 @@ DIAGRAMS = {
     "defense-layers.png": defense_layers,
     "store-release.png": store_release,
     "sdlc-cycle.png": sdlc_cycle,
+    "quickbite-architecture.png": quickbite_architecture,
 }
 
 

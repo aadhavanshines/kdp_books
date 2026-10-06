@@ -39,6 +39,8 @@ FONTS = {
     "Sans-BoldItalic": f"{FONT_DIR}/liberation/LiberationSans-BoldItalic.ttf",
     "Mono": f"{FONT_DIR}/dejavu/DejaVuSansMono.ttf",
     "Mono-Bold": f"{FONT_DIR}/dejavu/DejaVuSansMono-Bold.ttf",
+    # Liberation fonts have no rupee sign (U+20B9); DejaVu draws it.
+    "Symbols": f"{FONT_DIR}/dejavu/DejaVuSerif.ttf",
 }
 
 
@@ -82,6 +84,7 @@ def inline(text):
             t = part.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
             t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
             t = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<i>\1</i>", t)
+            t = t.replace("\u20b9", '<font face="Symbols">\u20b9</font>')
             out.append(t)
     return "".join(out)
 
