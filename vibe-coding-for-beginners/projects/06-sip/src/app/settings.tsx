@@ -66,7 +66,8 @@ export default function SettingsScreen() {
           <Pressable
             style={({ pressed }) => [s.primary, pressed && s.pressed]}
             accessibilityRole="button"
-            accessibilityLabel="Save goal"
+            accessibilityLabel="Save"
+            accessibilityHint="Saves the daily goal and returns to the home screen"
             onPress={save}
           >
             <Text style={s.primaryText}>Save</Text>
@@ -74,7 +75,8 @@ export default function SettingsScreen() {
           <Pressable
             style={({ pressed }) => [s.secondary, pressed && s.pressed]}
             accessibilityRole="button"
-            accessibilityLabel={`Reset goal to ${DEFAULT_GOAL_ML} millilitres`}
+            accessibilityLabel={`Reset to ${DEFAULT_GOAL_ML} ml`}
+            accessibilityHint="Puts the default goal back in the field; tap Save to keep it"
             onPress={() => {
               setText(String(DEFAULT_GOAL_ML));
               setError(null);

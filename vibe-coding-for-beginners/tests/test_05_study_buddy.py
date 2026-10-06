@@ -1,4 +1,4 @@
-"""Project 5: Study Buddy from Chapter 13. Claude's suite, the real SDK request shape, and the page."""
+"""Project 5: Study Buddy from Chapter 14. Claude's suite, the real SDK request shape, and the page."""
 import json
 import subprocess
 import sys

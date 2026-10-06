@@ -19,9 +19,10 @@ pytestmark = pytest.mark.skipif(not os.path.exists(os.path.join(DIST, "index.htm
 
 @pytest.fixture(scope="module")
 def site():
-    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=DIST)
-    handler.log_message = lambda *a: None
-    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), handler)
+    class Quiet(http.server.SimpleHTTPRequestHandler):
+        def log_message(self, *args):
+            pass
+    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(Quiet, directory=DIST))
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     yield f"http://127.0.0.1:{srv.server_port}"
     srv.shutdown()
@@ -40,12 +41,12 @@ def today_text(page):
 def test_log_undo_and_persist(browser, site):
     ctx, page = phone(browser)
     page.goto(site)
-    page.get_by_role("button", name="Add 250 millilitres").click()
-    page.get_by_role("button", name="Add 250 millilitres").click()
-    page.get_by_role("button", name="Add 500 millilitres").click()
+    page.get_by_role("button", name="+250 ml", exact=True).click()
+    page.get_by_role("button", name="+250 ml", exact=True).click()
+    page.get_by_role("button", name="+500 ml", exact=True).click()
     page.wait_for_selector("text=1,000 ml")
     assert "50%" in page.inner_text("body")
-    page.get_by_role("button", name="Undo last drink").click()
+    page.get_by_role("button", name="Undo last", exact=True).click()
     page.wait_for_selector("text=500 ml")
     page.reload()
     page.wait_for_selector("text=of 2,000 ml goal")
@@ -56,7 +57,7 @@ def test_log_undo_and_persist(browser, site):
 def test_change_goal_in_settings(browser, site):
     ctx, page = phone(browser)
     page.goto(site)
-    page.get_by_role("button", name="Add 500 millilitres").click()
+    page.get_by_role("button", name="+500 ml", exact=True).click()
     page.get_by_role("button", name="Settings").click()
     page.wait_for_url("**/settings")
     box = page.get_by_role("textbox").first
@@ -72,7 +73,7 @@ def test_new_day_starts_at_local_midnight(browser, site):
     ctx, page = phone(browser)
     page.clock.install(time=dt.datetime(2026, 10, 6, 23, 58, tzinfo=dt.timezone(dt.timedelta(hours=-4))))
     page.goto(site)
-    page.get_by_role("button", name="Add 500 millilitres").click()
+    page.get_by_role("button", name="+500 ml", exact=True).click()
     page.wait_for_selector("text=of 2,000 ml goal · 25%")
     page.clock.run_for("05:00")  # five minutes later it is a new day in New York
     page.reload()
@@ -89,7 +90,7 @@ def test_touch_targets_and_dark_mode(browser, site):
         box = el.bounding_box()
         assert box["height"] >= 44 and box["width"] >= 44, el.get_attribute("aria-label")
     bg = page.evaluate("""() => {
-        let e = document.querySelector('[aria-label="Add 250 millilitres"]');
+        let e = document.querySelector('[aria-label="+250 ml"]');
         while (e) { const c = getComputedStyle(e).backgroundColor;
                     if (c !== 'rgba(0, 0, 0, 0)') return c; e = e.parentElement; }
         return '';}""")
@@ -111,6 +112,6 @@ def test_no_axe_violations(browser, site):
     page.goto(site)
     page.wait_for_selector("text=of 2,000 ml goal")
     page.add_script_tag(path=os.environ["AXE_PATH"])
-    res = page.evaluate("async () => await axe.run(document, {runOnly: ['wcag2a','wcag2aa','wcag21aa']})")
+    res = page.evaluate("async () => await axe.run(document, {runOnly: ['wcag2a','wcag2aa','wcag21aa'], rules: {'label-content-name-mismatch': {enabled: true}}})")
     ctx.close()
     assert [(v["id"], len(v["nodes"])) for v in res["violations"]] == []

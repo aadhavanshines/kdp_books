@@ -1,4 +1,4 @@
-# Chapter 20: Working on Bigger and Existing Projects
+# Chapter 24: Working on Bigger and Existing Projects
 
 The projects in this book are small enough to fit in your head. Real projects often aren't: an app you've grown over months, an open-source project you want to contribute to, or your company's codebase. This chapter covers the skills that matter at that scale: understanding unfamiliar code, managing Claude's attention, making large changes safely, and running several sessions at once.
 
@@ -34,7 +34,7 @@ project and whether there are existing helpers for sending
 emails I should reuse.
 ```
 
-Once you understand the project, run `/init` to create a CLAUDE.md (Chapter 15), or improve the existing one with what you've learned.
+Once you understand the project, run `/init` to create a CLAUDE.md (Chapter 16), or improve the existing one with what you've learned.
 
 ## Managing the Context Window
 

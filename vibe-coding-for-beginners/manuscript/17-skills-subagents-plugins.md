@@ -1,4 +1,4 @@
-# Chapter 16: Skills, Subagents, and Plugins
+# Chapter 17: Skills, Subagents, and Plugins
 
 CLAUDE.md teaches Claude about your project. This chapter teaches Claude new *abilities*: reusable workflows you can run with a single command (**skills**), specialist helpers that work in their own context (**subagents**), and installable bundles of both (**plugins**). You'll build a pre-commit checklist skill and a code-reviewer subagent for the habit tracker, and see both catch real problems.
 
@@ -158,7 +158,7 @@ Missing tests
    delete tests already exist.
 ```
 
-Both planted problems were caught, with locations, plain-language explanations, and fixes. Notice the judgment in the first finding: the reviewer recognized that this particular query happens to be safe today, because only whole numbers can reach it, but flagged the pattern as dangerous anyway. That's the kind of nuance a good human reviewer brings. Chapter 21 explains SQL injection and why the "parameterized" version matters.
+Both planted problems were caught, with locations, plain-language explanations, and fixes. Notice the judgment in the first finding: the reviewer recognized that this particular query happens to be safe today, because only whole numbers can reach it, but flagged the pattern as dangerous anyway. That's the kind of nuance a good human reviewer brings. Chapter 25 explains SQL injection and why the "parameterized" version matters.
 
 > **Tip:** Pair a writer and a reviewer. After Claude finishes a feature, run the reviewer in its fresh context before you commit. A second opinion from a helper that didn't write the code catches things the author misses.
 

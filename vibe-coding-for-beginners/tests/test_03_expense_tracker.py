@@ -1,4 +1,4 @@
-"""Project 3: run the expense tracker exactly as Chapter 8 shows, plus Claude's own test suite."""
+"""Project 3: run the expense tracker exactly as Chapter 9 shows, plus Claude's own test suite."""
 import shutil
 import subprocess
 import sys
@@ -36,7 +36,7 @@ def test_friendly_errors(tmp_path):
     code, out = run(tmp_path, "add", "5", "food", "--date", "10/01/2026")
     assert code == 1 and "Use the format YYYY-MM-DD" in out
     assert "Traceback" not in out
-    # Found by the review script in Chapter 19: huge amounts used to crash.
+    # Found by the review script in Chapter 23: huge amounts used to crash.
     code, out = run(tmp_path, "add", "1e30", "food")
     assert code == 1 and "Traceback" not in out
 

@@ -1,4 +1,4 @@
-# Chapter 17: Hooks and Permissions: Guardrails That Always Work
+# Chapter 18: Hooks and Permissions: Guardrails That Always Work
 
 CLAUDE.md, skills, and subagents all work by *asking* Claude to behave a certain way, and Claude follows instructions well. But some rules must never be broken, however a request is phrased: never read the file with your passwords, never edit the live database, never finish a task while tests are failing. For those, Claude Code has two mechanisms that are enforced by the program itself rather than by the model's judgment: **permission rules** and **hooks**.
 

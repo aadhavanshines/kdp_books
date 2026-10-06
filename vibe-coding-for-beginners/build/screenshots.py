@@ -1,7 +1,8 @@
 """Capture real screenshots of the book's five projects (needs Playwright + Chromium).
 
-Usage: CHROMIUM_PATH=/path/to/chromium python3 build/screenshots.py
+Usage: CHROMIUM_PATH=/path/to/chromium python3 build/screenshots.py [name ...]
 Writes manuscript/images/shot-*.png. Not part of build.py because it needs a browser.
+The Sip shot needs the app's web build: set SIP_DIST, or build projects/06-sip/dist first.
 """
 import datetime as dt
 import json
@@ -175,12 +176,60 @@ def study_buddy(browser):
     srv.shutdown()
 
 
+def sip(browser):
+    """Chapter 20: the Sip mobile app's web build on a phone, in light and dark mode."""
+    import functools
+    import http.server
+    from PIL import Image, ImageDraw, ImageFont
+    dist = os.environ.get("SIP_DIST") or str(PROJ / "06-sip" / "dist")
+    if not os.path.exists(os.path.join(dist, "index.html")):
+        print("skipped Sip: no web build at", dist)
+        return
+    class Quiet(http.server.SimpleHTTPRequestHandler):
+        def log_message(self, *args):
+            pass
+    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(Quiet, directory=dist))
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    shots = []
+    for scheme in ("light", "dark"):
+        ctx = browser.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=SCALE,
+                                  locale="en-US", timezone_id="America/New_York", color_scheme=scheme,
+                                  has_touch=True, is_mobile=True)
+        page = ctx.new_page()
+        page.clock.set_fixed_time(dt.datetime(2026, 10, 6, 15, 0, tzinfo=dt.timezone(dt.timedelta(hours=-4))))
+        page.goto(f"http://127.0.0.1:{srv.server_port}")
+        page.wait_for_selector("text=of 2,000 ml goal")
+        for name in ("+250 ml", "+500 ml", "+500 ml"):
+            page.get_by_role("button", name=name, exact=True).click()
+        page.wait_for_selector("text=63%")
+        path = OUT / f"_tmp_sip_{scheme}.png"
+        page.screenshot(path=str(path))
+        shots.append(Image.open(path).convert("RGB"))
+        path.unlink()
+        ctx.close()
+    srv.shutdown()
+    gap, label_h = 60, 110
+    out = Image.new("RGB", (sum(s.width for s in shots) + gap, shots[0].height + label_h), (255, 255, 255))
+    d = ImageDraw.Draw(out)
+    font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", 64)
+    x = 0
+    for s, label in zip(shots, ("Light mode", "Dark mode")):
+        d.text((x + s.width / 2, 20), label, font=font, fill=(31, 58, 95), anchor="ma")
+        out.paste(s, (x, label_h))
+        x += s.width + gap
+    out.save(OUT / "shot-sip.png")
+    print("wrote shot-sip.png")
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
         browser = p.chromium.launch(executable_path=os.environ.get("CHROMIUM_PATH") or None)
-        for fn in (tip, todo, todo_before_after, habits, study_buddy):
-            fn(browser)
+        shots = (tip, todo, todo_before_after, habits, study_buddy, sip)
+        wanted = sys.argv[1:]
+        for fn in shots:
+            if not wanted or fn.__name__ in wanted:
+                fn(browser)
         browser.close()
 
 

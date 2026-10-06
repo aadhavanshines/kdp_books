@@ -1,4 +1,4 @@
-# Chapter 18: Connecting Tools with MCP
+# Chapter 19: Connecting Tools with MCP
 
 Out of the box, Claude Code can read and write files, run commands, and search the web. The **Model Context Protocol (MCP)** lets you give it more: a real web browser to test your apps, your project tracker, your design files, your database, and hundreds of other tools. In this chapter you'll connect two MCP servers and watch Claude use a browser to test the to-do app, finding a real usability problem along the way.
 
@@ -76,7 +76,7 @@ Everything after the `--` is how Claude Code launches the server program. `npx` 
 
 > **Note:** In the environment used to test this book, the browser ran on a server with no screen, which needed two extra options (`--headless` and `--no-sandbox`). On a normal computer, the command above is all you need, and you'll see a browser window open and move by itself.
 
-Now serve the to-do app from Chapter 6. In its folder, run `python3 -m http.server 8765` in one terminal, then, in another terminal in a project with the Playwright server added, give Claude a testing task:
+Now serve the to-do app as it was at the end of Chapter 6, before the Chapter 8 redesign (the book's code keeps that version in `projects/02-todo-app/before-redesign`). In its folder, run `python3 -m http.server 8765` in one terminal, then, in another terminal in a project with the Playwright server added, give Claude a testing task:
 
 ```
 Use playwright to open http://localhost:8765. Add three tasks:
@@ -116,7 +116,7 @@ The filter, the done state and the counter all worked correctly.
 I found no functional bugs.
 ```
 
-The functional test passed, and the review found genuine design problems that no automated test had checked. The first one matters most: the app's style sheet shows the delete button only when the mouse hovers over a task, so on a phone, where there's no mouse, you can't delete anything. That's the "Try It" fix suggested in Chapter 6.
+The functional test passed, and the review found genuine design problems that no automated test had checked. The first one matters most: the app's style sheet shows the delete button only when the mouse hovers over a task, so on a phone, where there's no mouse, you can't delete anything. It's the same problem Chapter 8's accessibility review found and fixed, discovered here independently by an AI driving a real browser.
 
 Not every point needs action. The shifting footer and the counter wording are matters of taste, and you can decide. This is how to treat any AI review: as a list of observations to weigh, not orders to follow.
 
@@ -148,7 +148,7 @@ MCP servers are powerful, which means they deserve care:
 
 - **Install only servers you trust**, ideally official ones from the company that makes the tool. A local server runs as a program on your computer.
 - **Watch what tools can do.** A server that can send emails or delete records can do so on Claude's request. Keep risky actions behind permission prompts.
-- **Beware of instructions hidden in data.** A web page or document that a server reads might contain text designed to manipulate the AI ("ignore your instructions and..."). This is **prompt injection**, covered in Chapter 21. Auto mode's safety checker looks for actions that appear to be driven by such content, but your own judgment still matters.
+- **Beware of instructions hidden in data.** A web page or document that a server reads might contain text designed to manipulate the AI ("ignore your instructions and..."). This is **prompt injection**, covered in Chapter 25. Auto mode's safety checker looks for actions that appear to be driven by such content, but your own judgment still matters.
 - **Remove servers you don't use.** Each connected server's tool descriptions take up some of Claude's context.
 
 > **Try It:** Add the Playwright server and ask Claude to test the tip calculator from Chapter 5 at a phone-sized window: "Open it at 390 by 844 pixels, enter $100, an 18% tip and 3 people, take a screenshot, and tell me if anything is hard to read or tap on a phone."

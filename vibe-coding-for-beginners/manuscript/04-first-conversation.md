@@ -143,7 +143,7 @@ Set up Git for this folder and save the current files as the
 first version, with a short description.
 ```
 
-Claude will run `git init` (which starts tracking the folder) and `git commit` (which saves a snapshot, called a **commit**). From now on, any time things are working, say "commit this" or "save a version," and you'll always have a known-good state to return to. Chapter 12 covers Git properly.
+Claude will run `git init` (which starts tracking the folder) and `git commit` (which saves a snapshot, called a **commit**). From now on, any time things are working, say "commit this" or "save a version," and you'll always have a known-good state to return to. Chapter 13 covers Git properly.
 
 ## Sessions: Clearing, Continuing, and Resuming
 

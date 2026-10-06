@@ -1,4 +1,4 @@
-# Chapter 10: Debugging with Claude Code
+# Chapter 11: Debugging with Claude Code
 
 Every app has bugs. Professional programmers spend a large part of their time finding and fixing them, and vibe coders are no different. The good news is that Claude Code is an excellent debugging partner, if you give it the right information. This chapter shows you how to read errors, how to report a bug so it gets fixed properly, and how to handle the hard ones. It ends with a real bug from the habit tracker, traced from a user's complaint to a tested fix.
 
@@ -93,7 +93,7 @@ The "test that fails first" instruction is important. A test that fails *before*
 
 ## A Real Bug: "My Streak Looks Wrong"
 
-In Chapter 9, Claude warned that the server decides what "today" is, so users in other time zones might see the wrong day. Imagine the app is online, running on a server set to UTC (as cloud servers usually are), and a friend in California sends you a complaint. For this book, that scenario was turned into the following prompt and run in Claude Code:
+In Chapter 10, Claude warned that the server decides what "today" is, so users in other time zones might see the wrong day. Imagine the app is online, running on a server set to UTC (as cloud servers usually are), and a friend in California sends you a complaint. For this book, that scenario was turned into the following prompt and run in Claude Code:
 
 ```
 A friend is using my habit tracker after I put it online, and
@@ -148,7 +148,7 @@ That's the whole debugging loop in one reply: reproduced (in a test), understood
 Here is the heart of the fix, from the final `app.py`:
 
 ```
-@include projects/04-habit-tracker/app.py#L77-L91
+@include projects/04-habit-tracker/app.py#L80-L94
 ```
 
 Even if you can't read Python fluently, the comment explains the reasoning, and the logic reads almost like English: use the date the browser sends, unless it's missing, malformed, or implausible.

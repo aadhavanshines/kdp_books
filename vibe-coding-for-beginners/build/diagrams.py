@@ -229,13 +229,13 @@ def deploy_flow():
 
 
 def customization_map():
-    rows = [("CLAUDE.md", "Rules and facts Claude reads in every session", "Ch. 15"),
-            ("Skills", "Reusable instructions and workflows, loaded on demand", "Ch. 16"),
-            ("Subagents", "Specialist helpers that work in their own context", "Ch. 16"),
-            ("Hooks", "Scripts that always run at set moments", "Ch. 17"),
-            ("Permissions", "What Claude may do without asking", "Ch. 17"),
-            ("MCP servers", "Connections to outside tools and data", "Ch. 18"),
-            ("Plugins", "Bundles of the above, installed together", "Ch. 16")]
+    rows = [("CLAUDE.md", "Rules and facts Claude reads in every session", "Ch. 16"),
+            ("Skills", "Reusable instructions and workflows, loaded on demand", "Ch. 17"),
+            ("Subagents", "Specialist helpers that work in their own context", "Ch. 17"),
+            ("Hooks", "Scripts that always run at set moments", "Ch. 18"),
+            ("Permissions", "What Claude may do without asking", "Ch. 18"),
+            ("MCP servers", "Connections to outside tools and data", "Ch. 19"),
+            ("Plugins", "Bundles of the above, installed together", "Ch. 17")]
     img, d = canvas(40 + len(rows) * 104)
     for i, (k, q, ch) in enumerate(rows):
         y = 20 + i * 104
@@ -319,6 +319,37 @@ def defense_layers():
     return img
 
 
+def store_release():
+    img, d = canvas(1180)
+    box(d, (40, 30, W - 40, 190), "Your project", LIGHT, sub="app.json, eas.json, tests passing, privacy policy ready")
+    arrow(d, (W / 2, 190), (W / 2, 262))
+    box(d, (240, 270, W - 240, 430), "EAS Build (cloud)", NAVY, WHITE, sub="signs and builds the store files")
+    col = [(40, 660), (720, W - 40)]
+    heads = [("Google Play", "Android App Bundle (.aab)"), ("Apple App Store", "iOS build (.ipa)")]
+    steps = [[("Closed testing", "new accounts: 12 testers, 14 days"),
+              ("Production review", "Play Console"), ("Staged rollout", "to a % of users")],
+             [("TestFlight", "external testers need a review"),
+              ("App Review", "App Store Connect"), ("Release", "manual, automatic, or phased")]]
+    for (x0, x1), (h, sub), ss in zip(col, heads, steps):
+        cx = (x0 + x1) / 2
+        poly_arrow(d, [(W / 2, 430), (W / 2, 470), (cx, 470), (cx, 502)], color=MID)
+        box(d, (x0, 510, x1, 640), h, LIGHT, sub=sub, font=f(BOLD, 38))
+        y = 640
+        for i, (s, sb) in enumerate(ss):
+            arrow(d, (cx, y), (cx, y + 52), color=MID, width=6)
+            y += 60
+            box(d, (x0 + 30, y, x1 - 30, y + 110), s, PALE, sub=sb, outline=MID, font=f(BOLD, 32))
+            y += 110
+    return img
+
+
+def sdlc_cycle():
+    return cycle([("1. Plan", "what and why"), ("2. Design", "how it will work"), ("3. Build", "small slices"),
+                  ("4. Test", "prove it works"), ("5. Release", "version, tag, ship"),
+                  ("6. Maintain", "feedback, fixes")],
+                 h=940, rx=470, ry=340, hw=200, hh=70, center=["each release", "starts the next", "cycle"])
+
+
 DIAGRAMS = {
     "vibe-loop.png": vibe_loop,
     "web-app-anatomy.png": web_app_anatomy,
@@ -333,6 +364,8 @@ DIAGRAMS = {
     "mcp-architecture.png": mcp_architecture,
     "context-window.png": context_window,
     "defense-layers.png": defense_layers,
+    "store-release.png": store_release,
+    "sdlc-cycle.png": sdlc_cycle,
 }
 
 

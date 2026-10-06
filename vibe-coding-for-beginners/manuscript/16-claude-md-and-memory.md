@@ -1,4 +1,4 @@
-# Chapter 15: Teaching Claude Your Project: CLAUDE.md and Memory
+# Chapter 16: Teaching Claude Your Project: CLAUDE.md and Memory
 
 Every time you start a new session, Claude begins with no memory of your previous conversations. It can read your code, but it can't read your mind or your history: the commands you prefer, the bug you fixed last week, the rule that every new feature must handle time zones. Without help, you'd repeat yourself in every session.
 
@@ -40,7 +40,7 @@ Here's the "Commands" section of the file it wrote:
 @include projects/04-habit-tracker/CLAUDE.md#L9-L13
 ```
 
-And here is one of its architecture rules, which captures the lesson of the time zone bug from Chapter 10:
+And here is one of its architecture rules, which captures the lesson of the time zone bug from Chapter 11:
 
 ```
 @include projects/04-habit-tracker/CLAUDE.md#L23-L23
@@ -118,7 +118,7 @@ Besides the instructions you write, Claude Code can keep its own notes, called *
 
 These notes are stored on your computer, separately for each project, and loaded at the start of each session. Type `/memory` to see and edit them, to edit your CLAUDE.md files, or to turn auto memory on or off.
 
-> **Warning:** Memory and CLAUDE.md are instructions, not locks. Claude follows them very consistently, but they don't *force* anything. For rules that must never be broken, such as "never edit the database file," use permissions and hooks (Chapter 17), which are enforced by Claude Code itself.
+> **Warning:** Memory and CLAUDE.md are instructions, not locks. Claude follows them very consistently, but they don't *force* anything. For rules that must never be broken, such as "never edit the database file," use permissions and hooks (Chapter 18), which are enforced by Claude Code itself.
 
 ## Keeping Memory Healthy
 

@@ -7,11 +7,11 @@ In this chapter you'll install everything you need: Claude Code itself, plus thr
 Claude Code needs an account. There are two main ways to get one:
 
 - **A Claude subscription** (Pro, Max, Team, or Enterprise). You pay a fixed monthly price, and your Claude Code usage counts against your plan's usage limits. This is the simplest choice for most beginners, because your cost is predictable.
-- **An Anthropic Console account** (at platform.claude.com). You buy API credits and pay for exactly what you use, measured in tokens. This suits people who use Claude Code only occasionally, or who also want to build AI-powered apps (Chapter 13 needs a Console account anyway).
+- **An Anthropic Console account** (at platform.claude.com). You buy API credits and pay for exactly what you use, measured in tokens. This suits people who use Claude Code only occasionally, or who also want to build AI-powered apps (Chapter 14 needs a Console account anyway).
 
 Companies can also use Claude Code through cloud providers such as Amazon Bedrock, Google Cloud, and Microsoft Foundry, but that's beyond the needs of most readers.
 
-> **Note:** For a sense of scale, all the Claude Code sessions recorded while writing this book (more than twenty-five sessions, which built, tested, fixed, and extended the five projects) would have cost under $5 in total at API list prices. A subscription covers that kind of usage easily. Larger projects and longer sessions use more, and Chapter 20 shows how to keep usage efficient.
+> **Note:** For a sense of scale, all the Claude Code sessions recorded while writing this book (nearly forty sessions, which built, tested, fixed, and extended the six projects, and prepared one of them for the app stores) would have cost about $16 in total at API list prices. A subscription covers that kind of usage easily. Larger projects and longer sessions use more, and Chapter 24 shows how to keep usage efficient.
 
 Plans and prices change, so check claude.com/pricing for the current options before you sign up.
 
@@ -19,9 +19,11 @@ Plans and prices change, so check claude.com/pricing for the current options bef
 
 You'll need three free tools besides Claude Code.
 
-**Git** (version control, Chapter 12). On macOS, open Terminal and type `git --version`; if Git isn't installed, macOS offers to install it. On Windows, download **Git for Windows** from git-scm.com and accept the default options. It also gives Claude Code a better shell to work with on Windows. On Linux, Git is usually already installed, or available through your package manager.
+**Git** (version control, Chapter 13). On macOS, open Terminal and type `git --version`; if Git isn't installed, macOS offers to install it. On Windows, download **Git for Windows** from git-scm.com and accept the default options. It also gives Claude Code a better shell to work with on Windows. On Linux, Git is usually already installed, or available through your package manager.
 
 **Python** (Projects 3, 4, and 5). Download the latest version from python.org. On Windows, tick the box labeled **"Add python.exe to PATH"** on the first screen of the installer; forgetting this is the most common setup problem. On macOS and Linux, use the installer from python.org or your package manager.
+
+Later in the book, the MCP browser server (Chapter 19) and the mobile app (Chapter 20) also need **Node.js**, which runs JavaScript tools on your computer. You can install it when you get there: download the LTS version from nodejs.org.
 
 **A code editor** (optional but recommended). You don't need one to vibe code, but it's much easier to look at your project's files in an editor than in the terminal. **Visual Studio Code** (code.visualstudio.com) is free, popular, and has an official Claude Code extension.
 
@@ -32,7 +34,7 @@ git --version
 python3 --version
 ```
 
-On Windows, type `python --version` instead of `python3 --version`. Each command should print a version number. If you see "command not found" or "is not recognized," close the terminal, open a new one, and try again; if it still fails, see Appendix B.
+On Windows, type `python --version` instead of `python3 --version`. Each command should print a version number. If you see "command not found" or "is not recognized," close the terminal, open a new one, and try again; if it still fails, see Appendix C.
 
 ## Step 3: Install Claude Code
 
@@ -64,7 +66,7 @@ When the installer finishes, **open a new terminal window** and check the instal
 claude --version
 ```
 
-You should see a version number followed by `(Claude Code)`. If your terminal says `claude` isn't found, the install folder isn't on your PATH yet. Closing and reopening the terminal usually fixes this; if not, Appendix B has the steps.
+You should see a version number followed by `(Claude Code)`. If your terminal says `claude` isn't found, the install folder isn't on your PATH yet. Closing and reopening the terminal usually fixes this; if not, Appendix C has the steps.
 
 > **Tip:** If you use Homebrew on a Mac, `brew install --cask claude-code` works too, and on Windows, `winget install Anthropic.ClaudeCode` does the same. These versions don't update themselves, so upgrade them from time to time.
 

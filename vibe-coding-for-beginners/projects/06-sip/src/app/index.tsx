@@ -85,7 +85,8 @@ export default function HomeScreen() {
           <Pressable
             style={({ pressed }) => [s.bigButton, pressed && s.pressed]}
             accessibilityRole="button"
-            accessibilityLabel="Add 250 millilitres"
+            accessibilityLabel="+250 ml"
+            accessibilityHint="Adds 250 millilitres to today's total"
             onPress={() => onLog(250)}
           >
             <Text style={s.bigButtonText}>+250 ml</Text>
@@ -93,7 +94,8 @@ export default function HomeScreen() {
           <Pressable
             style={({ pressed }) => [s.bigButton, pressed && s.pressed]}
             accessibilityRole="button"
-            accessibilityLabel="Add 500 millilitres"
+            accessibilityLabel="+500 ml"
+            accessibilityHint="Adds 500 millilitres to today's total"
             onPress={() => onLog(500)}
           >
             <Text style={s.bigButtonText}>+500 ml</Text>
@@ -107,7 +109,7 @@ export default function HomeScreen() {
             pressed && canUndo && s.pressed,
           ]}
           accessibilityRole="button"
-          accessibilityLabel="Undo last drink"
+          accessibilityLabel="Undo last"
           accessibilityHint="Removes the most recent amount logged today"
           accessibilityState={{ disabled: !canUndo }}
           disabled={!canUndo}
@@ -136,7 +138,7 @@ export default function HomeScreen() {
         <Pressable
           style={({ pressed }) => [s.settings, pressed && s.pressed]}
           accessibilityRole="button"
-          accessibilityLabel="Settings"
+          accessibilityLabel={`Settings, goal ${formatMl(goal)}`}
           accessibilityHint="Change your daily goal"
           onPress={() => router.push('/settings')}
         >

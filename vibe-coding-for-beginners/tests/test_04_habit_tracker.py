@@ -61,7 +61,7 @@ def test_page_add_toggle_delete(page, server):
 
 
 def test_today_is_the_users_today(browser, server):
-    """The Chapter 9 bug: 8 p.m. in California is already tomorrow in UTC."""
+    """The Chapter 11 bug: 8 p.m. in California is already tomorrow in UTC."""
     import datetime as dt
     server_today = dt.datetime.now(dt.timezone.utc).date()  # the test server runs in UTC
     # 3 a.m. UTC on the server's date is 8 p.m. the previous evening in California.

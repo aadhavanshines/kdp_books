@@ -1,4 +1,4 @@
-# Appendix C: Claude Code Cheat Sheet
+# Appendix D: Claude Code Cheat Sheet
 
 A quick reference to the commands, shortcuts, and files used in this book. Type `/help` inside Claude Code for the full, current list for your version.
 

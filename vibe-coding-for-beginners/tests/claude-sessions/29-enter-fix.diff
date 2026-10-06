@@ -1,0 +1,18 @@
+diff --git a/app.js b/app.js
+index dacf6cd..5c610bd 100644
+--- a/app.js
++++ b/app.js
+@@ -238,7 +238,12 @@ function startEditing(li) {
+   }
+ 
+   editInput.addEventListener("keydown", (e) => {
+-    if (e.key === "Enter") finish(true);
++    if (e.key === "Enter") {
++      // Saving moves focus to the Edit button. Without preventDefault, the browser would then
++      // treat this same Enter press as a click on that button and reopen the edit box.
++      e.preventDefault();
++      finish(true);
++    }
+     if (e.key === "Escape") finish(false);
+   });
+   editInput.addEventListener("blur", () => finish(true)); // clicking away saves

@@ -1,6 +1,6 @@
-# Chapter 22: From Vibe Coder to Builder
+# Chapter 26: From Vibe Coder to Builder
 
-You started this book with an empty folder. Since then, you've built a tip calculator, a to-do app, an expense tracker, a full-stack habit tracker, and an AI-powered flashcard tool. You've debugged a time zone bug, written specs, set up guardrails, connected a browser, and put apps online. That's a lot of ground.
+You started this book with an empty folder. Since then, you've built a tip calculator, a to-do app, an expense tracker, a full-stack habit tracker, an AI-powered flashcard tool, and a mobile app for iPhone and Android. You've redesigned an app for accessibility, debugged a time zone bug, written specs, set up guardrails, connected a browser, put apps online, prepared an app for the app stores, and shipped versioned releases. That's a lot of ground.
 
 This last chapter is about what comes next: the habits that keep improving your results, a plan for practice, ideas for projects, and how to keep up as the tools change.
 
@@ -19,7 +19,7 @@ If you remember only ten things from this book, make them these:
 9. **Put hard rules in guardrails**, not just instructions, and test the guardrails.
 10. **Review security before you share.** Every time.
 
-These habits are what separate people who get impressive demos from people who build things that keep working.
+These habits are what separate people who get impressive demos from people who build things that keep working. Appendix A collects the best practices from every chapter into one checklist.
 
 ## The Skills You're Really Building
 

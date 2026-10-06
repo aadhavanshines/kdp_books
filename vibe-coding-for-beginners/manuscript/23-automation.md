@@ -1,6 +1,4 @@
-# Part IV: Working Like a Pro
-
-# Chapter 19: Automation: Headless Mode, Scripts, and GitHub Actions
+# Chapter 23: Automation: Headless Mode, Scripts, and GitHub Actions
 
 Until now, you've worked with Claude Code in a conversation. But Claude Code can also run without you: inside a script, on a schedule, or on GitHub whenever someone opens a pull request. This chapter shows you how, starting with a single command and ending with an AI teammate that responds to `@claude` on GitHub.
 
@@ -81,10 +79,10 @@ done
 
 Each run is a separate, fresh session, so the reviews don't influence each other.
 
-When this script was run on the expense tracker from Chapter 8, the review it produced contained a useful lesson. Two of its claims, checked by hand:
+When this script was run on the expense tracker from Chapter 9, the review it produced contained a useful lesson. Two of its claims, checked by hand:
 
 - "A huge value such as `1e30` makes `quantize` raise `InvalidOperation`... The user gets a traceback." **True.** Typing `python expenses.py add 1e30 food` crashed the program, even though all 25 of its tests passed. A follow-up session wrote a failing test for it, fixed it, and the program now says `Error: '1e30' is too large an amount.`
-- "`add -5 food` is read by argparse as an unknown option, so the message is confusing." **False.** Running it printed the friendly `Error: Amount must be greater than zero.`, exactly as shown in Chapter 8.
+- "`add -5 food` is read by argparse as an unknown option, so the message is confusing." **False.** Running it printed the friendly `Error: Amount must be greater than zero.`, exactly as shown in Chapter 9.
 
 One review, one real bug found, and one confident mistake. That's typical of AI reviews, and of human ones: valuable leads that you must verify before acting on. This "fan-out" pattern scales to big jobs, such as updating hundreds of files. Try your prompt on two or three files first, fix what goes wrong, and only then run it on everything.
 
@@ -108,7 +106,7 @@ The easiest way to set it up is from inside Claude Code, in your project folder:
 /install-github-app
 ```
 
-You'll need admin access to the repository and the GitHub CLI logged in (Chapter 12). The command installs the Claude GitHub App, stores your credentials as a repository **secret** (GitHub's safe storage for keys), and prepares a pull request with the workflow file. Merge that pull request, and `@claude` works.
+You'll need admin access to the repository and the GitHub CLI logged in (Chapter 13). The command installs the Claude GitHub App, stores your credentials as a repository **secret** (GitHub's safe storage for keys), and prepares a pull request with the workflow file. Merge that pull request, and `@claude` works.
 
 ### The Workflow File
 
@@ -126,7 +124,7 @@ Reading it from the top:
 - **`permissions`**: what the job may do in your repository: change code, comment on pull requests and issues, and read CI results.
 - **`steps`**: check out the code, then run the Claude Code action with your API key, taken from the repository's secrets, and a limit of 15 turns.
 
-This file passed **actionlint**, the GitHub Actions checker, as did the test workflow from Chapter 14.
+This file passed **actionlint**, the GitHub Actions checker, as did the test workflow from Chapter 15.
 
 ### Automatic Pull Request Reviews
 

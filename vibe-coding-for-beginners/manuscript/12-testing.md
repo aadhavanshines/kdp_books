@@ -1,4 +1,4 @@
-# Chapter 11: Testing: Making Sure It Works
+# Chapter 12: Testing: Making Sure It Works
 
 When you write code by hand, you change it slowly, and you remember what you changed. When an AI writes code, it can change dozens of lines in seconds, sometimes in places you didn't expect. Automated tests are how you keep up. They let you, and Claude, prove that everything that worked yesterday still works today.
 
@@ -90,7 +90,7 @@ It looked like a time zone bug in the app. It wasn't. The *test* was wrong. It h
 The fix was one change in the test, which now carries a comment so nobody makes the mistake again:
 
 ```
-@include tests/test_02_todo_app.py#L90-L91
+@include tests/test_02_todo_app.py#L89-L90
 ```
 
 With the time zone stated explicitly, both cities passed.
@@ -104,7 +104,7 @@ A few habits keep testing painless:
 - **Run the tests after every change.** Better yet, ask Claude to: "run the tests after each step."
 - **Every bug gets a test.** When you fix a bug, the test that proves the fix stays forever.
 - **Keep tests fast.** A suite that takes seconds gets run; one that takes ten minutes gets skipped.
-- **Tell Claude how to test, once.** In Chapter 15, you'll record the test command in a file Claude reads at the start of every session. In Chapter 17, you'll go further, with a hook that runs the tests automatically whenever Claude finishes a task and won't let it stop while any test fails.
+- **Tell Claude how to test, once.** In Chapter 16, you'll record the test command in a file Claude reads at the start of every session. In Chapter 18, you'll go further, with a hook that runs the tests automatically whenever Claude finishes a task and won't let it stop while any test fails.
 
 > **Tip:** Claude Code includes a built-in `/verify` skill that builds and runs your app to confirm a change actually works, rather than relying only on tests. Try it after a change to a web app.
 
@@ -117,7 +117,7 @@ For a personal toy, a few manual checks may be enough. For anything you share, a
 - at least one end-to-end test of the most important user journey,
 - and a manual check on the devices your users actually use.
 
-The projects in this book reached that bar. Across the five apps, Claude wrote more than 80 tests of its own, and the book's independent checks added 29 more, including browser tests in several time zones.
+The projects in this book reached that bar. Across the six apps, Claude wrote more than 120 tests of its own, and the book's independent checks added 40 more, including browser tests in several time zones, on phone-sized screens, and with an accessibility checker.
 
 > **Try It:** Pick the habit tracker or the to-do app and ask Claude, "What are the five most important behaviors of this app that don't have a test yet? Write tests for them and run them." Read the tests it writes. Do they match how you expect the app to behave?
 

@@ -1,0 +1,576 @@
+diff --git a/app.js b/app.js
+index cc0668c..0e63f27 100644
+--- a/app.js
++++ b/app.js
+@@ -1,6 +1,8 @@
+ // ---------- Grab the elements we need from the page ----------
++const form = document.getElementById("add-form");
+ const input = document.getElementById("new-task");
+ const dueInput = document.getElementById("new-due");
++const emptyMsg = document.getElementById("empty-message");
+ const list = document.getElementById("task-list");
+ const countEl = document.getElementById("count");
+ const clearBtn = document.getElementById("clear-completed");
+@@ -29,9 +31,10 @@ function loadTasks() {
+ // ---------- Changing the data ----------
+ function addTask(text, due) {
+   text = text.trim();
+-  if (text === "") return; // ignore empty tasks
++  if (text === "") return false; // ignore empty tasks
+   tasks.push({ id: Date.now(), text: text, done: false, due: due || "" });
+   update();
++  return true;
+ }
+ 
+ function toggleTask(id) {
+@@ -91,6 +94,16 @@ function dueText(task, overdue) {
+ function render() {
+   const today = todayString();
+ 
++  // Redrawing removes the control that has focus, so remember it and put focus back afterwards.
++  // (Otherwise keyboard and screen reader users get thrown back to the top of the page.)
++  const focused = document.activeElement;
++  let refocus = null;
++  if (list.contains(focused) && focused.dataset.action) {
++    // while editing, focus goes back to that task's Edit button
++    const action = focused.dataset.action === "editing" ? "edit" : focused.dataset.action;
++    refocus = { id: focused.closest("li").dataset.id, action: action };
++  }
++
+   // Keep only the tasks that match the current filter
+   const visible = tasks.filter((t) => {
+     if (filter === "active") return !t.done;
+@@ -105,11 +118,22 @@ function render() {
+     li.dataset.id = task.id;
+     if (task.done) li.classList.add("done");
+ 
++    // A big 44x44 tap area around the checkbox; tapping it toggles the task
++    const checkWrap = document.createElement("label");
++    checkWrap.className = "check";
++
+     const checkbox = document.createElement("input");
+     checkbox.type = "checkbox";
++    checkbox.id = "task-" + task.id;
+     checkbox.checked = task.done;
++    checkbox.dataset.action = "toggle";
++    checkWrap.appendChild(checkbox);
+ 
++    // The label is linked to the checkbox, so screen readers read the task's name
++    // and tapping the text toggles it too
+     const label = document.createElement("label");
++    label.className = "task-label";
++    label.htmlFor = checkbox.id;
+     label.textContent = task.text; // textContent is safe against HTML injection
+ 
+     // Wrapper so the due date can sit under the task text
+@@ -124,41 +148,78 @@ function render() {
+ 
+       const dueEl = document.createElement("small");
+       dueEl.className = "due";
++      dueEl.id = "due-" + task.id;
+       dueEl.textContent = dueText(task, overdue);
+       textBox.appendChild(dueEl);
++      // Screen readers read the due date together with the task
++      checkbox.setAttribute("aria-describedby", dueEl.id);
+     }
+ 
++    // Edit and Delete buttons: visible text, and the task name in the accessible label
++    const editBtn = document.createElement("button");
++    editBtn.type = "button";
++    editBtn.className = "task-button edit";
++    editBtn.dataset.action = "edit";
++    editBtn.textContent = "Edit";
++    editBtn.setAttribute("aria-label", "Edit " + task.text);
++
+     const deleteBtn = document.createElement("button");
+-    deleteBtn.className = "delete";
+-    deleteBtn.textContent = "×";
+-    deleteBtn.setAttribute("aria-label", "Delete task");
++    deleteBtn.type = "button";
++    deleteBtn.className = "task-button delete";
++    deleteBtn.dataset.action = "delete";
++    deleteBtn.textContent = "Delete";
++    deleteBtn.setAttribute("aria-label", "Delete " + task.text);
+ 
+-    li.append(checkbox, textBox, deleteBtn);
++    li.append(checkWrap, textBox, editBtn, deleteBtn);
+     list.appendChild(li);
+   }
+ 
+-  // "N items left" counts tasks that are not done
++  // Put focus back where it was. If that task is gone (deleted, or filtered out),
++  // move focus to the list itself so it is not lost.
++  if (refocus) {
++    const target = list.querySelector(
++      'li[data-id="' + refocus.id + '"] [data-action="' + refocus.action + '"]'
++    );
++    (target || list).focus();
++  }
++
++  // Say something helpful when there is nothing to show
++  const messages = {
++    all: "No tasks yet. Add one above.",
++    active: "No active tasks.",
++    done: "No completed tasks.",
++  };
++  emptyMsg.textContent = messages[filter];
++  emptyMsg.hidden = visible.length > 0;
++
++  // "N items left" counts tasks that are not done.
++  // Only change the text when it is different, so screen readers don't repeat it.
+   const left = tasks.filter((t) => !t.done).length;
+-  countEl.textContent = left + (left === 1 ? " item left" : " items left");
++  const countText = left + (left === 1 ? " item left" : " items left");
++  if (countEl.textContent !== countText) countEl.textContent = countText;
+ 
+-  // Highlight the selected filter button
++  // Tell screen readers (and show) which filter button is selected
+   filterButtons.forEach((btn) => {
+-    btn.classList.toggle("active", btn.dataset.filter === filter);
++    btn.setAttribute("aria-pressed", btn.dataset.filter === filter);
+   });
+ 
+   // Only show "Clear completed" if there is something to clear
+   clearBtn.style.visibility = tasks.some((t) => t.done) ? "visible" : "hidden";
+ }
+ 
+-// ---------- Editing a task (double-click) ----------
++// ---------- Editing a task (Edit button, or double-click the text) ----------
+ function startEditing(li) {
+   const id = Number(li.dataset.id);
+-  const label = li.querySelector("label");
++  const label = li.querySelector(".task-label");
++  if (!label) return; // already editing this task
+ 
+   // Replace the label with a text box holding the current text
+   const editInput = document.createElement("input");
+   editInput.type = "text";
+   editInput.className = "edit-input";
++  editInput.dataset.action = "editing";
++  editInput.enterKeyHint = "done";
++  editInput.setAttribute("aria-label", "Edit task text");
+   editInput.value = label.textContent;
+   label.replaceWith(editInput);
+   editInput.focus();
+@@ -179,15 +240,19 @@ function startEditing(li) {
+ }
+ 
+ // ---------- Event listeners ----------
+-// Press Enter in the main input to add a task
+-input.addEventListener("keydown", (e) => {
+-  if (e.key === "Enter") {
+-    addTask(input.value, dueInput.value);
++// Pressing Enter in the text box (or tapping Add) submits the form and adds the task
++form.addEventListener("submit", (e) => {
++  e.preventDefault(); // stop the page from reloading
++  if (addTask(input.value, dueInput.value)) {
+     input.value = "";
+     dueInput.value = "";
+   }
++  input.focus(); // ready for the next task
+ });
+ 
++// Let the list be focused by code (used when the focused task disappears)
++list.tabIndex = -1;
++
+ // One listener on the whole list handles every task (even ones added later)
+ list.addEventListener("click", (e) => {
+   const li = e.target.closest("li");
+@@ -195,12 +260,13 @@ list.addEventListener("click", (e) => {
+   const id = Number(li.dataset.id);
+ 
+   if (e.target.matches("input[type=checkbox]")) toggleTask(id);
++  if (e.target.matches(".edit")) startEditing(li);
+   if (e.target.matches(".delete")) deleteTask(id);
+ });
+ 
+-// Double-click a task's text to edit it
++// Double-click a task's text to edit it (the Edit button does the same for touch and keyboard)
+ list.addEventListener("dblclick", (e) => {
+-  if (e.target.matches("label")) startEditing(e.target.closest("li"));
++  if (e.target.matches(".task-label")) startEditing(e.target.closest("li"));
+ });
+ 
+ // Filter buttons
+diff --git a/index.html b/index.html
+index 85ea942..98e86dc 100644
+--- a/index.html
++++ b/index.html
+@@ -10,27 +10,38 @@
+   <main class="card">
+     <h1>To-Do List</h1>
+ 
+-    <!-- Type a task and press Enter to add it -->
+-    <!-- The date is optional; leave it empty for no due date -->
+-    <div class="add-row">
+-      <input id="new-task" type="text" placeholder="What needs to be done?" autofocus>
+-      <input id="new-due" type="date" aria-label="Due date (optional)">
+-    </div>
++    <!-- Pressing Enter (or the Add button) submits this form and adds the task -->
++    <form id="add-form" class="add-form">
++      <!-- Labels are real text so screen readers (and people with low vision) can find them -->
++      <label for="new-task" class="visually-hidden">New task</label>
++      <input id="new-task" type="text" placeholder="What needs to be done?" enterkeyhint="done" autocomplete="off">
++
++      <div class="add-extras">
++        <!-- The date is optional; leave it empty for no due date -->
++        <label for="new-due">Due date (optional)</label>
++        <input id="new-due" type="date">
++        <button type="submit" class="add-button">Add</button>
++      </div>
++    </form>
+ 
+     <!-- The script fills this list with tasks -->
+     <ul id="task-list"></ul>
+ 
++    <!-- Shown when there are no tasks to display -->
++    <p id="empty-message" hidden></p>
++
+     <!-- Footer: counter, filters, and clear button -->
+     <footer>
+-      <span id="count"></span>
++      <!-- role="status" makes screen readers announce the count when it changes -->
++      <span id="count" role="status"></span>
+ 
+-      <div class="filters">
+-        <button data-filter="all" class="active">All</button>
+-        <button data-filter="active">Active</button>
+-        <button data-filter="done">Done</button>
++      <div class="filters" role="group" aria-label="Show tasks">
++        <button type="button" data-filter="all" aria-pressed="true">All</button>
++        <button type="button" data-filter="active" aria-pressed="false">Active</button>
++        <button type="button" data-filter="done" aria-pressed="false">Done</button>
+       </div>
+ 
+-      <button id="clear-completed">Clear completed</button>
++      <button type="button" id="clear-completed">Clear completed</button>
+     </footer>
+   </main>
+ 
+diff --git a/style.css b/style.css
+index f0738f1..38f347d 100644
+--- a/style.css
++++ b/style.css
+@@ -1,17 +1,29 @@
+-/* Page background and base font */
++/* Colours (all checked for contrast on white: text 4.5:1 or better, borders 3:1 or better) */
++:root {
++  --text: #1f2933;
++  --muted: #595959;      /* secondary text, 7:1 */
++  --border: #767676;     /* borders of inputs and buttons, 4.5:1 */
++  --accent: #0b5cad;     /* blue for the selected filter and focus, 6.6:1 */
++  --danger: #b3261e;     /* red for overdue and delete, 6.5:1 */
++}
++
++/* Page background and base font. rem sizes grow with the user's own text-size setting. */
+ body {
+   font-family: system-ui, sans-serif;
++  font-size: 1rem;
++  line-height: 1.4;
++  color: var(--text);
+   background: #f0f2f5;
+   margin: 0;
+-  padding: 40px 16px;
++  padding: 24px 12px;
+ }
+ 
+ /* The white card in the middle of the page */
+ .card {
+-  max-width: 480px;
++  max-width: 30rem;
+   margin: 0 auto;
+   background: white;
+-  padding: 24px;
++  padding: 16px;
+   border-radius: 10px;
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+ }
+@@ -19,81 +31,148 @@ body {
+ h1 {
+   margin-top: 0;
+   text-align: center;
++  font-size: 1.75rem;
++}
++
++/* Hides text visually but keeps it for screen readers */
++.visually-hidden {
++  position: absolute;
++  width: 1px;
++  height: 1px;
++  overflow: hidden;
++  clip: rect(0 0 0 0);
++  white-space: nowrap;
+ }
+ 
+-/* Text box and date picker side by side */
+-.add-row {
++/* A clear outline for keyboard and switch users (never removed) */
++:focus-visible {
++  outline: 3px solid var(--accent);
++  outline-offset: 2px;
++}
++
++/* The list is focused by code only (never by Tab), so it needs no outline */
++#task-list:focus {
++  outline: none;
++}
++
++/* ---------- Add form ---------- */
++.add-form {
+   display: flex;
++  flex-direction: column;
+   gap: 8px;
+ }
+ 
+-#new-due {
+-  padding: 10px;
+-  font-size: 14px;
+-  border: 2px solid #ddd;
++.add-extras {
++  display: flex;
++  flex-wrap: wrap;
++  align-items: center;
++  gap: 8px;
++}
++
++.add-extras label {
++  color: var(--muted);
++}
++
++/* Shared look for all text/date inputs */
++input[type=text],
++input[type=date] {
++  min-height: 44px;
++  box-sizing: border-box;
++  padding: 8px 12px;
++  font-size: 1rem; /* 16px+ also stops iPhones zooming in on focus */
++  font-family: inherit;
++  color: var(--text);
++  background: white;
++  border: 2px solid var(--border);
+   border-radius: 6px;
+ }
+ 
+-/* The "add task" input */
+ #new-task {
+-  flex: 1;
++  width: 100%;
++}
++
++#new-due {
++  flex: 1 1 9rem;
+   min-width: 0;
+-  box-sizing: border-box;
+-  padding: 12px;
+-  font-size: 16px;
+-  border: 2px solid #ddd;
++}
++
++.add-button {
++  min-width: 44px;
++  min-height: 44px;
++  padding: 8px 20px;
++  font-size: 1rem;
++  font-weight: bold;
++  color: white;
++  background: var(--accent);
++  border: 2px solid var(--accent);
+   border-radius: 6px;
++  cursor: pointer;
+ }
+ 
+-/* The list of tasks */
++/* ---------- Task list ---------- */
+ #task-list {
+   list-style: none;
+   padding: 0;
+-  margin: 16px 0;
++  margin: 16px 0 8px;
+ }
+ 
+ #task-list li {
+   display: flex;
++  flex-wrap: wrap;       /* on very narrow screens the buttons drop below the text */
+   align-items: center;
+-  gap: 10px;
+-  padding: 10px 4px;
+-  border-bottom: 1px solid #eee;
++  gap: 4px 8px;
++  padding: 6px 0;
++  border-bottom: 1px solid #d0d5da;
+ }
+ 
+-#task-list label {
+-  flex: 1;
++/* The checkbox sits in a 44x44 tap area; tapping anywhere in it toggles the task */
++.check {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  flex: none;
++  width: 44px;
++  height: 44px;
+   cursor: pointer;
+-  word-break: break-word;
+ }
+ 
+-/* Done tasks: grey with a line through the text */
+-#task-list li.done label {
+-  text-decoration: line-through;
+-  color: #999;
++.check input {
++  width: 24px;
++  height: 24px;
++  margin: 0;
++  accent-color: var(--accent);
+ }
+ 
+ /* Holds the task text with its due date underneath */
+ .task-text {
+-  flex: 1;
++  flex: 1 1 8rem;
+   min-width: 0;
+ }
+ 
+-.task-text label {
++.task-label {
+   display: block;
++  cursor: pointer;
++  overflow-wrap: anywhere;
+ }
+ 
+-/* The small due date line under the task */
++/* Done tasks: grey with a line through the text (the line means "done" without relying on colour) */
++#task-list li.done .task-label {
++  text-decoration: line-through;
++  color: var(--muted);
++}
++
++/* The due date line under the task */
+ .due {
+   display: block;
+-  font-size: 12px;
+-  color: #777;
++  font-size: 0.875rem;
++  color: var(--muted);
+   margin-top: 2px;
+ }
+ 
+-/* Overdue tasks: red date line and red task text */
++/* Overdue tasks: red, and the word "Overdue" is also in the text */
+ #task-list li.overdue .due,
+-#task-list li.overdue label {
+-  color: #c0392b;
++#task-list li.overdue .task-label {
++  color: var(--danger);
+ }
+ 
+ #task-list li.overdue .due {
+@@ -102,52 +181,81 @@ h1 {
+ 
+ /* The input shown while editing a task */
+ .edit-input {
+-  flex: 1;
+-  padding: 6px;
+-  font-size: 16px;
++  flex: 1 1 8rem;
++  min-width: 0;
+ }
+ 
+-/* Delete button: hidden until you hover over the row */
+-.delete {
+-  border: none;
+-  background: none;
+-  color: #c0392b;
+-  font-size: 20px;
++/* Edit and Delete buttons: always visible, at least 44x44 */
++.task-button {
++  min-width: 44px;
++  min-height: 44px;
++  padding: 6px 12px;
++  font-size: 1rem;
++  font-family: inherit;
++  color: var(--text);
++  background: white;
++  border: 2px solid var(--border);
++  border-radius: 6px;
+   cursor: pointer;
+-  opacity: 0;
+ }
+ 
+-#task-list li:hover .delete,
+-.delete:focus {
+-  opacity: 1;
++.task-button.delete {
++  color: var(--danger);
++  border-color: var(--danger);
++  margin-left: 4px; /* a little extra space so Edit and Delete are not hit by mistake */
+ }
+ 
+-/* Footer layout */
++#empty-message {
++  margin: 16px 0;
++  text-align: center;
++  color: var(--muted);
++}
++
++/* ---------- Footer ---------- */
+ footer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 8px;
+-  font-size: 14px;
+-  color: #555;
++  color: var(--muted);
++}
++
++.filters {
++  display: flex;
++  gap: 4px;
+ }
+ 
+ footer button {
+-  border: 1px solid transparent;
+-  background: none;
+-  padding: 4px 8px;
+-  border-radius: 4px;
++  min-width: 44px;
++  min-height: 44px;
++  padding: 6px 12px;
++  font-size: 1rem;
++  font-family: inherit;
++  color: var(--text);
++  background: white;
++  border: 2px solid transparent;
++  border-radius: 6px;
+   cursor: pointer;
+-  color: inherit;
+ }
+ 
+ footer button:hover {
+-  border-color: #ddd;
++  border-color: var(--border);
++}
++
++/* The selected filter: blue, bold AND underlined, so colour is not the only clue */
++.filters button[aria-pressed=true] {
++  border-color: var(--accent);
++  color: var(--accent);
++  font-weight: bold;
++  text-decoration: underline;
+ }
+ 
+-/* The currently selected filter */
+-.filters button.active {
+-  border-color: #4a90e2;
+-  color: #4a90e2;
++/* Windows high-contrast mode: keep button shapes visible */
++@media (forced-colors: active) {
++  .task-button,
++  .add-button,
++  footer button {
++    border: 2px solid ButtonText;
++  }
+ }

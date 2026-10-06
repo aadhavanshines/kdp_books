@@ -45,7 +45,7 @@ thought of. When we've covered everything, write a complete
 specification to SPEC.md.
 ```
 
-The questions will surprise you. Should finished tasks disappear or stay visible? What happens if two people edit at once? What if the internet drops? You'll end up with a written **specification**, a document describing what to build, and Chapter 9 shows how powerful building from a spec can be.
+The questions will surprise you. Should finished tasks disappear or stay visible? What happens if two people edit at once? What if the internet drops? You'll end up with a written **specification**, a document describing what to build, and Chapter 10 shows how powerful building from a spec can be.
 
 > **Tip:** After the interview, start a fresh session with `/clear` before building. The new session starts with clean context, focused entirely on the spec, rather than carrying the whole interview along.
 
@@ -158,9 +158,9 @@ Simplify <file or function> without changing what it does. Run
 the tests before and after, and tell me what you changed and why.
 ```
 
-Appendix A contains forty more prompts, organized by task.
+Appendix B contains forty more prompts, organized by task.
 
-> **Try It:** Take the one-sentence app ideas you wrote down in Chapter 1. Pick one and run the interview prompt from this chapter. Save the resulting SPEC.md; you might build it after Chapter 9.
+> **Try It:** Take the one-sentence app ideas you wrote down in Chapter 1. Pick one and run the interview prompt from this chapter. Save the resulting SPEC.md; you might build it after Chapter 10.
 
 ## Key Takeaways
 

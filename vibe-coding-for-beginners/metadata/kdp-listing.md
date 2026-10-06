@@ -44,7 +44,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p>But getting an AI to produce code is easy. Getting code that actually works, keeps working, protects your data, and does what you meant is a skill. <i>Vibe Coding for Beginners</i> teaches that skill, step by step, using Claude Code.</p>
 
-<p><b>Everything in this book is real.</b> You will build five apps, and every prompt and reply in those chapters comes from a real Claude Code session, including the moments when the AI made a mistake, admitted it hadn't tested something, or slipped past a safety rule. Every app was independently tested, and every code listing is printed from the tested files.</p>
+<p><b>Everything in this book is real.</b> You will build six apps, and every prompt and reply in those chapters comes from a real Claude Code session, including the moments when the AI made a mistake, admitted it hadn't tested something, or slipped past a safety rule. Every app was independently tested, and every code listing is printed from the tested files.</p>
 
 <p><b>You will build:</b></p>
 <ul>
@@ -53,6 +53,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>A command-line expense tracker in Python, with automated tests</li>
 <li>A full-stack habit tracker with a database, ready to deploy online</li>
 <li>Study Buddy, an AI-powered app that turns your notes into flashcards</li>
+<li>Sip, a water tracker app for iPhone and Android, prepared for Google Play and the App Store</li>
 </ul>
 
 <p><b>Inside, you will learn how to:</b></p>
@@ -60,18 +61,21 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>Understand how software works, just enough to direct an AI with confidence</li>
 <li>Install Claude Code and have your first conversation</li>
 <li>Write prompts and specs that turn vague ideas into working apps</li>
+<li>Design apps that are clear, touch-friendly, and accessible to everyone</li>
 <li>Use plan mode, checkpoints, and Git so you can always undo mistakes</li>
 <li>Debug like a pro, including a real time zone bug traced from a user's complaint to a tested fix</li>
 <li>Write tests, and make the AI prove its work</li>
 <li>Build an app that calls the Claude API, with structured output and safe API keys</li>
 <li>Put your apps online with persistent storage and automatic tests</li>
+<li>Build Android and iOS apps from one codebase, and ship them through testing, review, and release on Google Play and the App Store</li>
+<li>Run the software development lifecycle like a pro: specs, branches, semantic versions, changelogs, and tagged releases</li>
 <li>Teach Claude your project with CLAUDE.md, and build skills, subagents, and hooks</li>
 <li>Connect a real web browser and other tools with MCP</li>
 <li>Automate with headless mode and GitHub Actions</li>
 <li>Avoid the security mistakes that sink vibe-coded apps: leaked keys, injection, and prompt injection</li>
 </ul>
 
-<p>You also get a <b>40-prompt library</b>, a troubleshooting guide, a Claude Code cheat sheet, and a glossary. No programming experience required.</p>
+<p>You also get a <b>best practices checklist</b>, a <b>40-prompt library</b>, a troubleshooting guide, a Claude Code cheat sheet, and a glossary. No programming experience required.</p>
 
 <p>Written by an automation and AI professional with more than 15 years of experience building in-house tools for automotive product development and validation, where software is only as good as the testing behind it.</p>
 
@@ -113,7 +117,7 @@ Trademarked product names are kept out of the keywords; the title already contai
 2. AI coding assistant tutorial
 3. build apps with AI no experience
 4. learn to code with AI step by step
-5. AI agents for programming
+5. android and iOS app development for beginners
 6. python web app projects for beginners
 7. AI pair programming guide
 

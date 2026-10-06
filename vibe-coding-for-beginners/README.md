@@ -4,22 +4,23 @@
 
 by **Aadhavan Muthurengan**
 
-A beginner-to-advanced guide (about 41,000 words plus code listings; 217 pages in 6 x 9 paperback, with 13 diagrams and 4 app screenshots). Readers build five real apps with Claude Code, then learn CLAUDE.md, skills, subagents, hooks, MCP, automation, deployment, and security.
+A beginner-to-advanced guide (about 53,000 words plus code listings; 275 pages in 6 x 9 paperback, with 15 diagrams and 6 app screenshots). Readers build six real apps with Claude Code, including a mobile app for Android and iPhone, then learn UI/UX and accessibility, CLAUDE.md, skills, subagents, hooks, MCP, app store shipping, the software development lifecycle, automation, deployment, security, and best practices.
 
 ## What makes it different: everything is real and tested
 
 - **Real sessions.** Every prompt in the project chapters was run in Claude Code, and the replies in the book are Claude's own words (shortened, not rewritten). The full log of prompts, replies, turns, and costs is in [`tests/claude-sessions/`](tests/claude-sessions/).
 - **Real code.** The finished apps are in [`projects/`](projects/). Code listings in the book are pulled directly from these files at build time (`@include` in the manuscript), so the book can't drift from the tested code.
-- **Independent tests.** [`tests/`](tests/) checks every project in a real browser (Playwright), across time zones, through the real Anthropic SDK with a mocked network, and by running the production server.
+- **Independent tests.** [`tests/`](tests/) checks every project in a real browser (Playwright), on phone-sized screens, with the axe-core accessibility checker, across time zones, through the real Anthropic SDK with a mocked network, and by running the production server.
 
 | Project | Folder | Claude's own tests | Independent checks |
 | --- | --- | --- | --- |
 | 0. Hello page (Ch. 4) | `projects/00-hello` | n/a | browser |
 | 1. Tip calculator (Ch. 5) | `projects/01-tip-calculator` | checked math in session | browser |
-| 2. To-do app (Ch. 6) | `projects/02-todo-app` | simulated browser in session | browser, 2 time zones |
-| 3. Expense tracker (Ch. 8) | `projects/03-expense-tracker` | 26 pytest tests | CLI end to end |
-| 4. Habit tracker (Ch. 9 to 19) | `projects/04-habit-tracker` | 32 pytest tests | browser, UTC-server bug, production server |
-| 5. Study Buddy (Ch. 13) | `projects/05-study-buddy` | 24 pytest tests | real SDK request shape, errors, browser, rate limit |
+| 2. To-do app (Ch. 6 and 8) | `projects/02-todo-app` (Chapter 6 version in `before-redesign/`) | simulated browser in session; real-browser script after Ch. 8 | browser, 2 time zones, touch targets, axe-core |
+| 3. Expense tracker (Ch. 9) | `projects/03-expense-tracker` | 26 pytest tests | CLI end to end |
+| 4. Habit tracker (Ch. 10 to 23) | `projects/04-habit-tracker` (released as 1.1.0 in Ch. 22) | 44 pytest tests | browser, UTC-server bug, production server, rename and version |
+| 5. Study Buddy (Ch. 14) | `projects/05-study-buddy` | 24 pytest tests | real SDK request shape, errors, browser, rate limit |
+| 6. Sip mobile app (Ch. 20 and 21) | `projects/06-sip` (Expo, React Native, TypeScript) | 32 Jest tests in 4 time zones; TypeScript check | web build on a phone-sized screen: logging, settings, local midnight, touch targets, dark mode, axe-core; Android prebuild permissions |
 
 Run all checks:
 
@@ -28,6 +29,15 @@ pip install flask pytest anthropic playwright gunicorn
 python -m playwright install chromium   # or set CHROMIUM_PATH to an existing Chromium
 python -m pytest tests
 ```
+
+The Sip tests need the app's web build first; they're skipped otherwise:
+
+```bash
+cd projects/06-sip && npm install && npx tsc --noEmit && npm test && npx expo export --platform web && cd ../..
+AXE_PATH=/path/to/node_modules/axe-core/axe.min.js python -m pytest tests   # AXE_PATH enables the accessibility scans
+```
+
+Native Android and iOS builds were not run for the book (they need developer accounts and Expo's build service); `projects/06-sip/RELEASE-CHECKLIST.md` lists those steps.
 
 ## Ready-to-Upload Files (`dist/`)
 
@@ -49,7 +59,7 @@ pip install reportlab ebooklib pillow
 python3 build/build.py
 ```
 
-To refresh the app screenshots (needs Playwright and Chromium): `python3 build/screenshots.py`.
+To refresh the app screenshots (needs Playwright and Chromium): `python3 build/screenshots.py` (the Sip screenshot needs the web build; see above).
 
 ## Before You Publish
 

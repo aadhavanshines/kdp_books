@@ -1,0 +1,47 @@
+diff --git a/app.js b/app.js
+index 0e63f27..dacf6cd 100644
+--- a/app.js
++++ b/app.js
+@@ -129,12 +129,14 @@ function render() {
+     checkbox.dataset.action = "toggle";
+     checkWrap.appendChild(checkbox);
+ 
+-    // The label is linked to the checkbox, so screen readers read the task's name
+-    // and tapping the text toggles it too
+-    const label = document.createElement("label");
++    // The task text is a plain <span>, NOT a <label for=...>. A label would toggle the checkbox
++    // (and redraw the list) on every click, so a double-click would never reach the text.
++    // aria-labelledby still gives the checkbox the task's name for screen readers.
++    const label = document.createElement("span");
+     label.className = "task-label";
+-    label.htmlFor = checkbox.id;
++    label.id = "text-" + task.id;
+     label.textContent = task.text; // textContent is safe against HTML injection
++    checkbox.setAttribute("aria-labelledby", label.id);
+ 
+     // Wrapper so the due date can sit under the task text
+     const textBox = document.createElement("div");
+@@ -213,6 +215,9 @@ function startEditing(li) {
+   const label = li.querySelector(".task-label");
+   if (!label) return; // already editing this task
+ 
++  // The edit box replaces the text, so give the checkbox its name directly while editing
++  li.querySelector("input[type=checkbox]").setAttribute("aria-label", label.textContent);
++
+   // Replace the label with a text box holding the current text
+   const editInput = document.createElement("input");
+   editInput.type = "text";
+diff --git a/style.css b/style.css
+index 38f347d..2d97cfd 100644
+--- a/style.css
++++ b/style.css
+@@ -151,8 +151,8 @@ input[type=date] {
+ 
+ .task-label {
+   display: block;
+-  cursor: pointer;
+   overflow-wrap: anywhere;
++  user-select: none; /* double-clicking to edit should not also highlight a word */
+ }
+ 
+ /* Done tasks: grey with a line through the text (the line means "done" without relying on colour) */

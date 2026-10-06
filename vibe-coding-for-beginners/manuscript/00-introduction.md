@@ -10,9 +10,9 @@ This book teaches you to vibe code well, using **Claude Code**, Anthropic's AI c
 
 **Everything is real.** Every prompt in the project chapters was run in Claude Code while this book was being written. The replies you see are Claude's actual words, shortened in places to save space but not rewritten. When Claude made a mistake, said it hadn't tested something, or worked around a safety rule, you'll see that too, because those moments teach more than any perfect demo.
 
-**Everything is tested.** All five apps you'll build were checked independently: in a real web browser, in different time zones, through the real Anthropic software library, and by running the production server. The code listings in this book are printed directly from those tested files.
+**Everything is tested.** All six apps you'll build were checked independently: in a real web browser, on phone-sized screens, with an accessibility checker, in different time zones, through the real Anthropic software library, and by running the production server. The code listings in this book are printed directly from those tested files.
 
-**It goes from basic to advanced.** You'll start by learning what a file and a terminal are. By the end, you'll be teaching Claude your project's rules, building custom commands and AI reviewers, adding automatic safety checks, connecting Claude to a web browser, and putting apps online.
+**It goes from basic to advanced.** You'll start by learning what a file and a terminal are. By the end, you'll be teaching Claude your project's rules, building custom commands and AI reviewers, adding automatic safety checks, connecting Claude to a web browser, putting apps online, building a mobile app for iPhone and Android, preparing it for the app stores, and managing releases like a professional team.
 
 > **Note:** Claude's replies vary from run to run, even for the same prompt. Your code and wording will differ from what's printed here. That's normal. What matters is the process: how you ask, how you check, and how you correct course.
 
@@ -35,18 +35,21 @@ You don't need any programming experience. You do need curiosity, patience for t
 | 3. Expense Tracker | A command-line tool that tracks spending | Python, automated tests, friendly error messages |
 | 4. Habit Tracker | A full web app with a database and streaks | Specs, back ends, debugging, deployment, guardrails |
 | 5. Study Buddy | Turns your notes into flashcards using Claude | Calling an AI from your own app, API keys, security |
+| 6. Sip | A water tracker app for iPhone and Android | Mobile apps with Expo, testing on phone-sized screens, app store submission |
 
 ## How This Book Is Organized
 
 **Part I: Getting Started** explains what vibe coding is, how software works (just enough to be dangerous), how to install Claude Code, and how to have your first conversation with it.
 
-**Part II: Building Real Apps** walks through the first four projects, plus the core skills of good prompting, debugging, testing, and saving your work with Git.
+**Part II: Building Real Apps** walks through the first four projects, plus the core skills of good prompting, UI and UX design with accessibility, debugging, testing, and saving your work with Git.
 
 **Part III: Ship It and Level Up** covers building an AI-powered app, putting apps online, and Claude Code's power features: project memory, skills, subagents, hooks, and MCP.
 
-**Part IV: Working Like a Pro** covers automation, larger codebases, security, and the habits that turn a vibe coder into a builder.
+**Part IV: Mobile Apps** builds an app for Android and iPhone from one codebase, and takes it through the release process for Google Play and the Apple App Store.
 
-The **appendices** contain a library of 40 prompts, a troubleshooting guide, a Claude Code cheat sheet, a glossary, and a list of official resources.
+**Part V: Working Like a Pro** covers the software development lifecycle (from idea to versioned release and maintenance), automation, larger codebases, security, and the habits that turn a vibe coder into a builder.
+
+The **appendices** contain a best practices checklist, a library of 40 prompts, a troubleshooting guide, a Claude Code cheat sheet, a glossary, and a list of official resources.
 
 ## Choose Your Reading Path
 
@@ -54,8 +57,9 @@ The **appendices** contain a library of 40 prompts, a troubleshooting guide, a C
 | --- | --- |
 | New to coding | Every chapter, in order. Don't skip Chapter 2. |
 | Comfortable with computers but new to coding | Skim Chapter 2, then read in order from Chapter 3. |
-| A developer new to Claude Code | Chapters 3, 4, and 7, then Part III and Part IV. |
-| Mainly interested in AI apps | Chapters 1 to 7, then Chapter 13. |
+| A developer new to Claude Code | Chapters 3, 4, and 7, then Parts III to V. |
+| Mainly interested in AI apps | Chapters 1 to 7, then Chapter 14. |
+| Mainly interested in mobile apps | Chapters 1 to 8, then Chapters 20 and 21. |
 
 ## Conventions Used in This Book
 
@@ -93,7 +97,7 @@ You'll also see four kinds of notes:
 
 ## A Note on Time and Change
 
-AI tools change quickly. This book describes Claude Code as it was in October 2026 (version 2.1). Menus get renamed, commands get added, and models get smarter. The skills in this book (describing clearly, planning, verifying, and staying safe) don't expire. When something on your screen looks different from the book, type `/help` in Claude Code or check the official documentation listed in Appendix E.
+AI tools change quickly. This book describes Claude Code as it was in October 2026 (version 2.1). Menus get renamed, commands get added, and models get smarter. The skills in this book (describing clearly, planning, verifying, and staying safe) don't expire. When something on your screen looks different from the book, type `/help` in Claude Code or check the official documentation listed in Appendix F.
 
 ## What You'll Need
 

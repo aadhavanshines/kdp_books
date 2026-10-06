@@ -1,4 +1,4 @@
-# Appendix E: Resources and Further Reading
+# Appendix F: Resources and Further Reading
 
 All the tools in this book change regularly. These official sources are where to find current information. Addresses were checked in October 2026.
 
@@ -29,10 +29,26 @@ All the tools in this book change regularly. These official sources are where to
 - **Git**: git-scm.com (downloads and the free *Pro Git* book)
 - **GitHub**: docs.github.com, and the GitHub CLI at cli.github.com
 - **Visual Studio Code**: code.visualstudio.com
-- **Node.js** (needed for some MCP servers): nodejs.org
+- **Node.js** (needed for some MCP servers and for Expo): nodejs.org
 - **Flask**: flask.palletsprojects.com
 - **pytest**: docs.pytest.org
 - **Playwright**: playwright.dev
+
+## Mobile Apps and the App Stores
+
+- **Expo documentation** (React Native apps, EAS Build, and EAS Submit): docs.expo.dev
+- **React Native**: reactnative.dev
+- **Google Play Console Help** (testing tracks, Data safety, policies): support.google.com/googleplay/android-developer
+- **Apple App Store Connect Help** (TestFlight, App Privacy, submitting): developer.apple.com/help/app-store-connect
+- **Apple App Review Guidelines**: developer.apple.com/app-store/review/guidelines
+- **Apple Human Interface Guidelines** and **Material Design** (design guidance for each platform): developer.apple.com/design and m3.material.io
+
+## Design, Accessibility, and Releases
+
+- **WCAG 2.2** (the accessibility standard): w3.org/WAI/standards-guidelines/wcag
+- **axe-core** (the open-source accessibility checker used in this book): github.com/dequelabs/axe-core
+- **Semantic Versioning**: semver.org
+- **Keep a Changelog**: keepachangelog.com
 
 ## Learning Web Development and Security
 

@@ -1,4 +1,4 @@
-# Appendix A: Prompt Library for Vibe Coders
+# Appendix B: Prompt Library for Vibe Coders
 
 This appendix collects 40 prompts for Claude Code, organized by task. Replace the parts in angle brackets with your own details. Add context generously, and whenever you can, finish with how Claude should check its work.
 

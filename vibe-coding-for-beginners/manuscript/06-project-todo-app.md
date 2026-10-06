@@ -83,7 +83,7 @@ A plan like this is valuable even if you don't understand every word, because it
 
 - **"Fall back to an empty list if the data is bad"**: what happens if saved data is corrupted? Good: the app won't crash.
 - **"Saving empty text deletes the task"**: is that what you want? Maybe. If not, now is the time to say so.
-- **"Typed text can't inject HTML"**: a security detail you might never have thought of. If someone types `<b>hi</b>` as a task, it should appear as those characters, not as bold text. You'll learn why this matters in Chapter 21.
+- **"Typed text can't inject HTML"**: a security detail you might never have thought of. If someone types `<b>hi</b>` as a task, it should appear as those characters, not as bold text. You'll learn why this matters in Chapter 25.
 
 If you want to change the plan, just say what to change. You can also press **Ctrl+G** to open the plan in your text editor and edit it directly. When you're happy, approve it:
 
@@ -129,7 +129,7 @@ Open the folder in your editor, and you'll see the classic three-file structure 
 Here is how the app saves and loads your tasks, straight from the tested file:
 
 ```
-@include projects/02-todo-app/app.js#L15-L27
+@include projects/02-todo-app/before-redesign/app.js#L15-L27
 ```
 
 This uses **localStorage**, a small storage area that every browser gives each website. `saveTasks` turns the list of tasks into text (JSON) and stores it under the name `"todo-tasks"`. `loadTasks` reads it back when the page opens, and if anything goes wrong, it quietly starts with an empty list instead of crashing.
@@ -174,12 +174,12 @@ Double-click editing still edits only the text.
 Dates are one of the most common sources of bugs in all software, because "today" depends on where you are in the world. A date like "2026-10-09" can be read as midnight in Coordinated Universal Time (UTC), the world's reference clock, and midnight UTC is still the evening of October 8 in California. Look at how Claude handled it:
 
 ```
-@include projects/02-todo-app/app.js#L75-L81
+@include projects/02-todo-app/before-redesign/app.js#L75-L81
 ```
 
-The comment says it all: the date is built in **local time**, "so no timezone shift." To be sure, this book's tests ran the app with the clock frozen at 9 p.m. in both Los Angeles and Tokyo, the kind of situation where date bugs appear, and the labels were correct in both. Claude got this one right. In Chapter 10, you'll see a time zone bug that Claude didn't catch at first, and how to track it down.
+The comment says it all: the date is built in **local time**, "so no timezone shift." To be sure, this book's tests ran the app with the clock frozen at 9 p.m. in both Los Angeles and Tokyo, the kind of situation where date bugs appear, and the labels were correct in both. Claude got this one right. In Chapter 11, you'll see a time zone bug that Claude didn't catch at first, and how to track it down.
 
-> **Try It:** In Chapter 18, an AI-driven browser test of this app noticed that the delete button (×) only appears when you hover the mouse over a task, which means it can't be used on a touchscreen. Ask Claude to fix that so the button is always visible on touch devices, then check it on your phone.
+> **Try It:** Open the app on your phone (or shrink your browser window and turn on its touch-device mode) and try to delete a task. Can you find the delete button? Make a note of anything that feels awkward. Chapter 8 starts from exactly this kind of observation and turns the app into something that works well for everyone.
 
 ## Key Takeaways
 

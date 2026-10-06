@@ -59,15 +59,16 @@ With Claude Code and the skills in this book, you can build:
 - **Command-line tools**: scripts that rename files, process spreadsheets, or automate repetitive work.
 - **Full-stack applications**: apps with a database, user data, and a server, which you can put online.
 - **AI-powered apps**: tools that use Claude itself to summarize, generate, or analyze.
+- **Mobile apps**: apps for iPhone and Android that you can publish in the app stores.
 - **Automations**: scripts that run on a schedule, or AI assistants that review your code whenever you change it.
 
-You'll build one of each of the first four kinds in this book, and learn the basics of the fifth.
+You'll build one of each of the first five kinds in this book, and learn the basics of the last.
 
 ## What Vibe Coding Can't Do (Yet)
 
 It's worth being honest about the limits from the start.
 
-**The AI can be confidently wrong.** It may write code that looks perfect and fails on an edge case, such as a date at midnight, an empty list, or a name with an apostrophe. You'll see a real example of this in Chapter 10. The defense is testing, which you'll learn in Chapter 11.
+**The AI can be confidently wrong.** It may write code that looks perfect and fails on an edge case, such as a date at midnight, an empty list, or a name with an apostrophe. You'll see a real example of this in Chapter 11. The defense is testing, which you'll learn in Chapter 12.
 
 **It doesn't know what you didn't say.** If you ask for "a to-do app" and expected it to sync between your phone and laptop, you'll be disappointed. The AI fills gaps with reasonable guesses, and reasonable guesses aren't always your guesses.
 
@@ -81,9 +82,9 @@ If the AI writes the code, what do you need to know? Five things, and they map o
 
 1. **Describing clearly**: turning a fuzzy idea into a precise request (Chapters 5 to 7).
 2. **Understanding the shape of software**: knowing what files, servers, databases, and APIs are, so you can ask for the right things and spot nonsense (Chapter 2).
-3. **Verifying**: testing that the code does what you meant (Chapters 10 and 11).
-4. **Staying in control**: saving versions, undoing mistakes, and limiting what the AI is allowed to do (Chapters 12 and 17).
-5. **Staying safe**: protecting secrets, users, and money (Chapters 13, 14, and 21).
+3. **Verifying**: testing that the code does what you meant (Chapters 11 and 12).
+4. **Staying in control**: saving versions, undoing mistakes, and limiting what the AI is allowed to do (Chapters 13 and 18).
+5. **Staying safe**: protecting secrets, users, and money (Chapters 14, 15, and 25).
 
 Notice that none of these is "memorize Python syntax." You'll pick up a lot of programming knowledge along the way, because you'll see and question real code, but you'll learn it in context, when you need it.
 

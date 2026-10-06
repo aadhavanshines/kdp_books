@@ -1,4 +1,4 @@
-# Chapter 12: Git and GitHub for Vibe Coders
+# Chapter 13: Git and GitHub for Vibe Coders
 
 You've been committing your work since Chapter 4. This chapter explains what's really happening, shows you how to recover from mistakes, and takes your projects online with GitHub, which you'll need for deployment and automation later.
 
@@ -100,7 +100,7 @@ You list these in a file called `.gitignore`, and Git ignores anything that matc
 
 When you start a new project, ask Claude to "create a suitable .gitignore." It knows the right patterns for most languages and tools.
 
-> **Warning:** If a secret is ever committed, deleting the file afterward isn't enough: it's still in the history, and if the repository is on GitHub, you should assume someone has seen it. Revoke the key (create a new one and disable the old one) immediately. Chapter 21 covers secrets in detail.
+> **Warning:** If a secret is ever committed, deleting the file afterward isn't enough: it's still in the history, and if the repository is on GitHub, you should assume someone has seen it. Revoke the key (create a new one and disable the old one) immediately. Chapter 25 covers secrets in detail.
 
 ## Putting Your Project on GitHub
 
@@ -135,7 +135,7 @@ Once your project is on GitHub, a safe and professional workflow is:
 4. Review the changes on GitHub. You'll see every changed line.
 5. Merge the pull request when you're happy, and switch back to `main`.
 
-This may seem like ceremony for a one-person project, but it pays off. Your `main` branch always works, your experiments are isolated, and every change has a written summary. It's also the workflow you'll automate in Chapter 19, where Claude reviews pull requests on GitHub by itself.
+This may seem like ceremony for a one-person project, but it pays off. Your `main` branch always works, your experiments are isolated, and every change has a written summary. It's also the workflow you'll automate in Chapter 23, where Claude reviews pull requests on GitHub by itself.
 
 > **Try It:** Put the habit tracker on GitHub as a private repository. Then create a branch, ask Claude to change the color of the "Add" button, commit, push, and open a pull request. Look at the pull request on GitHub, merge it, and pull the change back to your computer.
 

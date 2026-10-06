@@ -73,19 +73,19 @@ Programmers rarely build everything from scratch. They use **packages** (also ca
 
 Your project's **dependencies** are the packages it needs. They're usually listed in a file, such as `requirements.txt` for Python or `package.json` for JavaScript, so anyone can install them with one command. A **package manager** does the installing: `pip` for Python, `npm` for JavaScript.
 
-> **Warning:** Packages are code written by strangers, and they run with the same access as your own code. Stick to well-known packages, and be suspicious if the AI suggests one you can't find much information about. Chapter 21 explains why.
+> **Warning:** Packages are code written by strangers, and they run with the same access as your own code. Stick to well-known packages, and be suspicious if the AI suggests one you can't find much information about. Chapter 25 explains why.
 
 ## Where Apps Run: Local and Online
 
 When you build an app, it first runs **locally**, on your own computer. You'll see addresses like `http://localhost:5000` or `http://127.0.0.1:5000`. "Localhost" means "this computer," and the number after the colon is the **port**, a numbered door the app listens on. Only you can see a local app.
 
-To let other people use your app, you **deploy** it: copy it to a server that's always on and reachable from the internet. Chapter 14 shows you how.
+To let other people use your app, you **deploy** it: copy it to a server that's always on and reachable from the internet. Chapter 15 shows you how.
 
 ## Version Control
 
 **Version control** keeps a history of every change to your project, so you can see what changed, when, and why, and go back to any earlier version. The standard tool is **Git**, and the most popular website for storing Git projects online is **GitHub**.
 
-For vibe coders, Git is a safety net. The AI will sometimes make a change that breaks things, and Git lets you say "take me back to how it was an hour ago." You'll set it up in Chapter 4 and master it in Chapter 12.
+For vibe coders, Git is a safety net. The AI will sometimes make a change that breaks things, and Git lets you say "take me back to how it was an hour ago." You'll set it up in Chapter 4 and master it in Chapter 13.
 
 ## Tests
 
@@ -101,7 +101,7 @@ But it doesn't run your app in its head. It writes code that is *likely* to be c
 
 Two more terms you'll hear often:
 
-- **Context window**: everything the AI can "see" at once: your conversation, the files it has read, and the results of commands. It's large, but not infinite, and Chapter 20 shows you how to manage it.
+- **Context window**: everything the AI can "see" at once: your conversation, the files it has read, and the results of commands. It's large, but not infinite, and Chapter 24 shows you how to manage it.
 - **Token**: the unit AI models use to measure text. A token is roughly three-quarters of a word. Usage and pricing are measured in tokens.
 
 > **Try It:** Open your computer's terminal now. Type `pwd` and press Enter to see where you are, then type `ls` (or `dir` on Windows) to list the files there. That's it: you've used the command line.

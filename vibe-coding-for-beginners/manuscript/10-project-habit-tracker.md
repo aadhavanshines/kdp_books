@@ -1,4 +1,4 @@
-# Chapter 9: Project 4: A Full-Stack Habit Tracker
+# Chapter 10: Project 4: A Full-Stack Habit Tracker
 
 Your fourth project is a real web application with both halves: a front end in the browser and a back end with a database. It tracks daily habits, such as "Drink water" or "Read 20 pages," and shows streaks. This is also the project you'll keep improving for the rest of the book: debugging it, testing it, putting it online, and teaching Claude its rules.
 
@@ -76,7 +76,7 @@ A few things make this a good spec:
 
 ## Setting Up and Building
 
-Create a virtual environment and install Flask and pytest, as in Chapter 8:
+Create a virtual environment and install Flask and pytest, as in Chapter 9:
 
 ```
 python3 -m venv .venv
@@ -155,7 +155,7 @@ Open the folder in your editor. Here's what each file does:
 The most interesting part is the streak calculation, straight from `app.py`:
 
 ```
-@include projects/04-habit-tracker/app.py#L22-L38
+@include projects/04-habit-tracker/app.py#L25-L41
 ```
 
 This is a **pure function**: it takes the set of done days and today's date, and returns two numbers, without touching the database or the web. Pure functions are easy to test, because you just give them inputs and check the outputs, which is why Claude's tests can cover tricky cases like month boundaries so thoroughly. When you ask Claude to build something with complex rules, it's worth asking it to "keep the rules in a pure function that's easy to test."

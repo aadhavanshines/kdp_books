@@ -1,4 +1,4 @@
-# Chapter 14: Putting Your App Online
+# Chapter 15: Putting Your App Online
 
 An app on your laptop is a prototype. An app with a web address is something you can share. This chapter shows you how to deploy both kinds of app you've built: simple pages that run entirely in the browser, and full apps with a server and a database. It also covers the mistakes that most often turn a successful launch into a bad day.
 
@@ -14,7 +14,7 @@ An app on your laptop is a prototype. An app with a web address is something you
 
 Two beginner-friendly options:
 
-**GitHub Pages.** If your project is on GitHub (Chapter 12), open the repository on github.com, go to **Settings**, then **Pages**, choose to deploy from your `main` branch, and save. After a minute, your site is live at an address like `https://your-name.github.io/tip-calculator/`. On a free GitHub account, Pages requires the repository to be public, so check it contains nothing private first.
+**GitHub Pages.** If your project is on GitHub (Chapter 13), open the repository on github.com, go to **Settings**, then **Pages**, choose to deploy from your `main` branch, and save. After a minute, your site is live at an address like `https://your-name.github.io/tip-calculator/`. On a free GitHub account, Pages requires the repository to be public, so check it contains nothing private first.
 
 **Drag-and-drop hosts.** Services such as Netlify let you drag your project folder onto a web page and get a live address in seconds, without Git at all.
 
@@ -103,7 +103,7 @@ It starts gunicorn, tells it how to create the app, listens on the port the host
 The **database location** now comes from an environment variable:
 
 ```
-@include projects/04-habit-tracker/app.py#L43-L50
+@include projects/04-habit-tracker/app.py#L46-L53
 ```
 
 And the **automatic tests** run on GitHub every time you push, thanks to this workflow file:
@@ -133,7 +133,7 @@ From then on, every push to `main` deploys a new version automatically. If you w
 
 Before you share a dynamic app, check:
 
-- **Debug mode is off.** (Chapter 13 showed why.)
+- **Debug mode is off.** (Chapter 14 showed why.)
 - **Secrets are in environment variables**, not in code or Git.
 - **Data is on a persistent disk**, and you know how to back it up.
 - **The tests pass** in CI.

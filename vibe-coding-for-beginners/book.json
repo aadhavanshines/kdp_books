@@ -15,7 +15,7 @@
   "cover_tagline": "Build Real Apps with Claude Code, from Your First Prompt to Tested, Deployed Software",
   "cover_prompt": "> build me an app_",
   "cover_features": [
-    "5 REAL APPS",
+    "6 REAL APPS",
     "REAL SESSIONS",
     "TESTED CODE"
   ],
@@ -30,21 +30,24 @@
   },
   "paper": "white",
   "reuse_note": "Readers may freely use and adapt the example prompts and project code in this book for their own work.",
-  "trademarks": "Claude, Claude Code, and Anthropic are trademarks of Anthropic. GitHub and GitHub Actions are trademarks of GitHub, Inc. Python is a trademark of the Python Software Foundation. Visual Studio Code, Windows, and Playwright are trademarks of Microsoft Corporation. macOS is a trademark of Apple Inc. Linux is a trademark of Linus Torvalds. Chrome is a trademark of Google LLC. Flask is a trademark of the Pallets project. Node.js is a trademark of the OpenJS Foundation. Render, Railway, Netlify, Notion, and all other product names are trademarks of their respective owners. Product names are used solely for identification and educational discussion. This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic or any of these companies.",
+  "trademarks": "Claude, Claude Code, and Anthropic are trademarks of Anthropic. GitHub and GitHub Actions are trademarks of GitHub, Inc. Python is a trademark of the Python Software Foundation. Visual Studio Code, Windows, and Playwright are trademarks of Microsoft Corporation. Apple, macOS, iPhone, iOS, App Store, TestFlight, Xcode, Swift, and VoiceOver are trademarks of Apple Inc. Linux is a trademark of Linus Torvalds. Google, Android, Google Play, Android Studio, Chrome, Flutter, and TalkBack are trademarks of Google LLC. Expo and EAS are trademarks of 650 Industries, Inc. React and React Native are trademarks of Meta Platforms, Inc. Kotlin is a trademark of JetBrains s.r.o. axe-core is a trademark of Deque Systems, Inc. Flask is a trademark of the Pallets project. Node.js is a trademark of the OpenJS Foundation. Render, Railway, Netlify, Notion, and all other product names are trademarks of their respective owners. Product names are used solely for identification and educational discussion. This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic or any of these companies.",
   "back_cover_blurb": [
     "Describe it. Build it. Ship it.",
     "Vibe coding means building software by describing what you want in plain English and letting an AI write the code. It is how a new generation of creators, students, and professionals is turning ideas into working apps, often in an afternoon.",
-    "This book teaches you to do it well, with Claude Code. You will build five real, tested apps, from a tip calculator to a full-stack web app and an AI flashcard tool, and every prompt and reply in those chapters comes from a real session. No programming background required.",
+    "This book teaches you to do it well, with Claude Code. You will build six real, tested apps, from a tip calculator to a full-stack web app, an AI flashcard tool, and a mobile app for iPhone and Android, and every prompt and reply in those chapters comes from a real session. No programming background required.",
     "Inside you will learn:",
     "- How software works, explained just enough for vibe coders",
     "- Installing Claude Code and having your first conversation",
     "- Prompt patterns that turn vague ideas into working code",
+    "- UI and UX design that works for everyone, with accessibility",
     "- Debugging, testing, and saving your work with Git",
     "- Building an AI-powered app with the Claude API",
-    "- Putting your apps online safely",
+    "- Building Android and iPhone apps from one codebase",
+    "- Putting apps online, and shipping to Google Play and the App Store",
     "- CLAUDE.md, skills, subagents, hooks, and MCP",
+    "- The software development lifecycle: versions, changelogs, releases",
     "- Security habits that keep your code and keys safe",
-    "- A 40-prompt library and a Claude Code cheat sheet"
+    "- Best practices checklist, 40-prompt library, and cheat sheet"
   ],
   "dedication": [
     "To my father and my mother,",
@@ -67,20 +70,24 @@
     "5": "Beginner",
     "6": "Beginner",
     "7": "Beginner",
-    "8": "Intermediate",
+    "8": "Beginner",
     "9": "Intermediate",
     "10": "Intermediate",
     "11": "Intermediate",
     "12": "Intermediate",
     "13": "Intermediate",
     "14": "Intermediate",
-    "15": "Advanced",
+    "15": "Intermediate",
     "16": "Advanced",
     "17": "Advanced",
     "18": "Advanced",
     "19": "Advanced",
     "20": "Advanced",
-    "21": "All levels",
-    "22": "All levels"
+    "21": "Advanced",
+    "22": "Intermediate",
+    "23": "Advanced",
+    "24": "Advanced",
+    "25": "All levels",
+    "26": "All levels"
   }
 }

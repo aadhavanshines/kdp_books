@@ -1,4 +1,4 @@
-# Appendix B: Troubleshooting Guide
+# Appendix C: Troubleshooting Guide
 
 When something goes wrong, find the closest match below. If nothing fits, copy the full error message and ask Claude Code: "Explain this error and how to fix it." For problems with Claude Code itself, run `claude doctor` in your terminal or `/doctor` inside a session.
 
@@ -31,8 +31,8 @@ When something goes wrong, find the closest match below. If nothing fits, copy t
 | The page is blank | A JavaScript error | Open the browser's developer tools (F12), check the Console tab, and paste the error to Claude. |
 | Changes don't appear in the browser | The browser cached the old version | Hard-refresh (Ctrl+Shift+R, or Cmd+Shift+R on a Mac). |
 | `FileNotFoundError` | You're in the wrong folder | Check with `pwd`; `cd` into the project folder. |
-| Data disappears after redeploying | The database isn't on a persistent disk | Attach a disk or volume and point the database path at it (Chapter 14). |
-| The app works locally but shows the wrong day online | The server's time zone differs from the user's | See the time zone case study in Chapter 10. |
+| Data disappears after redeploying | The database isn't on a persistent disk | Attach a disk or volume and point the database path at it (Chapter 15). |
+| The app works locally but shows the wrong day online | The server's time zone differs from the user's | See the time zone case study in Chapter 11. |
 
 ## Working with Claude
 
@@ -62,7 +62,7 @@ When something goes wrong, find the closest match below. If nothing fits, copy t
 | Problem | Likely cause | Fix |
 | --- | --- | --- |
 | A hook never runs | Wrong event or matcher, or the script isn't executable | Check `/hooks`; on macOS and Linux run `chmod +x` on the script; test it with sample input. |
-| A hook doesn't block something | The action used a different tool (for example, a terminal command instead of a file edit) | Add a permission deny rule, or match the other tool too (Chapter 17). |
+| A hook doesn't block something | The action used a different tool (for example, a terminal command instead of a file edit) | Add a permission deny rule, or match the other tool too (Chapter 18). |
 | A Stop hook keeps Claude working forever | No loop protection | Check `stop_hook_active` and exit early when it's true. |
 | MCP server shows "Failed to connect" | It's still downloading, or the command is wrong | Wait and run `claude mcp list` again; check details with `claude mcp get <name>`. |
 | MCP server "Needs authentication" | The service requires a sign-in | Run `/mcp` inside Claude Code and sign in. |
