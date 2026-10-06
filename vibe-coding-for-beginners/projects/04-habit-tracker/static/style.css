@@ -21,3 +21,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 .day.today { outline: 2px solid #2f6fed; }
 .day .mark { font-size: 1.1rem; }
 .streaks { font-size: .9rem; color: #555; }
+#version { text-align: center; font-size: .7rem; color: #888; margin: 1.5rem 0 1rem; }
+.habit-actions { display: flex; gap: .4rem; }
+.rename { background: transparent; color: #2f6fed; padding: .2rem .5rem; border: 1px solid #2f6fed; }
+.rename:hover { background: #e8effd; }

@@ -46,7 +46,14 @@ function render(habits) {
     del.className = "delete";
     del.textContent = "Delete";
     del.addEventListener("click", () => removeHabit(h));
-    head.append(name, del);
+    const edit = document.createElement("button");
+    edit.className = "rename";
+    edit.textContent = "Rename";
+    edit.addEventListener("click", () => renameHabit(h));
+    const actions = document.createElement("div");
+    actions.className = "habit-actions";
+    actions.append(edit, del);
+    head.append(name, actions);
 
     const days = document.createElement("div");
     days.className = "days";
@@ -86,6 +93,18 @@ async function toggleDay(id, date) {
   try {
     showError("");
     await api(`/api/habits/${id}/toggle`, { method: "POST", body: JSON.stringify({ date }) });
+    await load();
+  } catch (e) {
+    showError(e.message);
+  }
+}
+
+async function renameHabit(h) {
+  const input = prompt("Rename habit:", h.name);
+  if (input === null || input.trim() === h.name) return;
+  try {
+    showError("");
+    await api(`/api/habits/${h.id}`, { method: "PATCH", body: JSON.stringify({ name: input }) });
     await load();
   } catch (e) {
     showError(e.message);

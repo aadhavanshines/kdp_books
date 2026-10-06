@@ -1,17 +1,29 @@
-/* Page background and base font */
+/* Colours (all checked for contrast on white: text 4.5:1 or better, borders 3:1 or better) */
+:root {
+  --text: #1f2933;
+  --muted: #595959;      /* secondary text, 7:1 */
+  --border: #767676;     /* borders of inputs and buttons, 4.5:1 */
+  --accent: #0b5cad;     /* blue for the selected filter and focus, 6.6:1 */
+  --danger: #b3261e;     /* red for overdue and delete, 6.5:1 */
+}
+
+/* Page background and base font. rem sizes grow with the user's own text-size setting. */
 body {
   font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--text);
   background: #f0f2f5;
   margin: 0;
-  padding: 40px 16px;
+  padding: 24px 12px;
 }
 
 /* The white card in the middle of the page */
 .card {
-  max-width: 480px;
+  max-width: 30rem;
   margin: 0 auto;
   background: white;
-  padding: 24px;
+  padding: 16px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -19,81 +31,148 @@ body {
 h1 {
   margin-top: 0;
   text-align: center;
+  font-size: 1.75rem;
 }
 
-/* Text box and date picker side by side */
-.add-row {
+/* Hides text visually but keeps it for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* A clear outline for keyboard and switch users (never removed) */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* The list is focused by code only (never by Tab), so it needs no outline */
+#task-list:focus {
+  outline: none;
+}
+
+/* ---------- Add form ---------- */
+.add-form {
   display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
-#new-due {
-  padding: 10px;
-  font-size: 14px;
-  border: 2px solid #ddd;
-  border-radius: 6px;
+.add-extras {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
 }
 
-/* The "add task" input */
-#new-task {
-  flex: 1;
-  min-width: 0;
+.add-extras label {
+  color: var(--muted);
+}
+
+/* Shared look for all text/date inputs */
+input[type=text],
+input[type=date] {
+  min-height: 44px;
   box-sizing: border-box;
-  padding: 12px;
-  font-size: 16px;
-  border: 2px solid #ddd;
+  padding: 8px 12px;
+  font-size: 1rem; /* 16px+ also stops iPhones zooming in on focus */
+  font-family: inherit;
+  color: var(--text);
+  background: white;
+  border: 2px solid var(--border);
   border-radius: 6px;
 }
 
-/* The list of tasks */
+#new-task {
+  width: 100%;
+}
+
+#new-due {
+  flex: 1 1 9rem;
+  min-width: 0;
+}
+
+.add-button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ---------- Task list ---------- */
 #task-list {
   list-style: none;
   padding: 0;
-  margin: 16px 0;
+  margin: 16px 0 8px;
 }
 
 #task-list li {
+  display: flex;         /* checkbox, text and buttons always share one row */
+  align-items: center;
+  gap: 4px;
+  padding: 6px 0;
+  border-bottom: 1px solid #d0d5da;
+}
+
+/* The checkbox sits in a 44x44 tap area; tapping anywhere in it toggles the task */
+.check {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 4px;
-  border-bottom: 1px solid #eee;
-}
-
-#task-list label {
-  flex: 1;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
   cursor: pointer;
-  word-break: break-word;
 }
 
-/* Done tasks: grey with a line through the text */
-#task-list li.done label {
-  text-decoration: line-through;
-  color: #999;
+.check input {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  accent-color: var(--accent);
 }
 
 /* Holds the task text with its due date underneath */
 .task-text {
   flex: 1;
-  min-width: 0;
+  min-width: 0; /* lets long text wrap onto more lines instead of pushing the buttons off */
+  padding: 0 4px;
 }
 
-.task-text label {
+.task-label {
   display: block;
+  overflow-wrap: anywhere;
+  user-select: none; /* double-clicking to edit should not also highlight a word */
 }
 
-/* The small due date line under the task */
+/* Done tasks: grey with a line through the text (the line means "done" without relying on colour) */
+#task-list li.done .task-label {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+/* The due date line under the task */
 .due {
   display: block;
-  font-size: 12px;
-  color: #777;
+  font-size: 0.875rem;
+  color: var(--muted);
   margin-top: 2px;
 }
 
-/* Overdue tasks: red date line and red task text */
+/* Overdue tasks: red, and the word "Overdue" is also in the text */
 #task-list li.overdue .due,
-#task-list li.overdue label {
-  color: #c0392b;
+#task-list li.overdue .task-label {
+  color: var(--danger);
 }
 
 #task-list li.overdue .due {
@@ -103,51 +182,97 @@ h1 {
 /* The input shown while editing a task */
 .edit-input {
   flex: 1;
-  padding: 6px;
-  font-size: 16px;
+  min-width: 0;
 }
 
-/* Delete button: hidden until you hover over the row */
-.delete {
-  border: none;
-  background: none;
-  color: #c0392b;
-  font-size: 20px;
+/* Edit and Delete: square 44x44 icon buttons, always visible */
+.task-button {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: var(--text);
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 6px;
   cursor: pointer;
-  opacity: 0;
 }
 
-#task-list li:hover .delete,
-.delete:focus {
-  opacity: 1;
+.task-button.delete {
+  color: var(--danger);
+  border-color: var(--danger);
+  margin-left: 4px; /* a little extra space so Edit and Delete are not hit by mistake */
 }
 
-/* Footer layout */
+#empty-message {
+  margin: 16px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
 footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-  font-size: 14px;
-  color: #555;
+  color: var(--muted);
+}
+
+.filters {
+  display: flex;
+  gap: 4px;
 }
 
 footer button {
-  border: 1px solid transparent;
-  background: none;
-  padding: 4px 8px;
-  border-radius: 4px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text);
+  background: white;
+  border: 2px solid transparent;
+  border-radius: 6px;
   cursor: pointer;
-  color: inherit;
 }
 
 footer button:hover {
-  border-color: #ddd;
+  border-color: var(--border);
 }
 
-/* The currently selected filter */
-.filters button.active {
-  border-color: #4a90e2;
-  color: #4a90e2;
+/* The selected filter: blue, bold AND underlined, so colour is not the only clue */
+.filters button[aria-pressed=true] {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Very small phones (about 360px and under): less padding, so task text gets more room */
+@media (max-width: 360px) {
+  body {
+    padding: 16px 8px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .task-text {
+    padding: 0 2px;
+  }
+}
+
+/* Windows high-contrast mode: keep button shapes visible */
+@media (forced-colors: active) {
+  .task-button,
+  .add-button,
+  footer button {
+    border: 2px solid ButtonText;
+  }
 }

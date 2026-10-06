@@ -4,6 +4,9 @@ from datetime import date, datetime, timedelta
 
 from flask import Flask, g, jsonify, render_template, request
 
+# Single source of truth for the release version (see "Releasing" in README.md).
+__version__ = "1.1.0"
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 SCHEMA = """
@@ -110,7 +113,7 @@ def create_app(db_path=None, today_func=date.today):
 
     @app.get("/")
     def index():
-        return render_template("index.html")
+        return render_template("index.html", version=__version__)
 
     @app.get("/api/habits")
     def list_habits():
@@ -118,15 +121,22 @@ def create_app(db_path=None, today_func=date.today):
         rows = get_db().execute("SELECT * FROM habits ORDER BY id").fetchall()
         return jsonify([habit_json(r, today) for r in rows])
 
-    @app.post("/api/habits")
-    def add_habit():
+    def parse_name():
+        """Return (name, None) from the JSON body, or (None, error response)."""
         data = request.get_json(silent=True)
         name = data.get("name") if isinstance(data, dict) else None
         if not isinstance(name, str):
-            return jsonify(error="name is required"), 400
+            return None, (jsonify(error="name is required"), 400)
         name = name.strip()
         if not 1 <= len(name) <= 30:
-            return jsonify(error="name must be 1 to 30 characters"), 400
+            return None, (jsonify(error="name must be 1 to 30 characters"), 400)
+        return name, None
+
+    @app.post("/api/habits")
+    def add_habit():
+        name, err = parse_name()
+        if err:
+            return err
         db = get_db()
         try:
             cur = db.execute("INSERT INTO habits (name) VALUES (?)", (name,))
@@ -135,6 +145,22 @@ def create_app(db_path=None, today_func=date.today):
             return jsonify(error="a habit with that name already exists"), 409
         row = db.execute("SELECT * FROM habits WHERE id = ?", (cur.lastrowid,)).fetchone()
         return jsonify(habit_json(row, current_today())), 201
+
+    @app.patch("/api/habits/<int:habit_id>")
+    def rename_habit(habit_id):
+        db = get_db()
+        if db.execute("SELECT 1 FROM habits WHERE id = ?", (habit_id,)).fetchone() is None:
+            return jsonify(error="habit not found"), 404
+        name, err = parse_name()
+        if err:
+            return err
+        try:
+            db.execute("UPDATE habits SET name = ? WHERE id = ?", (name, habit_id))
+            db.commit()
+        except sqlite3.IntegrityError:
+            return jsonify(error="a habit with that name already exists"), 409
+        row = db.execute("SELECT * FROM habits WHERE id = ?", (habit_id,)).fetchone()
+        return jsonify(habit_json(row, current_today())), 200
 
     @app.delete("/api/habits/<int:habit_id>")
     def delete_habit(habit_id):

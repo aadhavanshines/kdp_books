@@ -63,7 +63,7 @@ def todo(browser):
                               timezone_id="America/New_York")
     page = ctx.new_page()
     page.clock.set_fixed_time(dt.datetime(2026, 10, 6, 10, 0))
-    page.goto((PROJ / "02-todo-app" / "index.html").as_uri())
+    page.goto((PROJ / "02-todo-app" / "before-redesign" / "index.html").as_uri())
     for text, due in [("Buy milk", ""), ("Call the dentist", "2026-10-03"), ("Finish chapter 3", "2026-10-06"),
                       ("Book train tickets", "2026-10-09")]:
         page.fill("#new-task", text)
@@ -72,6 +72,39 @@ def todo(browser):
     page.locator("#task-list li", has_text="Buy milk").locator("input[type=checkbox]").check()
     shoot(page, "todo-app", ".card")
     ctx.close()
+
+
+def todo_before_after(browser):
+    """Chapter 8: the to-do app on a phone, before and after the accessibility redesign."""
+    from PIL import Image, ImageDraw, ImageFont
+    shots = []
+    for folder in ("before-redesign", ""):
+        ctx = browser.new_context(viewport={"width": 390, "height": 700}, device_scale_factor=SCALE,
+                                  locale="en-US", has_touch=True, is_mobile=True)
+        page = ctx.new_page()
+        page.goto((PROJ / "02-todo-app" / folder / "index.html").as_uri())
+        for text in ("Buy milk", "Call the dentist", "Finish chapter 3"):
+            page.fill("#new-task", text)
+            page.press("#new-task", "Enter")
+        page.locator("#task-list input[type=checkbox]").first.check()
+        path = OUT / f"_tmp_{folder or 'after'}.png"
+        page.locator(".card, main").first.screenshot(path=str(path))
+        trim_bottom(path)
+        shots.append(Image.open(path).convert("RGB"))
+        path.unlink()
+        ctx.close()
+    gap, label_h = 60, 110
+    h = max(s.height for s in shots) + label_h
+    out = Image.new("RGB", (sum(s.width for s in shots) + gap, h), (255, 255, 255))
+    d = ImageDraw.Draw(out)
+    font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", 64)
+    x = 0
+    for s, label in zip(shots, ("Before", "After")):
+        d.text((x + s.width / 2, 20), label, font=font, fill=(31, 58, 95), anchor="ma")
+        out.paste(s, (x, label_h))
+        x += s.width + gap
+    out.save(OUT / "shot-todo-before-after.png")
+    print("wrote shot-todo-before-after.png")
 
 
 def habits(browser):
@@ -146,7 +179,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
         browser = p.chromium.launch(executable_path=os.environ.get("CHROMIUM_PATH") or None)
-        for fn in (tip, todo, habits, study_buddy):
+        for fn in (tip, todo, todo_before_after, habits, study_buddy):
             fn(browser)
         browser.close()
 

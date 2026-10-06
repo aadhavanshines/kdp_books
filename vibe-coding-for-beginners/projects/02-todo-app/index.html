@@ -10,27 +10,38 @@
   <main class="card">
     <h1>To-Do List</h1>
 
-    <!-- Type a task and press Enter to add it -->
-    <!-- The date is optional; leave it empty for no due date -->
-    <div class="add-row">
-      <input id="new-task" type="text" placeholder="What needs to be done?" autofocus>
-      <input id="new-due" type="date" aria-label="Due date (optional)">
-    </div>
+    <!-- Pressing Enter (or the Add button) submits this form and adds the task -->
+    <form id="add-form" class="add-form">
+      <!-- Labels are real text so screen readers (and people with low vision) can find them -->
+      <label for="new-task" class="visually-hidden">New task</label>
+      <input id="new-task" type="text" placeholder="What needs to be done?" enterkeyhint="done" autocomplete="off">
+
+      <div class="add-extras">
+        <!-- The date is optional; leave it empty for no due date -->
+        <label for="new-due">Due date (optional)</label>
+        <input id="new-due" type="date">
+        <button type="submit" class="add-button">Add</button>
+      </div>
+    </form>
 
     <!-- The script fills this list with tasks -->
     <ul id="task-list"></ul>
 
+    <!-- Shown when there are no tasks to display -->
+    <p id="empty-message" hidden></p>
+
     <!-- Footer: counter, filters, and clear button -->
     <footer>
-      <span id="count"></span>
+      <!-- role="status" makes screen readers announce the count when it changes -->
+      <span id="count" role="status"></span>
 
-      <div class="filters">
-        <button data-filter="all" class="active">All</button>
-        <button data-filter="active">Active</button>
-        <button data-filter="done">Done</button>
+      <div class="filters" role="group" aria-label="Show tasks">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="active" aria-pressed="false">Active</button>
+        <button type="button" data-filter="done" aria-pressed="false">Done</button>
       </div>
 
-      <button id="clear-completed">Clear completed</button>
+      <button type="button" id="clear-completed">Clear completed</button>
     </footer>
   </main>
 

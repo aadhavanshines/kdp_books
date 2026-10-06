@@ -11,7 +11,7 @@ def add(page, *texts):
 
 
 def labels(page):
-    return page.locator("#task-list label").all_text_contents()
+    return page.locator("#task-list .task-label").all_text_contents()
 
 
 def test_add_ignores_empty(page):
@@ -38,15 +38,15 @@ def test_toggle_filter_and_clear(page):
 def test_edit_save_cancel_and_empty_deletes(page):
     page.goto(URL)
     add(page, "Old text", "Keep me")
-    page.dblclick("#task-list label >> text=Old text")
+    page.dblclick("#task-list .task-label >> text=Old text")
     page.fill(".edit-input", "New text")
     page.press(".edit-input", "Enter")
     assert labels(page) == ["New text", "Keep me"]
-    page.dblclick("#task-list label >> text=Keep me")
+    page.dblclick("#task-list .task-label >> text=Keep me")
     page.fill(".edit-input", "Changed")
     page.press(".edit-input", "Escape")
     assert labels(page) == ["New text", "Keep me"]
-    page.dblclick("#task-list label >> text=New text")
+    page.dblclick("#task-list .task-label >> text=New text")
     page.fill(".edit-input", "  ")
     page.press(".edit-input", "Enter")
     assert labels(page) == ["Keep me"]
@@ -55,7 +55,6 @@ def test_edit_save_cancel_and_empty_deletes(page):
 def test_delete(page):
     page.goto(URL)
     add(page, "One", "Two")
-    page.locator("#task-list li", has_text="One").hover()
     page.locator("#task-list li", has_text="One").locator(".delete").click()
     assert labels(page) == ["Two"]
 
@@ -95,7 +94,7 @@ def test_due_dates_in_any_timezone(browser, tz):
         page.fill("#new-task", text)
         page.fill("#new-due", due)
         page.press("#new-task", "Enter")
-    due = {li.locator("label").text_content(): (li.locator(".due").all_text_contents() or [""])[0]
+    due = {li.locator(".task-label").text_content(): (li.locator(".due").all_text_contents() or [""])[0]
            for li in page.locator("#task-list li").all()}
     assert due == {
         "Past": "Overdue · Sat, Oct 3",
@@ -117,3 +116,64 @@ def test_old_saved_tasks_still_load(page):
     page.reload()
     assert labels(page) == ["From v1"]
     assert page.locator(".due").count() == 0
+
+
+# --- Chapter 8: the UX and accessibility redesign -------------------------------------
+
+import os
+
+
+@pytest.fixture
+def phone(browser):
+    ctx = browser.new_context(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True,
+                              locale="en-US")
+    page = ctx.new_page()
+    page.goto(URL)
+    add(page, "Buy milk", "Call the dentist")
+    yield page
+    ctx.close()
+
+
+def test_delete_is_visible_on_touchscreens(phone):
+    for i in range(phone.locator(".delete").count()):
+        assert phone.locator(".delete").nth(i).evaluate("e => getComputedStyle(e).opacity") == "1"
+
+
+def test_tap_targets_are_at_least_44px(phone):
+    for el in phone.locator("button").all():
+        box = el.bounding_box()
+        assert box["height"] >= 44, el.text_content()
+    # The checkbox is drawn at 24 px but sits in a 44 x 44 tap area: taps 18 px away still toggle it.
+    cb = phone.locator("#task-list input[type=checkbox]").first
+    r = cb.bounding_box()
+    cx, cy = r["x"] + r["width"] / 2, r["y"] + r["height"] / 2
+    for dx, dy in [(-18, 0), (18, 0), (0, -18), (0, 18)]:
+        before = cb.is_checked()
+        phone.touchscreen.tap(cx + dx, cy + dy)
+        assert cb.is_checked() != before
+
+
+def test_controls_have_accessible_names(phone):
+    assert phone.get_by_label("Due date (optional)").count() == 1
+    assert phone.get_by_role("checkbox", name="Buy milk").count() == 1
+    assert phone.get_by_role("button", name="Delete Buy milk").count() == 1
+    assert phone.get_by_role("button", name="Edit Buy milk").count() == 1
+
+
+@pytest.mark.skipif(not os.environ.get("AXE_PATH"), reason="set AXE_PATH to axe.min.js from the axe-core package")
+def test_no_axe_violations(phone):
+    phone.add_script_tag(path=os.environ["AXE_PATH"])
+    res = phone.evaluate("async () => await axe.run(document, {runOnly: ['wcag2a','wcag2aa','wcag21aa','best-practice']})")
+    assert [v["id"] for v in res["violations"]] == []
+
+
+def test_enter_saves_and_closes_the_editor(page):
+    """Two real-browser regressions from Chapter 8's redesign, both missed by simulated tests."""
+    page.goto(URL)
+    add(page, "Old text")
+    page.dblclick("#task-list .task-label >> text=Old text")   # double-click must open the editor
+    assert page.locator(".edit-input").count() == 1
+    page.fill(".edit-input", "New text")
+    page.press(".edit-input", "Enter")                          # Enter must save AND close it
+    assert page.locator(".edit-input").count() == 0
+    assert labels(page) == ["New text"]

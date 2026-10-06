@@ -1,8 +1,6 @@
 // ---------- Grab the elements we need from the page ----------
-const form = document.getElementById("add-form");
 const input = document.getElementById("new-task");
 const dueInput = document.getElementById("new-due");
-const emptyMsg = document.getElementById("empty-message");
 const list = document.getElementById("task-list");
 const countEl = document.getElementById("count");
 const clearBtn = document.getElementById("clear-completed");
@@ -31,10 +29,9 @@ function loadTasks() {
 // ---------- Changing the data ----------
 function addTask(text, due) {
   text = text.trim();
-  if (text === "") return false; // ignore empty tasks
+  if (text === "") return; // ignore empty tasks
   tasks.push({ id: Date.now(), text: text, done: false, due: due || "" });
   update();
-  return true;
 }
 
 function toggleTask(id) {
@@ -63,19 +60,6 @@ function update() {
   saveTasks();
   render();
 }
-
-// ---------- Icons for the Edit and Delete buttons ----------
-// Small pictures keep each task on one row on a phone. They are hidden from screen readers
-// (aria-hidden) because each button has a text label like "Delete Buy milk" instead.
-const EDIT_ICON =
-  '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" ' +
-  'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-  '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>';
-const DELETE_ICON =
-  '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" ' +
-  'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-  '<path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/>' +
-  '<path d="M10 11v6"/><path d="M14 11v6"/></svg>';
 
 // ---------- Due date helpers ----------
 // Today as "YYYY-MM-DD" in the user's local time (same format the date picker gives us).
@@ -107,16 +91,6 @@ function dueText(task, overdue) {
 function render() {
   const today = todayString();
 
-  // Redrawing removes the control that has focus, so remember it and put focus back afterwards.
-  // (Otherwise keyboard and screen reader users get thrown back to the top of the page.)
-  const focused = document.activeElement;
-  let refocus = null;
-  if (list.contains(focused) && focused.dataset.action) {
-    // while editing, focus goes back to that task's Edit button
-    const action = focused.dataset.action === "editing" ? "edit" : focused.dataset.action;
-    refocus = { id: focused.closest("li").dataset.id, action: action };
-  }
-
   // Keep only the tasks that match the current filter
   const visible = tasks.filter((t) => {
     if (filter === "active") return !t.done;
@@ -131,25 +105,12 @@ function render() {
     li.dataset.id = task.id;
     if (task.done) li.classList.add("done");
 
-    // A big 44x44 tap area around the checkbox; tapping it toggles the task
-    const checkWrap = document.createElement("label");
-    checkWrap.className = "check";
-
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.id = "task-" + task.id;
     checkbox.checked = task.done;
-    checkbox.dataset.action = "toggle";
-    checkWrap.appendChild(checkbox);
 
-    // The task text is a plain <span>, NOT a <label for=...>. A label would toggle the checkbox
-    // (and redraw the list) on every click, so a double-click would never reach the text.
-    // aria-labelledby still gives the checkbox the task's name for screen readers.
-    const label = document.createElement("span");
-    label.className = "task-label";
-    label.id = "text-" + task.id;
+    const label = document.createElement("label");
     label.textContent = task.text; // textContent is safe against HTML injection
-    checkbox.setAttribute("aria-labelledby", label.id);
 
     // Wrapper so the due date can sit under the task text
     const textBox = document.createElement("div");
@@ -163,84 +124,41 @@ function render() {
 
       const dueEl = document.createElement("small");
       dueEl.className = "due";
-      dueEl.id = "due-" + task.id;
       dueEl.textContent = dueText(task, overdue);
       textBox.appendChild(dueEl);
-      // Screen readers read the due date together with the task
-      checkbox.setAttribute("aria-describedby", dueEl.id);
     }
 
-    // Edit and Delete buttons: an icon you can see, and the task name in the accessible label.
-    // (title gives mouse users a tooltip.)
-    const editBtn = document.createElement("button");
-    editBtn.type = "button";
-    editBtn.className = "task-button edit";
-    editBtn.dataset.action = "edit";
-    editBtn.innerHTML = EDIT_ICON; // fixed icon markup, no user text, so this is safe
-    editBtn.title = "Edit";
-    editBtn.setAttribute("aria-label", "Edit " + task.text);
-
     const deleteBtn = document.createElement("button");
-    deleteBtn.type = "button";
-    deleteBtn.className = "task-button delete";
-    deleteBtn.dataset.action = "delete";
-    deleteBtn.innerHTML = DELETE_ICON;
-    deleteBtn.title = "Delete";
-    deleteBtn.setAttribute("aria-label", "Delete " + task.text);
+    deleteBtn.className = "delete";
+    deleteBtn.textContent = "×";
+    deleteBtn.setAttribute("aria-label", "Delete task");
 
-    li.append(checkWrap, textBox, editBtn, deleteBtn);
+    li.append(checkbox, textBox, deleteBtn);
     list.appendChild(li);
   }
 
-  // Put focus back where it was. If that task is gone (deleted, or filtered out),
-  // move focus to the list itself so it is not lost.
-  if (refocus) {
-    const target = list.querySelector(
-      'li[data-id="' + refocus.id + '"] [data-action="' + refocus.action + '"]'
-    );
-    (target || list).focus();
-  }
-
-  // Say something helpful when there is nothing to show
-  const messages = {
-    all: "No tasks yet. Add one above.",
-    active: "No active tasks.",
-    done: "No completed tasks.",
-  };
-  emptyMsg.textContent = messages[filter];
-  emptyMsg.hidden = visible.length > 0;
-
-  // "N items left" counts tasks that are not done.
-  // Only change the text when it is different, so screen readers don't repeat it.
+  // "N items left" counts tasks that are not done
   const left = tasks.filter((t) => !t.done).length;
-  const countText = left + (left === 1 ? " item left" : " items left");
-  if (countEl.textContent !== countText) countEl.textContent = countText;
+  countEl.textContent = left + (left === 1 ? " item left" : " items left");
 
-  // Tell screen readers (and show) which filter button is selected
+  // Highlight the selected filter button
   filterButtons.forEach((btn) => {
-    btn.setAttribute("aria-pressed", btn.dataset.filter === filter);
+    btn.classList.toggle("active", btn.dataset.filter === filter);
   });
 
   // Only show "Clear completed" if there is something to clear
   clearBtn.style.visibility = tasks.some((t) => t.done) ? "visible" : "hidden";
 }
 
-// ---------- Editing a task (Edit button, or double-click the text) ----------
+// ---------- Editing a task (double-click) ----------
 function startEditing(li) {
   const id = Number(li.dataset.id);
-  const label = li.querySelector(".task-label");
-  if (!label) return; // already editing this task
-
-  // The edit box replaces the text, so give the checkbox its name directly while editing
-  li.querySelector("input[type=checkbox]").setAttribute("aria-label", label.textContent);
+  const label = li.querySelector("label");
 
   // Replace the label with a text box holding the current text
   const editInput = document.createElement("input");
   editInput.type = "text";
   editInput.className = "edit-input";
-  editInput.dataset.action = "editing";
-  editInput.enterKeyHint = "done";
-  editInput.setAttribute("aria-label", "Edit task text");
   editInput.value = label.textContent;
   label.replaceWith(editInput);
   editInput.focus();
@@ -254,30 +172,21 @@ function startEditing(li) {
   }
 
   editInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      // Saving moves focus to the Edit button. Without preventDefault, the browser would then
-      // treat this same Enter press as a click on that button and reopen the edit box.
-      e.preventDefault();
-      finish(true);
-    }
+    if (e.key === "Enter") finish(true);
     if (e.key === "Escape") finish(false);
   });
   editInput.addEventListener("blur", () => finish(true)); // clicking away saves
 }
 
 // ---------- Event listeners ----------
-// Pressing Enter in the text box (or tapping Add) submits the form and adds the task
-form.addEventListener("submit", (e) => {
-  e.preventDefault(); // stop the page from reloading
-  if (addTask(input.value, dueInput.value)) {
+// Press Enter in the main input to add a task
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    addTask(input.value, dueInput.value);
     input.value = "";
     dueInput.value = "";
   }
-  input.focus(); // ready for the next task
 });
-
-// Let the list be focused by code (used when the focused task disappears)
-list.tabIndex = -1;
 
 // One listener on the whole list handles every task (even ones added later)
 list.addEventListener("click", (e) => {
@@ -286,15 +195,12 @@ list.addEventListener("click", (e) => {
   const id = Number(li.dataset.id);
 
   if (e.target.matches("input[type=checkbox]")) toggleTask(id);
-  // The click may land on the icon inside a button, so look for the nearest button
-  const button = e.target.closest("button");
-  if (button && button.matches(".edit")) startEditing(li);
-  if (button && button.matches(".delete")) deleteTask(id);
+  if (e.target.matches(".delete")) deleteTask(id);
 });
 
-// Double-click a task's text to edit it (the Edit button does the same for touch and keyboard)
+// Double-click a task's text to edit it
 list.addEventListener("dblclick", (e) => {
-  if (e.target.matches(".task-label")) startEditing(e.target.closest("li"));
+  if (e.target.matches("label")) startEditing(e.target.closest("li"));
 });
 
 // Filter buttons

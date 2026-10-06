@@ -206,3 +206,64 @@ def test_database_path_env_var(tmp_path, monkeypatch):
     # A fresh app on the same path (a "restart") still sees the data.
     c2 = create_app(today_func=lambda: TODAY).test_client()
     assert [h["name"] for h in c2.get("/api/habits").get_json()] == ["Read"]
+
+
+def test_version_shown_in_footer(client):
+    from app import __version__
+    html = client.get("/").get_data(as_text=True)
+    assert f"v{__version__}" in html
+
+
+# ---- Rename ----
+
+def rename(client, hid, name):
+    return client.patch(f"/api/habits/{hid}", json={"name": name})
+
+
+def test_rename_keeps_history_and_streaks(client):
+    hid = add(client, "Excercise").get_json()["id"]
+    for i in range(3):
+        toggle(client, hid, TODAY - timedelta(days=i))
+    r = rename(client, hid, "  Exercise ")
+    assert r.status_code == 200
+    h = r.get_json()
+    assert h["id"] == hid and h["name"] == "Exercise"
+    assert h["current_streak"] == 3 and h["best_streak"] == 3
+    assert sum(d["done"] for d in h["days"]) == 3
+    assert client.get("/api/habits").get_json()[0]["name"] == "Exercise"
+
+
+def test_rename_max_length_ok(client):
+    hid = add(client).get_json()["id"]
+    assert rename(client, hid, "x" * 30).status_code == 200
+
+
+@pytest.mark.parametrize("name", ["", "   ", "x" * 31, None, 5])
+def test_rename_invalid_name(client, name):
+    hid = add(client, "Read").get_json()["id"]
+    assert rename(client, hid, name).status_code == 400
+    assert client.get("/api/habits").get_json()[0]["name"] == "Read"
+
+
+def test_rename_missing_or_non_json_body(client):
+    hid = add(client, "Read").get_json()["id"]
+    assert client.patch(f"/api/habits/{hid}", data="nope").status_code == 400
+    assert client.patch(f"/api/habits/{hid}", json={}).status_code == 400
+
+
+def test_rename_duplicate_case_insensitive(client):
+    add(client, "Read")
+    hid = add(client, "Run").get_json()["id"]
+    assert rename(client, hid, "READ").status_code == 409
+    assert client.get("/api/habits").get_json()[1]["name"] == "Run"
+
+
+def test_rename_to_own_name_or_change_case_ok(client):
+    hid = add(client, "excercise").get_json()["id"]
+    assert rename(client, hid, "excercise").status_code == 200
+    r = rename(client, hid, "Excercise")
+    assert r.status_code == 200 and r.get_json()["name"] == "Excercise"
+
+
+def test_rename_unknown_habit(client):
+    assert rename(client, 999, "Read").status_code == 404

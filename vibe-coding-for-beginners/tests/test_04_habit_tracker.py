@@ -79,3 +79,24 @@ def test_today_is_the_users_today(browser, server):
     page.wait_for_selector(".day.today.done")
     assert "Current streak: 1" in page.text_content(".streaks")
     ctx.close()
+
+
+def test_rename_keeps_the_streak_and_version_shows(page, server):
+    """Chapter 22: the rename feature request, released as 1.1.0."""
+    page.goto(server)
+    assert page.text_content("footer").strip().endswith("v1.1.0")
+    page.fill("#name", "Excercise")
+    page.press("#name", "Enter")
+    habit = page.locator(".habit").first
+    habit.locator(".day.today").click()
+    page.wait_for_selector(".day.today.done")
+    page.once("dialog", lambda d: d.accept("Exercise"))
+    habit.locator(".rename").click()
+    page.wait_for_selector(".habit-name:text-is('Exercise')")
+    assert "Excercise" not in page.text_content("#habits")
+    assert "Current streak: 1" in page.locator(".habit").first.locator(".streaks").text_content()
+    # A name that's too long is refused, and the old name stays.
+    page.once("dialog", lambda d: d.accept("x" * 31))
+    page.locator(".habit .rename").first.click()
+    page.wait_for_selector("#error:has-text('30 characters')")
+    assert page.locator(".habit-name").first.text_content().strip() == "Exercise"

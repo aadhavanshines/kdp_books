@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>To-Do List</h1>
+
+    <!-- Type a task and press Enter to add it -->
+    <!-- The date is optional; leave it empty for no due date -->
+    <div class="add-row">
+      <input id="new-task" type="text" placeholder="What needs to be done?" autofocus>
+      <input id="new-due" type="date" aria-label="Due date (optional)">
+    </div>
+
+    <!-- The script fills this list with tasks -->
+    <ul id="task-list"></ul>
+
+    <!-- Footer: counter, filters, and clear button -->
+    <footer>
+      <span id="count"></span>
+
+      <div class="filters">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="active">Active</button>
+        <button data-filter="done">Done</button>
+      </div>
+
+      <button id="clear-completed">Clear completed</button>
+    </footer>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
