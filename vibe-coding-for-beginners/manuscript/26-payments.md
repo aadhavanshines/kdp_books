@@ -1,6 +1,6 @@
 # Chapter 26: Taking Payments with Razorpay and Stripe
 
-Taking money is where a vibe-coded app stops being a hobby. A bug in a to-do app loses a task; a bug in a payment flow loses money, or trust, or both. This chapter shows how QuickBite takes payments safely with **Razorpay**, the main choice for India (UPI, cards, netbanking), and **Stripe**, a popular choice for international cards, and how to verify payment code you didn't write yourself.
+Taking money is where a vibe-coded app stops being a hobby. A bug in a to-do app loses a task; a bug in a payment flow loses money, or trust, or both. This chapter shows how QuickBite takes payments safely with **Razorpay**, a major payment provider in India (UPI, cards, netbanking), and **Stripe**, a popular choice for international cards, and how to verify payment code you didn't write yourself.
 
 ## Choosing a Payment Provider
 
@@ -158,7 +158,7 @@ Moving from test mode to live payments takes a few deliberate steps:
 
 ## Key Takeaways
 
-- Razorpay is the main choice for India; Stripe is invite-only for new Indian businesses, so it serves international customers.
+- Razorpay is a major payment provider in India; Stripe is invite-only for new Indian businesses, so it serves international customers.
 - The server sets the amount; secrets stay on the server; nothing is paid until a signature, the amount, and the currency are verified.
 - Signatures are HMAC-SHA256 codes over the raw message; compare them in a timing-safe way.
 - Verify payment code against the official SDKs, and test against the providers' test modes before going live.

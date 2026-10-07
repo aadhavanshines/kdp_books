@@ -1,4 +1,5 @@
 """Build the KDP paperback interior PDF (6 x 9 in, no bleed, embedded fonts)."""
+import os
 import re
 import textwrap
 
@@ -199,7 +200,11 @@ class BookDoc(BaseDocTemplate):
             odd = page % 2 == 1
             y_head = PAGE_H - TOP + 18
             if odd:
-                canv.drawRightString(PAGE_W - OUTSIDE, y_head, chapter.upper())
+                # Keep long chapter titles inside the text block (out of the gutter).
+                head = chapter.upper()
+                if pdfmetrics.stringWidth(head, "Sans", 8.5) > TEXT_W:
+                    head = head.split(":")[0]
+                canv.drawRightString(PAGE_W - OUTSIDE, y_head, head)
                 canv.drawRightString(PAGE_W - OUTSIDE, BOTTOM - 26, str(page))
             else:
                 canv.drawString(OUTSIDE, y_head, self.meta["title"].upper())
@@ -220,6 +225,12 @@ class BookDoc(BaseDocTemplate):
     def beforeDocument(self):
         self._outline_n = 0
         self._floats = []
+
+    def handle_pageBegin(self):
+        # Pick the template from the real page number. Alternating automatically drifts out of
+        # step after inserted blank pages, which put the narrow margin on the spine side.
+        self.pageTemplate = self.pageTemplates[0 if (self.page + 1) % 2 == 1 else 1]
+        super().handle_pageBegin()
 
     def handle_frameBegin(self, *args, **kw):
         super().handle_frameBegin(*args, **kw)
@@ -379,7 +390,9 @@ class FloatMarker(Flowable):
 
 
 def image_block(path, caption, styles):
-    return [Figure(path, caption, styles["caption"])]
+    # Terminal screenshots may be taller, so they keep the full text width and readable text.
+    max_h = 4.8 * inch if os.path.basename(str(path)).startswith("term-") else 3.4 * inch
+    return [Figure(path, caption, styles["caption"], max_h=max_h)]
 
 
 def callout(kind, text, styles):

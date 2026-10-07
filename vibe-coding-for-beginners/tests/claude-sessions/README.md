@@ -2,7 +2,7 @@
 
 Every prompt below was run with Claude Code (`claude -p`) while writing this book, in auto permission mode unless the chapter says otherwise. The replies are Claude's own words, unedited. Costs are API list-price estimates reported by Claude Code.
 
-47 sessions plus the 20-run model experiment; total cost of the logged sessions and the experiment: $101.15.
+48 sessions plus the 20-run model experiment; total cost of the logged sessions and the experiment: $101.54.
 
 ## 01. Ch. 4: a first web page
 
@@ -2030,6 +2030,23 @@ Phase 7 is built and committed. I proved it on the Hosting emulator with the rea
 `docs/LAUNCH.md` marks these as the points where you must check things yourself.
 
 *Model: claude-sonnet-5-5 (the session default). Cost: $2.52*
+
+## 48. Ch. 5: renaming the rounding row (follow-up, after a reader's review)
+
+**Prompt:**
+
+```
+The extra money from rounding up isn't necessarily a tip; it's
+just extra collected because of the rounding. Rename the row
+"Extra tip from rounding" to "Extra from rounding". Don't change
+anything else.
+```
+
+**Claude's reply:**
+
+I renamed the row from "Extra tip from rounding" to "Extra from rounding" in `index.html`. That label was the only thing I changed.
+
+*Model: claude-sonnet-5-5. Turns: 2, cost: $0.39. A diff against the previous file confirmed that only that one line changed.*
 
 ## Ch. 22: the model-choice experiment
 

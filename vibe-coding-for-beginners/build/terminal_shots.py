@@ -87,9 +87,10 @@ def load_lines(path, lines=None, start=None, stop=None, drop=()):
 def render(ansi_file, out_png, theme="dark", title="Terminal", lines=None, start=None, stop=None,
            drop=()):
     t = THEMES[theme]
-    # Every window is drawn at the full terminal width, so text is the same size in every shot.
+    # The window is as wide as its longest line (at least 64 columns), so captures with short
+    # lines print with larger text instead of a band of empty terminal on the right.
     text = load_lines(ansi_file, lines, start, stop, drop)
-    cols = max([92] + [len(re.sub(r"\x1b\[[0-9;:]*m", "", r).rstrip()) for r in text.split("\n")])
+    cols = max([64] + [len(re.sub(r"\x1b\[[0-9;:]*m", "", r).rstrip()) for r in text.split("\n")])
     body = Ansi2HTMLConverter(inline=True, dark_bg=(theme == "dark"), line_wrap=False).convert(
         text, full=False)
     page = f"""<!doctype html><html><head><meta charset="utf-8"><style>

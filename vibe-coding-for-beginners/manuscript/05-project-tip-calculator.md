@@ -134,6 +134,23 @@ Claude didn't just add a checkbox. It tested several cases, including the tricky
 
 When the finished page was opened in a real browser for this book, every one of those numbers matched.
 
+One word in that reply deserves a second look. The money added by rounding up isn't really a *tip*; it's just extra collected because of the rounding. Small wording fixes like this are worth a short, precise follow-up:
+
+```
+The extra money from rounding up isn't necessarily a tip; it's
+just extra collected because of the rounding. Rename the row
+"Extra tip from rounding" to "Extra from rounding". Don't change
+anything else.
+```
+
+```
+Claude's reply:
+I renamed the row from "Extra tip from rounding" to "Extra from
+rounding" in index.html. That label was the only thing I changed.
+```
+
+"Don't change anything else" keeps a small request small. Comparing the file before and after confirmed that only that one line changed.
+
 ![The finished tip calculator after the round-up feature: $100 with an 18% tip for 3 people, rounded up to $40.00 each.](images/shot-tip-calculator.png)
 
 ## Reading the Code (Just a Little)

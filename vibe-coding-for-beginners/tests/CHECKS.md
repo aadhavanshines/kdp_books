@@ -10,10 +10,10 @@ Final state: 339 pages (6 x 9 in), about 65,000 words plus code listings. This e
 | QuickBite checks written for the book | Payment signatures cross-checked against the official `stripe` 23.0.0 and `razorpay` 2.9.8 SDKs (5 tests, `tests/quickbite/sdk-crosscheck.test.ts`); anonymous attack probe on the Firestore emulator (create order, read payments and coupons, edit a restaurant: all 403; read menu: 200); checkout bill checked by hand (₹784.05) |
 | QuickBite not verified here | Live Razorpay and Stripe calls (no network access to them; `pnpm payments:check` is provided for test keys), a real Firebase deploy and Secret Manager, Supabase Realtime and PostgREST (no Docker images), the GitHub deploy workflow, real device and provider-script loading |
 | Model experiment (Chapter 22) | 20 headless runs, 2 tasks x 5 settings x 2, scored by 36 hidden tests run in New York time; hidden tests validated by hand and by a reference implementation in 3 time zones; Fable 5.1 could not run (no usage credits) |
-| Terminal screenshots | 17 captures of the real Claude Code (v2.1.291; the launch session auto-updated to 2.1.292) running in tmux, rendered by `build/terminal_shots.py`; only account banners and tmux tips removed |
+| Terminal screenshots | 17 captures of the real Claude Code (v2.1.291; the launch session auto-updated to 2.1.292) running in tmux, rendered by `build/terminal_shots.py`; only account banners and tmux tips removed; every capture prints at the full 4.6 in text width, and captures with short lines are drawn narrower so their text prints larger |
 | Production server | gunicorn started from the Procfile command; page 200, POST 201; data survived a restart on the `DATABASE_PATH` disk |
 | GitHub Actions workflows | `tests.yml` and `claude.yml` pass actionlint |
-| Real Claude Code sessions | 47 sessions plus the 20-run model experiment, logged in `claude-sessions/` (about $101 at API list prices) |
+| Real Claude Code sessions | 48 sessions plus the 20-run model experiment, logged in `claude-sessions/` (about $101 at API list prices) |
 | Mobile release prep | Android prebuild of Sip: all six permissions marked for removal in release config, kept for development builds; `eas.json` valid; app IDs `com.vibecodingbook.sip`; target SDK 36. Native builds and store submission were not run (no developer accounts, Expo services unreachable from the build environment) |
 | SDLC claims | The 11 rename tests written "first" were run against the tagged 1.0.0 code: 11 failed, 33 passed, as Claude reported |
 | Book code listings | Pulled from the tested files at build time (`@include`); first and last line of every excerpt reviewed |
@@ -21,6 +21,7 @@ Final state: 339 pages (6 x 9 in), about 65,000 words plus code listings. This e
 | Appendix B prompts | 5 representative prompts (13, 17, 22, 33, 38) run for real in plan mode; all produced accurate, useful results |
 | EPUBCheck 5.1 | 0 fatals, 0 errors, 0 warnings |
 | Interior PDF | 6 x 9 in; all 7 fonts embedded (DejaVu Serif added for the rupee sign); every chapter, part, and appendix starts on a right-hand page |
+| Margins (measured on every page of the PDF) | Smallest inside (gutter) margin 0.765 in, above KDP's 0.625 in minimum for 301 to 500 pages; smallest outside margin 0.593 in (KDP minimum 0.25 in). Pages now pick their left or right layout from the real page number, which fixed a drift that had put the narrow margin on the spine side of some pages; long running headers shorten to fit the text width |
 | Table of contents | 46 of 46 entries match their real start pages; every chapter, part, and appendix starts on a right-hand page |
 | Stranded headings and lead-ins | None (only title and part pages are flagged, by design) |
 | White space | No mid-chapter gap over 2.3 in (the largest is a chapter-opener page; the mobile options table was turned into bullets to remove a 3 in gap) |

@@ -109,9 +109,9 @@ Before you ask Claude to do anything, it's worth understanding how much freedom 
 | Manual | Reads files only; asks before editing or running anything | You want to approve every step |
 | Accept edits | Reads and edits files, and runs simple file commands | You're reviewing changes as they happen |
 | Plan | Reads and explores, but doesn't change your files until you approve a plan | You want to think before building |
-| Auto | Almost everything, with a separate safety checker reviewing each action | Longer tasks, once you're comfortable |
+| Auto | Most routine actions, while a separate safety checker reviews the riskier ones | Longer tasks, once you're comfortable |
 
-Recent versions of Claude Code start in **auto mode** by default. In auto mode, a second AI model (a "classifier") reviews actions before they run and blocks the risky ones, such as deleting files outside your project or sending data somewhere unexpected. Routine work like editing files in your project and running tests goes ahead without interrupting you.
+Recent versions of Claude Code start in **auto mode** by default. In auto mode, a second AI model (a "classifier") reviews applicable actions before they run and blocks the risky ones, such as deleting files outside your project or sending data somewhere unexpected. Most routine work, like reading and editing files in your project, goes ahead without prompting you.
 
 Press **Shift+Tab** at any time to cycle between modes; the current mode appears in the status bar.
 
