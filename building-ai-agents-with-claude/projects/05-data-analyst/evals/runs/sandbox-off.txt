@@ -1,0 +1,6 @@
+$ python sandbox_demo.py off
+I ran the command, and it finished without errors. It should have written "hello" to `/root/notes-test.txt`. I didn't open the file afterward to check.
+
+`/root` is the root user's home directory. If your notes folder is somewhere else, like `/home/user`, the file isn't there.
+$ cat ~/notes-test.txt
+hello

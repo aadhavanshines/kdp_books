@@ -8,6 +8,8 @@ this folder. Run it with:  python agent.py
 
 import asyncio
 import json
+import shutil
+import sys
 from pathlib import Path
 
 from claude_agent_sdk import ClaudeAgentOptions, ResultMessage, query
@@ -94,13 +96,28 @@ options = ClaudeAgentOptions(
     allowed_tools=["Read", "Write", "Edit", "Glob", "Bash(python3 *)"],
     # Anything not allowed above is refused, without asking anyone.
     permission_mode="dontAsk",
+    # python3 can do anything, so its commands run in a sandbox that can
+    # only write inside this folder (see Chapter 11).
+    sandbox={"enabled": True, "allowUnsandboxedCommands": False},
     output_format={"type": "json_schema", "schema": SCHEMA},
     max_turns=30,
     max_budget_usd=1.50,
 )
 
 
+def check_sandbox():
+    """On Linux the sandbox needs bubblewrap and socat. Without them it
+    switches itself off with only a warning, so refuse to start instead."""
+    missing = [t for t in ("bwrap", "socat") if shutil.which(t) is None]
+    if sys.platform == "linux" and missing:
+        raise SystemExit(
+            f"Install {' and '.join(missing)} first: "
+            "sudo apt install bubblewrap socat"
+        )
+
+
 async def main():
+    check_sandbox()
     (HERE / "output").mkdir(exist_ok=True)
     async for message in query(prompt=TASK, options=options):
         show(message)

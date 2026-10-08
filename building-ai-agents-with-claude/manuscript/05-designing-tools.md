@@ -77,7 +77,7 @@ Either way, the message is for Claude, so make it specific: "No email with id 03
 Whatever a tool does, it should check its own inputs, even if the system prompt already tells Claude the rules. The support desk's refund tool in Chapter 10 refuses to refund an order that hasn't been verified, refuses to pay back more than the customer paid, and holds big refunds for the owner, all in plain Python:
 
 ```
-@include projects/06-support-desk/desk.py#L91-L98
+@include projects/06-support-desk/desk.py::Desk.tools.issue_refund
 ```
 
 This is the most important tool rule in the book. **The system prompt asks; the tool enforces.** A prompt can be argued with. A Python `if` can't.

@@ -11,30 +11,39 @@ from pathlib import Path
 CALLOUT_RE = re.compile(r"^\*\*(Tip|Try It|Warning|Note):\*\*\s*(.*)$", re.S)
 
 
-INCLUDE_RE = re.compile(r"^@include (\S+?)(?:#L(\d+)-L?(\d+)|::([\w,]+))?$")
+INCLUDE_RE = re.compile(r"^@include (\S+?)(?:#L(\d+)-L?(\d+)|::([\w.,]+))?$")
 
 
 def python_parts(source, names):
-    """The source of top-level functions, classes or assignments with these names
-    (decorators included), in file order, separated by a blank line."""
+    """The source of the named Python definitions (decorators included), in the
+    order asked for, separated by blank lines. A name can be dotted to reach
+    inside a class or function, like 'Desk.tools.issue_refund'."""
     import ast
     tree = ast.parse(source)
     lines = source.split("\n")
-    wanted, parts = set(names), []
-    for node in tree.body:
-        found = None
-        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
-            found = node.name
-        elif isinstance(node, (ast.Assign, ast.AnnAssign)):
-            targets = node.targets if isinstance(node, ast.Assign) else [node.target]
-            found = next((t.id for t in targets if isinstance(t, ast.Name)), None)
-        if found in wanted:
-            start = min([node.lineno] + [d.lineno for d in getattr(node, "decorator_list", [])])
-            parts.append("\n".join(lines[start - 1:node.end_lineno]))
-            wanted.discard(found)
-    if wanted:
-        raise ValueError(f"@include: not found: {sorted(wanted)}")
-    return "\n\n\n".join(parts) if len(parts) > 1 else parts[0]
+
+    def find(body, path):
+        for node in body:
+            found = None
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                found = node.name
+            elif isinstance(node, (ast.Assign, ast.AnnAssign)):
+                targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+                found = next((t.id for t in targets if isinstance(t, ast.Name)), None)
+            if found == path[0]:
+                return node if len(path) == 1 else find(getattr(node, "body", []), path[1:])
+        return None
+
+    parts = []
+    for name in names:
+        node = find(tree.body, name.split("."))
+        if node is None:
+            raise ValueError(f"@include: not found: {name}")
+        start = min([node.lineno] + [d.lineno for d in getattr(node, "decorator_list", [])])
+        block = lines[start - 1:node.end_lineno]
+        indent = min(len(l) - len(l.lstrip()) for l in block if l.strip())
+        parts.append("\n".join(l[indent:] for l in block))
+    return "\n\n\n".join(parts)
 
 
 def expand_include(code, root):

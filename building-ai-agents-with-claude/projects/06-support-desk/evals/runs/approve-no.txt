@@ -1,0 +1,27 @@
+$ python -W ignore approve.py
+→ find_order {"order_id": "CB-1187", "phone_last4": "1187"}
+  ← Order CB-1187 for Rahul N: Black forest cake 2 kg, Rs. 1800, status
+delivered, ordered on 2026-10-04, delivery to 5 Second Avenue, Anna Nagar,
+delivered at 2026-10-06 19:10.
+→ issue_refund {"order_id": "CB-1187", "amount": 1800, "reason": "Cake arrived
+damaged (squashed), reported within 24 hours of delivery"}
+Approve refund of Rs. 1800 on CB-1187? (Cake arrived damaged (squashed),
+reported within 24 hours of delivery)
+Owner, type y or n: n
+  ← The owner declined this refund. Offer a replacement cake instead, and
+escalate if the customer isn't happy.
+╭─ Claude ─────────────────────────────────────────────────────────────────────╮
+│ I'm sorry your black forest cake arrived squashed. I found your order, and   │
+│ you reported it within 24 hours of delivery, so it qualifies for a remedy.   │
+│                                                                              │
+│ I tried to process the refund, but the owner has declined it for this order. │
+│ What I can offer is a **free replacement** 2 kg black forest cake.           │
+│                                                                              │
+│ If you'd like the replacement, tell me and I'll arrange it. Please also tell │
+│ me what date and time you'd like it delivered.                               │
+│                                                                              │
+│ If a replacement doesn't work for you, tell me and I'll pass your case to    │
+│ Amudha, the owner, to review.                                                │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Done: 3 turns, 8.7 s, $0.0142
+$

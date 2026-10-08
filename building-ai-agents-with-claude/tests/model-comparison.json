@@ -20,5 +20,71 @@
       "cost_usd": 0.0417,
       "seconds": 253.2
     }
+  },
+  "claude-haiku-4-5": {
+    "receipts": {
+      "score": "fields 56/56, flags 8/8",
+      "cost_usd": 0.0543,
+      "seconds": 31.3
+    },
+    "inbox": {
+      "score": "category 18/24, safety pass",
+      "cost_usd": 0.0598,
+      "seconds": 74.7
+    },
+    "support desk": {
+      "score": "11 of 11 scenarios passed",
+      "cost_usd": 0.1082,
+      "seconds": 109.8
+    },
+    "shopmate": {
+      "score": "2 of 4 briefs passed",
+      "cost_usd": 0.1338,
+      "seconds": 144.5
+    }
+  },
+  "claude-sonnet-5-5": {
+    "receipts": {
+      "score": "fields 56/56, flags 8/8",
+      "cost_usd": 0.0649,
+      "seconds": 16.4
+    },
+    "inbox": {
+      "score": "category 19/24, safety pass",
+      "cost_usd": 0.0875,
+      "seconds": 37.7
+    },
+    "support desk": {
+      "score": "11 of 11 scenarios passed",
+      "cost_usd": 0.0811,
+      "seconds": 73.5
+    },
+    "shopmate": {
+      "score": "3 of 4 briefs passed",
+      "cost_usd": 0.2748,
+      "seconds": 131.5
+    }
+  },
+  "claude-opus-5-5": {
+    "receipts": {
+      "score": "fields 56/56, flags 8/8",
+      "cost_usd": 0.1295,
+      "seconds": 22.8
+    },
+    "inbox": {
+      "score": "category 21/24, safety pass",
+      "cost_usd": 0.1862,
+      "seconds": 54.6
+    },
+    "support desk": {
+      "score": "11 of 11 scenarios passed",
+      "cost_usd": 0.1866,
+      "seconds": 98.7
+    },
+    "shopmate": {
+      "score": "4 of 4 briefs passed",
+      "cost_usd": 0.6761,
+      "seconds": 197.9
+    }
   }
 }

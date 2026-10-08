@@ -2,77 +2,57 @@
   "date": "2026-10-08",
   "follow_ups": [
     {
-      "item": "CB-1204: call Karthik, send ingredient list, confirm whether hazelnut was in the brownies",
-      "since": "2026-10-06",
-      "status": "open"
-    },
-    {
-      "item": "Kavya: answer whether the orange almond cake is gluten-free",
-      "since": "2026-10-01",
-      "status": "open"
-    },
-    {
-      "item": "CB-1201: Rs 7,200 refund awaiting your approval",
+      "item": "CB-1204: check that Karthik was called and got the full ingredient list, and that the nut labelling on Instagram has been fixed",
       "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Rahul: Rs 1,800 refund for CB-1187; check whether it is logged",
-      "since": "2026-10-05",
-      "status": "open"
-    },
-    {
-      "item": "TechSoft: send 120-brownie quote (was due 7 Oct)",
-      "since": "2026-10-04",
-      "status": "open"
-    },
-    {
-      "item": "Place orders for maida, cocoa powder and eggs (butter not due yet)",
+      "item": "CB-1201: check whether the Rs. 7200 refund was approved or declined",
       "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Priya: reply with price and payment for Sunday 11 Oct truffle cake",
-      "since": "2026-10-06",
+      "item": "CB-1187: check whether Rahul's Rs. 1,800 damaged-cake refund has been logged and resolved",
+      "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Anita: check whether CB-1192 can be made eggless; her Tuesday date has passed, so confirm delivery",
-      "since": "2026-10-04",
+      "item": "Check that the TechSoft quote for 120 brownies was sent",
+      "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Janani: reply about wedding cake tasting and pricing",
-      "since": "2026-10-02",
+      "item": "Check that Priya's order for 11 Oct has been confirmed and paid",
+      "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Meera: reply with wholesale cupcake rates",
-      "since": "2026-10-05",
+      "item": "Check that the maida, butter and cocoa orders were placed",
+      "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Fresh Dairy INV-2291, Rs 18,450: verify bank details and pay before 15 Oct",
-      "since": "2026-10-06",
+      "item": "Check whether the BoxKraft delivery of 200 cake boxes (tracking BK77812, expected 4 Oct) has arrived",
+      "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Check FSSAI expiry on the official site",
-      "since": "2026-10-01",
+      "item": "Pay Fresh Dairy invoice INV-2291 for Rs. 18,450 by 15 Oct",
+      "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Check Razorpay dashboard directly for any settlement hold",
-      "since": "2026-10-06",
-      "status": "open"
-    },
-    {
-      "item": "Confirm BoxKraft's 200 cake boxes (due 4 Oct) arrived",
+      "item": "Check that Kavya got an answer on whether the orange almond cake is gluten-free",
       "since": "2026-10-08",
       "status": "open"
     },
     {
-      "item": "Maida price rises from 1 Nov: place the October order before 31 Oct",
+      "item": "Check that Anita's eggless change for CB-1192 was handled",
+      "since": "2026-10-08",
+      "status": "open"
+    },
+    {
+      "item": "Check that Janani (wedding tasting) and Meera's Corner (wholesale cupcakes) got replies",
       "since": "2026-10-08",
       "status": "open"
     }

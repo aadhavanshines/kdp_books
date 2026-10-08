@@ -1,6 +1,7 @@
 """Chat with the support desk in your terminal.  Run:  python chat.py
 Type a message and press Enter. Type 'quit' to stop.
 """
+
 import asyncio
 
 from claude_agent_sdk import ClaudeSDKClient

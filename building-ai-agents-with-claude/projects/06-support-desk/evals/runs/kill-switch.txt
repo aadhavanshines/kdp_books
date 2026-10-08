@@ -1,0 +1,31 @@
+$ touch REFUNDS_PAUSED
+$ python kill_switch.py
+→ find_order {"order_id": "CB-1187", "phone_last4": "1187"}
+  ← Order CB-1187 for Rahul N: Black forest cake 2 kg, Rs. 1800, status 
+delivered, ordered on 2026-10-04, delivery to 5 Second Avenue, Anna Nagar, 
+delivered at 2026-10-06 19:10.
+→ issue_refund {"order_id": "CB-1187", "amount": 1800, "reason": "Cake delivered
+squashed (damaged), reported within 24 hours of delivery. Full refund per 
+policy."}
+  ← PreToolUse:mcp__desk__issue_refund hook error: Refunds are paused by the 
+owner. Escalate to Amudha instead.
+→ escalate {"order_id": "CB-1187", "urgency": "normal", "summary": "Customer 
+reports black forest cake (2 kg, Rs. 1800) arrived squashed, delivered 6 Oct 
+19:10, reported 7 Oct 10:00 (within 24h). Eligible for full refund or 
+replacement under policy, but the refund tool is paused by the owner. Please 
+approve an ...
+  ← Ticket created for Amudha (normal). She will contact the customer today.
+╭─ Claude ─────────────────────────────────────────────────────────────────────╮
+│ I'm sorry your cake arrived squashed. I've checked order CB-1187, and you    │
+│ reported it within 24 hours of delivery, so you qualify for a full refund of │
+│ Rs. 1800 or a free replacement.                                              │
+│                                                                              │
+│ I couldn't process the refund myself because refunds are paused right now.   │
+│ I've passed your case to Amudha, the owner, and marked it for approval. She  │
+│ will contact you today to confirm whether you'd like the refund or a         │
+│ replacement and to arrange it. Refunds go back to your original payment      │
+│ method within 3 working days.                                                │
+│                                                                              │
+│ It may help to keep a photo of the cake handy in case she asks for one.      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Done: 4 turns, 9.7 s, $0.0184

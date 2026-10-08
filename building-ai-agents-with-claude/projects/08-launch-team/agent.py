@@ -138,6 +138,8 @@ options = ClaudeAgentOptions(
         "Bash(python3 *)",
     ],
     permission_mode="dontAsk",
+    # The specialists run python3, so every command runs in the sandbox.
+    sandbox={"enabled": True, "allowUnsandboxedCommands": False},
     hooks={
         "SubagentStart": [HookMatcher(hooks=[subagent_started])],
         "SubagentStop": [HookMatcher(hooks=[subagent_stopped])],

@@ -1,38 +1,45 @@
 # Amudha's Home Bakes: Year in Review (Oct 2025 – Sep 2026)
 
-You took **3,448 orders** and earned **Rs. 34,39,340** from products (delivery charges not included).
+Total revenue for the year was **Rs. 34,39,340** (cake, brownie, cupcake and hamper sales; delivery charges not included).
 
-## Monthly revenue
+## 1. Monthly revenue
+
+| Month | Revenue |
+|---|---|
+| Oct 2025 | Rs. 3,36,755 |
+| Nov 2025 | Rs. 2,04,090 |
+| Dec 2025 | Rs. 2,71,315 |
+| Jan 2026 | Rs. 2,16,370 |
+| Feb 2026 | Rs. 2,24,270 |
+| Mar 2026 | Rs. 2,75,735 |
+| Apr 2026 | Rs. 2,96,100 |
+| May 2026 | Rs. 3,08,640 |
+| Jun 2026 | Rs. 2,98,820 |
+| Jul 2026 | Rs. 3,20,535 |
+| **Aug 2026** | **Rs. 3,48,410** (best month) |
+| Sep 2026 | Rs. 3,38,300 |
+
+October 2025 was strong, November was the weakest month, and sales have climbed steadily since February. August 2026 beat even last October.
+
 ![Monthly revenue](monthly-revenue.png)
 
-| Month | Revenue | Month | Revenue |
-|---|---|---|---|
-| Oct 2025 | Rs. 3,36,755 | Apr 2026 | Rs. 2,96,100 |
-| Nov 2025 | Rs. 2,04,090 | May 2026 | Rs. 3,08,640 |
-| Dec 2025 | Rs. 2,71,315 | Jun 2026 | Rs. 2,98,820 |
-| Jan 2026 | Rs. 2,16,370 | Jul 2026 | Rs. 3,20,535 |
-| Feb 2026 | Rs. 2,24,270 | Aug 2026 | **Rs. 3,48,410** |
-| Mar 2026 | Rs. 2,75,735 | Sep 2026 | Rs. 3,38,300 |
+## 2. Top 5 products by revenue
 
-**Best month: August 2026** (Rs. 3,48,410). October 2025 was close behind. The slowest month was November 2025, then a dip in January and February.
+1. Chocolate truffle cake: Rs. 9,38,000
+2. Rasmalai cake: Rs. 4,91,050
+3. Black forest cake: Rs. 4,83,825
+4. Red velvet cake: Rs. 3,77,150
+5. Butterscotch cake: Rs. 2,78,775
 
-## Top 5 products by revenue
+Chocolate truffle brings in almost twice as much as any other product.
+
 ![Top products](top-products.png)
 
-1. Chocolate truffle cake – Rs. 9,38,000
-2. Rasmalai cake – Rs. 4,91,050
-3. Black forest cake – Rs. 4,83,825
-4. Red velvet cake – Rs. 3,77,150
-5. Butterscotch cake – Rs. 2,78,775
+## 3. Which area grew fastest?
 
-Chocolate truffle alone brings in over a quarter of all revenue.
+Comparing the number of orders in Oct–Dec 2025 with Jul–Sep 2026:
 
-## Which area grew fastest?
-![Area growth](area-growth.png)
-
-Comparing orders in Oct–Dec 2025 with Jul–Sep 2026:
-
-| Area | Orders before | Orders now | Change |
+| Area | Orders then | Orders now | Change |
 |---|---|---|---|
 | **OMR** | 30 | 119 | **+296.7%** |
 | Anna Nagar | 288 | 365 | +26.7% |
@@ -41,15 +48,27 @@ Comparing orders in Oct–Dec 2025 with Jul–Sep 2026:
 | T. Nagar | 90 | 93 | +3.3% |
 | Other | 92 | 91 | -1.1% |
 
-OMR grew fastest, though from a small start. Anna Nagar is still your biggest area.
+OMR is the clear winner: nearly four times as many orders as before, though it started from a small base. Anna Nagar is still your biggest area overall.
 
-## Eggless cakes
-Eggless share of cake orders: **31.3%** in Oct–Dec 2025, up to **34.7%** in Jul–Sep 2026.
+![Area growth](area-growth.png)
 
-## Average rating by channel
-Walk-in 4.47, Instagram 4.42, WhatsApp 4.41, Website 4.31. All are good, but the website is lowest.
+## 4. Eggless cakes
+
+Eggless orders were **31.3%** of cake orders in Oct–Dec 2025 and **34.7%** in Jul–Sep 2026. About one in three cakes is now eggless, and the share is rising.
+
+## 5. Average rating by channel
+
+| Channel | Average rating (out of 5) |
+|---|---|
+| Walk-in | 4.47 |
+| Instagram | 4.42 |
+| WhatsApp | 4.41 |
+| Website | 4.31 |
+
+Customers are happy everywhere. The differences are small, but the website is the lowest.
 
 ## Three suggestions
-1. **Focus on OMR.** Orders almost quadrupled. Try an OMR delivery offer or an Instagram post aimed at that area, before a competitor takes it.
-2. **Plan for the slow months.** November and January–February are weak. Run early festive-hamper bookings or a Valentine's special to fill them.
-3. **Keep growing eggless and fix the website.** Eggless is a rising share, so offer it on more flavours, especially the top sellers. Also check website orders (delivery time, packaging, checkout) to find why ratings trail the other channels.
+
+1. **Invest in OMR.** Orders there have almost quadrupled. Consider OMR-specific delivery slots or a small launch offer, and check whether delivery charges there are putting people off or are set right.
+2. **Plan for the Oct–Nov swing and the winter dip.** Sales fell from Rs. 3,36,755 in October to Rs. 2,04,090 in November, and stayed low until February. Run festive hampers or pre-order offers in November and January to smooth this out.
+3. **Lean on chocolate truffle and eggless options.** Keep chocolate truffle always available and promote it. Since eggless share is growing, offer eggless versions of your top cakes (Rasmalai, Black Forest, Red Velvet) clearly on Instagram and the website. Also look at why website ratings trail the others, for example by checking delivery time or packaging for web orders.

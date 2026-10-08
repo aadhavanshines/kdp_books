@@ -1,0 +1,10 @@
+$ python sandbox_demo.py on
+I couldn't save the file. The write to `/root/notes-test.txt` failed with "Read-only file system". The sandbox only allows writes to the working directory, `$TMPDIR` and a few other paths, and `/root` isn't one of them. I didn't try to get around that.
+
+You could do either of these:
+- Run the command yourself in a normal shell, outside the sandbox.
+- Add `/root` to the sandbox's writable paths, and I'll run it again.
+
+I can also write the file somewhere that's already writable, such as the current project directory, if that works for you.
+$ cat ~/notes-test.txt
+cat: ~/notes-test.txt: No such file or directory

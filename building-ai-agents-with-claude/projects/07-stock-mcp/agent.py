@@ -27,8 +27,9 @@ options = ClaudeAgentOptions(
             "type": "stdio",
             "command": sys.executable,
             "args": [str(HERE / "stock_server.py")],
+            # Load its tools before the first turn (see the chapter).
             "alwaysLoad": True,
-        }  # load its tools before the first turn
+        }
     },
     tools=["ListMcpResourcesTool", "ReadMcpResourceTool"],
     allowed_tools=[
@@ -37,9 +38,8 @@ options = ClaudeAgentOptions(
         "ListMcpResourcesTool",
         "ReadMcpResourceTool",
     ],
-    disallowed_tools=[
-        "mcp__stock__record_usage"
-    ],  # planning only: it can't change stock
+    # Planning only: this agent can't change the stock.
+    disallowed_tools=["mcp__stock__record_usage"],
     max_turns=20,
     max_budget_usd=0.75,
 )
