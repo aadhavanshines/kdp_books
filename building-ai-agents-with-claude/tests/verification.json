@@ -1,0 +1,62 @@
+{
+  "time": "2026-10-08T03:36:20+00:00",
+  "sdk": "0.2.164",
+  "results": [
+    {
+      "project": "01-pantry-chef",
+      "passed": true,
+      "cost_usd": 0.0296,
+      "detail": ""
+    },
+    {
+      "project": "02-inbox-triage",
+      "passed": true,
+      "cost_usd": 0.0963,
+      "detail": ""
+    },
+    {
+      "project": "03-receipt-scanner",
+      "passed": true,
+      "cost_usd": 0.0743,
+      "detail": ""
+    },
+    {
+      "project": "04-research-analyst",
+      "passed": true,
+      "cost_usd": 0.0597,
+      "detail": ""
+    },
+    {
+      "project": "05-data-analyst",
+      "passed": true,
+      "cost_usd": 0.0861,
+      "detail": ""
+    },
+    {
+      "project": "06-support-desk",
+      "passed": true,
+      "cost_usd": 0.125,
+      "detail": ""
+    },
+    {
+      "project": "07-stock-mcp",
+      "passed": true,
+      "cost_usd": 0.0318,
+      "detail": ""
+    },
+    {
+      "project": "08-launch-team",
+      "passed": true,
+      "cost_usd": 0.377,
+      "detail": ""
+    },
+    {
+      "project": "09-shopmate",
+      "passed": true,
+      "cost_usd": 0.158,
+      "detail": ""
+    }
+  ],
+  "passed": 9,
+  "total": 9
+}

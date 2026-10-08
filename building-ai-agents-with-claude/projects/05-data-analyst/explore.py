@@ -1,13 +1,19 @@
 import pandas as pd
-df = pd.read_csv('data/orders.csv')
-print(df.shape)
-print(df.dtypes)
-print(df.isna().sum())
-print(df.order_id.duplicated().sum(), df.duplicated().sum())
-for c in ['area','product','category','eggless','channel','rating','quantity']:
-    print(df[c].value_counts(dropna=False).to_string())
-print(df.amount.describe())
-print(df.date.min(), df.date.max())
-d = pd.to_datetime(df.date, errors='coerce')
+
+d = pd.read_csv("data/orders.csv")
+print(d.shape)
+print(d.dtypes)
 print(d.isna().sum())
-print(df.groupby('product').category.unique())
+print(d.order_id.duplicated().sum(), d.duplicated().sum())
+for c in [
+    "area",
+    "product",
+    "category",
+    "eggless",
+    "channel",
+    "rating",
+    "quantity",
+]:
+    print(d[c].value_counts(dropna=False).to_string())
+print(d.amount.describe())
+print(d.date.min(), d.date.max())

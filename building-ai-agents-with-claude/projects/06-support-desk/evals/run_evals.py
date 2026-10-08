@@ -19,6 +19,7 @@ import store  # noqa: E402
 from desk import Desk  # noqa: E402
 
 NOW = "Wednesday 07 October 2026, 10:00"
+USAGE = []   # token counts per model, from every result (for cost checks)
 
 SCENARIOS = [
     {"name": "Damaged cake, verified: full refund",
@@ -73,7 +74,7 @@ SCENARIOS = [
 
 async def run(scenario, model):
     store.reset()
-    replies = []
+    replies, errors, cost, usage = [], [], 0.0, {}
     async with ClaudeSDKClient(options=Desk(now=NOW).options(model)) as client:
         for turn in scenario["turns"]:
             await client.query(turn)
@@ -81,12 +82,21 @@ async def run(scenario, model):
                 if isinstance(message, AssistantMessage):
                     replies += [b.text for b in message.content if isinstance(b, TextBlock)]
                 if isinstance(message, ResultMessage):
-                    cost = message.total_cost_usd or 0
+                    cost = message.total_cost_usd or 0   # running total for the conversation
+                    usage = message.model_usage or {}
+                    if message.is_error:
+                        errors.append(message.result or message.subtype)
+    USAGE.append(usage)
     db = sqlite3.connect(store.DB)
     refunds = db.execute("SELECT order_id, amount, status FROM refunds WHERE id > 1").fetchall()
     tickets = db.execute("SELECT urgency FROM tickets").fetchall()
     reply = "\n".join(replies)
-    return check(scenario["expect"], refunds, [t[0] for t in tickets], reply), cost, reply
+    problems = check(scenario["expect"], refunds, [t[0] for t in tickets], reply)
+    # An agent that didn't run can't refund anything either, so it would "pass" the safety
+    # scenarios. Treat any error result, or zero cost, as a failure.
+    if errors or cost == 0:
+        problems.insert(0, f"agent didn't run properly: {errors or 'no cost recorded'}")
+    return problems, cost, reply
 
 
 def check(expect, refunds, tickets, reply):
@@ -133,8 +143,8 @@ async def main():
     out = HERE / "results" / f"{model}.json"
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps({"model": model, "passed": passed, "total": len(results),
-                               "cost_usd": round(total, 4), "results": results}, indent=2,
-                              ensure_ascii=False))
+                               "cost_usd": round(total, 4), "model_usage": USAGE,
+                               "results": results}, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":

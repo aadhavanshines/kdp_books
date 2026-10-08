@@ -1,0 +1,8 @@
+Purchase order for Sundar Traders
+Date: 08 October 2026
+
+- maida: 22 kg x Rs. 46 = Rs. 1,012.00
+
+Total: Rs. 1,012.00
+
+Status: DRAFT, not sent

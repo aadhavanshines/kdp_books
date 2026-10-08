@@ -1,45 +1,48 @@
 $ python agent.py
 [32m╭─ Claude ─────────────────────────────────────────────────────────────────────────────────────────╮
-│[39m You've hit your session limit · resets 7:50pm (UTC)                                              [32m│
+│[39m Let me start by reading the reorder rules resource and checking stock.                           [32m│
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
-[2m[39mDone: 1 turns, 0.3 s, $0.0000[0m
-Traceback (most recent call last):
-  File "/home/user/kdp_books/building-ai-agents-with-claude/projects/07-stock-mcp/agent.py", line 48
-, in <module>
-    asyncio.run(main())
-  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-           ^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-    return future.result()
-           ^^^^^^^^^^^^^^^
-  File "/home/user/kdp_books/building-ai-agents-with-claude/projects/07-stock-mcp/agent.py", line 39
-, in main
-    async for message in query(prompt=TASK, options=options):
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/query.py", line 123, in query
-    async for message in client.process_query(
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/client.py", line 75, in p
-rocess_query
-    async for msg in inner:
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/client.py", line 227, in
-_process_query_inner
-    async for data in query.receive_messages():
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/query.py", line 852, in r
-eceive_messages
-    raise Exception(message.get("error", "Unknown error"))
-Exception: Claude Code returned an error result: success
+[1m[36m→ ListMcpResourcesTool[0m [2m{}
+[0m  [33m← [{"name":"reorder_rules","uri":"stock://reorder-rules","description":"How Amudha likes to [39m
+[33mreorder.","mimeType":"text/plain","server":"stock"}][39m
+[1m[36m→ list_stock[0m [2m{}[0m
+  [33m← {"result":"maida: 18 kg (uses 20/week, reorder at 25, Sundar Traders, Rs. 46/kg)  LOW\nsugar: 30
+kg (uses 12/week, reorder at 15, Sundar Traders, Rs. 44/kg)\nbutter: 4 kg (uses 7/week, reorder at [39m
+[33m6, F ...[39m
+[1m[36m→ ReadMcpResourceTool[0m [2m{"server": "stock", "uri": "stock://reorder-rules"}[0m
+  [33m← {"contents":[{"uri":"stock://reorder-rules","mimeType":"text/plain","text":"Order enough to last
+two weeks of normal baking. Butter and cream go to Fresh Dairy Supplies; flour and sugar to Sundar [39m
+[33mTrad ...[39m
+[1m[36m→ draft_purchase_order[0m [2m{"supplier": "Sundar Traders", "items": [{"ingredient": "maida", "qty": 22}]}
+[0m  [33m← {"result":"Draft saved as orders/po-sundar-traders.txt. Total Rs. 1,012.00."}[39m
+[1m[36m→ draft_purchase_order[0m [2m{"supplier": "Fresh Dairy Supplies", "items": [{"ingredient": "butter", [0m
+[2m"qty": 10}, {"ingredient": "fresh cream", "qty": 3}, {"ingredient": "eggs", "qty": 7}]}[0m
+  [33m← {"result":"Draft saved as orders/po-fresh-dairy-supplies.txt. Total Rs. 7,550.00."}[39m
+[1m[36m→ draft_purchase_order[0m [2m{"supplier": "Green Leaf Bakery Supplies", "items": [{"ingredient": "cocoa [0m
+[2mpowder", "qty": 0.9}]}[0m
+  [33m← {"result":"Draft saved as orders/po-green-leaf-bakery-supplies.txt. Total Rs. 648.00."}[39m
+[32m╭─ Claude ─────────────────────────────────────────────────────────────────────────────────────────╮
+│[39m I drafted three purchase orders, one per supplier, for Amudha to check and send. I sized each    [32m│
+│[39m order to bring stock up to two weeks of normal use. All three are well under the Rs. 25,000      [32m│
+│[39m limit.                                                                                           [32m│
+│[39m                                                                                                  [32m│
+│[39m | Supplier | Items | Total |                                                                     [32m│
+│[39m |---|---|---|                                                                                    [32m│
+│[39m | Sundar Traders | maida 22 kg | Rs. 1,012 |                                                     [32m│
+│[39m | Fresh Dairy Supplies | butter 10 kg, fresh cream 3 L, eggs 7 trays | Rs. 7,550 |               [32m│
+│[39m | Green Leaf Bakery Supplies | cocoa powder 0.9 kg | Rs. 648 |                                   [32m│
+│[39m                                                                                                  [32m│
+│[39m The three orders come to Rs. 9,210 in total.                                                     [32m│
+│[39m                                                                                                  [32m│
+│[39m - **Below reorder level:** maida, butter and cocoa powder.                                       [32m│
+│[39m - **Under two weeks of use:** fresh cream and eggs. They are above their reorder levels but      [32m│
+│[39m wouldn't last two weeks.                                                                         [32m│
+│[39m - **No order needed:** sugar, cake boxes and walnuts have enough stock.                          [32m│
+│[39m - **Eggs:** the reorder rules don't name a supplier for eggs. I used Fresh Dairy Supplies        [32m│
+│[39m because the stock list shows them as the supplier.                                               [32m│
+│[39m                                                                                                  [32m│
+│[39m The drafts are saved in `orders/` as `po-sundar-traders.txt`, `po-fresh-dairy-supplies.txt` and  [32m│
+│[39m `po-green-leaf-bakery-supplies.txt`.                                                             [32m│
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+[2m[39mDone: 7 turns, 10.8 s, $0.0247[0m
 $
-
-
-
-
-
-
-
-
-
-
-

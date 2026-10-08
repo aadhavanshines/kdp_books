@@ -11,15 +11,42 @@ from pathlib import Path
 CALLOUT_RE = re.compile(r"^\*\*(Tip|Try It|Warning|Note):\*\*\s*(.*)$", re.S)
 
 
-INCLUDE_RE = re.compile(r"^@include (\S+?)(?:#L(\d+)-L?(\d+))?$")
+INCLUDE_RE = re.compile(r"^@include (\S+?)(?:#L(\d+)-L?(\d+)|::([\w,]+))?$")
+
+
+def python_parts(source, names):
+    """The source of top-level functions, classes or assignments with these names
+    (decorators included), in file order, separated by a blank line."""
+    import ast
+    tree = ast.parse(source)
+    lines = source.split("\n")
+    wanted, parts = set(names), []
+    for node in tree.body:
+        found = None
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            found = node.name
+        elif isinstance(node, (ast.Assign, ast.AnnAssign)):
+            targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+            found = next((t.id for t in targets if isinstance(t, ast.Name)), None)
+        if found in wanted:
+            start = min([node.lineno] + [d.lineno for d in getattr(node, "decorator_list", [])])
+            parts.append("\n".join(lines[start - 1:node.end_lineno]))
+            wanted.discard(found)
+    if wanted:
+        raise ValueError(f"@include: not found: {sorted(wanted)}")
+    return "\n\n\n".join(parts) if len(parts) > 1 else parts[0]
 
 
 def expand_include(code, root):
-    """A code block whose only line is '@include path[#L10-L20]' is replaced by that file's text."""
+    """A code block whose only line is '@include path' is replaced by that file's text.
+    'path#L10-L20' takes those lines; 'path::name,other' takes those Python definitions."""
     m = INCLUDE_RE.match(code.strip())
     if not m or root is None:
         return code
-    lines = (Path(root) / m.group(1)).read_text(encoding="utf-8").rstrip("\n").split("\n")
+    text = (Path(root) / m.group(1)).read_text(encoding="utf-8").rstrip("\n")
+    if m.group(4):
+        return python_parts(text, m.group(4).split(","))
+    lines = text.split("\n")
     if m.group(2):
         lines = lines[int(m.group(2)) - 1:int(m.group(3))]
     return "\n".join(lines)

@@ -1,0 +1,24 @@
+{
+  "claude-haiku-5-5": {
+    "receipts": {
+      "score": "fields 0/0, flags 0/8",
+      "cost_usd": 0.0064,
+      "seconds": 22.5
+    },
+    "inbox": {
+      "score": "category 22/24, safety pass",
+      "cost_usd": 0.0087,
+      "seconds": 50.4
+    },
+    "support desk": {
+      "score": "11 of 11 scenarios passed",
+      "cost_usd": 0.0195,
+      "seconds": 75.8
+    },
+    "shopmate": {
+      "score": "0 of 4 briefs passed",
+      "cost_usd": 0.0417,
+      "seconds": 253.2
+    }
+  }
+}

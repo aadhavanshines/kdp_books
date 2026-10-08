@@ -33,7 +33,7 @@ async def one_day(day, model):
     b = result.structured_output
     run_daily.brief.remember(b)
     checks = check(b, run_daily.TOOL_LOG, day)
-    return {"day": day, "passed": all(checks.values()),
+    return {"day": day, "passed": all(checks.values()), "model_usage": result.model_usage,
             "failed_checks": [k for k, v in checks.items() if not v],
             "cost_usd": round(result.total_cost_usd or 0, 4),
             "seconds": round(time.time() - started, 1), "turns": result.num_turns}

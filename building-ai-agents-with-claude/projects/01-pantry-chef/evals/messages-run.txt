@@ -1,0 +1,24 @@
+SystemMessage (init)
+RateLimitEvent
+AssistantMessage: tool call: check_pantry
+UserMessage: tool result
+SystemMessage (thinking_tokens)
+SystemMessage (thinking_tokens)
+AssistantMessage: 
+AssistantMessage: text: 'Your pantry has none of the main kesari ingredient'
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: text: 'To make kesari for 4, you need to buy these seven '
+ResultMessage (success): 9 turns, $0.0239

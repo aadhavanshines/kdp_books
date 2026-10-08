@@ -1,0 +1,10 @@
+Purchase order for Fresh Dairy Supplies
+Date: 08 October 2026
+
+- butter: 10 kg x Rs. 530 = Rs. 5,300.00
+- fresh cream: 3 L x Rs. 260 = Rs. 780.00
+- eggs: 7 tray x Rs. 210 = Rs. 1,470.00
+
+Total: Rs. 7,550.00
+
+Status: DRAFT, not sent

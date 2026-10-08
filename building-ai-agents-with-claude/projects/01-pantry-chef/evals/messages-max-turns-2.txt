@@ -1,0 +1,23 @@
+SystemMessage (init)
+RateLimitEvent
+AssistantMessage: tool call: check_pantry
+UserMessage: tool result
+SystemMessage (thinking_tokens)
+SystemMessage (thinking_tokens)
+AssistantMessage: 
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+AssistantMessage: tool call: add_to_shopping_list
+UserMessage: tool result
+ResultMessage (error_max_turns): 3 turns, $0.0114
+Stopped: Claude Code returned an error result: Reached maximum number of turns (2) (exit code: 1)

@@ -1,0 +1,70 @@
+→ ListMcpResourcesTool {}
+  ← [{"name":"reorder_rules","uri":"stock://reorder-rules","description":"How 
+Amudha likes to reorder.","mimeType":"text/plain","server":"stock"}]
+→ list_stock {}
+  ← {"result":"maida (kg): 18 kg (uses 20/week, reorder at 25, Sundar Traders, 
+Rs. 46/kg)  LOW\nsugar (kg): 30 kg (uses 12/week, reorder at 15, Sundar Traders,
+Rs. 44/kg)\nbutter (kg): 4 kg (uses 7/week,  ...
+╭─ Claude ─────────────────────────────────────────────────────────────────────╮
+│ I need to read the rules resource first.                                     │
+╰──────────────────────────────────────────────────────────────────────────────╯
+→ ReadMcpResourceTool {"server": "stock", "uri": "stock://reorder-rules"}
+  ← 
+{"contents":[{"uri":"stock://reorder-rules","mimeType":"text/plain","text":"Orde
+r enough to last two weeks of normal baking. Butter and cream go to Fresh Dairy 
+Supplies; flour and sugar to Sundar Trad ...
+→ draft_purchase_order {"supplier": "Sundar Traders", "items": [{"ingredient": 
+"maida", "qty": 22}]}
+  ← Error executing tool draft_purchase_order: Unknown ingredient 'maida'. 
+Known: maida (kg), sugar (kg), butter (kg), fresh cream (L), eggs (trays of 30),
+cocoa powder (kg), cake boxes 8x8, walnuts (kg)
+→ draft_purchase_order {"supplier": "Fresh Dairy Supplies", "items": 
+[{"ingredient": "butter", "qty": 10}, {"ingredient": "fresh cream", "qty": 3}, 
+{"ingredient": "eggs", "qty": 7}]}
+  ← Error executing tool draft_purchase_order: Unknown ingredient 'butter'. 
+Known: maida (kg), sugar (kg), butter (kg), fresh cream (L), eggs (trays of 30),
+cocoa powder (kg), cake boxes 8x8, walnuts (kg)
+→ draft_purchase_order {"supplier": "Green Leaf Bakery Supplies", "items": 
+[{"ingredient": "cocoa powder", "qty": 0.9}]}
+  ← Error executing tool draft_purchase_order: Unknown ingredient 'cocoa 
+powder'. Known: maida (kg), sugar (kg), butter (kg), fresh cream (L), eggs 
+(trays of 30), cocoa powder (kg), cake boxes 8x8, walnut ...
+→ draft_purchase_order {"supplier": "Sundar Traders", "items": [{"ingredient": 
+"maida (kg)", "qty": 22}]}
+  ← {"result":"Draft saved as orders/po-sundar-traders.txt. Total Rs. 
+1,012.00."}
+→ draft_purchase_order {"supplier": "Fresh Dairy Supplies", "items": 
+[{"ingredient": "butter (kg)", "qty": 10}, {"ingredient": "fresh cream (L)", 
+"qty": 3}, {"ingredient": "eggs (trays of 30)", "qty": 7}]}
+  ← {"result":"Draft saved as orders/po-fresh-dairy-supplies.txt. Total Rs. 
+7,550.00."}
+→ draft_purchase_order {"supplier": "Green Leaf Bakery Supplies", "items": 
+[{"ingredient": "cocoa powder (kg)", "qty": 0.9}]}
+  ← {"result":"Draft saved as orders/po-green-leaf-bakery-supplies.txt. Total 
+Rs. 648.00."}
+╭─ Claude ─────────────────────────────────────────────────────────────────────╮
+│ I drafted three purchase orders, one per supplier, each sized to cover two   │
+│ weeks of normal use. They're ready for Amudha to check and send. All three   │
+│ totals are well under the Rs. 25,000 limit.                                  │
+│                                                                              │
+│ | Supplier | Items | Total |                                                 │
+│ |---|---|---|                                                                │
+│ | Sundar Traders | maida 22 kg | Rs. 1,012 |                                 │
+│ | Fresh Dairy Supplies | butter 10 kg, fresh cream 3 L, eggs 7 trays | Rs.   │
+│ 7,550 |                                                                      │
+│ | Green Leaf Bakery Supplies | cocoa powder 0.9 kg | Rs. 648 |               │
+│                                                                              │
+│ - **Reorder level:** maida, butter and cocoa powder are below their reorder  │
+│ levels.                                                                      │
+│ - **Two-week check:** fresh cream and eggs are above their reorder levels    │
+│ but won't last two weeks at normal use.                                      │
+│ - **Not ordered:** sugar, cake boxes and walnuts all cover two weeks.        │
+│                                                                              │
+│ The drafts are saved as `orders/po-sundar-traders.txt`,                      │
+│ `orders/po-fresh-dairy-supplies.txt` and                                     │
+│ `orders/po-green-leaf-bakery-supplies.txt`.                                  │
+│                                                                              │
+│ The order tool rejected plain ingredient names like "butter". It only        │
+│ accepted names with the unit, like "butter (kg)", so I used those.           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Done: 10 turns, 12.7 s, $0.0397

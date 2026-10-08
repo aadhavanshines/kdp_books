@@ -1,103 +1,112 @@
 {
-  "answer": "Yes, but only conditionally, and the best site is OMR (Thoraipakkam). It is the only option that fixes a demand problem: OMR customers are put off by the Rs. 180 delivery fee, and no similar bakery is on OMR. The documents don't show that OMR can reach the roughly Rs. 1.9 lakh of extra monthly revenue needed, and they don't give the savings figure. So I'd treat it as a go only if Amudha can confirm the savings and some pre-committed demand, such as corporate orders.",
+  "answer": "Yes, conditionally: the evidence favours a second kitchen at Thoraipakkam (OMR), which fixes the Rs. 180 delivery barrier and faces weak, cheap competition. The risk is that break-even needs about Rs. 1.9 lakh of extra monthly revenue versus roughly Rs. 47k of OMR sales today, and the documents don't say whether savings cover the roughly Rs. 9.4 lakh upfront cost plus the Rs. 3 lakh buffer.",
   "findings": [
     {
-      "claim": "The current kitchen is near capacity, so there is a real capacity constraint that a second kitchen would relieve.",
-      "file": "sales-summary.md",
-      "quote": "The kitchen in Anna Nagar is running at about 90% of its capacity on weekends. On 14 weekends in this period, orders were turned away because the oven schedule was full.",
-      "verified": true
-    },
-    {
-      "claim": "OMR demand is suppressed by delivery price. 25 of 33 OMR respondents gave up ordering.",
+      "claim": "Many OMR customers abandon orders because of the delivery charge, showing unmet demand.",
       "file": "survey-results.md",
       "quote": "Of the 33 OMR respondents, 25 said they had tried to order but gave up because the\n  delivery charge to OMR (Rs. 180) was too high.",
       "verified": true
     },
     {
-      "claim": "There is possible corporate demand on OMR, although it is a small sample.",
-      "file": "survey-results.md",
-      "quote": "Corporate orders came up unprompted: 11 respondents work in OMR IT parks and said their\n  offices order desserts for events at least once a month.",
-      "verified": true
-    },
-    {
-      "claim": "Eggless cakes are the most requested addition, and the OMR competitors don't offer eggless premium cakes. This is a differentiator.",
-      "file": "competitor-notes.md",
-      "quote": "Neither of them offers eggless versions of their premium cakes.",
-      "verified": true
-    },
-    {
-      "claim": "No comparable home-style bakery is on OMR, while Velachery is crowded.",
-      "file": "competitor-notes.md",
-      "quote": "No home-style bakery with a following like ours has a kitchen on OMR yet.",
-      "verified": true
-    },
-    {
-      "claim": "Velachery (Option A) faces heavy competition, which weakens it as a site.",
-      "file": "competitor-notes.md",
-      "quote": "In Velachery there are at least five well-rated bakeries within 3 km of the Vijaya Nagar space.",
-      "verified": true
-    },
-    {
-      "claim": "A Thoraipakkam kitchen would move most OMR deliveries into the cheapest band. Long rides also cause most of the damage complaints.",
+      "claim": "All OMR orders today are in the most expensive delivery band, and a Thoraipakkam kitchen would cut most deliveries to under 5 km.",
       "file": "delivery-costs.md",
       "quote": "From a kitchen in Thoraipakkam, most OMR addresses would be under 5 km.",
       "verified": true
     },
     {
-      "claim": "Long-distance deliveries cause most damage complaints.",
+      "claim": "Long-distance delivery causes most damage complaints.",
       "file": "delivery-costs.md",
       "quote": "6 of the 9 damage complaints this year were\non deliveries over 15 km.",
       "verified": true
     },
     {
-      "claim": "Anna Nagar West (Option C) is the most expensive and does not open a new area, so it is ruled out.",
-      "file": "rent-quotes.md",
-      "quote": "Notes: easiest to manage, but it does not bring the bakery closer to any new area.",
-      "verified": true
-    },
-    {
-      "claim": "The OMR rent has risen to Rs. 48,000 (the newer figure), and the deposit is still 6 months. That is a Rs. 2.88 lakh deposit.",
+      "claim": "The OMR rent is now higher than the August quote (newer accountant note supersedes the quote).",
       "file": "accountant-note.md",
-      "quote": "the rent for the OMR space is now Rs. 48,000 per month, not the 45,000 in\n   your August quote. The deposit is still 6 months.",
+      "quote": "the rent for the OMR space is now Rs. 48,000 per month, not the 45,000 in\n   your August quote.",
       "verified": true
     },
     {
-      "claim": "The break-even hurdle is about Rs. 1.9 lakh of extra monthly revenue. That is more than 4 times today's OMR order revenue, which is roughly 41 orders at about Rs. 1,140 each, or about Rs. 47,000.",
+      "claim": "Setup cost is about Rs. 6.5 lakh for any space.",
+      "file": "accountant-note.md",
+      "quote": "Setting up any of the three spaces will cost about Rs. 6.5 lakh",
+      "verified": true
+    },
+    {
+      "claim": "Break-even needs substantial extra revenue.",
       "file": "accountant-note.md",
       "quote": "a second kitchen needs roughly\n   Rs. 1.9 lakh of extra monthly revenue to cover rent, two staff salaries and\n   electricity at the OMR space.",
       "verified": true
     },
     {
-      "claim": "Setup costs about Rs. 6.5 lakh, and the accountant wants a Rs. 3 lakh cash buffer kept.",
+      "claim": "Accountant wants a cash buffer preserved.",
       "file": "accountant-note.md",
-      "quote": "I would keep at least Rs. 3 lakh in the bank as a buffer, so please don't spend all\n   the savings on the setup.",
+      "quote": "I would keep at least Rs. 3 lakh in the bank as a buffer",
       "verified": true
     },
     {
-      "claim": "OMR orders are small and growing only slowly (41 in September), so the 1.9 lakh target depends on new demand, not just on existing OMR orders.",
+      "claim": "The OMR competitors are cheap, lower-rated cloud bakeries and none has a home-style bakery with a following.",
+      "file": "competitor-notes.md",
+      "quote": "No home-style bakery with a following like ours has a kitchen on OMR yet.",
+      "verified": true
+    },
+    {
+      "claim": "Competitors don't offer eggless premium cakes, which is the most requested addition.",
+      "file": "competitor-notes.md",
+      "quote": "Neither of them offers eggless versions of their premium cakes.",
+      "verified": true
+    },
+    {
+      "claim": "Velachery is crowded with competitors.",
+      "file": "competitor-notes.md",
+      "quote": "In Velachery there are at least five well-rated bakeries within 3 km of the Vijaya\n  Nagar space.",
+      "verified": true
+    },
+    {
+      "claim": "The OMR space is closest to OMR customers and near IT parks.",
+      "file": "rent-quotes.md",
+      "quote": "inside a small commercial complex near two IT parks; 15 to 25 minutes to most\n  of OMR.",
+      "verified": true
+    },
+    {
+      "claim": "Anna Nagar West does not expand reach and costs the most.",
+      "file": "rent-quotes.md",
+      "quote": "easiest to manage, but it does not bring the bakery closer to any new area.",
+      "verified": true
+    },
+    {
+      "claim": "Corporate demand exists in OMR.",
+      "file": "survey-results.md",
+      "quote": "11 respondents work in OMR IT parks and said their\n  offices order desserts for events at least once a month.",
+      "verified": true
+    },
+    {
+      "claim": "Current kitchen is capacity constrained, adding a reason to expand.",
+      "file": "sales-summary.md",
+      "quote": "On 14\nweekends in this period, orders were turned away because the oven schedule was full.",
+      "verified": true
+    },
+    {
+      "claim": "OMR orders are currently small (41 in September), used for my sizing of the revenue gap.",
       "file": "sales-summary.md",
       "quote": "| September | 325 | 3,70,400 | 41 |",
       "verified": true
     },
     {
-      "claim": "Price sensitivity limits how much revenue each order can bring in.",
-      "file": "survey-results.md",
-      "quote": "Only 9 respondents said they would pay more than Rs. 1,200 for a 1 kg celebration cake.",
+      "claim": "Average order value used for sizing.",
+      "file": "sales-summary.md",
+      "quote": "The average order value in September was Rs. 1,140.",
       "verified": true
     }
   ],
   "conflicts": [
-    "Thoraipakkam rent: rent-quotes.md (late August 2026) says Rs. 45,000 per month, but accountant-note.md (28 September 2026) says Rs. 48,000. The accountant's note is newer, so I used Rs. 48,000.",
-    "It's unclear whether the accountant's Rs. 1.9 lakh break-even uses the old Rs. 45,000 rent or the new Rs. 48,000 rent. His note lists the rent rise first, but it doesn't say. If it uses the old rent, the real target is slightly higher."
+    "OMR rent: rent-quotes.md (late August 2026) says Rs. 45,000 per month; accountant-note.md (28 September 2026, newer) says Rs. 48,000. I used Rs. 48,000. The deposit is still 6 months, so it rises to Rs. 2.88 lakh."
   ],
   "not_in_documents": [
-    "Amudha's current savings or cash balance. Without it I can't check that the Rs. 6.5 lakh setup, the Rs. 2.88 lakh deposit and the Rs. 3 lakh buffer are affordable.",
-    "Whether the Rs. 6.5 lakh setup estimate includes the security deposit. The note doesn't say.",
-    "Any forecast of how many new OMR orders or corporate orders a Thoraipakkam kitchen would bring in. The survey shows interest but gives no volumes or order values.",
-    "Setup quotes for each site separately. The accountant gives one figure for all three spaces.",
-    "Staff salaries and electricity costs as separate figures, and whether the Anna Nagar kitchen would keep its own staff.",
-    "Whether the landlord of the Thoraipakkam space will hold the space or the rent while Amudha decides, since other tenants are interested.",
-    "The lease length or lock-in terms for any of the three spaces.",
-    "The cost of adding eggless products, such as new recipes or ingredients."
+    "Amudha's current savings or cash balance, so affordability of about Rs. 9.4 lakh upfront plus the Rs. 3 lakh buffer cannot be confirmed.",
+    "Staff salary and electricity figures behind the Rs. 1.9 lakh break-even, and whether it uses the Rs. 48,000 or Rs. 45,000 rent.",
+    "How many of the 25 OMR people who gave up would actually order, or how fast OMR volume would grow.",
+    "Whether the Rs. 1.9 lakh break-even is revenue from OMR alone or includes relief of Anna Nagar's weekend capacity.",
+    "The size of the corporate order market or any pricing and volume for it.",
+    "Lease length and terms, or the setup timeline."
   ]
 }

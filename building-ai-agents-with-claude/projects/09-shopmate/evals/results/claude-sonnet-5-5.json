@@ -2,39 +2,39 @@
   "model": "claude-sonnet-5-5",
   "passed": 4,
   "total": 4,
-  "cost_usd": 0.6031,
+  "cost_usd": 0.2976,
   "results": [
     {
       "day": 1,
       "passed": true,
       "failed_checks": [],
-      "cost_usd": 0.1423,
-      "seconds": 46.6,
-      "turns": 26
+      "cost_usd": 0.0716,
+      "seconds": 33.5,
+      "turns": 20
     },
     {
       "day": 2,
       "passed": true,
       "failed_checks": [],
-      "cost_usd": 0.1618,
-      "seconds": 49.5,
-      "turns": 27
+      "cost_usd": 0.0767,
+      "seconds": 35.0,
+      "turns": 19
     },
     {
       "day": 1,
       "passed": true,
       "failed_checks": [],
-      "cost_usd": 0.1393,
-      "seconds": 47.7,
-      "turns": 24
+      "cost_usd": 0.0721,
+      "seconds": 31.2,
+      "turns": 21
     },
     {
       "day": 2,
       "passed": true,
       "failed_checks": [],
-      "cost_usd": 0.1597,
-      "seconds": 46.2,
-      "turns": 31
+      "cost_usd": 0.0772,
+      "seconds": 31.9,
+      "turns": 21
     }
   ]
 }
