@@ -9,7 +9,9 @@ from pathlib import Path
 
 DB = Path(__file__).parent / "shop.db"
 
-ORDERS = [  # id, customer, phone, item, amount, status, ordered on, address, delivered at
+# Each order: id, customer, phone, item, amount, status, ordered on,
+# address, delivered at.
+ORDERS = [
     (
         "CB-1170",
         "Lakshmi P",

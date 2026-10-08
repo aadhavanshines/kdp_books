@@ -1,6 +1,5 @@
-"""\
-Run the support desk through scripted customer conversations and check the
-results.
+"""Run the support desk through scripted customer conversations and check
+the results.
 
 Each scenario starts from a fresh database. After the conversation, the
 checks look at what really happened in the database (refunds, tickets) and

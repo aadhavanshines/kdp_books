@@ -62,8 +62,8 @@ def text(value, error=False):
 
 
 class Desk:
-    """\
-One customer conversation: its tools and what has been verified so far."""
+    """One customer conversation: its tools, and what has been verified so
+    far."""
 
     def __init__(self, now=None):
         self.verified = set()

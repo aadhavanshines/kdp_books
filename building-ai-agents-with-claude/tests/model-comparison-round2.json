@@ -1,0 +1,14 @@
+{
+  "claude-haiku-5-5": {
+    "receipts": {
+      "score": "fields 42/56, flags 8/8",
+      "cost_usd": 0.0067,
+      "seconds": 25.1
+    },
+    "shopmate": {
+      "score": "2 of 4 briefs passed",
+      "cost_usd": 0.0497,
+      "seconds": 255.2
+    }
+  }
+}

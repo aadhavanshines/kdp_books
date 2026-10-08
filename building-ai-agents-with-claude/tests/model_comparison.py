@@ -92,9 +92,23 @@ def runner(folder, args, pattern):
 
 
 def main():
-    out = ROOT / "tests" / "model-comparison.json"
+    # Round 2 re-runs only the two agents that were fixed after round 1.
+    round2 = "--round2" in sys.argv
+    sys.argv = [a for a in sys.argv if a != "--round2"]
+    name = "model-comparison-round2.json" if round2 else "model-comparison.json"
+    out = ROOT / "tests" / name
     results = json.loads(out.read_text()) if out.exists() else {}
     for model in sys.argv[1:] or MODELS:
+        if round2:
+            results[model] = {
+                "receipts": receipts(model),
+                "shopmate": runner(P / "09-shopmate",
+                                   ["evals/run_evals.py", "2", model],
+                                   r"\d+ of \d+ briefs passed"),
+            }
+            print(model, json.dumps(results[model]), flush=True)
+            out.write_text(json.dumps(results, indent=2))
+            continue
         results[model] = {
             "receipts": receipts(model),
             "inbox": triage(model),
