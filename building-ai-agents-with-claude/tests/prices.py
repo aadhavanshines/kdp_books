@@ -5,7 +5,7 @@ trusted, for example for a model released after your SDK version."""
 PRICES = {  # input, output, cache write (1 hour), cache read
     "claude-haiku-5-5": (0.10, 0.50, 0.20, 0.01),
     "claude-haiku-4-5": (1.00, 5.00, 2.00, 0.10),
-    "claude-sonnet-5-5": (2.00, 10.00, 4.00, 0.10),
+    "claude-sonnet-5-5": (2.00, 10.00, 4.00, 0.20),
     "claude-opus-5-5": (4.00, 20.00, 8.00, 0.20),
 }
 

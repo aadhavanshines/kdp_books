@@ -1,6 +1,6 @@
 # Pin exact versions so a new release can't change behaviour without you noticing.
 # Upgrade on purpose: change a version, run the evals, then deploy.
-claude-agent-sdk==0.2.123
+claude-agent-sdk==0.2.164
 mcp==1.28.1
 fastapi==0.142.2
 uvicorn==0.50.2

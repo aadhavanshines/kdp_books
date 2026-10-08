@@ -1,0 +1,50 @@
+{
+  "claude-haiku-5-5": {
+    "receipts": {
+      "score": "fields 42/56, flags 8/8",
+      "cost_usd": 0.0067,
+      "seconds": 25.1
+    },
+    "shopmate": {
+      "score": "2 of 4 briefs passed",
+      "cost_usd": 0.0497,
+      "seconds": 255.2
+    }
+  },
+  "claude-haiku-4-5": {
+    "receipts": {
+      "score": "fields 56/56, flags 8/8",
+      "cost_usd": 0.0543,
+      "seconds": 39.9
+    },
+    "shopmate": {
+      "score": "2 of 4 briefs passed",
+      "cost_usd": 0.1593,
+      "seconds": 184.8
+    }
+  },
+  "claude-sonnet-5-5": {
+    "receipts": {
+      "score": "fields 56/56, flags 8/8",
+      "cost_usd": 0.0738,
+      "seconds": 17.8
+    },
+    "shopmate": {
+      "score": "4 of 4 briefs passed",
+      "cost_usd": 0.2973,
+      "seconds": 126.2
+    }
+  },
+  "claude-opus-5-5": {
+    "receipts": {
+      "score": "fields 56/56, flags 8/8",
+      "cost_usd": 0.1506,
+      "seconds": 24.0
+    },
+    "shopmate": {
+      "score": "2 of 4 briefs passed",
+      "cost_usd": 0.6639,
+      "seconds": 176.9
+    }
+  }
+}

@@ -1,0 +1,5 @@
+→ {'msg': 'Happy birthday Ravi! Wishing you a wonderful year full of laughter, cake, good friends and every success.'}
+  ← Output does not match required schema: /msg: must NOT have more than 40 characters (got 105)
+→ {'msg': 'Happy birthday Ravi! Have a great year!'}
+  ← Structured output provided successfully
+Result: {'msg': 'Happy birthday Ravi! Have a great year!'} (4 turns)

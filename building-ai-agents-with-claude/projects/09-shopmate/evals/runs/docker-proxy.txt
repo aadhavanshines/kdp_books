@@ -1,0 +1,6 @@
+Attempt 1 failed: API Error: Unable to connect to API: Self-signed
+certificate detected (SELF_SIGNED_CERT_IN_CHAIN). The certificate comes
+from an authority Claude Code doesn't trust, usually a TLS-inspecting
+corporate proxy or a gateway signed by a private CA: set
+NODE_EXTRA_CA_CERTS to that CA bundle, or add it to the system
+certificate store · see https://code.claude.com/docs/en/network-config

@@ -46,6 +46,7 @@ async def one_day(day, model):
         "cost_usd": round(result.total_cost_usd or 0, 4),
         "seconds": round(time.time() - started, 1),
         "turns": result.num_turns,
+        "brief": b,  # kept so a failure can be read later
     }
 
 

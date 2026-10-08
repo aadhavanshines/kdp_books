@@ -91,8 +91,19 @@ def runner(folder, args, pattern):
             "seconds": round(time.time() - started, 1)}
 
 
+def keep(model):
+    """Save each model's outputs, so failures can be read later."""
+    out = ROOT / "tests" / "comparison-outputs" / model
+    out.mkdir(parents=True, exist_ok=True)
+    for src, name in [(P / "03-receipt-scanner" / "receipts.json", "receipts.json"),
+                      (P / "02-inbox-triage" / "output" / "triage.json", "triage.json"),
+                      (P / "09-shopmate" / "evals" / "results" / f"{model}.json", "shopmate.json")]:
+        if src.exists():
+            (out / name).write_text(src.read_text())
+
+
 def main():
-    # Round 2 re-runs only the two agents that were fixed after round 1.
+    # Round 2 re-runs the agents whose prompts or graders changed after round 1.
     round2 = "--round2" in sys.argv
     sys.argv = [a for a in sys.argv if a != "--round2"]
     name = "model-comparison-round2.json" if round2 else "model-comparison.json"
@@ -102,10 +113,12 @@ def main():
         if round2:
             results[model] = {
                 "receipts": receipts(model),
+                "inbox": triage(model),
                 "shopmate": runner(P / "09-shopmate",
                                    ["evals/run_evals.py", "2", model],
                                    r"\d+ of \d+ briefs passed"),
             }
+            keep(model)
             print(model, json.dumps(results[model]), flush=True)
             out.write_text(json.dumps(results, indent=2))
             continue

@@ -1,0 +1,5 @@
+$ docker run -d --name shopmate-ops -p 8000:8000 shopmate
+$ curl localhost:8000/health
+{"ok":false,"last_run":null}
+$ docker exec shopmate-ops whoami
+shopmate

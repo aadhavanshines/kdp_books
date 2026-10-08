@@ -97,7 +97,7 @@ options = ClaudeAgentOptions(
     # Anything not allowed above is refused, without asking anyone.
     permission_mode="dontAsk",
     # python3 can do anything, so its commands run in a sandbox that can
-    # only write inside this folder (see Chapter 11).
+    # only write inside this folder (see Chapter 9).
     sandbox={"enabled": True, "allowUnsandboxedCommands": False},
     output_format={"type": "json_schema", "schema": SCHEMA},
     max_turns=30,

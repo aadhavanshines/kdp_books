@@ -92,13 +92,16 @@ def reset():
     DB.unlink(missing_ok=True)
     with connect() as db:
         db.executescript("""
-CREATE TABLE orders (id TEXT PRIMARY KEY, customer TEXT, phone TEXT, item
-TEXT, amount INTEGER, status TEXT, ordered_on TEXT, address TEXT,
-delivered_at TEXT); CREATE TABLE refunds (id INTEGER PRIMARY KEY
-AUTOINCREMENT, order_id TEXT, amount INTEGER, reason TEXT, status TEXT,
-created TEXT DEFAULT CURRENT_TIMESTAMP); CREATE TABLE tickets (id INTEGER
-PRIMARY KEY AUTOINCREMENT, order_id TEXT, urgency TEXT, summary TEXT,
-created TEXT DEFAULT CURRENT_TIMESTAMP);""")
+            CREATE TABLE orders (id TEXT PRIMARY KEY, customer TEXT,
+                phone TEXT, item TEXT, amount INTEGER, status TEXT,
+                ordered_on TEXT, address TEXT, delivered_at TEXT);
+            CREATE TABLE refunds (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                order_id TEXT, amount INTEGER, reason TEXT, status TEXT,
+                created TEXT DEFAULT CURRENT_TIMESTAMP);
+            CREATE TABLE tickets (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                order_id TEXT, urgency TEXT, summary TEXT,
+                created TEXT DEFAULT CURRENT_TIMESTAMP);
+        """)
         db.executemany(
             "INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?)", ORDERS
         )

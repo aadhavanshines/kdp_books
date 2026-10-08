@@ -1,0 +1,4 @@
+$ docker run --rm -e ANTHROPIC_API_KEY=sk-ant-not-a-real-key shopmate \
+    python run_daily.py
+Attempt 1 failed: Failed to authenticate. API Error: 401 API key is invalid.
+Attempt 2 failed: Failed to authenticate. API Error: 401 API key is invalid.

@@ -1,0 +1,12 @@
+$ docker run --rm shopmate python run_daily.py
+Attempt 1 failed: Not logged in · Please run /login
+Attempt 2 failed: Not logged in · Please run /login
+$ echo $?
+1
+$ cat out/ALERT.txt
+ShopMate could not make the brief for 2026-10-07. Check out/runs.jsonl.
+$ cat out/runs.jsonl
+{"time": "2026-10-08T12:16:16+00:00", "day": "2026-10-07", "attempt": 1,
+ "status": "failed", "error": "Not logged in · Please run /login",
+ "model": "claude-sonnet-5-5", "prompt_version": "brief-v4"}
+...

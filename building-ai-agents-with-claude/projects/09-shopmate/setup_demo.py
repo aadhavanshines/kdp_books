@@ -123,12 +123,15 @@ def setup(day):
     DB.unlink(missing_ok=True)
     db = sqlite3.connect(DB)
     db.executescript("""
-CREATE TABLE orders (id TEXT PRIMARY KEY, customer TEXT, phone TEXT, item
-TEXT, amount INTEGER, status TEXT, ordered_on TEXT, address TEXT,
-delivered_at TEXT); CREATE TABLE refunds (id INTEGER PRIMARY KEY
-AUTOINCREMENT, order_id TEXT, amount INTEGER, reason TEXT, status TEXT,
-created TEXT); CREATE TABLE tickets (id INTEGER PRIMARY KEY AUTOINCREMENT,
-order_id TEXT, urgency TEXT, summary TEXT, status TEXT, created TEXT);
+        CREATE TABLE orders (id TEXT PRIMARY KEY, customer TEXT,
+            phone TEXT, item TEXT, amount INTEGER, status TEXT,
+            ordered_on TEXT, address TEXT, delivered_at TEXT);
+        CREATE TABLE refunds (id INTEGER PRIMARY KEY AUTOINCREMENT,
+            order_id TEXT, amount INTEGER, reason TEXT, status TEXT,
+            created TEXT);
+        CREATE TABLE tickets (id INTEGER PRIMARY KEY AUTOINCREMENT,
+            order_id TEXT, urgency TEXT, summary TEXT, status TEXT,
+            created TEXT);
     """)
     db.executemany("INSERT INTO orders VALUES (?,?,?,?,?,?,?,?,?)", ORDERS)
     db.executemany(

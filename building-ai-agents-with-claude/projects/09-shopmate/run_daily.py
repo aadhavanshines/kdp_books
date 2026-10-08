@@ -85,9 +85,8 @@ async def main():
     for attempt in (1, 2):
         try:
             result, seconds = await run_once()
-        except (
-            Exception
-        ) as error:  # noqa: BLE001  any failure: log it, retry once
+        except Exception as error:  # noqa: BLE001
+            # Any failure: log it, then retry once.
             record(
                 day=today(),
                 attempt=attempt,
