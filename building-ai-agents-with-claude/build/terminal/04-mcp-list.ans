@@ -1,0 +1,40 @@
+[38;2;215;119;87m ▐[48;2;0;0;0m▛███▛█[39m[49m   [1mClaude Code[0m [38;2;153;153;153mv2.1.292[39m
+[38;2;215;119;87m▝▜[48;2;0;0;0m█████[49m█▀[39m  [38;2;153;153;153mSonnet 5.5 · Claude API[39m
+[38;2;215;119;87m ▝▝   ▝▝ [39m  [38;2;153;153;153m~/bakery[39m
+
+  Sonnet 5.5 is here, and it's faster and excels at well-scoped tasks. Opus 5.5 is still your
+  default. Switch with [38;2;177;185;249m/model[39m.
+
+[38;2;153;153;153m[48;2;55;55;55m❯ [38;2;255;255;255mWhich ingredients are running low? Use the bakery-stock tools.[39m
+
+[49m  [38;2;153;153;153mCalled bakery-stock [39m
+
+[38;2;255;255;255m●[39m Three ingredients are below their reorder level:
+
+  ┌──────────────┬──────────┬────────────┬────────────┬────────────────────────────┐
+  │  Ingredient  │ In stock │ Weekly use │ Reorder at │          Supplier          │
+  ├──────────────┼──────────┼────────────┼────────────┼────────────────────────────┤
+  │ [1mMaida[0m        │ 18 kg    │ 20 kg      │ 25 kg      │ Sundar Traders             │
+  ├──────────────┼──────────┼────────────┼────────────┼────────────────────────────┤
+  │ [1mButter[0m       │ 4 kg     │ 7 kg       │ 6 kg       │ Fresh Dairy Supplies       │
+  ├──────────────┼──────────┼────────────┼────────────┼────────────────────────────┤
+  │ [1mCocoa powder[0m │ 1.5 kg   │ 1.2 kg     │ 2 kg       │ Green Leaf Bakery Supplies │
+  └──────────────┴──────────┴────────────┴────────────┴────────────────────────────┘
+
+  Butter is the most urgent. At 7 kg a week, 4 kg lasts about 4 days. Maida covers about 6 days.
+
+  Eggs are above their reorder level of 4 trays, but at 6 trays a week the 5 in stock will go
+  quickly. Sugar, fresh cream, cake boxes and walnuts are fine.
+
+  I can draft purchase orders for the three low items if you'd like.
+
+[38;2;153;153;153m✻[39m [38;2;153;153;153mCooked for 5s · done 3:45 PM[39m
+[38;2;177;185;249m▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+[39m   [1m[38;2;177;185;249mManage MCP servers[0m
+   [38;2;153;153;153m1 server[39m
+
+     [1mLocal MCPs[0m[38;2;153;153;153m (/root/.claude.json [project: /root/bakery])[39m
+   [38;2;177;185;249m❯[39m [38;2;78;186;101m✔[39m [38;2;177;185;249mbakery-stock[39m   [38;2;153;153;153m3 tools[39m
+
+   [38;2;153;153;153mhttps://code.claude.com/docs/en/mcp for help[39m
+   [3m[38;2;153;153;153m↑/↓ to navigate · Enter to confirm · Esc to cancel[0m

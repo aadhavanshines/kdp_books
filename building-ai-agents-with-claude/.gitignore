@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+projects/*/shop.db
+projects/*/audit.jsonl
+projects/09-shopmate/out/

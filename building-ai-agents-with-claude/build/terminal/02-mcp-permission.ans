@@ -1,0 +1,40 @@
+
+[38;2;215;119;87m ▐[48;2;0;0;0m▛███▛█[39m[49m   [1mClaude Code[0m [38;2;153;153;153mv2.1.292[39m
+[38;2;215;119;87m▝▜[48;2;0;0;0m█████[49m█▀[39m  [38;2;153;153;153mSonnet 5.5 · Claude API[39m
+[38;2;215;119;87m ▝▝   ▝▝ [39m  [38;2;153;153;153m~/bakery[39m
+
+  Sonnet 5.5 is here, and it's faster and excels at well-scoped tasks. Opus 5.5 is still your
+  default. Switch with [38;2;177;185;249m/model[39m.
+
+[38;2;153;153;153m[48;2;55;55;55m❯ [38;2;255;255;255mWhich ingredients are running low? Use the bakery-stock tools.[39m
+
+[38;2;153;153;153m[49m [39m Calling bakery-stock…
+
+[38;2;177;185;249m────────────────────────────────────────────────────────────────────────────────────────────────────
+[39m [1m[38;2;177;185;249mTool use[0m
+ [1mbakery-stock — List Stock Tool:[0m[38;2;153;153;153m (MCP)[39m
+
+ [3mAbout the [1mbakery-stock — List Stock[0;3m Tool:[0m
+ [2m│[0m [3m[38;2;153;153;153mList every ingredient with the amount in stock, its unit, how much is used in a[0m
+ [2m│[0m [3m[38;2;153;153;153mnormal week, the reorder level, the supplier and the price per unit.[0m
+
+ Do you want to proceed?
+ [38;2;177;185;249m❯[39m [38;2;153;153;153m1. [38;2;177;185;249mYes[39m
+   [38;2;153;153;153m2. [39mYes, and don't ask again for bakery-stock — List Stock commands in /root/bakery
+   [38;2;153;153;153m3. [39mNo
+
+ [38;2;153;153;153mEsc to cancel · Tab to amend[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+{
+  "answer": "The documents don't give the bakery's 2025 profit. They don't give its current staff count either. They only cover April–September 2026 sales, a roughly 32% margin on revenue, and \"two staff salaries\" for a possible second kitchen.",
+  "findings": [
+    {
+      "claim": "The only profitability figure is a current margin of about 32% on revenue. It isn't tied to 2025 and isn't a rupee profit.",
+      "file": "accountant-note.md",
+      "quote": "With the current margin of about 32% on revenue, a second kitchen needs roughly Rs. 1.9 lakh of extra monthly revenue to cover rent, two staff salaries and electricity at the OMR space.",
+      "verified": true
+    },
+    {
+      "claim": "The sales data covers only April to September 2026, not 2025.",
+      "file": "sales-summary.md",
+      "quote": "Total revenue for the six months: Rs. 20,92,605.",
+      "verified": true
+    },
+    {
+      "claim": "Staff are mentioned only as two salaries for a proposed second kitchen. This isn't a headcount for the existing bakery.",
+      "file": "accountant-note.md",
+      "quote": "a second kitchen needs roughly Rs. 1.9 lakh of extra monthly revenue to cover rent, two staff salaries and electricity at the OMR space.",
+      "verified": true
+    }
+  ],
+  "conflicts": [
+    "No conflict on these two questions. The one conflict in the documents is the Thoraipakkam rent: rent-quotes.md (August 2026) says Rs. 45,000 and accountant-note.md (28 September 2026, newer) says Rs. 48,000. The newer figure applies, but it has no bearing on profit or staff."
+  ],
+  "not_in_documents": [
+    "The bakery's 2025 profit, in rupees or as a percentage.",
+    "2025 revenue or costs. Sales data starts in April 2026.",
+    "The bakery's current number of staff.",
+    "What period the 'current margin of about 32%' refers to."
+  ]
+}

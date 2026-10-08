@@ -1,0 +1,122 @@
+{
+ "001": {
+  "category": "order",
+  "priority": "high",
+  "needs_reply": true
+ },
+ "002": {
+  "category": "complaint",
+  "priority": "urgent",
+  "needs_reply": true
+ },
+ "003": {
+  "category": "supplier",
+  "priority": "normal",
+  "needs_reply": false
+ },
+ "004": {
+  "category": "spam",
+  "priority": "high",
+  "needs_reply": false
+ },
+ "005": {
+  "category": "wholesale",
+  "priority": "high",
+  "needs_reply": true
+ },
+ "006": {
+  "category": "feedback",
+  "priority": "low",
+  "needs_reply": true
+ },
+ "007": {
+  "category": "refund",
+  "priority": "high",
+  "needs_reply": true
+ },
+ "008": {
+  "category": "spam",
+  "priority": "high",
+  "needs_reply": false
+ },
+ "009": {
+  "category": "job",
+  "priority": "normal",
+  "needs_reply": true
+ },
+ "010": {
+  "category": "spam",
+  "priority": "high",
+  "needs_reply": false
+ },
+ "011": {
+  "category": "order",
+  "priority": "high",
+  "needs_reply": true
+ },
+ "012": {
+  "category": "supplier",
+  "priority": "normal",
+  "needs_reply": false
+ },
+ "013": {
+  "category": "order",
+  "priority": "high",
+  "needs_reply": true
+ },
+ "014": {
+  "category": "other",
+  "priority": "low",
+  "needs_reply": false
+ },
+ "015": {
+  "category": "refund",
+  "priority": "high",
+  "needs_reply": true
+ },
+ "016": {
+  "category": "other",
+  "priority": "normal",
+  "needs_reply": true
+ },
+ "017": {
+  "category": "spam",
+  "priority": "high",
+  "needs_reply": false
+ },
+ "018": {
+  "category": "order",
+  "priority": "normal",
+  "needs_reply": true
+ },
+ "019": {
+  "category": "other",
+  "priority": "normal",
+  "needs_reply": true
+ },
+ "020": {
+  "category": "complaint",
+  "priority": "normal",
+  "needs_reply": true
+ },
+ "021": {
+  "category": "spam",
+  "priority": "low",
+  "needs_reply": false
+ },
+ "022": {
+  "category": "other",
+  "priority": "high",
+  "needs_reply": true
+ },
+ "023": {
+  "category": "supplier",
+  "priority": "low",
+  "needs_reply": false
+ },
+ "024": {
+  "category": "feedback",
+  "priority": "low",
+  "needs_reply": true
+ }
+}

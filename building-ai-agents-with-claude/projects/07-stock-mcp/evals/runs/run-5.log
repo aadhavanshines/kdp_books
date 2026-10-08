@@ -1,0 +1,55 @@
+→ ListMcpResourcesTool {}
+  ← [{"name":"reorder_rules","uri":"stock://reorder-rules","description":"How 
+Amudha likes to reorder.","mimeType":"text/plain","server":"stock"}]
+→ list_stock {}
+  ← {"result":"maida: 18 kg (uses 20/week, reorder at 25, Sundar Traders, Rs. 
+46/kg)  LOW\nsugar: 30 kg (uses 12/week, reorder at 15, Sundar Traders, Rs. 
+44/kg)\nbutter: 4 kg (uses 7/week, reorder at 6, F ...
+╭─ Claude ─────────────────────────────────────────────────────────────────────╮
+│ I skipped a step: the system prompt says to read the reorder rules first.    │
+│ I'll do that now.                                                            │
+╰──────────────────────────────────────────────────────────────────────────────╯
+→ ReadMcpResourceTool {"server": "stock", "uri": "stock://reorder-rules"}
+  ← 
+{"contents":[{"uri":"stock://reorder-rules","mimeType":"text/plain","text":"Orde
+r enough to last two weeks of normal baking. Butter and cream go to Fresh Dairy 
+Supplies; flour and sugar to Sundar Trad ...
+→ draft_purchase_order {"supplier": "Sundar Traders", "items": [{"ingredient": 
+"maida", "qty": 22}]}
+  ← {"result":"Draft saved as orders/po-sundar-traders.txt. Total Rs. 
+1,012.00."}
+→ draft_purchase_order {"supplier": "Fresh Dairy Supplies", "items": 
+[{"ingredient": "butter", "qty": 10}, {"ingredient": "fresh cream", "qty": 3}, 
+{"ingredient": "eggs", "qty": 7}]}
+  ← {"result":"Draft saved as orders/po-fresh-dairy-supplies.txt. Total Rs. 
+7,550.00."}
+→ draft_purchase_order {"supplier": "Green Leaf Bakery Supplies", "items": 
+[{"ingredient": "cocoa powder", "qty": 0.9}]}
+  ← {"result":"Draft saved as orders/po-green-leaf-bakery-supplies.txt. Total 
+Rs. 648.00."}
+╭─ Claude ─────────────────────────────────────────────────────────────────────╮
+│ I've drafted three purchase orders for Amudha to check and send. Each tops   │
+│ an item up to two weeks of normal use, and every order is well under the Rs. │
+│ 25,000 limit per supplier.                                                   │
+│                                                                              │
+│ | Supplier | Items | Total |                                                 │
+│ |---|---|---|                                                                │
+│ | Sundar Traders | Maida 22 kg | Rs. 1,012 |                                 │
+│ | Fresh Dairy Supplies | Butter 10 kg, fresh cream 3 L, eggs 7 trays | Rs.   │
+│ 7,550 |                                                                      │
+│ | Green Leaf Bakery Supplies | Cocoa powder 0.9 kg | Rs. 648 |               │
+│                                                                              │
+│ - **At or below reorder level:** maida, butter and cocoa powder.             │
+│ - **Won't last two weeks:** fresh cream and eggs. Both are above their       │
+│ reorder levels but short of two weeks of use.                                │
+│ - **No order needed:** sugar, cake boxes and walnuts all cover more than two │
+│ weeks.                                                                       │
+│ - **Eggs:** the reorder rules don't name a supplier for eggs. I put them     │
+│ with Fresh Dairy Supplies because that is the supplier listed for them in    │
+│ the stock list.                                                              │
+│                                                                              │
+│ The drafts are saved as `orders/po-sundar-traders.txt`,                      │
+│ `orders/po-fresh-dairy-supplies.txt` and                                     │
+│ `orders/po-green-leaf-bakery-supplies.txt`.                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Done: 7 turns, 10.9 s, $0.0312

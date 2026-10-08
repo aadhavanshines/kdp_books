@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopMate ops</title>
+<style>
+  :root { --ink:#1f2328; --muted:#667085; --line:#e4e7ec; --bg:#f6f7f9; --brand:#8a4b2a;
+          --ok:#12805c; --bad:#c4320a; --warn:#b54708; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:14px/1.5 system-ui, "DejaVu Sans", sans-serif; color:var(--ink); background:var(--bg); }
+  header { background:#fff; border-bottom:1px solid var(--line); padding:12px 24px; display:flex;
+           align-items:center; gap:14px; }
+  header b { font-size:16px; } header span { color:var(--muted); }
+  .dot { width:10px; height:10px; border-radius:50%; background:var(--ok); display:inline-block; }
+  main { max-width:1180px; margin:18px auto; padding:0 16px; display:grid;
+         grid-template-columns: 1.55fr 1fr; gap:16px; }
+  section { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 16px; }
+  h2 { font-size:12px; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); margin:0 0 10px; }
+  .headline { font-size:15px; font-weight:600; margin:0 0 10px; }
+  .urgent { border-left:4px solid var(--bad); background:#fef3f2; padding:8px 10px; margin:0 0 8px;
+            border-radius:0 8px 8px 0; }
+  .urgent b { display:block; } .src { color:var(--muted); font-size:12px; }
+  ul { margin:0; padding-left:18px; } li { margin:3px 0; }
+  .kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:12px; }
+  .kpi { background:var(--bg); border-radius:10px; padding:10px; }
+  .kpi .v { font-size:20px; font-weight:700; } .kpi .l { color:var(--muted); font-size:12px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  td, th { text-align:left; padding:5px 6px; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); font-weight:600; }
+  .ok { color:var(--ok); font-weight:600; } .failed { color:var(--bad); font-weight:600; }
+  .wa { background:#e7f8ec; border-radius:10px; padding:10px 12px; white-space:pre-wrap; font-size:13px; }
+  .alert { grid-column:1/-1; background:#fef3f2; border:1px solid #fecdca; color:var(--bad); }
+  .stock-low { color:var(--bad); font-weight:600; }
+  .right { display:grid; gap:16px; align-content:start; }
+  @media (max-width:860px) { main { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<header><span class="dot" id="dot"></span><b>ShopMate ops</b><span id="meta"></span></header>
+<main id="main">
+  <section id="alert" class="alert" hidden></section>
+  <section>
+    <h2>Today's brief</h2>
+    <p class="headline" id="headline"></p>
+    <div id="urgent"></div>
+    <h2 style="margin-top:14px">Stock</h2><ul id="stock"></ul>
+    <h2 style="margin-top:14px">Follow-ups carried to tomorrow</h2><ul id="follow"></ul>
+  </section>
+  <div class="right">
+    <section>
+      <h2>Yesterday's sales</h2>
+      <div class="kpis"><div class="kpi"><div class="v" id="orders"></div><div class="l">orders</div></div>
+        <div class="kpi"><div class="v" id="revenue"></div><div class="l">revenue</div></div>
+        <div class="kpi"><div class="v" id="change"></div><div class="l">vs last week</div></div></div>
+      <h2>WhatsApp sent to Amudha</h2><div class="wa" id="wa"></div>
+    </section>
+    <section><h2>Recent runs</h2><table id="runs"></table></section>
+    <section><h2>Eval scores by model</h2><table id="evals"></table></section>
+  </div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+function row(t, cells, tag = "td") { const tr = t.insertRow();
+  cells.forEach(c => { const td = document.createElement(tag);
+    if (c instanceof Node) td.appendChild(c); else td.textContent = c; tr.appendChild(td); }); }
+function span(text, cls) { const s = document.createElement("span"); s.className = cls; s.textContent = text; return s; }
+fetch("/api/state").then(r => r.json()).then(d => {
+  $("meta").textContent = `${d.today} · prompt ${d.prompt_version}`;
+  if (d.alert) { $("alert").hidden = false; $("alert").textContent = d.alert; $("dot").style.background = "var(--bad)"; }
+  const b = d.brief;
+  if (b) {
+    $("headline").textContent = b.headline;
+    b.urgent.forEach(u => { const div = document.createElement("div"); div.className = "urgent";
+      div.appendChild(span(u.item, "")); div.firstChild.style.fontWeight = 600;
+      div.appendChild(document.createElement("br")); div.appendChild(span(u.source, "src")); $("urgent").appendChild(div); });
+    b.stock.forEach(s => { const li = document.createElement("li");
+      li.appendChild(span(s.ingredient + ": ", s.status.toLowerCase().startsWith("low") ? "stock-low" : ""));
+      li.appendChild(document.createTextNode(s.status.split(":")[0] + ". " + s.suggested_order)); $("stock").appendChild(li); });
+    b.follow_ups.filter(f => f.status === "open").forEach(f => { const li = document.createElement("li");
+      li.textContent = `${f.item} (since ${f.since})`; $("follow").appendChild(li); });
+    $("orders").textContent = b.sales.yesterday_orders;
+    $("revenue").textContent = "Rs. " + b.sales.yesterday_revenue.toLocaleString("en-IN");
+    $("change").textContent = (b.sales.change_vs_last_week_percent > 0 ? "+" : "") + b.sales.change_vs_last_week_percent + "%";
+    $("wa").textContent = b.whatsapp;
+  }
+  row($("runs"), ["Day", "Status", "Model", "Turns", "Time", "Cost"], "th");
+  d.runs.slice().reverse().slice(0, 6).forEach(r => row($("runs"), [r.day, span(r.status, r.status),
+    (r.model || "").replace("claude-", ""), r.turns ?? "-", r.seconds ? r.seconds + " s" : "-",
+    r.cost_usd != null ? "$" + r.cost_usd.toFixed(3) : "-"]));
+  row($("evals"), ["Model", "Briefs passed", "Cost"], "th");
+  Object.entries(d.evals).forEach(([m, e]) => row($("evals"), [m.replace("claude-", ""),
+    span(`${e.passed} of ${e.total}`, e.passed === e.total ? "ok" : "failed"), "$" + e.cost_usd.toFixed(3)]));
+});
+</script>
+</body>
+</html>

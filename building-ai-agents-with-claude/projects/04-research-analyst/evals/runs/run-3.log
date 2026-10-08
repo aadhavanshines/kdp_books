@@ -1,0 +1,35 @@
+→ Glob {"pattern": "**/*"}
+  ← survey-results.md · rent-quotes.md · accountant-note.md · delivery-costs.md 
+· competitor-notes.md · sales-summary.md
+→ Read {"file_path": "survey-results.md"}
+  ← 1   # Customer Survey, September 2026 · 2 · 3       Amudha's Home Bakes 
+asked customers to fill in a short online survey between 1 and 20 · 4       
+September 2026. 126 people answered: 81 existing customers and 45  ...
+→ Read {"file_path": "rent-quotes.md"}
+→ Read {"file_path": "accountant-note.md"}
+  ← 1   # Kitchen Space Quotes · 2 · 3  Collected by Amudha in late August 2026.
+All three spaces have commercial electricity · 4       and are approved for food
+businesses by the landlord. · 5 · 6   ## Option A: Ve ...
+  ← 1   # Note from Ramesh (accountant), 28 September 2026 · 2 · 3      Amudha, 
+a few numbers for the second kitchen decision. · 4 · 5  1. The Thoraipakkam 
+landlord called me yesterday. Because two other tenants  ...
+→ Read {"file_path": "delivery-costs.md"}
+→ Read {"file_path": "competitor-notes.md"}
+  ← 1   # Delivery Costs · 2 · 3        We use a local rider partner. They 
+charge by distance from the kitchen. · 4 · 5 | Distance | Charge to us | What we
+charge the customer | · 6   | --- | --- | --- | · 7 | Up to ...
+  ← 1   # Competitor Notes · 2 · 3      Notes from browsing delivery apps and 
+Instagram in September 2026. · 4 · 5      - Two cloud bakeries already deliver 
+on OMR. Both focus on cheap cakes (Rs. 550 to 750 · 6        per ...
+→ Read {"file_path": "sales-summary.md"}
+  ← 1   # Sales Summary, April to September 2026 · 2 · 3        Prepared from 
+the order book. Amounts are in rupees and include delivery charges. · 4 · 5     
+| Month | Orders | Revenue | Orders delivered to OMR | · 6       ...
+→ StructuredOutput {"answer": "Yes, but only if Amudha's savings can cover about
+Rs. 12.4 lakh and still leave the Rs. 3 lakh buffer. If they can, the second 
+kitchen should go in Thoraipakkam (OMR), now quoted at Rs. 48,000 a month. OMR 
+has clear unmet demand, little competition for a home-style bakery, and a 
+kitchen  ...
+  ← Structured output provided successfully
+Done: 9 turns, 22.7 s, $0.0693
+Quotes verified: 13 of 13. Memo saved to memo.md

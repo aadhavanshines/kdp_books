@@ -1,0 +1,59 @@
+# GitHub Actions: run ShopMate every morning at 6:00 India time, and run the evals on
+# every pull request. Copy this file to .github/workflows/ in your repository and add
+# ANTHROPIC_API_KEY under Settings > Secrets and variables > Actions.
+name: ShopMate
+
+on:
+  schedule:
+    - cron: "30 0 * * *"        # 00:30 UTC is 06:00 in India (IST, UTC+5:30)
+  pull_request:
+  workflow_dispatch:            # a "Run workflow" button for manual runs
+
+jobs:
+  evals:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Run the evals (both demo days)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python evals/run_evals.py 1
+
+  morning-brief:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write           # to save tomorrow's notes back to the repository
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Make the brief
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SHOPMATE_BUDGET_USD: "0.75"
+        run: python run_daily.py
+      - name: Save tomorrow's notes (ShopMate's memory)
+        # Each run starts on a fresh machine, so the notes must be stored somewhere
+        # that lasts. Here they go back into the (private) repository.
+        run: |
+          git config user.name "shopmate-bot"
+          git config user.email "shopmate-bot@users.noreply.github.com"
+          git add data/notes.json
+          git commit -m "ShopMate notes for $(date -u +%F)" || echo "No change to the notes"
+          git push
+      - name: Keep the brief and the run log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brief-${{ github.run_id }}
+          path: out/

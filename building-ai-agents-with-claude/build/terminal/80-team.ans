@@ -1,0 +1,45 @@
+$ python agent.py
+[32m╭─ Claude ─────────────────────────────────────────────────────────────────────────────────────────╮
+│[39m You've hit your session limit · resets 7:50pm (UTC)                                              [32m│
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+[2m[39mDone: 1 turns, 0.3 s, $0.0000[0m
+Traceback (most recent call last):
+  File "/home/user/kdp_books/building-ai-agents-with-claude/projects/08-launch-team/agent.py", line
+113, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/user/kdp_books/building-ai-agents-with-claude/projects/08-launch-team/agent.py", line
+108, in main
+    async for message in query(prompt="Prepare the Diwali hamper launch kit.", options=options):
+  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/query.py", line 123, in query
+    async for message in client.process_query(
+  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/client.py", line 75, in p
+rocess_query
+    async for msg in inner:
+  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/client.py", line 227, in
+_process_query_inner
+    async for data in query.receive_messages():
+  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/query.py", line 852, in r
+eceive_messages
+    raise Exception(message.get("error", "Unknown error"))
+Exception: Claude Code returned an error result: success
+$
+
+
+
+
+
+
+
+
+
+
+

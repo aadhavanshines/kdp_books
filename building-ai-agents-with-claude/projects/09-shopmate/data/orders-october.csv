@@ -1,0 +1,99 @@
+order_id,date,area,product,category,eggless,quantity,amount,delivery_charge,channel,rating
+CB-20001,2026-10-01,OMR,Festive hamper,hamper,yes,1,1600,120,Instagram,5
+CB-20002,2026-10-01,OMR,Black forest cake,cake,no,1,850,120,Instagram,5
+CB-20003,2026-10-01,Velachery,Chocolate truffle cake,cake,yes,0.5,475,120,Instagram,5
+CB-20004,2026-10-01,Anna Nagar,Chocolate truffle cake,cake,no,1.5,1425,120,Instagram,5
+CB-20005,2026-10-01,OMR,Festive hamper,hamper,no,2,3200,120,Instagram,5
+CB-20006,2026-10-01,Anna Nagar,Red velvet cake,cake,yes,1.5,1575,120,Instagram,5
+CB-20007,2026-10-01,Anna Nagar,Black forest cake,cake,yes,1,850,120,Instagram,5
+CB-20008,2026-10-01,OMR,Chocolate truffle cake,cake,no,1,950,120,Instagram,5
+CB-20009,2026-10-01,OMR,Chocolate truffle cake,cake,no,2,1900,120,Instagram,5
+CB-20010,2026-10-01,OMR,Black forest cake,cake,no,0.5,425,120,Instagram,5
+CB-20011,2026-10-01,Velachery,Black forest cake,cake,yes,2,1700,120,Instagram,5
+CB-20012,2026-10-02,Anna Nagar,Assorted cupcakes (6),cupcakes,no,1,450,120,Instagram,5
+CB-20013,2026-10-02,Anna Nagar,Walnut brownies (box of 6),brownies,yes,1,420,120,Instagram,5
+CB-20014,2026-10-02,Adyar,Black forest cake,cake,yes,1,850,120,Instagram,5
+CB-20015,2026-10-02,Velachery,Festive hamper,hamper,yes,1,1600,120,Instagram,5
+CB-20016,2026-10-02,Velachery,Rasmalai cake,cake,no,1.5,1725,120,Instagram,5
+CB-20017,2026-10-02,OMR,Chocolate truffle cake,cake,no,2,1900,120,Instagram,5
+CB-20018,2026-10-02,OMR,Rasmalai cake,cake,no,1,1150,120,Instagram,5
+CB-20019,2026-10-02,Other,Black forest cake,cake,no,0.5,425,120,Instagram,5
+CB-20020,2026-10-02,Adyar,Red velvet cake,cake,yes,0.5,525,120,Instagram,5
+CB-20021,2026-10-02,Anna Nagar,Red velvet cake,cake,no,1.5,1575,120,Instagram,5
+CB-20022,2026-10-02,Other,Red velvet cake,cake,no,0.5,525,120,Instagram,5
+CB-20023,2026-10-02,Anna Nagar,Red velvet cake,cake,no,1.5,1575,120,Instagram,5
+CB-20024,2026-10-02,Velachery,Chocolate truffle cake,cake,no,1,950,120,Instagram,5
+CB-20025,2026-10-03,Velachery,Chocolate truffle cake,cake,yes,1.5,1425,120,Instagram,5
+CB-20026,2026-10-03,T. Nagar,Chocolate truffle cake,cake,yes,1.5,1425,120,Instagram,5
+CB-20027,2026-10-03,Adyar,Rasmalai cake,cake,no,1,1150,120,Instagram,5
+CB-20028,2026-10-03,Anna Nagar,Chocolate truffle cake,cake,yes,0.5,475,120,Instagram,5
+CB-20029,2026-10-03,T. Nagar,Chocolate truffle cake,cake,yes,1.5,1425,120,Instagram,5
+CB-20030,2026-10-03,Velachery,Rasmalai cake,cake,no,1,1150,120,Instagram,5
+CB-20031,2026-10-03,Adyar,Red velvet cake,cake,no,1,1050,120,Instagram,5
+CB-20032,2026-10-03,Velachery,Red velvet cake,cake,no,0.5,525,120,Instagram,5
+CB-20033,2026-10-03,Adyar,Festive hamper,hamper,no,2,3200,120,Instagram,5
+CB-20034,2026-10-03,Velachery,Rasmalai cake,cake,no,0.5,575,120,Instagram,5
+CB-20035,2026-10-03,Velachery,Chocolate truffle cake,cake,yes,1,950,120,Instagram,5
+CB-20036,2026-10-03,Anna Nagar,Red velvet cake,cake,yes,0.5,525,120,Instagram,5
+CB-20037,2026-10-03,OMR,Chocolate truffle cake,cake,yes,1,950,120,Instagram,5
+CB-20038,2026-10-03,Anna Nagar,Chocolate truffle cake,cake,yes,1.5,1425,120,Instagram,5
+CB-20039,2026-10-03,Velachery,Rasmalai cake,cake,yes,1,1150,120,Instagram,5
+CB-20040,2026-10-03,Velachery,Black forest cake,cake,yes,1.5,1275,120,Instagram,5
+CB-20041,2026-10-03,Adyar,Chocolate truffle cake,cake,no,1,950,120,Instagram,5
+CB-20042,2026-10-04,Anna Nagar,Chocolate truffle cake,cake,no,0.5,475,120,Instagram,5
+CB-20043,2026-10-04,Other,Rasmalai cake,cake,no,2,2300,120,Instagram,5
+CB-20044,2026-10-04,Adyar,Rasmalai cake,cake,yes,0.5,575,120,Instagram,5
+CB-20045,2026-10-04,Velachery,Rasmalai cake,cake,yes,1,1150,120,Instagram,5
+CB-20046,2026-10-04,Anna Nagar,Black forest cake,cake,yes,2,1700,120,Instagram,5
+CB-20047,2026-10-04,T. Nagar,Walnut brownies (box of 6),brownies,no,1,420,120,Instagram,5
+CB-20048,2026-10-04,Anna Nagar,Walnut brownies (box of 6),brownies,no,1,420,120,Instagram,5
+CB-20049,2026-10-04,Adyar,Walnut brownies (box of 6),brownies,no,1,420,120,Instagram,5
+CB-20050,2026-10-04,Other,Chocolate truffle cake,cake,no,2,1900,120,Instagram,5
+CB-20051,2026-10-04,Other,Festive hamper,hamper,no,1,1600,120,Instagram,5
+CB-20052,2026-10-04,Velachery,Chocolate truffle cake,cake,yes,1,950,120,Instagram,5
+CB-20053,2026-10-04,T. Nagar,Black forest cake,cake,no,2,1700,120,Instagram,5
+CB-20054,2026-10-04,T. Nagar,Red velvet cake,cake,yes,0.5,525,120,Instagram,5
+CB-20055,2026-10-04,Velachery,Rasmalai cake,cake,yes,1,1150,120,Instagram,5
+CB-20056,2026-10-04,Anna Nagar,Walnut brownies (box of 6),brownies,no,1,420,120,Instagram,5
+CB-20057,2026-10-04,Velachery,Walnut brownies (box of 6),brownies,no,1,420,120,Instagram,5
+CB-20058,2026-10-04,Other,Walnut brownies (box of 6),brownies,yes,1,420,120,Instagram,5
+CB-20059,2026-10-04,T. Nagar,Red velvet cake,cake,yes,1.5,1575,120,Instagram,5
+CB-20060,2026-10-04,OMR,Assorted cupcakes (6),cupcakes,no,1,450,120,Instagram,5
+CB-20061,2026-10-05,Anna Nagar,Black forest cake,cake,no,0.5,425,120,Instagram,5
+CB-20062,2026-10-05,Adyar,Red velvet cake,cake,yes,2,2100,120,Instagram,5
+CB-20063,2026-10-05,T. Nagar,Festive hamper,hamper,yes,1,1600,120,Instagram,5
+CB-20064,2026-10-05,Velachery,Chocolate truffle cake,cake,no,1,950,120,Instagram,5
+CB-20065,2026-10-05,Velachery,Rasmalai cake,cake,yes,2,2300,120,Instagram,5
+CB-20066,2026-10-05,T. Nagar,Assorted cupcakes (6),cupcakes,no,1,450,120,Instagram,5
+CB-20067,2026-10-05,Velachery,Assorted cupcakes (6),cupcakes,no,2,900,120,Instagram,5
+CB-20068,2026-10-05,Anna Nagar,Black forest cake,cake,no,2,1700,120,Instagram,5
+CB-20069,2026-10-05,OMR,Assorted cupcakes (6),cupcakes,no,1,450,120,Instagram,5
+CB-20070,2026-10-05,Velachery,Chocolate truffle cake,cake,no,1,950,120,Instagram,5
+CB-20071,2026-10-05,Adyar,Black forest cake,cake,no,1,850,120,Instagram,5
+CB-20072,2026-10-05,T. Nagar,Black forest cake,cake,yes,0.5,425,120,Instagram,5
+CB-20073,2026-10-05,Adyar,Chocolate truffle cake,cake,no,0.5,475,120,Instagram,5
+CB-20074,2026-10-06,Velachery,Chocolate truffle cake,cake,no,0.5,475,120,Instagram,5
+CB-20075,2026-10-06,Anna Nagar,Black forest cake,cake,yes,2,1700,120,Instagram,5
+CB-20076,2026-10-06,Velachery,Black forest cake,cake,yes,1.5,1275,120,Instagram,5
+CB-20077,2026-10-06,Other,Black forest cake,cake,no,1,850,120,Instagram,5
+CB-20078,2026-10-06,Anna Nagar,Chocolate truffle cake,cake,yes,1.5,1425,120,Instagram,5
+CB-20079,2026-10-06,Adyar,Black forest cake,cake,no,0.5,425,120,Instagram,5
+CB-20080,2026-10-06,Adyar,Chocolate truffle cake,cake,no,1,950,120,Instagram,5
+CB-20081,2026-10-06,Anna Nagar,Chocolate truffle cake,cake,no,1,950,120,Instagram,5
+CB-20082,2026-10-06,Adyar,Festive hamper,hamper,yes,1,1600,120,Instagram,5
+CB-20083,2026-10-06,Other,Assorted cupcakes (6),cupcakes,no,1,450,120,Instagram,5
+CB-20084,2026-10-06,Other,Chocolate truffle cake,cake,no,1.5,1425,120,Instagram,5
+CB-20085,2026-10-06,Anna Nagar,Black forest cake,cake,no,1,850,120,Instagram,5
+CB-20086,2026-10-06,Velachery,Chocolate truffle cake,cake,no,2,1900,120,Instagram,5
+CB-20087,2026-10-07,Anna Nagar,Rasmalai cake,cake,no,2,2300,120,Instagram,5
+CB-20088,2026-10-07,Other,Chocolate truffle cake,cake,yes,1,950,120,Instagram,5
+CB-20089,2026-10-07,T. Nagar,Chocolate truffle cake,cake,yes,0.5,475,120,Instagram,5
+CB-20090,2026-10-07,T. Nagar,Walnut brownies (box of 6),brownies,no,1,420,120,Instagram,5
+CB-20091,2026-10-07,Anna Nagar,Festive hamper,hamper,no,1,1600,120,Instagram,5
+CB-20092,2026-10-07,Anna Nagar,Red velvet cake,cake,yes,1,1050,120,Instagram,5
+CB-20093,2026-10-07,T. Nagar,Walnut brownies (box of 6),brownies,yes,1,420,120,Instagram,5
+CB-20094,2026-10-07,T. Nagar,Chocolate truffle cake,cake,yes,0.5,475,120,Instagram,5
+CB-20095,2026-10-07,Anna Nagar,Assorted cupcakes (6),cupcakes,yes,1,450,120,Instagram,5
+CB-20096,2026-10-07,Velachery,Chocolate truffle cake,cake,no,2,1900,120,Instagram,5
+CB-20097,2026-10-07,Velachery,Red velvet cake,cake,yes,0.5,525,120,Instagram,5
+CB-20098,2026-10-07,Anna Nagar,Chocolate truffle cake,cake,yes,1,950,120,Instagram,5

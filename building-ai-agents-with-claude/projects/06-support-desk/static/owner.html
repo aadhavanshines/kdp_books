@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Owner view · Amudha's Home Bakes</title>
+<style>
+  body { margin:0; font:14px/1.5 system-ui, "DejaVu Sans", sans-serif; color:#2a211c; background:#fbf6f0; }
+  header { background:#8a4b2a; color:#fff; padding:14px 22px; font-weight:600; }
+  main { max-width:1060px; margin:18px auto; padding:0 16px; display:grid; gap:16px; }
+  section { background:#fff; border:1px solid #eadfd4; border-radius:12px; padding:14px 16px; }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:#7a6a60; margin:0 0 8px; }
+  table { width:100%; border-collapse:collapse; } td, th { text-align:left; padding:6px 8px;
+  border-bottom:1px solid #f1e8df; vertical-align:top; } th { color:#7a6a60; font-weight:600; }
+  .pill { padding:2px 8px; border-radius:10px; font-size:12px; background:#eee; white-space:nowrap; }
+  .paid { background:#dff3e3; } .awaiting { background:#fff1c9; } .pending { background:#fde2d6; }
+  .urgent { background:#f9c9c9; font-weight:600; }
+  code { font-size:12px; color:#7a6a60; word-break:break-all; }
+</style>
+</head>
+<body>
+<header>Owner view: refunds, tickets and the agent's audit log</header>
+<main>
+  <section><h2>Refunds</h2><table id="refunds"></table></section>
+  <section><h2>Tickets for Amudha</h2><table id="tickets"></table></section>
+  <section><h2>Audit log (latest first)</h2><table id="audit"></table></section>
+</main>
+<script>
+function cell(t, cls) { const td = document.createElement("td");
+  if (cls) { const s = document.createElement("span"); s.className = "pill " + cls; s.textContent = t; td.appendChild(s); }
+  else td.textContent = t; return td; }
+function fill(id, head, rows) {
+  const t = document.getElementById(id); t.innerHTML = "";
+  const h = t.insertRow(); head.forEach(x => { const th = document.createElement("th"); th.textContent = x; h.appendChild(th); });
+  rows.forEach(r => { const tr = t.insertRow(); r.forEach(c => tr.appendChild(c)); });
+}
+fetch("/api/owner").then(r => r.json()).then(d => {
+  fill("refunds", ["Order", "Amount", "Reason", "Status"], d.refunds.map(r => [cell(r.order_id),
+    cell("Rs. " + r.amount), cell(r.reason), cell(r.status, r.status.split(" ")[0])]));
+  fill("tickets", ["Order", "Urgency", "Summary"], d.tickets.map(t => [cell(t.order_id),
+    cell(t.urgency, t.urgency), cell(t.summary)]));
+  fill("audit", ["Time", "Tool", "Input"], d.audit.map(a => [cell(a.time.slice(11)), cell(a.tool),
+    (() => { const td = document.createElement("td"); const c = document.createElement("code");
+      c.textContent = JSON.stringify(a.input); td.appendChild(c); return td; })()]));
+});
+</script>
+</body>
+</html>

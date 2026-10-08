@@ -1,0 +1,40 @@
+$ cd /root/bakery && claude mcp add bakery-stock -- python3 /root/bakery/stock_server.py
+Added stdio MCP server bakery-stock with command: python3 /root/bakery/stock_server.py to local conf
+ig
+File modified: /root/.claude.json [project: /root/bakery]
+$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

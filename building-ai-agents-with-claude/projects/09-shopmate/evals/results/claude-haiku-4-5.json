@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-4-5",
+  "passed": 4,
+  "total": 4,
+  "cost_usd": 0.3059,
+  "results": [
+    {
+      "day": 1,
+      "passed": true,
+      "failed_checks": [],
+      "cost_usd": 0.0859,
+      "seconds": 114.6,
+      "turns": 12
+    },
+    {
+      "day": 2,
+      "passed": true,
+      "failed_checks": [],
+      "cost_usd": 0.1202,
+      "seconds": 207.7,
+      "turns": 10
+    },
+    {
+      "day": 1,
+      "passed": true,
+      "failed_checks": [],
+      "cost_usd": 0.0363,
+      "seconds": 45.2,
+      "turns": 11
+    },
+    {
+      "day": 2,
+      "passed": true,
+      "failed_checks": [],
+      "cost_usd": 0.0635,
+      "seconds": 103.3,
+      "turns": 7
+    }
+  ]
+}

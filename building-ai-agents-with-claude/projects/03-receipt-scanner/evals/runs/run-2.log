@@ -1,0 +1,35 @@
+→ Glob {"pattern": "**/receipts/**/*"}
+  ← receipts/receipt-01.jpg · receipts/receipt-02.jpg · receipts/receipt-03.jpg 
+· receipts/receipt-04.jpg · receipts/receipt-05.jpg · receipts/receipt-06.jpg · 
+receipts/receipt-07.jpg · receipts/receipt-0 ...
+→ Read {"file_path": "receipts/receipt-01.jpg"}
+  ← 
+→ Read {"file_path": "receipts/receipt-02.jpg"}
+→ Read {"file_path": "receipts/receipt-03.jpg"}
+  ← 
+  ← 
+→ Read {"file_path": "receipts/receipt-04.jpg"}
+  ← 
+→ Read {"file_path": "receipts/receipt-05.jpg"}
+  ← 
+→ Read {"file_path": "receipts/receipt-06.jpg"}
+  ← 
+→ Read {"file_path": "receipts/receipt-07.jpg"}
+  ← 
+→ Read {"file_path": "receipts/receipt-08.jpg"}
+  ← 
+→ StructuredOutput {"receipts": [{"file": "receipt-01.jpg", "shop": "Sri Murugan
+Stores", "bill_no": "SM-4471", "date": "02/10/2026", "gstin": "", "items": 
+[{"name": "Toor dal 1kg", "qty": 2, "rate": 168, "amount": 336}, {"name": 
+"Basmati rice 5kg", "qty": 1, "rate": 545, "amount": 545}, {"name": "Sunflower 
+oil 1L", " ...
+  ← Structured output provided successfully
+Done: 11 turns, 16.7 s, $0.0913
+receipt-01.jpg: Sri Murugan Stores, Rs. 1,323.00 -> OK
+receipt-02.jpg: Hotel Annapoorna Veg, Rs. 546.00 -> OK
+receipt-03.jpg: Kumaran Hardware, Rs. 1,191.80 -> OK
+receipt-04.jpg: Velachery Health Pharmacy, Rs. 397.60 -> OK
+receipt-05.jpg: Green Leaf Bakery Supplies, Rs. 2,832.00 -> OK
+receipt-06.jpg: City Stationers, Rs. 1,339.00 -> total should be 1239.00 but bill says 1339.00
+receipt-07.jpg: Hotel Annapoorna Veg, Rs. 546.00 -> duplicate of receipt-02.jpg
+receipt-08.jpg: Raja Auto Fuels, Rs. 1,272.50 -> OK

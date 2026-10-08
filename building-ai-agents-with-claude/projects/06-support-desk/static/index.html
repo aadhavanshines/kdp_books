@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help desk · Amudha's Home Bakes</title>
+<style>
+  :root { --brand:#8a4b2a; --cream:#fbf6f0; --ink:#2a211c; --muted:#7a6a60; --line:#eadfd4; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:15px/1.5 system-ui, "DejaVu Sans", sans-serif; color:var(--ink);
+         background:var(--cream); }
+  header { background:var(--brand); color:#fff; padding:14px 22px; display:flex;
+           align-items:center; gap:12px; }
+  header .logo { width:34px; height:34px; border-radius:50%; background:#f3c98b;
+                 display:grid; place-items:center; font-weight:700; color:var(--brand); }
+  header h1 { font-size:17px; margin:0; } header p { margin:0; font-size:12px; opacity:.85; }
+  main { display:grid; grid-template-columns: 1fr 300px; gap:18px; max-width:1060px;
+         margin:18px auto; padding:0 16px; }
+  .chat { background:#fff; border:1px solid var(--line); border-radius:14px; display:flex;
+          flex-direction:column; height:calc(100vh - 120px); min-height:480px; }
+  #log { flex:1; overflow-y:auto; padding:18px; display:flex; flex-direction:column; gap:10px; }
+  .msg { max-width:78%; padding:10px 14px; border-radius:14px; white-space:pre-wrap; }
+  .me { align-self:flex-end; background:var(--brand); color:#fff; border-bottom-right-radius:4px; }
+  .bot { align-self:flex-start; background:#f4ece4; border-bottom-left-radius:4px; }
+  .typing { color:var(--muted); font-style:italic; }
+  form { display:flex; gap:8px; padding:12px; border-top:1px solid var(--line); }
+  input { flex:1; padding:11px 14px; border:1px solid var(--line); border-radius:22px;
+          font:inherit; }
+  button { background:var(--brand); color:#fff; border:none; border-radius:22px;
+           padding:0 20px; font:inherit; font-weight:600; cursor:pointer; }
+  aside { background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px;
+          height:calc(100vh - 120px); min-height:480px; overflow-y:auto; }
+  aside h2 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted);
+             margin:0 0 10px; }
+  .act { border-left:3px solid #d58a3c; background:#fdf7f0; padding:8px 10px; margin-bottom:8px;
+         border-radius:0 8px 8px 0; font-size:13px; }
+  .act b { display:block; color:var(--brand); } .act code { font-size:12px; color:var(--muted);
+         word-break:break-all; }
+  .empty { color:var(--muted); font-size:13px; }
+  @media (max-width:760px) { main { grid-template-columns:1fr; } aside { height:auto; min-height:0; } }
+</style>
+</head>
+<body>
+<header><div class="logo">A</div><div><h1>Amudha's Home Bakes</h1>
+  <p>Help desk · usually replies in a few seconds</p></div></header>
+<main>
+  <section class="chat">
+    <div id="log"><div class="msg bot">Hello! I can help with orders, changes and refunds.
+How can I help you today?</div></div>
+    <form id="f"><input id="m" autocomplete="off" placeholder="Type your message..." aria-label="Message">
+      <button>Send</button></form>
+  </section>
+  <aside><h2>What the agent did</h2><div id="acts"><p class="empty">Tool calls appear here.</p></div></aside>
+</main>
+<script>
+let chatId = null;
+const log = document.getElementById("log"), acts = document.getElementById("acts");
+function add(cls, text) {
+  const d = document.createElement("div"); d.className = "msg " + cls; d.textContent = text;
+  log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+}
+document.getElementById("f").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const box = document.getElementById("m"), text = box.value.trim();
+  if (!text) return;
+  box.value = ""; add("me", text);
+  const wait = add("bot typing", "Typing...");
+  const res = await fetch("/api/chat", {method: "POST", headers: {"Content-Type": "application/json"},
+                          body: JSON.stringify({chat_id: chatId, message: text})});
+  const data = await res.json();
+  chatId = data.chat_id; wait.remove(); add("bot", data.reply.replace(/\*\*/g, ""));
+  if (data.actions.length) acts.querySelector(".empty")?.remove();
+  for (const a of data.actions) {
+    const d = document.createElement("div"); d.className = "act";
+    d.innerHTML = "<b></b><code></code>";
+    d.querySelector("b").textContent = a.tool;
+    d.querySelector("code").textContent = JSON.stringify(a.input);
+    acts.appendChild(d);
+  }
+});
+</script>
+</body>
+</html>

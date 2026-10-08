@@ -1,0 +1,66 @@
+{
+  "title": "Building AI Agents with Claude",
+  "subtitle": "A Beginner's Guide to Agents That Use Tools, Remember, and Get Real Work Done, from Your First Agent to Production",
+  "cover_title": [
+    [
+      "BUILDING",
+      false
+    ],
+    [
+      "AI AGENTS",
+      true
+    ],
+    [
+      "WITH CLAUDE",
+      false
+    ]
+  ],
+  "short_subtitle": "From Beginner to Advanced",
+  "cover_tagline": "A Beginner's Guide to Agents That Use Tools, Remember, and Get Real Work Done",
+  "cover_prompt": "> agent.run(\"handle my inbox\")_",
+  "cover_features": [
+    "9 REAL AGENTS",
+    "TESTED & EVALUATED",
+    "IDEA TO PRODUCTION"
+  ],
+  "slug": "building-ai-agents-with-claude",
+  "author": "Aadhavan Muthurengan",
+  "language": "en",
+  "year": 2026,
+  "identifier": "building-ai-agents-with-claude-aadhavan-muthurengan-2026",
+  "trim": {
+    "width_in": 6.0,
+    "height_in": 9.0
+  },
+  "paper": "white",
+  "reuse_note": "Readers may freely use and adapt the example prompts, tools and project code in this book for their own work.",
+  "trademarks": "Claude, Claude Code, Claude Agent SDK, and Anthropic are trademarks of Anthropic. Python is a trademark of the Python Software Foundation. GitHub and GitHub Actions are trademarks of GitHub, Inc. Docker is a trademark of Docker, Inc. Visual Studio Code, Windows, and Playwright are trademarks of Microsoft Corporation. Apple and macOS are trademarks of Apple Inc. Linux is a trademark of Linus Torvalds. Google, Gmail, and Google Cloud are trademarks of Google LLC. Amazon Web Services and Amazon Bedrock are trademarks of Amazon.com, Inc. WhatsApp and Instagram are trademarks of Meta Platforms, Inc. Razorpay is a trademark of Razorpay Software Private Limited. Excel is a trademark of Microsoft Corporation. SQLite is in the public domain; FastAPI, pandas, matplotlib, openpyxl, and Rich are open-source projects and their names belong to their owners. All businesses, people, orders, emails, receipts, and figures in the example projects are fictional. Product names are used solely for identification and educational discussion. This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic or any of these companies.",
+  "back_cover_blurb": [
+    "Agents don't just answer. They do the work.",
+    "An AI agent reads, decides, uses tools and checks its own results. This book teaches you to build agents that are useful, safe and reliable, with Claude and the Claude Agent SDK.",
+    "You will build nine real agents for one small business, from a pantry helper to ShopMate, a back-office agent taken all the way to production. Every agent was run for real, and every result in the book was checked by code.",
+    "Inside you will learn:",
+    "- The agent loop, tools, and structured outputs",
+    "- Inbox, receipt, research and data agents",
+    "- A support desk with guardrails in code",
+    "- MCP servers and teams of agents",
+    "- Memory, sessions and evals",
+    "- Docker, scheduling, monitoring and costs",
+    "- Upgrades, model changes and maintenance",
+    "- Prompt injection and responsible agents"
+  ],
+  "dedication": [
+    "To my father and my mother,",
+    "for your love, your sacrifices, and every lesson you taught me.",
+    "",
+    "To my wife,",
+    "for your patience, your encouragement, and your belief in me.",
+    "",
+    "And to our three children,",
+    "may you always build the things you dream of.",
+    "",
+    "This book is for you."
+  ],
+  "author_short_bio": "Aadhavan Muthurengan is an automation and AI professional with more than 15 years of experience in the automotive industry, where Aadhavan has built in-house tools that transformed product development and validation.",
+  "levels": {}
+}

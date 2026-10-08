@@ -1,0 +1,66 @@
+{
+  "maida": {
+    "qty": 18,
+    "unit": "kg",
+    "reorder_at": 25,
+    "supplier": "Sundar Traders",
+    "price": 46,
+    "weekly_use": 20
+  },
+  "sugar": {
+    "qty": 30,
+    "unit": "kg",
+    "reorder_at": 15,
+    "supplier": "Sundar Traders",
+    "price": 44,
+    "weekly_use": 12
+  },
+  "butter": {
+    "qty": 4,
+    "unit": "kg",
+    "reorder_at": 6,
+    "supplier": "Fresh Dairy Supplies",
+    "price": 530,
+    "weekly_use": 7
+  },
+  "fresh cream": {
+    "qty": 9,
+    "unit": "L",
+    "reorder_at": 5,
+    "supplier": "Fresh Dairy Supplies",
+    "price": 260,
+    "weekly_use": 6
+  },
+  "eggs": {
+    "qty": 5,
+    "unit": "tray",
+    "reorder_at": 4,
+    "supplier": "Fresh Dairy Supplies",
+    "price": 210,
+    "weekly_use": 6
+  },
+  "cocoa powder": {
+    "qty": 1.5,
+    "unit": "kg",
+    "reorder_at": 2,
+    "supplier": "Green Leaf Bakery Supplies",
+    "price": 720,
+    "weekly_use": 1.2
+  },
+  "cake boxes 8x8": {
+    "qty": 160,
+    "unit": "box",
+    "reorder_at": 80,
+    "supplier": "Green Leaf Bakery Supplies",
+    "price": 12.4,
+    "weekly_use": 70
+  },
+  "walnuts": {
+    "qty": 2.2,
+    "unit": "kg",
+    "reorder_at": 1,
+    "supplier": "Green Leaf Bakery Supplies",
+    "price": 1100,
+    "weekly_use": 0.8
+  }
+}

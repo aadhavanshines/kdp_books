@@ -1,0 +1,60 @@
+$ python agent.py "I want to make chicken biryani on Sunday for 6 people. What do I need to buy?"
+[32m╭─ Claude ─────────────────────────────────────────────────────────────────────────────────────────╮
+│[39m I'll check your pantry first to see what you already have.                                       [32m│
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+[1m[36m→ check_pantry[0m [2m{}[0m
+  [33m← rice: 2 kg · toor dal: 500 g · onions: 6 · tomatoes: 4 · potatoes: 5 · eggs: 6 · paneer: 200 g ·
+spinach: 1 bunch · curd: 400 g · ginger: 1 small piece · garlic: 1 bulb · green chillies: 8 · [39m
+[33mturmeric: ...[39m
+[32m╭─ Claude ─────────────────────────────────────────────────────────────────────────────────────────╮
+│[39m Your pantry has most of the basics. I'm adding what's missing to the shopping list.              [32m│
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+[1m[36m→ add_to_shopping_list[0m [2m{"item": "Chicken, bone-in curry cut (1.2 kg)", "reason": "Main ingredient [0m
+[2mfor chicken biryani for 6 people"}[0m
+  [33m← Added Chicken, bone-in curry cut (1.2 kg) to the shopping list.[39m
+[1m[36m→ add_to_shopping_list[0m [2m{"item": "Ghee (100 g)", "reason": "For frying onions and layering the [0m
+[2mbiryani"}[0m
+  [33m← Added Ghee (100 g) to the shopping list.[39m
+[1m[36m→ add_to_shopping_list[0m [2m{"item": "Fresh mint and coriander leaves (1 bunch each)", "reason": "For [0m
+[2mlayering and marinade in the biryani"}[0m
+  [33m← Added Fresh mint and coriander leaves (1 bunch each) to the shopping list.[39m
+[1m[36m→ add_to_shopping_list[0m [2m{"item": "Whole spices: cardamom, cloves, cinnamon sticks, bay leaves", [0m
+[2m"reason": "For flavouring the rice and giving the biryani its aroma"}[0m
+  [33m← Added Whole spices: cardamom, cloves, cinnamon sticks, bay leaves to the shopping list.[39m
+[1m[36m→ add_to_shopping_list[0m [2m{"item": "Red chilli powder", "reason": "For the chicken marinade"}[0m
+  [33m← Added Red chilli powder to the shopping list.[39m
+[1m[36m→ add_to_shopping_list[0m [2m{"item": "Lemons (2)", "reason": "For the marinade and for finishing the [0m
+[2mbiryani"}[0m
+  [33m← Added Lemons (2) to the shopping list.[39m
+[32m╭─ Claude ─────────────────────────────────────────────────────────────────────────────────────────╮
+│[39m **Dish: Chicken Biryani for 6**                                                                  [32m│
+│[39m                                                                                                  [32m│
+│[39m **Shopping list (added):**                                                                       [32m│
+│[39m - Chicken, bone-in curry cut, 1.2 kg                                                             [32m│
+│[39m - Ghee, 100 g                                                                                    [32m│
+│[39m - Fresh mint and coriander, 1 bunch each                                                         [32m│
+│[39m - Whole spices: cardamom, cloves, cinnamon, bay leaves                                           [32m│
+│[39m - Red chilli powder                                                                              [32m│
+│[39m - Lemons, 2                                                                                      [32m│
+│[39m                                                                                                  [32m│
+│[39m **Already in your pantry:** rice, onions, tomatoes, curd, ginger, garlic, green chillies,        [32m│
+│[39m turmeric, cumin seeds, garam masala, oil and salt.                                               [32m│
+│[39m                                                                                                  [32m│
+│[39m **Steps:**                                                                                       [32m│
+│[39m 1. **Marinate:** Mix the chicken with curd, ginger-garlic paste, chilli powder, turmeric, garam  [32m│
+│[39m masala, lemon juice, salt and half the mint and coriander. Rest it for at least 1 hour.          [32m│
+│[39m 2. **Fry onions:** Slice 4 onions and fry them in oil and ghee until deep golden. Set half aside [32m│
+│[39m for layering.                                                                                    [32m│
+│[39m 3. **Cook the chicken:** Cook the marinated chicken with the tomatoes and the remaining onions   [32m│
+│[39m for 15 to 20 minutes, until it's about 80% done.                                                 [32m│
+│[39m 4. **Parboil the rice:** Boil the soaked rice with whole spices and salt until it's 70% cooked,  [32m│
+│[39m then drain.                                                                                      [32m│
+│[39m 5. **Layer and steam:** Layer the rice over the chicken. Top with fried onions, herbs and ghee.  [32m│
+│[39m Seal the pot and steam on the lowest heat for 20 to 25 minutes.                                  [32m│
+│[39m                                                                                                  [32m│
+│[39m **Note:** Your pantry just says "rice". Biryani works best with basmati, so check what you have. [32m│
+│[39m If it isn't basmati, add some to the list. For 6 people you'll need about 600 to 700 g, and you  [32m│
+│[39m have plenty.                                                                                     [32m│
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+[2m[39mDone: 8 turns, 11.6 s, $0.0359[0m
+$

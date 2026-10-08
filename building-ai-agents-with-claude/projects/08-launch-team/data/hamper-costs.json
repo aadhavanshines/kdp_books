@@ -1,0 +1,18 @@
+{
+  "_note": "Cost to make each item, in rupees, including ingredients and packaging. Prices for customers must give at least a 40% margin: price >= cost / 0.6, then rounded UP to the next amount ending in 49 or 99.",
+  "items": {
+    "Mini chocolate truffle cake (500 g)": 285,
+    "Rasmalai cake jar": 140,
+    "Walnut brownies (box of 6)": 190,
+    "Eggless walnut brownies (box of 6)": 205,
+    "Kaju katli cookies (200 g)": 175,
+    "Badam milk cookies (200 g)": 150,
+    "Festive gift box and ribbon": 95,
+    "Diya and greeting card": 40
+  },
+  "hampers": {
+    "Deepam (small)": ["Rasmalai cake jar", "Badam milk cookies (200 g)", "Festive gift box and ribbon", "Diya and greeting card"],
+    "Jyothi (medium)": ["Mini chocolate truffle cake (500 g)", "Walnut brownies (box of 6)", "Kaju katli cookies (200 g)", "Festive gift box and ribbon", "Diya and greeting card"],
+    "Jyothi Eggless (medium)": ["Rasmalai cake jar", "Eggless walnut brownies (box of 6)", "Kaju katli cookies (200 g)", "Badam milk cookies (200 g)", "Festive gift box and ribbon", "Diya and greeting card"]
+  }
+}

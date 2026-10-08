@@ -1,0 +1,28 @@
+{
+  "model": "claude-opus-5-5",
+  "passed": 0,
+  "total": 4,
+  "cost_usd": 0,
+  "results": [
+    {
+      "day": 1,
+      "passed": false,
+      "error": "You've hit your session limit \u00b7 resets 7:50pm (UTC)"
+    },
+    {
+      "day": 2,
+      "passed": false,
+      "error": "You've hit your session limit \u00b7 resets 7:50pm (UTC)"
+    },
+    {
+      "day": 1,
+      "passed": false,
+      "error": "You've hit your session limit \u00b7 resets 7:50pm (UTC)"
+    },
+    {
+      "day": 2,
+      "passed": false,
+      "error": "You've hit your session limit \u00b7 resets 7:50pm (UTC)"
+    }
+  ]
+}

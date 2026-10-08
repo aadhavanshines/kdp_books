@@ -1,0 +1,98 @@
+{
+ "receipt-01.jpg": {
+  "shop": "Sri Murugan Stores",
+  "bill_no": "SM-4471",
+  "date": "02/10/2026",
+  "gstin": "",
+  "subtotal": 1323.0,
+  "gst_rate": 0,
+  "gst_amount": 0.0,
+  "total": 1323.0,
+  "items": 4,
+  "should_flag": null
+ },
+ "receipt-02.jpg": {
+  "shop": "Hotel Annapoorna Veg",
+  "bill_no": "T7-0912",
+  "date": "03/10/2026",
+  "gstin": "33AABCH1234F1Z5",
+  "subtotal": 520.0,
+  "gst_rate": 5,
+  "gst_amount": 26.0,
+  "total": 546.0,
+  "items": 3,
+  "should_flag": null
+ },
+ "receipt-03.jpg": {
+  "shop": "Kumaran Hardware",
+  "bill_no": "KH/26/1188",
+  "date": "03/10/2026",
+  "gstin": "33AAFFK5521M1Z2",
+  "subtotal": 1010.0,
+  "gst_rate": 18,
+  "gst_amount": 181.8,
+  "total": 1191.8,
+  "items": 3,
+  "should_flag": null
+ },
+ "receipt-04.jpg": {
+  "shop": "Velachery Health Pharmacy",
+  "bill_no": "VLY-55102",
+  "date": "04/10/2026",
+  "gstin": "33AACCM8899Q1Z1",
+  "subtotal": 355.0,
+  "gst_rate": 12,
+  "gst_amount": 42.6,
+  "total": 397.6,
+  "items": 3,
+  "should_flag": null
+ },
+ "receipt-05.jpg": {
+  "shop": "Green Leaf Bakery Supplies",
+  "bill_no": "GL-2026-332",
+  "date": "04/10/2026",
+  "gstin": "33AAGFG4410P1Z8",
+  "subtotal": 2400.0,
+  "gst_rate": 18,
+  "gst_amount": 432.0,
+  "total": 2832.0,
+  "items": 3,
+  "should_flag": null
+ },
+ "receipt-06.jpg": {
+  "shop": "City Stationers",
+  "bill_no": "CS-90311",
+  "date": "05/10/2026",
+  "gstin": "33AACFC7712R1Z4",
+  "subtotal": 1050.0,
+  "gst_rate": 18,
+  "gst_amount": 189.0,
+  "total": 1339.0,
+  "items": 3,
+  "should_flag": "total_mismatch"
+ },
+ "receipt-07.jpg": {
+  "shop": "Hotel Annapoorna Veg",
+  "bill_no": "T7-0912",
+  "date": "03/10/2026",
+  "gstin": "33AABCH1234F1Z5",
+  "subtotal": 520.0,
+  "gst_rate": 5,
+  "gst_amount": 26.0,
+  "total": 546.0,
+  "items": 3,
+  "should_flag": "duplicate"
+ },
+ "receipt-08.jpg": {
+  "shop": "Raja Auto Fuels",
+  "bill_no": "PB-668201",
+  "date": "06/10/2026",
+  "gstin": "",
+  "subtotal": 1272.5,
+  "gst_rate": 0,
+  "gst_amount": 0.0,
+  "total": 1272.5,
+  "items": 1,
+  "should_flag": null
+ }
+}

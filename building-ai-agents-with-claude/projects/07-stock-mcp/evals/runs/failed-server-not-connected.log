@@ -1,0 +1,25 @@
+╭─ Claude ─────────────────────────────────────────────────────────────────────╮
+│ I can't plan the orders yet because I don't have access to the reorder rules │
+│ or your stock data in this session. No file, resource, or inventory tools    │
+│ are available to me here, so I can't read the rules, as I'm required to do   │
+│ before planning, or check current stock. I don't want to guess at quantities │
+│ or suppliers and hand you purchase orders built on made-up numbers.          │
+│                                                                              │
+│ To proceed, I need either access to the data or the details pasted into the  │
+│ chat:                                                                        │
+│                                                                              │
+│ 1. **The reorder rules resource**: its full text, including any supplier     │
+│ minimums, pack sizes, rounding rules, and order-day constraints.             │
+│ 2. **Current stock**: each ingredient with its on-hand quantity and unit.    │
+│ 3. **Reorder levels** for each ingredient, if they aren't in the rules.      │
+│ 4. **Normal weekly usage** for each ingredient, so I can check the two-week  │
+│ cover test (on-hand < 2 × weekly use means order).                           │
+│ 5. **Supplier mapping**: which supplier provides each ingredient, plus pack  │
+│ sizes and prices if you want costs on the POs.                               │
+│                                                                              │
+│ Once I have those, I'll apply your criteria (at or below reorder level, or   │
+│ less than two weeks of cover), draft one purchase order per supplier, and    │
+│ give you a short summary. If you can reconnect the inventory tools or        │
+│ resource instead, I can pull everything directly.                            │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Done: 1 turns, 5.7 s, $0.0097
