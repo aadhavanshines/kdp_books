@@ -75,19 +75,19 @@ CODE_PAD = 6
 
 def inline(text):
     """Convert inline Markdown to ReportLab paragraph markup."""
-    parts = re.split(r"(`[^`]+`)", text)
-    out = []
-    for part in parts:
-        if part.startswith("`") and part.endswith("`") and len(part) > 1:
-            code = part[1:-1].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            out.append(f'<font face="Mono" size="8.6">{code}</font>')
-        else:
-            t = part.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
-            t = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<i>\1</i>", t)
-            t = t.replace("\u20b9", '<font face="Symbols">\u20b9</font>')
-            out.append(t)
-    return "".join(out)
+    # Code spans become placeholders first, so bold and italic can wrap them.
+    codes = []
+    esc = lambda x: x.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+    def keep(m):
+        codes.append(f'<font face="Mono" size="8.6">{esc(m.group(1))}</font>')
+        return f"\x00{len(codes) - 1}\x00"
+
+    t = esc(re.sub(r"`([^`]+)`", keep, text))
+    t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
+    t = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<i>\1</i>", t)
+    t = t.replace("\u20b9", '<font face="Symbols">\u20b9</font>')
+    return re.sub(r"\x00(\d+)\x00", lambda m: codes[int(m.group(1))], t)
 
 
 def make_styles():
