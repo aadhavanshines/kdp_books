@@ -98,7 +98,9 @@ def blocks_to_html(blocks):
         elif kind == "table":
             rows = b[1]
             head = "".join(f"<th>{inline(c)}</th>" for c in rows[0])
-            body = "".join("<tr>" + "".join(f"<td>{inline(c)}</td>" for c in r) + "</tr>" for r in rows[1:])
+            # Keep a leading number ("4. Research") with the word after it.
+            cell = lambda c: inline(re.sub(r"^(\d+\.) ", "\\1\u00a0", c))
+            body = "".join("<tr>" + "".join(f"<td>{cell(c)}</td>" for c in r) + "</tr>" for r in rows[1:])
             out.append(f"<table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table>")
     return "\n".join(out)
 

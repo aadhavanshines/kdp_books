@@ -19,7 +19,7 @@ Most of these problems happened while this book was being written. Each entry gi
 | Symptom | Likely cause | Fix |
 | --- | --- | --- |
 | The agent says it has no tools for the job | The MCP server wasn't connected when the session started | Add `"alwaysLoad": True`; check the `init` message's server status (Chapter 13) |
-| A tool is never called | Its name isn't in `allowed_tools` and the mode is `dontAsk`; or its description doesn't say when to use it | Use the full name, `mcp__<server>__<tool>`; improve the description |
+| A tool is never called | Its name isn't in `allowed_tools` and the mode is `dontAsk`; or its description doesn't say when to use it | Use the tool's full name: `mcp__`, the server name, two underscores, then the tool name. Improve the description |
 | The agent calls a tool with the wrong input | The input format is unclear | Describe the inputs; return errors that say what's allowed (Chapter 5) |
 | An MCP server shows `failed` | The server crashed on start | Run it by itself (for example with `--check`) and read its error |
 | `CanUseToolShadowedWarning` | A tool is in `allowed_tools`, so your `can_use_tool` callback is never asked about it | Remove the tool from `allowed_tools` if a person should approve it |

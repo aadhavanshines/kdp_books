@@ -412,14 +412,26 @@ def callout(kind, text, styles):
 
 def table_block(rows, styles):
     ncols = max(len(r) for r in rows)
-    rows = [r + [""] * (ncols - len(r)) for r in rows]
+    # Keep a leading number ("4. Research") on the same line as the word after it.
+    rows = [[re.sub(r"^(\d+\.) ", "\\1\u00a0", c) for c in r] + [""] * (ncols - len(r))
+            for r in rows]
     weights, mins = [], []
     for c in range(ncols):
         longest = max(len(r[c]) for r in rows)
         weights.append(min(max(longest, 8), 60))
-        word = max((w for r in rows for w in re.sub(r"[*`]", "", r[c]).split()), key=len, default="")
-        font = "Sans-Bold" if any(word in w for w in rows[0][c].split()) else "Serif"
-        mins.append(pdfmetrics.stringWidth(word, font, 8.8) + 10)
+        # The column must fit its widest unbreakable word, measured in the font it prints in.
+        words = []
+        for ri, r in enumerate(rows):
+            for part in re.split(r"(`[^`]+`)", r[c]):
+                code = part.startswith("`")
+                font = "Mono" if code else ("Sans-Bold" if ri == 0 else "Serif")
+                size = 8.6 if code else 8.8
+                words += [(w, font, size) for w in re.sub(r"[*`]", "", part).split(" ")]
+        mins.append(max((pdfmetrics.stringWidth(w, f, z) for w, f, z in words), default=0) + 12)
+    if sum(mins) > TEXT_W:  # very long code in several columns: some words must wrap
+        # Keep the first column (usually the names readers look up) whole; shrink the rest.
+        rest = TEXT_W - mins[0]
+        mins = [mins[0]] + [m * rest / sum(mins[1:]) for m in mins[1:]]
     total = sum(weights)
     widths = [max(TEXT_W * w / total, m) for w, m in zip(weights, mins)]
     excess = sum(widths) - TEXT_W

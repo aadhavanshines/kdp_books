@@ -12,7 +12,7 @@ async def main():
         model="claude-sonnet-5-5", tools=[], max_turns=1
     )
     async for message in query(
-        prompt="Say hello in English and in Tamil, in one line.",
+        prompt="Say hello to a new agent builder in one short line, no emoji.",
         options=options,
     ):
         if isinstance(message, ResultMessage):

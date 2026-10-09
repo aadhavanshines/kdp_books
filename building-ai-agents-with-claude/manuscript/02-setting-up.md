@@ -135,11 +135,11 @@ If everything is set up, you'll see something like this:
 
 ```
 Terminal output:
-Hello! / வணக்கம் (Vanakkam)!
-Cost: $0.0035
+Welcome, agent builder — glad you're here, and let's build something great together.
+Cost: $0.0045
 ```
 
-That is a complete, if very small, agent run: Python started the SDK, the SDK connected to Claude with your key, Claude answered, and the SDK reported the cost: a third of a US cent.
+That is a complete, if very small, agent run: Python started the SDK, the SDK connected to Claude with your key, Claude answered, and the SDK reported the cost: less than half a US cent.
 
 Here's what each part does. `ClaudeAgentOptions` holds the settings: which model to use, which tools the agent may use (`tools=[]` means none at all), and how many turns it may take. `query()` sends the request and gives back a stream of **messages** as the agent works. This agent only looks at the last one, the `ResultMessage`, which holds the final answer and the cost. In Chapter 4 you'll print every message, and watch the agent think and act step by step.
 
@@ -159,7 +159,7 @@ The Claude API charges by the **token**, a small piece of text: roughly three qu
 
 | Model | Reading (input) | Writing (output) |
 | --- | --- | --- |
-| Claude Haiku 5.5 | $0.10 | $0.50 |
+| Claude Haiku 5.5 (prompts up to 100,000 tokens) | $0.10 | $0.50 |
 | Claude Sonnet 5.5 | $2 | $10 |
 | Claude Opus 5.5 | $4 | $20 |
 | Claude Fable 5.1 | $10 | $50 |

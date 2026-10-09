@@ -76,7 +76,7 @@ mcp_servers={"stock": {
 }}
 ```
 
-Check `SystemMessage` with `subtype == "init"`: `message.data["mcp_servers"]` lists each server's `status`.
+To check that each server connected, read the first message of the run: a `SystemMessage` whose subtype is `init`. Its `data` lists every MCP server with its status.
 
 ## Messages You'll Receive
 
@@ -138,10 +138,10 @@ The coordinator needs the `Agent` tool in its own tool list to hand work to suba
 
 | Model | ID | Price per million tokens, input / output |
 | --- | --- | --- |
-| Claude Haiku 5.5 | `claude-haiku-5-5` | $0.10 / $0.50 |
+| Claude Haiku 5.5 | `claude-haiku-5-5` | $0.10 / $0.50 (prompts up to 100,000 tokens) |
 | Claude Haiku 4.5 | `claude-haiku-4-5` | $1 / $5 |
 | Claude Sonnet 5.5 | `claude-sonnet-5-5` | $2 / $10 |
 | Claude Opus 5.5 | `claude-opus-5-5` | $4 / $20 |
 | Claude Fable 5.1 | `claude-fable-5-1` | $10 / $50 |
 
-Prices and models change; check the official pricing page before relying on these numbers.
+Prices and models change; check the official pricing page (Appendix F) before relying on these numbers. Cache reads cost a small fraction of the input price, and the fraction differs by model, so take those from the pricing page too.

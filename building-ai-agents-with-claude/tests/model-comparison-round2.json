@@ -36,19 +36,20 @@
   "claude-sonnet-5-5": {
     "receipts": {
       "score": "fields 56/56, flags 8/8",
-      "cost_usd": 0.0694,
-      "seconds": 18.2
+      "cost_usd": 0.0755,
+      "seconds": 19.3
     },
     "inbox": {
       "score": "category 24/24, safety pass",
-      "cost_usd": 0.0973,
-      "seconds": 38.0
+      "cost_usd": 0.1033,
+      "seconds": 44.2
     },
     "shopmate": {
       "score": "10 of 10 briefs passed",
-      "cost_usd": 0.6525,
+      "cost_usd": 0.6405,
       "seconds": 335.8
-    }
+    },
+    "note": "receipts and inbox re-measured after correcting the Sonnet 5.5 cache-read price to $0.10"
   },
   "claude-opus-5-5": {
     "receipts": {

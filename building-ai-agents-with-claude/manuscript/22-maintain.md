@@ -46,7 +46,7 @@ Notice what would have happened without pinning: the next deployment would have 
 
 ## A Real New Model: Claude Haiku 5.5
 
-While this book was being written, Anthropic released Claude Haiku 5.5, a fast model priced at 10 US cents per million input tokens and 50 cents per million output tokens: one tenth of the price of Claude Haiku 4.5. That's exactly the moment maintenance is for. Is it good enough to use, and would it really save money?
+While this book was being written, Anthropic released Claude Haiku 5.5, a fast model priced at 10 US cents per million input tokens and 50 cents per million output tokens (for prompts up to 100,000 tokens; longer prompts cost five times as much): one tenth of the price of Claude Haiku 4.5. That's exactly the moment maintenance is for. Is it good enough to use, and would it really save money?
 
 The first surprise came before any quality question. The SDK printed a warning on every run:
 
@@ -78,8 +78,8 @@ Published benchmarks tell you how models do on someone else's tasks. Your evals 
 | Inbox: categories (of 24), prompt v1 | 22 | 18 | 19 | 21 |
 | Support desk: scenarios (of 11) | 11 | 11 | 11 | 11 |
 | ShopMate: briefs passing (of 4) | 0 | 2 | 3 | 4 |
-| Support desk cost | $0.020 | $0.108 | $0.087 | $0.187 |
-| ShopMate cost, 4 briefs | $0.042 | $0.134 | $0.275 | $0.676 |
+
+(Round 1's costs aren't shown. They were calculated with a mistake in our own price table, which charged Sonnet 5.5's cache reads at $0.20 per million tokens instead of $0.10, and the token counts weren't kept to recalculate them. Check your price table against the official pricing page, not against the SDK's estimate, which had the same mistake.)
 
 At first glance, Haiku 5.5 failed the receipts completely and every ShopMate brief. Reading the failures told a different story.
 
@@ -103,9 +103,9 @@ With the receipt schema fixed, the inbox prompt at version 2 (Chapter 6), the Sh
 | Inbox: categories (of 24), prompt v2 | 23 | 20 | 24 | 24 |
 | Inbox: safety checks | Pass | Pass | Pass | Pass |
 | ShopMate: briefs passing (of 10) | 4 | 6 | 10 | 10 |
-| Receipts cost | $0.006 | $0.054 | $0.069 | $0.202 |
-| Inbox cost | $0.010 | $0.064 | $0.097 | $0.223 |
-| ShopMate cost per brief | $0.014 | $0.040 | $0.065 | $0.161 |
+| Receipts cost | $0.006 | $0.054 | $0.076 | $0.202 |
+| Inbox cost | $0.010 | $0.064 | $0.103 | $0.223 |
+| ShopMate cost per brief | $0.014 | $0.040 | $0.064 | $0.161 |
 | ShopMate time per brief | 75 s | 48 s | 33 s | 45 s |
 
 Sonnet 5.5 and Opus 5.5 now pass everything. The two Haiku models still fail ShopMate briefs, and reading those failures is more useful than the scores:
@@ -124,10 +124,10 @@ The comparison doesn't produce one winner. It produces a decision for each agent
 
 | Agent | Choice | Why |
 | --- | --- | --- |
-| ShopMate | Sonnet 5.5 | 10 of 10 at 6.5 cents a brief, and the fastest. Opus 5.5 was just as accurate at two and a half times the cost |
+| ShopMate | Sonnet 5.5 | 10 of 10 at 6.4 cents a brief, and the fastest. Opus 5.5 was just as accurate at two and a half times the cost |
 | Inbox Triage | Sonnet 5.5, or Haiku 5.5 to save money | Sonnet scored 24 of 24; Haiku 5.5 scored 23 for a tenth of the cost, with every safety check passed |
 | Receipt Scanner | Sonnet 5.5 | Every model read the receipts correctly this time, but Haiku 5.5's earlier file-name mix-up is the kind of error code checks miss. If volume makes Haiku 5.5 worth it, send one photo per request, so a mix-up is impossible |
-| Support Desk | Sonnet 5.5, with Haiku 5.5 worth a longer trial | All four models passed all eleven scenarios in round 1; Haiku 5.5 cost a quarter as much. The safety lives in the code, but tone with customers needs more than eleven conversations to judge |
+| Support Desk | Sonnet 5.5, with Haiku 5.5 worth a longer trial | All four models passed all eleven scenarios in round 1, and Haiku 5.5 cost a small fraction of the others. The safety lives in the code, but tone with customers needs more than eleven conversations to judge |
 
 Two general lessons:
 
