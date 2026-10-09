@@ -158,9 +158,9 @@ def build_epub(meta, manuscript, cover_jpg, out_path, image_root):
                           "products, features, and policies change frequently; verify current details with "
                           "each provider. Nothing in this book is legal, medical, financial, or other "
                           "professional advice.</p><p><strong>Trademarks.</strong> " + html.escape(meta["trademarks"]) + "</p>"
-                          "<p><strong>Examples.</strong> The people, habits, expenses, and other data in the "
-                          "example projects are fictional. Any resemblance to real persons is "
-                          "coincidental.</p>"
+                          "<p><strong>Examples.</strong> " + html.escape(meta.get(
+                              "examples_note", "The people and data in the example projects are "
+                              "fictional. Any resemblance to real persons is coincidental.")) + "</p>"
                           f"<p>First edition, {meta['year']}.</p></div>")
 
     spine = [title_page, copyright_page]

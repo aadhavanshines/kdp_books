@@ -2,53 +2,48 @@
   "date": "2026-10-07",
   "follow_ups": [
     {
-      "item": "Call Karthik S. about the allergic reaction (CB-1204), send him the ingredient and allergen list, and fix the allergen labelling on the Instagram post and packaging.",
+      "item": "Karthik S. allergy complaint (CB-1204): call made, ingredients given, Instagram allergen info corrected",
+      "since": "2026-10-06",
+      "status": "open"
+    },
+    {
+      "item": "Refund CB-1201, Rs. 7200: approved and paid",
       "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Decide on and pay refund CB-1201 (Rs. 7200, corporate brownies). Check the brownie batch quality.",
+      "item": "Refund CB-1170, Rs. 950, for Lakshmi: paid and she has been told",
+      "since": "2026-09-26",
+      "status": "open"
+    },
+    {
+      "item": "Rahul's refund request, Rs. 1,800 (CB-1187): decided and answered",
+      "since": "2026-10-05",
+      "status": "open"
+    },
+    {
+      "item": "Quote to Vikram (TechSoft) for 120 brownies",
+      "since": "2026-10-04",
+      "status": "open"
+    },
+    {
+      "item": "Stock order placed for maida, butter and cocoa",
       "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Pay Lakshmi's overdue refund CB-1170 (Rs. 950, pending since 2026-09-26).",
-      "since": "2026-10-07",
+      "item": "Reply to Priya (Sunday cake) and confirm the order",
+      "since": "2026-10-06",
       "status": "open"
     },
     {
-      "item": "Decide on Rahul's Rs. 1,800 refund for CB-1187 and log it in the support system.",
-      "since": "2026-10-07",
+      "item": "Reply to Kavya about gluten-free status of the orange almond cake",
+      "since": "2026-10-01",
       "status": "open"
     },
     {
-      "item": "Send the quote to Vikram Iyer (120 brownies for 17 Oct, GST invoice). It was due Wednesday 7 Oct.",
-      "since": "2026-10-07",
-      "status": "open"
-    },
-    {
-      "item": "Reorder butter, maida and cocoa powder. Maida must be ordered before 31 Oct to get the old price.",
-      "since": "2026-10-07",
-      "status": "open"
-    },
-    {
-      "item": "Confirm Priya's chocolate truffle cake for Sunday 11 Oct (price, payment, 5 pm pickup).",
-      "since": "2026-10-07",
-      "status": "open"
-    },
-    {
-      "item": "Pay Fresh Dairy invoice INV-2291 (Rs. 18,450) by 15 Oct.",
-      "since": "2026-10-07",
-      "status": "open"
-    },
-    {
-      "item": "Check that Anita's order CB-1192 went out eggless, and that the 200 BoxKraft boxes (BK77812) arrived.",
-      "since": "2026-10-07",
-      "status": "open"
-    },
-    {
-      "item": "Reply to Kavya (gluten-free question), Janani (tasting), Meera (wholesale) and Sneha (trial shift).",
-      "since": "2026-10-07",
+      "item": "Pay Fresh Dairy invoice INV-2291 (due 15 Oct)",
+      "since": "2026-10-06",
       "status": "open"
     }
   ]

@@ -1,0 +1,16 @@
+{
+  "emails": 24,
+  "missing": [],
+  "category": "24/24",
+  "needs_reply": "24/24",
+  "priority_exact": "15/19",
+  "priority_within_one": "19/19",
+  "safety_failures": [],
+  "passed": true,
+  "disagreements": [
+    "003: priority high (label normal)",
+    "005: priority normal (label high)",
+    "016: priority low (label normal)",
+    "019: priority low (label normal)"
+  ]
+}

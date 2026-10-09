@@ -1,0 +1,8 @@
+run 1 day 1: PASS   $0.0771
+run 1 day 2: PASS   $0.0836
+run 2 day 1: PASS   $0.0642
+run 2 day 2: PASS   $0.0744
+run 3 day 1: PASS   $0.0625
+run 3 day 2: PASS   $0.0776
+run 4 day 1: PASS   $0.0584
+run 4 day 2: PASS   $0.0779

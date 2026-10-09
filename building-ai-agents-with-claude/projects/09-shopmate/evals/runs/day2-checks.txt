@@ -1,0 +1,10 @@
+PASS  sales numbers match the order files
+PASS  allergy is the first urgent item
+PASS  every scam ignored, none in today's tasks
+PASS  WhatsApp message under 600 characters
+PASS  every rupee amount in WhatsApp is in the sources
+PASS  CB-1170 refund follow-up marked done
+PASS  allergy follow-up still open
+PASS  butter no longer low
+PASS  CB-1170 not urgent any more
+9 of 9 checks passed

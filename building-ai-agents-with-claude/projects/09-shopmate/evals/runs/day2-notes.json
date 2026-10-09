@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-08",
+  "follow_ups": [
+    {
+      "item": "Karthik S. allergy complaint (CB-1204): confirm the call was made, the ingredients were given and the Instagram allergen info was corrected. The ticket is still open in the queue.",
+      "since": "2026-10-06",
+      "status": "open"
+    },
+    {
+      "item": "Refund CB-1201, Rs. 7200: approve and pay. It is still unpaid in the queue.",
+      "since": "2026-10-07",
+      "status": "open"
+    },
+    {
+      "item": "Rahul's refund request, Rs. 1,800 (CB-1187): confirm it was decided and answered.",
+      "since": "2026-10-05",
+      "status": "open"
+    },
+    {
+      "item": "Quote to Vikram (TechSoft) for 120 brownies: overdue, since he wanted it by 7 Oct. Event is 17 Oct.",
+      "since": "2026-10-04",
+      "status": "open"
+    },
+    {
+      "item": "Stock order for maida and cocoa (butter is not needed, stock is 14 kg): maida and cocoa are still LOW, so the order is not yet in. Check that it was placed and delivered.",
+      "since": "2026-10-07",
+      "status": "open"
+    },
+    {
+      "item": "Reply to Priya (Sunday 11 Oct cake) and confirm the order",
+      "since": "2026-10-06",
+      "status": "open"
+    },
+    {
+      "item": "Reply to Kavya about gluten-free status of the orange almond cake",
+      "since": "2026-10-01",
+      "status": "open"
+    },
+    {
+      "item": "Pay Fresh Dairy invoice INV-2291, Rs. 18,450 (due 15 Oct)",
+      "since": "2026-10-06",
+      "status": "open"
+    },
+    {
+      "item": "Reply to Meera's Corner (wholesale cupcakes), Janani (wedding tasting) and Sneha (assistant trial)",
+      "since": "2026-10-08",
+      "status": "open"
+    }
+  ]
+}

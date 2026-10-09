@@ -18,7 +18,7 @@ An eval is a fixed set of inputs, plus a way to judge the outputs, that you run 
 
 | Project | Inputs | How it's checked | Results |
 | --- | --- | --- | --- |
-| Inbox Triage | 24 emails | Labels written by a person; safety checks | Safety passed every run; categories 24/24 after the prompt fix (Chapter 6) |
+| Inbox Triage | 24 emails | Labels written by a person; safety checks | Safety passed every run; categories 24/24 in three of four runs after the prompt fix (Chapter 6) |
 | Receipt Scanner | 8 receipt photos | Field-by-field truth file; arithmetic flags | 56/56 fields, 8/8 flags, every Sonnet run |
 | Research Analyst | 6 documents | Every quote found in its source by code; conflict found; recommendation | 54 of 54 quotes verified over four runs |
 | Data Analyst | 3,448 orders | Every number recomputed independently with pandas | 9 of 9 checks, every run of the fixed agent |

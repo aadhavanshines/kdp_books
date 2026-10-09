@@ -44,7 +44,7 @@ Each customer conversation gets its own `Desk` object, a small class whose `tool
 
 The tools are created inside the `Desk`, so each conversation's tools see its own `verified` set. A customer who verifies order CB-1187 can't then refund CB-1201, because CB-1201 isn't in their set. This rule doesn't depend on Claude remembering anything; it's a Python set.
 
-`now` deserves a word too. The refund policy depends on time ("within 24 hours of delivery"), so the agent needs to know the current time. Normally `Desk` uses the real clock. The tests pass a fixed time, so the 24-hour rule gives the same answer every time they run.
+`now` deserves a word too. The refund policy depends on time ("within 24 hours of delivery"), so the agent needs to know the current time. The sample orders were delivered in October 2026, so by default the demo uses a fixed time from `store.py`: the morning after the last deliveries. That way the 24-hour rule gives the same answer whenever you run it, this year or in five years. With real orders, pass the real time instead, as the comment shows.
 
 ## The Refund Tool: Rules in Code
 

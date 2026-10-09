@@ -9,6 +9,10 @@ from pathlib import Path
 
 DB = Path(__file__).parent / "shop.db"
 
+# The sample orders were delivered in early October 2026, so the demo runs
+# at a fixed time: the morning after the last deliveries.
+DEMO_NOW = "Wednesday 07 October 2026, 10:00"
+
 # Each order: id, customer, phone, item, amount, status, ordered on,
 # address, delivered at.
 ORDERS = [

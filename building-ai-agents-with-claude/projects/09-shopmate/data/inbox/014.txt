@@ -1,4 +1,4 @@
-From: newsletter@bakingworld-magazine.com
+From: newsletter@bakingworld-magazine.example
 Date: Sun, 4 Oct 2026 08:00
 Subject: 10 frosting trends for the festive season
 

@@ -1,4 +1,4 @@
-From: accounts@freshdairy-supplies.in
+From: accounts@freshdairy-supplies.example
 Date: Tue, 6 Oct 2026 07:30
 Subject: Invoice INV-2291 for September
 

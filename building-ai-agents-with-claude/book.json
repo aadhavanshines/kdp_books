@@ -62,5 +62,31 @@
     "This book is for you."
   ],
   "author_short_bio": "Aadhavan Muthurengan is an automation and AI professional with more than 15 years of experience in the automotive industry, where Aadhavan has built in-house tools that transformed product development and validation.",
-  "levels": {}
+  "levels": {
+    "1": "Beginner",
+    "2": "Beginner",
+    "3": "Beginner",
+    "4": "Beginner",
+    "5": "Beginner",
+    "6": "Intermediate",
+    "7": "Intermediate",
+    "8": "Intermediate",
+    "9": "Intermediate",
+    "10": "Intermediate",
+    "11": "Intermediate",
+    "12": "Intermediate",
+    "13": "Advanced",
+    "14": "Advanced",
+    "15": "Advanced",
+    "16": "Advanced",
+    "17": "Advanced",
+    "18": "Advanced",
+    "19": "Advanced",
+    "20": "Advanced",
+    "21": "Advanced",
+    "22": "Advanced",
+    "23": "All levels",
+    "24": "All levels"
+  },
+  "examples_note": "The bakery, its customers, suppliers, emails, orders, receipts, documents, and all other data in the example projects are fictional, created for this book. Email addresses and web addresses in the examples use reserved example domains. Any resemblance to real persons or businesses is coincidental."
 }

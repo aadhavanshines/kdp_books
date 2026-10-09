@@ -1,0 +1,256 @@
+[
+  {
+    "file": "receipt-01.jpg",
+    "shop": "Sri Murugan Stores",
+    "bill_no": "SM-4471",
+    "date": "02/10/2026",
+    "gstin": "",
+    "items": [
+      {
+        "name": "Toor dal 1kg",
+        "qty": 2,
+        "rate": 168,
+        "amount": 336
+      },
+      {
+        "name": "Basmati rice 5kg",
+        "qty": 1,
+        "rate": 545,
+        "amount": 545
+      },
+      {
+        "name": "Sunflower oil 1L",
+        "qty": 2,
+        "rate": 152,
+        "amount": 304
+      },
+      {
+        "name": "Sugar 1kg",
+        "qty": 3,
+        "rate": 46,
+        "amount": 138
+      }
+    ],
+    "subtotal": 1323,
+    "gst_amount": 0,
+    "total": 1323,
+    "category": "groceries",
+    "problems": []
+  },
+  {
+    "file": "receipt-02.jpg",
+    "shop": "Hotel Annapoorna Veg",
+    "bill_no": "T7-0912",
+    "date": "03/10/2026",
+    "gstin": "33AABCH1234F1Z5",
+    "items": [
+      {
+        "name": "Mini tiffin",
+        "qty": 2,
+        "rate": 140,
+        "amount": 280
+      },
+      {
+        "name": "Ghee roast dosa",
+        "qty": 1,
+        "rate": 120,
+        "amount": 120
+      },
+      {
+        "name": "Filter coffee",
+        "qty": 3,
+        "rate": 40,
+        "amount": 120
+      }
+    ],
+    "subtotal": 520,
+    "gst_amount": 26,
+    "total": 546,
+    "category": "food",
+    "problems": []
+  },
+  {
+    "file": "receipt-03.jpg",
+    "shop": "Kumaran Hardware",
+    "bill_no": "KH/26/1188",
+    "date": "03/10/2026",
+    "gstin": "33AAFFK5521M1Z2",
+    "items": [
+      {
+        "name": "Wall hook steel",
+        "qty": 6,
+        "rate": 35,
+        "amount": 210
+      },
+      {
+        "name": "Extension board 4-way",
+        "qty": 1,
+        "rate": 420,
+        "amount": 420
+      },
+      {
+        "name": "Drill bit set",
+        "qty": 1,
+        "rate": 380,
+        "amount": 380
+      }
+    ],
+    "subtotal": 1010,
+    "gst_amount": 181.8,
+    "total": 1191.8,
+    "category": "hardware",
+    "problems": []
+  },
+  {
+    "file": "receipt-04.jpg",
+    "shop": "Velachery Health Pharmacy",
+    "bill_no": "VLY-55102",
+    "date": "04/10/2026",
+    "gstin": "33AACCM8899Q1Z1",
+    "items": [
+      {
+        "name": "Paracetamol 650 strip",
+        "qty": 2,
+        "rate": 30.5,
+        "amount": 61
+      },
+      {
+        "name": "ORS sachet",
+        "qty": 5,
+        "rate": 21,
+        "amount": 105
+      },
+      {
+        "name": "Hand sanitiser 500ml",
+        "qty": 1,
+        "rate": 189,
+        "amount": 189
+      }
+    ],
+    "subtotal": 355,
+    "gst_amount": 42.6,
+    "total": 397.6,
+    "category": "medical",
+    "problems": []
+  },
+  {
+    "file": "receipt-05.jpg",
+    "shop": "Green Leaf Bakery Supplies",
+    "bill_no": "GL-2026-332",
+    "date": "04/10/2026",
+    "gstin": "33AAGFG4410P1Z8",
+    "items": [
+      {
+        "name": "Cocoa powder 1kg",
+        "qty": 1,
+        "rate": 720,
+        "amount": 720
+      },
+      {
+        "name": "Butter 500g",
+        "qty": 4,
+        "rate": 265,
+        "amount": 1060
+      },
+      {
+        "name": "Cake boxes 8x8 (25)",
+        "qty": 2,
+        "rate": 310,
+        "amount": 620
+      }
+    ],
+    "subtotal": 2400,
+    "gst_amount": 432,
+    "total": 2832,
+    "category": "business supplies",
+    "problems": []
+  },
+  {
+    "file": "receipt-06.jpg",
+    "shop": "City Stationers",
+    "bill_no": "CS-90311",
+    "date": "05/10/2026",
+    "gstin": "33AACFC7712R1Z4",
+    "items": [
+      {
+        "name": "A4 paper ream",
+        "qty": 2,
+        "rate": 285,
+        "amount": 570
+      },
+      {
+        "name": "Ball pens (box of 10)",
+        "qty": 2,
+        "rate": 90,
+        "amount": 180
+      },
+      {
+        "name": "Order book",
+        "qty": 5,
+        "rate": 60,
+        "amount": 300
+      }
+    ],
+    "subtotal": 1050,
+    "gst_amount": 189,
+    "total": 1339,
+    "category": "stationery",
+    "problems": [
+      "total should be 1239.00 but bill says 1339.00"
+    ]
+  },
+  {
+    "file": "receipt-07.jpg",
+    "shop": "Raja Auto Fuels",
+    "bill_no": "PB-668201",
+    "date": "06/10/2026",
+    "gstin": "",
+    "items": [
+      {
+        "name": "Petrol (litres)",
+        "qty": 12.5,
+        "rate": 101.8,
+        "amount": 1272.5
+      }
+    ],
+    "subtotal": 1272.5,
+    "gst_amount": 0,
+    "total": 1272.5,
+    "category": "fuel",
+    "problems": []
+  },
+  {
+    "file": "receipt-08.jpg",
+    "shop": "Hotel Annapoorna Veg",
+    "bill_no": "T7-0912",
+    "date": "03/10/2026",
+    "gstin": "33AABCH1234F1Z5",
+    "items": [
+      {
+        "name": "Mini tiffin",
+        "qty": 2,
+        "rate": 140,
+        "amount": 280
+      },
+      {
+        "name": "Ghee roast dosa",
+        "qty": 1,
+        "rate": 120,
+        "amount": 120
+      },
+      {
+        "name": "Filter coffee",
+        "qty": 3,
+        "rate": 40,
+        "amount": 120
+      }
+    ],
+    "subtotal": 520,
+    "gst_amount": 26,
+    "total": 546,
+    "category": "food",
+    "problems": [
+      "duplicate of receipt-02.jpg"
+    ]
+  }
+]

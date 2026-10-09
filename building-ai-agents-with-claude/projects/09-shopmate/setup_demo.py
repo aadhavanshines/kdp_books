@@ -172,7 +172,7 @@ def setup(day):
         stock["butter"]["qty"] = 14
         (DATA / "stock.json").write_text(json.dumps(stock, indent=2))
         (DATA / "inbox-today" / "025.txt").write_text(
-            "From: lakshmi.p@gmail.com\nDate: Thu, 8 Oct 2026 "
+            "From: lakshmi.p@mail.example\nDate: Thu, 8 Oct 2026 "
             "07:55\nSubject: Refund received, thank you\n\nHi, the Rs. 950 "
             "refund reached my account last night. Thank you for sorting "
             "it out.\n\nLakshmi\n"

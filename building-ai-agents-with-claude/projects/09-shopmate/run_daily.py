@@ -11,13 +11,19 @@ import asyncio
 import json
 import time
 
-from claude_agent_sdk import ResultMessage, SystemMessage, query
+from claude_agent_sdk import (
+    RateLimitEvent,
+    ResultMessage,
+    SystemMessage,
+    query,
+)
 
 import brief
 from config import MODEL, OUT, PROMPT_VERSION, today
 from runlog import record
 
 TOOL_LOG = []
+WARNINGS = []
 
 
 async def log_tool(input_data, tool_use_id, context):
@@ -32,6 +38,16 @@ async def log_tool(input_data, tool_use_id, context):
     return {}
 
 
+def note_rate_limit(message):
+    """Keep a warning when the account is close to, or over, its rate
+    limit."""
+    info = message.rate_limit_info
+    if info.status != "allowed":
+        WARNINGS.append(
+            f"rate limit {info.status} ({info.rate_limit_type})"
+        )
+
+
 async def run_once():
     return await run_once_with(MODEL)
 
@@ -39,6 +55,7 @@ async def run_once():
 async def run_once_with(model):
     started = time.time()
     TOOL_LOG.clear()
+    WARNINGS.clear()
     result = None
     try:
         async for message in query(
@@ -57,6 +74,8 @@ async def run_once_with(model):
                     raise RuntimeError(
                         f"stock server not connected: {status}"
                     )
+            if isinstance(message, RateLimitEvent):
+                note_rate_limit(message)
             if isinstance(message, ResultMessage):
                 result = message
     except Exception as error:
@@ -116,6 +135,7 @@ async def main():
             seconds=seconds,
             cost_usd=round(result.total_cost_usd or 0, 4),
             urgent=len(b["urgent"]),
+            warnings=WARNINGS,
         )
         print(
             f"Brief ready: {entry['urgent']} urgent items, "

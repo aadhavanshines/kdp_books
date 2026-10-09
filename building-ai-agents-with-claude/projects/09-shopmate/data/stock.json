@@ -16,7 +16,7 @@
     "weekly_use": 12
   },
   "butter": {
-    "qty": 14,
+    "qty": 4,
     "unit": "kg",
     "reorder_at": 6,
     "supplier": "Fresh Dairy Supplies",

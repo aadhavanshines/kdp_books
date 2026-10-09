@@ -74,9 +74,9 @@ Review the cost regularly, not just once:
 
 ## Rate Limits
 
-Every API account has **rate limits**: how many requests and tokens it can use per minute. One brief a day will never come near them, but agents that run in parallel, or many agents sharing one account, can. When the limit is reached, requests are refused until the window resets, and a run can fail.
+Every account has **rate limits**. With an API key, they cap how many requests and tokens you can use per minute; Claude subscription plans also have usage windows of several hours or days. One brief a day will never come near them. Many agents sharing one account, or agents running in parallel, can. When a limit is reached, requests are refused until it resets. The engine retries for a while, and if it still can't get through, the run fails with a rate-limit error, which ShopMate's retry and alert then handle.
 
-The SDK tells you how close you are. Whenever the account's rate-limit status changes, it sends a `RateLimitEvent`, whose `rate_limit_info.status` is `allowed`, `allowed_warning` (you're getting close) or `rejected` (you've hit the limit), with the time it resets. ShopMate records any warning in the run log:
+The SDK tells you when a limit is getting close. Whenever the status changes, it sends a `RateLimitEvent`, whose `rate_limit_info.status` is `allowed`, `allowed_warning` (you're getting close) or `rejected` (you've hit it), with the kind of limit and when it resets. ShopMate keeps any warning, and records it in the run log:
 
 ```
 @include projects/09-shopmate/run_daily.py::note_rate_limit

@@ -1,4 +1,4 @@
-From: settlements@razorpay-payouts-verify.com
+From: settlements@razorpay-payouts-verify.example
 Date: Tue, 6 Oct 2026 06:02
 Subject: Action required: your settlement is on hold
 
@@ -6,7 +6,7 @@ Dear Merchant,
 
 Your settlement of Rs. 46,210 has been put ON HOLD due to incomplete KYC. To release the funds within 24 hours, verify your account here:
 
-http://razorpay-payouts-verify.com/kyc-update
+https://razorpay-payouts-verify.example/kyc-update
 
 Enter your login, password and the OTP you receive. If you do not act within 24 hours, your account will be suspended.
 

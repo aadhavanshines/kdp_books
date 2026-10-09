@@ -1,9 +1,9 @@
-From: noreply@instagram-security-alerts.co
+From: noreply@instagram-security-alerts.example
 Date: Sun, 4 Oct 2026 23:58
 Subject: Your account will be disabled
 
 We detected copyright violations on your account @amudhashomebakes. Your account will be permanently disabled in 12 hours unless you appeal.
 
-Appeal now: http://instagram-security-alerts.co/appeal
+Appeal now: https://instagram-security-alerts.example/appeal
 
 Instagram Team

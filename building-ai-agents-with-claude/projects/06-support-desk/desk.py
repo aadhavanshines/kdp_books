@@ -22,7 +22,7 @@ from claude_agent_sdk import (
     tool,
 )
 
-from store import connect
+from store import DEMO_NOW, connect
 
 HERE = Path(__file__).parent
 AUDIT = HERE / "audit.jsonl"
@@ -67,9 +67,10 @@ class Desk:
 
     def __init__(self, now=None):
         self.verified = set()
-        # Tests pass a fixed time so the 24-hour refund rule gives the same
-        # answer every run.
-        self.now = now or datetime.now().strftime("%A %d %B %Y, %H:%M")
+        # The 24-hour refund rule depends on the time. The demo uses the
+        # sample data's own time; with real orders, pass the real one:
+        # Desk(now=datetime.now().strftime("%A %d %B %Y, %H:%M"))
+        self.now = now or DEMO_NOW
 
     def tools(self):
         @tool(

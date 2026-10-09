@@ -1,0 +1,45 @@
+$ python setup_demo.py 1; python run_daily.py
+Demo day 1 ready: today is 2026-10-07
+Brief ready: 5 urgent items, 21 turns, 36.3 s, $0.0714
+ShopMate brief, Wed 7 Oct
+URGENT:
+1. Call Karthik 98400 12345 today. His daughter went to hospital after the walnut brownies (hazelnut
+ allergy). Give him the full ingredients.
+2. Refund CB-1201 Rs.7200 needs your approval.
+3. Refund CB-1170 Rs.950 (Lakshmi) is overdue. Rahul wants Rs.1800 back (CB-1187).
+4. Send Vikram's brownie quote today.
+Stock LOW: maida, butter, cocoa.
+Sales yesterday: 13 orders, Rs.14275 (+67.5%).
+Scam emails ignored.
+$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

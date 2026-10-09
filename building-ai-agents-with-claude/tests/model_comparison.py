@@ -1,8 +1,10 @@
-"""Run the same graded tasks with three models and compare pass rate, cost and time.
+"""Run the same graded tasks with four models and compare pass rate, cost and time.
 
-Tasks: receipt scanner (8 photos), inbox triage (24 emails), support desk (11 scenarios)
+Round 1: receipt scanner (8 photos), inbox triage (24 emails), support desk (11 scenarios)
 and ShopMate (two days, twice). Results go to tests/model-comparison.json.
-Usage:  python tests/model_comparison.py
+Round 2 (--round2), after the fixes described in Chapter 22: receipts, inbox, and ShopMate
+(two days, five times). Results go to tests/model-comparison-round2.json.
+Usage:  python tests/model_comparison.py [--round2] [model ...]
 """
 import asyncio
 import importlib.util
@@ -115,7 +117,7 @@ def main():
                 "receipts": receipts(model),
                 "inbox": triage(model),
                 "shopmate": runner(P / "09-shopmate",
-                                   ["evals/run_evals.py", "2", model],
+                                   ["evals/run_evals.py", "5", model],
                                    r"\d+ of \d+ briefs passed"),
             }
             keep(model)
