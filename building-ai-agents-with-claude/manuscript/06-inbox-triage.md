@@ -30,7 +30,7 @@ The agent gets two read-only tools, in the pattern from Chapter 5: a cheap one t
 @include projects/02-inbox-triage/agent.py::list_inbox,read_email
 ```
 
-`list_inbox` shows only the sender, date and subject of each email, so the whole inbox costs a few hundred tokens. Claude decides which emails to open. In practice it opens all of them, because a subject line like "Thank you!!" could hide anything, and both tools are marked read-only so it can read several at once.
+`list_inbox` shows only the sender, date and subject of each email, so the whole inbox costs a few hundred tokens. Claude decides which emails to open. In practice, it opens all of them, because a subject line like "Thank you!!" could hide anything, and both tools are marked read-only so it can read several at once.
 
 ## The Instructions
 

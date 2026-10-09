@@ -102,7 +102,7 @@ When you build an agent for real work, start the eval set on the first day:
 
 ## What Evals Cost
 
-Running evals costs money, but much less than not running them. A full run of the support desk's eleven conversations cost between 8 and 17 US cents with Sonnet 5.5. Two days of ShopMate cost between 15 and 30 cents. Running every agent in this book once cost about a dollar. Chapter 20 runs the ShopMate eval automatically on every proposed change, for a few cents each time.
+Running evals costs money, but much less than not running them. A full run of the support desk's eleven conversations cost between 8 and 17 US cents with Sonnet 5.5. Two days of ShopMate cost about 15 cents with Sonnet 5.5. Running every agent in this book once cost about a dollar. Chapter 20 runs the ShopMate eval automatically on every proposed change, for a few cents each time.
 
 ## Key Takeaways
 

@@ -69,7 +69,7 @@ PAGE_W, PAGE_H = 6 * inch, 9 * inch
 INSIDE, OUTSIDE, TOP, BOTTOM = 0.8 * inch, 0.6 * inch, 0.75 * inch, 0.75 * inch
 TEXT_W = PAGE_W - INSIDE - OUTSIDE
 CODE_SIZE = 7.8
-SRC_SIZE = 7.0  # source-file listings, so ~75 characters fit on a line
+SRC_SIZE = 6.85  # source-file listings, so 76 characters fit on a line
 CODE_PAD = 6
 
 

@@ -130,7 +130,7 @@ def build_epub(meta, manuscript, cover_jpg, out_path, image_root):
         for b in blocks:
             if b[0] == "image":
                 book.add_item(epub.EpubImage(uid=b[1].replace("/", "-").replace(".", "-"),
-                                             file_name=b[1], media_type="image/png",
+                                             file_name=b[1], media_type="image/jpeg" if b[1].endswith(".jpg") else "image/png",
                                              content=(image_root / b[1]).read_bytes()))
 
     style = epub.EpubItem(uid="style", file_name="style/book.css", media_type="text/css",

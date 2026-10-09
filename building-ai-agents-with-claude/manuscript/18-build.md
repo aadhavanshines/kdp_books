@@ -158,7 +158,7 @@ And the WhatsApp text, which is what Amudha will actually read first:
 @include projects/09-shopmate/evals/runs/day1-whatsapp.txt
 ```
 
-Read it as Amudha would. The allergy complaint comes first, with the phone number she needs. The refunds are there with their amounts and order numbers. The stock problems fit in one line. The scams are named so she knows to ignore them. It reads in well under two minutes.
+Read it as Amudha would. The allergy complaint comes first, with the phone number she needs. The refunds are there with their amounts and order numbers. The stock problems fit in one line. The scams are kept out of her way, with a note that they were ignored; the full brief lists each one. It reads in well under two minutes.
 
 It also looks right. But "looks right" is exactly the judgement Chapter 16 warned you about. Are the sales numbers correct? Is every scam listed? Will it remember tomorrow that the refund is still open? Chapter 19 answers those questions with code.
 

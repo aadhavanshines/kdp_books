@@ -15,7 +15,7 @@ The first two are the SDK's job. The last two are yours, and the most common mis
 
 ## Conversations and Sessions
 
-Every run of an agent is a **session**: the SDK records the prompt, every tool call, every result and every reply in a transcript. By default the transcript is saved on the computer that runs the agent, in Claude Code's folder (`~/.claude/projects/`, in a subfolder named after the working directory). Each session has an ID, which you'll find on every `ResultMessage` as `session_id`.
+Every run of an agent is a **session**: the SDK records the prompt, every tool call, every result and every reply in a transcript. By default, the transcript is saved on the computer that runs the agent, in Claude Code's folder (`~/.claude/projects/`, in a subfolder named after the working directory). Each session has an ID, which you'll find on every `ResultMessage` as `session_id`.
 
 You've already used the simplest form of session memory: `ClaudeSDKClient` keeps one session open while you send several messages, which is how the support desk holds a conversation (Chapter 10). Three options let you come back to a session later:
 
@@ -77,7 +77,7 @@ Here's the file after the first morning, shortened:
 @include projects/09-shopmate/evals/runs/day1-notes.json#L1-L14
 ```
 
-On the second morning, the bakery's data had changed: the refund for order CB-1170 had been paid overnight, and the butter delivery had arrived. ShopMate marked the refund follow-up as done, kept the allergy follow-up open, noticed the butter was no longer low, and added two new items to check the next day. Chapter 19 shows the eval that checks all of this automatically.
+On the second morning, the bakery's data had changed: the refund for order CB-1170 had been paid overnight, and the butter delivery had arrived. ShopMate marked the refund follow-up as done, noting Lakshmi's email confirming she'd received it; kept the allergy follow-up open; noticed the butter was no longer low; and carried the other open items forward, adding one for replies still waiting. Chapter 19 shows the eval that checks all of this automatically.
 
 This kind of memory has big advantages over a long conversation:
 

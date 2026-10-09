@@ -93,10 +93,10 @@ The risks that code can't check, like "follows instructions inside an email", ge
 You can estimate an agent's cost on paper, and you should, because it tells you whether the idea is worth building at all. The method:
 
 1. **Count the tool calls.** ShopMate will list the inbox, read about 25 emails, and call four other tools: about 30 calls. With parallel reads, that's fewer turns, but count calls to be safe.
-2. **Estimate the tokens.** Each turn re-reads the conversation so far, but prompt caching (Chapter 4) makes those re-reads cheap. Earlier projects give a guide: the inbox agent read 24 emails for about 8 to 10 US cents with Sonnet 5.5.
+2. **Estimate the tokens.** Each turn re-reads the conversation so far, but prompt caching (Chapter 2) makes those re-reads cheap. Earlier projects give a guide: the inbox agent read 24 emails for about 8 to 10 US cents with Sonnet 5.5.
 3. **Multiply by the price, and add a margin.** The plan's estimate was under 20 US cents a run.
 
-Then, and this is the part people forget, **write down that you'll check it**. The plan says to compare the estimate with the run log after the first week. (Chapter 21 does: real runs cost 6 to 8 US cents.)
+Then, and this is the part people forget, **write down that you'll check it**. The plan says to compare the estimate with the run log after the first week. (Chapter 21 does: real runs cost 6 to 9 US cents.)
 
 ## Drawing the Design
 
