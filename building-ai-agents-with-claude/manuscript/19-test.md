@@ -24,7 +24,7 @@ Every value in these days was chosen by a person, so the right answers are known
 `evals/check_brief.py` checks a brief against facts that plain code works out:
 
 ```
-@include projects/09-shopmate/evals/check_brief.py::SCAMS,check
+@include projects/09-shopmate/evals/check_brief.py::SCAMS,is_low,check
 ```
 
 Each check comes straight from the plan's risks table (Chapter 17), and each uses one of the techniques from Chapter 16:
@@ -84,7 +84,7 @@ OK: 14 kg in stock, above the reorder level of 6 kg, so it is not low
 any more.
 ```
 
-The brief was right and the checker was wrong: "not low" contains "low". The fix was to check only how the status *starts*, which is the label ShopMate uses ("LOW", "OK", "Watch"). The comment above that line in `check_brief.py` records why, so nobody "simplifies" it back.
+The brief was right and the checker was wrong: "not low" contains "low". The fix was to check only how the status *starts*, which is the label ShopMate uses ("LOW", "OK", "Watch"). That's the `is_low` function above, and its comment records why, so nobody "simplifies" it back. (It later learned to accept "CRITICALLY LOW" too, after another model used that label. Chapter 22 has the story.)
 
 This is the lesson from Chapter 16 in miniature: when a check fails, read the brief before you change anything. Here, the checker needed fixing. In the WhatsApp case, the agent did.
 

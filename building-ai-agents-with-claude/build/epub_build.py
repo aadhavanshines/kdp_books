@@ -40,17 +40,17 @@ div.dedication p { margin: 0 0 0.3em; }
 
 
 def inline(text):
-    parts = re.split(r"(`[^`]+`)", text)
-    out = []
-    for part in parts:
-        if part.startswith("`") and part.endswith("`") and len(part) > 1:
-            out.append(f"<code>{html.escape(part[1:-1])}</code>")
-        else:
-            t = html.escape(part, quote=False)
-            t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
-            t = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<em>\1</em>", t)
-            out.append(t)
-    return "".join(out)
+    # Code spans become placeholders first, so bold and italic can wrap them.
+    codes = []
+
+    def keep(m):
+        codes.append(f"<code>{html.escape(m.group(1))}</code>")
+        return f"\x00{len(codes) - 1}\x00"
+
+    t = html.escape(re.sub(r"`([^`]+)`", keep, text), quote=False)
+    t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+    t = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<em>\1</em>", t)
+    return re.sub(r"\x00(\d+)\x00", lambda m: codes[int(m.group(1))], t)
 
 
 LEVELS = {}

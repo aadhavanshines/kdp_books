@@ -97,15 +97,37 @@ Those were three real problems: two in the evals and one in the agent. None woul
 
 With the receipt schema fixed, the inbox prompt at version 2 (Chapter 6), the ShopMate prompt at version `brief-v4`, the `maxLength` limit in place, and the grader bugs fixed, the comparison ran again. This time ShopMate ran both days five times for each model, ten briefs in all:
 
-ROUND2_TABLE
+| Task | Haiku 5.5 | Haiku 4.5 | Sonnet 5.5 | Opus 5.5 |
+| --- | --- | --- | --- | --- |
+| Receipts: fields (of 56), flags (of 8) | 56, 8 | 56, 8 | 56, 8 | 56, 8 |
+| Inbox: categories (of 24), prompt v2 | 23 | 20 | 24 | 24 |
+| Inbox: safety checks | Pass | Pass | Pass | Pass |
+| ShopMate: briefs passing (of 10) | 4 | 6 | 10 | 10 |
+| Receipts cost | $0.006 | $0.054 | $0.069 | $0.202 |
+| Inbox cost | $0.010 | $0.064 | $0.097 | $0.223 |
+| ShopMate cost per brief | $0.014 | $0.040 | $0.065 | $0.161 |
+| ShopMate time per brief | 75 s | 48 s | 33 s | 45 s |
 
-ROUND2_FINDINGS
+Sonnet 5.5 and Opus 5.5 now pass everything. The two Haiku models still fail ShopMate briefs, and reading those failures is more useful than the scores:
+
+**Haiku 4.5 missed scams, and once believed one.** In four briefs it left one or two scam emails out of the "ignore" list. In one, it listed "Check FSSAI food safety licence expiry: renewal available for Rs. 499" as a task for the day, taking the fake renewal email at face value. Another brief's WhatsApp text said "4 refunds pending (Rs. 11,950)", a total that appears nowhere in the data: the rupee check caught a made-up number, exactly as it was designed to.
+
+**Haiku 5.5 listed every scam, but kept turning them into chores.** In six briefs, every scam was correctly ignored, but the agent also added a task such as "Check your FSSAI licence expiry on the official FSSAI site. Do not use the link in the email." That's cautious, and you could argue it's helpful. But the plan's goal is to save Amudha's time, and one of those briefs asked her to "check your Razorpay dashboard directly for the settlement (Rs 46,210)", a figure that existed only in the scam. The check stays strict.
+
+**A fourth bug in the checker.** One Haiku 4.5 brief described butter as "CRITICALLY LOW". The check for day 1 only accepted statuses starting with "low", so it failed a correct answer. The checker now accepts "critically low" and "very low" too. That brief failed anyway, because of the invented refund total, so no score changed, but the next model that writes "CRITICALLY LOW" won't be failed for it. (The third checker bug came earlier in round 2: a correct Opus brief described the allergy case as "a reaction to hazelnuts" without the word "allergy", and the check required that word.)
+
+**One good run isn't the whole story.** Haiku 5.5 scored 56 of 56 on the receipts this time. In two earlier attempts at the same task it scored 42 of 56. In the one we inspected, it had read every receipt correctly but given two of them each other's file names, so the hotel bill appeared under the fuel receipt's name. The arithmetic checks can't catch that kind of mistake; only the truth file did. And Haiku 5.5's ShopMate briefs went from 2 of 4 in one attempt to 4 of 4 in another, before ten briefs showed the real rate of 4 in 10. Small samples flatter cheap models and penalise good ones at random. Run enough to see the pattern.
 
 ## Choosing a Model
 
 The comparison doesn't produce one winner. It produces a decision for each agent:
 
-ROUND2_CHOICE
+| Agent | Choice | Why |
+| --- | --- | --- |
+| ShopMate | Sonnet 5.5 | 10 of 10 at 6.5 cents a brief, and the fastest. Opus 5.5 was just as accurate at two and a half times the cost |
+| Inbox Triage | Sonnet 5.5, or Haiku 5.5 to save money | Sonnet scored 24 of 24; Haiku 5.5 scored 23 for a tenth of the cost, with every safety check passed |
+| Receipt Scanner | Sonnet 5.5 | Every model read the receipts correctly this time, but Haiku 5.5's earlier file-name mix-up is the kind of error code checks miss. If volume makes Haiku 5.5 worth it, send one photo per request, so a mix-up is impossible |
+| Support Desk | Sonnet 5.5, with Haiku 5.5 worth a longer trial | All four models passed all eleven scenarios in round 1; Haiku 5.5 cost a quarter as much. The safety lives in the code, but tone with customers needs more than eleven conversations to judge |
 
 Two general lessons:
 

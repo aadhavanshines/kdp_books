@@ -65,9 +65,11 @@ For an important decision, such as switching models or launching, run more: ten 
 
 ## When the Eval Is Wrong
 
-Evals are code, and code has bugs. This book's evals were wrong at least five times:
+Evals are code, and code has bugs. This book's evals were wrong at least seven times:
 
 - **Too strict about wording.** ShopMate's check for "butter is low" looked for the word "low", and failed a brief that correctly said "OK: 14 kg in stock ... it is not low". The fix: check the status label, not any word in the sentence.
+- **Looking for one word.** ShopMate's check that the allergy case comes first looked for the word "allergy". A correct brief from Opus 5.5 wrote "a reaction to hazelnuts" instead, and failed. The check now also accepts the order number or the customer's name.
+- **Not expecting a new label.** Another model described butter as "CRITICALLY LOW". The check only accepted statuses starting with "low" (Chapter 22).
 - **Too strict about format.** The receipt grader matched files by exact name. Haiku 5.5 wrote `receipts/receipt-01.jpg` instead of `receipt-01.jpg`, read every receipt correctly, and scored zero. The schema never said which form to use, so the fix went in both places: a clearer schema description, and code that normalises the name.
 - **Testing something nobody asked for.** ShopMate's scam check required each scam to be listed by its email ID, but the instructions only said to list them. With Haiku 5.5 that check failed on every brief, while every other check passed. The fix was to ask for IDs in the prompt and to accept either the ID or the sender's address in the check.
 - **Expecting one right answer when there were two.** The support desk expected a refund "awaiting approval" for stale brownies; the agent escalated instead, which the policy also allowed.

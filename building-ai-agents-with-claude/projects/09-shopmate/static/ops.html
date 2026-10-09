@@ -76,7 +76,7 @@ fetch("/api/state").then(r => r.json()).then(d => {
       div.appendChild(document.createElement("br")); div.appendChild(span(u.source, "src")); $("urgent").appendChild(div); });
     b.stock.forEach(s => { const li = document.createElement("li");
       li.appendChild(span(s.ingredient + ": ", s.status.toLowerCase().startsWith("low") ? "stock-low" : ""));
-      li.appendChild(document.createTextNode(s.status.split(":")[0] + ". " + s.suggested_order)); $("stock").appendChild(li); });
+      li.appendChild(document.createTextNode(s.status.split(":")[0].replace(/\.+$/, "") + ". " + s.suggested_order)); $("stock").appendChild(li); });
     b.follow_ups.filter(f => f.status === "open").forEach(f => { const li = document.createElement("li");
       li.textContent = `${f.item} (since ${f.since})`; $("follow").appendChild(li); });
     $("orders").textContent = b.sales.yesterday_orders;

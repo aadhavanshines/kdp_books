@@ -153,6 +153,6 @@ Answering this accurately is a KDP content-guideline requirement. The disclosure
   - Paperback cover finish: Glossy (suits the dark cover) or Matte
 - Manuscript: upload `dist/paperback-interior-6x9.pdf`
 - Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf`
-- Suggested list price: see `PRICE_NOTE` below; check the royalty calculator on the pricing page, since printing costs change
+- Suggested list price: **$24.99 USD**, in line with *Vibe Coding for Beginners*, which has a similar page count. Check the royalty calculator on the pricing page before publishing, since printing costs change
 
 > The paperback cover is sized for exactly the page count in `dist/build-info.json`. KDP's free ISBN barcode is printed automatically in the white box on the back cover. If you edit the manuscript and the page count changes, rebuild so the spine width updates.

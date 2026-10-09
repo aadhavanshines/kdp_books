@@ -28,6 +28,12 @@ SCAMS = {
 }
 
 
+def is_low(status):
+    """Look at the status label only: "OK ... it is not low" contains the
+    word "low", and "CRITICALLY LOW" is low too."""
+    return re.match(r"(critically |very )?low", status) is not None
+
+
 def check(b, tool_log, day):
     yesterday = date.fromisoformat(today()) - timedelta(days=1)
     n, revenue, _ = sales_for(yesterday.isoformat())
@@ -73,7 +79,7 @@ def check(b, tool_log, day):
     }
     if day == 1:
         checks["overdue refund CB-1170 is urgent"] = "cb-1170" in urgent
-        checks["butter is low"] = stock.get("butter", "").startswith("low")
+        checks["butter is low"] = is_low(stock.get("butter", ""))
     else:
         done = " ".join(
             f["item"] for f in b["follow_ups"] if f["status"] == "done"
@@ -87,11 +93,9 @@ def check(b, tool_log, day):
         checks["allergy follow-up still open"] = (
             "allerg" in still or "1204" in still
         )
-        # Look at the status label only: "OK ... it is not low" contains the
-        # word "low".
-        checks["butter no longer low"] = not stock.get(
-            "butter", "ok"
-        ).startswith("low")
+        checks["butter no longer low"] = not is_low(
+            stock.get("butter", "ok")
+        )
         checks["CB-1170 not urgent any more"] = "cb-1170" not in urgent
     return checks
 
