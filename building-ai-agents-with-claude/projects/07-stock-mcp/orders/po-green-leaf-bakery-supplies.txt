@@ -1,5 +1,5 @@
 Purchase order for Green Leaf Bakery Supplies
-Date: 08 October 2026
+Date: 09 October 2026
 
 - cocoa powder: 0.9 kg x Rs. 720 = Rs. 648.00
 

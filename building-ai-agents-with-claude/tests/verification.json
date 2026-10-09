@@ -1,59 +1,59 @@
 {
-  "time": "2026-10-08T03:36:20+00:00",
+  "time": "2026-10-09T12:19:47+00:00",
   "sdk": "0.2.164",
   "results": [
     {
       "project": "01-pantry-chef",
       "passed": true,
-      "cost_usd": 0.0296,
+      "cost_usd": 0.0311,
       "detail": ""
     },
     {
       "project": "02-inbox-triage",
       "passed": true,
-      "cost_usd": 0.0963,
+      "cost_usd": 0.1032,
       "detail": ""
     },
     {
       "project": "03-receipt-scanner",
       "passed": true,
-      "cost_usd": 0.0743,
+      "cost_usd": 0.0672,
       "detail": ""
     },
     {
       "project": "04-research-analyst",
       "passed": true,
-      "cost_usd": 0.0597,
+      "cost_usd": 0.0573,
       "detail": ""
     },
     {
       "project": "05-data-analyst",
       "passed": true,
-      "cost_usd": 0.0861,
+      "cost_usd": 0.0937,
       "detail": ""
     },
     {
       "project": "06-support-desk",
       "passed": true,
-      "cost_usd": 0.125,
+      "cost_usd": 0.127,
       "detail": ""
     },
     {
       "project": "07-stock-mcp",
       "passed": true,
-      "cost_usd": 0.0318,
+      "cost_usd": 0.0312,
       "detail": ""
     },
     {
       "project": "08-launch-team",
       "passed": true,
-      "cost_usd": 0.377,
+      "cost_usd": 0.399,
       "detail": ""
     },
     {
       "project": "09-shopmate",
       "passed": true,
-      "cost_usd": 0.158,
+      "cost_usd": 0.143,
       "detail": ""
     }
   ],

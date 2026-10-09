@@ -2,52 +2,47 @@
   "date": "2026-10-08",
   "follow_ups": [
     {
-      "item": "Karthik allergy case (CB-1204): call made, ingredient list sent, Instagram post updated to list all nuts",
+      "item": "Call Karthik S. and send the written ingredient list for the brownies; fix the allergen info on the Instagram post (CB-1204)",
       "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Refund CB-1201 for Rs. 7200 approved or rejected",
+      "item": "Approve or decline refund CB-1201 (Rs. 7200)",
       "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Rahul's Rs. 1,800 refund for #CB-1187 logged and paid",
+      "item": "Refund Rahul N. for order CB-1187 (Rs. 1,800)",
+      "since": "2026-10-05",
+      "status": "open"
+    },
+    {
+      "item": "Send the quote for 120 brownies to Vikram (TechSoft) for the event on 17 Oct. It was due Wednesday, so it is overdue.",
       "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Quote sent to TechSoft for 120 brownies for 17 Oct",
+      "item": "Prepare the 1 kg chocolate truffle cake for Priya, pickup Sun 11 Oct at 5 pm, and reply to her with price and payment details",
       "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Gluten answer sent to Kavya",
+      "item": "Order maida (before 31 Oct) and cocoa. Butter is not needed, with 14 kg in stock.",
       "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Maida, butter and cocoa orders placed",
+      "item": "Pay Fresh Dairy invoice INV-2291 (Rs. 18,450) by 15 Oct",
       "since": "2026-10-07",
       "status": "open"
     },
     {
-      "item": "Priya's 11 Oct truffle cake order confirmed and paid",
-      "since": "2026-10-07",
-      "status": "open"
-    },
-    {
-      "item": "Fresh Dairy invoice INV-2291 for Rs. 18,450 paid by 15 Oct",
-      "since": "2026-10-07",
-      "status": "open"
-    },
-    {
-      "item": "Anita's #CB-1192 eggless change confirmed",
+      "item": "Reply to Kavya R. about gluten-free and cross-contamination",
       "since": "2026-10-08",
       "status": "open"
     },
     {
-      "item": "Replies sent to Janani (tasting) and Meera (wholesale rates)",
+      "item": "Reply to Meera's Corner (wholesale) and Janani (wedding tasting)",
       "since": "2026-10-08",
       "status": "open"
     }

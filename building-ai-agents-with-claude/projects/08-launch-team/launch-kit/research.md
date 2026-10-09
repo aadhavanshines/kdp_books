@@ -1,71 +1,70 @@
-# Research facts: Diwali 2026 hamper launch, Amudha's Home Bakes
+# Research facts: Amudha's Home Bakes, Diwali 2026 hamper launch
 
-Sources: data/orders.csv (3,448 orders, 1 Oct 2025 to 30 Sep 2026, no blanks, no duplicate order IDs) and data/survey-results.md (September 2026, 126 respondents).
-All numbers were computed by python3 scripts: scripts/analyze.py (data checks) and scripts/facts.py (all figures below).
+Sources: data/orders.csv (3,448 orders, 1 Oct 2025 to 30 Sep 2026, no blanks, no duplicate order IDs) and data/survey-results.md (126 respondents, 1-20 Sep 2026; 81 customers, 45 non-customers). All numbers were computed by python3 scripts/analyze.py (and scripts/explore.py for data checks). "Sales" means the `amount` column; it excludes delivery (e.g. a 0.5 kg Rasmalai cake is Rs. 575 = 0.5 x 1150 with a separate delivery charge).
 
-Assumptions: "amount" is treated as product sales only (delivery_charge is a separate column and is not added). "Normal week" is defined below. Revenue is in Rs.
+## 1. Diwali 2025 (14-21 Oct 2025) versus a normal week
 
-## 1. Diwali 2025 (14 to 21 Oct 2025) versus a normal week
+- Diwali window, 14-21 Oct inclusive (8 days): 131 orders, Rs. 162,785.
+- Normal baseline: all 357 days outside the window averaged 9.29 orders and Rs. 9,178 per day. Scaled to 8 days that is about 74 orders and Rs. 73,424. Diwali was about 2.2x normal (Rs. 20,348 per day vs Rs. 9,178), roughly +122% in sales.
+- If you prefer a strict 7-day week (14-20 Oct): 118 orders, Rs. 145,775, against a normal 7-day week of about Rs. 64,246. That is about 2.3x.
+- The 8 days just before (6-13 Oct) made 51 orders and Rs. 64,210, so the lift began on 14 Oct. Peak day was 19 Oct: 24 orders, Rs. 32,000. Sales fell back to normal by 22 Oct.
+- Festive hamper drove it: 28 hamper orders and Rs. 64,000 in the window, the top product that week (the next, Chocolate truffle cake, made Rs. 23,125). Over the other 357 days there were 82 hamper orders in total (38 in October 2025, 3 to 12 per month after).
+- Method: filter by date, sum `amount`, divide the non-Diwali total by 357 days and multiply by 8 (or 7).
+- Caveat: one year of data, so "normal" is the year's average. The business grew through 2026, so a 2026 baseline would be higher than the 2025 months.
 
-- Diwali window (8 days, inclusive): 131 orders, Rs. 162,785 (Rs. 20,348 per day).
-- Normal week: Rs. 63,302 and about 64 orders per 7 days. This is the daily average of all 349 other days, excluding Diwali and the Christmas peak (18 to 25 Dec 2025), times 7. Including Christmas days it is Rs. 64,246. The median full week is Rs. 65,360.
-- Like for like (per-day, scaled to 7 days): Diwali week is about Rs. 142,437 and 115 orders. That is +125% in revenue and +79% in orders versus a normal week.
-- Raw comparison, 8 days against a 7-day normal week: Rs. 162,785 versus Rs. 63,302, about 2.6 times. Use the per-day figure for a fair claim.
-- The week before (7 to 13 Oct): 47 orders, Rs. 60,530, which is a normal level. The jump is specific to Diwali.
-- How: filtered rows by date, summed amount, divided by number of distinct days.
+## 2. Best-selling products (all 12 months, by orders; revenue in Rs.)
 
-## 2. Best-selling products
+| Product | Orders | Revenue |
+| --- | --- | --- |
+| Chocolate truffle cake | 839 | 938,000 |
+| Black forest cake | 468 | 483,825 |
+| Rasmalai cake | 369 | 491,050 |
+| Assorted cupcakes (6) | 330 | 199,800 |
+| Walnut brownies (box of 6) | 316 | 176,820 |
+| Red velvet cake | 306 | 377,150 |
+| Butterscotch cake | 289 | 278,775 |
+| Classic brownies (box of 6) | 267 | 128,520 |
+| Plum cake | 154 | 130,200 |
+| Festive hamper | 110 | 235,200 |
 
-Full year, by revenue (orders in brackets):
-1. Chocolate truffle cake, Rs. 938,000 (839)
-2. Rasmalai cake, Rs. 491,050 (369)
-3. Black forest cake, Rs. 483,825 (468)
-4. Red velvet cake, Rs. 377,150 (306)
-5. Butterscotch cake, Rs. 278,775 (289)
-6. Festive hamper, Rs. 235,200 (110)
+- Chocolate truffle cake is first by both orders and revenue. Rasmalai cake is second by revenue (just ahead of Black forest) despite fewer orders, because of its higher price (Rs. 1,150-1,200 per kg).
+- Festive hamper: only 110 orders but Rs. 235,200 revenue, the highest revenue per order. Price is a flat Rs. 1,600 each; average rating 4.37 (overall average 4.41).
+- Diwali-week ranking by orders: Festive hamper 28, Chocolate truffle 22, Rasmalai 16, Black forest 15, Butterscotch 13, Walnut brownies 11, Cupcakes 11.
+- Method: group by `product`, count rows, sum `amount`.
 
-By order count, the top three are Chocolate truffle (839), Black forest (468) and Rasmalai (369).
+## 3. Eggless share of cake orders, latest 3 months (Jul-Sep 2026)
 
-Diwali window, by revenue:
-- Festive hamper: Rs. 64,000 from 28 orders. It was the top product, ahead of Chocolate truffle (Rs. 23,125) and Rasmalai cake (Rs. 21,525).
-- Hampers were 39% of Diwali-window revenue (64,000 / 162,785).
-- A normal week has about Rs. 3,338 of hamper sales. Diwali was about 19 times that.
-- Hamper price is Rs. 1,600 each. 73 orders were 1 hamper and 37 were 2.
-- Hamper orders by month: Oct 2025 was 38 (the Diwali month). Other months had 3 to 8, rising to 8, 12 and 9 in Jul, Aug and Sep 2026.
-- Other products that lifted most in Diwali week versus normal: Butterscotch cake 2.5 times, Rasmalai cake 2.4 times, Black forest cake 1.7 times. Plum cake did not lift (0.9 times).
+- 247 of 712 cake orders were eggless: 34.7%. By month: Jul 33.2%, Aug 35.8%, Sep 35.1%.
+- Earlier quarters for context: Oct-Dec 2025 31.3%, Jan-Mar 2026 34.7%, Apr-Jun 2026 33.1%. Steady at about one third, not a sharp rise.
+- Across all categories (not just cake) the Jul-Sep eggless share was 37.1%.
+- Method: filter `category == cake` and date from 1 Jul 2026 (latest data is 30 Sep 2026), count `eggless == yes` over total.
+- Survey support: 47 of 126 respondents (37%) asked for more eggless options, the most requested addition. One comment: "I wish there were more eggless choices."
 
-Latest 3 months (Jul to Sep 2026) top by revenue: Chocolate truffle cake (Rs. 297,350), Rasmalai cake (Rs. 140,450), Black forest cake (Rs. 134,525).
+## 4. Fastest-growing area: OMR
 
-## 3. Eggless share of cake orders, latest 3 months (Jul to Sep 2026)
+| Area | Orders Oct-Dec 2025 | Orders Apr-Jun 2026 | Orders Jul-Sep 2026 |
+| --- | --- | --- | --- |
+| OMR | 30 | 85 | 119 |
+| Anna Nagar | 288 | 307 | 365 |
+| Adyar | 119 | 107 | 137 |
+| Velachery | 182 | 195 | 206 |
+| T. Nagar | 90 | 114 | 93 |
+| Other | 92 | 81 | 91 |
 
-- 247 of 712 cake orders were eggless, which is **34.7%**.
-- By month: Jul 33.2%, Aug 35.8%, Sep 35.1%.
-- Context: the full-year cake share is 33.5%, and Oct to Dec 2025 was 31.3%, so it is edging up.
-- Eggless cake orders by product (Jul to Sep): Chocolate truffle 82, Black forest 57, Rasmalai 40, Red velvet 31, Butterscotch 26, Plum 11.
-- The share across all categories over the full year: brownies 40.1%, cupcakes 33.0%, hampers 29.1%.
-- How: filtered category == cake and date 1 Jul to 30 Sep 2026, counted eggless == yes.
-- Survey support: 47 of 126 respondents (37%) asked for more eggless options. The hamper has the lowest eggless share (29.1%), so an eggless hamper option is worth considering.
+- OMR orders rose about 297% (30 to 119) from the first quarter to the latest quarter, and 40% over the previous quarter (revenue +76%, Rs. 78,155 to Rs. 137,350). No other area is close; Anna Nagar is next at about +27% over the year, and T. Nagar fell 18% last quarter.
+- OMR is still small in absolute terms (119 orders vs 365 for Anna Nagar), but it overtook "Other" and T. Nagar in the latest quarter.
+- Method: count orders and sum `amount` per `area` per quarter, compute percentage change.
+- Survey support: OMR is the most delivery-sensitive area. 25 of 33 OMR respondents said they tried to order but gave up because the Rs. 180 delivery charge was too high (OMR is the dearest zone; Anna Nagar pays Rs. 60, other areas Rs. 120). 11 respondents work in OMR IT parks whose offices order desserts at least monthly (a corporate hamper opportunity).
 
-## 4. Fastest-growing area
+## 5. Other facts useful for pricing and copy
 
-**OMR is the fastest-growing area by a wide margin.**
-- Orders per quarter: Oct to Dec 2025 had 30, Jan to Mar 2026 had 53, Apr to Jun had 85, Jul to Sep had 119. That is nearly 4 times the first quarter (+297% orders, +355% revenue, Rs. 30,220 to Rs. 137,350).
-- Latest 3 months versus the previous 3: OMR orders +40% (85 to 119) and revenue +76%. The next best was Anna Nagar at +19% orders (307 to 365).
-- Other areas, Q3 versus Q4 orders: Anna Nagar +27%, Adyar +15%, Velachery +13%, T. Nagar +3%, Other -1%. T. Nagar fell 18% versus the previous quarter.
-- OMR was still small in Diwali 2025: only 5 of 131 orders in the Diwali window.
-- Anna Nagar is the largest area overall (1,219 orders of 3,448).
-- Survey link: 25 of 33 OMR respondents said they gave up ordering because the Rs. 180 delivery charge is too high. In the orders file, OMR is charged Rs. 180 (264 orders) or Rs. 0 (23 orders). Other areas pay Rs. 60 (Anna Nagar) or Rs. 120. OMR is growing despite the highest delivery charge, so there is likely unmet demand.
+- Price sensitivity: only 9 of 126 respondents (7%) would pay more than Rs. 1,200 for a 1 kg celebration cake. Current 1 kg cake prices run Rs. 700-1,200. The existing hamper is Rs. 1,600, above that threshold, though a hamper is a gift and the threshold was asked about cakes. Treat it as a caution on the price ceiling, not a hard limit. Average order value over the year is Rs. 997.
+- Delivery: 64% of respondents would order more often if delivery took under 90 minutes. Delivery charge was a complaint (one comment: "the delivery fee is more than half the price of the cake").
+- Channels (share of orders): Instagram 46.0%, WhatsApp 29.3%, Website 15.2%, Walk-in 9.5%. Instagram is the main place to run the campaign.
+- Hamper cost data (data/hamper-costs.json): the 40% minimum margin rule means price >= cost / 0.6, rounded up to a price ending in 49 or 99. Pricing is for the pricing step; not computed here.
+- Timing: 2025 demand was elevated from 14 to 21 Oct, with a pre-Diwali build-up of weekend sales on 10-11 Oct (Rs. 13,395 and Rs. 13,370) and the peak on 19 Oct. For 2026 check the actual Diwali date and start promotion about a week before.
 
-## Other survey facts relevant to the launch
+## Limits
 
-- 126 respondents: 81 existing customers and 45 non-customers who follow on Instagram.
-- 64% would order more often if delivery took under 90 minutes.
-- Only 9 respondents would pay more than Rs. 1,200 for a 1 kg celebration cake. The hamper at Rs. 1,600 already sold well in 2025, but price sensitivity is worth keeping in mind.
-- 11 respondents work in OMR IT parks whose offices order desserts at least monthly. This is a possible corporate hamper angle.
-
-## Caveats
-
-- The survey and the orders data cover different periods and the survey has a small sample. Treat the survey as directional.
-- The Diwali comparison rests on a single year, so one festival.
-- Whether the amount includes delivery is not stated in the data. It was assumed to exclude it.
-- The Diwali 2026 dates are not in the data. The launch timing should be set separately.
+- The survey is self-selected (126 people, 45 of them non-customers) and its percentages are of respondents, not of all customers.
+- The sales data covers one Diwali only, so the uplift is a single observation.
