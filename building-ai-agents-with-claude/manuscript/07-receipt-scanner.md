@@ -107,7 +107,7 @@ Claude found the eight photos, read them one by one, and returned the details as
 
 Here's the spreadsheet it wrote, opened in a spreadsheet program:
 
-![The expenses.xlsx file the agent wrote, opened in LibreOffice Calc. The two problem receipts are highlighted, and the total at the bottom counts only the six receipts that passed every check.](images/shot-expenses-xlsx.png)
+![The expenses.xlsx file the agent wrote, opened in LibreOffice Calc and shown in two halves (columns A to F, then G to J) so it fits the page. The two problem receipts are highlighted, and the total at the bottom counts only the six receipts that passed every check.](images/shot-expenses-xlsx.png)
 
 ## How Accurate Is It?
 

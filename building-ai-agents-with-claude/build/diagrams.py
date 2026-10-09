@@ -82,8 +82,15 @@ def shopmate():
     return img
 
 
+DIAGRAMS = {"diagram-agent-loop.png": agent_loop, "diagram-guardrail-layers.png": guardrail_layers,
+            "diagram-shopmate.png": shopmate}
+
+
+def build_diagrams(out_dir=OUT):
+    for name, fn in DIAGRAMS.items():
+        fn().save(Path(out_dir) / name, dpi=(300, 300))
+
+
 if __name__ == "__main__":
-    for name, fn in [("diagram-agent-loop", agent_loop), ("diagram-guardrail-layers", guardrail_layers),
-                     ("diagram-shopmate", shopmate)]:
-        fn().save(OUT / f"{name}.png", dpi=(300, 300))
-        print("wrote", name)
+    build_diagrams()
+    print("wrote", ", ".join(DIAGRAMS))

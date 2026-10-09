@@ -1,8 +1,12 @@
-run 1 day 1: PASS   $0.0771
-run 1 day 2: PASS   $0.0836
-run 2 day 1: PASS   $0.0642
-run 2 day 2: PASS   $0.0744
-run 3 day 1: PASS   $0.0625
-run 3 day 2: PASS   $0.0776
-run 4 day 1: PASS   $0.0584
-run 4 day 2: PASS   $0.0779
+run 1 day 1: PASS   $0.0779
+run 1 day 2: PASS   $0.0802
+run 2 day 1: PASS   $0.0623
+run 2 day 2: PASS   $0.0682
+run 3 day 1: PASS   $0.0744
+run 3 day 2: PASS   $0.0765
+run 4 day 1: PASS   $0.0585
+run 4 day 2: PASS   $0.0738
+run 5 day 1: PASS   $0.0645
+run 5 day 2: PASS   $0.0729
+
+10 of 10 briefs passed with claude-sonnet-5-5; total $0.709

@@ -78,16 +78,15 @@ def gradient(img, box):
         d.line([(x0, y0 + i), (x1, y0 + i)], fill=c)
 
 
-def code_scene(img, box, seed=3):
-    """A terminal where a prompt turns into code, next to a phone showing the finished app."""
+def agent_scene(img, box):
+    """A terminal showing an agent's tool calls, next to a hub of the tools it uses."""
     x0, y0, x1, y1 = box
     w, h = x1 - x0, y1 - y0
     s = w / 1600
-    rnd = random.Random(seed)
     layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
     # Terminal window
-    tx0, ty0, tx1, ty1 = x0 + 120 * s, y0 + 70 * s, x0 + 1180 * s, y1 - 40 * s
+    tx0, ty0, tx1, ty1 = x0 + 110 * s, y0 + 70 * s, x0 + 1010 * s, y1 - 40 * s
     shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
     ImageDraw.Draw(shadow).rounded_rectangle([tx0 + 20 * s, ty0 + 30 * s, tx1 + 20 * s, ty1 + 30 * s],
                                              radius=int(36 * s), fill=(0, 0, 0, 150))
@@ -99,60 +98,39 @@ def code_scene(img, box, seed=3):
     for i, col in enumerate([(251, 113, 133), (251, 191, 36), (52, 211, 153)]):
         cx = tx0 + (50 + i * 46) * s
         d.ellipse([cx - 13 * s, ty0 + 27 * s, cx + 13 * s, ty0 + 53 * s], fill=col + (255,))
-    mono = font(MONO, 52 * s)
-    d.text((tx0 + 50 * s, ty0 + 140 * s), "> build me an app_", font=mono, fill=AMBER + (255,), anchor="lm")
-    palette = [(167, 139, 250), (94, 200, 229), (251, 146, 60), (148, 163, 184), (52, 211, 153)]
-    y = ty0 + 225 * s
-    line_h = 46 * s
-    indent = [0, 1, 2, 2, 1, 2, 3, 3, 2, 1, 0]
-    while y < ty1 - 140 * s:
-        ind = indent[int((y - ty0) / line_h) % len(indent)]
-        x = tx0 + (50 + ind * 48) * s
-        for _ in range(rnd.randint(1, 3)):
-            seg = rnd.randint(70, 230) * s
-            if x + seg > tx1 - 330 * s:
-                break
-            d.rounded_rectangle([x, y, x + seg, y + 20 * s], radius=int(10 * s),
-                                fill=rnd.choice(palette) + (230,))
-            x += seg + 22 * s
-        y += line_h
-    small = font(MONO, 40 * s)
-    d.text((tx0 + 50 * s, ty1 - 70 * s), "\u2713 all tests passed", font=small, fill=AMBER + (255,), anchor="lm")
-    # Phone showing a finished habit-tracker-style app
-    px0, py0 = x0 + 1010 * s, y0 + 200 * s
-    px1, py1 = px0 + 430 * s, y1 + 10 * s
-    shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    ImageDraw.Draw(shadow).rounded_rectangle([px0 + 16 * s, py0 + 26 * s, px1 + 16 * s, py1 + 26 * s],
-                                             radius=int(56 * s), fill=(0, 0, 0, 170))
+    mono = font(MONO, 44 * s)
+    lines = [("$ python run_daily.py", SOFT), ("\u2192 list_inbox", (94, 200, 229)),
+             ("\u2192 read_email 002", (94, 200, 229)), ("\u2192 sales_report", (94, 200, 229)),
+             ("\u2192 support_queue", (94, 200, 229)), ("\u2192 list_stock", (94, 200, 229)),
+             ("\u2713 brief ready: 5 urgent", AMBER), ("\u2713 9 of 9 checks passed", AMBER)]
+    y = ty0 + 140 * s
+    step = (ty1 - 60 * s - y) / (len(lines) - 1)
+    for text, col in lines:
+        d.text((tx0 + 50 * s, y), text, font=mono, fill=col + (255,), anchor="lm")
+        y += step
     img.alpha_composite(layer)
-    img.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(26 * s)))
+    # Hub: the agent in the middle, connected to its tools
     layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
-    d.rounded_rectangle([px0, py0, px1, py1], radius=int(56 * s), fill=(15, 13, 36, 255),
-                        outline=(120, 110, 200, 255), width=max(2, int(5 * s)))
-    sx0, sy0, sx1, sy1 = px0 + 24 * s, py0 + 60 * s, px1 - 24 * s, py1 - 40 * s
-    d.rounded_rectangle([sx0, sy0, sx1, sy1], radius=int(30 * s), fill=(246, 246, 252, 255))
-    d.rounded_rectangle([sx0 + 30 * s, sy0 + 34 * s, sx0 + 230 * s, sy0 + 64 * s], radius=int(12 * s),
-                        fill=(38, 30, 88, 255))
-    ry = sy0 + 110 * s
-    for row in range(5):
-        if ry + 60 * s > sy1 - 120 * s:
-            break
-        d.rounded_rectangle([sx0 + 24 * s, ry, sx1 - 24 * s, ry + 72 * s], radius=int(16 * s),
-                            fill=(255, 255, 255, 255), outline=(220, 220, 236, 255), width=max(1, int(2 * s)))
-        done = row in (0, 1, 3)
-        cb = [sx0 + 44 * s, ry + 20 * s, sx0 + 76 * s, ry + 52 * s]
-        d.rounded_rectangle(cb, radius=int(7 * s), fill=(AMBER + (255,)) if done else (255, 255, 255, 255),
-                            outline=AMBER + (255,), width=max(2, int(3 * s)))
-        if done:
-            d.line([(cb[0] + 7 * s, cb[1] + 17 * s), (cb[0] + 14 * s, cb[1] + 25 * s),
-                    (cb[0] + 26 * s, cb[1] + 8 * s)], fill=(255, 255, 255, 255), width=max(2, int(4 * s)))
-        d.rounded_rectangle([sx0 + 96 * s, ry + 26 * s, sx0 + (190 + rnd.randint(0, 110)) * s, ry + 46 * s],
-                            radius=int(9 * s), fill=(170, 170, 196, 255))
-        ry += 92 * s
-    d.rounded_rectangle([sx0 + 24 * s, sy1 - 96 * s, sx1 - 24 * s, sy1 - 30 * s], radius=int(20 * s),
-                        fill=CYAN + (255,))
-    glow = layer.filter(ImageFilter.GaussianBlur(10 * s))
+    cx, cy = x0 + 1250 * s, y0 + (h / 2) + 10 * s
+    nodes = [("inbox", -90), ("orders", -20), ("stock", 45), ("refunds", 135), ("notes", 200)]
+    r = 205 * s
+    small = font(SANS_BOLD, 34 * s)
+    for name, ang in nodes:
+        import math
+        nx, ny = cx + r * math.cos(math.radians(ang)), cy + r * math.sin(math.radians(ang))
+        d.line([(cx, cy), (nx, ny)], fill=(120, 110, 200, 255), width=max(2, int(5 * s)))
+    for name, ang in nodes:
+        import math
+        nx, ny = cx + r * math.cos(math.radians(ang)), cy + r * math.sin(math.radians(ang))
+        tw = d.textlength(name, font=small) + 40 * s
+        d.rounded_rectangle([nx - tw / 2, ny - 32 * s, nx + tw / 2, ny + 32 * s], radius=int(32 * s),
+                            fill=(40, 36, 82, 255), outline=CYAN + (255,), width=max(2, int(4 * s)))
+        d.text((nx, ny), name, font=small, fill=WHITE + (255,), anchor="mm")
+    R = 105 * s
+    d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=AMBER + (255,))
+    d.text((cx, cy), "AGENT", font=font(SANS_BOLD, 44 * s), fill=NAVY_TOP + (255,), anchor="mm")
+    glow = layer.filter(ImageFilter.GaussianBlur(12 * s))
     img.alpha_composite(glow)
     img.alpha_composite(layer)
 
@@ -163,11 +141,12 @@ def draw_front(img, box, meta):
     w, h = x1 - x0, y1 - y0
     s = min(w / 1600, h / 2560)  # design units are based on a 1600 x 2560 px cover
     gradient(img, box)
-    code_scene(img, (x0, y0 + int(0.025 * h), x1, y0 + int(0.39 * h)))
+    agent_scene(img, (x0, y0 + int(0.025 * h), x1, y0 + int(0.39 * h)))
     margin = int(130 * w / 1600)
     text_w = w - 2 * margin
     author_y = y1 - int(0.075 * h)
-    limit = author_y - int(150 * s)
+    # The features line sits 300 units above the author; keep the title block clear of it.
+    limit = author_y - int(370 * s)
     # Shrink the stacked title block until it clears the author line.
     k = 1.0
     while k > 0.6:
@@ -180,8 +159,8 @@ def draw_front(img, box, meta):
     d = ImageDraw.Draw(img)
     feats = meta.get("cover_features")
     if feats:
-        ff = font(SANS_BOLD, 44 * s)
-        gap = 70 * s
+        ff = font(SANS_BOLD, 40 * s)
+        gap = 60 * s
         widths = [d.textlength(t, font=ff) for t in feats]
         total = sum(widths) + gap * (len(feats) - 1)
         fx = x0 + w / 2 - total / 2

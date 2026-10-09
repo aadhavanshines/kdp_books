@@ -1,11 +1,13 @@
-# GitHub Actions: run ShopMate every morning at 6:00 India time, and run the evals on
-# every pull request. Copy this file to .github/workflows/ in your repository and add
-# ANTHROPIC_API_KEY under Settings > Secrets and variables > Actions.
+# GitHub Actions: run ShopMate every morning at 6:00 India time, and run
+# the evals on every pull request. Copy this file to .github/workflows/ in
+# your repository and add ANTHROPIC_API_KEY under Settings > Secrets and
+# variables > Actions.
 name: ShopMate
 
 on:
   schedule:
-    - cron: "30 0 * * *"        # 00:30 UTC is 06:00 in India (IST, UTC+5:30)
+    # 00:30 UTC is 06:00 in India (IST, UTC+5:30)
+    - cron: "30 0 * * *"
   pull_request:
   workflow_dispatch:            # a "Run workflow" button for manual runs
 
@@ -30,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
-      contents: write           # to save tomorrow's notes back to the repository
+      contents: write  # to save tomorrow's notes back to the repository
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -43,13 +45,15 @@ jobs:
           SHOPMATE_BUDGET_USD: "0.75"
         run: python run_daily.py
       - name: Save tomorrow's notes (ShopMate's memory)
-        # Each run starts on a fresh machine, so the notes must be stored somewhere
-        # that lasts. Here they go back into the (private) repository.
+        # Each run starts on a fresh machine, so the notes must be stored
+        # somewhere that lasts. Here they go back into the (private)
+        # repository.
         run: |
           git config user.name "shopmate-bot"
           git config user.email "shopmate-bot@users.noreply.github.com"
           git add data/notes.json
-          git commit -m "ShopMate notes for $(date -u +%F)" || echo "No change to the notes"
+          git commit -m "ShopMate notes for $(date -u +%F)" \
+            || echo "No change to the notes"
           git push
       - name: Keep the brief and the run log
         if: always()

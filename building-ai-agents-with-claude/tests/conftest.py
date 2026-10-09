@@ -13,7 +13,9 @@ def load(project, module):
     try:
         for name in ("watch", "store", "desk", "config", "tools", "brief"):
             sys.modules.pop(name, None)
-        spec = importlib.util.spec_from_file_location(f"{project}_{module}", folder / f"{module}.py")
+        spec = importlib.util.spec_from_file_location(
+            f"{project}_{module}", folder / f"{module}.py"
+        )
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
         return mod

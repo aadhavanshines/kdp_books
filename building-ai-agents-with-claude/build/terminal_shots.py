@@ -33,30 +33,25 @@ CAPTURES = ROOT / "build" / "terminal"
 # text: account-specific banners (usage-limit warnings, surveys) and tmux tips that a reader
 # running Claude Code in a normal terminal wouldn't see.
 SHOTS = {
-    "01-theme": {"theme": "dark"},
-    "02-security": {},
-    "03-trust": {},
-    "04-welcome": {},
-    "05-modes": {},
-    "07-permission-create": {},
-    "08-first-reply": {"stop": "Crunched"},
-    "09-model-picker": {"start": "Select model"},
-    "10-context": {"start": "/context", "stop": "/context all"},
-    "11-plan-approve": {"start": "Ready to code"},
-    "12-hooks": {"start": "Hooks"},
-    "13-skills": {"start": "Skills", "drop": ["/deep-research"]},
-    "14-version": {"stop": "(Claude Code)"},
-    "15-mcp-add": {},
-    "16-headless": {},
-    # QuickBite phase 7, run interactively; frames captured every 30 seconds while Claude worked.
-    "17-working": {"start": "Now the fixtures guard", "stop": "Caramelizing"},
-    "19-phase7-done": {"start": "Two problems the CSP test caught", "stop": "Baked for"},
+    # Claude Code using the Kitchen Manager's MCP server (Chapter 13).
+    "01-mcp-add": {},
+    "02-mcp-permission": {},
+    "03-mcp-answer": {},
+    "04-mcp-list": {},
+    # Agent runs, captured with `python agent.py` in a clean terminal.
+    "11-pantry-biryani": {},
+    "20-triage": {"keep": ["$ python", "→ ", "Structured output", "Done:", "Saved"]},
+    "40-research": {},
+    "50-analyst": {},
+    "70-kitchen": {},
+    "80-team": {"keep": ["$ python", "▶", "■", "Done:"]},
+    "90-shopmate": {},
 }
 DROP_ALWAYS = ["weekly limit", "tmux detected", "tmux focus-events", "Anthropic Interviewer",
                "Your voice can help", "Auto-update failed", "Tip: Use /btw"]
 
 
-def load_lines(path, lines=None, start=None, stop=None, drop=()):
+def load_lines(path, lines=None, start=None, stop=None, drop=(), keep=()):
     text = Path(path).read_text(encoding="utf-8", errors="replace")
     # Terminal hyperlinks (OSC 8) wrap link text in escape codes; keep only the visible text.
     text = re.sub(r"\x1b\]8;[^\x07\x1b]*(?:\x07|\x1b\\)", "", text)
@@ -70,6 +65,8 @@ def load_lines(path, lines=None, start=None, stop=None, drop=()):
     if stop:
         rows = rows[:next(i for i, r in enumerate(rows) if stop in plain(r)) + 1]
     rows = [r for r in rows if not any(d in plain(r) for d in list(drop) + DROP_ALWAYS)]
+    if keep:  # long runs: show only the lines that tell the story
+        rows = [r for r in rows if any(k in plain(r) for k in keep)]
     # Drop blank rows at the top and bottom (the empty part of the terminal).
     while rows and not plain(rows[-1]):
         rows.pop()
@@ -85,11 +82,11 @@ def load_lines(path, lines=None, start=None, stop=None, drop=()):
 
 
 def render(ansi_file, out_png, theme="dark", title="Terminal", lines=None, start=None, stop=None,
-           drop=()):
+           drop=(), keep=()):
     t = THEMES[theme]
     # The window is as wide as its longest line (at least 64 columns), so captures with short
     # lines print with larger text instead of a band of empty terminal on the right.
-    text = load_lines(ansi_file, lines, start, stop, drop)
+    text = load_lines(ansi_file, lines, start, stop, drop, keep)
     cols = max([64] + [len(re.sub(r"\x1b\[[0-9;:]*m", "", r).rstrip()) for r in text.split("\n")])
     body = Ansi2HTMLConverter(inline=True, dark_bg=(theme == "dark"), line_wrap=False).convert(
         text, full=False)
@@ -133,7 +130,7 @@ if __name__ == "__main__":
         for name, opt in SHOTS.items():
             out = ROOT / "manuscript" / "images" / f"term-{name}.png"
             render(CAPTURES / f"{name}.ans", out, opt.get("theme", "dark"), start=opt.get("start"),
-                   stop=opt.get("stop"), drop=opt.get("drop", ()))
+                   stop=opt.get("stop"), drop=opt.get("drop", ()), keep=opt.get("keep", ()))
             print("wrote", out.name)
     else:
         render(a.ansi_file, a.out_png, a.theme, lines=a.lines)

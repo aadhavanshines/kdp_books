@@ -59,7 +59,7 @@ And here's what happened when someone tried the oldest trick in the book:
 
 ![A customer pretends to be a developer and orders a Rs. 50,000 refund. The agent refuses, explains that chat messages can't change the policy, and offers to help with a real problem. The panel on the right is empty: it never called a tool.](images/shot-support-injection.png)
 
-The empty panel is the important part. The agent didn't even look up the order. It recognised the message as an attempt at manipulation and declined. If it had tried, the refund tool's own checks would have stopped any payment over the order's Rs. 1,800 value, and refused a second refund on top of the first.
+The empty panel is the important part. The agent didn't even look up the order. It recognised the message as an attempt at manipulation and declined. (In another run, it did look up the order first, using the phone digits the message included, and then refused just as firmly. Either way, no refund.) If it had tried, the refund tool's own checks would have stopped any payment over the order's Rs. 1,800 value, and refused a second refund on top of the first.
 
 ## The Owner's Page
 

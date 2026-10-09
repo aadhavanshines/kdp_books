@@ -151,19 +151,24 @@ def receipt_html(r, style):
     if gst:
         half = round(tax / 2, 2)
         taxrows = (
-            f"<tr><td colspan=3>CGST {gst / 2:g}%</td><td class=r>{money(half)}</td></tr>"
-            f"<tr><td colspan=3>SGST {gst / 2:g}%</td><td class=r>{money(tax - half)}</td></tr>"
+            f"<tr><td colspan=3>CGST {gst / 2:g}%</td>"
+            f"<td class=r>{money(half)}</td></tr>"
+            f"<tr><td colspan=3>SGST {gst / 2:g}%</td>"
+            f"<td class=r>{money(tax - half)}</td></tr>"
         )
     font = style["font"]
     return (
         f"""<!doctype html><html><head><meta charset=utf-8><style>
     body {{ margin:0; background:#fff; }}
-    .rc {{ width:380px; padding:22px 20px 28px; background:{style['paper']}; color:#222;
-           font: {font}; }}
-    h1 {{ font-size:19px; text-align:center; margin:0 0 4px; letter-spacing:.5px; }}
+    .rc {{ width:380px; padding:22px 20px 28px;
+           background:{style['paper']}; color:#222; font: {font}; }}
+    h1 {{ font-size:19px; text-align:center; margin:0 0 4px;
+          letter-spacing:.5px; }}
     .c {{ text-align:center; font-size:12px; margin:1px 0; }}
-    table {{ width:100%; border-collapse:collapse; font-size:13px; margin-top:8px; }}
-    td, th {{ padding:3px 0; }} th {{ text-align:left; border-bottom:1px dashed #555; }}
+    table {{ width:100%; border-collapse:collapse; font-size:13px;
+             margin-top:8px; }}
+    td, th {{ padding:3px 0; }}
+    th {{ text-align:left; border-bottom:1px dashed #555; }}
     .r {{ text-align:right; }} .tot td {{ font-weight:bold; font-size:15px;
            border-top:1px dashed #555; padding-top:6px; }}
     hr {{ border:none; border-top:1px dashed #555; }}
@@ -171,11 +176,15 @@ def receipt_html(r, style):
     <h1>{shop}</h1><p class=c>{addr}</p>
     {f'<p class=c>GSTIN: {gstin}</p>' if gstin else ''}
     <hr><p class=c>Bill No: {bill} &nbsp;&nbsp; Date: {date}</p>
-    <table><tr><th>Item</th><th class=r>Qty</th><th class=r>Rate</th><th class=r>Amount</th></tr>
+    <table><tr><th>Item</th><th class=r>Qty</th><th class=r>Rate</th>
+    <th class=r>Amount</th></tr>
     {rows}
-    <tr><td colspan=3>Sub total</td><td class=r>{money(subtotal)}</td></tr>{taxrows}
-    <tr class=tot><td colspan=3>TOTAL (Rs.)</td><td class=r>{money(total)}</td></tr></table>
-    <hr><p class=c>Paid by UPI. Thank you, visit again!</p></div></body></html>""",
+    <tr><td colspan=3>Sub total</td>
+    <td class=r>{money(subtotal)}</td></tr>{taxrows}
+    <tr class=tot><td colspan=3>TOTAL (Rs.)</td>
+    <td class=r>{money(total)}</td></tr></table>
+    <hr><p class=c>Paid by UPI. Thank you, visit again!</p></div>
+    </body></html>""",
         total,
     )
 

@@ -53,7 +53,7 @@ Most people spend all their time on the first two. Experienced agent builders sp
 
 ## Claude and the Claude Agent SDK
 
-**Claude** is the family of AI models made by Anthropic. In October 2026, the main models were Claude Haiku 4.5 (fast and inexpensive), Claude Sonnet 5.5 (the everyday workhorse), Claude Opus 5.5 (deeper reasoning), and Claude Fable 5.1 (the largest, for the longest and hardest tasks). Chapter 22 compares three of them on this book's agents, with real measurements.
+**Claude** is the family of AI models made by Anthropic. In October 2026, the main models were Claude Haiku 5.5 (fast and inexpensive, released while this book was being written), Claude Sonnet 5.5 (the everyday workhorse), Claude Opus 5.5 (deeper reasoning), and Claude Fable 5.1 (the largest, for the longest and hardest tasks). The older Claude Haiku 4.5 was still available too. Chapter 22 compares four of them on this book's agents, with real measurements.
 
 You can reach Claude in several ways. This book uses the **Claude Agent SDK**, a Python library (there's also a TypeScript version) that gives you the same agent loop, tools and safety features that power Claude Code, Anthropic's coding agent, as building blocks for your own programs. Here's how it compares with the other options:
 
