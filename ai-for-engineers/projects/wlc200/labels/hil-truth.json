@@ -110,13 +110,14 @@
     143.9
    ],
    "open_refused_at_c": 148.8,
-   "max_stall_current_above_130_c": 15.0,
+   "max_current_above_130_c": 15.16,
    "close_allowed_when_hot": true
   },
   "failed_criteria": [
-   "open_started_above_140_c"
+   "open_started_above_140_c",
+   "max_current_above_130_c"
   ],
-  "notes": "One opening started at an estimated 143.9 °C; the next request was refused. Current limit above 130 °C works (TC-TH-02 criteria met)."
+  "notes": "One opening started at an estimated 143.9 °C; the next request was refused. The current limiter holds 15.0 A, but the logged current reaches 15.16 A with measurement noise; the procedure has no tolerance, so this is reported as a failure for an engineer to judge."
  },
  "R11": {
   "test": "TC-PW-03",

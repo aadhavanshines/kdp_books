@@ -1,0 +1,316 @@
+{
+  "answer": {
+    "findings": [
+      {
+        "id": "WLC-001",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-002",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-003",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-004",
+        "issue": "ok",
+        "related": [
+          "WLC-032"
+        ],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-005",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-006",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-007",
+        "issue": "conflict",
+        "related": [
+          "WLC-023"
+        ],
+        "quote": "45 s",
+        "explanation": "WLC-023 allows window movement for 60 s after ignition off, while this requirement says 45 s (or until a front door opens). Both cannot be met.",
+        "rewrite": "After ignition off, the controller shall allow window movement for [TBD: confirm 45 s or 60 s] or until a front door is opened, whichever comes first. (Delete WLC-023.)"
+      },
+      {
+        "id": "WLC-008",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-009",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-010",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-011",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-012",
+        "issue": "ambiguous",
+        "related": [],
+        "quote": "close quickly",
+        "explanation": "\"Quickly\" is not measurable. It is also unclear whether it means the normal travel time or a faster one, and whether anti-pinch stays active.",
+        "rewrite": "When the rain sensor reports rain, the controller shall close the window to fully closed within [TBD: time limit] of the rain report, with anti-pinch protection active."
+      },
+      {
+        "id": "WLC-013",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-014",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-015",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-016",
+        "issue": "conflict",
+        "related": [
+          "WLC-017"
+        ],
+        "quote": "Anti-pinch protection shall be active in manual mode and in express mode.",
+        "explanation": "Manual mode is possible when the controller is not normalized, but WLC-017 disables anti-pinch in that state. The two contradict each other.",
+        "rewrite": "When the controller is normalized, anti-pinch protection shall be active in manual mode and in express mode."
+      },
+      {
+        "id": "WLC-017",
+        "issue": "conflict",
+        "related": [
+          "WLC-016"
+        ],
+        "quote": "Anti-pinch protection shall be disabled when the controller is not normalized.",
+        "explanation": "This contradicts WLC-016, which requires anti-pinch in manual mode with no normalization condition. Manual closing is allowed when not normalized.",
+        "rewrite": "When the controller is not normalized, anti-pinch protection shall be [TBD: disabled or active with limits] in manual mode. (Align with WLC-016.)"
+      },
+      {
+        "id": "WLC-018",
+        "issue": "untestable",
+        "related": [],
+        "quote": "robust against all disturbances",
+        "explanation": "\"Robust\" and \"all disturbances\" cannot be tested. No test can cover every disturbance, and no pass criterion is given.",
+        "rewrite": "The anti-pinch function shall not trigger a false pinch detection when [TBD: list of disturbances, e.g. road shock profile, voltage range] is applied, and shall still detect a pinch above 100 N."
+      },
+      {
+        "id": "WLC-019",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-020",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-021",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-022",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-023",
+        "issue": "conflict",
+        "related": [
+          "WLC-007"
+        ],
+        "quote": "for 60 s",
+        "explanation": "WLC-007 gives 45 s (plus door-open cutoff) for the same situation. Both cannot be met.",
+        "rewrite": "Delete this requirement and keep one timer value in WLC-007: [TBD: confirm 45 s or 60 s]."
+      },
+      {
+        "id": "WLC-024",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-025",
+        "issue": "missing_value",
+        "related": [
+          "WLC-026"
+        ],
+        "quote": "the limit",
+        "explanation": "The temperature limit is not given, and \"a safe value\" for the reduced current is also not given. Neither can be tested.",
+        "rewrite": "When the estimated motor temperature exceeds [TBD: temperature limit], the controller shall reduce motor current to no more than [TBD: reduced current limit in A]."
+      },
+      {
+        "id": "WLC-026",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-027",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-028",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-029",
+        "issue": "compound",
+        "related": [],
+        "quote": "shall store diagnostic trouble code B1A01 when the Hall sensor signal is missing for more than 200 ms while the motor is driven, and shall stop the motor",
+        "explanation": "It combines storing a DTC and stopping the motor, which need separate tests. The stop has no time limit.",
+        "rewrite": "WLC-029a: The controller shall store DTC B1A01 when the Hall sensor signal is missing for more than 200 ms while the motor is driven. WLC-029b: In that case the controller shall stop the motor within [TBD: stop time]."
+      },
+      {
+        "id": "WLC-030",
+        "issue": "compound",
+        "related": [],
+        "quote": "shall store diagnostic trouble code B1A02 when motor current exceeds 25 A for more than 50 ms and shall stop the motor and shall set the fault state in WLC_Status",
+        "explanation": "It has three separate behaviours (store DTC, stop motor, set fault state in CAN) joined by three \"shall\"s. The stop has no time limit.",
+        "rewrite": "WLC-030a: The controller shall store DTC B1A02 when motor current exceeds 25 A for more than 50 ms. WLC-030b: In that case the controller shall stop the motor within [TBD: stop time]. WLC-030c: In that case the controller shall set the fault state in WLC_Status."
+      },
+      {
+        "id": "WLC-031",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-032",
+        "issue": "duplicate",
+        "related": [
+          "WLC-004"
+        ],
+        "quote": "In sleep mode, the controller shall draw less than 100 µA from the 12 V supply.",
+        "explanation": "It repeats WLC-004 word for word.",
+        "rewrite": "Delete WLC-032 and keep WLC-004."
+      },
+      {
+        "id": "WLC-033",
+        "issue": "ambiguous",
+        "related": [],
+        "quote": "user friendly",
+        "explanation": "\"User friendly\" is subjective and not measurable.",
+        "rewrite": "[TBD: measurable usability criteria, e.g. a standard or test with pass criteria]."
+      },
+      {
+        "id": "WLC-034",
+        "issue": "process",
+        "related": [],
+        "quote": "The software shall be developed according to the company software process.",
+        "explanation": "This is about how the software is developed, not what the product does. It also does not name which process.",
+        "rewrite": "Move to a project or quality plan. If a product requirement is needed, name it, e.g. [TBD: required standard or software integrity level]."
+      },
+      {
+        "id": "WLC-035",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      },
+      {
+        "id": "WLC-036",
+        "issue": "ok",
+        "related": [],
+        "quote": "",
+        "explanation": "",
+        "rewrite": ""
+      }
+    ]
+  },
+  "cost_usd": 0.056,
+  "input_tokens": 3810,
+  "output_tokens": 4842,
+  "seconds": 32.7,
+  "model": "claude-sonnet-5-5",
+  "problems": [],
+  "sdk_cost_usd": 0.0515736,
+  "cost_note": "Worked out from token counts at base input prices"
+}

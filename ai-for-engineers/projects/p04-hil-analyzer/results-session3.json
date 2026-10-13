@@ -1,0 +1,453 @@
+{
+  "night": "2026-10-06",
+  "bench": "HIL-2",
+  "software": "2.4.0-rc3",
+  "spec": "ADS-WLC200-SRS v1.3",
+  "limits_file": "limits-v1.3.json",
+  "results": [
+    {
+      "run": "R01",
+      "test": "TC-AP-01",
+      "status": "PASS",
+      "failed_criteria": [],
+      "criteria": [
+        {
+          "name": "stop_latency_ms",
+          "value": 6,
+          "min": null,
+          "max": 10,
+          "unit": "ms",
+          "ok": true
+        },
+        {
+          "name": "reversal_mm",
+          "value": 162.0,
+          "min": 150,
+          "max": null,
+          "unit": "mm",
+          "ok": true
+        }
+      ],
+      "values": {
+        "t_force_over_threshold_ms": 1859,
+        "t_motor_stop_ms": 1865,
+        "lowest_position_mm": 91.0,
+        "final_position_mm": 253.0,
+        "peak_force_n": 91.6
+      },
+      "anomalies": [],
+      "error": null,
+      "conditions": {
+        "supply_v": 13.5,
+        "ambient_c": 23
+      }
+    },
+    {
+      "run": "R02",
+      "test": "TC-AP-02",
+      "status": "PASS",
+      "failed_criteria": [],
+      "criteria": [
+        {
+          "name": "stop_latency_ms",
+          "value": 7,
+          "min": null,
+          "max": 10,
+          "unit": "ms",
+          "ok": true
+        },
+        {
+          "name": "reversal_mm",
+          "value": 160.0,
+          "min": 150,
+          "max": null,
+          "unit": "mm",
+          "ok": true
+        }
+      ],
+      "values": {
+        "t_force_over_threshold_ms": 2492,
+        "t_motor_stop_ms": 2499,
+        "lowest_position_mm": 91.0,
+        "final_position_mm": 251.0,
+        "peak_force_n": 89.9
+      },
+      "anomalies": [],
+      "error": null,
+      "conditions": {
+        "supply_v": 9.0,
+        "ambient_c": 23
+      }
+    },
+    {
+      "run": "R03",
+      "test": "TC-AP-03",
+      "status": "PASS",
+      "failed_criteria": [],
+      "criteria": [
+        {
+          "name": "stop_latency_ms",
+          "value": 4,
+          "min": null,
+          "max": 10,
+          "unit": "ms",
+          "ok": true
+        },
+        {
+          "name": "reversal_mm",
+          "value": 163.0,
+          "min": 150,
+          "max": null,
+          "unit": "mm",
+          "ok": true
+        }
+      ],
+      "values": {
+        "t_force_over_threshold_ms": 1650,
+        "t_motor_stop_ms": 1654,
+        "lowest_position_mm": 91.0,
+        "final_position_mm": 254.0,
+        "peak_force_n": 91.3
+      },
+      "anomalies": [],
+      "error": null,
+      "conditions": {
+        "supply_v": 16.0,
+        "ambient_c": 23
+      }
+    },
+    {
+      "run": "R04",
+      "test": "TC-AP-04",
+      "status": "FAIL",
+      "failed_criteria": [
+        "stop_latency_ms=14ms (limit max 10)"
+      ],
+      "criteria": [
+        {
+          "name": "stop_latency_ms",
+          "value": 14,
+          "min": null,
+          "max": 10,
+          "unit": "ms",
+          "ok": false
+        },
+        {
+          "name": "reversal_mm",
+          "value": 158.0,
+          "min": 150,
+          "max": null,
+          "unit": "mm",
+          "ok": true
+        }
+      ],
+      "values": {
+        "t_force_over_threshold_ms": 2895,
+        "t_motor_stop_ms": 2909,
+        "lowest_position_mm": 90.5,
+        "final_position_mm": 248.5,
+        "peak_force_n": 94.3
+      },
+      "anomalies": [
+        "temperature estimate at start is -22 C but chamber set to -30 C (soak not complete or estimate offset?)"
+      ],
+      "error": null,
+      "conditions": {
+        "supply_v": 9.0,
+        "ambient_c": -30
+      }
+    },
+    {
+      "run": "R05",
+      "test": "TC-AP-05",
+      "status": "PASS",
+      "failed_criteria": [],
+      "criteria": [
+        {
+          "name": "stop_latency_ms",
+          "value": 6,
+          "min": null,
+          "max": 10,
+          "unit": "ms",
+          "ok": true
+        },
+        {
+          "name": "reversal_mm",
+          "value": 151.0,
+          "min": 150,
+          "max": null,
+          "unit": "mm",
+          "ok": true
+        }
+      ],
+      "values": {
+        "t_force_over_threshold_ms": 1859,
+        "t_motor_stop_ms": 1865,
+        "lowest_position_mm": 91.0,
+        "final_position_mm": 242.0,
+        "peak_force_n": 92.0
+      },
+      "anomalies": [
+        "temperature estimate at start is 93 C but chamber set to 85 C (soak not complete or estimate offset?)",
+        "reversal_mm = 151 mm is within 2% of its min limit 150 (margin 1 mm)"
+      ],
+      "error": null,
+      "conditions": {
+        "supply_v": 13.5,
+        "ambient_c": 85
+      }
+    },
+    {
+      "run": "R06",
+      "test": "TC-AP-06",
+      "status": "PASS",
+      "failed_criteria": [],
+      "criteria": [
+        {
+          "name": "stop_latency_ms",
+          "value": 5,
+          "min": null,
+          "max": 10,
+          "unit": "ms",
+          "ok": true
+        },
+        {
+          "name": "reversal_mm",
+          "value": 161.0,
+          "min": 150,
+          "max": null,
+          "unit": "mm",
+          "ok": true
+        }
+      ],
+      "values": {
+        "t_force_over_threshold_ms": 2495,
+        "t_motor_stop_ms": 2500,
+        "lowest_position_mm": 11.0,
+        "final_position_mm": 172.0,
+        "peak_force_n": 91.4
+      },
+      "anomalies": [],
+      "error": null,
+      "conditions": {
+        "supply_v": 13.5,
+        "ambient_c": 23
+      }
+    },
+    {
+      "run": "R07",
+      "test": "TC-MV-05",
+      "status": "PASS",
+      "failed_criteria": [],
+      "criteria": [
+        {
+          "name": "close_time_s",
+          "value": 3.816,
+          "min": 3.0,
+          "max": 4.5,
+          "unit": "s",
+          "ok": true
+        }
+      ],
+      "values": {
+        "t_close_start_ms": 200,
+        "t_end_stop_ms": 4016,
+        "t_cmd_off_ms": 4058,
+        "end_stop_stall_current_a": 18.1
+      },
+      "anomalies": [
+        "end-stop stall current 18.1 A (no limit for this test; stall lasted 42 ms)"
+      ],
+      "error": null,
+      "conditions": {
+        "supply_v": 13.5,
+        "ambient_c": 23
+      }
+    },
+    {
+      "run": "R08",
+      "test": "TC-MV-01",
+      "status": "PASS",
+      "failed_criteria": [],
+      "criteria": [
+        {
+          "name": "stop_after_release_ms",
+          "value": 62,
+          "min": null,
+          "max": 100,
+          "unit": "ms",
+          "ok": true
+        }
+      ],
+      "values": {
+        "t_release_ms": 1800,
+        "t_motor_cmd_zero_ms": 1862
+      },
+      "anomalies": [],
+      "error": null,
+      "conditions": {
+        "supply_v": 13.5,
+        "ambient_c": 23
+      }
+    },
+    {
+      "run": "R09",
+      "test": "TC-CAN-01",
+      "status": "FAIL",
+      "failed_criteria": [
+        "period_max_ms=112ms (limit min 45 max 55)"
+      ],
+      "criteria": [
+        {
+          "name": "period_min_ms",
+          "value": 49,
+          "min": 45,
+          "max": 55,
+          "unit": "ms",
+          "ok": true
+        },
+        {
+          "name": "period_max_ms",
+          "value": 112,
+          "min": 45,
+          "max": 55,
+          "unit": "ms",
+          "ok": false
+        }
+      ],
+      "values": {
+        "frames": 199,
+        "period_mean_ms": 50.34848484848485,
+        "period_min_ms": 49,
+        "period_max_ms": 112
+      },
+      "anomalies": [
+        "periods outside limits: 112 ms between t=6383 and t=6495 ms (a frame was probably skipped)"
+      ],
+      "error": null,
+      "conditions": {
+        "supply_v": 13.5,
+        "ambient_c": 23
+      }
+    },
+    {
+      "run": "R10",
+      "test": "TC-TH-03",
+      "status": "FAIL",
+      "failed_criteria": [
+        "max_current_above_130C_a=15.16A (limit max 15)",
+        "opening_starts_above_140C=1 (limit max 0)"
+      ],
+      "criteria": [
+        {
+          "name": "max_current_above_130C_a",
+          "value": 15.16,
+          "min": null,
+          "max": 15,
+          "unit": "A",
+          "ok": false
+        },
+        {
+          "name": "opening_starts_above_140C",
+          "value": 1,
+          "min": null,
+          "max": 0,
+          "unit": "",
+          "ok": false
+        },
+        {
+          "name": "closing_possible_above_140C",
+          "value": 2,
+          "min": 1,
+          "max": null,
+          "unit": "movements",
+          "ok": true
+        }
+      ],
+      "values": {
+        "opening_starts_total": 7,
+        "closing_starts_above_140C": 2
+      },
+      "anomalies": [
+        "13 samples above 15 A while estimate > 130 C (first t=39110 ms at 134.0 C, peak 15.16 A) - end-stop stalls",
+        "opening started above 140 C at t=57050 ms (143.9 C)",
+        "10 ms sampling; the log starts at ~112 C and was never cooled, so 'opening possible below 120 C' is not covered by this run",
+        "the controller completed full opening travel above 140 C (no inhibit)"
+      ],
+      "error": null,
+      "conditions": {
+        "supply_v": 13.5,
+        "ambient_c": 23
+      }
+    },
+    {
+      "run": "R11",
+      "test": "TC-PW-03",
+      "status": "PASS",
+      "failed_criteria": [],
+      "criteria": [
+        {
+          "name": "stop_after_undervoltage_ms",
+          "value": 21,
+          "min": null,
+          "max": 50,
+          "unit": "ms",
+          "ok": true
+        }
+      ],
+      "values": {
+        "t_undervoltage_ms": 1500,
+        "t_motor_cmd_zero_ms": 1521,
+        "supply_min_v": 5.44
+      },
+      "anomalies": [],
+      "error": null,
+      "conditions": {
+        "supply_v": 13.5,
+        "ambient_c": 23
+      }
+    },
+    {
+      "run": "R12",
+      "test": "TC-DG-01",
+      "status": "PASS",
+      "failed_criteria": [],
+      "criteria": [
+        {
+          "name": "dtc_code",
+          "value": "B1A01",
+          "min": null,
+          "max": null,
+          "unit": "",
+          "ok": true
+        },
+        {
+          "name": "stop_after_hall_loss_ms",
+          "value": 203,
+          "min": 200,
+          "max": 250,
+          "unit": "ms",
+          "ok": true
+        }
+      ],
+      "values": {
+        "dtc_codes": [
+          "B1A01"
+        ],
+        "t_hall_loss_ms": 1500,
+        "t_motor_cmd_zero_ms": 1703,
+        "t_dtc_ms": 1703,
+        "hall_interval_ms": 4
+      },
+      "anomalies": [
+        "stop_after_hall_loss_ms = 203 ms is within 2% of its min limit 200 (margin 3 ms)",
+        "Hall loss time is only known to within one Hall interval (4 ms): true latency is 199..203 ms, so the 200 ms lower limit cannot be confirmed with certainty"
+      ],
+      "error": null,
+      "conditions": {
+        "supply_v": 13.5,
+        "ambient_c": 23
+      }
+    }
+  ]
+}

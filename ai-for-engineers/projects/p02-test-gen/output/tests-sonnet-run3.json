@@ -1,0 +1,694 @@
+{
+  "answer": {
+    "tests": [
+      {
+        "id": "TC-001",
+        "title": "Full function over supply voltage range",
+        "requirements": [
+          "WLC-001"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Set ambient 23 °C, window normalized.",
+          "Set supply to 9.0 V, then 12 V, then 16.0 V; also 8.9 V and 16.1 V for reference only.",
+          "At each voltage perform manual open/close, express open/close, anti-pinch trigger and read WLC_Status.",
+          "Record any function not available."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Function availability (manual, express, anti-pinch, CAN status) at 9.0 V, 12 V and 16.0 V",
+            "limit": "full function from 9.0 V to 16.0 V"
+          }
+        ]
+      },
+      {
+        "id": "TC-002",
+        "title": "Reduced voltage range: manual only, express disabled",
+        "requirements": [
+          "WLC-002"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Window normalized, 23 °C.",
+          "Set supply to 8.9 V, 7.5 V and 6.1 V.",
+          "At each voltage, make a short press (<300 ms) in open and close directions.",
+          "Hold the switch to move the window manually in both directions.",
+          "Set supply to 9.1 V and repeat the short press as a reference."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Express mode between 6.0 V and 9.0 V",
+            "limit": "disabled"
+          },
+          {
+            "measure": "Manual mode between 6.0 V and 9.0 V",
+            "limit": "operates in manual mode only"
+          }
+        ]
+      },
+      {
+        "id": "TC-003",
+        "title": "Motor stop on undervoltage",
+        "requirements": [
+          "WLC-003"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Run the motor in manual mode at 12 V.",
+          "Step supply from 12 V to 5.9 V and capture supply and motor current with a scope; trigger on the voltage crossing 6.0 V.",
+          "Repeat with the step to 5.0 V.",
+          "Measure time from crossing 6.0 V to motor current zero."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Time from supply below 6.0 V to motor stopped",
+            "limit": "within 50 ms"
+          }
+        ]
+      },
+      {
+        "id": "TC-004",
+        "title": "Sleep current",
+        "requirements": [
+          "WLC-004"
+        ],
+        "method": "Bench",
+        "procedure": [
+          "Supply 12 V (13.5 V optional second point), 23 °C.",
+          "Put the controller in sleep mode (ignition off, no CAN activity, wait for sleep timeout).",
+          "Measure supply current with a calibrated microammeter after settling.",
+          "Repeat at -40 °C and 85 °C."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Sleep mode supply current",
+            "limit": "< 100 µA"
+          }
+        ]
+      },
+      {
+        "id": "TC-005",
+        "title": "Reverse battery withstand",
+        "requirements": [
+          "WLC-005"
+        ],
+        "method": "Bench",
+        "procedure": [
+          "Connect supply with reversed polarity at -14 V for 60 s, 23 °C.",
+          "Restore the correct polarity at 13.5 V.",
+          "Run the functional check: movement, CAN, diagnostics, sleep current."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Controller condition after -14 V for 60 s",
+            "limit": "without damage"
+          }
+        ]
+      },
+      {
+        "id": "TC-006",
+        "title": "Manual mode movement and stop on release",
+        "requirements": [
+          "WLC-006"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "13.5 V, 23 °C, normalized, window mid-travel.",
+          "Hold the switch in close and in open direction for 1 s; observe window movement.",
+          "Release the switch; capture the switch signal and motor drive.",
+          "Measure time from release to motor stopped; repeat 10 times in each direction."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Window movement while switch held",
+            "limit": "moves while the switch is held"
+          },
+          {
+            "measure": "Time from switch release to window stopped",
+            "limit": "within 100 ms"
+          }
+        ]
+      },
+      {
+        "id": "TC-007",
+        "title": "Window movement after ignition off",
+        "requirements": [
+          "WLC-007"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Case A: switch ignition off, keep doors closed, press switch at 55 s and at 61 s after ignition off.",
+          "Case B: ignition off, open a front door at 20 s, then press the switch just before (19 s) and just after the opening event.",
+          "Case C: open a rear door only at 20 s and press the switch.",
+          "Record whether the window moves."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Window movement after ignition off",
+            "limit": "allowed for 60 s or until a front door is opened, whichever comes first"
+          }
+        ]
+      },
+      {
+        "id": "TC-008",
+        "title": "Express mode start by short press",
+        "requirements": [
+          "WLC-008"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "13.5 V, 23 °C, normalized, window mid-travel.",
+          "Apply switch presses of 100 ms, 290 ms and 299 ms in close direction, then in open direction.",
+          "Apply presses of 301 ms and 350 ms as outside-limit points.",
+          "Observe whether the window continues after release."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Express mode start for press shorter than 300 ms",
+            "limit": "starts express mode in the pressed direction"
+          }
+        ]
+      },
+      {
+        "id": "TC-009",
+        "title": "Stop express movement with second press",
+        "requirements": [
+          "WLC-009"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "13.5 V, 23 °C, normalized.",
+          "Start express close; during travel press the switch in close direction again.",
+          "Repeat with a press in open direction.",
+          "Repeat for express open with both press directions.",
+          "Measure time from second press to motor stopped."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Time from second press to window stopped",
+            "limit": "within 100 ms"
+          }
+        ]
+      },
+      {
+        "id": "TC-010",
+        "title": "Full travel time",
+        "requirements": [
+          "WLC-010"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Set supply 13.5 V and chamber/ambient 23 °C, normalized.",
+          "Start express close from fully open (480 mm).",
+          "Measure time to fully closed (0 mm) from CAN position/motor signals.",
+          "Repeat 5 times."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Fully open to fully closed travel time at 13.5 V and 23 °C",
+            "limit": "3.0 s to 4.5 s"
+          }
+        ]
+      },
+      {
+        "id": "TC-011",
+        "title": "Motor stop at end positions",
+        "requirements": [
+          "WLC-011"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "13.5 V, 23 °C, normalized.",
+          "Express close to 0 mm and express open to 480 mm.",
+          "Observe the motor current and drive at each end position."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Motor state at end position",
+            "limit": "motor stopped when the window reaches the end position"
+          }
+        ]
+      },
+      {
+        "id": "TC-012",
+        "title": "CAN WLC_CloseAll",
+        "requirements": [
+          "WLC-012"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "13.5 V, 23 °C, normalized, window open.",
+          "Send CAN WLC_CloseAll from the restbus simulation.",
+          "Observe the window closing without the switch.",
+          "During closing, place a pinch obstacle in the pinch zone and verify reaction.",
+          "Repeat from mid-travel."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Window response to WLC_CloseAll",
+            "limit": "closes the window in express mode"
+          },
+          {
+            "measure": "Anti-pinch during CloseAll closing",
+            "limit": "anti-pinch protection active"
+          }
+        ]
+      },
+      {
+        "id": "TC-013",
+        "title": "Express close only when normalized",
+        "requirements": [
+          "WLC-013"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Make the controller not normalized (supply interruption of 600 ms).",
+          "Short press in close direction at mid-travel; observe.",
+          "Normalize per TC-022 procedure.",
+          "Repeat short press close."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Express close when not normalized",
+            "limit": "not available"
+          },
+          {
+            "measure": "Express close when normalized",
+            "limit": "available"
+          }
+        ]
+      },
+      {
+        "id": "TC-014",
+        "title": "Pinch detection threshold",
+        "requirements": [
+          "WLC-014"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "13.5 V, 23 °C, normalized.",
+          "Use force-measuring pinch fixture with calibrated spring rate.",
+          "Close in the pinch zone with obstacle at 100 mm; ramp force to 78 N, 80 N and 82 N.",
+          "Repeat at 5 mm and 199 mm positions.",
+          "Repeat above 200 mm and below 4 mm as outside-zone reference."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Pinch detection in pinch zone",
+            "limit": "detects a pinch when the pinch force exceeds 80 N"
+          }
+        ]
+      },
+      {
+        "id": "TC-015",
+        "title": "Pinch reaction: stop time and reversal distance",
+        "requirements": [
+          "WLC-015"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "13.5 V, 23 °C, normalized.",
+          "Trigger a pinch at 100 mm; capture motor drive and position.",
+          "Measure time from detection to motor stop.",
+          "Measure reversal distance.",
+          "Trigger a pinch at 4 mm and at 200 mm.",
+          "Trigger where less than 150 mm of travel remains to fully open (reduced stroke setup)."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Time from pinch detection to motor stop",
+            "limit": "within 10 ms"
+          },
+          {
+            "measure": "Reversal distance after pinch",
+            "limit": "at least 150 mm or to fully open, whichever is less"
+          }
+        ]
+      },
+      {
+        "id": "TC-016",
+        "title": "Anti-pinch active in manual and express modes",
+        "requirements": [
+          "WLC-016"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "13.5 V, 23 °C, normalized.",
+          "Close in manual mode and apply pinch obstacle exceeding 80 N in the pinch zone.",
+          "Close in express mode and apply the same obstacle.",
+          "Observe reaction."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Anti-pinch in manual mode",
+            "limit": "active"
+          },
+          {
+            "measure": "Anti-pinch in express mode",
+            "limit": "active"
+          }
+        ]
+      },
+      {
+        "id": "TC-017",
+        "title": "Anti-pinch disabled when not normalized",
+        "requirements": [
+          "WLC-017"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Interrupt supply for 600 ms to make the controller not normalized.",
+          "Close in manual mode and apply an obstacle exceeding 80 N in the pinch zone.",
+          "Observe the reaction and WLC_Status normalization state."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Anti-pinch when not normalized",
+            "limit": "disabled"
+          }
+        ]
+      },
+      {
+        "id": "TC-018",
+        "title": "Express close inhibit after pinch reversal",
+        "requirements": [
+          "WLC-039"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "13.5 V, 23 °C, normalized.",
+          "Trigger a pinch reversal; mark time t0 when reversal ends.",
+          "Attempt express close (short press) at t0+1.9 s and at t0+2.1 s.",
+          "Record response each time."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Express close after pinch reversal",
+            "limit": "inhibited for 2 s"
+          }
+        ]
+      },
+      {
+        "id": "TC-019",
+        "title": "Repeated pinch lockout to manual close",
+        "requirements": [
+          "WLC-019"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "13.5 V, 23 °C, normalized.",
+          "Trigger three pinches within 30 s (e.g. 10 s apart).",
+          "Attempt express close, then manual close, immediately and at 59 s and 61 s after the third pinch.",
+          "Control case: three pinches spread over more than 30 s, then attempt express close (after 2 s inhibit)."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Closing after three pinch detections within 30 s",
+            "limit": "allowed only in manual mode for the next 60 s"
+          }
+        ]
+      },
+      {
+        "id": "TC-020",
+        "title": "Position resolution from Hall pulses",
+        "requirements": [
+          "WLC-020"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Inject Hall pulse sequences simulating motor travel.",
+          "Step the simulated position by single pulses and compare WLC_Status position with a reference.",
+          "Check position values across 0 mm to 480 mm."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Position resolution",
+            "limit": "0.5 mm or better"
+          }
+        ]
+      },
+      {
+        "id": "TC-021",
+        "title": "Loss of normalization after supply interruption",
+        "requirements": [
+          "WLC-021"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Controller normalized at 13.5 V.",
+          "Interrupt supply for 400 ms, 500 ms and 600 ms (and 2 s) in separate runs.",
+          "After each, read normalization state in WLC_Status.",
+          "Re-normalize between runs."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Normalization state after supply interruption longer than 500 ms",
+            "limit": "not normalized"
+          }
+        ]
+      },
+      {
+        "id": "TC-022",
+        "title": "Normalization at closed seal",
+        "requirements": [
+          "WLC-022"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Start from not normalized state.",
+          "In manual mode hold close with window fully closed against seal for 0.9 s, then release; read state.",
+          "Repeat holding for 1.0 s and 1.1 s.",
+          "Repeat in express mode attempt (not applicable) and with window not at seal as reference."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Normalization after window held fully closed against seal in manual mode",
+            "limit": "normalizes after 1 s"
+          }
+        ]
+      },
+      {
+        "id": "TC-023",
+        "title": "Thermal model existence",
+        "requirements": [
+          "WLC-024"
+        ],
+        "method": "Review",
+        "procedure": [
+          "Review the software design and thermal model documentation.",
+          "Verify that motor temperature is estimated with a thermal model and what inputs it uses.",
+          "Record the model accuracy requirement, if any."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Motor temperature estimation by thermal model",
+            "limit": "[TBD: limit needed]"
+          }
+        ]
+      },
+      {
+        "id": "TC-024",
+        "title": "Thermal current limit and blocking",
+        "requirements": [
+          "WLC-025",
+          "WLC-026",
+          "WLC-027"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Drive the thermal model state via test interface/simulated duty to set the estimated motor temperature.",
+          "Set 129 °C, then 131 °C; measure motor current while driving.",
+          "Raise to 139 °C, then 141 °C; attempt opening and closing.",
+          "Lower the estimate to 121 °C, then 119 °C; attempt opening."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Motor current above 130 °C estimated",
+            "limit": "limited to 15 A"
+          },
+          {
+            "measure": "Operation above 140 °C estimated",
+            "limit": "opening blocked, closing only allowed"
+          },
+          {
+            "measure": "Thermal blocking end",
+            "limit": "ends when estimated temperature falls below 120 °C"
+          }
+        ]
+      },
+      {
+        "id": "TC-025",
+        "title": "WLC_Status cycle time and content",
+        "requirements": [
+          "WLC-028"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Log WLC_Status on CAN for 60 s while idle and while moving.",
+          "Compute the period between consecutive messages.",
+          "Decode position, movement state, normalization state and fault state; compare to the simulated conditions."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "WLC_Status period",
+            "limit": "50 ms ± 5 ms"
+          },
+          {
+            "measure": "Message content",
+            "limit": "contains window position, movement state, normalization state and fault state"
+          }
+        ]
+      },
+      {
+        "id": "TC-026",
+        "title": "Hall sensor loss DTC B1A01",
+        "requirements": [
+          "WLC-029"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Drive the motor and remove the Hall signal for 150 ms, then restore; check DTCs.",
+          "Remove Hall signal for 250 ms while driving; check DTC and motor.",
+          "Remove Hall signal with motor not driven as a reference."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "DTC B1A01 when Hall signal missing while motor driven",
+            "limit": "stored when missing for more than 200 ms"
+          },
+          {
+            "measure": "Motor on Hall loss",
+            "limit": "stopped"
+          }
+        ]
+      },
+      {
+        "id": "TC-027",
+        "title": "Overcurrent DTC B1A02 reactions",
+        "requirements": [
+          "WLC-030",
+          "WLC-037",
+          "WLC-038"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Using the electronic load/blocked motor, apply 24 A for 100 ms, then 26 A for 40 ms, then 26 A for 60 ms.",
+          "Read DTCs, motor drive state and WLC_Status fault state after each run."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "DTC B1A02 storage",
+            "limit": "stored when motor current exceeds 25 A for more than 50 ms"
+          },
+          {
+            "measure": "Motor when B1A02 stored",
+            "limit": "stopped"
+          },
+          {
+            "measure": "WLC_Status fault state when B1A02 stored",
+            "limit": "set"
+          }
+        ]
+      },
+      {
+        "id": "TC-028",
+        "title": "Diagnostic response time",
+        "requirements": [
+          "WLC-031"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Send 100 diagnostic requests (e.g. read DTC) via the tester.",
+          "Measure request-to-response time on the CAN log, also while the window is moving."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Diagnostic response time",
+            "limit": "within 50 ms"
+          }
+        ]
+      },
+      {
+        "id": "TC-029",
+        "title": "Operating temperature range",
+        "requirements": [
+          "WLC-035"
+        ],
+        "method": "Climatic chamber",
+        "procedure": [
+          "Place controller with motor load in the chamber; soak at -40 °C, then 85 °C (also 23 °C reference), at least 2 h each.",
+          "At each temperature at 13.5 V run manual and express movement, anti-pinch trigger and CAN status check."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Controller operation at -40 °C and 85 °C",
+            "limit": "operates from -40 °C to 85 °C"
+          }
+        ]
+      },
+      {
+        "id": "TC-030",
+        "title": "Wake-up time from sleep",
+        "requirements": [
+          "WLC-036"
+        ],
+        "method": "HIL",
+        "procedure": [
+          "Put controller in sleep mode at 13.5 V, 23 °C.",
+          "Press the switch; capture the switch signal and first motor drive/CAN activity.",
+          "Measure time from press to wake; repeat 10 times, also at -40 °C and 85 °C."
+        ],
+        "pass_criteria": [
+          {
+            "measure": "Wake time from sleep after switch press",
+            "limit": "within 100 ms"
+          }
+        ]
+      }
+    ]
+  },
+  "cost_usd": 0.0822,
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 2331,
+      "outputTokens": 15,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.002406,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-5-5": {
+      "inputTokens": 2,
+      "outputTokens": 6443,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 3831,
+      "webSearchRequests": 0,
+      "costUSD": 0.07975800000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 389,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "input_tokens": 3833,
+  "output_tokens": 6443,
+  "seconds": 43.6,
+  "model": "claude-sonnet-5-5",
+  "check": {
+    "uncovered": [],
+    "unknown_traces": [],
+    "ungrounded": [],
+    "limits_not_tested": [],
+    "tbd": [
+      "TC-023"
+    ]
+  }
+}

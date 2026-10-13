@@ -1,0 +1,40 @@
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+33 test cases for 34 requirements; 7654 in / 61205 out tokens, 258.3 s
+uncovered: 0
+unknown_traces: 0
+ungrounded: 0
+limits_not_tested: 18
+    WLC-001: 16 V
+    WLC-001: 9 V
+    WLC-002: 6 V
+    WLC-002: 9 V
+    WLC-003: 6 V
+    WLC-004: 12 V
+    WLC-005: -14 V
+    WLC-005: 60 s
+    WLC-010: 13.5 V
+    WLC-010: 23 °C
+    WLC-019: 30 s
+    WLC-025: 130 °C
+    WLC-026: 140 °C
+    WLC-029: 1 A
+    WLC-030: 1 A
+    WLC-030: 25 A
+    WLC-037: 1 A
+    WLC-038: 1 A
+tbd: 15
+    TC-001
+    TC-002
+    TC-006
+    TC-008
+    TC-011
+    TC-012
+    TC-013
+    TC-016
+    TC-017
+    TC-021
+    TC-023
+    TC-025
+    TC-027
+    TC-028
+    TC-030

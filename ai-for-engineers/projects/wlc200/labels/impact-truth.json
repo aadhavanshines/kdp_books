@@ -29,5 +29,8 @@
  "note": "WLC-037 and WLC-038 were split out of WLC-030; extending TC-DG-02's trace or writing new tests are both accepted.",
  "judgement": {
   "TC-AP-09": "Trace-based analysis says retire (its only requirement, WLC-018, was deleted). The validation team kept it, traced to WLC-016, because of lesson learned LL-2021-07. A good tool flags this for a person instead of retiring it silently."
- }
+ },
+ "no_rerun_needed": [
+  "TC-PS-02"
+ ]
 }

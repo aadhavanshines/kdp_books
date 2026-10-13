@@ -1,0 +1,39 @@
+Code found: 8 changed, 3 added, 5 deleted; 14 tests affected
+CHECK: TC-MV-02: new criteria use 10 s, not in WLC-007
+CHECK: TC-MV-02: new criteria use 55 s, not in WLC-007
+CHECK: TC-MV-02: new criteria use 65 s, not in WLC-007
+CHECK: TC-MV-07: new criteria use 80 N, not in WLC-012
+CHECK: TC-AP-03: new criteria use 16 V, not in WLC-014, WLC-015
+CHECK: TC-AP-04: new criteria use -30 °C, not in WLC-014, WLC-015, WLC-035
+CHECK: TC-AP-04: new criteria use 9 V, not in WLC-014, WLC-015, WLC-035
+CHECK: TC-AP-05: new criteria use 13.5 V, not in WLC-014, WLC-015, WLC-035
+CHECK: TC-CAN-01: new criteria use 10 s, not in WLC-028
+CHECK: TC-DG-02: new criteria use 100 ms, not in WLC-030
+CHECK: TC-DG-02: new criteria use 27 A, not in WLC-030
+  TC-PW-04   remove_trace
+  TC-MV-02   update_and_rerun
+  TC-MV-07   update_and_rerun
+  TC-AP-01   update_and_rerun
+  TC-AP-02   update_and_rerun
+  TC-AP-03   update_and_rerun
+  TC-AP-04   update_and_rerun
+  TC-AP-05   update_and_rerun
+  TC-AP-09   remove_trace
+  TC-PS-02   no_action
+  TC-TH-02   update_and_rerun
+  TC-CAN-01  update_and_rerun
+  TC-DG-02   update_and_rerun
+  TC-UX-01   retire
+  concern TC-AP-09 / TC-AP-01..05: LL-2021-07: the threshold change from 100 N to 80 N needs a new check of both false revers
+  concern TC-AP-04: LL-2022-02: cold plus low voltage is the worst case for stop time. With the lower threshol
+  concern TC-AP-06, TC-AP-07, TC-MV-08: They do not trace to a changed requirement but depend on the anti-pinch behaviour. TC-AP-0
+  concern TC-MV-07: WLC-012 drops the rain trigger. Confirm that removing automatic closing on rain is intende
+  concern TC-AP-08: The new WLC-039 (2 s express-close inhibit) may overlap or conflict with the repeated-pinc
+  concern TC-TH-01, TC-TH-03, TC-TH-04: LL-2024-01: a limit check on an estimate must use a current estimate. Check that the share
+  concern TC-AP-05, TC-MV-05: The 15 A current limit above 130 °C could lengthen the full close time (WLC-010) or affect
+  concern TC-CAN-01: LL-2024-09: when the cycle time shortens from 100 ms to 50 ms, repeat the worst-case queue
+  concern TC-DG-01, TC-DG-03: B1A02 now drives the motor stop and fault state through WLC-037 and WLC-038. Check the res
+  concern TC-MV-02: The window now lasts 60 s, which also drives the TC-PW-04 current and power budget. Check 
+  concern TC-EN-01: It traces to WLC-035 only, but climatic operation includes anti-pinch at the new threshold
+  concern WLC-034 (no test): The software process requirement is deleted and has no test, so no test action is needed. 
+6309 in / 7598 out tokens, $0.0809, 53.7 s

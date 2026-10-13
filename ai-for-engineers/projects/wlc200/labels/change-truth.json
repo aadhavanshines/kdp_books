@@ -19,5 +19,9 @@
   "WLC-032",
   "WLC-033",
   "WLC-034"
- ]
+ ],
+ "editorial": [
+  "WLC-021"
+ ],
+ "note": "WLC-021 changed wording only; its meaning and its test are unchanged."
 }

@@ -51,7 +51,7 @@ The WLC-200 controls one electric window in a passenger-car door. It drives a 12
 ### 3.4 Position and normalization
 
 - **WLC-020** The controller shall determine window position from Hall sensor pulses with a resolution of 0.5 mm or better.
-- **WLC-021** After a supply interruption longer than 500 ms, the controller shall set itself to not normalized.
+- **WLC-021** After a supply interruption longer than 500 ms, the controller shall set its state to not normalized.
 - **WLC-022** The controller shall normalize when the window is held fully closed against the seal for 1 s in manual mode.
 
 ### 3.5 Thermal protection

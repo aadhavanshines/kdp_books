@@ -1,0 +1,48 @@
+30 test cases for 34 requirements; 3706 in / 8320 out tokens, 56.1 s
+uncovered: 0
+unknown_traces: 0
+ungrounded: 32
+    TC-001: 13.5 V not in WLC-001
+    TC-001: 15.9 V not in WLC-001
+    TC-001: 9.1 V not in WLC-001
+    TC-002: 6.1 V not in WLC-002
+    TC-002: 7.5 V not in WLC-002
+    TC-002: 8.9 V not in WLC-002
+    TC-003: 6.1 V not in WLC-003
+    TC-004: 23 °C not in WLC-004
+    TC-007: 1 s not in WLC-007
+    TC-007: 21 s not in WLC-007
+    TC-007: 59 s not in WLC-007
+    TC-007: 61 s not in WLC-007
+    TC-008: 100 ms not in WLC-008
+    TC-008: 299 ms not in WLC-008
+    TC-008: 301 ms not in WLC-008
+    TC-014: 79 N not in WLC-014
+    TC-014: 81 N not in WLC-014
+    TC-018: 2.1 s not in WLC-039
+    TC-021: 2 s not in WLC-021
+    TC-021: 400 ms not in WLC-021
+    TC-021: 499 ms not in WLC-021
+    TC-021: 501 ms not in WLC-021
+    TC-022: 0.9 s not in WLC-022
+    TC-024: 121 °C not in WLC-025, WLC-026, WLC-027
+    TC-024: 129 °C not in WLC-025, WLC-026, WLC-027
+    TC-024: 139 °C not in WLC-025, WLC-026, WLC-027
+    TC-026: 150 ms not in WLC-029
+    TC-026: 250 ms not in WLC-029
+    TC-027: 24 A not in WLC-030, WLC-037, WLC-038
+    TC-027: 26 A not in WLC-030, WLC-037, WLC-038
+    TC-027: 40 ms not in WLC-030, WLC-037, WLC-038
+    TC-029: 23 °C not in WLC-035
+limits_not_tested: 1
+    WLC-007: 60 s
+tbd: 9
+    TC-004
+    TC-008
+    TC-011
+    TC-013
+    TC-014
+    TC-018
+    TC-023
+    TC-024
+    TC-026

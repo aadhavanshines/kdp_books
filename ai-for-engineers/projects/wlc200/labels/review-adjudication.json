@@ -1,0 +1,7 @@
+{
+ "date": "2026-10-13",
+ "note": "Second look by the engineer at findings that every model reported but the original labels marked ok. The original labels are unchanged; graders report scores against both.",
+ "WLC-017": {"accept": ["conflict"], "with": "WLC-016", "reason": "WLC-016 says anti-pinch is active in every mode; WLC-017 switches it off when not normalized, while manual closing is still allowed. That is a contradiction and a safety question for the design review."},
+ "WLC-016": {"accept": ["conflict"], "with": "WLC-017", "reason": "The other side of the WLC-017 conflict."},
+ "WLC-029": {"accept": ["compound"], "reason": "Stores a DTC and stops the motor: two requirements, by the same rule that made WLC-030 compound."}
+}

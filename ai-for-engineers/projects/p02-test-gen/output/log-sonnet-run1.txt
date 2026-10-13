@@ -1,0 +1,25 @@
+30 test cases for 34 requirements; 3833 in / 6885 out tokens, 48.6 s
+uncovered: 0
+unknown_traces: 0
+ungrounded: 0
+limits_not_tested: 18
+    WLC-002: 6 V
+    WLC-002: 9 V
+    WLC-003: 6 V
+    WLC-004: 12 V
+    WLC-005: -14 V
+    WLC-005: 60 s
+    WLC-008: 300 ms
+    WLC-010: 13.5 V
+    WLC-010: 23 °C
+    WLC-019: 30 s
+    WLC-021: 500 ms
+    WLC-025: 130 °C
+    WLC-026: 140 °C
+    WLC-027: 120 °C
+    WLC-029: 1 A
+    WLC-030: 1 A
+    WLC-037: 1 A
+    WLC-038: 1 A
+tbd: 1
+    TC-023

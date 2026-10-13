@@ -1,0 +1,2 @@
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+30 reports triaged; 5719 in / 12895 out tokens, $0.0117, 54.2 s

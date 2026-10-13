@@ -279,13 +279,18 @@ def main():
     for _ in range(50):
         r.add(0, 0, 0, pos, 0, temp)
     r.write()
-    hot = [p for p in stall_peaks if p[0] > 130]
+    # Measured from the logged samples, which include sensor noise
+    hot_current = max(row[4] for row in r.rows if row[7] > 130)
+    failed = ["open_started_above_140_c"] + (
+        ["max_current_above_130_c"] if hot_current > 15 else [])
     record(r, {"open_started_above_140_c": opens_hot, "open_refused_at_c": refused_at,
-               "max_stall_current_above_130_c": max(p[1] for p in hot),
+               "max_current_above_130_c": hot_current,
                "close_allowed_when_hot": True},
-           "FAIL", ["open_started_above_140_c"],
+           "FAIL", failed,
            f"One opening started at an estimated {opens_hot[0]} °C; the next request "
-           f"was refused. Current limit above 130 °C works (TC-TH-02 criteria met).")
+           f"was refused. The current limiter holds 15.0 A, but the logged current "
+           f"reaches {hot_current} A with measurement noise; the procedure has no "
+           f"tolerance, so this is reported as a failure for an engineer to judge.")
 
     # R11: undervoltage stop (TC-PW-03)
     r = Run("R11", "TC-PW-03", 13.5, 23, seed=25)
