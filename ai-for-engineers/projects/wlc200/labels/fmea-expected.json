@@ -1,0 +1,236 @@
+[
+ {
+  "id": "F1",
+  "function": "Move the window as commanded",
+  "failure_mode": "Window does not move when the switch is held",
+  "keywords": [
+   "no movement",
+   "does not move",
+   "doesn't move",
+   "fails to move"
+  ],
+  "severity_range": [
+   7,
+   8
+  ]
+ },
+ {
+  "id": "F2",
+  "function": "Move the window as commanded",
+  "failure_mode": "Window keeps moving after the switch is released",
+  "keywords": [
+   "after release",
+   "keeps moving",
+   "continues",
+   "does not stop"
+  ],
+  "severity_range": [
+   6,
+   9
+  ]
+ },
+ {
+  "id": "F3",
+  "function": "Move the window as commanded",
+  "failure_mode": "Express mode starts on a held press, or not on a short press",
+  "keywords": [
+   "express",
+   "short press",
+   "held press"
+  ],
+  "severity_range": [
+   4,
+   6
+  ]
+ },
+ {
+  "id": "F4",
+  "function": "Stop at the end positions",
+  "failure_mode": "Motor keeps driving against the end stop",
+  "keywords": [
+   "end stop",
+   "end position",
+   "seal",
+   "stall"
+  ],
+  "severity_range": [
+   4,
+   8
+  ]
+ },
+ {
+  "id": "F5",
+  "function": "Detect a pinch and reverse",
+  "failure_mode": "Pinch not detected",
+  "keywords": [
+   "not detected",
+   "no detection",
+   "missed pinch",
+   "fails to detect"
+  ],
+  "severity_range": [
+   10,
+   10
+  ]
+ },
+ {
+  "id": "F6",
+  "function": "Detect a pinch and reverse",
+  "failure_mode": "Pinch detected late (stop time too long)",
+  "keywords": [
+   "late",
+   "stop time",
+   "latency",
+   "too slow"
+  ],
+  "severity_range": [
+   9,
+   10
+  ]
+ },
+ {
+  "id": "F7",
+  "function": "Detect a pinch and reverse",
+  "failure_mode": "Reversal too short",
+  "keywords": [
+   "reversal",
+   "reverse distance",
+   "short reversal",
+   "reverses too little"
+  ],
+  "severity_range": [
+   9,
+   10
+  ]
+ },
+ {
+  "id": "F8",
+  "function": "Detect a pinch and reverse",
+  "failure_mode": "False pinch detection (reversal with no obstacle)",
+  "keywords": [
+   "false",
+   "no obstacle",
+   "nothing trapped",
+   "without obstacle",
+   "unwanted reversal",
+   "spurious"
+  ],
+  "severity_range": [
+   5,
+   8
+  ]
+ },
+ {
+  "id": "F9",
+  "function": "Keep track of position",
+  "failure_mode": "Position drifts or is wrong",
+  "keywords": [
+   "drift",
+   "wrong position",
+   "position error",
+   "position offset",
+   "miscount"
+  ],
+  "severity_range": [
+   5,
+   9
+  ]
+ },
+ {
+  "id": "F10",
+  "function": "Keep track of position",
+  "failure_mode": "Normalization state wrong (express close available when not normalized)",
+  "keywords": [
+   "normaliz"
+  ],
+  "severity_range": [
+   9,
+   10
+  ]
+ },
+ {
+  "id": "F11",
+  "function": "Protect the motor from overheating",
+  "failure_mode": "Thermal model underestimates temperature",
+  "keywords": [
+   "underestimat",
+   "too low",
+   "model error",
+   "temperature estimate"
+  ],
+  "severity_range": [
+   5,
+   8
+  ]
+ },
+ {
+  "id": "F12",
+  "function": "Protect the motor from overheating",
+  "failure_mode": "Opening not blocked above the limit",
+  "keywords": [
+   "block",
+   "above 140",
+   "opening"
+  ],
+  "severity_range": [
+   4,
+   7
+  ]
+ },
+ {
+  "id": "F13",
+  "function": "Report status and faults",
+  "failure_mode": "WLC_Status frames late or missing",
+  "keywords": [
+   "frame",
+   "cycle",
+   "period",
+   "missing",
+   "late"
+  ],
+  "severity_range": [
+   4,
+   7
+  ]
+ },
+ {
+  "id": "F14",
+  "function": "Report status and faults",
+  "failure_mode": "Hall sensor loss not detected (no DTC, motor not stopped)",
+  "keywords": [
+   "hall"
+  ],
+  "severity_range": [
+   8,
+   10
+  ]
+ },
+ {
+  "id": "F15",
+  "function": "Report status and faults",
+  "failure_mode": "Overcurrent not detected or not reported",
+  "keywords": [
+   "overcurrent",
+   "b1a02",
+   "current"
+  ],
+  "severity_range": [
+   6,
+   8
+  ]
+ },
+ {
+  "id": "F16",
+  "function": "Behave safely at low and high voltage",
+  "failure_mode": "Motor not stopped at undervoltage",
+  "keywords": [
+   "undervoltage",
+   "low voltage",
+   "below 6"
+  ],
+  "severity_range": [
+   6,
+   8
+  ]
+ }
+]

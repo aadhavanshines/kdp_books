@@ -1,0 +1,242 @@
+[
+ {
+  "id": "DR-1001",
+  "date": "2026-09-02",
+  "reporter": "Priya Raman",
+  "found_in": "HIL-2",
+  "title": "Pinch reversal late at -30 °C",
+  "description": "TC-AP-04 at 9.0 V and -30 °C: motor stopped 13 ms after the pinch force passed 100 N. Limit is 10 ms. Passed at 23 °C."
+ },
+ {
+  "id": "DR-1002",
+  "date": "2026-09-03",
+  "reporter": "Tomas Lindqvist",
+  "found_in": "Vehicle test",
+  "title": "Window does not move after ignition off",
+  "description": "Car parked, ignition off, pressed the switch after about 50 s: nothing happens. Spec says 60 s?"
+ },
+ {
+  "id": "DR-1003",
+  "date": "2026-09-04",
+  "reporter": "Mei Chen",
+  "found_in": "HIL-2",
+  "title": "WLC_Status period jitter",
+  "description": "WLC_Status measured at 97 to 104 ms. Within 100 ms ± 10 ms. Logging for information only."
+ },
+ {
+  "id": "DR-1004",
+  "date": "2026-09-05",
+  "reporter": "Daniel Okafor",
+  "found_in": "Vehicle test",
+  "title": "Express up stops halfway in cold",
+  "description": "Morning test, about -20 °C. Express close stopped at around 150 mm and reversed. Nothing in the window. Second try worked."
+ },
+ {
+  "id": "DR-1005",
+  "date": "2026-09-05",
+  "reporter": "Priya Raman",
+  "found_in": "Code review",
+  "title": "Typo in DTC table comment",
+  "description": "The comment above the DTC table says B1A10 instead of B1A01. Code is correct."
+ },
+ {
+  "id": "DR-1006",
+  "date": "2026-09-08",
+  "reporter": "Lena Hofmann",
+  "found_in": "HIL-2",
+  "title": "Late stop on pinch when cold",
+  "description": "Anti-pinch run at -30 °C, low supply: stop came after 14 ms. Same setup at 85 °C fine."
+ },
+ {
+  "id": "DR-1007",
+  "date": "2026-09-08",
+  "reporter": "Arjun Mehta",
+  "found_in": "Bench",
+  "title": "Sleep current 140 µA",
+  "description": "Sleep current measured 140 µA after 60 s. Limit 100 µA. CAN transceiver seems to stay in standby, not sleep."
+ },
+ {
+  "id": "DR-1008",
+  "date": "2026-09-09",
+  "reporter": "Tomas Lindqvist",
+  "found_in": "Vehicle test",
+  "title": "False reversal on rough road",
+  "description": "Driving over cobblestones while closing the window: window reversed by itself. Happened twice in 10 tries."
+ },
+ {
+  "id": "DR-1009",
+  "date": "2026-09-10",
+  "reporter": "Mei Chen",
+  "found_in": "HIL-2",
+  "title": "B1A02 not stored on overcurrent",
+  "description": "Injected 27 A for 100 ms. Motor stopped, but no B1A02 in memory and the fault state stays 0."
+ },
+ {
+  "id": "DR-1010",
+  "date": "2026-09-10",
+  "reporter": "Sofia Rossi",
+  "found_in": "Customer clinic",
+  "title": "Switch feels slow",
+  "description": "Two clinic drivers said the window reacts late when they press the switch. No measurement."
+ },
+ {
+  "id": "DR-1011",
+  "date": "2026-09-11",
+  "reporter": "Daniel Okafor",
+  "found_in": "Vehicle test",
+  "title": "Auto-up reverses in cold weather without obstacle",
+  "description": "Cold morning again (-18 °C). Window went up, stopped and went down. No hand or object in the way."
+ },
+ {
+  "id": "DR-1012",
+  "date": "2026-09-12",
+  "reporter": "Lena Hofmann",
+  "found_in": "HIL-2",
+  "title": "Opening possible above 140 °C",
+  "description": "Thermal test TC-TH-03: after the model passed 140 °C, one open request still moved the window. The next one was refused."
+ },
+ {
+  "id": "DR-1013",
+  "date": "2026-09-12",
+  "reporter": "Arjun Mehta",
+  "found_in": "HIL-2",
+  "title": "Position drift after 200 cycles",
+  "description": "After 200 open-close cycles the reported position at the top seal is 3.5 mm instead of 0 mm."
+ },
+ {
+  "id": "DR-1014",
+  "date": "2026-09-15",
+  "reporter": "Priya Raman",
+  "found_in": "HIL-2",
+  "title": "Window keeps moving 180 ms after switch release",
+  "description": "Manual close at 16 V: motor command stays on for 180 ms after release. Limit 100 ms. At 13.5 V it is 60 ms."
+ },
+ {
+  "id": "DR-1015",
+  "date": "2026-09-15",
+  "reporter": "Tomas Lindqvist",
+  "found_in": "Vehicle test",
+  "title": "Retained power too short",
+  "description": "After switching off the engine the window only works for about 45 seconds, should be 60."
+ },
+ {
+  "id": "DR-1016",
+  "date": "2026-09-16",
+  "reporter": "Mei Chen",
+  "found_in": "HIL-2",
+  "title": "Missing WLC_Status frame during diagnostic requests",
+  "description": "While running TC-DG-03 (100 diagnostic requests), one WLC_Status frame was missing: 200 ms between two frames instead of 100 ms."
+ },
+ {
+  "id": "DR-1017",
+  "date": "2026-09-16",
+  "reporter": "Sofia Rossi",
+  "found_in": "Document review",
+  "title": "User manual shows wrong switch symbol",
+  "description": "Draft owner's manual page 14 shows the switch symbol upside down."
+ },
+ {
+  "id": "DR-1018",
+  "date": "2026-09-17",
+  "reporter": "Arjun Mehta",
+  "found_in": "HIL-2",
+  "title": "Hall sensor loss: motor keeps running",
+  "description": "Disconnected the Hall signal while closing at 9 V. Motor ran for 1.2 s until the end stop. No DTC."
+ },
+ {
+  "id": "DR-1019",
+  "date": "2026-09-18",
+  "reporter": "Lena Hofmann",
+  "found_in": "HIL-2",
+  "title": "Thermal block lets one opening through",
+  "description": "Same as seen last week? Estimated temperature 143 °C and the window still opened once."
+ },
+ {
+  "id": "DR-1020",
+  "date": "2026-09-18",
+  "reporter": "Daniel Okafor",
+  "found_in": "Vehicle test",
+  "title": "Express close works when not normalized",
+  "description": "After disconnecting the battery, a short press up closed the window fully. Express close should not be available until normalized."
+ },
+ {
+  "id": "DR-1021",
+  "date": "2026-09-19",
+  "reporter": "Priya Raman",
+  "found_in": "Code review",
+  "title": "Unused variable in thermal model",
+  "description": "Variable t_prev in thermal_model.c is never read. Compiler warning."
+ },
+ {
+  "id": "DR-1022",
+  "date": "2026-09-22",
+  "reporter": "Mei Chen",
+  "found_in": "HIL-2",
+  "title": "Diagnostic response 62 ms",
+  "description": "3 of 100 diagnostic requests answered after 55 to 62 ms. Limit 50 ms. Happens while the motor starts."
+ },
+ {
+  "id": "DR-1023",
+  "date": "2026-09-22",
+  "reporter": "Tomas Lindqvist",
+  "found_in": "Vehicle test",
+  "title": "Window reversed over cobbles",
+  "description": "Cobblestone road, closing: unexpected reversal, nothing trapped."
+ },
+ {
+  "id": "DR-1024",
+  "date": "2026-09-23",
+  "reporter": "Arjun Mehta",
+  "found_in": "Bench",
+  "title": "Reverse polarity: controller dead",
+  "description": "Applied -14 V for 60 s. Afterwards the controller does not wake up. Protection diode D3 is open."
+ },
+ {
+  "id": "DR-1025",
+  "date": "2026-09-24",
+  "reporter": "Lena Hofmann",
+  "found_in": "HIL-2",
+  "title": "Undervoltage stop 21 ms",
+  "description": "Supply drop to 5.5 V: motor stopped after 21 ms. Within the 50 ms limit. For information."
+ },
+ {
+  "id": "DR-1026",
+  "date": "2026-09-25",
+  "reporter": "Sofia Rossi",
+  "found_in": "Customer clinic",
+  "title": "Window closes too hard on the seal",
+  "description": "Clinic drivers hear a loud knock when the window reaches the top. No damage seen."
+ },
+ {
+  "id": "DR-1027",
+  "date": "2026-09-28",
+  "reporter": "Daniel Okafor",
+  "found_in": "Vehicle test",
+  "title": "No DTC when Hall connector unplugged",
+  "description": "Pulled the Hall sensor connector during auto-up. Window ran into the seal and kept pushing. Nothing stored in fault memory."
+ },
+ {
+  "id": "DR-1028",
+  "date": "2026-09-29",
+  "reporter": "Priya Raman",
+  "found_in": "HIL-2",
+  "title": "Inrush current 14 A at 16 V",
+  "description": "Start current 14 A for 40 ms at 16 V. No limit in the spec, so not a failure. Proposing a requirement."
+ },
+ {
+  "id": "DR-1029",
+  "date": "2026-09-30",
+  "reporter": "Mei Chen",
+  "found_in": "HIL-2",
+  "title": "Fault state not set for overcurrent",
+  "description": "TC-DG-02: after overcurrent the motor stops but WLC_Status fault state stays 0 and fault memory is empty."
+ },
+ {
+  "id": "DR-1030",
+  "date": "2026-10-03",
+  "reporter": "Arjun Mehta",
+  "found_in": "HIL-2",
+  "title": "Pinch reversal only 146 mm at 85 °C",
+  "description": "TC-AP-05 at 85 °C: reversal 146 mm. v1.3 limit is 150 mm. Passed at 23 °C with 162 mm."
+ }
+]

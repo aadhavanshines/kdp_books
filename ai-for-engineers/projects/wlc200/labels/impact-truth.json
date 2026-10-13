@@ -1,0 +1,33 @@
+{
+ "update_and_rerun": [
+  "TC-AP-01",
+  "TC-AP-02",
+  "TC-AP-03",
+  "TC-AP-04",
+  "TC-AP-05",
+  "TC-CAN-01",
+  "TC-DG-02",
+  "TC-MV-02",
+  "TC-MV-07",
+  "TC-TH-02"
+ ],
+ "retire": [
+  "TC-AP-09",
+  "TC-UX-01"
+ ],
+ "remove_deleted_trace": [
+  "TC-MV-02",
+  "TC-PW-04"
+ ],
+ "needs_new_test": [
+  "WLC-039"
+ ],
+ "new_or_extend": {
+  "WLC-037": "TC-DG-02",
+  "WLC-038": "TC-DG-02"
+ },
+ "note": "WLC-037 and WLC-038 were split out of WLC-030; extending TC-DG-02's trace or writing new tests are both accepted.",
+ "judgement": {
+  "TC-AP-09": "Trace-based analysis says retire (its only requirement, WLC-018, was deleted). The validation team kept it, traced to WLC-016, because of lesson learned LL-2021-07. A good tool flags this for a person instead of retiring it silently."
+ }
+}

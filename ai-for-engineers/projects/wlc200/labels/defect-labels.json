@@ -1,0 +1,152 @@
+{
+ "DR-1001": {
+  "component": "anti_pinch",
+  "severity": "S1",
+  "duplicate_of": null
+ },
+ "DR-1002": {
+  "component": "power",
+  "severity": "S3",
+  "duplicate_of": null
+ },
+ "DR-1003": {
+  "component": "can_comm",
+  "severity": "S4",
+  "duplicate_of": null
+ },
+ "DR-1004": {
+  "component": "anti_pinch",
+  "severity": "S2",
+  "duplicate_of": null
+ },
+ "DR-1005": {
+  "component": "diagnostics",
+  "severity": "S4",
+  "duplicate_of": null
+ },
+ "DR-1006": {
+  "component": "anti_pinch",
+  "severity": "S1",
+  "duplicate_of": "DR-1001"
+ },
+ "DR-1007": {
+  "component": "power",
+  "severity": "S3",
+  "duplicate_of": null
+ },
+ "DR-1008": {
+  "component": "anti_pinch",
+  "severity": "S2",
+  "duplicate_of": null
+ },
+ "DR-1009": {
+  "component": "diagnostics",
+  "severity": "S2",
+  "duplicate_of": null
+ },
+ "DR-1010": {
+  "component": "switch_input",
+  "severity": "S4",
+  "duplicate_of": null
+ },
+ "DR-1011": {
+  "component": "anti_pinch",
+  "severity": "S2",
+  "duplicate_of": "DR-1004"
+ },
+ "DR-1012": {
+  "component": "thermal",
+  "severity": "S3",
+  "duplicate_of": null
+ },
+ "DR-1013": {
+  "component": "position",
+  "severity": "S3",
+  "duplicate_of": null
+ },
+ "DR-1014": {
+  "component": "switch_input",
+  "severity": "S3",
+  "duplicate_of": null
+ },
+ "DR-1015": {
+  "component": "power",
+  "severity": "S3",
+  "duplicate_of": "DR-1002"
+ },
+ "DR-1016": {
+  "component": "can_comm",
+  "severity": "S3",
+  "duplicate_of": null
+ },
+ "DR-1017": {
+  "component": "switch_input",
+  "severity": "S4",
+  "duplicate_of": null
+ },
+ "DR-1018": {
+  "component": "diagnostics",
+  "severity": "S1",
+  "duplicate_of": null
+ },
+ "DR-1019": {
+  "component": "thermal",
+  "severity": "S3",
+  "duplicate_of": "DR-1012"
+ },
+ "DR-1020": {
+  "component": "position",
+  "severity": "S1",
+  "duplicate_of": null
+ },
+ "DR-1021": {
+  "component": "thermal",
+  "severity": "S4",
+  "duplicate_of": null
+ },
+ "DR-1022": {
+  "component": "diagnostics",
+  "severity": "S3",
+  "duplicate_of": null
+ },
+ "DR-1023": {
+  "component": "anti_pinch",
+  "severity": "S2",
+  "duplicate_of": "DR-1008"
+ },
+ "DR-1024": {
+  "component": "power",
+  "severity": "S2",
+  "duplicate_of": null
+ },
+ "DR-1025": {
+  "component": "power",
+  "severity": "S4",
+  "duplicate_of": null
+ },
+ "DR-1026": {
+  "component": "motor_drive",
+  "severity": "S4",
+  "duplicate_of": null
+ },
+ "DR-1027": {
+  "component": "diagnostics",
+  "severity": "S1",
+  "duplicate_of": "DR-1018"
+ },
+ "DR-1028": {
+  "component": "motor_drive",
+  "severity": "S4",
+  "duplicate_of": null
+ },
+ "DR-1029": {
+  "component": "diagnostics",
+  "severity": "S2",
+  "duplicate_of": "DR-1009"
+ },
+ "DR-1030": {
+  "component": "anti_pinch",
+  "severity": "S2",
+  "duplicate_of": null
+ }
+}

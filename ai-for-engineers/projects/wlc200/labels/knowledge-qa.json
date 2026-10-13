@@ -1,0 +1,195 @@
+[
+ {
+  "id": "q01",
+  "question": "What spring rate does the pinch rod on HIL-2 have?",
+  "must_contain": [
+   "10 N/mm"
+  ],
+  "sources": [
+   "TP-AP-01-anti-pinch-test.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q02",
+  "question": "At which temperature and voltage is the pinch stop time worst, according to our lessons learned?",
+  "must_contain": [
+   "-30 °C",
+   "9 V"
+  ],
+  "sources": [
+   "LL-2022-02-cold-pinch-latency.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q03",
+  "question": "Why did WLC-100 windows reverse by themselves on rough roads?",
+  "must_contain": [
+   "vibration",
+   "speed"
+  ],
+  "sources": [
+   "LL-2021-07-rough-road-reversals.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q04",
+  "question": "What debounce time was added to the anti-pinch algorithm after the rough-road problem?",
+  "must_contain": [
+   "30 ms"
+  ],
+  "sources": [
+   "LL-2021-07-rough-road-reversals.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q05",
+  "question": "How is the stop latency measured in the anti-pinch test?",
+  "must_contain": [
+   "80 N",
+   "no longer"
+  ],
+  "sources": [
+   "TP-AP-01-anti-pinch-test.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q06",
+  "question": "What Hall sensor timeout did WLC-100 have before the connector corrosion fix?",
+  "must_contain": [
+   "1 s"
+  ],
+  "sources": [
+   "LL-2023-05-hall-connector.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q07",
+  "question": "Why should the Hall sensor loss test be run at 9 V?",
+  "must_contain": [
+   "slow",
+   "noise"
+  ],
+  "sources": [
+   "LL-2023-05-hall-connector.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q08",
+  "question": "Why could a movement start above the thermal block limit on SMC-3?",
+  "must_contain": [
+   "stale",
+   "before the thermal task"
+  ],
+  "sources": [
+   "LL-2024-01-thermal-check.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q09",
+  "question": "What caused lost status frames in WLC-100 diagnostic sessions?",
+  "must_contain": [
+   "transmit queue",
+   "diagnostic"
+  ],
+  "sources": [
+   "LL-2024-09-can-frame-loss.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q10",
+  "question": "What should be repeated when the CAN cycle time gets shorter?",
+  "must_contain": [
+   "worst-case queue calculation"
+  ],
+  "sources": [
+   "LL-2024-09-can-frame-loss.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q11",
+  "question": "What is the log sampling period for thermal tests?",
+  "must_contain": [
+   "10 ms"
+  ],
+  "sources": [
+   "TP-TH-01-thermal-test.md",
+   "GL-HIL-2-bench-guide.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q12",
+  "question": "When is the pinch rod force sensor next due for calibration?",
+  "must_contain": [
+   "15 February 2027"
+  ],
+  "sources": [
+   "GL-HIL-2-bench-guide.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q13",
+  "question": "Below what force should a reading not be treated as contact?",
+  "must_contain": [
+   "1 N"
+  ],
+  "sources": [
+   "GL-HIL-2-bench-guide.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q14",
+  "question": "How many times is each anti-pinch test repeated on release candidates?",
+  "must_contain": [
+   "three"
+  ],
+  "sources": [
+   "TP-AP-01-anti-pinch-test.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q15",
+  "question": "What is the current limit above 130 °C in the thermal test?",
+  "must_contain": [
+   "15 A"
+  ],
+  "sources": [
+   "TP-TH-01-thermal-test.md"
+  ],
+  "answerable": true
+ },
+ {
+  "id": "q16",
+  "question": "What is the warranty cost of the rough-road reversals?",
+  "must_contain": [],
+  "sources": [],
+  "answerable": false
+ },
+ {
+  "id": "q17",
+  "question": "Which supplier makes the WLC-200 Hall sensor?",
+  "must_contain": [],
+  "sources": [],
+  "answerable": false
+ },
+ {
+  "id": "q18",
+  "question": "What is the maximum pinch force allowed by ISO standards?",
+  "must_contain": [],
+  "sources": [],
+  "answerable": false
+ }
+]

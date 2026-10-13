@@ -1,0 +1,145 @@
+{
+ "WLC-001": {
+  "issue": "ok"
+ },
+ "WLC-002": {
+  "issue": "ok"
+ },
+ "WLC-003": {
+  "issue": "ok"
+ },
+ "WLC-004": {
+  "issue": "ok"
+ },
+ "WLC-005": {
+  "issue": "ok"
+ },
+ "WLC-006": {
+  "issue": "ok"
+ },
+ "WLC-007": {
+  "issue": "conflict",
+  "with": "WLC-023",
+  "note": "Retained power after ignition off: 45 s here, 60 s in WLC-023"
+ },
+ "WLC-008": {
+  "issue": "ok"
+ },
+ "WLC-009": {
+  "issue": "ok"
+ },
+ "WLC-010": {
+  "issue": "ok"
+ },
+ "WLC-011": {
+  "issue": "ok",
+  "also": [
+   "missing_value"
+  ],
+  "note": "No stopping time given; acceptable as written, but a reviewer may ask for one"
+ },
+ "WLC-012": {
+  "issue": "ambiguous",
+  "also": [
+   "missing_value"
+  ],
+  "note": "'Quickly' is not measurable; the rain sensor is outside the scope in section 1"
+ },
+ "WLC-013": {
+  "issue": "ok"
+ },
+ "WLC-014": {
+  "issue": "ok"
+ },
+ "WLC-015": {
+  "issue": "ok"
+ },
+ "WLC-016": {
+  "issue": "ok"
+ },
+ "WLC-017": {
+  "issue": "ok"
+ },
+ "WLC-018": {
+  "issue": "untestable",
+  "also": [
+   "ambiguous"
+  ],
+  "note": "'Robust against all disturbances' cannot be verified"
+ },
+ "WLC-019": {
+  "issue": "ok"
+ },
+ "WLC-020": {
+  "issue": "ok"
+ },
+ "WLC-021": {
+  "issue": "ok"
+ },
+ "WLC-022": {
+  "issue": "ok"
+ },
+ "WLC-023": {
+  "issue": "conflict",
+  "with": "WLC-007",
+  "note": "60 s conflicts with 45 s in WLC-007"
+ },
+ "WLC-024": {
+  "issue": "ok",
+  "also": [
+   "untestable"
+  ],
+  "note": "Verifiable by design review; no performance criterion"
+ },
+ "WLC-025": {
+  "issue": "missing_value",
+  "also": [
+   "ambiguous"
+  ],
+  "note": "'The limit' and 'a safe value' are not defined"
+ },
+ "WLC-026": {
+  "issue": "ok"
+ },
+ "WLC-027": {
+  "issue": "ok"
+ },
+ "WLC-028": {
+  "issue": "ok"
+ },
+ "WLC-029": {
+  "issue": "ok"
+ },
+ "WLC-030": {
+  "issue": "compound",
+  "note": "Three separate behaviours in one requirement; split for traceability"
+ },
+ "WLC-031": {
+  "issue": "ok"
+ },
+ "WLC-032": {
+  "issue": "duplicate",
+  "with": "WLC-004",
+  "note": "Same text as WLC-004"
+ },
+ "WLC-033": {
+  "issue": "ambiguous",
+  "also": [
+   "untestable"
+  ],
+  "note": "'User friendly' is not measurable"
+ },
+ "WLC-034": {
+  "issue": "process",
+  "also": [
+   "untestable"
+  ],
+  "note": "A process requirement, not a product requirement"
+ },
+ "WLC-035": {
+  "issue": "ok"
+ },
+ "WLC-036": {
+  "issue": "ok"
+ }
+}

@@ -1,0 +1,37 @@
+id,title,requirements,method,procedure,pass_criteria
+TC-PW-01,Full function across the supply range,WLC-001,HIL,"Run open, close, express open and express close at 9.0 V, 13.5 V and 16.0 V.",All four movements complete at each voltage.
+TC-PW-02,Manual mode only at low voltage,WLC-002,HIL,"At 7.5 V, give a short press (200 ms) and a held press (2 s) in each direction.",Short press gives no movement; held press moves the window.
+TC-PW-03,Motor stop at undervoltage,WLC-003,HIL,"Start closing at 13.5 V, then drop the supply to 5.5 V within 1 ms.",Motor command off within 50 ms of the supply crossing 6.0 V.
+TC-PW-04,Sleep current,"WLC-004, WLC-032",Bench,"Put the controller to sleep, wait 60 s, measure supply current for 10 s.",Mean current below 100 µA.
+TC-PW-05,Reverse polarity,WLC-005,Bench,"Apply -14 V for 60 s, then run TC-PW-01 at 13.5 V.",No damage; TC-PW-01 passes afterwards.
+TC-PW-06,Wake-up time,WLC-036,HIL,"From sleep, press the switch up.",Motor command within 100 ms of the press.
+TC-MV-01,Manual movement and stop on release,WLC-006,HIL,"Hold the switch for 1.5 s in each direction, then release.",Window moves while held; motor command off within 100 ms of release.
+TC-MV-02,Retained power after ignition off,"WLC-007, WLC-023",HIL,"Switch ignition off; press the switch at 40 s and at 50 s; repeat with a front door opened at 10 s.",Movement at 40 s; no movement at 50 s; no movement after the door is opened.
+TC-MV-03,Express start on short press,WLC-008,HIL,Press the switch for 200 ms in each direction.,Window travels to the end position.
+TC-MV-04,Express stop by second press,WLC-009,HIL,"Start express close, press the switch again after 1 s.",Motor command off within 100 ms of the second press.
+TC-MV-05,Full close time,WLC-010,HIL,"At 13.5 V and 23 °C, express close from fully open.",Close time from 3.0 s to 4.5 s.
+TC-MV-06,Stop at end positions,WLC-011,HIL,Express open and express close to the end positions.,Motor command off at the end position.
+TC-MV-07,Close on rain,WLC-012,HIL,"With the window half open, send a rain signal.",Window closes.
+TC-MV-08,Express close only when normalized,"WLC-013, WLC-017",HIL,"Disconnect the supply for 1 s, then give a short press up.",No express movement until normalized.
+TC-AP-01,Pinch detection at nominal voltage,"WLC-014, WLC-015",HIL,"At 13.5 V and 23 °C, express close onto the 10 N/mm pinch rod placed at 100 mm.",Motor stops within 10 ms of the force exceeding 100 N; reversal of at least 125 mm.
+TC-AP-02,Pinch detection at low voltage,"WLC-001, WLC-014, WLC-015",HIL,As TC-AP-01 at 9.0 V.,As TC-AP-01.
+TC-AP-03,Pinch detection at high voltage,"WLC-014, WLC-015",HIL,As TC-AP-01 at 16.0 V.,As TC-AP-01.
+TC-AP-04,Pinch detection when cold,"WLC-014, WLC-015, WLC-035",HIL,As TC-AP-01 at 9.0 V and -30 °C.,As TC-AP-01.
+TC-AP-05,Pinch detection when hot,"WLC-014, WLC-015, WLC-035",HIL,As TC-AP-01 at 13.5 V and 85 °C.,As TC-AP-01.
+TC-AP-06,Pinch protection in manual and express mode,WLC-016,HIL,Repeat TC-AP-01 with a held switch (manual) and a short press (express).,Pinch detected in both modes.
+TC-AP-07,Anti-pinch off when not normalized,WLC-017,HIL,"Disconnect the supply for 1 s, close manually onto the pinch rod.",No reversal.
+TC-AP-08,Repeated pinch lockout,WLC-019,HIL,"Cause three pinches within 20 s, then try express close.",Express close refused for 60 s; manual close possible.
+TC-AP-09,Disturbance robustness,WLC-018,HIL,Close on the rough-road vibration profile.,No false pinch detection.
+TC-PS-01,Position resolution,WLC-020,HIL,Move the window 10 mm in manual mode and compare with the bench encoder.,Position step 0.5 mm or smaller.
+TC-PS-02,Loss of normalization,WLC-021,HIL,Interrupt the supply for 400 ms and for 600 ms.,Normalized after 400 ms; not normalized after 600 ms.
+TC-PS-03,Normalization at top seal,WLC-022,HIL,"From not normalized, hold the switch up against the seal for 1.2 s.",Normalization state set in WLC_Status.
+TC-TH-01,Thermal model accuracy,WLC-024,HIL + analysis,Run 20 open-close cycles with a thermocouple on the motor housing.,Model within 10 °C of the measured temperature.
+TC-TH-02,Current reduction at the temperature limit,WLC-025,HIL,Run open-close cycles until the estimated temperature exceeds the limit.,Motor current reduced.
+TC-TH-03,Opening blocked when hot,WLC-026,HIL,"Run open-close cycles until the estimated temperature exceeds 140 °C, then press open.",No opening above 140 °C; closing still possible.
+TC-TH-04,Thermal block release,WLC-027,HIL,"After TC-TH-03, wait for cooling and press open.",Opening possible below 120 °C.
+TC-CAN-01,WLC_Status timing and content,WLC-028,HIL,Record WLC_Status for 10 s while moving the window.,Period 100 ms ± 10 ms; all four signals present.
+TC-DG-01,Hall sensor loss,WLC-029,HIL,"While closing, disconnect the Hall sensor signal.",B1A01 stored and motor stopped about 200 ms after the loss.
+TC-DG-02,Overcurrent,WLC-030,HIL,Block the window and inject 27 A for 100 ms.,"B1A02 stored, motor stopped, fault state set."
+TC-DG-03,Diagnostic response time,WLC-031,HIL,Send 100 diagnostic requests.,Every response within 50 ms.
+TC-EN-01,Climatic operation,WLC-035,Climatic chamber,Run TC-PW-01 at -40 °C and at 85 °C.,All movements complete.
+TC-UX-01,Usability review,WLC-033,Review,Five drivers rate switch feel and response.,Average rating 4 of 5 or better.

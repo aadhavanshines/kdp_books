@@ -1,0 +1,81 @@
+{
+  "title": "AI for Engineers",
+  "subtitle": "Automate Product Development and Validation with Claude: Requirements, Test Cases, FMEA, Test Logs and Reports, from Your First Prompt to Production Tools",
+  "cover_title": [
+    [
+      "AI FOR",
+      false
+    ],
+    [
+      "ENGINEERS",
+      true
+    ]
+  ],
+  "short_subtitle": "From First Prompt to Production Tools",
+  "cover_tagline": "Automate Product Development and Validation with Claude",
+  "cover_prompt": "> review(\"WLC-200-SRS-v1.3\")_",
+  "cover_features": [
+    "10 REAL PROJECTS",
+    "CHECKED BY CODE",
+    "REQUIREMENTS TO REPORTS"
+  ],
+  "slug": "ai-for-engineers",
+  "author": "Aadhavan Muthurengan",
+  "language": "en",
+  "year": 2026,
+  "identifier": "ai-for-engineers-aadhavan-muthurengan-2026",
+  "trim": {
+    "width_in": 6.0,
+    "height_in": 9.0
+  },
+  "paper": "white",
+  "reuse_note": "Readers may freely use and adapt the example prompts, tools and project code in this book for their own work.",
+  "trademarks": "Claude, Claude Code, Claude Agent SDK, and Anthropic are trademarks of Anthropic. Python is a trademark of the Python Software Foundation. Microsoft, Word, Excel, Visual Studio Code and Windows are trademarks of Microsoft Corporation. GitHub is a trademark of GitHub, Inc. Apple and macOS are trademarks of Apple Inc. Linux is a trademark of Linus Torvalds. CAN is a bus protocol originally developed by Robert Bosch GmbH. ISO is a registered trademark of the International Organization for Standardization. Automotive SPICE is a registered trademark of the VDA QMC. SQLite is in the public domain; pandas, matplotlib, python-docx and openpyxl are open-source projects and their names belong to their owners. Ardent Drive Systems, the WLC-200 controller and all requirements, test cases, logs, defects and figures in the example projects are fictional. Product and standard names are used solely for identification and educational discussion. This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic, any standards body or any of these companies.",
+  "back_cover_blurb": [
+    "AI can draft your test cases. Can you prove they are right?",
+    "Engineers spend their days on requirements, test cases, logs, FMEAs and reports. This book shows you how to hand the routine parts to Claude without losing traceability, rigour or confidentiality.",
+    "You will build ten real tools for one fictional product, the WLC-200 window-lift controller: from a requirements reviewer to a nightly validation assistant. Every tool was run for real, and every result was checked by code against an engineer's answers.",
+    "Inside you will learn:",
+    "- What you may and may not send to an AI",
+    "- Prompting for precise engineering work",
+    "- Requirements review and test case generation",
+    "- Spec change impact and traceability",
+    "- Test log analysis and Word reports",
+    "- Defect triage and FMEA drafting",
+    "- A knowledge assistant that quotes its sources",
+    "- Evaluation, rollout and governance"
+  ],
+  "dedication": [
+    "To my father and my mother,",
+    "for your love, your sacrifices, and every lesson you taught me.",
+    "",
+    "To my wife,",
+    "for your patience, your encouragement, and your belief in me.",
+    "",
+    "And to our three children,",
+    "may you always build the things you dream of.",
+    "",
+    "This book is for you."
+  ],
+  "author_short_bio": "Aadhavan Muthurengan is an automation and AI professional with more than 15 years of experience in the automotive industry, where Aadhavan has built in-house tools that transformed product development and validation.",
+  "levels": {
+    "1": "Beginner",
+    "2": "Beginner",
+    "3": "Beginner",
+    "4": "Beginner",
+    "5": "Intermediate",
+    "6": "Intermediate",
+    "7": "Intermediate",
+    "8": "Intermediate",
+    "9": "Intermediate",
+    "10": "Intermediate",
+    "11": "Advanced",
+    "12": "Advanced",
+    "13": "Advanced",
+    "14": "Advanced",
+    "15": "Advanced",
+    "16": "All levels",
+    "17": "All levels"
+  },
+  "examples_note": "Ardent Drive Systems, the WLC-200 controller, its requirements, test cases, test logs, defects, FMEA and all other data in the example projects are fictional, created for this book. Email addresses and web addresses in the examples use reserved example domains. Any resemblance to real companies, products or persons is coincidental."
+}
