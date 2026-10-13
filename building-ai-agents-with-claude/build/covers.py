@@ -17,6 +17,7 @@ NAVY_BOT = (38, 30, 88)     # indigo, bottom of the gradient
 AMBER = (52, 211, 153)      # mint accent
 CYAN = (251, 146, 60)       # warm orange secondary accent
 SPINE = (24, 20, 56)
+TERMINAL_GREEN = (52, 211, 153)  # text inside the cover's terminal window
 WHITE = (255, 255, 255)
 SOFT = (196, 210, 228)
 
@@ -99,10 +100,10 @@ def agent_scene(img, box):
         cx = tx0 + (50 + i * 46) * s
         d.ellipse([cx - 13 * s, ty0 + 27 * s, cx + 13 * s, ty0 + 53 * s], fill=col + (255,))
     mono = font(MONO, 44 * s)
-    lines = [("$ python run_daily.py", SOFT), ("\u2192 list_inbox", (94, 200, 229)),
+    lines = [("$ python run_daily.py", (196, 210, 228)), ("\u2192 list_inbox", (94, 200, 229)),
              ("\u2192 read_email 002", (94, 200, 229)), ("\u2192 sales_report", (94, 200, 229)),
              ("\u2192 support_queue", (94, 200, 229)), ("\u2192 list_stock", (94, 200, 229)),
-             ("\u2713 brief ready: 5 urgent", AMBER), ("\u2713 9 of 9 checks passed", AMBER)]
+             ("\u2713 brief ready: 5 urgent", TERMINAL_GREEN), ("\u2713 9 of 9 checks passed", TERMINAL_GREEN)]
     y = ty0 + 140 * s
     step = (ty1 - 60 * s - y) / (len(lines) - 1)
     for text, col in lines:
@@ -126,10 +127,10 @@ def agent_scene(img, box):
         tw = d.textlength(name, font=small) + 40 * s
         d.rounded_rectangle([nx - tw / 2, ny - 32 * s, nx + tw / 2, ny + 32 * s], radius=int(32 * s),
                             fill=(40, 36, 82, 255), outline=CYAN + (255,), width=max(2, int(4 * s)))
-        d.text((nx, ny), name, font=small, fill=WHITE + (255,), anchor="mm")
+        d.text((nx, ny), name, font=small, fill=(255, 255, 255, 255), anchor="mm")
     R = 105 * s
-    d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=AMBER + (255,))
-    d.text((cx, cy), "AGENT", font=font(SANS_BOLD, 44 * s), fill=NAVY_TOP + (255,), anchor="mm")
+    d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=TERMINAL_GREEN + (255,))
+    d.text((cx, cy), "AGENT", font=font(SANS_BOLD, 44 * s), fill=(13, 11, 32, 255), anchor="mm")
     glow = layer.filter(ImageFilter.GaussianBlur(12 * s))
     img.alpha_composite(glow)
     img.alpha_composite(layer)

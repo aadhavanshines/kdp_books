@@ -17,6 +17,7 @@ NAVY_BOT = (38, 30, 88)     # indigo, bottom of the gradient
 AMBER = (52, 211, 153)      # mint accent
 CYAN = (251, 146, 60)       # warm orange secondary accent
 SPINE = (24, 20, 56)
+TERMINAL_GREEN = (52, 211, 153)  # text inside the cover's terminal window
 WHITE = (255, 255, 255)
 SOFT = (196, 210, 228)
 
@@ -100,7 +101,7 @@ def code_scene(img, box, seed=3):
         cx = tx0 + (50 + i * 46) * s
         d.ellipse([cx - 13 * s, ty0 + 27 * s, cx + 13 * s, ty0 + 53 * s], fill=col + (255,))
     mono = font(MONO, 52 * s)
-    d.text((tx0 + 50 * s, ty0 + 140 * s), "> build me an app_", font=mono, fill=AMBER + (255,), anchor="lm")
+    d.text((tx0 + 50 * s, ty0 + 140 * s), "> build me an app_", font=mono, fill=TERMINAL_GREEN + (255,), anchor="lm")
     palette = [(167, 139, 250), (94, 200, 229), (251, 146, 60), (148, 163, 184), (52, 211, 153)]
     y = ty0 + 225 * s
     line_h = 46 * s
@@ -117,7 +118,7 @@ def code_scene(img, box, seed=3):
             x += seg + 22 * s
         y += line_h
     small = font(MONO, 40 * s)
-    d.text((tx0 + 50 * s, ty1 - 70 * s), "\u2713 all tests passed", font=small, fill=AMBER + (255,), anchor="lm")
+    d.text((tx0 + 50 * s, ty1 - 70 * s), "\u2713 all tests passed", font=small, fill=TERMINAL_GREEN + (255,), anchor="lm")
     # Phone showing a finished habit-tracker-style app
     px0, py0 = x0 + 1010 * s, y0 + 200 * s
     px1, py1 = px0 + 430 * s, y1 + 10 * s
@@ -142,8 +143,8 @@ def code_scene(img, box, seed=3):
                             fill=(255, 255, 255, 255), outline=(220, 220, 236, 255), width=max(1, int(2 * s)))
         done = row in (0, 1, 3)
         cb = [sx0 + 44 * s, ry + 20 * s, sx0 + 76 * s, ry + 52 * s]
-        d.rounded_rectangle(cb, radius=int(7 * s), fill=(AMBER + (255,)) if done else (255, 255, 255, 255),
-                            outline=AMBER + (255,), width=max(2, int(3 * s)))
+        d.rounded_rectangle(cb, radius=int(7 * s), fill=(TERMINAL_GREEN + (255,)) if done else (255, 255, 255, 255),
+                            outline=TERMINAL_GREEN + (255,), width=max(2, int(3 * s)))
         if done:
             d.line([(cb[0] + 7 * s, cb[1] + 17 * s), (cb[0] + 14 * s, cb[1] + 25 * s),
                     (cb[0] + 26 * s, cb[1] + 8 * s)], fill=(255, 255, 255, 255), width=max(2, int(4 * s)))
