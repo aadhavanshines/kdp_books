@@ -18,6 +18,8 @@ Version 1.3 came from a customer change request and the review in Chapter 5. Com
 
 ## Code for the Facts
 
+![Code diffs the versions and joins the traces; Claude judges the meaning of each change and what to do with each test; code checks every decision and limit; an engineer approves the plan.](images/diagram-code-ai-code.png)
+
 Finding which requirements were added, deleted or changed is not a job for an AI model. It's a comparison, and code does it perfectly:
 
 ```

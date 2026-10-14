@@ -48,7 +48,11 @@ def python_parts(source, names):
 
 def expand_include(code, root):
     """A code block whose only line is '@include path' is replaced by that file's text.
-    'path#L10-L20' takes those lines; 'path::name,other' takes those Python definitions."""
+    'path#L10-L20' takes those lines; 'path::name,other' takes those Python definitions.
+    A block of several '@include' lines is replaced by each part in turn."""
+    parts = code.strip().split("\n")
+    if len(parts) > 1 and all(INCLUDE_RE.match(p.strip()) for p in parts):
+        return "\n".join(expand_include(p, root) for p in parts)
     m = INCLUDE_RE.match(code.strip())
     if not m or root is None:
         return code

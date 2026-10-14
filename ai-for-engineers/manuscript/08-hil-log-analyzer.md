@@ -23,7 +23,7 @@ Each night's folder has a manifest and one CSV file per run. The bench guide def
 @include projects/wlc200/knowledge/GL-HIL-2-bench-guide.md#L9-L11
 ```
 
-Here are a few rows from run R04, the cold anti-pinch test, around the moment the pinch force crosses 80 N:
+Here are a few rows from run R04, the cold anti-pinch test, around the moment the pinch force crosses 80 N (eight rows in the middle are left out):
 
 ```
 @include projects/wlc200/hil/2026-10-06/R04.csv#L1-L1
