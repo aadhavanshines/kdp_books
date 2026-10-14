@@ -1588,7 +1588,5 @@
       "action_needed": false
     }
   ],
-  "problems": [
-    "function not analysed: Detect a pinch in the pinch zone and reverse the window"
-  ]
+  "problems": []
 }

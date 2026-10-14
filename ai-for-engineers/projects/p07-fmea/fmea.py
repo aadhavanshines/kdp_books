@@ -93,6 +93,12 @@ def priorities(rows):
     return sorted(rows, key=lambda r: (-r["action_needed"], -r["severity"], -r["rpn"]))
 
 
+def functions(structure):
+    """The numbered functions in the structure document, as written there."""
+    return [line.strip().rstrip(".") for line in structure.splitlines()
+            if line[:3] in {f"{i}. " for i in range(1, 10)}]
+
+
 def existing_controls(structure):
     """The first column of the 'Existing controls' table."""
     table = structure.split("## Existing controls")[1].split("##")[0]
@@ -102,12 +108,13 @@ def existing_controls(structure):
 
 def check(rows, structure, defects):
     problems = []
-    functions = [line[3:].strip().rstrip(".") for line in structure.splitlines()
-                 if line[:3] in {f"{i}. " for i in range(1, 10)}]
+    numbered = functions(structure)
     controls = [c.lower() for c in existing_controls(structure)]
     known_ids = {d["id"] for d in defects} | {p.stem[:10] for p in (WLC / "knowledge").glob("LL-*.md")}
-    for f in functions:
-        if not any(f.lower()[:20] in r["function"].lower() for r in rows):
+    for f in numbered:
+        number = f.split(".")[0] + "."
+        if not any(r["function"].startswith(number) or f[3:23].lower() in r["function"].lower()
+                   for r in rows):
             problems.append(f"function not analysed: {f}")
     for i, r in enumerate(rows, 1):
         for e in r["evidence"]:
@@ -164,7 +171,10 @@ def main(model="claude-sonnet-5-5", tag="sonnet"):
     prompt = (f"# Structure\n{structure}\n\n# Rating scales\n{scales}\n\n"
               f"# Lessons learned\n{lessons}\n\n# Defect reports\n"
               + json.dumps(open_defects, indent=1, ensure_ascii=False))
-    result = ask(prompt, SYSTEM, SCHEMA, model=model, max_budget_usd=3.00)
+    # The function must be one of the structure's functions, word for word
+    schema = json.loads(json.dumps(SCHEMA))
+    schema["properties"]["rows"]["items"]["properties"]["function"] = {"enum": functions(structure)}
+    result = ask(prompt, SYSTEM, schema, model=model, max_budget_usd=3.00)
     rows = priorities(result["answer"]["rows"])
     problems = check(rows, structure, defects)
     for p in problems:

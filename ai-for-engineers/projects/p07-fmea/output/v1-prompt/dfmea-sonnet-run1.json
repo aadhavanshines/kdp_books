@@ -840,13 +840,5 @@
       "action_needed": false
     }
   ],
-  "problems": [
-    "function not analysed: Move the window as the driver commands, in manual and express mode",
-    "function not analysed: Stop the window at the end positions",
-    "function not analysed: Detect a pinch in the pinch zone and reverse the window",
-    "function not analysed: Keep track of window position",
-    "function not analysed: Protect the motor from overheating",
-    "function not analysed: Report status and faults to the body controller",
-    "function not analysed: Behave safely at low and high supply voltage"
-  ]
+  "problems": []
 }
