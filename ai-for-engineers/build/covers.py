@@ -12,11 +12,11 @@ SANS = f"{FONT_DIR}/liberation/LiberationSans-Regular.ttf"
 SERIF_ITALIC = f"{FONT_DIR}/liberation/LiberationSerif-Italic.ttf"
 MONO = f"{FONT_DIR}/dejavu/DejaVuSansMono.ttf"
 
-NAVY_TOP = (13, 11, 32)     # deep indigo, top of the gradient
-NAVY_BOT = (38, 30, 88)     # indigo, bottom of the gradient
-AMBER = (52, 211, 153)      # mint accent
-CYAN = (251, 146, 60)       # warm orange secondary accent
-SPINE = (24, 20, 56)
+NAVY_TOP = (8, 20, 36)      # deep steel blue, top of the gradient
+NAVY_BOT = (22, 54, 88)     # steel blue, bottom of the gradient
+AMBER = (245, 158, 11)      # amber accent
+CYAN = (56, 189, 248)       # sky blue: the scope trace
+SPINE = (12, 30, 50)
 TERMINAL_GREEN = (52, 211, 153)  # text inside the cover's terminal window
 WHITE = (255, 255, 255)
 SOFT = (196, 210, 228)
@@ -79,60 +79,83 @@ def gradient(img, box):
         d.line([(x0, y0 + i), (x1, y0 + i)], fill=c)
 
 
-def agent_scene(img, box):
-    """A terminal showing an agent's tool calls, next to a hub of the tools it uses."""
+def engineering_scene(img, box):
+    """A scope trace of pinch force crossing its threshold, next to a checklist
+    of the work products the book covers."""
+    import math
     x0, y0, x1, y1 = box
     w, h = x1 - x0, y1 - y0
     s = w / 1600
     layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
-    # Terminal window
-    tx0, ty0, tx1, ty1 = x0 + 110 * s, y0 + 70 * s, x0 + 1010 * s, y1 - 40 * s
+    # Scope window
+    px0, py0, px1, py1 = x0 + 90 * s, y0 + 70 * s, x0 + 1000 * s, y1 - 40 * s
     shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    ImageDraw.Draw(shadow).rounded_rectangle([tx0 + 20 * s, ty0 + 30 * s, tx1 + 20 * s, ty1 + 30 * s],
-                                             radius=int(36 * s), fill=(0, 0, 0, 150))
+    ImageDraw.Draw(shadow).rounded_rectangle([px0 + 20 * s, py0 + 30 * s, px1 + 20 * s, py1 + 30 * s],
+                                             radius=int(30 * s), fill=(0, 0, 0, 150))
     img.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(30 * s)))
-    d.rounded_rectangle([tx0, ty0, tx1, ty1], radius=int(36 * s), fill=(27, 24, 60, 255),
-                        outline=(96, 86, 170, 255), width=max(2, int(4 * s)))
-    d.rounded_rectangle([tx0, ty0, tx1, ty0 + 80 * s], radius=int(36 * s), fill=(40, 36, 82, 255))
-    d.rectangle([tx0, ty0 + 44 * s, tx1, ty0 + 80 * s], fill=(40, 36, 82, 255))
-    for i, col in enumerate([(251, 113, 133), (251, 191, 36), (52, 211, 153)]):
-        cx = tx0 + (50 + i * 46) * s
-        d.ellipse([cx - 13 * s, ty0 + 27 * s, cx + 13 * s, ty0 + 53 * s], fill=col + (255,))
-    mono = font(MONO, 44 * s)
-    lines = [("$ python run_daily.py", (196, 210, 228)), ("\u2192 list_inbox", (94, 200, 229)),
-             ("\u2192 read_email 002", (94, 200, 229)), ("\u2192 sales_report", (94, 200, 229)),
-             ("\u2192 support_queue", (94, 200, 229)), ("\u2192 list_stock", (94, 200, 229)),
-             ("\u2713 brief ready: 5 urgent", TERMINAL_GREEN), ("\u2713 9 of 9 checks passed", TERMINAL_GREEN)]
-    y = ty0 + 140 * s
-    step = (ty1 - 60 * s - y) / (len(lines) - 1)
-    for text, col in lines:
-        d.text((tx0 + 50 * s, y), text, font=mono, fill=col + (255,), anchor="lm")
-        y += step
+    d.rounded_rectangle([px0, py0, px1, py1], radius=int(30 * s), fill=(12, 28, 48, 255),
+                        outline=(70, 110, 150, 255), width=max(2, int(4 * s)))
+    gx0, gy0, gx1, gy1 = px0 + 60 * s, py0 + 90 * s, px1 - 40 * s, py1 - 70 * s
+    for i in range(11):
+        x = gx0 + (gx1 - gx0) * i / 10
+        d.line([(x, gy0), (x, gy1)], fill=(36, 64, 92, 255), width=max(1, int(2 * s)))
+    for i in range(7):
+        y = gy0 + (gy1 - gy0) * i / 6
+        d.line([(gx0, y), (gx1, y)], fill=(36, 64, 92, 255), width=max(1, int(2 * s)))
+    small = font(SANS_BOLD, 34 * s)
+    mono = font(MONO, 32 * s)
+    d.text((px0 + 50 * s, py0 + 45 * s), "PINCH FORCE  R04", font=small,
+           fill=(150, 185, 215, 255), anchor="lm")
+    # threshold line at 80 N
+    ty = gy0 + (gy1 - gy0) * 0.38
+    for xx in range(int(gx0), int(gx1), int(34 * s)):
+        d.line([(xx, ty), (xx + 18 * s, ty)], fill=AMBER + (255,), width=max(2, int(4 * s)))
+    d.text((gx1 - 10 * s, ty - 14 * s), "80 N", font=small, fill=AMBER + (255,), anchor="rb")
+    # force trace: flat, contact, rise, stop, fall
+    pts = []
+    for i in range(200):
+        t = i / 199
+        if t < 0.35:
+            v = 0.02 * math.sin(t * 90)
+        elif t < 0.66:
+            v = ((t - 0.35) / 0.31) ** 1.15 * 0.82
+        elif t < 0.72:
+            v = 0.82 - (t - 0.66) * 0.5
+        else:
+            v = max(0.0, 0.79 - (t - 0.72) * 3.2)
+        pts.append((gx0 + (gx1 - gx0) * t, gy1 - (gy1 - gy0) * (0.04 + v)))
+    glow = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ImageDraw.Draw(glow).line(pts, fill=CYAN + (255,), width=max(3, int(14 * s)))
+    img.alpha_composite(glow.filter(ImageFilter.GaussianBlur(10 * s)))
+    d.line(pts, fill=CYAN + (255,), width=max(2, int(6 * s)), joint="curve")
+    # crossing and stop markers
+    cross_x = next(x for x, y in pts if y <= ty)
+    stop_x = gx0 + (gx1 - gx0) * 0.66
+    for xx in (cross_x, stop_x):
+        d.line([(xx, gy0), (xx, gy1)], fill=(220, 230, 240, 200), width=max(1, int(3 * s)))
+    d.text(((cross_x + stop_x) / 2, gy0 + 6 * s), "14 ms", font=mono, fill=(255, 255, 255, 255),
+           anchor="mt")
+    d.text((gx0, gy1 + 34 * s), "LIMIT 10 ms", font=mono, fill=(150, 185, 215, 255), anchor="lm")
+    d.text((gx1, gy1 + 34 * s), "FAIL", font=small, fill=(251, 113, 133, 255), anchor="rm")
     img.alpha_composite(layer)
-    # Hub: the agent in the middle, connected to its tools
+    # Checklist panel
     layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
-    cx, cy = x0 + 1250 * s, y0 + (h / 2) + 10 * s
-    nodes = [("inbox", -90), ("orders", -20), ("stock", 45), ("refunds", 135), ("notes", 200)]
-    r = 205 * s
-    small = font(SANS_BOLD, 34 * s)
-    for name, ang in nodes:
-        import math
-        nx, ny = cx + r * math.cos(math.radians(ang)), cy + r * math.sin(math.radians(ang))
-        d.line([(cx, cy), (nx, ny)], fill=(120, 110, 200, 255), width=max(2, int(5 * s)))
-    for name, ang in nodes:
-        import math
-        nx, ny = cx + r * math.cos(math.radians(ang)), cy + r * math.sin(math.radians(ang))
-        tw = d.textlength(name, font=small) + 40 * s
-        d.rounded_rectangle([nx - tw / 2, ny - 32 * s, nx + tw / 2, ny + 32 * s], radius=int(32 * s),
-                            fill=(40, 36, 82, 255), outline=CYAN + (255,), width=max(2, int(4 * s)))
-        d.text((nx, ny), name, font=small, fill=(255, 255, 255, 255), anchor="mm")
-    R = 105 * s
-    d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=TERMINAL_GREEN + (255,))
-    d.text((cx, cy), "AGENT", font=font(SANS_BOLD, 44 * s), fill=(13, 11, 32, 255), anchor="mm")
-    glow = layer.filter(ImageFilter.GaussianBlur(12 * s))
-    img.alpha_composite(glow)
+    cx0, cy0, cx1, cy1 = x0 + 1070 * s, y0 + 110 * s, x0 + 1520 * s, y1 - 80 * s
+    items = ["REQUIREMENTS", "TEST CASES", "HIL LOGS", "REPORTS", "FMEA"]
+    step = (cy1 - cy0) / len(items)
+    f_item = font(SANS_BOLD, 34 * s)
+    for i, name in enumerate(items):
+        yy = cy0 + step * i + step / 2
+        d.rounded_rectangle([cx0, yy - 40 * s, cx1, yy + 40 * s], radius=int(40 * s),
+                            fill=(16, 38, 64, 255), outline=(70, 110, 150, 255), width=max(2, int(3 * s)))
+        r = 24 * s
+        ccx = cx0 + 52 * s
+        d.ellipse([ccx - r, yy - r, ccx + r, yy + r], fill=TERMINAL_GREEN + (255,))
+        d.line([(ccx - 11 * s, yy), (ccx - 3 * s, yy + 9 * s), (ccx + 12 * s, yy - 9 * s)],
+               fill=(10, 22, 40, 255), width=max(2, int(5 * s)))
+        d.text((ccx + 50 * s, yy), name, font=f_item, fill=(235, 242, 250, 255), anchor="lm")
     img.alpha_composite(layer)
 
 
@@ -142,7 +165,7 @@ def draw_front(img, box, meta):
     w, h = x1 - x0, y1 - y0
     s = min(w / 1600, h / 2560)  # design units are based on a 1600 x 2560 px cover
     gradient(img, box)
-    agent_scene(img, (x0, y0 + int(0.025 * h), x1, y0 + int(0.39 * h)))
+    engineering_scene(img, (x0, y0 + int(0.025 * h), x1, y0 + int(0.39 * h)))
     margin = int(130 * w / 1600)
     text_w = w - 2 * margin
     author_y = y1 - int(0.075 * h)
@@ -160,10 +183,15 @@ def draw_front(img, box, meta):
     d = ImageDraw.Draw(img)
     feats = meta.get("cover_features")
     if feats:
-        ff = font(SANS_BOLD, 40 * s)
-        gap = 60 * s
-        widths = [d.textlength(t, font=ff) for t in feats]
-        total = sum(widths) + gap * (len(feats) - 1)
+        size, gap = 40 * s, 60 * s
+        while True:   # shrink the line until it fits inside the margins
+            ff = font(SANS_BOLD, size)
+            widths = [d.textlength(t, font=ff) for t in feats]
+            total = sum(widths) + gap * (len(feats) - 1)
+            if total <= text_w or size < 28 * s:
+                break
+            size *= 0.96
+            gap *= 0.96
         fx = x0 + w / 2 - total / 2
         fy = author_y - 300 * s
         for i, (t, tw) in enumerate(zip(feats, widths)):

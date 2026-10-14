@@ -16,6 +16,7 @@ ACCENT_ON_WHITE = {
     "prompt-engineering-mastery": (196, 106, 0),
     "vibe-coding-for-beginners": (4, 140, 98),
     "building-ai-agents-with-claude": (4, 140, 98),
+    "ai-for-engineers": (180, 100, 0),
 }
 
 
