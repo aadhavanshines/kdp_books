@@ -1,0 +1,33 @@
+Night 2026-10-07  bench HIL-2  sw 2.4.0-rc4  ADS-WLC200-SRS v1.3
+
+Run  Test      Result Measured / failed criteria
+----------------------------------------------------------------------------------------------------
+R01  TC-AP-01  PASS   stop_latency_ms=6ms; reversal_mm=162mm
+R02  TC-AP-02  PASS   stop_latency_ms=7ms; reversal_mm=160mm
+R03  TC-AP-03  FAIL   stop_latency_ms=12ms; reversal_mm=163mm
+                     FAILED: stop_latency_ms=12ms (limit max 10)
+R04  TC-AP-04  FAIL   stop_latency_ms=13ms; reversal_mm=158mm
+                     FAILED: stop_latency_ms=13ms (limit max 10)
+R05  TC-AP-05  PASS   stop_latency_ms=5ms; reversal_mm=151mm
+R06  TC-AP-06  PASS   stop_latency_ms=6ms; reversal_mm=161mm
+R07  TC-MV-05  PASS   close_time_s=3.816s
+R08  TC-MV-01  PASS   stop_after_release_close_ms=62ms; stop_after_release_open_ms=58ms
+R09  TC-CAN-01 PASS   period_min_ms=49ms; period_max_ms=51ms
+R10  TC-TH-03  PASS   max_current_above_130C_a=14.76A; opening_starts_above_140C=0; closing_possible_above_140C=1movements
+R11  TC-PW-03  PASS   stop_after_undervoltage_ms=21ms
+R12  TC-DG-01  PASS   dtc_code=B1A01; stop_after_hall_loss_ms=203ms
+
+Anomalies / notes:
+  R03 TC-AP-03: peak pinch force 103.2 N is above 100 N (reportable per TP-AP-01)
+  R04 TC-AP-04: temperature estimate at start is -22 C but chamber set to -30 C (soak not complete or estimate offset?)
+  R05 TC-AP-05: temperature estimate at start is 93 C but chamber set to 85 C (soak not complete or estimate offset?)
+  R05 TC-AP-05: reversal_mm = 151 mm is within 2% of its min limit 150 (margin 1 mm)
+  R07 TC-MV-05: end-stop stall current 18.2 A (no limit for this test; stall lasted 42 ms)
+  R10 TC-TH-03: max_current_above_130C_a = 14.76 A is within 2% of its max limit 15 (margin 0.24 A)
+  R10 TC-TH-03: 2 samples within 2% of the 15 A limit above 130 C
+  R10 TC-TH-03: closing_possible_above_140C = 1 movements is within 2% of its min limit 1 (margin 0 movements)
+  R10 TC-TH-03: 10 ms sampling; the log starts at ~112 C and was never cooled, so 'opening possible below 120 C' is not covered by this run
+  R12 TC-DG-01: stop_after_hall_loss_ms = 203 ms is within 2% of its min limit 200 (margin 3 ms)
+  R12 TC-DG-01: Hall loss time is only known to within one Hall interval (4 ms): true latency is 199..203 ms, so the 200 ms lower limit cannot be confirmed with certainty
+
+10 PASS, 2 FAIL/ERROR. Written to results-2026-10-07.json

@@ -1,0 +1,10 @@
+{
+ "E01": {
+  "verdict": "FAIL",
+  "measured": {
+   "stop_latency_ms": 6,
+   "peak_force_n": 92.0,
+   "reversal_mm": 60.0
+  }
+ }
+}

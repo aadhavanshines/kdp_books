@@ -150,6 +150,16 @@ def check(text_parts, facts):
 
 
 # 4. The document, by code -------------------------------------------------
+def limit_values(text):
+    """'<= 10' -> (None, 10); '>= 150' -> (150, None); '45 to 55' -> (45, 55)."""
+    m = re.match(r"^\s*(<=|>=)\s*(-?[\d.]+)", text or "")
+    if m:
+        v = float(m.group(2))
+        return (None, v) if m.group(1) == "<=" else (v, None)
+    m = re.match(r"^\s*(-?[\d.]+)\s*to\s*(-?[\d.]+)", text or "")
+    return (float(m.group(1)), float(m.group(2))) if m else (None, None)
+
+
 def trend_chart(facts, path):
     fails = facts["failures"]
     fig, axes = plt.subplots(len(fails), 1, figsize=(6.2, 1.9 * len(fails)), squeeze=False)
@@ -160,11 +170,18 @@ def trend_chart(facts, path):
         colors = ["#c0392b" if r["verdict"] == "FAIL" else "#1e8449" for r in h]
         ax.plot(x, y, color="#888888", linewidth=1, zorder=1)
         ax.scatter(x, y, c=colors, s=28, zorder=2)
+        # the limit that applied each night, so old values are judged fairly
+        for side in (0, 1):
+            lim = [limit_values(r["limit_that_night"])[side] for r in h]
+            if any(v is not None for v in lim):
+                ax.step(x, [float("nan") if v is None else v for v in lim], where="mid",
+                        color="#c0392b", linestyle="--", linewidth=0.9, zorder=0)
         ax.set_title(f"{f['test']}  {f['title']}", fontsize=9, loc="left")
         ax.set_ylabel(h[-1]["unit"] if h else "", fontsize=8)
         ax.tick_params(labelsize=7)
         ax.grid(alpha=0.3)
-    fig.suptitle("Key measurement per night (red: FAIL, green: PASS)", fontsize=9)
+    fig.suptitle("Key measurement per night (red: FAIL, green: PASS; dashed: the limit that night)",
+                 fontsize=9)
     fig.tight_layout()
     fig.savefig(path, dpi=200)
     plt.close(fig)
@@ -199,11 +216,18 @@ def build_docx(facts, text, problems, chart, path):
         row = table.add_row().cells
         row[0].text, row[1].text, row[2].text = r["run"], r["test"], r["title"]
         row[3].text = r["status"]
-        row[4].text = f"{c['name']} = {c['value']} {c['unit']}".strip()
+        row[4].text = f"{c['name'].replace('_', ' ')} = {c['value']} {c['unit']}".strip()
         if r["status"] == "FAIL":
             row[3].paragraphs[0].runs[0].font.bold = True
             row[3].paragraphs[0].runs[0].font.color.rgb = RGBColor(0xC0, 0x39, 0x2B)
 
+    table.autofit = False
+    widths = (1.3, 2.3, 4.8, 1.8, 5.8)
+    for col, width in zip(table.columns, widths):
+        col.width = Cm(width)
+    for row in table.rows:
+        for cell, width in zip(row.cells, widths):
+            cell.width = Cm(width)
     doc.add_heading("Failures", 1)
     doc.add_picture(str(chart), width=Cm(15.5))
     for f in text["failures"]:
@@ -248,6 +272,18 @@ def write_report(results_path, db_path=DB, out=OUT, model="claude-sonnet-5-5", t
     return {"docx": docx, "facts": facts, "problems": problems, "result": result}
 
 
+def rebuild(saved_json, out=OUT):
+    """Make the chart and the Word file again from a saved run, without
+    calling Claude (for changes to the layout only)."""
+    saved = json.loads(Path(saved_json).read_text())
+    facts = saved["facts"]
+    chart = out / f"trend-{facts['night']}.png"
+    trend_chart(facts, chart)
+    tag = Path(saved_json).stem.replace("report-", "")
+    build_docx(facts, saved["answer"], saved["problems"], chart,
+               out / f"report-{facts['night']}-{tag}.docx")
+
+
 def main(results_path, model="claude-sonnet-5-5", tag="sonnet"):
     made = write_report(results_path, model=model, tag=tag)
     for p in made["problems"]:
@@ -258,4 +294,7 @@ def main(results_path, model="claude-sonnet-5-5", tag="sonnet"):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:])
+    if sys.argv[1] == "--rebuild":
+        rebuild(sys.argv[2])
+    else:
+        main(*sys.argv[1:])

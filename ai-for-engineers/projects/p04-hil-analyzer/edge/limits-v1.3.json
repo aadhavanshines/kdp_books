@@ -1,0 +1,15 @@
+{
+ "spec": "ADS-WLC200-SRS v1.3",
+ "TC-AP-01": {"stop_latency_ms": {"max": 10}, "reversal_mm": {"min": 150}, "force_threshold_n": 80},
+ "TC-AP-02": {"same_as": "TC-AP-01"},
+ "TC-AP-03": {"same_as": "TC-AP-01"},
+ "TC-AP-04": {"same_as": "TC-AP-01"},
+ "TC-AP-05": {"same_as": "TC-AP-01"},
+ "TC-AP-06": {"same_as": "TC-AP-01"},
+ "TC-MV-05": {"close_time_s": {"min": 3.0, "max": 4.5}},
+ "TC-MV-01": {"stop_after_release_ms": {"max": 100}},
+ "TC-CAN-01": {"period_ms": {"min": 45, "max": 55}},
+ "TC-TH-03": {"no_opening_above_c": 140, "closing_allowed": true, "current_limit_above_130_c_a": 15},
+ "TC-PW-03": {"stop_after_undervoltage_ms": {"max": 50}, "undervoltage_v": 6.0},
+ "TC-DG-01": {"dtc": "B1A01", "stop_after_hall_loss_ms": {"min": 200, "max": 250}}
+}

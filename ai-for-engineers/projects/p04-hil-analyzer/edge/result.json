@@ -1,0 +1,46 @@
+{
+  "night": "edge-short-reversal",
+  "bench": "HIL-2",
+  "software": "test",
+  "spec": "ADS-WLC200-SRS v1.3",
+  "limits_file": "limits-v1.3.json",
+  "results": [
+    {
+      "run": "E01",
+      "test": "TC-AP-01",
+      "status": "PASS",
+      "failed_criteria": [],
+      "criteria": [
+        {
+          "name": "stop_latency_ms",
+          "value": 6,
+          "min": null,
+          "max": 10,
+          "unit": "ms",
+          "ok": true
+        },
+        {
+          "name": "reversal_mm",
+          "value": 60.0,
+          "min": 150,
+          "max": null,
+          "unit": "mm",
+          "ok": true
+        }
+      ],
+      "values": {
+        "t_force_over_threshold_ms": 669,
+        "t_motor_stop_ms": 675,
+        "lowest_position_mm": 91.0,
+        "final_position_mm": 151.0,
+        "peak_force_n": 92.0
+      },
+      "anomalies": [],
+      "error": null,
+      "conditions": {
+        "supply_v": 13.5,
+        "ambient_c": 23
+      }
+    }
+  ]
+}

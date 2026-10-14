@@ -1,0 +1,16 @@
+{
+ "night": "edge-short-reversal",
+ "bench": "HIL-2",
+ "software": "test",
+ "spec": "ADS-WLC200-SRS v1.3",
+ "runs": [
+  {
+   "run": "E01",
+   "test": "TC-AP-01",
+   "supply_v": 13.5,
+   "ambient_c": 23,
+   "sample_ms": 1,
+   "file": "E01.csv"
+  }
+ ]
+}
