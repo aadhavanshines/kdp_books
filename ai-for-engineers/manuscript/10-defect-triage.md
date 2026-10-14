@@ -61,27 +61,13 @@ python grade.py output/triage-sonnet-run1.json
 ```
 
 ```
-Terminal output:
-engineer \ tool    S1     S2     S3     S4
-S1          5      .      .      .
-S2          1      7      .      .
-S3          .      2      7      .
-S4          .      .      2      6
+@include projects/p06-defect-triage/output/grade-sonnet-run1.txt#L1-L5
 ```
 
 All five S1 reports were rated S1. Every disagreement is one level, and every one of them is above the diagonal: the tool rated more severely than the engineer, never less. For a triage assistant, that's the safer direction to be wrong in. The component matrix had one disagreement:
 
 ```
-Terminal output:
-engineer \ tool  anti_p can_co diagno motor_ positi  power switch therma
-anti_pinch            7      .      .      .      .      .      .      .
-can_comm              .      2      .      .      .      .      .      .
-diagnostics           .      .      6      .      .      .      .      .
-motor_drive           .      .      .      2      .      .      .      .
-position              .      .      .      .      2      .      .      .
-power                 .      .      .      .      .      5      .      .
-switch_input          .      .      .      1      .      .      2      .
-thermal               .      .      .      .      .      .      .      3
+@include projects/p06-defect-triage/output/grade-sonnet-run1.txt#L7-L15
 ```
 
 That one was DR-1014: "Motor command stays on 180 ms after switch release at 16 V." The engineer put it under switch input; the tool put it under motor drive, reasoning that the overrun depends on supply voltage. Both are defensible, and the right answer depends on the root cause, which nobody knows yet. Disagreements like this are why triage is a suggestion.
@@ -92,18 +78,25 @@ Every run, with every model, in both versions, found all seven duplicate pairs a
 
 ## Ten Runs
 
-| Version | Run | Components right | Severity right | S1 missed | Duplicates | Cost | Time |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| With names | Sonnet 5.5, run 1 | 29 | 25 | none | 7 of 7 | $0.069 | 30 s |
-| With names | Sonnet 5.5, run 2 | 29 | 23 | DR-1018, DR-1027 | 7 of 7 | $0.069 | 30 s |
-| With names | Sonnet 5.5, run 3 | 29 | 26 | none | 7 of 7 | $0.068 | 28 s |
-| With names | Haiku 5.5 | 29 | 23 | DR-1020 | 7 of 7 | $0.012 | 54 s |
-| With names | Opus 5.5 | 30 | 25 | none | 7 of 7 | $0.140 | 42 s |
-| No names | Sonnet 5.5, run 1 | 29 | 25 | none | 7 of 7 | $0.065 | 33 s |
-| No names | Sonnet 5.5, run 2 | 29 | 25 | none | 7 of 7 | $0.063 | 33 s |
-| No names | Sonnet 5.5, run 3 | 30 | 26 | none | 7 of 7 | $0.068 | 35 s |
-| No names | Haiku 5.5 | 29 | 24 | DR-1020 | 7 of 7 | $0.010 | 50 s |
-| No names | Opus 5.5 | 30 | 26 | none | 7 of 7 | $0.128 | 52 s |
+With reporters' names (first version):
+
+| Run | Components | Severity | S1 missed | Duplicates | Cost | Time |
+| --- | --- | --- | --- | --- | --- | --- |
+| Sonnet 5.5, run 1 | 29 / 30 | 25 / 30 | none | 7 / 7 | $0.069 | 30 s |
+| Sonnet 5.5, run 2 | 29 / 30 | 23 / 30 | DR-1018 and DR-1027 | 7 / 7 | $0.069 | 30 s |
+| Sonnet 5.5, run 3 | 29 / 30 | 26 / 30 | none | 7 / 7 | $0.068 | 28 s |
+| Haiku 5.5 | 29 / 30 | 23 / 30 | DR-1020 | 7 / 7 | $0.012 | 54 s |
+| Opus 5.5 | 30 / 30 | 25 / 30 | none | 7 / 7 | $0.140 | 42 s |
+
+Without names (final version):
+
+| Run | Components | Severity | S1 missed | Duplicates | Cost | Time |
+| --- | --- | --- | --- | --- | --- | --- |
+| Sonnet 5.5, run 1 | 29 / 30 | 25 / 30 | none | 7 / 7 | $0.065 | 33 s |
+| Sonnet 5.5, run 2 | 29 / 30 | 25 / 30 | none | 7 / 7 | $0.063 | 33 s |
+| Sonnet 5.5, run 3 | 30 / 30 | 26 / 30 | none | 7 / 7 | $0.068 | 35 s |
+| Haiku 5.5 | 29 / 30 | 24 / 30 | DR-1020 | 7 / 7 | $0.010 | 50 s |
+| Opus 5.5 | 30 / 30 | 26 / 30 | none | 7 / 7 | $0.128 | 52 s |
 
 Components and duplicates were excellent everywhere. Severity agreed with the engineer in 23 to 26 of 30 reports, never more than one level apart.
 

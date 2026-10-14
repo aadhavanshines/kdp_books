@@ -80,7 +80,7 @@ Graders are code, and code has bugs. This book's graders and checks were wrong a
 | Test points counted as limits | False alarm | Reading the flagged items; fixed in the schema |
 | Requirement values looked for only in limits | False alarm | Reading the flagged items |
 | A duplicate pair accepted on one side only | Correct answer marked wrong | Reading the "false positives" |
-| FMEA key words too loose | Wrong answers marked right | Comparing the matches with the rows |
+| FMEA keywords too loose | Wrong answers marked right | Comparing the matches with the rows |
 | FMEA function name matched exactly | False alarm | Reading the flagged items; fixed with an enum |
 | Knowledge key phrase too literal | Correct answer marked wrong | Reading the answer |
 | A single release accepted as both releases | Missing value hidden | Writing the grader for both directions |
@@ -89,13 +89,13 @@ The habit that caught them is simple: **read the output behind every surprising 
 
 ## When the Answers Are Wrong
 
-Twice, the tool was right and the answer file was wrong: the requirements reviewer found two real problems the labels had missed, and the log analyzer measured a current of 15.16 A where the truth file said 15.0 A. Handle that with rules you'd defend to an auditor:
+Twice, the tool was right, and the answer file was wrong: the requirements reviewer found two real problems the labels had missed, and the log analyzer measured a current of 15.16 A where the truth file said 15.0 A. Handle that with rules you'd defend to an auditor:
 
 1. **Never edit the original answers quietly.** Keep the original file unchanged.
 2. **Record the correction separately**, with the date, the old value, the new value and the reason: `review-adjudication.json` and `TRUTH-CORRECTIONS.md` in this book.
 3. **Report both scores.** The requirements reviewer's precision is 0.82 against the original labels and 1.00 against the adjudicated ones, and the book shows both.
 4. **Ask whether you'd make the change without the tool.** If a colleague showed you the same finding, would you agree? If not, don't change the answer.
-5. **Prefer stricter.** One correction in this book made grading stricter (the FMEA key words), which is the kind that's easy to defend.
+5. **Prefer stricter.** One correction in this book made grading stricter (the FMEA keywords), which is the kind that's easy to defend.
 
 ## When Everything Passes and It's Still Wrong
 

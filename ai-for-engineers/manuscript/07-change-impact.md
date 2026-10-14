@@ -118,7 +118,7 @@ Every run got every decision right. Once code has done the diffing and the joini
 ## Using It on Real Work
 
 - **Get the facts from your tools.** Requirements management tools can export versions and traces. Let code compute the diff and the affected tests from those exports; never ask a model to find what changed in two long documents.
-- **Feed it your lessons.** The most valuable concern in this chapter came from a lessons-learned summary. Chapter 12 builds a searchable knowledge base for larger collections.
+- **Feed it your lessons.** The most valuable concern in this chapter came from a lessons-learned summary. Chapter 12 builds a knowledge assistant for them, and explains what changes for larger collections.
 - **Treat the output as a proposal** for the change control board or the test lead, with the code's facts and the model's judgement clearly separated.
 
 ## Key Takeaways

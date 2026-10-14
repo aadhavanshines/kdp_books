@@ -1,0 +1,22 @@
+engineer \ tool    S1    S2    S3    S4
+S1                  5     .     .     .
+S2                  1     7     .     .
+S3                  .     2     7     .
+S4                  .     .     2     6
+
+engineer \ tool anti_ can_c diagn motor posit power switc therm
+anti_pinch          7     .     .     .     .     .     .     .
+can_comm            .     2     .     .     .     .     .     .
+diagnostics         .     .     6     .     .     .     .     .
+motor_drive         .     .     .     2     .     .     .     .
+position            .     .     .     .     2     .     .     .
+power               .     .     .     .     .     5     .     .
+switch_input        .     .     .     1     .     .     2     .
+thermal             .     .     .     .     .     .     .     3
+  DR-1002: engineer power/S3, tool power/S2: The window stops working about 50 s after ignition off, but retained power should last 60 s. The reporter is u
+  DR-1010: engineer switch_input/S4, tool switch_input/S3: Too vague to judge. Two clinic drivers reported a subjective slow reaction with no measurement. Provisional S3
+  DR-1014: engineer switch_input/S3, tool motor_drive/S3: Motor command stays on 180 ms after release at 16 V, against a limit of 100 ms. The overrun depends on voltage
+  DR-1015: engineer power/S3, tool power/S2: Same problem as DR-1002: retained power ends before 60 s (about 45 s here).
+  DR-1026: engineer motor_drive/S4, tool motor_drive/S3: Loud knock at the end stop with no damage. The end-stop behaviour is degraded, and the report is partly subjec
+  DR-1030: engineer anti_pinch/S2, tool anti_pinch/S1: Reversal distance is 146 mm at 85 °C, below the 150 mm limit. It passed at 23 °C with 162 mm. A short reversal
+{"component_right": 29, "severity_right": 25, "severity_off_by_more_than_one": 0, "s1_missed": [], "duplicates_found": 7, "duplicates_true": 7, "duplicates_wrong": [], "duplicates_missed": [], "total": 30}

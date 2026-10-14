@@ -115,7 +115,7 @@ Here is the reviewer's finding on WLC-017:
 @include projects/p01-req-review/output/sonnet-run1.json#L139-L146
 ```
 
-WLC-016 says anti-pinch protection is active in manual mode and express mode. WLC-017 switches it off when the controller isn't normalized, and nothing stops manual closing in that state. That isn't a wording problem; it's a safety question that a design review must answer. The engineer who wrote the labels had marked both requirements ok.
+WLC-016 says anti-pinch protection is active in manual mode and express mode. WLC-017 switches it off when the controller isn't normalized, and nothing stops manual closing in that state. That isn't a wording problem; it's a safety question that a design review must answer. The engineer who wrote the labels had labelled both requirements `ok`.
 
 WLC-029 stores a trouble code *and* stops the motor: two requirements in one, by exactly the rule that made WLC-030 compound. The labels were inconsistent.
 

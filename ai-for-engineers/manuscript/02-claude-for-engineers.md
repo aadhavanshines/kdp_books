@@ -35,7 +35,7 @@ Projects are quick to set up and need no code. Their limits are the other side o
 
 **Claude Code** is an agent that works inside a folder on your computer. You describe a task in plain language; it reads the files, writes or changes code, runs it, reads the results and keeps going until the task is done. You can use it interactively in a terminal or editor, or run it once from a script with `claude -p "the task"` (called headless mode).
 
-For engineers, Claude Code is the fastest way to get the *code* that does the measuring and calculating. In Chapter 8, it writes a 360-line pandas log analyzer from the bench guide and the test procedures, runs it, and checks its own figures against the raw data. You then prove the analyzer with a grader. That combination, AI writes the code and code does the measuring, is one of the most effective in this book.
+For engineers, Claude Code is the fastest way to get the *code* that does the measuring and calculating. In Chapter 8, it writes a pandas log analyzer of about 360 lines from the bench guide and the test procedures, runs it, and checks its own figures against the raw data. You then prove the analyzer with a grader. That combination, AI writes the code and code does the measuring, is one of the most effective in this book.
 
 Claude Code asks permission before it changes files or runs commands, and you can limit what it may do. Chapter 8 shows how those limits behave in practice, including two runs where the limits were wrong.
 

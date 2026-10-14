@@ -13,11 +13,11 @@ LABELS = Path(__file__).resolve().parent.parent / "wlc200" / "labels" / "defect-
 
 def matrix(pairs, classes):
     counts = Counter(pairs)
-    width = max(len(c) for c in classes) + 1
-    lines = ["engineer \\ tool".ljust(width + 4) + " ".join(c[:6].rjust(6) for c in classes)]
+    width = max(max(len(c) for c in classes), len("engineer \\ tool")) + 1
+    lines = ["engineer \\ tool".ljust(width) + " ".join(c[:5].rjust(5) for c in classes)]
     for a in classes:
-        lines.append(a.ljust(width + 4) + " ".join(
-            (str(counts[(a, b)]) if counts[(a, b)] else ".").rjust(6) for b in classes))
+        lines.append(a.ljust(width) + " ".join(
+            (str(counts[(a, b)]) if counts[(a, b)] else ".").rjust(5) for b in classes))
     return "\n".join(lines)
 
 

@@ -80,9 +80,9 @@ The test set has 18 questions with key facts that a correct answer must contain,
 
 Not one of the 115 quotes across the five runs failed the check. Every model answered every answerable question with the right facts, and every model refused the ISO trap.
 
-The differences between "Grader" and "Engineer" are the grader's limits, not the assistant's. The grader looks for key words. Opus wrote "one movement could start using an old value" where the key word was "stale", and "redo the worst-case CAN transmit queue calculation" where the key phrase was "worst-case queue calculation". Both answers were right. The engineer reviewed every answer the grader marked wrong and recorded the decisions in `engineer-review.json`.
+The differences between "Grader" and "Engineer" are the grader's limits, not the assistant's. The grader looks for keywords. Opus wrote "one movement could start using an old value" where the key word was "stale", and "redo the worst-case CAN transmit queue calculation" where the key phrase was "worst-case queue calculation". Both answers were right. The engineer reviewed every answer the grader marked wrong and recorded the decisions in `engineer-review.json`.
 
-> **Note:** One of the key words had already been loosened once, after the first Sonnet run, when "before the thermal task" proved too literal. Chasing every correct paraphrase with new key words is a losing game. The better pattern is the one used here: a strict automatic grader, and a recorded human review of what it rejects.
+> **Note:** One of the keywords had already been loosened once, after the first Sonnet run, when "before the thermal task" proved too literal. Chasing every correct paraphrase with new keywords is a losing game. The better pattern is the one used here: a strict automatic grader, and a recorded human review of what it rejects.
 
 Haiku's one real miss was subtle. Asked for the warranty cost, it wrote "The documents give only a partial answer ... they don't give a monetary cost", which is correct, but set `found` to true. A program that relies on the flag, such as a chat front end that shows "No answer in the documents" when `found` is false, would treat it as answered. The prompt invited this by saying "a partial answer is fine". Flags that code relies on need unambiguous definitions.
 
@@ -112,5 +112,5 @@ A real lessons-learned library has thousands of documents. Then the program need
 - Answer only from the documents, quote them, and let code check every quote; in five runs, none of 115 quotes failed.
 - Give the assistant a respectable way to say "not found", and define every flag that code relies on without ambiguity.
 - Every model answered all fifteen answerable questions correctly and refused the ISO trap; Sonnet scored 18 of 18 in all three runs.
-- Grade with key words, then review what the grader rejects. Don't keep loosening the keys.
+- Grade with keywords, then review what the grader rejects. Don't keep loosening the keys.
 - Put the unchanging documents first in the prompt; when the cache was already warm, 18 answers cost 7 cents instead of 20.
