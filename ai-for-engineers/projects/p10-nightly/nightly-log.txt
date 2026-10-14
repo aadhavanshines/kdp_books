@@ -1,0 +1,13 @@
+2026-10-06: 12 runs, 3 failed: TC-AP-04, TC-CAN-01, TC-TH-03
+  TC-AP-04: DR-1001
+  TC-CAN-01: NEW DRAFT
+  TC-TH-03: DR-1012
+Report and drafts in p10-nightly/output/2026-10-06; $0.0959
+2026-10-07: 12 runs, 2 failed: TC-AP-03, TC-AP-04
+  TC-AP-03: NEW DRAFT
+  TC-AP-04: DR-1001
+Report and drafts in p10-nightly/output/2026-10-07; $0.0838
+2026-10-07: 12 runs, 2 failed: TC-AP-03, TC-AP-04
+  TC-AP-03: NEW DRAFT
+  TC-AP-04: DR-1001
+Report and drafts in p10-nightly/output/2026-10-07; $0.0499

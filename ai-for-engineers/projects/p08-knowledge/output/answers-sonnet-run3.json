@@ -1,0 +1,911 @@
+[
+  {
+    "id": "q01",
+    "question": "What spring rate does the pinch rod on HIL-2 have?",
+    "answer": {
+      "found": true,
+      "answer": "The pinch rod on bench HIL-2 has a spring rate of 10 N/mm, as stated in the equipment list of the anti-pinch test procedure TP-AP-01.",
+      "quotes": [
+        {
+          "document": "TP-AP-01-anti-pinch-test.md",
+          "text": "Bench HIL-2 with the window regulator rig and the pinch rod (spring rate 10 N/mm, force sensor sampled every 1 ms)."
+        }
+      ]
+    },
+    "cost_usd": 0.0039,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 908,
+        "outputTokens": 19,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.001003,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 235,
+        "cacheReadInputTokens": 5240,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0034020000000000005,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5242,
+    "output_tokens": 235,
+    "seconds": 4.9,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q02",
+    "question": "At which temperature and voltage is the pinch stop time worst, according to our lessons learned?",
+    "answer": {
+      "found": true,
+      "answer": "According to LL-2022-02, the worst case for pinch stop time is cold and low supply voltage together: -30 °C and 9 V. On WLC-100 the stop time there was 12 to 15 ms, against a 10 ms limit. At 23 °C it was 5 to 7 ms.",
+      "quotes": [
+        {
+          "document": "LL-2022-02-cold-pinch-latency.md",
+          "text": "The worst case for pinch stop time is cold and low voltage together."
+        },
+        {
+          "document": "LL-2022-02-cold-pinch-latency.md",
+          "text": "Anti-pinch HIL tests became mandatory at the corner case of -30 °C and 9 V."
+        }
+      ]
+    },
+    "cost_usd": 0.0046,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 911,
+        "outputTokens": 18,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.001001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 304,
+        "cacheReadInputTokens": 5248,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0040936,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5250,
+    "output_tokens": 304,
+    "seconds": 5.3,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q03",
+    "question": "Why did WLC-100 windows reverse by themselves on rough roads?",
+    "answer": {
+      "found": true,
+      "answer": "Body vibration on rough roads made the motor speed oscillate, and the WLC-100 anti-pinch algorithm read the speed drops as a rising pinch force, so it reversed the window. The problem wasn't caught before production because the HIL tests used only a smooth road profile. The fix was a speed-ripple filter with a 30 ms debounce, plus a rough-road vibration profile (RR-04) on the HIL bench.",
+      "quotes": [
+        {
+          "document": "LL-2021-07-rough-road-reversals.md",
+          "text": "Body vibration made the motor speed oscillate. The anti-pinch algorithm read the speed drops as a rising pinch force."
+        },
+        {
+          "document": "LL-2021-07-rough-road-reversals.md",
+          "text": "Our HIL tests used a smooth road profile only, so the problem was never seen before production."
+        }
+      ]
+    },
+    "cost_usd": 0.0051,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 907,
+        "outputTokens": 18,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000997,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 362,
+        "cacheReadInputTokens": 5243,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0046726,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5245,
+    "output_tokens": 362,
+    "seconds": 4.9,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q04",
+    "question": "What debounce time was added to the anti-pinch algorithm after the rough-road problem?",
+    "answer": {
+      "found": true,
+      "answer": "A 30 ms debounce before a pinch is confirmed was added, together with a speed-ripple filter on the motor speed signal. This was in the WLC-100 fix (LL-2021-07).",
+      "quotes": [
+        {
+          "document": "LL-2021-07-rough-road-reversals.md",
+          "text": "A speed-ripple filter on the motor speed signal, with a 30 ms debounce before a pinch is confirmed."
+        }
+      ]
+    },
+    "cost_usd": 0.0038,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 913,
+        "outputTokens": 17,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 226,
+        "cacheReadInputTokens": 5247,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0033134,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5249,
+    "output_tokens": 226,
+    "seconds": 4.5,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q05",
+    "question": "How is the stop latency measured in the anti-pinch test?",
+    "answer": {
+      "found": true,
+      "answer": "Stop latency runs from the first sample where the pinch force is above 80 N to the first later sample where the motor command is no longer 'close'. The limit is 10 ms. The pinch rod force sensor is sampled every 1 ms.",
+      "quotes": [
+        {
+          "document": "TP-AP-01-anti-pinch-test.md",
+          "text": "**Stop latency:** from the first sample where the pinch force is above 80 N to the first later sample where the motor command is no longer 'close'. Limit: 10 ms."
+        }
+      ]
+    },
+    "cost_usd": 0.0041,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 907,
+        "outputTokens": 17,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000992,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 254,
+        "cacheReadInputTokens": 5238,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0035915999999999995,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5240,
+    "output_tokens": 254,
+    "seconds": 4.0,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q06",
+    "question": "What Hall sensor timeout did WLC-100 have before the connector corrosion fix?",
+    "answer": {
+      "found": true,
+      "answer": "Before the fix, the WLC-100 kept the motor running on Hall signal loss until a 1 s timeout. The fix reduced it to 200 ms, with DTC B1A01 and motor stop.",
+      "quotes": [
+        {
+          "document": "LL-2023-05-hall-connector.md",
+          "text": "Hall signal timeout reduced from 1 s to 200 ms, with DTC B1A01 and motor stop"
+        },
+        {
+          "document": "LL-2023-05-hall-connector.md",
+          "text": "When the Hall signal was lost, the software kept the motor running until a 1 s timeout."
+        }
+      ]
+    },
+    "cost_usd": 0.0043,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 911,
+        "outputTokens": 16,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0009910000000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 279,
+        "cacheReadInputTokens": 5248,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0038436,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5250,
+    "output_tokens": 279,
+    "seconds": 5.2,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q07",
+    "question": "Why should the Hall sensor loss test be run at 9 V?",
+    "answer": {
+      "found": true,
+      "answer": "At 9 V the motor runs slowly, so the Hall pulses are slow. A timer that restarts on noise can then hide the signal loss. The lessons-learned document says the test should be run at both 9 V and 13.5 V, and that sensor-removal tests should use the lowest supply voltage.",
+      "quotes": [
+        {
+          "document": "LL-2023-05-hall-connector.md",
+          "text": "The 9 V case matters: at low speed the pulses are slow, and a timer that restarts on noise can hide the loss."
+        },
+        {
+          "document": "LL-2023-05-hall-connector.md",
+          "text": "Every sensor needs a plausibility check with a timeout, and a test that removes the sensor while the actuator runs, at the lowest supply voltage."
+        }
+      ]
+    },
+    "cost_usd": 0.0048,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 907,
+        "outputTokens": 12,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0009670000000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 329,
+        "cacheReadInputTokens": 5240,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0043419999999999995,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5242,
+    "output_tokens": 329,
+    "seconds": 5.5,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q08",
+    "question": "Why could a movement start above the thermal block limit on SMC-3?",
+    "answer": {
+      "found": true,
+      "answer": "The thermal model updated its estimate in a 100 ms task, but the block decision read the estimate at the start of a movement, before that task had run with the newest current samples. So a movement could start on a stale value, which let one movement begin at 3 °C above the block limit. The next movement was blocked correctly. The fix was to read the estimate after the thermal task has run in the same cycle.",
+      "quotes": [
+        {
+          "document": "LL-2024-01-thermal-check.md",
+          "text": "The thermal model updated its estimate in a 100 ms task. The block decision read the estimate at the start of a movement, before the task had run with the newest current samples. One movement could start on a stale value."
+        },
+        {
+          "document": "LL-2024-01-thermal-check.md",
+          "text": "The block decision reads the estimate after the thermal task has run in the same cycle."
+        }
+      ]
+    },
+    "cost_usd": 0.005,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 908,
+        "outputTokens": 18,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 351,
+        "cacheReadInputTokens": 5241,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.004562200000000001,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5243,
+    "output_tokens": 351,
+    "seconds": 5.4,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q09",
+    "question": "What caused lost status frames in WLC-100 diagnostic sessions?",
+    "answer": {
+      "found": true,
+      "answer": "During a diagnostic session, long diagnostic responses filled the CAN transmit queue. A status frame that was due at that moment was dropped instead of being delayed. This showed up as gaps of about 100 to 150 ms, seen only in the service workshop.",
+      "quotes": [
+        {
+          "document": "LL-2024-09-can-frame-loss.md",
+          "text": "During a diagnostic session, long diagnostic responses filled the CAN transmit queue. A status frame due at that moment was dropped instead of being delayed."
+        }
+      ]
+    },
+    "cost_usd": 0.0041,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 906,
+        "outputTokens": 16,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000986,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 255,
+        "cacheReadInputTokens": 5243,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0036026,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5245,
+    "output_tokens": 255,
+    "seconds": 3.9,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q10",
+    "question": "What should be repeated when the CAN cycle time gets shorter?",
+    "answer": {
+      "found": true,
+      "answer": "The worst-case queue calculation should be repeated when the CAN cycle time gets shorter, for example from 100 ms to 50 ms. This comes from the lesson on lost status frames during diagnostic sessions (WLC-100).",
+      "quotes": [
+        {
+          "document": "LL-2024-09-can-frame-loss.md",
+          "text": "When the cycle time gets shorter (for example from 100 ms to 50 ms), repeat the worst-case queue calculation."
+        }
+      ]
+    },
+    "cost_usd": 0.0039,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 905,
+        "outputTokens": 14,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000975,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 239,
+        "cacheReadInputTokens": 5240,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0034420000000000006,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5242,
+    "output_tokens": 239,
+    "seconds": 4.1,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q11",
+    "question": "What is the log sampling period for thermal tests?",
+    "answer": {
+      "found": true,
+      "answer": "Thermal tests are logged with a 10 ms sampling period. All other tests use 1 ms. The thermal test procedure also notes that timing limits of a few milliseconds can't be evaluated from these logs.",
+      "quotes": [
+        {
+          "document": "GL-HIL-2-bench-guide.md",
+          "text": "1 ms for all tests except the thermal tests, which use 10 ms."
+        },
+        {
+          "document": "TP-TH-01-thermal-test.md",
+          "text": "Log sampling is 10 ms for thermal tests."
+        }
+      ]
+    },
+    "cost_usd": 0.0041,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 902,
+        "outputTokens": 14,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000972,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 257,
+        "cacheReadInputTokens": 5234,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0036208000000000004,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5236,
+    "output_tokens": 257,
+    "seconds": 4.2,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q12",
+    "question": "When is the pinch rod force sensor next due for calibration?",
+    "answer": {
+      "found": true,
+      "answer": "The pinch rod force sensor is next due for calibration on 15 February 2027. It was last calibrated on 15 August 2026.",
+      "quotes": [
+        {
+          "document": "GL-HIL-2-bench-guide.md",
+          "text": "Pinch rod force sensor: calibrated 15 August 2026, next due 15 February 2027."
+        }
+      ]
+    },
+    "cost_usd": 0.0035,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 906,
+        "outputTokens": 15,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000981,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 197,
+        "cacheReadInputTokens": 5238,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0030216,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5240,
+    "output_tokens": 197,
+    "seconds": 3.8,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q13",
+    "question": "Below what force should a reading not be treated as contact?",
+    "answer": {
+      "found": true,
+      "answer": "Values below 1 N should not be treated as contact on bench HIL-2. The force sensor can read up to ±0.5 N with no load.",
+      "quotes": [
+        {
+          "document": "GL-HIL-2-bench-guide.md",
+          "text": "The force sensor reads up to ±0.5 N with no load. Don't treat values below 1 N as contact."
+        }
+      ]
+    },
+    "cost_usd": 0.0035,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 904,
+        "outputTokens": 11,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000959,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 201,
+        "cacheReadInputTokens": 5235,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0030610000000000004,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5237,
+    "output_tokens": 201,
+    "seconds": 5.5,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q14",
+    "question": "How many times is each anti-pinch test repeated on release candidates?",
+    "answer": {
+      "found": true,
+      "answer": "On release candidates, each anti-pinch test is repeated three times. Nightly regression needs only one run.",
+      "quotes": [
+        {
+          "document": "TP-AP-01-anti-pinch-test.md",
+          "text": "Repeat each test three times on release candidates; one run is enough for nightly regression."
+        }
+      ]
+    },
+    "cost_usd": 0.0034,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 907,
+        "outputTokens": 18,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000997,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 183,
+        "cacheReadInputTokens": 5240,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.002882,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5242,
+    "output_tokens": 183,
+    "seconds": 4.1,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q15",
+    "question": "What is the current limit above 130 °C in the thermal test?",
+    "answer": {
+      "found": true,
+      "answer": "In the thermal test (TP-TH-01), the motor current must never be above 15 A when the estimated temperature is above 130 °C. This includes the stall at the end stop.",
+      "quotes": [
+        {
+          "document": "TP-TH-01-thermal-test.md",
+          "text": "Above 130 °C: motor current never above 15 A, including the stall at the end stop."
+        }
+      ]
+    },
+    "cost_usd": 0.0036,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 908,
+        "outputTokens": 18,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000998,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 204,
+        "cacheReadInputTokens": 5238,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0030916,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5240,
+    "output_tokens": 204,
+    "seconds": 5.5,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q16",
+    "question": "What is the warranty cost of the rough-road reversals?",
+    "answer": {
+      "found": false,
+      "answer": "The documents don't give a monetary warranty cost for the rough-road reversals. They only say there were 37 warranty claims in the first six months, on two vehicle programs, with no injuries. No cost per claim or total is stated.",
+      "quotes": []
+    },
+    "cost_usd": 0.0032,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 905,
+        "outputTokens": 17,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.00099,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 167,
+        "cacheReadInputTokens": 5237,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0027214000000000006,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5239,
+    "output_tokens": 167,
+    "seconds": 3.7,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q17",
+    "question": "Which supplier makes the WLC-200 Hall sensor?",
+    "answer": {
+      "found": false,
+      "answer": "The documents don't name the supplier of the WLC-200 Hall sensor. They only mention the Hall sensor in other ways. The bench guide says position comes from the controller's Hall counter. A lessons-learned note covers Hall connector corrosion on the WLC-100 and the Hall timeout requirement WLC-029. None of them mention a supplier.",
+      "quotes": []
+    },
+    "cost_usd": 0.0036,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 904,
+        "outputTokens": 16,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000984,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 211,
+        "cacheReadInputTokens": 5240,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.003162,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5242,
+    "output_tokens": 211,
+    "seconds": 4.2,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  },
+  {
+    "id": "q18",
+    "question": "What is the maximum pinch force allowed by ISO standards?",
+    "answer": {
+      "found": false,
+      "answer": "The documents don't say what ISO standards allow as a maximum pinch force, and they don't mention any ISO standard. They do say the anti-pinch test in TP-AP-01 has no peak-force limit in SRS v1.3. You record the highest pinch force and report it if it is above 100 N. The stop-latency check uses 80 N as the point where timing starts.",
+      "quotes": []
+    },
+    "cost_usd": 0.0036,
+    "model_usage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 904,
+        "outputTokens": 14,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0009739999999999999,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5-5": {
+        "inputTokens": 2,
+        "outputTokens": 213,
+        "cacheReadInputTokens": 5239,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0031818000000000003,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 128000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-sonnet-5-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    },
+    "input_tokens": 5241,
+    "output_tokens": 213,
+    "seconds": 3.9,
+    "model": "claude-sonnet-5-5",
+    "problems": []
+  }
+]

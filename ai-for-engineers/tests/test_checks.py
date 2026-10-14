@@ -205,3 +205,18 @@ def test_nightly_check_catches_bad_decisions():
         "title": "Late stop", "description": "It was late.", "component": "anti_pinch",
         "severity": "S1", "related": []}}]
     assert any("measured value 12" in p for p in nightly.check_triage(decisions, failures, open_defects))
+
+
+# Project 4 edge case ------------------------------------------------------
+def test_analyzer_fails_a_short_reversal():
+    """A pinch test that starts low and reverses only 60 mm must FAIL
+    (found by code review, Chapter 8)."""
+    import subprocess
+    p4 = ROOT / "p04-hil-analyzer"
+    out = p4 / "edge" / "result-test.json"
+    subprocess.run([sys.executable, str(p4 / "analyze_hil.py"), str(p4 / "edge" / "short-reversal"),
+                    "--limits", str(p4 / "edge" / "limits-v1.3.json"), "--out", str(out)],
+                   capture_output=True, check=False)
+    result = json.loads(out.read_text())["results"][0]
+    out.unlink()
+    assert result["status"] == "FAIL"

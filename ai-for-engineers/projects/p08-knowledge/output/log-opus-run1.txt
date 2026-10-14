@@ -1,44 +1,19 @@
-Unknown child process pid 6899, will report returncode 255
-Unknown child process pid 7367, will report returncode 255
-Unknown child process pid 7747, will report returncode 255
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/query.py", line 391, in _read_messages
-    async for message in self.transport.read_messages():
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/transport/subprocess_cli.py", line 1162, in _read_messages_impl
-    raise self._exit_error
-claude_agent_sdk._errors.ProcessError: Command failed with exit code 1 (exit code: 1)
-Error output: Check stderr output for details
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 122, in <module>
-    main()
-  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 109, in main
-    asyncio.run(run_all(args[1] if len(args) > 1 else model, tag))
-  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-           ^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-    return future.result()
-           ^^^^^^^^^^^^^^^
-  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 92, in run_all
-    results = await asyncio.gather(*(answer(q["question"], docs, model, limit)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 82, in answer
-    r = await ask_async(question, system_prompt(docs), SCHEMA, model=model,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/kdp_books/ai-for-engineers/projects/common/claude_call.py", line 36, in ask_async
-    async for message in query(prompt=prompt, options=options):
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/query.py", line 129, in query
-    async for message in client.process_query(
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/client.py", line 56, in process_query
-    async for msg in inner:
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/client.py", line 204, in _process_query_inner
-    async for data in query.receive_messages():
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/query.py", line 1144, in receive_messages
-    raise exc
-claude_agent_sdk._errors.ResultError: Claude Code returned an error result: You've hit your session limit · resets 7:40pm (UTC) (exit code: 1)
+q01 found=True  The pinch rod on bench HIL-2 has a spring rate of 10 N/mm, and its force sensor 
+q02 found=True  According to LL-2022-02, pinch stop time is worst when cold and low voltage happ
+q03 found=True  On rough roads, body vibration made the motor speed oscillate. The WLC-100 anti-
+q04 found=True  After the WLC-100 rough-road problem, a 30 ms debounce was added before a pinch 
+q05 found=True  In TP-AP-01, stop latency runs from the first sample where the pinch force is ab
+q06 found=True  Before the fix, the WLC-100 had a 1 s Hall signal timeout. When the Hall signal 
+q07 found=True  The 9 V case matters because the motor runs slowly at low supply voltage, so the
+q08 found=True  On SMC-3, the thermal model updated its temperature estimate in a 100 ms task. T
+q09 found=True  During diagnostic sessions, long diagnostic responses filled the CAN transmit qu
+q10 found=True  When the cycle time gets shorter, you need to redo the worst-case CAN transmit q
+q11 found=True  Thermal tests log a sample every 10 ms. All other tests on HIL-2 log every 1 ms.
+q12 found=True  The pinch rod force sensor is next due for calibration on 15 February 2027. Its 
+q13 found=True  Don't treat a pinch force reading below 1 N as contact. The HIL-2 bench guide sa
+q14 found=True  On release candidates, each anti-pinch test is run three times. A single run is 
+q15 found=True  In the thermal test, motor current above 130 °C must never go over 15 A. That in
+q16 found=False The documents don't say what the warranty claims cost. LL-2021-07 gives only the
+q17 found=False None of the documents say who supplies the WLC-200 Hall sensor. They cover the H
+q18 found=False The documents don't say what maximum pinch force ISO standards allow, and none o
+18 questions, $0.4075

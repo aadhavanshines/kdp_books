@@ -8,8 +8,10 @@
     {
       "run": "E01",
       "test": "TC-AP-01",
-      "status": "PASS",
-      "failed_criteria": [],
+      "status": "FAIL",
+      "failed_criteria": [
+        "reversal_mm=60mm (limit min 150)"
+      ],
       "criteria": [
         {
           "name": "stop_latency_ms",
@@ -25,7 +27,7 @@
           "min": 150,
           "max": null,
           "unit": "mm",
-          "ok": true
+          "ok": false
         }
       ],
       "values": {

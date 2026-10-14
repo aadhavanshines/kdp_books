@@ -16,6 +16,7 @@ import numpy as np
 import pandas as pd
 
 NEAR_LIMIT = 0.02  # report a passing value within 2 % of a limit
+FULLY_OPEN_MM = 480  # window position defined as fully open (SRS v1.3, section 2)
 
 
 # ---------------------------------------------------------------- helpers
@@ -84,7 +85,7 @@ def test_anti_pinch(df, lim, r):
 
     # Reversal: final position - lowest position before the motor command first
     # becomes 'open' (-1). Pass if >= limit or the window ended fully open
-    # (final position >= the position at the start of the log).
+    # (final position >= 480 mm, ADS-WLC200-SRS v1.3 section 2).
     t_open = first_time(df, df.motor_cmd == -1)
     if t_open is None:
         r.check("reversal_mm", 0.0, lo=lim["reversal_mm"]["min"], unit="mm", ok=False)
@@ -93,7 +94,7 @@ def test_anti_pinch(df, lim, r):
         low = df.position_mm[df.time_ms < t_open].min()
         final = df.position_mm.iloc[-1]
         rev = final - low
-        fully_open = final >= df.position_mm.iloc[0]
+        fully_open = final >= FULLY_OPEN_MM
         r.values.update(lowest_position_mm=low, final_position_mm=final)
         r.check("reversal_mm", rev, lo=lim["reversal_mm"]["min"], unit="mm",
                 ok=rev >= lim["reversal_mm"]["min"] or fully_open)

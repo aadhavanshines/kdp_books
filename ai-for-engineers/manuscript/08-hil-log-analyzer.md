@@ -169,7 +169,22 @@ E01  TC-AP-01  PASS   stop_latency_ms=6ms; reversal_mm=60mm
 
 The definitions were added to the workspace, and a third Claude Code session was asked to fix the evaluation:
 
-<<RUN:fix2>>
+```
+@include projects/p04-hil-analyzer/PROMPT-fix2.md#L1-L14
+```
+
+Twelve turns, 30 seconds and 12 cents later, the evaluation used the definition:
+
+```
+fully_open = final >= FULLY_OPEN_MM
+```
+
+```
+Terminal output:
+E01  TC-AP-01  FAIL   stop_latency_ms=6ms; reversal_mm=60mm
+```
+
+Claude also reran the night of 6 October, before and after the change, and confirmed the results were identical. The grades for both nights stayed at 12 of 12 verdicts and 28 of 28 values, and the edge-case log is now one of the book's offline tests, so the bug can't return unnoticed.
 
 Two lessons are worth keeping. First, **give the tool the definitions**: it guessed only because the specification's definitions were missing. Second, **review AI-written code as you would any other code**, and turn every finding into a test case, so the bug can't come back.
 
@@ -190,6 +205,6 @@ For anything beyond a throwaway folder, run Claude Code inside a real boundary: 
 
 - Don't ask a model to measure logs. Have Claude Code write the measuring code, and run the code.
 - A clean workspace, a prompt that points to the procedures, and a list of allowed commands produced a working 359-line analyzer for 43 cents; two attempts without the command list stopped rather than write untested code.
-- Graded against hand measurements, the analyzer scored 12/12 verdicts and 28/28 values on both nights after one fix; it also found an error in the truth file.
+- Graded against hand measurements, the analyzer scored 12/12 verdicts and 28/28 values on both nights after the R08 fix; it also found an error in the truth file. In all, five Claude Code sessions cost 87 cents, including the two that stopped.
 - A grader only tests the cases you have. Code review found a bug no grading run could see; a new test log now covers it.
 - Allowing `python3` is nearly allowing everything; use a sandbox or container for real isolation.

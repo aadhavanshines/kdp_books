@@ -21,10 +21,11 @@ HERE = Path(__file__).parent
 SYSTEM = """\
 You answer questions about the WLC-200 validation results using the
 wlc200-testdb tools. Look the facts up with the tools; never guess a value.
-Give a short answer, then list the items that answer the question (test
-IDs, defect IDs, dates, versions or numbers) in "items", exactly as the
-database writes them. If the database can't answer the question, say so
-and leave items empty."""
+Give a short answer, then put only the values that directly answer the
+question in "items", exactly as the database writes them: the IDs for
+"which", the number for "how many", the value for "what was". Leave out
+context such as run IDs or dates that the question didn't ask for. If the
+database can't answer the question, say so and leave items empty."""
 
 SCHEMA = {"type": "object", "properties": {
     "answer": {"type": "string"},

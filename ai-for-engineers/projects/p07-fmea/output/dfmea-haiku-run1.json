@@ -1,0 +1,887 @@
+{
+  "answer": {
+    "rows": [
+      {
+        "function": "1. Move the window as the driver commands, in manual and express mode",
+        "element": "Supply monitor",
+        "failure_mode": "Window cannot be operated after ignition off before the 60 s retained-power period ends (stops at about 45 to 50 s)",
+        "effect": "After leaving the car, the driver or a passenger finds the switch dead before the expected 60 s, so a window that is still open cannot be closed (comfort function lost).",
+        "cause": "Retained-power timer in the supply monitor expires early (about 45 to 50 s measured instead of 60 s); timer source and tolerance are not in the structure document (hypothesis to confirm).",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "No named control; found by test (DR-1002, DR-1015)"
+        ],
+        "severity": 6,
+        "occurrence": 7,
+        "detection_rating": 4,
+        "rating_reasons": "Two open defects show the timer is already short, and no prevention is named, so occurrence is high. Detection is 4 because tests find it but no named test targets retained power across supply and temperature.",
+        "recommended_action": "Set the retained-power timer to at least 60 s over the full supply and temperature range. Add a named test of 60 s retained power at 9, 13.5 and 16 V and at -30 and 85 °C, run at every release.",
+        "evidence": [
+          "DR-1002",
+          "DR-1015"
+        ],
+        "rpn": 168,
+        "action_needed": true
+      },
+      {
+        "function": "1. Move the window as the driver commands, in manual and express mode",
+        "element": "Position counter",
+        "failure_mode": "Express close is accepted before the window is normalized (after battery disconnect), so the window closes fully without a known end position",
+        "effect": "The window runs to the top seal at full speed with no known end stop, so it can knock or hit the seal hard; the comfort function runs when it should be refused.",
+        "cause": "Express-close enable is not gated by the normalization state that the position counter holds after power loss.",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "No named control; found by test (DR-1020)"
+        ],
+        "severity": 5,
+        "occurrence": 6,
+        "detection_rating": 5,
+        "rating_reasons": "The defect shows the gate is missing, but the event needs a battery disconnect, so occurrence is moderate. Detection is 5 because a test found it but no named test checks the normalization gate.",
+        "recommended_action": "Gate express close on the normalization flag and add a named test: disconnect the battery, then short-press up, and confirm express close is refused until normalization is done.",
+        "evidence": [
+          "DR-1020",
+          "LL-2024-01"
+        ],
+        "rpn": 150,
+        "action_needed": true
+      },
+      {
+        "function": "1. Move the window as the driver commands, in manual and express mode",
+        "element": "Motor driver",
+        "failure_mode": "Window keeps moving about 180 ms after manual switch release at 16 V (60 ms at 13.5 V; limit 100 ms)",
+        "effect": "The window overshoots the position the driver chose, so it stops higher or lower than intended and can strike the seal or leave a gap.",
+        "cause": "Motor stop after switch release is delayed by the release path, and the delay grows with supply voltage because the motor runs faster at 16 V.",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "No named control; found by test (DR-1014)"
+        ],
+        "severity": 5,
+        "occurrence": 6,
+        "detection_rating": 5,
+        "rating_reasons": "The defect shows the delay is present at 16 V, so occurrence is moderate with no prevention named. Detection is 5 because a test found it but no named control targets release stop time at all voltages.",
+        "recommended_action": "Measure stop-on-release time at 9, 13.5 and 16 V, find the delay in the release path (switch debounce or motor command ramp), cap it at 100 ms, and add the test to the release gate.",
+        "evidence": [
+          "DR-1014"
+        ],
+        "rpn": 150,
+        "action_needed": true
+      },
+      {
+        "function": "1. Move the window as the driver commands, in manual and express mode",
+        "element": "Switch input",
+        "failure_mode": "Window reacts late to a switch press (press-to-motor-start delay not measured)",
+        "effect": "The driver perceives a lag and the window feels unresponsive (comfort degraded).",
+        "cause": "Short-press and held-press classification adds delay before the motor starts (WLC-008, WLC-009); the size of the delay is not measured.",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "No named control; reported by drivers (DR-1010), no measurement"
+        ],
+        "severity": 4,
+        "occurrence": 5,
+        "detection_rating": 7,
+        "rating_reasons": "Two drivers reported lag, so the cause is plausible but unmeasured, giving moderate occurrence. Detection is 7 because no test targets switch latency, though tests could find it.",
+        "recommended_action": "Measure press-to-motor-start latency at 9 and 16 V, set a limit in the SRS, and add the measurement to the HIL test set.",
+        "evidence": [
+          "DR-1010"
+        ],
+        "rpn": 140,
+        "action_needed": true
+      },
+      {
+        "function": "2. Stop the window at the end positions",
+        "element": "Motor driver",
+        "failure_mode": "Window hits the top seal with a loud knock at full speed",
+        "effect": "Customers hear a knock at the top of every close; load on the seal and regulator (noticed by most customers as noise).",
+        "cause": "End-stop detection acts only at full speed, so the window reaches the seal without a slow-down (hypothesis to confirm with the team).",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "No named control; reported by clinic drivers (DR-1026), no damage seen"
+        ],
+        "severity": 4,
+        "occurrence": 8,
+        "detection_rating": 7,
+        "rating_reasons": "The knock happens at the end of routine closing with no prevention named, so occurrence is high. Detection is 7 because no test targets end-stop noise, though tests could detect it.",
+        "recommended_action": "Add a slow-down ramp before the top end stop, and measure seal impact and noise in HIL and vehicle tests against an acoustic limit.",
+        "evidence": [
+          "DR-1026"
+        ],
+        "rpn": 224,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "Motor stops 13 to 14 ms after the pinch force passes 100 N at -30 °C and 9 V (limit 10 ms)",
+        "effect": "A hand or head in the pinch zone takes extra force before the window stops, so injury is possible without warning.",
+        "cause": "Pinch confirmation (speed sampling plus the 30 ms debounce path) needs extra samples at low motor speed when grease is cold and supply is 9 V, so the stop misses the 10 ms margin.",
+        "prevention": [
+          "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+        ],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 10,
+        "occurrence": 8,
+        "detection_rating": 3,
+        "rating_reasons": "Two open defects at the -30 °C and 9 V corner show the cause is present and the debounce path is not yet proven, so occurrence is high. Detection is 3 because a test targets this exact corner and has found it twice, though it still depends on the test being run.",
+        "recommended_action": "Shorten the confirmation path so stop time is 10 ms or less at -30 °C and 9 V; confirm the 2 ms speed sampling below 0 °C (LL-2022-02) is in the WLC-200 build; after any threshold or debounce change, recheck false reversals on RR-04 and stop time (LL-2021-07).",
+        "evidence": [
+          "DR-1001",
+          "DR-1006",
+          "LL-2022-02",
+          "LL-2021-07"
+        ],
+        "rpn": 240,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "Reversal distance is 146 mm at 85 °C (limit 150 mm)",
+        "effect": "An object in the pinch zone may not be released far enough, which breaks a legal requirement; injury is possible with a warning.",
+        "cause": "Reversal travel depends on motor speed, which drops at 85 °C (hypothesis); there is no temperature compensation of the reverse run.",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 9,
+        "occurrence": 6,
+        "detection_rating": 3,
+        "rating_reasons": "The defect shows a 4 mm shortfall at 85 °C, so occurrence is moderate with no prevention named. Detection is 3 because the 85 °C test targets reversal distance and found it.",
+        "recommended_action": "Set the reversal as a distance target, not a fixed time, and add margin above 150 mm at 85 °C and 9 V; run TC-AP-05 at every release.",
+        "evidence": [
+          "DR-1030"
+        ],
+        "rpn": 162,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "Window reverses by itself while closing on cobblestones (2 of 10 tries)",
+        "effect": "Customer cannot close the window on rough roads; no injury (main function degraded, intermittent).",
+        "cause": "Speed-ripple filter and 30 ms debounce do not reject road-induced speed ripple on cobblestones, so the force estimate crosses the threshold.",
+        "prevention": [
+          "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+        ],
+        "detection": [
+          "Rough-road vibration HIL profile"
+        ],
+        "severity": 7,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "The same false reversal happens on cobbles in WLC-200 despite the filter, so the prevention is weak and occurrence is high. Detection is 6 because the rough-road profile exists but the escape shows it does not cover the field condition.",
+        "recommended_action": "Run RR-04 (cobblestone at 30 km/h) and other road profiles on the WLC-200 build, count false reversals per cycle against an acceptance rate, and do not change the threshold without the stop-time check (LL-2021-07).",
+        "evidence": [
+          "DR-1008",
+          "DR-1023",
+          "LL-2021-07"
+        ],
+        "rpn": 336,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "Window reverses by itself without an obstacle during auto-up or express close at -18 to -20 °C",
+        "effect": "Customer cannot close the window in cold weather and must try again (main function degraded).",
+        "cause": "Cold, slow motor speed gives a speed drop that the force estimate reads as pinch; the 2 ms sampling below 0 °C (LL-2022-02) may pass more speed ripple than the filter was tuned for (hypothesis to check in the trace).",
+        "prevention": [
+          "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+        ],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 7,
+        "occurrence": 8,
+        "detection_rating": 7,
+        "rating_reasons": "Two open defects at -18 and -20 °C show the cause is present, so occurrence is high. Detection is 7 because the pinch tests target stop detection, not cold false reversals, so tests could find it but do not target it.",
+        "recommended_action": "Add a no-obstacle cold test (-20 and -30 °C, 9 to 16 V, auto-up and express close) that counts false reversals and logs the force estimate.",
+        "evidence": [
+          "DR-1004",
+          "DR-1011",
+          "LL-2022-02"
+        ],
+        "rpn": 392,
+        "action_needed": true
+      },
+      {
+        "function": "4. Keep track of window position",
+        "element": "Position counter",
+        "failure_mode": "Reported position drifts: 3.5 mm instead of 0 mm at the top seal after 200 cycles",
+        "effect": "The window stops short of closed, leaving a seal gap with noise and water ingress, and the end-stop and express logic works from a wrong position (comfort degraded).",
+        "cause": "Position counter accumulates Hall pulse counts without re-referencing at the end stop (hypothesis to confirm).",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "No named control; found by test (DR-1013)"
+        ],
+        "severity": 5,
+        "occurrence": 6,
+        "detection_rating": 5,
+        "rating_reasons": "One open defect shows the drift is already present, so occurrence is moderate with no prevention named. Detection is 5 because a 200-cycle test found it but no named control checks drift.",
+        "recommended_action": "Re-reference the position at each end stop and add a 200-cycle drift test with a limit (for example 1 mm) at 9 and 16 V.",
+        "evidence": [
+          "DR-1013"
+        ],
+        "rpn": 150,
+        "action_needed": true
+      },
+      {
+        "function": "4. Keep track of window position",
+        "element": "Position counter",
+        "failure_mode": "Hall signal loss is not flagged: motor keeps running into the seal for 1.2 s at 9 V with no DTC, and the position is not marked as lost",
+        "effect": "The window drives into the seal, and the speed input to anti-pinch is lost, so a hand in the pinch zone is not detected; injury is possible without warning.",
+        "cause": "The Hall timeout timer restarts on noise or slow pulses at 9 V, so the 200 ms timeout never fires (same mechanism as the WLC-100 field returns in LL-2023-05).",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "Hall signal plausibility check, 200 ms timeout (in the product; does not fire at 9 V per DR-1018)",
+          "Hall-loss HIL test at 9 V and 13.5 V (LL-2023-05)"
+        ],
+        "severity": 10,
+        "occurrence": 8,
+        "detection_rating": 4,
+        "rating_reasons": "Two open defects (DR-1018, DR-1027) show the same cause as the WLC-100 field returns, so occurrence is high. Detection is 4 because a targeted 9 V HIL test exists and found the defect, but the timer logic is not yet proven to fire at low speed.",
+        "recommended_action": "Replace the restart-on-noise timer with an edge-count plausibility check over a fixed window (no Hall edges while the motor drives for 200 ms), set DTC B1A01 on the same path, and add the DTC and stop checks to the 9 V Hall-loss HIL test and to an intermittent-connector test.",
+        "evidence": [
+          "DR-1018",
+          "DR-1027",
+          "LL-2023-05"
+        ],
+        "rpn": 320,
+        "action_needed": true
+      },
+      {
+        "function": "5. Protect the motor from overheating",
+        "element": "Thermal model",
+        "failure_mode": "Opening is allowed once after the estimated temperature passes 140 °C (seen at 143 °C)",
+        "effect": "The motor is driven one more time beyond its thermal limit, risking motor damage and a later window failure; no injury recorded.",
+        "cause": "The block decision reads the thermal estimate before the 100 ms thermal task has run with the newest current samples (same mechanism as LL-2024-01 on SMC-3).",
+        "prevention": [
+          "None confirmed in the existing controls table"
+        ],
+        "detection": [
+          "Thermal model reviewed against thermocouple data (TP-TH-01)",
+          "TC-TH-03 thermal test (found the defect)"
+        ],
+        "severity": 7,
+        "occurrence": 8,
+        "detection_rating": 5,
+        "rating_reasons": "Two open defects (DR-1012, DR-1019) show the stale-read cause is present and the platform fix is not confirmed, so occurrence is high. Detection is 5 because TC-TH-03 found it, but no test targets the request-right-after-crossing timing.",
+        "recommended_action": "Confirm the LL-2024-01 fix (block decision reads the estimate after the thermal task) is in the WLC-200 build, and add the LL-2024-01 test: request a movement right after the estimate crosses the limit, at 9 V and 16 V.",
+        "evidence": [
+          "DR-1012",
+          "DR-1019",
+          "LL-2024-01"
+        ],
+        "rpn": 280,
+        "action_needed": true
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "CAN interface",
+        "failure_mode": "WLC_Status frame missing during 100 diagnostic requests: 200 ms between two frames instead of 100 ms",
+        "effect": "The body controller acts on a stale window status for one cycle; small effect on the passenger.",
+        "cause": "Status frames share the transmit queue with diagnostic responses, and the queue sizing does not cover a burst of 100 back-to-back diagnostic requests.",
+        "prevention": [
+          "CAN transmit queue sized for the worst-case bus load (from LL-2024-09)"
+        ],
+        "detection": [
+          "No named control; found by TC-DG-03 (DR-1016)"
+        ],
+        "severity": 4,
+        "occurrence": 7,
+        "detection_rating": 4,
+        "rating_reasons": "The defect shows the queue prevention does not cover the diagnostic burst, so occurrence is moderate to high. Detection is 4 because TC-DG-03 targets frame timing under diagnostics at some conditions, but it is not a named control.",
+        "recommended_action": "Give status frames their own transmit buffer (as in LL-2024-09), repeat the worst-case queue calculation, and add the frame-timing check under diagnostic load to the release gate.",
+        "evidence": [
+          "DR-1016",
+          "LL-2024-09"
+        ],
+        "rpn": 112,
+        "action_needed": true
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "Diagnostics",
+        "failure_mode": "Diagnostic response takes 55 to 62 ms (limit 50 ms) in 3 of 100 requests during motor start",
+        "effect": "The service tool sees slow or timed-out responses, so workshop diagnosis is slower; no effect while driving.",
+        "cause": "The diagnostic response task is delayed by the motor-start load on the same processing path.",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "No named control; found by diagnostic timing test (DR-1022)"
+        ],
+        "severity": 3,
+        "occurrence": 6,
+        "detection_rating": 4,
+        "rating_reasons": "Three of 100 responses miss the limit, so occurrence is moderate with no prevention named. Detection is 4 because a timing test found it, but only during motor start.",
+        "recommended_action": "Raise the priority of diagnostic responses or move motor-start load off that path, and add a 100-request timing test during motor start to the release gate.",
+        "evidence": [
+          "DR-1022"
+        ],
+        "rpn": 72,
+        "action_needed": false
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "Diagnostics",
+        "failure_mode": "Overcurrent stops the motor, but DTC B1A02 is not stored and the fault state in WLC_Status stays 0",
+        "effect": "The workshop cannot see the overcurrent fault and the body controller is not informed; the customer sees the motor stop without explanation (fault reporting lost).",
+        "cause": "The overcurrent stop path does not call the fault store, so DTC B1A02 and the fault state are not set.",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "No named control; found by TC-DG-02 (DR-1009, DR-1029)"
+        ],
+        "severity": 4,
+        "occurrence": 8,
+        "detection_rating": 3,
+        "rating_reasons": "Two open defects show the fault store is skipped every time, so occurrence is high. Detection is 3 because TC-DG-02 targets overcurrent and found the missing DTC.",
+        "recommended_action": "Route the overcurrent stop through the fault store so B1A02 is set and the fault state is sent in WLC_Status, and add a DTC and status-bit check to TC-DG-02.",
+        "evidence": [
+          "DR-1009",
+          "DR-1029"
+        ],
+        "rpn": 96,
+        "action_needed": false
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "CAN interface",
+        "failure_mode": "Unintended: the CAN transceiver stays in standby instead of sleep; sleep current is 140 µA against a 100 µA limit",
+        "effect": "The battery drains while the car is parked, so the customer may return to a flat battery (noticed by most customers).",
+        "cause": "The node does not reach sleep mode when the bus goes quiet (hypothesis: sleep request or transceiver mode not set).",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "No named control; found by sleep-current measurement (DR-1007)"
+        ],
+        "severity": 4,
+        "occurrence": 8,
+        "detection_rating": 4,
+        "rating_reasons": "The open defect shows the node is already over the limit, so occurrence is high with no prevention named. Detection is 4 because a current measurement found it, but no named test covers sleep current at the release gate.",
+        "recommended_action": "Make the node send the sleep request and set the transceiver to sleep, and add a sleep-current test at 60 s after shutdown with a 100 µA limit at 13.5 V.",
+        "evidence": [
+          "DR-1007"
+        ],
+        "rpn": 128,
+        "action_needed": true
+      },
+      {
+        "function": "7. Behave safely at low and high supply voltage",
+        "element": "Supply monitor",
+        "failure_mode": "Controller does not wake up after reverse polarity (-14 V for 60 s); protection diode D3 is open",
+        "effect": "All window functions are lost, so the window cannot be opened or closed until the controller is repaired (main function lost).",
+        "cause": "Reverse-polarity protection diode D3 fails open under -14 V for 60 s, so its rating or stress margin is not verified (hypothesis to confirm).",
+        "prevention": [
+          "None in the existing controls table"
+        ],
+        "detection": [
+          "No named control; found by test (DR-1024)"
+        ],
+        "severity": 8,
+        "occurrence": 6,
+        "detection_rating": 6,
+        "rating_reasons": "The defect shows D3 can fail under this stress, so occurrence is moderate with no prevention named. Detection is 6 because a test found the failure, but no named control targets reverse polarity.",
+        "recommended_action": "Verify the D3 rating and derating against the -14 V for 60 s stress, add a reverse-polarity test to the supply monitor test set, and confirm the controller recovers or add a fuse if it does not.",
+        "evidence": [
+          "DR-1024"
+        ],
+        "rpn": 288,
+        "action_needed": true
+      }
+    ]
+  },
+  "cost_usd": 0.041,
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 5797,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.005887,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 63840,
+      "cacheReadInputTokens": 1418,
+      "cacheCreationInputTokens": 15696,
+      "webSearchRequests": 0,
+      "costUSD": 1.4026676,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 56626,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "input_tokens": 17118,
+  "output_tokens": 63840,
+  "seconds": 294.2,
+  "model": "claude-haiku-5-5",
+  "rows": [
+    {
+      "function": "4. Keep track of window position",
+      "element": "Position counter",
+      "failure_mode": "Hall signal loss is not flagged: motor keeps running into the seal for 1.2 s at 9 V with no DTC, and the position is not marked as lost",
+      "effect": "The window drives into the seal, and the speed input to anti-pinch is lost, so a hand in the pinch zone is not detected; injury is possible without warning.",
+      "cause": "The Hall timeout timer restarts on noise or slow pulses at 9 V, so the 200 ms timeout never fires (same mechanism as the WLC-100 field returns in LL-2023-05).",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "Hall signal plausibility check, 200 ms timeout (in the product; does not fire at 9 V per DR-1018)",
+        "Hall-loss HIL test at 9 V and 13.5 V (LL-2023-05)"
+      ],
+      "severity": 10,
+      "occurrence": 8,
+      "detection_rating": 4,
+      "rating_reasons": "Two open defects (DR-1018, DR-1027) show the same cause as the WLC-100 field returns, so occurrence is high. Detection is 4 because a targeted 9 V HIL test exists and found the defect, but the timer logic is not yet proven to fire at low speed.",
+      "recommended_action": "Replace the restart-on-noise timer with an edge-count plausibility check over a fixed window (no Hall edges while the motor drives for 200 ms), set DTC B1A01 on the same path, and add the DTC and stop checks to the 9 V Hall-loss HIL test and to an intermittent-connector test.",
+      "evidence": [
+        "DR-1018",
+        "DR-1027",
+        "LL-2023-05"
+      ],
+      "rpn": 320,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "Motor stops 13 to 14 ms after the pinch force passes 100 N at -30 °C and 9 V (limit 10 ms)",
+      "effect": "A hand or head in the pinch zone takes extra force before the window stops, so injury is possible without warning.",
+      "cause": "Pinch confirmation (speed sampling plus the 30 ms debounce path) needs extra samples at low motor speed when grease is cold and supply is 9 V, so the stop misses the 10 ms margin.",
+      "prevention": [
+        "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+      ],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 10,
+      "occurrence": 8,
+      "detection_rating": 3,
+      "rating_reasons": "Two open defects at the -30 °C and 9 V corner show the cause is present and the debounce path is not yet proven, so occurrence is high. Detection is 3 because a test targets this exact corner and has found it twice, though it still depends on the test being run.",
+      "recommended_action": "Shorten the confirmation path so stop time is 10 ms or less at -30 °C and 9 V; confirm the 2 ms speed sampling below 0 °C (LL-2022-02) is in the WLC-200 build; after any threshold or debounce change, recheck false reversals on RR-04 and stop time (LL-2021-07).",
+      "evidence": [
+        "DR-1001",
+        "DR-1006",
+        "LL-2022-02",
+        "LL-2021-07"
+      ],
+      "rpn": 240,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "Reversal distance is 146 mm at 85 °C (limit 150 mm)",
+      "effect": "An object in the pinch zone may not be released far enough, which breaks a legal requirement; injury is possible with a warning.",
+      "cause": "Reversal travel depends on motor speed, which drops at 85 °C (hypothesis); there is no temperature compensation of the reverse run.",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 9,
+      "occurrence": 6,
+      "detection_rating": 3,
+      "rating_reasons": "The defect shows a 4 mm shortfall at 85 °C, so occurrence is moderate with no prevention named. Detection is 3 because the 85 °C test targets reversal distance and found it.",
+      "recommended_action": "Set the reversal as a distance target, not a fixed time, and add margin above 150 mm at 85 °C and 9 V; run TC-AP-05 at every release.",
+      "evidence": [
+        "DR-1030"
+      ],
+      "rpn": 162,
+      "action_needed": true
+    },
+    {
+      "function": "7. Behave safely at low and high supply voltage",
+      "element": "Supply monitor",
+      "failure_mode": "Controller does not wake up after reverse polarity (-14 V for 60 s); protection diode D3 is open",
+      "effect": "All window functions are lost, so the window cannot be opened or closed until the controller is repaired (main function lost).",
+      "cause": "Reverse-polarity protection diode D3 fails open under -14 V for 60 s, so its rating or stress margin is not verified (hypothesis to confirm).",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "No named control; found by test (DR-1024)"
+      ],
+      "severity": 8,
+      "occurrence": 6,
+      "detection_rating": 6,
+      "rating_reasons": "The defect shows D3 can fail under this stress, so occurrence is moderate with no prevention named. Detection is 6 because a test found the failure, but no named control targets reverse polarity.",
+      "recommended_action": "Verify the D3 rating and derating against the -14 V for 60 s stress, add a reverse-polarity test to the supply monitor test set, and confirm the controller recovers or add a fuse if it does not.",
+      "evidence": [
+        "DR-1024"
+      ],
+      "rpn": 288,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "Window reverses by itself without an obstacle during auto-up or express close at -18 to -20 °C",
+      "effect": "Customer cannot close the window in cold weather and must try again (main function degraded).",
+      "cause": "Cold, slow motor speed gives a speed drop that the force estimate reads as pinch; the 2 ms sampling below 0 °C (LL-2022-02) may pass more speed ripple than the filter was tuned for (hypothesis to check in the trace).",
+      "prevention": [
+        "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+      ],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 7,
+      "occurrence": 8,
+      "detection_rating": 7,
+      "rating_reasons": "Two open defects at -18 and -20 °C show the cause is present, so occurrence is high. Detection is 7 because the pinch tests target stop detection, not cold false reversals, so tests could find it but do not target it.",
+      "recommended_action": "Add a no-obstacle cold test (-20 and -30 °C, 9 to 16 V, auto-up and express close) that counts false reversals and logs the force estimate.",
+      "evidence": [
+        "DR-1004",
+        "DR-1011",
+        "LL-2022-02"
+      ],
+      "rpn": 392,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "Window reverses by itself while closing on cobblestones (2 of 10 tries)",
+      "effect": "Customer cannot close the window on rough roads; no injury (main function degraded, intermittent).",
+      "cause": "Speed-ripple filter and 30 ms debounce do not reject road-induced speed ripple on cobblestones, so the force estimate crosses the threshold.",
+      "prevention": [
+        "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+      ],
+      "detection": [
+        "Rough-road vibration HIL profile"
+      ],
+      "severity": 7,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "The same false reversal happens on cobbles in WLC-200 despite the filter, so the prevention is weak and occurrence is high. Detection is 6 because the rough-road profile exists but the escape shows it does not cover the field condition.",
+      "recommended_action": "Run RR-04 (cobblestone at 30 km/h) and other road profiles on the WLC-200 build, count false reversals per cycle against an acceptance rate, and do not change the threshold without the stop-time check (LL-2021-07).",
+      "evidence": [
+        "DR-1008",
+        "DR-1023",
+        "LL-2021-07"
+      ],
+      "rpn": 336,
+      "action_needed": true
+    },
+    {
+      "function": "5. Protect the motor from overheating",
+      "element": "Thermal model",
+      "failure_mode": "Opening is allowed once after the estimated temperature passes 140 °C (seen at 143 °C)",
+      "effect": "The motor is driven one more time beyond its thermal limit, risking motor damage and a later window failure; no injury recorded.",
+      "cause": "The block decision reads the thermal estimate before the 100 ms thermal task has run with the newest current samples (same mechanism as LL-2024-01 on SMC-3).",
+      "prevention": [
+        "None confirmed in the existing controls table"
+      ],
+      "detection": [
+        "Thermal model reviewed against thermocouple data (TP-TH-01)",
+        "TC-TH-03 thermal test (found the defect)"
+      ],
+      "severity": 7,
+      "occurrence": 8,
+      "detection_rating": 5,
+      "rating_reasons": "Two open defects (DR-1012, DR-1019) show the stale-read cause is present and the platform fix is not confirmed, so occurrence is high. Detection is 5 because TC-TH-03 found it, but no test targets the request-right-after-crossing timing.",
+      "recommended_action": "Confirm the LL-2024-01 fix (block decision reads the estimate after the thermal task) is in the WLC-200 build, and add the LL-2024-01 test: request a movement right after the estimate crosses the limit, at 9 V and 16 V.",
+      "evidence": [
+        "DR-1012",
+        "DR-1019",
+        "LL-2024-01"
+      ],
+      "rpn": 280,
+      "action_needed": true
+    },
+    {
+      "function": "1. Move the window as the driver commands, in manual and express mode",
+      "element": "Supply monitor",
+      "failure_mode": "Window cannot be operated after ignition off before the 60 s retained-power period ends (stops at about 45 to 50 s)",
+      "effect": "After leaving the car, the driver or a passenger finds the switch dead before the expected 60 s, so a window that is still open cannot be closed (comfort function lost).",
+      "cause": "Retained-power timer in the supply monitor expires early (about 45 to 50 s measured instead of 60 s); timer source and tolerance are not in the structure document (hypothesis to confirm).",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "No named control; found by test (DR-1002, DR-1015)"
+      ],
+      "severity": 6,
+      "occurrence": 7,
+      "detection_rating": 4,
+      "rating_reasons": "Two open defects show the timer is already short, and no prevention is named, so occurrence is high. Detection is 4 because tests find it but no named test targets retained power across supply and temperature.",
+      "recommended_action": "Set the retained-power timer to at least 60 s over the full supply and temperature range. Add a named test of 60 s retained power at 9, 13.5 and 16 V and at -30 and 85 °C, run at every release.",
+      "evidence": [
+        "DR-1002",
+        "DR-1015"
+      ],
+      "rpn": 168,
+      "action_needed": true
+    },
+    {
+      "function": "1. Move the window as the driver commands, in manual and express mode",
+      "element": "Position counter",
+      "failure_mode": "Express close is accepted before the window is normalized (after battery disconnect), so the window closes fully without a known end position",
+      "effect": "The window runs to the top seal at full speed with no known end stop, so it can knock or hit the seal hard; the comfort function runs when it should be refused.",
+      "cause": "Express-close enable is not gated by the normalization state that the position counter holds after power loss.",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "No named control; found by test (DR-1020)"
+      ],
+      "severity": 5,
+      "occurrence": 6,
+      "detection_rating": 5,
+      "rating_reasons": "The defect shows the gate is missing, but the event needs a battery disconnect, so occurrence is moderate. Detection is 5 because a test found it but no named test checks the normalization gate.",
+      "recommended_action": "Gate express close on the normalization flag and add a named test: disconnect the battery, then short-press up, and confirm express close is refused until normalization is done.",
+      "evidence": [
+        "DR-1020",
+        "LL-2024-01"
+      ],
+      "rpn": 150,
+      "action_needed": true
+    },
+    {
+      "function": "1. Move the window as the driver commands, in manual and express mode",
+      "element": "Motor driver",
+      "failure_mode": "Window keeps moving about 180 ms after manual switch release at 16 V (60 ms at 13.5 V; limit 100 ms)",
+      "effect": "The window overshoots the position the driver chose, so it stops higher or lower than intended and can strike the seal or leave a gap.",
+      "cause": "Motor stop after switch release is delayed by the release path, and the delay grows with supply voltage because the motor runs faster at 16 V.",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "No named control; found by test (DR-1014)"
+      ],
+      "severity": 5,
+      "occurrence": 6,
+      "detection_rating": 5,
+      "rating_reasons": "The defect shows the delay is present at 16 V, so occurrence is moderate with no prevention named. Detection is 5 because a test found it but no named control targets release stop time at all voltages.",
+      "recommended_action": "Measure stop-on-release time at 9, 13.5 and 16 V, find the delay in the release path (switch debounce or motor command ramp), cap it at 100 ms, and add the test to the release gate.",
+      "evidence": [
+        "DR-1014"
+      ],
+      "rpn": 150,
+      "action_needed": true
+    },
+    {
+      "function": "4. Keep track of window position",
+      "element": "Position counter",
+      "failure_mode": "Reported position drifts: 3.5 mm instead of 0 mm at the top seal after 200 cycles",
+      "effect": "The window stops short of closed, leaving a seal gap with noise and water ingress, and the end-stop and express logic works from a wrong position (comfort degraded).",
+      "cause": "Position counter accumulates Hall pulse counts without re-referencing at the end stop (hypothesis to confirm).",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "No named control; found by test (DR-1013)"
+      ],
+      "severity": 5,
+      "occurrence": 6,
+      "detection_rating": 5,
+      "rating_reasons": "One open defect shows the drift is already present, so occurrence is moderate with no prevention named. Detection is 5 because a 200-cycle test found it but no named control checks drift.",
+      "recommended_action": "Re-reference the position at each end stop and add a 200-cycle drift test with a limit (for example 1 mm) at 9 and 16 V.",
+      "evidence": [
+        "DR-1013"
+      ],
+      "rpn": 150,
+      "action_needed": true
+    },
+    {
+      "function": "2. Stop the window at the end positions",
+      "element": "Motor driver",
+      "failure_mode": "Window hits the top seal with a loud knock at full speed",
+      "effect": "Customers hear a knock at the top of every close; load on the seal and regulator (noticed by most customers as noise).",
+      "cause": "End-stop detection acts only at full speed, so the window reaches the seal without a slow-down (hypothesis to confirm with the team).",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "No named control; reported by clinic drivers (DR-1026), no damage seen"
+      ],
+      "severity": 4,
+      "occurrence": 8,
+      "detection_rating": 7,
+      "rating_reasons": "The knock happens at the end of routine closing with no prevention named, so occurrence is high. Detection is 7 because no test targets end-stop noise, though tests could detect it.",
+      "recommended_action": "Add a slow-down ramp before the top end stop, and measure seal impact and noise in HIL and vehicle tests against an acoustic limit.",
+      "evidence": [
+        "DR-1026"
+      ],
+      "rpn": 224,
+      "action_needed": true
+    },
+    {
+      "function": "1. Move the window as the driver commands, in manual and express mode",
+      "element": "Switch input",
+      "failure_mode": "Window reacts late to a switch press (press-to-motor-start delay not measured)",
+      "effect": "The driver perceives a lag and the window feels unresponsive (comfort degraded).",
+      "cause": "Short-press and held-press classification adds delay before the motor starts (WLC-008, WLC-009); the size of the delay is not measured.",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "No named control; reported by drivers (DR-1010), no measurement"
+      ],
+      "severity": 4,
+      "occurrence": 5,
+      "detection_rating": 7,
+      "rating_reasons": "Two drivers reported lag, so the cause is plausible but unmeasured, giving moderate occurrence. Detection is 7 because no test targets switch latency, though tests could find it.",
+      "recommended_action": "Measure press-to-motor-start latency at 9 and 16 V, set a limit in the SRS, and add the measurement to the HIL test set.",
+      "evidence": [
+        "DR-1010"
+      ],
+      "rpn": 140,
+      "action_needed": true
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "CAN interface",
+      "failure_mode": "Unintended: the CAN transceiver stays in standby instead of sleep; sleep current is 140 µA against a 100 µA limit",
+      "effect": "The battery drains while the car is parked, so the customer may return to a flat battery (noticed by most customers).",
+      "cause": "The node does not reach sleep mode when the bus goes quiet (hypothesis: sleep request or transceiver mode not set).",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "No named control; found by sleep-current measurement (DR-1007)"
+      ],
+      "severity": 4,
+      "occurrence": 8,
+      "detection_rating": 4,
+      "rating_reasons": "The open defect shows the node is already over the limit, so occurrence is high with no prevention named. Detection is 4 because a current measurement found it, but no named test covers sleep current at the release gate.",
+      "recommended_action": "Make the node send the sleep request and set the transceiver to sleep, and add a sleep-current test at 60 s after shutdown with a 100 µA limit at 13.5 V.",
+      "evidence": [
+        "DR-1007"
+      ],
+      "rpn": 128,
+      "action_needed": true
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "CAN interface",
+      "failure_mode": "WLC_Status frame missing during 100 diagnostic requests: 200 ms between two frames instead of 100 ms",
+      "effect": "The body controller acts on a stale window status for one cycle; small effect on the passenger.",
+      "cause": "Status frames share the transmit queue with diagnostic responses, and the queue sizing does not cover a burst of 100 back-to-back diagnostic requests.",
+      "prevention": [
+        "CAN transmit queue sized for the worst-case bus load (from LL-2024-09)"
+      ],
+      "detection": [
+        "No named control; found by TC-DG-03 (DR-1016)"
+      ],
+      "severity": 4,
+      "occurrence": 7,
+      "detection_rating": 4,
+      "rating_reasons": "The defect shows the queue prevention does not cover the diagnostic burst, so occurrence is moderate to high. Detection is 4 because TC-DG-03 targets frame timing under diagnostics at some conditions, but it is not a named control.",
+      "recommended_action": "Give status frames their own transmit buffer (as in LL-2024-09), repeat the worst-case queue calculation, and add the frame-timing check under diagnostic load to the release gate.",
+      "evidence": [
+        "DR-1016",
+        "LL-2024-09"
+      ],
+      "rpn": 112,
+      "action_needed": true
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "Diagnostics",
+      "failure_mode": "Overcurrent stops the motor, but DTC B1A02 is not stored and the fault state in WLC_Status stays 0",
+      "effect": "The workshop cannot see the overcurrent fault and the body controller is not informed; the customer sees the motor stop without explanation (fault reporting lost).",
+      "cause": "The overcurrent stop path does not call the fault store, so DTC B1A02 and the fault state are not set.",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "No named control; found by TC-DG-02 (DR-1009, DR-1029)"
+      ],
+      "severity": 4,
+      "occurrence": 8,
+      "detection_rating": 3,
+      "rating_reasons": "Two open defects show the fault store is skipped every time, so occurrence is high. Detection is 3 because TC-DG-02 targets overcurrent and found the missing DTC.",
+      "recommended_action": "Route the overcurrent stop through the fault store so B1A02 is set and the fault state is sent in WLC_Status, and add a DTC and status-bit check to TC-DG-02.",
+      "evidence": [
+        "DR-1009",
+        "DR-1029"
+      ],
+      "rpn": 96,
+      "action_needed": false
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "Diagnostics",
+      "failure_mode": "Diagnostic response takes 55 to 62 ms (limit 50 ms) in 3 of 100 requests during motor start",
+      "effect": "The service tool sees slow or timed-out responses, so workshop diagnosis is slower; no effect while driving.",
+      "cause": "The diagnostic response task is delayed by the motor-start load on the same processing path.",
+      "prevention": [
+        "None in the existing controls table"
+      ],
+      "detection": [
+        "No named control; found by diagnostic timing test (DR-1022)"
+      ],
+      "severity": 3,
+      "occurrence": 6,
+      "detection_rating": 4,
+      "rating_reasons": "Three of 100 responses miss the limit, so occurrence is moderate with no prevention named. Detection is 4 because a timing test found it, but only during motor start.",
+      "recommended_action": "Raise the priority of diagnostic responses or move motor-start load off that path, and add a 100-request timing test during motor start to the release gate.",
+      "evidence": [
+        "DR-1022"
+      ],
+      "rpn": 72,
+      "action_needed": false
+    }
+  ],
+  "problems": [
+    "row 1: control 'None in the existing controls table' is not in the structure document",
+    "row 1: control 'Hall-loss HIL test at 9 V and 13.5 V (LL-2023-05)' is not in the structure document",
+    "row 3: control 'None in the existing controls table' is not in the structure document",
+    "row 4: control 'None in the existing controls table' is not in the structure document",
+    "row 4: control 'No named control; found by test (DR-1024)' is not in the structure document",
+    "row 7: control 'None confirmed in the existing controls table' is not in the structure document",
+    "row 7: control 'TC-TH-03 thermal test (found the defect)' is not in the structure document",
+    "row 8: control 'None in the existing controls table' is not in the structure document",
+    "row 8: control 'No named control; found by test (DR-1002, DR-1015)' is not in the structure document",
+    "row 9: control 'None in the existing controls table' is not in the structure document",
+    "row 9: control 'No named control; found by test (DR-1020)' is not in the structure document",
+    "row 10: control 'None in the existing controls table' is not in the structure document",
+    "row 10: control 'No named control; found by test (DR-1014)' is not in the structure document",
+    "row 11: control 'None in the existing controls table' is not in the structure document",
+    "row 11: control 'No named control; found by test (DR-1013)' is not in the structure document",
+    "row 12: control 'None in the existing controls table' is not in the structure document",
+    "row 12: control 'No named control; reported by clinic drivers (DR-1026), no damage seen' is not in the structure document",
+    "row 13: control 'None in the existing controls table' is not in the structure document",
+    "row 13: control 'No named control; reported by drivers (DR-1010), no measurement' is not in the structure document",
+    "row 14: control 'None in the existing controls table' is not in the structure document",
+    "row 14: control 'No named control; found by sleep-current measurement (DR-1007)' is not in the structure document",
+    "row 15: control 'No named control; found by TC-DG-03 (DR-1016)' is not in the structure document",
+    "row 16: control 'None in the existing controls table' is not in the structure document",
+    "row 16: control 'No named control; found by TC-DG-02 (DR-1009, DR-1029)' is not in the structure document",
+    "row 17: control 'None in the existing controls table' is not in the structure document",
+    "row 17: control 'No named control; found by diagnostic timing test (DR-1022)' is not in the structure document"
+  ]
+}

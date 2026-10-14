@@ -1,0 +1,252 @@
+{
+  "answer": {
+    "triage": [
+      {
+        "id": "DR-1001",
+        "component": "anti_pinch",
+        "severity": "S1",
+        "duplicate_of": null,
+        "reason": "Pinch reversal stop took 13 ms against a 10 ms limit at -30 °C. A late stop on a pinch can injure a person. Earliest report of the cold late-stop problem."
+      },
+      {
+        "id": "DR-1002",
+        "component": "power",
+        "severity": "S3",
+        "duplicate_of": null,
+        "reason": "Window stops working about 50 s after ignition off. The report questions whether the spec is 60 s, so the requirement should be confirmed. Limit missed with no safety effect. Earliest report of the retained-power problem."
+      },
+      {
+        "id": "DR-1003",
+        "component": "can_comm",
+        "severity": "S4",
+        "duplicate_of": null,
+        "reason": "WLC_Status period of 97 to 104 ms is within the 100 ms ±10 ms limit. Information only, not a defect."
+      },
+      {
+        "id": "DR-1004",
+        "component": "anti_pinch",
+        "severity": "S2",
+        "duplicate_of": null,
+        "reason": "At about -20 °C the window reversed mid-travel at about 150 mm with nothing in the window; a retry worked. This is a false reversal in cold conditions. The title says express up and the description says express close, so the direction should be confirmed. Earliest report of the cold false-reversal problem."
+      },
+      {
+        "id": "DR-1005",
+        "component": "diagnostics",
+        "severity": "S4",
+        "duplicate_of": null,
+        "reason": "Comment typo (B1A10 should be B1A01) in the DTC table. Code is correct; documentation only."
+      },
+      {
+        "id": "DR-1006",
+        "component": "anti_pinch",
+        "severity": "S1",
+        "duplicate_of": "DR-1001",
+        "reason": "Same problem as DR-1001: pinch stop is late at cold temperature, with low supply. The 14 ms stop time is the same late-stop symptom, and 85 °C passing matches DR-1001's cold-only condition."
+      },
+      {
+        "id": "DR-1007",
+        "component": "power",
+        "severity": "S3",
+        "duplicate_of": null,
+        "reason": "Sleep current of 140 µA against a 100 µA limit. The CAN transceiver stays in standby instead of sleep. Limit missed with no safety effect."
+      },
+      {
+        "id": "DR-1008",
+        "component": "anti_pinch",
+        "severity": "S2",
+        "duplicate_of": null,
+        "reason": "Window reversed by itself on cobblestones while closing, 2 out of 10 tries, with no obstacle. False reversal in normal use. Earliest report of the rough-road false-reversal problem."
+      },
+      {
+        "id": "DR-1009",
+        "component": "diagnostics",
+        "severity": "S2",
+        "duplicate_of": null,
+        "reason": "After a 27 A overcurrent for 100 ms the motor stopped, but B1A02 was not stored and the fault state stayed 0. Diagnostic function lost. Earliest report of this overcurrent DTC/fault-state problem."
+      },
+      {
+        "id": "DR-1010",
+        "component": "switch_input",
+        "severity": "S3",
+        "duplicate_of": null,
+        "reason": "Two clinic drivers report the window reacts late to the switch. No measurement, no expected value and no reproduction. Too vague to confirm; severity is provisional until a measured response time is available."
+      },
+      {
+        "id": "DR-1011",
+        "component": "anti_pinch",
+        "severity": "S2",
+        "duplicate_of": "DR-1004",
+        "reason": "Same problem as DR-1004: cold-weather false reversal with no obstacle, at -18 °C instead of -20 °C. The earlier report is DR-1004."
+      },
+      {
+        "id": "DR-1012",
+        "component": "thermal",
+        "severity": "S2",
+        "duplicate_of": null,
+        "reason": "Above 140 °C the thermal block allowed one opening request, and the next one was refused. Thermal protection failed for one request. Earliest report of this thermal-block problem."
+      },
+      {
+        "id": "DR-1013",
+        "component": "position",
+        "severity": "S3",
+        "duplicate_of": null,
+        "reason": "After 200 cycles the reported top-seal position is 3.5 mm instead of 0 mm. Position accuracy limit missed. No safety effect is stated, so this is S3, but it should be checked for effects on end-stop logic."
+      },
+      {
+        "id": "DR-1014",
+        "component": "motor_drive",
+        "severity": "S3",
+        "duplicate_of": null,
+        "reason": "Motor command stays on 180 ms after switch release at 16 V (limit 100 ms) and 60 ms at 13.5 V. The voltage dependence points to motor drive stop behaviour rather than the switch. Limit missed with no pinch effect stated."
+      },
+      {
+        "id": "DR-1015",
+        "component": "power",
+        "severity": "S3",
+        "duplicate_of": "DR-1002",
+        "reason": "Same problem as DR-1002: retained power after ignition off is shorter than the 60 s requirement, here about 45 s. The earlier report is DR-1002."
+      },
+      {
+        "id": "DR-1016",
+        "component": "can_comm",
+        "severity": "S3",
+        "duplicate_of": null,
+        "reason": "One WLC_Status frame was missing during 100 diagnostic requests, with a 200 ms gap instead of 100 ms. This is a timing limit miss, not the jitter in DR-1003, so it is not a duplicate."
+      },
+      {
+        "id": "DR-1017",
+        "component": "switch_input",
+        "severity": "S4",
+        "duplicate_of": null,
+        "reason": "Draft owner's manual page 14 shows the switch symbol upside down. Documentation only."
+      },
+      {
+        "id": "DR-1018",
+        "component": "diagnostics",
+        "severity": "S1",
+        "duplicate_of": null,
+        "reason": "Hall signal disconnected while closing at 9 V. The motor ran 1.2 s to the end stop with no DTC and no fault response. If anti-pinch depends on Hall pulses, a pinch in this state would go undetected, so this is a safety function bypass. Earliest report of the missing Hall-loss detection."
+      },
+      {
+        "id": "DR-1019",
+        "component": "thermal",
+        "severity": "S2",
+        "duplicate_of": "DR-1012",
+        "reason": "Same problem as DR-1012: the thermal block at 143 °C let one opening through. The report itself asks whether it is a repeat. The earlier report is DR-1012."
+      },
+      {
+        "id": "DR-1020",
+        "component": "position",
+        "severity": "S2",
+        "duplicate_of": null,
+        "reason": "Express close was available after battery disconnect before the window was normalized. The requirement is that express close is not available until normalized. Raise to S1 if anti-pinch is inactive before normalization."
+      },
+      {
+        "id": "DR-1021",
+        "component": "thermal",
+        "severity": "S4",
+        "duplicate_of": null,
+        "reason": "Unused variable t_prev in thermal_model.c causes a compiler warning. No functional effect."
+      },
+      {
+        "id": "DR-1022",
+        "component": "diagnostics",
+        "severity": "S3",
+        "duplicate_of": null,
+        "reason": "3 of 100 diagnostic responses took 55 to 62 ms against a 50 ms limit, during motor start. Timing limit missed with no safety effect stated."
+      },
+      {
+        "id": "DR-1023",
+        "component": "anti_pinch",
+        "severity": "S2",
+        "duplicate_of": "DR-1008",
+        "reason": "Same problem as DR-1008: unexpected window reversal on cobblestones while closing, with nothing trapped. The earlier report is DR-1008."
+      },
+      {
+        "id": "DR-1024",
+        "component": "power",
+        "severity": "S2",
+        "duplicate_of": null,
+        "reason": "After -14 V applied for 60 s, the controller does not wake up. Reverse-polarity protection diode D3 is open. Controller function lost after a reverse-polarity event."
+      },
+      {
+        "id": "DR-1025",
+        "component": "power",
+        "severity": "S4",
+        "duplicate_of": null,
+        "reason": "Undervoltage stop at 21 ms against a 50 ms limit at 5.5 V. Within limit, information only."
+      },
+      {
+        "id": "DR-1026",
+        "component": "motor_drive",
+        "severity": "S3",
+        "duplicate_of": null,
+        "reason": "Loud knock when the window reaches the top seal, no damage seen. No force or speed measurement and no stated limit, so the report is vague. Severity is provisional and likely end-stop approach behaviour. Position drift in DR-1013 may be related but is not confirmed."
+      },
+      {
+        "id": "DR-1027",
+        "component": "diagnostics",
+        "severity": "S1",
+        "duplicate_of": "DR-1018",
+        "reason": "Same problem as DR-1018: Hall signal lost with no DTC, and the window kept pushing into the seal. The earlier report is DR-1018."
+      },
+      {
+        "id": "DR-1028",
+        "component": "motor_drive",
+        "severity": "S4",
+        "duplicate_of": null,
+        "reason": "Inrush of 14 A for 40 ms at 16 V. No spec limit, so not a failure. This is a proposal for a new requirement, not a defect."
+      },
+      {
+        "id": "DR-1029",
+        "component": "diagnostics",
+        "severity": "S2",
+        "duplicate_of": "DR-1009",
+        "reason": "Same problem as DR-1009: after overcurrent the motor stops, but the fault state stays 0 and fault memory is empty. The earlier report is DR-1009."
+      },
+      {
+        "id": "DR-1030",
+        "component": "anti_pinch",
+        "severity": "S1",
+        "duplicate_of": null,
+        "reason": "At 85 °C the pinch reversal was 146 mm against a 150 mm limit (v1.3), while 162 mm passed at 23 °C. The reversal distance is short in a safety function, which could leave a pinched part unreleased. Different measure and condition from DR-1001, so not a duplicate."
+      }
+    ]
+  },
+  "cost_usd": 0.0103,
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 3669,
+      "outputTokens": 14,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.003739,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 2,
+      "outputTokens": 11016,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 5219,
+      "webSearchRequests": 0,
+      "costUSD": 0.26208,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 7861,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "input_tokens": 5221,
+  "output_tokens": 11016,
+  "seconds": 50.4,
+  "model": "claude-haiku-5-5",
+  "problems": []
+}

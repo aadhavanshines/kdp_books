@@ -1,57 +1,37 @@
-Unknown child process pid 6427, will report returncode 255
 [claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
 [claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
 [claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
 [claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
-Unknown child process pid 7048, will report returncode 255
-Unknown child process pid 7088, will report returncode 255
 [claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
 [claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
 [claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
 [claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
-Unknown child process pid 7481, will report returncode 255
 [claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
 [claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
-Unknown child process pid 7812, will report returncode 255
 [claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/query.py", line 391, in _read_messages
-    async for message in self.transport.read_messages():
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/transport/subprocess_cli.py", line 1162, in _read_messages_impl
-    raise self._exit_error
-claude_agent_sdk._errors.ProcessError: Command failed with exit code 1 (exit code: 1)
-Error output: Check stderr output for details
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 122, in <module>
-    main()
-  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 109, in main
-    asyncio.run(run_all(args[1] if len(args) > 1 else model, tag))
-  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-           ^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
-    return future.result()
-           ^^^^^^^^^^^^^^^
-  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 92, in run_all
-    results = await asyncio.gather(*(answer(q["question"], docs, model, limit)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 82, in answer
-    r = await ask_async(question, system_prompt(docs), SCHEMA, model=model,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/kdp_books/ai-for-engineers/projects/common/claude_call.py", line 36, in ask_async
-    async for message in query(prompt=prompt, options=options):
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/query.py", line 129, in query
-    async for message in client.process_query(
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/client.py", line 56, in process_query
-    async for msg in inner:
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/client.py", line 204, in _process_query_inner
-    async for data in query.receive_messages():
-  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/query.py", line 1144, in receive_messages
-    raise exc
-claude_agent_sdk._errors.ResultError: Claude Code returned an error result: You've hit your session limit · resets 7:40pm (UTC) (exit code: 1)
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+q01 found=True  The pinch rod on bench HIL-2 has a spring rate of 10 N/mm, according to the Equi
+q02 found=True  According to the lessons learned, pinch stop time is worst at -30 °C and 9 V, th
+q03 found=True  Body vibration on rough roads made the motor speed oscillate, and the WLC-100 an
+q04 found=True  The fix for the rough-road false reversals added a 30 ms debounce before a pinch
+q05 found=True  Stop latency is the time from the first log sample where the pinch force is abov
+q06 found=True  Before the connector corrosion fix, WLC-100 had a 1 s Hall signal timeout, so th
+q07 found=True  The lessons-learned record LL-2023-05 says the 9 V case matters because the moto
+q08 found=True  The thermal model updated its temperature estimate in a 100 ms task, but the blo
+q09 found=True  During a diagnostic session, long diagnostic responses filled the CAN transmit q
+q10 found=True  When the CAN cycle time gets shorter (for example from 100 ms to 50 ms), the wor
+q11 found=True  The log sampling period for thermal tests is 10 ms. The bench guide says 1 ms ap
+q12 found=True  The pinch rod force sensor is next due for calibration on 15 February 2027. It w
+q13 found=True  Readings below 1 N should not be treated as contact. The bench guide notes that 
+q14 found=True  Each anti-pinch test is repeated three times on release candidates, according to
+q15 found=True  Above 130 °C, the thermal test (TP-TH-01, version 2.0) requires that motor curre
+q16 found=True  The documents give only a partial answer. LL-2021-07 reports 37 warranty claims 
+q17 found=False The documents don't say which supplier makes the WLC-200 Hall sensor. The bench 
+q18 found=False The documents do not mention any ISO standard or give an ISO maximum pinch force
+18 questions, $0.0296

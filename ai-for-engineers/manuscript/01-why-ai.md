@@ -24,7 +24,7 @@ The same model has weaknesses that matter a great deal in engineering:
 - **Arithmetic and measurement.** A model doesn't calculate the way a computer program does. It can produce a number that looks right and isn't. In this book, Claude never does arithmetic that matters: code computes every measurement, every risk priority number and every range in a report.
 - **Knowing what it wasn't told.** A model fills gaps with what is typical. If a fact sheet leaves out that a limit changed, the model may draw a confident and wrong conclusion. It happened in Chapter 9.
 - **Being systematic by default.** Asked for an FMEA, Claude's first draft followed the evidence it was given (the defect reports) and missed four failure modes that had never occurred, including "pinch not detected", the most severe one (Chapter 11). A method in the prompt fixed most of that; a checklist in code caught the rest.
-- **Consistency.** The same question gives somewhat different answers each time. One of three triage runs graded two safety-relevant defects as S2 instead of S1 (Chapter 10).
+- **Consistency.** The same question gives somewhat different answers each time. In one of six Sonnet runs, defect triage rated two safety-relevant defects S2 instead of S1 (Chapter 10).
 - **Responsibility.** A model can't sign a test report, own a safety argument or answer an auditor's question. People do.
 
 > **Note:** These weaknesses are not reasons to avoid AI. They are design requirements for the tools you build around it, just as a sensor's noise and drift are design requirements for the software that reads it.

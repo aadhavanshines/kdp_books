@@ -107,7 +107,7 @@ def triage_failures(res, model):
         (PROJECTS / "wlc200" / "defects" / "defects.json").read_text())}
     for d in open_defects:
         d["description"] = texts[d["id"]]
-    failures = [{k: r[k] for k in ("run", "test", "criteria", "anomalies")}
+    failures = [{k: r[k] for k in ("run", "test", "conditions", "criteria", "anomalies")}
                 for r in res["results"] if r["status"] != "PASS"]
     if not failures:
         return {"answer": {"decisions": []}, "cost_usd": 0.0}, failures, open_defects

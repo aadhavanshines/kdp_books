@@ -1,0 +1,21 @@
+{
+  "night": "2026-10-07",
+  "software": "2.4.0-rc4",
+  "failed": [
+    "TC-AP-03",
+    "TC-AP-04"
+  ],
+  "decisions": {
+    "TC-AP-03": "NEW DRAFT",
+    "TC-AP-04": "DR-1001"
+  },
+  "problems": [],
+  "cost_usd": 0.0838,
+  "files": [
+    "defect-drafts.md",
+    "report-2026-10-07-nightly.docx",
+    "report-nightly.json",
+    "results.json",
+    "trend-2026-10-07.png"
+  ]
+}

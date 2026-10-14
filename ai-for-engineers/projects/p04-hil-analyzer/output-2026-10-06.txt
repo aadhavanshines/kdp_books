@@ -31,4 +31,4 @@ Anomalies / notes:
   R12 TC-DG-01: stop_after_hall_loss_ms = 203 ms is within 2% of its min limit 200 (margin 3 ms)
   R12 TC-DG-01: Hall loss time is only known to within one Hall interval (4 ms): true latency is 199..203 ms, so the 200 ms lower limit cannot be confirmed with certainty
 
-9 PASS, 3 FAIL/ERROR. Written to /tmp/claude-0/-home-user-kdp-books/9c463033-db86-5ea1-9c1b-ce1a23974b58/scratchpad/r.json
+9 PASS, 3 FAIL/ERROR. Written to results.json

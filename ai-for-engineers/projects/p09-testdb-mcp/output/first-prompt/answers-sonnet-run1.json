@@ -1,0 +1,214 @@
+[
+  {
+    "id": "d01",
+    "question": "Which tests failed on 2026-10-06?",
+    "answer": {
+      "answer": "Three tests failed on 2026-10-06: TC-AP-04 (stop latency 14.0 ms, limit <= 10), TC-CAN-01 (max period 112.0 ms, limit 45 to 55), and TC-TH-03 (opening started at 143.9 °C, limit no opening above 140).",
+      "items": [
+        "TC-AP-04",
+        "TC-CAN-01",
+        "TC-TH-03"
+      ]
+    },
+    "tools": [
+      "night_results",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0179
+  },
+  {
+    "id": "d02",
+    "question": "On which night did TC-AP-05 first pass after failing?",
+    "answer": {
+      "answer": "TC-AP-05 first passed after failing on 2026-10-05. It failed on 2026-10-03 and 2026-10-04 against the tighter limit of >= 150 mm that came with spec v1.3. It passed on 2026-10-05 with software 2.4.0-rc3, measuring 151.0 mm.",
+      "items": [
+        "2026-10-05"
+      ]
+    },
+    "tools": [
+      "test_history",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0161
+  },
+  {
+    "id": "d03",
+    "question": "Which open defects have severity S1?",
+    "answer": {
+      "answer": "There are 3 open S1 defects: DR-1001 (pinch reversal late at -30 °C, anti_pinch, TC-AP-04), DR-1018 (Hall sensor loss: motor keeps running, diagnostics, TC-DG-01) and DR-1020 (express close works when not normalized, position, TC-MV-08).",
+      "items": [
+        "DR-1001",
+        "DR-1018",
+        "DR-1020"
+      ]
+    },
+    "tools": [
+      "find_defects",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0152
+  },
+  {
+    "id": "d04",
+    "question": "Which test cases trace to requirement WLC-014?",
+    "answer": {
+      "answer": "Five test cases trace to WLC-014. All five are HIL tests for pinch detection (nominal, low, and high voltage, cold, and hot).",
+      "items": [
+        "TC-AP-01",
+        "TC-AP-02",
+        "TC-AP-03",
+        "TC-AP-04",
+        "TC-AP-05"
+      ]
+    },
+    "tools": [
+      "find_tests",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.009
+  },
+  {
+    "id": "d05",
+    "question": "On how many nights did TC-TH-03 fail?",
+    "answer": {
+      "answer": "TC-TH-03 failed on all 10 nights, 2026-09-27 to 2026-10-06. Every night's value was above the 140 °C limit.",
+      "items": [
+        "2026-09-27",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04",
+        "2026-10-05",
+        "2026-10-06"
+      ]
+    },
+    "tools": [
+      "test_history",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0105
+  },
+  {
+    "id": "d06",
+    "question": "What was the maximum WLC_Status period in TC-CAN-01 on 2026-10-04?",
+    "answer": {
+      "answer": "The maximum WLC_Status period in TC-CAN-01 (run R09) on 2026-10-04 was 51.0 ms. That passes the 45 to 55 ms limit.",
+      "items": [
+        "TC-CAN-01",
+        "R09",
+        "51.0 ms"
+      ]
+    },
+    "tools": [
+      "night_results",
+      "get_test",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 4,
+    "cost_usd": 0.0119
+  },
+  {
+    "id": "d07",
+    "question": "Which software version was tested on 2026-10-03?",
+    "answer": {
+      "answer": "Software version 2.4.0-rc2 was tested on 2026-10-03 (spec v1.3, bench HIL-2).",
+      "items": [
+        "2.4.0-rc2"
+      ]
+    },
+    "tools": [
+      "list_nights",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0077
+  },
+  {
+    "id": "d08",
+    "question": "Which open defects are not linked to any test case?",
+    "answer": {
+      "answer": "Three open defects have no linked test case: DR-1004 (Express up stops halfway in cold, S2), DR-1010 (Switch feels slow, S4) and DR-1026 (Window closes too hard on the seal, S4).",
+      "items": [
+        "DR-1004",
+        "DR-1010",
+        "DR-1026"
+      ]
+    },
+    "tools": [
+      "find_defects",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0125
+  },
+  {
+    "id": "d09",
+    "question": "Which component has the most open defects?",
+    "answer": {
+      "answer": "No single component has the most open defects. Three components tie with 3 open defects each: anti_pinch (DR-1001, DR-1004, DR-1008), power (DR-1002, DR-1007, DR-1024) and diagnostics (DR-1009, DR-1018, DR-1022). The other components have 2 or fewer. switch_input and position have 2 each. thermal, can_comm and motor_drive have 1 each.",
+      "items": [
+        "anti_pinch",
+        "power",
+        "diagnostics"
+      ]
+    },
+    "tools": [
+      "find_defects",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0122
+  },
+  {
+    "id": "d10",
+    "question": "Who is the owner of defect DR-1012?",
+    "answer": {
+      "answer": "The database can't tell me who owns DR-1012. Defect records have no owner or assignee field. They hold only ID, title, status, component, severity, linked test and opened date. DR-1012 is \"Opening possible above 140 °C\": open, thermal, S3, linked to TC-TH-03, opened 2026-09-12.",
+      "items": []
+    },
+    "tools": [
+      "find_defects",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0152
+  }
+]

@@ -1,0 +1,203 @@
+[
+  {
+    "id": "d01",
+    "question": "Which tests failed on 2026-10-06?",
+    "answer": {
+      "answer": "Three tests failed on 2026-10-06: TC-AP-04, TC-CAN-01 and TC-TH-03.",
+      "items": [
+        "TC-AP-04",
+        "TC-CAN-01",
+        "TC-TH-03"
+      ]
+    },
+    "tools": [
+      "night_results",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0078
+  },
+  {
+    "id": "d02",
+    "question": "On which night did TC-AP-05 first pass after failing?",
+    "answer": {
+      "answer": "TC-AP-05 first passed after failing on 2026-10-05. It failed on 10-03 and 10-04 after the limit changed to >= 150 in spec v1.3. It then passed with 151 mm on software 2.4.0-rc3.",
+      "items": [
+        "2026-10-05"
+      ]
+    },
+    "tools": [
+      "test_history",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0062
+  },
+  {
+    "id": "d03",
+    "question": "Which open defects have severity S1?",
+    "answer": {
+      "answer": "Three open defects have severity S1: DR-1001 (pinch reversal late at -30 °C), DR-1018 (Hall sensor loss: motor keeps running) and DR-1020 (express close works when not normalized).",
+      "items": [
+        "DR-1001",
+        "DR-1018",
+        "DR-1020"
+      ]
+    },
+    "tools": [
+      "find_defects",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0052
+  },
+  {
+    "id": "d04",
+    "question": "Which test cases trace to requirement WLC-014?",
+    "answer": {
+      "answer": "Five test cases trace to WLC-014: TC-AP-01, TC-AP-02, TC-AP-03, TC-AP-04 and TC-AP-05.",
+      "items": [
+        "TC-AP-01",
+        "TC-AP-02",
+        "TC-AP-03",
+        "TC-AP-04",
+        "TC-AP-05"
+      ]
+    },
+    "tools": [
+      "find_tests",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0053
+  },
+  {
+    "id": "d05",
+    "question": "On how many nights did TC-TH-03 fail?",
+    "answer": {
+      "answer": "TC-TH-03 failed on 10 nights, which is every night it ran (27 Sep – 6 Oct 2026).",
+      "items": [
+        "10"
+      ]
+    },
+    "tools": [
+      "test_history",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0062
+  },
+  {
+    "id": "d06",
+    "question": "What was the maximum WLC_Status period in TC-CAN-01 on 2026-10-04?",
+    "answer": {
+      "answer": "The maximum WLC_Status period in TC-CAN-01 on 2026-10-04 was 51.0 ms (limit 45 to 55 ms, PASS).",
+      "items": [
+        "51.0"
+      ]
+    },
+    "tools": [
+      "night_results",
+      "get_test",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 4,
+    "cost_usd": 0.0085
+  },
+  {
+    "id": "d07",
+    "question": "Which software version was tested on 2026-10-03?",
+    "answer": {
+      "answer": "Software version 2.4.0-rc2 was tested on 2026-10-03.",
+      "items": [
+        "2.4.0-rc2"
+      ]
+    },
+    "tools": [
+      "list_nights",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0043
+  },
+  {
+    "id": "d08",
+    "question": "Which open defects are not linked to any test case?",
+    "answer": {
+      "answer": "Three open defects have no linked test case: DR-1004, DR-1010 and DR-1026.",
+      "items": [
+        "DR-1004",
+        "DR-1010",
+        "DR-1026"
+      ]
+    },
+    "tools": [
+      "find_defects",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0072
+  },
+  {
+    "id": "d09",
+    "question": "Which component has the most open defects?",
+    "answer": {
+      "answer": "No single component has the most open defects. anti_pinch, power and diagnostics are tied with 3 open defects each. switch_input and position have 2 each, and the others have 1.",
+      "items": [
+        "anti_pinch",
+        "power",
+        "diagnostics"
+      ]
+    },
+    "tools": [
+      "find_defects",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0076
+  },
+  {
+    "id": "d10",
+    "question": "Who is the owner of defect DR-1012?",
+    "answer": {
+      "answer": "The database can't answer this. Defect DR-1012 (\"Opening possible above 140 °C\") has no owner field. It records only the ID, title, status (open), component (thermal), severity (S3), linked test (TC-TH-03) and opened date (2026-09-12).",
+      "items": []
+    },
+    "tools": [
+      "find_defects",
+      "StructuredOutput"
+    ],
+    "servers": {
+      "wlc200-testdb": "connected"
+    },
+    "turns": 3,
+    "cost_usd": 0.0097
+  }
+]

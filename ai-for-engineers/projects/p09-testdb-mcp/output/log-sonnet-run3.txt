@@ -1,0 +1,11 @@
+d01 ['TC-AP-04', 'TC-CAN-01', 'TC-TH-03']  tools: night_results, StructuredOutput
+d02 ['2026-10-05']  tools: test_history, StructuredOutput
+d03 ['DR-1001', 'DR-1018', 'DR-1020']  tools: find_defects, StructuredOutput
+d04 ['TC-AP-01', 'TC-AP-02', 'TC-AP-03', 'TC-AP-04', 'TC-AP-05']  tools: find_tests, StructuredOutput
+d05 ['10']  tools: test_history, StructuredOutput
+d06 ['51.0']  tools: night_results, get_test, StructuredOutput
+d07 ['2.4.0-rc2']  tools: list_nights, StructuredOutput
+d08 ['DR-1004', 'DR-1010', 'DR-1026']  tools: find_defects, StructuredOutput
+d09 ['anti_pinch', 'power', 'diagnostics']  tools: find_defects, StructuredOutput
+d10 []  tools: find_defects, StructuredOutput
+$0.0545

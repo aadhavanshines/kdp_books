@@ -1,0 +1,11 @@
+{
+ "note": "The grader checks key words. The engineer read every answer the grader marked wrong. Answers were not edited, and the key words were not changed again after the q08 correction recorded in TRUTH-CORRECTIONS.md.",
+ "sonnet-run1": {"auto": 18, "final": 18, "decisions": {}},
+ "sonnet-run2": {"auto": 18, "final": 18, "decisions": {}},
+ "sonnet-run3": {"auto": 18, "final": 18, "decisions": {}},
+ "opus-run1": {"auto": 16, "final": 18, "decisions": {
+   "q08": "correct: 'could start using an old value' is the stale-value cause",
+   "q10": "correct: 'redo the worst-case CAN transmit queue calculation'"}},
+ "haiku-run1": {"auto": 17, "final": 17, "decisions": {
+   "q16": "wrong flag: the text correctly says the cost isn't given, but found was true, so a program using the flag would treat it as answered"}}
+}

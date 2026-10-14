@@ -1,0 +1,633 @@
+{
+  "answer": {
+    "summary": "Night 2026-10-07, software 2.4.0-rc4, spec ADS-WLC200-SRS v1.3, bench HIL-2: 12 runs, 10 passed, 2 failed (TC-AP-03 in R03, TC-AP-04 in R04). TC-AP-03 is a new failure with no linked defect. TC-AP-04 has failed on all 11 nights in the history and is linked to open S1 defect DR-1001. Several passing runs have values at or near their limits (see anomalies).",
+    "failures": [
+      {
+        "test": "TC-AP-03",
+        "text": "R03, Pinch detection at high voltage: stop_latency_ms was 12 ms against a limit of <= 10 ms under v1.3. reversal_mm passed at 163.0 mm. This is a NEW failure: it failed on 1 of 11 nights, and the previous 10 nights passed. History ranges from 4.0 to 12.0 ms, so tonight is the history maximum. No open defect is linked. The run also reports peak pinch force 103.2 N, above 100 N (reportable per TP-AP-01)."
+      },
+      {
+        "test": "TC-AP-04",
+        "text": "R04, Pinch detection when cold: stop_latency_ms was 13 ms against a limit of <= 10 ms under v1.3. reversal_mm passed at 158.0 mm. This is NOT new: it has failed on 11 of 11 nights, under both v1.2 and v1.3, with the same <= 10 limit each night. History ranges from 13.0 to 15.0 ms, and tonight's value is the history minimum. Open defect DR-1001 (S1, open): Pinch reversal late at -30 °C. The run's start temperature estimate was -22 C against a chamber setpoint of -30 C, so the soak may not have been complete."
+      }
+    ],
+    "anomalies": [
+      "R03 (TC-AP-03): peak pinch force 103.2 N is above 100 N (reportable per TP-AP-01).",
+      "R04 (TC-AP-04): temperature estimate at start is -22 C but chamber set to -30 C (soak not complete or estimate offset?).",
+      "R05 (TC-AP-05, passed): temperature estimate at start is 93 C but chamber set to 85 C (soak not complete or estimate offset?). reversal_mm = 151 mm is within 2% of its min limit 150 (margin 1 mm).",
+      "R07 (TC-MV-05, passed): end-stop stall current 18.2 A with no limit defined for this test; stall lasted 42 ms.",
+      "R10 (TC-TH-03, passed): max_current_above_130C_a = 14.76 A against a max of 15 A (margin 0.24 A), with 2 samples within 2% of the 15 A limit above 130 C. closing_possible_above_140C = 1 movements, at its min limit of 1 (margin 0 movements). The log starts at ~112 C at 10 ms sampling and was never cooled, so 'opening possible below 120 C' is not covered by this run.",
+      "R12 (TC-DG-01, passed): stop_after_hall_loss_ms = 203 ms against a min of 200 ms (margin 3 ms). Hall loss time is only known to within one Hall interval (4 ms), so true latency is 199..203 ms and the 200 ms lower limit cannot be confirmed with certainty.",
+      "Both temperature-chamber runs with start-temperature offsets (R04 cold, R05 hot) showed estimates that differ from the chamber setpoint, which points to a possible soak or estimate-offset problem on HIL-2."
+    ],
+    "recommendations": [
+      "Open a defect for TC-AP-03 (R03, 12 ms vs <= 10 ms, first failure after 10 passing nights on v1.3) and include the 103.2 N peak pinch force, which is reportable per TP-AP-01. Rerun TC-AP-03 on 2.4.0-rc4 to check whether the failure repeats.",
+      "Link TC-AP-04 to DR-1001 in tonight's results. It has failed on 11 of 11 nights with 13.0 to 15.0 ms against <= 10 ms. DR-1001 is S1 and still open, so it should stay on the release-candidate review for 2.4.0-rc4.",
+      "Check the HIL-2 chamber soak and the temperature estimate offset for R04 (-22 C vs -30 C) and R05 (93 C vs 85 C). Confirm whether the R04 result reflects the real -30 C condition, and rerun TC-AP-04 after a full soak.",
+      "Review R05 reversal_mm (151 mm vs min 150 mm, margin 1 mm), and decide whether a repeat run is needed once the hot soak is confirmed.",
+      "Review R10 (14.76 A vs 15 A max, and closing_possible_above_140C at its minimum of 1). Add a cool-down segment so 'opening possible below 120 C' is covered.",
+      "For R12, treat the 203 ms result as unconfirmed against the 200 ms lower limit (true latency 199..203 ms). Ask whether the limit check should account for the 4 ms Hall interval, or whether finer timing is available.",
+      "Decide whether the R07 end-stop stall current of 18.2 A (42 ms) needs a limit defined for TC-MV-05."
+    ]
+  },
+  "cost_usd": 0.0525,
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 5598,
+      "outputTokens": 26,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.005728,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-5-5": {
+      "inputTokens": 2,
+      "outputTokens": 1853,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 7048,
+      "webSearchRequests": 0,
+      "costUSD": 0.046726000000000004,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "input_tokens": 7050,
+  "output_tokens": 1853,
+  "seconds": 14.0,
+  "model": "claude-sonnet-5-5",
+  "facts": {
+    "night": "2026-10-07",
+    "software": "2.4.0-rc4",
+    "spec": "ADS-WLC200-SRS v1.3",
+    "bench": "HIL-2",
+    "runs_total": 12,
+    "passed": 10,
+    "failed": 2,
+    "history_nights": [
+      "2026-09-27",
+      "2026-09-28",
+      "2026-09-29",
+      "2026-09-30",
+      "2026-10-01",
+      "2026-10-02",
+      "2026-10-03",
+      "2026-10-04",
+      "2026-10-05",
+      "2026-10-06",
+      "2026-10-07"
+    ],
+    "runs": [
+      {
+        "run": "R01",
+        "test": "TC-AP-01",
+        "title": "Pinch detection at nominal voltage",
+        "status": "PASS",
+        "criteria": [
+          {
+            "name": "stop_latency_ms",
+            "value": 6,
+            "min": null,
+            "max": 10,
+            "unit": "ms",
+            "ok": true
+          },
+          {
+            "name": "reversal_mm",
+            "value": 162.0,
+            "min": 150,
+            "max": null,
+            "unit": "mm",
+            "ok": true
+          }
+        ],
+        "anomalies": []
+      },
+      {
+        "run": "R02",
+        "test": "TC-AP-02",
+        "title": "Pinch detection at low voltage",
+        "status": "PASS",
+        "criteria": [
+          {
+            "name": "stop_latency_ms",
+            "value": 7,
+            "min": null,
+            "max": 10,
+            "unit": "ms",
+            "ok": true
+          },
+          {
+            "name": "reversal_mm",
+            "value": 160.0,
+            "min": 150,
+            "max": null,
+            "unit": "mm",
+            "ok": true
+          }
+        ],
+        "anomalies": []
+      },
+      {
+        "run": "R03",
+        "test": "TC-AP-03",
+        "title": "Pinch detection at high voltage",
+        "status": "FAIL",
+        "criteria": [
+          {
+            "name": "stop_latency_ms",
+            "value": 12,
+            "min": null,
+            "max": 10,
+            "unit": "ms",
+            "ok": false
+          },
+          {
+            "name": "reversal_mm",
+            "value": 163.0,
+            "min": 150,
+            "max": null,
+            "unit": "mm",
+            "ok": true
+          }
+        ],
+        "anomalies": [
+          "peak pinch force 103.2 N is above 100 N (reportable per TP-AP-01)"
+        ]
+      },
+      {
+        "run": "R04",
+        "test": "TC-AP-04",
+        "title": "Pinch detection when cold",
+        "status": "FAIL",
+        "criteria": [
+          {
+            "name": "stop_latency_ms",
+            "value": 13,
+            "min": null,
+            "max": 10,
+            "unit": "ms",
+            "ok": false
+          },
+          {
+            "name": "reversal_mm",
+            "value": 158.0,
+            "min": 150,
+            "max": null,
+            "unit": "mm",
+            "ok": true
+          }
+        ],
+        "anomalies": [
+          "temperature estimate at start is -22 C but chamber set to -30 C (soak not complete or estimate offset?)"
+        ]
+      },
+      {
+        "run": "R05",
+        "test": "TC-AP-05",
+        "title": "Pinch detection when hot",
+        "status": "PASS",
+        "criteria": [
+          {
+            "name": "stop_latency_ms",
+            "value": 5,
+            "min": null,
+            "max": 10,
+            "unit": "ms",
+            "ok": true
+          },
+          {
+            "name": "reversal_mm",
+            "value": 151.0,
+            "min": 150,
+            "max": null,
+            "unit": "mm",
+            "ok": true
+          }
+        ],
+        "anomalies": [
+          "temperature estimate at start is 93 C but chamber set to 85 C (soak not complete or estimate offset?)",
+          "reversal_mm = 151 mm is within 2% of its min limit 150 (margin 1 mm)"
+        ]
+      },
+      {
+        "run": "R06",
+        "test": "TC-AP-06",
+        "title": "Pinch protection in manual and express mode",
+        "status": "PASS",
+        "criteria": [
+          {
+            "name": "stop_latency_ms",
+            "value": 6,
+            "min": null,
+            "max": 10,
+            "unit": "ms",
+            "ok": true
+          },
+          {
+            "name": "reversal_mm",
+            "value": 161.0,
+            "min": 150,
+            "max": null,
+            "unit": "mm",
+            "ok": true
+          }
+        ],
+        "anomalies": []
+      },
+      {
+        "run": "R07",
+        "test": "TC-MV-05",
+        "title": "Full close time",
+        "status": "PASS",
+        "criteria": [
+          {
+            "name": "close_time_s",
+            "value": 3.816,
+            "min": 3.0,
+            "max": 4.5,
+            "unit": "s",
+            "ok": true
+          }
+        ],
+        "anomalies": [
+          "end-stop stall current 18.2 A (no limit for this test; stall lasted 42 ms)"
+        ]
+      },
+      {
+        "run": "R08",
+        "test": "TC-MV-01",
+        "title": "Manual movement and stop on release",
+        "status": "PASS",
+        "criteria": [
+          {
+            "name": "stop_after_release_close_ms",
+            "value": 62,
+            "min": null,
+            "max": 100,
+            "unit": "ms",
+            "ok": true
+          },
+          {
+            "name": "stop_after_release_open_ms",
+            "value": 58,
+            "min": null,
+            "max": 100,
+            "unit": "ms",
+            "ok": true
+          }
+        ],
+        "anomalies": []
+      },
+      {
+        "run": "R09",
+        "test": "TC-CAN-01",
+        "title": "WLC_Status timing and content",
+        "status": "PASS",
+        "criteria": [
+          {
+            "name": "period_min_ms",
+            "value": 49,
+            "min": 45,
+            "max": 55,
+            "unit": "ms",
+            "ok": true
+          },
+          {
+            "name": "period_max_ms",
+            "value": 51,
+            "min": 45,
+            "max": 55,
+            "unit": "ms",
+            "ok": true
+          }
+        ],
+        "anomalies": []
+      },
+      {
+        "run": "R10",
+        "test": "TC-TH-03",
+        "title": "Opening blocked when hot",
+        "status": "PASS",
+        "criteria": [
+          {
+            "name": "max_current_above_130C_a",
+            "value": 14.76,
+            "min": null,
+            "max": 15,
+            "unit": "A",
+            "ok": true
+          },
+          {
+            "name": "opening_starts_above_140C",
+            "value": 0,
+            "min": null,
+            "max": 0,
+            "unit": "",
+            "ok": true
+          },
+          {
+            "name": "closing_possible_above_140C",
+            "value": 1,
+            "min": 1,
+            "max": null,
+            "unit": "movements",
+            "ok": true
+          }
+        ],
+        "anomalies": [
+          "max_current_above_130C_a = 14.76 A is within 2% of its max limit 15 (margin 0.24 A)",
+          "2 samples within 2% of the 15 A limit above 130 C",
+          "closing_possible_above_140C = 1 movements is within 2% of its min limit 1 (margin 0 movements)",
+          "10 ms sampling; the log starts at ~112 C and was never cooled, so 'opening possible below 120 C' is not covered by this run"
+        ]
+      },
+      {
+        "run": "R11",
+        "test": "TC-PW-03",
+        "title": "Motor stop at undervoltage",
+        "status": "PASS",
+        "criteria": [
+          {
+            "name": "stop_after_undervoltage_ms",
+            "value": 21,
+            "min": null,
+            "max": 50,
+            "unit": "ms",
+            "ok": true
+          }
+        ],
+        "anomalies": []
+      },
+      {
+        "run": "R12",
+        "test": "TC-DG-01",
+        "title": "Hall sensor loss",
+        "status": "PASS",
+        "criteria": [
+          {
+            "name": "dtc_code",
+            "value": "B1A01",
+            "min": null,
+            "max": null,
+            "unit": "",
+            "ok": true
+          },
+          {
+            "name": "stop_after_hall_loss_ms",
+            "value": 203,
+            "min": 200,
+            "max": 250,
+            "unit": "ms",
+            "ok": true
+          }
+        ],
+        "anomalies": [
+          "stop_after_hall_loss_ms = 203 ms is within 2% of its min limit 200 (margin 3 ms)",
+          "Hall loss time is only known to within one Hall interval (4 ms): true latency is 199..203 ms, so the 200 ms lower limit cannot be confirmed with certainty"
+        ]
+      }
+    ],
+    "failures": [
+      {
+        "run": "R03",
+        "test": "TC-AP-03",
+        "title": "Pinch detection at high voltage",
+        "failed": [
+          {
+            "name": "stop_latency_ms",
+            "value": 12,
+            "min": null,
+            "max": 10,
+            "unit": "ms",
+            "ok": false
+          }
+        ],
+        "new_failure": true,
+        "failed_nights": 1,
+        "nights_in_history": 11,
+        "history_min": 4.0,
+        "history_max": 12.0,
+        "history": [
+          {
+            "night": "2026-09-27",
+            "spec": "v1.2",
+            "verdict": "PASS",
+            "value": 7.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-09-28",
+            "spec": "v1.2",
+            "verdict": "PASS",
+            "value": 7.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-09-29",
+            "spec": "v1.2",
+            "verdict": "PASS",
+            "value": 4.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-09-30",
+            "spec": "v1.2",
+            "verdict": "PASS",
+            "value": 4.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-01",
+            "spec": "v1.2",
+            "verdict": "PASS",
+            "value": 7.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-02",
+            "spec": "v1.2",
+            "verdict": "PASS",
+            "value": 6.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-03",
+            "spec": "v1.3",
+            "verdict": "PASS",
+            "value": 7.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-04",
+            "spec": "v1.3",
+            "verdict": "PASS",
+            "value": 4.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-05",
+            "spec": "v1.3",
+            "verdict": "PASS",
+            "value": 7.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-06",
+            "spec": "v1.3",
+            "verdict": "PASS",
+            "value": 4.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-07",
+            "spec": "v1.3",
+            "verdict": "FAIL",
+            "value": 12.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          }
+        ],
+        "open_defects": []
+      },
+      {
+        "run": "R04",
+        "test": "TC-AP-04",
+        "title": "Pinch detection when cold",
+        "failed": [
+          {
+            "name": "stop_latency_ms",
+            "value": 13,
+            "min": null,
+            "max": 10,
+            "unit": "ms",
+            "ok": false
+          }
+        ],
+        "new_failure": false,
+        "failed_nights": 11,
+        "nights_in_history": 11,
+        "history_min": 13.0,
+        "history_max": 15.0,
+        "history": [
+          {
+            "night": "2026-09-27",
+            "spec": "v1.2",
+            "verdict": "FAIL",
+            "value": 15.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-09-28",
+            "spec": "v1.2",
+            "verdict": "FAIL",
+            "value": 14.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-09-29",
+            "spec": "v1.2",
+            "verdict": "FAIL",
+            "value": 13.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-09-30",
+            "spec": "v1.2",
+            "verdict": "FAIL",
+            "value": 15.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-01",
+            "spec": "v1.2",
+            "verdict": "FAIL",
+            "value": 15.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-02",
+            "spec": "v1.2",
+            "verdict": "FAIL",
+            "value": 15.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-03",
+            "spec": "v1.3",
+            "verdict": "FAIL",
+            "value": 13.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-04",
+            "spec": "v1.3",
+            "verdict": "FAIL",
+            "value": 14.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-05",
+            "spec": "v1.3",
+            "verdict": "FAIL",
+            "value": 15.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-06",
+            "spec": "v1.3",
+            "verdict": "FAIL",
+            "value": 14.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          },
+          {
+            "night": "2026-10-07",
+            "spec": "v1.3",
+            "verdict": "FAIL",
+            "value": 13.0,
+            "unit": "ms",
+            "limit_that_night": "<= 10"
+          }
+        ],
+        "open_defects": [
+          {
+            "id": "DR-1001",
+            "title": "Pinch reversal late at -30 °C",
+            "severity": "S1",
+            "status": "open"
+          }
+        ]
+      }
+    ]
+  },
+  "problems": []
+}

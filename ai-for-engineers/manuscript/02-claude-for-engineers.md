@@ -128,9 +128,15 @@ Run it from the `00-hello` folder:
 python hello.py
 ```
 
-<<RUN:hello>>
+```
+Terminal output:
+{'testable': False, 'reason': '"Quickly" is vague and unmeasurable; it needs a specific limit, e.g., "The window shall close within 200 ms of the close command, measured under normal load."'}
+1362 tokens in, 127 out, $0.0077
+```
 
-The answer comes back as a Python dictionary with exactly the two fields the schema asked for, so a program can use it directly: `result["answer"]["testable"]` is `False`. Every project in the book works this way.
+The run cost under one US cent. Notice the example in the reason: "within 200 ms of the close command". Nothing in the question mentioned 200 ms; Claude invented a limit to illustrate its point. In a chat that's harmless, and even helpful. In a test case it would be a defect. The projects that follow tell Claude never to invent limits, and then check with code that it didn't.
+
+The answer came back as a Python dictionary with exactly the two fields the schema asked for, so a program can use it directly: `result["answer"]["testable"]` is `False`. Every project in the book works this way.
 
 If it doesn't work, Appendix C lists the common problems; the most frequent are an inactive virtual environment and a key that isn't set in the current terminal.
 

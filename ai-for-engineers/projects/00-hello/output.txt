@@ -1,0 +1,2 @@
+{'testable': False, 'reason': '"Quickly" is vague and unmeasurable; it needs a specific limit, e.g., "The window shall close within 200 ms of the close command, measured under normal load."'}
+1362 tokens in, 127 out, $0.0077
