@@ -1,0 +1,852 @@
+{
+  "answer": {
+    "rows": [
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "Pinch stop comes later than the 10 ms limit at cold and low supply voltage",
+        "effect": "Vehicle: pinch force stays above 100 N for 13 to 14 ms. Person: a hand or finger could be injured, with no warning.",
+        "cause": "Cold grease slows the window and the force rises slowly. At 9 V the motor is slower still, so the pinch confirmation (sampling plus 30 ms debounce) comes late.",
+        "prevention": [
+          "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+        ],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 10,
+        "occurrence": 8,
+        "detection_rating": 2,
+        "rating_reasons": "S10: possible injury with no warning. O8: DR-1001 and DR-1006 show the cause has occurred, the same as in LL-2022-02, and the debounce is the only prevention. D2: TP-AP-01 covers the -30 °C and 9 V corner and has already found it.",
+        "recommended_action": "Check the debounce start point and the 2 ms sampling below 0 °C against the 10 ms margin from LL-2021-07. Make the force estimate or the threshold depend on temperature and voltage. Repeat TP-AP-01 at -30 °C and 9 V on every software release.",
+        "evidence": [
+          "DR-1001",
+          "DR-1006",
+          "LL-2022-02",
+          "LL-2021-07"
+        ],
+        "rpn": 160,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "Reversal distance too short at high temperature (146 mm, v1.3 limit 150 mm)",
+        "effect": "Vehicle: window reverses less far than specified. Person: the trapped body part may not be released, so injury is possible, and a legal requirement may be broken.",
+        "cause": "The reversal distance is not compensated for temperature, so at 85 °C the reversal ends early. The cause is a hypothesis for the workshop to confirm.",
+        "prevention": [],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 9,
+        "occurrence": 7,
+        "detection_rating": 3,
+        "rating_reasons": "S9: insufficient release of a trapped person, and a possible legal requirement. O7: DR-1030 shows it occurred, and the 4 mm margin is small. D3: TP-AP-01 covers all temperatures and found it. The defect text does not say whether 150 mm is a minimum or a maximum, so the team must confirm this.",
+        "recommended_action": "Confirm in SRS v1.3 whether 150 mm is a minimum or a maximum. Then check the reversal-distance calculation over temperature and voltage, and add a margin to the reversal target.",
+        "evidence": [
+          "DR-1030"
+        ],
+        "rpn": 189,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "False pinch reversal on rough roads",
+        "effect": "Vehicle: window reverses by itself while closing. Driver: cannot close the window on rough roads.",
+        "cause": "Body vibration makes the motor speed oscillate. The algorithm reads the drops as rising pinch force, and the ripple filter or debounce does not fully remove them.",
+        "prevention": [
+          "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+        ],
+        "detection": [
+          "Rough-road vibration HIL profile"
+        ],
+        "severity": 7,
+        "occurrence": 8,
+        "detection_rating": 5,
+        "rating_reasons": "S7: the main function is degraded and the window can't be closed reliably on rough roads. O8: DR-1008 and DR-1023 show it occurring in the vehicle (2 in 10 tries) despite the filter, as in LL-2021-07. D5: a rough-road profile exists, but the defect appeared on the road and not on the bench, so some conditions are missing.",
+        "recommended_action": "Run profile RR-04 on the HIL bench at the corner conditions (cold, 9 V and 16 V) and with the current threshold and debounce. Compare the bench result with the road result for DR-1008. Re-check false reversals and stop time together.",
+        "evidence": [
+          "DR-1008",
+          "DR-1023",
+          "LL-2021-07"
+        ],
+        "rpn": 280,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "False pinch reversal in cold weather without obstacle",
+        "effect": "Vehicle: window stops and reverses at about 150 mm. Driver: cannot close the window on the first try.",
+        "cause": "Probable cause: cold regulator friction raises the estimated force above the threshold (no temperature compensation). This is not confirmed.",
+        "prevention": [],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 7,
+        "occurrence": 7,
+        "detection_rating": 6,
+        "rating_reasons": "S7: the main function is degraded, and the second try worked. O7: DR-1004 and DR-1011 show it occurred at -18 to -20 °C and no prevention targets cold. D6: TP-AP-01 runs at -30 °C, but it checks stop time and not false reversals.",
+        "recommended_action": "Find the root cause with a cold HIL run that records the estimated force during a free close at -20 °C. Add a false-reversal check at cold temperatures to TP-AP-01.",
+        "evidence": [
+          "DR-1004",
+          "DR-1011"
+        ],
+        "rpn": 294,
+        "action_needed": true
+      },
+      {
+        "function": "4. Keep track of window position",
+        "element": "Position counter",
+        "failure_mode": "Express close available when the window is not normalized",
+        "effect": "Vehicle: window closes fully with a wrong position reference, so the pinch zone is not where the controller thinks it is. Person: a pinch may be detected late or not at all, so injury is possible.",
+        "cause": "The normalization state is lost at battery disconnect, and the express-close check does not use it.",
+        "prevention": [],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 9,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "S9: the pinch-zone reference is wrong and injury is possible. O8: DR-1020 shows it occurred and no prevention exists. D6: code review could find it, but it does not target this requirement, and a test found it.",
+        "recommended_action": "Block express close until normalization is complete (WLC-020 to WLC-022). Add a HIL test: battery disconnect, then a short press up. Check what anti-pinch does in the non-normalized state.",
+        "evidence": [
+          "DR-1020"
+        ],
+        "rpn": 432,
+        "action_needed": true
+      },
+      {
+        "function": "4. Keep track of window position",
+        "element": "Position counter",
+        "failure_mode": "Position drifts over repeated cycles (3.5 mm at the top seal after 200 cycles)",
+        "effect": "Vehicle: reported position and pinch-zone limits shift. Driver: no visible effect at first, but the express stop point and the pinch zone move.",
+        "cause": "Hall pulses are missed or counted twice, and the counter is not re-synchronized at the end stop.",
+        "prevention": [],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 5,
+        "occurrence": 7,
+        "detection_rating": 5,
+        "rating_reasons": "S5: a comfort function is degraded, because 3.5 mm is small against the pinch zone. O7: DR-1013 shows it occurred and no prevention is listed. D5: a cycle test found it, but no listed control targets drift.",
+        "recommended_action": "Re-set the position to a known value at every end-stop detection. Add a cycle test with an acceptance limit on drift.",
+        "evidence": [
+          "DR-1013"
+        ],
+        "rpn": 175,
+        "action_needed": true
+      },
+      {
+        "function": "4. Keep track of window position",
+        "element": "Diagnostics",
+        "failure_mode": "Motor keeps running after Hall signal loss (1.2 s at 9 V, 200 ms required)",
+        "effect": "Vehicle: window runs into the seal and keeps pushing. Person: anti-pinch is blind without Hall, so a hand in the way is not protected, and there is no warning.",
+        "cause": "The Hall plausibility timeout does not trigger at the slow pulse rate at 9 V. The timer may restart on noise, as warned in LL-2023-05. The cause is not confirmed.",
+        "prevention": [],
+        "detection": [
+          "Hall signal plausibility check, 200 ms timeout"
+        ],
+        "severity": 10,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "S10: anti-pinch protection is lost with no warning. O8: DR-1018 and DR-1027 show it occurred, as in the WLC-100 field returns (LL-2023-05). D6: the plausibility check is a product function and not a test. The HIL test that removes the Hall signal is not yet a listed control, and it found the defect.",
+        "recommended_action": "Make the timeout use elapsed time since the last valid pulse, and do not let noise restart it. Add to the HIL plan the test from LL-2023-05 that disconnects Hall while the motor runs, at 9 V and 13.5 V, and check the 200 ms stop time.",
+        "evidence": [
+          "DR-1018",
+          "DR-1027",
+          "LL-2023-05"
+        ],
+        "rpn": 480,
+        "action_needed": true
+      },
+      {
+        "function": "5. Protect the motor from overheating",
+        "element": "Thermal model",
+        "failure_mode": "One opening movement is allowed above the block limit (143 °C)",
+        "effect": "Vehicle: the motor runs one more movement above its limit, which causes extra thermal stress. Driver: no visible effect.",
+        "cause": "The block decision reads a stale temperature estimate, because it runs before the 100 ms thermal task has updated it. The fix from LL-2024-01 may be missing in the shared platform module.",
+        "prevention": [],
+        "detection": [
+          "Thermal model reviewed against thermocouple data (TP-TH-01)",
+          "Code review and static analysis"
+        ],
+        "severity": 6,
+        "occurrence": 8,
+        "detection_rating": 4,
+        "rating_reasons": "S6: one extra movement is a small thermal stress, but protection is not 100 % reliable. O8: DR-1012 and DR-1019 show it occurred and nothing prevents it. D4: TC-TH-03 found it, but TP-TH-01 checks model accuracy and not estimate timing.",
+        "recommended_action": "Check that the LL-2024-01 fix is in the WLC-200 platform thermal module: the block decision must read the estimate after the thermal task in the same cycle. Add a test that requests an opening right after the estimate crosses the limit.",
+        "evidence": [
+          "DR-1012",
+          "DR-1019",
+          "LL-2024-01"
+        ],
+        "rpn": 192,
+        "action_needed": true
+      },
+      {
+        "function": "5. Protect the motor from overheating",
+        "element": "Thermal model",
+        "failure_mode": "Model underestimates motor temperature",
+        "effect": "Vehicle: the current limit and opening block start too late. Driver: the motor may overheat and the window may be lost.",
+        "cause": "The model parameters (heat capacity, cooling, ambient) do not match the real motor in hot conditions.",
+        "prevention": [],
+        "detection": [
+          "Thermal model reviewed against thermocouple data (TP-TH-01)"
+        ],
+        "severity": 7,
+        "occurrence": 5,
+        "detection_rating": 4,
+        "rating_reasons": "S7: motor damage would lose the main function, but only after a long overload. O5: the model is reviewed against data, but WLC-200 is new and no field history exists. D4: TP-TH-01 targets the model, but not at all ambient and load conditions.",
+        "recommended_action": "Extend the TP-TH-01 comparison to high ambient (85 °C) and repeated-cycle loads, and set a margin on the block limit.",
+        "evidence": [
+          "LL-2024-01"
+        ],
+        "rpn": 140,
+        "action_needed": true
+      },
+      {
+        "function": "1. Move the window as the driver commands, in manual and express mode",
+        "element": "Switch input",
+        "failure_mode": "Motor stays on 180 ms after switch release at 16 V (limit 100 ms)",
+        "effect": "Vehicle: window moves further than commanded. Driver: the window overshoots the wanted position.",
+        "cause": "The release handling or motor command timing depends on supply voltage and is slower at 16 V.",
+        "prevention": [],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 5,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "S5: a comfort function is degraded. O8: DR-1014 shows it occurred and no prevention is listed. D6: a test found it, but no listed test targets the release time over voltage.",
+        "recommended_action": "Find which delay depends on voltage (switch filter or motor stop). Add a release-time test over the full voltage range.",
+        "evidence": [
+          "DR-1014"
+        ],
+        "rpn": 240,
+        "action_needed": true
+      },
+      {
+        "function": "1. Move the window as the driver commands, in manual and express mode",
+        "element": "Supply monitor",
+        "failure_mode": "Window works only 45 to 50 s after ignition off (60 s required)",
+        "effect": "Vehicle: window stops responding to the switch too early. Driver: cannot close the window after parking.",
+        "cause": "The retained-power timer is shorter than specified or not set to 60 s, or it starts too early. The cause is not confirmed.",
+        "prevention": [],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 6,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "S6: a comfort function is lost after parking. O8: DR-1002 and DR-1015 show it occurred. D6: tests found it, but no listed control targets the timer.",
+        "recommended_action": "Correct the timer value, and check the SRS requirement for it. Add a test that measures the retained-power time.",
+        "evidence": [
+          "DR-1002",
+          "DR-1015"
+        ],
+        "rpn": 288,
+        "action_needed": true
+      },
+      {
+        "function": "2. Stop the window at the end positions",
+        "element": "Motor driver",
+        "failure_mode": "Window hits the top seal hard, with a loud knock",
+        "effect": "Vehicle: hard impact on the seal. Driver and passenger: noise, and possible long-term seal wear.",
+        "cause": "The end-stop detection or the motor speed before the end is not reduced, so the window stops late and at full speed.",
+        "prevention": [],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 4,
+        "occurrence": 7,
+        "detection_rating": 7,
+        "rating_reasons": "S4: noise noticed by most customers, and no damage seen. O7: DR-1026 shows it occurred. D7: it was found in a clinic and no test targets the impact.",
+        "recommended_action": "Reduce the speed near the top stop, or tune the end-stop current threshold. Add a noise or impact-speed check to the test plan.",
+        "evidence": [
+          "DR-1026"
+        ],
+        "rpn": 196,
+        "action_needed": true
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "Diagnostics",
+        "failure_mode": "No DTC B1A01 stored on Hall loss",
+        "effect": "Vehicle: fault memory is empty. Driver: no warning, and the workshop cannot find the cause.",
+        "cause": "The DTC write is not triggered because the Hall loss is not detected (see Hall loss row) or the DTC is not stored.",
+        "prevention": [],
+        "detection": [
+          "Hall signal plausibility check, 200 ms timeout"
+        ],
+        "severity": 6,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "S6: diagnosis is lost and the defect also removes the warning for the Hall loss. O8: DR-1018 and DR-1027 show it occurred. D6: the HIL test found it, but it is not yet a listed control.",
+        "recommended_action": "Store B1A01 as soon as the plausibility check triggers. Add a HIL check of the DTC memory to the Hall-disconnect test at 9 V and 13.5 V.",
+        "evidence": [
+          "DR-1018",
+          "DR-1027",
+          "LL-2023-05"
+        ],
+        "rpn": 288,
+        "action_needed": true
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "Diagnostics",
+        "failure_mode": "Overcurrent not stored as DTC B1A02 and fault state stays 0",
+        "effect": "Vehicle: motor stops, but WLC_Status reports no fault. Driver: no warning, and the cause of the failed movement is hidden.",
+        "cause": "The overcurrent handling stops the motor but does not write the DTC or set the fault state in WLC_Status.",
+        "prevention": [],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 5,
+        "occurrence": 8,
+        "detection_rating": 5,
+        "rating_reasons": "S5: the diagnostic function is lost, and the motor still stops. O8: DR-1009 and DR-1029 show it occurred. D5: TC-DG-02 targets it, but the code review did not find it.",
+        "recommended_action": "Write B1A02 and set the fault state in the overcurrent path. Add the DTC and fault state check to TC-DG-02 at several currents and voltages.",
+        "evidence": [
+          "DR-1009",
+          "DR-1029"
+        ],
+        "rpn": 200,
+        "action_needed": true
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "CAN interface",
+        "failure_mode": "WLC_Status frame missing during diagnostic requests (200 ms gap)",
+        "effect": "Vehicle: the body controller sees a gap in WLC_Status. Driver: usually no effect, and the body controller may log a fault.",
+        "cause": "Long diagnostic responses fill the transmit queue, and a due status frame is dropped.",
+        "prevention": [
+          "CAN transmit queue sized for the worst-case bus load (from LL-2024-09)"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 3,
+        "occurrence": 7,
+        "detection_rating": 4,
+        "rating_reasons": "S3: noticed by some customers, mostly in the workshop. O7: DR-1016 shows it occurred despite the queue sizing, as in LL-2024-09. D4: TC-DG-03 targets it, but with only 100 requests at some conditions.",
+        "recommended_action": "Check that status frames use their own transmit buffer and recalculate the worst-case queue with the real response lengths. Run TC-DG-03 with more requests and with the motor running.",
+        "evidence": [
+          "DR-1016",
+          "LL-2024-09"
+        ],
+        "rpn": 84,
+        "action_needed": false
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "CAN interface",
+        "failure_mode": "Diagnostic response later than 50 ms during motor start",
+        "effect": "Vehicle: the tester gets a late response. Person: only the workshop notices, possibly as a communication error.",
+        "cause": "The CPU load or interrupts at motor start delay the diagnostic task.",
+        "prevention": [],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 2,
+        "occurrence": 7,
+        "detection_rating": 4,
+        "rating_reasons": "S2: only an attentive user notices it. O7: DR-1022 shows 3 in 100 responses late. D4: a test targets response time, but only at some conditions.",
+        "recommended_action": "Check the task priorities and the worst-case execution time around motor start. Add a response-time test while the motor starts.",
+        "evidence": [
+          "DR-1022"
+        ],
+        "rpn": 56,
+        "action_needed": false
+      },
+      {
+        "function": "7. Behave safely at low and high supply voltage",
+        "element": "Supply monitor",
+        "failure_mode": "Controller dead after reverse polarity (diode D3 open)",
+        "effect": "Vehicle: controller does not wake up and all functions are lost. Driver: window can't be moved, with no warning.",
+        "cause": "The protection diode D3 is not rated for 60 s at -14 V and fails open.",
+        "prevention": [],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 8,
+        "occurrence": 7,
+        "detection_rating": 4,
+        "rating_reasons": "S8: the main function is lost. O7: DR-1024 shows it occurred, and no prevention is listed. D4: a reverse-polarity test found it, but it is not in the listed controls and not at all conditions.",
+        "recommended_action": "Re-dimension D3 (or add a series element) for the reverse-polarity duration in the spec. Add a reverse-polarity test at the temperature limits.",
+        "evidence": [
+          "DR-1024"
+        ],
+        "rpn": 224,
+        "action_needed": true
+      },
+      {
+        "function": "7. Behave safely at low and high supply voltage",
+        "element": "CAN interface",
+        "failure_mode": "Sleep current 140 µA instead of the 100 µA limit",
+        "effect": "Vehicle: higher parking current. Driver: a flat battery after a long parking time.",
+        "cause": "The CAN transceiver stays in standby and does not enter sleep.",
+        "prevention": [],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 4,
+        "occurrence": 8,
+        "detection_rating": 5,
+        "rating_reasons": "S4: a flat battery is noticed by most customers after a long time. O8: DR-1007 shows it occurred. D5: a measurement found it, but it is not in the listed controls.",
+        "recommended_action": "Check the sleep sequence and the transceiver sleep command. Add a sleep-current test after the 60 s retained-power time.",
+        "evidence": [
+          "DR-1007"
+        ],
+        "rpn": 160,
+        "action_needed": true
+      }
+    ]
+  },
+  "cost_usd": 0.148,
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 5797,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.005887,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-sonnet-5-5": {
+      "inputTokens": 2,
+      "outputTokens": 10875,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 8347,
+      "webSearchRequests": 0,
+      "costUSD": 0.142142,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 3893,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "input_tokens": 8349,
+  "output_tokens": 10875,
+  "seconds": 74.6,
+  "model": "claude-sonnet-5-5",
+  "rows": [
+    {
+      "function": "4. Keep track of window position",
+      "element": "Diagnostics",
+      "failure_mode": "Motor keeps running after Hall signal loss (1.2 s at 9 V, 200 ms required)",
+      "effect": "Vehicle: window runs into the seal and keeps pushing. Person: anti-pinch is blind without Hall, so a hand in the way is not protected, and there is no warning.",
+      "cause": "The Hall plausibility timeout does not trigger at the slow pulse rate at 9 V. The timer may restart on noise, as warned in LL-2023-05. The cause is not confirmed.",
+      "prevention": [],
+      "detection": [
+        "Hall signal plausibility check, 200 ms timeout"
+      ],
+      "severity": 10,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "S10: anti-pinch protection is lost with no warning. O8: DR-1018 and DR-1027 show it occurred, as in the WLC-100 field returns (LL-2023-05). D6: the plausibility check is a product function and not a test. The HIL test that removes the Hall signal is not yet a listed control, and it found the defect.",
+      "recommended_action": "Make the timeout use elapsed time since the last valid pulse, and do not let noise restart it. Add to the HIL plan the test from LL-2023-05 that disconnects Hall while the motor runs, at 9 V and 13.5 V, and check the 200 ms stop time.",
+      "evidence": [
+        "DR-1018",
+        "DR-1027",
+        "LL-2023-05"
+      ],
+      "rpn": 480,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "Pinch stop comes later than the 10 ms limit at cold and low supply voltage",
+      "effect": "Vehicle: pinch force stays above 100 N for 13 to 14 ms. Person: a hand or finger could be injured, with no warning.",
+      "cause": "Cold grease slows the window and the force rises slowly. At 9 V the motor is slower still, so the pinch confirmation (sampling plus 30 ms debounce) comes late.",
+      "prevention": [
+        "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+      ],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 10,
+      "occurrence": 8,
+      "detection_rating": 2,
+      "rating_reasons": "S10: possible injury with no warning. O8: DR-1001 and DR-1006 show the cause has occurred, the same as in LL-2022-02, and the debounce is the only prevention. D2: TP-AP-01 covers the -30 °C and 9 V corner and has already found it.",
+      "recommended_action": "Check the debounce start point and the 2 ms sampling below 0 °C against the 10 ms margin from LL-2021-07. Make the force estimate or the threshold depend on temperature and voltage. Repeat TP-AP-01 at -30 °C and 9 V on every software release.",
+      "evidence": [
+        "DR-1001",
+        "DR-1006",
+        "LL-2022-02",
+        "LL-2021-07"
+      ],
+      "rpn": 160,
+      "action_needed": true
+    },
+    {
+      "function": "4. Keep track of window position",
+      "element": "Position counter",
+      "failure_mode": "Express close available when the window is not normalized",
+      "effect": "Vehicle: window closes fully with a wrong position reference, so the pinch zone is not where the controller thinks it is. Person: a pinch may be detected late or not at all, so injury is possible.",
+      "cause": "The normalization state is lost at battery disconnect, and the express-close check does not use it.",
+      "prevention": [],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 9,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "S9: the pinch-zone reference is wrong and injury is possible. O8: DR-1020 shows it occurred and no prevention exists. D6: code review could find it, but it does not target this requirement, and a test found it.",
+      "recommended_action": "Block express close until normalization is complete (WLC-020 to WLC-022). Add a HIL test: battery disconnect, then a short press up. Check what anti-pinch does in the non-normalized state.",
+      "evidence": [
+        "DR-1020"
+      ],
+      "rpn": 432,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "Reversal distance too short at high temperature (146 mm, v1.3 limit 150 mm)",
+      "effect": "Vehicle: window reverses less far than specified. Person: the trapped body part may not be released, so injury is possible, and a legal requirement may be broken.",
+      "cause": "The reversal distance is not compensated for temperature, so at 85 °C the reversal ends early. The cause is a hypothesis for the workshop to confirm.",
+      "prevention": [],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 9,
+      "occurrence": 7,
+      "detection_rating": 3,
+      "rating_reasons": "S9: insufficient release of a trapped person, and a possible legal requirement. O7: DR-1030 shows it occurred, and the 4 mm margin is small. D3: TP-AP-01 covers all temperatures and found it. The defect text does not say whether 150 mm is a minimum or a maximum, so the team must confirm this.",
+      "recommended_action": "Confirm in SRS v1.3 whether 150 mm is a minimum or a maximum. Then check the reversal-distance calculation over temperature and voltage, and add a margin to the reversal target.",
+      "evidence": [
+        "DR-1030"
+      ],
+      "rpn": 189,
+      "action_needed": true
+    },
+    {
+      "function": "7. Behave safely at low and high supply voltage",
+      "element": "Supply monitor",
+      "failure_mode": "Controller dead after reverse polarity (diode D3 open)",
+      "effect": "Vehicle: controller does not wake up and all functions are lost. Driver: window can't be moved, with no warning.",
+      "cause": "The protection diode D3 is not rated for 60 s at -14 V and fails open.",
+      "prevention": [],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 8,
+      "occurrence": 7,
+      "detection_rating": 4,
+      "rating_reasons": "S8: the main function is lost. O7: DR-1024 shows it occurred, and no prevention is listed. D4: a reverse-polarity test found it, but it is not in the listed controls and not at all conditions.",
+      "recommended_action": "Re-dimension D3 (or add a series element) for the reverse-polarity duration in the spec. Add a reverse-polarity test at the temperature limits.",
+      "evidence": [
+        "DR-1024"
+      ],
+      "rpn": 224,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "False pinch reversal in cold weather without obstacle",
+      "effect": "Vehicle: window stops and reverses at about 150 mm. Driver: cannot close the window on the first try.",
+      "cause": "Probable cause: cold regulator friction raises the estimated force above the threshold (no temperature compensation). This is not confirmed.",
+      "prevention": [],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 7,
+      "occurrence": 7,
+      "detection_rating": 6,
+      "rating_reasons": "S7: the main function is degraded, and the second try worked. O7: DR-1004 and DR-1011 show it occurred at -18 to -20 °C and no prevention targets cold. D6: TP-AP-01 runs at -30 °C, but it checks stop time and not false reversals.",
+      "recommended_action": "Find the root cause with a cold HIL run that records the estimated force during a free close at -20 °C. Add a false-reversal check at cold temperatures to TP-AP-01.",
+      "evidence": [
+        "DR-1004",
+        "DR-1011"
+      ],
+      "rpn": 294,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "False pinch reversal on rough roads",
+      "effect": "Vehicle: window reverses by itself while closing. Driver: cannot close the window on rough roads.",
+      "cause": "Body vibration makes the motor speed oscillate. The algorithm reads the drops as rising pinch force, and the ripple filter or debounce does not fully remove them.",
+      "prevention": [
+        "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+      ],
+      "detection": [
+        "Rough-road vibration HIL profile"
+      ],
+      "severity": 7,
+      "occurrence": 8,
+      "detection_rating": 5,
+      "rating_reasons": "S7: the main function is degraded and the window can't be closed reliably on rough roads. O8: DR-1008 and DR-1023 show it occurring in the vehicle (2 in 10 tries) despite the filter, as in LL-2021-07. D5: a rough-road profile exists, but the defect appeared on the road and not on the bench, so some conditions are missing.",
+      "recommended_action": "Run profile RR-04 on the HIL bench at the corner conditions (cold, 9 V and 16 V) and with the current threshold and debounce. Compare the bench result with the road result for DR-1008. Re-check false reversals and stop time together.",
+      "evidence": [
+        "DR-1008",
+        "DR-1023",
+        "LL-2021-07"
+      ],
+      "rpn": 280,
+      "action_needed": true
+    },
+    {
+      "function": "5. Protect the motor from overheating",
+      "element": "Thermal model",
+      "failure_mode": "Model underestimates motor temperature",
+      "effect": "Vehicle: the current limit and opening block start too late. Driver: the motor may overheat and the window may be lost.",
+      "cause": "The model parameters (heat capacity, cooling, ambient) do not match the real motor in hot conditions.",
+      "prevention": [],
+      "detection": [
+        "Thermal model reviewed against thermocouple data (TP-TH-01)"
+      ],
+      "severity": 7,
+      "occurrence": 5,
+      "detection_rating": 4,
+      "rating_reasons": "S7: motor damage would lose the main function, but only after a long overload. O5: the model is reviewed against data, but WLC-200 is new and no field history exists. D4: TP-TH-01 targets the model, but not at all ambient and load conditions.",
+      "recommended_action": "Extend the TP-TH-01 comparison to high ambient (85 °C) and repeated-cycle loads, and set a margin on the block limit.",
+      "evidence": [
+        "LL-2024-01"
+      ],
+      "rpn": 140,
+      "action_needed": true
+    },
+    {
+      "function": "1. Move the window as the driver commands, in manual and express mode",
+      "element": "Supply monitor",
+      "failure_mode": "Window works only 45 to 50 s after ignition off (60 s required)",
+      "effect": "Vehicle: window stops responding to the switch too early. Driver: cannot close the window after parking.",
+      "cause": "The retained-power timer is shorter than specified or not set to 60 s, or it starts too early. The cause is not confirmed.",
+      "prevention": [],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 6,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "S6: a comfort function is lost after parking. O8: DR-1002 and DR-1015 show it occurred. D6: tests found it, but no listed control targets the timer.",
+      "recommended_action": "Correct the timer value, and check the SRS requirement for it. Add a test that measures the retained-power time.",
+      "evidence": [
+        "DR-1002",
+        "DR-1015"
+      ],
+      "rpn": 288,
+      "action_needed": true
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "Diagnostics",
+      "failure_mode": "No DTC B1A01 stored on Hall loss",
+      "effect": "Vehicle: fault memory is empty. Driver: no warning, and the workshop cannot find the cause.",
+      "cause": "The DTC write is not triggered because the Hall loss is not detected (see Hall loss row) or the DTC is not stored.",
+      "prevention": [],
+      "detection": [
+        "Hall signal plausibility check, 200 ms timeout"
+      ],
+      "severity": 6,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "S6: diagnosis is lost and the defect also removes the warning for the Hall loss. O8: DR-1018 and DR-1027 show it occurred. D6: the HIL test found it, but it is not yet a listed control.",
+      "recommended_action": "Store B1A01 as soon as the plausibility check triggers. Add a HIL check of the DTC memory to the Hall-disconnect test at 9 V and 13.5 V.",
+      "evidence": [
+        "DR-1018",
+        "DR-1027",
+        "LL-2023-05"
+      ],
+      "rpn": 288,
+      "action_needed": true
+    },
+    {
+      "function": "5. Protect the motor from overheating",
+      "element": "Thermal model",
+      "failure_mode": "One opening movement is allowed above the block limit (143 °C)",
+      "effect": "Vehicle: the motor runs one more movement above its limit, which causes extra thermal stress. Driver: no visible effect.",
+      "cause": "The block decision reads a stale temperature estimate, because it runs before the 100 ms thermal task has updated it. The fix from LL-2024-01 may be missing in the shared platform module.",
+      "prevention": [],
+      "detection": [
+        "Thermal model reviewed against thermocouple data (TP-TH-01)",
+        "Code review and static analysis"
+      ],
+      "severity": 6,
+      "occurrence": 8,
+      "detection_rating": 4,
+      "rating_reasons": "S6: one extra movement is a small thermal stress, but protection is not 100 % reliable. O8: DR-1012 and DR-1019 show it occurred and nothing prevents it. D4: TC-TH-03 found it, but TP-TH-01 checks model accuracy and not estimate timing.",
+      "recommended_action": "Check that the LL-2024-01 fix is in the WLC-200 platform thermal module: the block decision must read the estimate after the thermal task in the same cycle. Add a test that requests an opening right after the estimate crosses the limit.",
+      "evidence": [
+        "DR-1012",
+        "DR-1019",
+        "LL-2024-01"
+      ],
+      "rpn": 192,
+      "action_needed": true
+    },
+    {
+      "function": "1. Move the window as the driver commands, in manual and express mode",
+      "element": "Switch input",
+      "failure_mode": "Motor stays on 180 ms after switch release at 16 V (limit 100 ms)",
+      "effect": "Vehicle: window moves further than commanded. Driver: the window overshoots the wanted position.",
+      "cause": "The release handling or motor command timing depends on supply voltage and is slower at 16 V.",
+      "prevention": [],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 5,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "S5: a comfort function is degraded. O8: DR-1014 shows it occurred and no prevention is listed. D6: a test found it, but no listed test targets the release time over voltage.",
+      "recommended_action": "Find which delay depends on voltage (switch filter or motor stop). Add a release-time test over the full voltage range.",
+      "evidence": [
+        "DR-1014"
+      ],
+      "rpn": 240,
+      "action_needed": true
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "Diagnostics",
+      "failure_mode": "Overcurrent not stored as DTC B1A02 and fault state stays 0",
+      "effect": "Vehicle: motor stops, but WLC_Status reports no fault. Driver: no warning, and the cause of the failed movement is hidden.",
+      "cause": "The overcurrent handling stops the motor but does not write the DTC or set the fault state in WLC_Status.",
+      "prevention": [],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 5,
+      "occurrence": 8,
+      "detection_rating": 5,
+      "rating_reasons": "S5: the diagnostic function is lost, and the motor still stops. O8: DR-1009 and DR-1029 show it occurred. D5: TC-DG-02 targets it, but the code review did not find it.",
+      "recommended_action": "Write B1A02 and set the fault state in the overcurrent path. Add the DTC and fault state check to TC-DG-02 at several currents and voltages.",
+      "evidence": [
+        "DR-1009",
+        "DR-1029"
+      ],
+      "rpn": 200,
+      "action_needed": true
+    },
+    {
+      "function": "4. Keep track of window position",
+      "element": "Position counter",
+      "failure_mode": "Position drifts over repeated cycles (3.5 mm at the top seal after 200 cycles)",
+      "effect": "Vehicle: reported position and pinch-zone limits shift. Driver: no visible effect at first, but the express stop point and the pinch zone move.",
+      "cause": "Hall pulses are missed or counted twice, and the counter is not re-synchronized at the end stop.",
+      "prevention": [],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 5,
+      "occurrence": 7,
+      "detection_rating": 5,
+      "rating_reasons": "S5: a comfort function is degraded, because 3.5 mm is small against the pinch zone. O7: DR-1013 shows it occurred and no prevention is listed. D5: a cycle test found it, but no listed control targets drift.",
+      "recommended_action": "Re-set the position to a known value at every end-stop detection. Add a cycle test with an acceptance limit on drift.",
+      "evidence": [
+        "DR-1013"
+      ],
+      "rpn": 175,
+      "action_needed": true
+    },
+    {
+      "function": "2. Stop the window at the end positions",
+      "element": "Motor driver",
+      "failure_mode": "Window hits the top seal hard, with a loud knock",
+      "effect": "Vehicle: hard impact on the seal. Driver and passenger: noise, and possible long-term seal wear.",
+      "cause": "The end-stop detection or the motor speed before the end is not reduced, so the window stops late and at full speed.",
+      "prevention": [],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 4,
+      "occurrence": 7,
+      "detection_rating": 7,
+      "rating_reasons": "S4: noise noticed by most customers, and no damage seen. O7: DR-1026 shows it occurred. D7: it was found in a clinic and no test targets the impact.",
+      "recommended_action": "Reduce the speed near the top stop, or tune the end-stop current threshold. Add a noise or impact-speed check to the test plan.",
+      "evidence": [
+        "DR-1026"
+      ],
+      "rpn": 196,
+      "action_needed": true
+    },
+    {
+      "function": "7. Behave safely at low and high supply voltage",
+      "element": "CAN interface",
+      "failure_mode": "Sleep current 140 µA instead of the 100 µA limit",
+      "effect": "Vehicle: higher parking current. Driver: a flat battery after a long parking time.",
+      "cause": "The CAN transceiver stays in standby and does not enter sleep.",
+      "prevention": [],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 4,
+      "occurrence": 8,
+      "detection_rating": 5,
+      "rating_reasons": "S4: a flat battery is noticed by most customers after a long time. O8: DR-1007 shows it occurred. D5: a measurement found it, but it is not in the listed controls.",
+      "recommended_action": "Check the sleep sequence and the transceiver sleep command. Add a sleep-current test after the 60 s retained-power time.",
+      "evidence": [
+        "DR-1007"
+      ],
+      "rpn": 160,
+      "action_needed": true
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "CAN interface",
+      "failure_mode": "WLC_Status frame missing during diagnostic requests (200 ms gap)",
+      "effect": "Vehicle: the body controller sees a gap in WLC_Status. Driver: usually no effect, and the body controller may log a fault.",
+      "cause": "Long diagnostic responses fill the transmit queue, and a due status frame is dropped.",
+      "prevention": [
+        "CAN transmit queue sized for the worst-case bus load (from LL-2024-09)"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 3,
+      "occurrence": 7,
+      "detection_rating": 4,
+      "rating_reasons": "S3: noticed by some customers, mostly in the workshop. O7: DR-1016 shows it occurred despite the queue sizing, as in LL-2024-09. D4: TC-DG-03 targets it, but with only 100 requests at some conditions.",
+      "recommended_action": "Check that status frames use their own transmit buffer and recalculate the worst-case queue with the real response lengths. Run TC-DG-03 with more requests and with the motor running.",
+      "evidence": [
+        "DR-1016",
+        "LL-2024-09"
+      ],
+      "rpn": 84,
+      "action_needed": false
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "CAN interface",
+      "failure_mode": "Diagnostic response later than 50 ms during motor start",
+      "effect": "Vehicle: the tester gets a late response. Person: only the workshop notices, possibly as a communication error.",
+      "cause": "The CPU load or interrupts at motor start delay the diagnostic task.",
+      "prevention": [],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 2,
+      "occurrence": 7,
+      "detection_rating": 4,
+      "rating_reasons": "S2: only an attentive user notices it. O7: DR-1022 shows 3 in 100 responses late. D4: a test targets response time, but only at some conditions.",
+      "recommended_action": "Check the task priorities and the worst-case execution time around motor start. Add a response-time test while the motor starts.",
+      "evidence": [
+        "DR-1022"
+      ],
+      "rpn": 56,
+      "action_needed": false
+    }
+  ],
+  "problems": [
+    "function not analysed: Move the window as the driver commands, in manual and express mode",
+    "function not analysed: Stop the window at the end positions",
+    "function not analysed: Detect a pinch in the pinch zone and reverse the window",
+    "function not analysed: Keep track of window position",
+    "function not analysed: Protect the motor from overheating",
+    "function not analysed: Report status and faults to the body controller",
+    "function not analysed: Behave safely at low and high supply voltage"
+  ]
+}

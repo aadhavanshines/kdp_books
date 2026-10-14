@@ -1,36 +1,26 @@
 Code found: 8 changed, 3 added, 5 deleted; 14 tests affected
-CHECK: TC-MV-02: new criteria use 10 s, not in WLC-007
-CHECK: TC-MV-02: new criteria use 50 s, not in WLC-007
-CHECK: TC-MV-02: new criteria use 70 s, not in WLC-007
-CHECK: TC-AP-03: new criteria use 16 V, not in WLC-014, WLC-015
-CHECK: TC-AP-04: new criteria use -30 °C, not in WLC-014, WLC-015, WLC-035
-CHECK: TC-AP-04: new criteria use 9 V, not in WLC-014, WLC-015, WLC-035
-CHECK: TC-AP-05: new criteria use 13.5 V, not in WLC-014, WLC-015, WLC-035
-CHECK: TC-DG-02: new criteria use 100 ms, not in WLC-030
-CHECK: TC-DG-02: new criteria use 27 A, not in WLC-030
   TC-PW-04   remove_trace
   TC-MV-02   update_and_rerun
   TC-MV-07   update_and_rerun
   TC-AP-01   update_and_rerun
-  TC-AP-02   update_and_rerun
-  TC-AP-03   update_and_rerun
-  TC-AP-04   update_and_rerun
-  TC-AP-05   update_and_rerun
+  TC-AP-02   rerun
+  TC-AP-03   rerun
+  TC-AP-04   rerun
+  TC-AP-05   rerun
   TC-AP-09   remove_trace
   TC-PS-02   no_action
   TC-TH-02   update_and_rerun
   TC-CAN-01  update_and_rerun
   TC-DG-02   update_and_rerun
   TC-UX-01   retire
-  concern TC-AP-06, TC-AP-07, TC-AP-08, TC-EN-01: These are not traced to a changed requirement but run anti-pinch in manual and express mod
-  concern TC-AP-09 (vibration): Per LL-2021-07, the lower threshold (80 N) needs a new check of both false reversals and s
-  concern TC-AP-04: Per LL-2022-02, the cold and low-voltage corner (9.0 V, -30 °C) is the worst case for stop
-  concern TC-AP-01..05: The pinch rod sits at 100 mm and the reversal requirement is now 150 mm or fully open, whi
-  concern TC-MV-07, TC-MV-08, TC-AP-07: WLC_CloseAll is a new CAN input. Add a case for WLC_CloseAll while not normalized (WLC-013
-  concern TC-TH-02, TC-TH-01, TC-TH-03, TC-TH-04: Per LL-2024-01, the estimate-based limit check needs a current estimate, and the shared th
-  concern TC-CAN-01: Per LL-2024-09, the cycle time is halved, so repeat the worst-case queue calculation. Add 
-  concern TC-DG-02, TC-DG-03: WLC-037 and WLC-038 are triggered by 'stored', which is not the same as 'detected', and th
-  concern TC-DG-01: No change touches it, but per LL-2023-05 keep the Hall-sensor-removal test at the lowest s
-  concern WLC-034 (no tests): The process requirement is deleted and has no test. Confirm that the process conformity ev
-  concern TC-PW-04: Confirm that WLC-004 itself states the sleep current limit. If it does not, the 100 µA lim
-6309 in / 7500 out tokens, $0.0799, 53.1 s
+  concern TC-AP-09 and TC-AP-01 to TC-AP-05: LL-2021-07: a force threshold change needs a new check of both false reversals and stop ti
+  concern TC-AP-04: LL-2022-02: the cold (-30 °C), low-voltage (9.0 V) corner is the worst case for stop time.
+  concern TC-AP-06, TC-AP-07, TC-AP-08: These test other anti-pinch requirements (WLC-016, 017, 019) but may hard-code 100 N or 12
+  concern TC-MV-08, TC-AP-07: WLC-012 now closes by CAN request in express mode. Express close is only allowed when norm
+  concern TC-TH-02: LL-2024-01: a limit check using an estimate needs a current estimate. The thermal module i
+  concern TC-TH-01, TC-TH-03, TC-TH-04: They do not trace to WLC-025, but they use the same temperature limit. Check whether WLC-0
+  concern TC-CAN-01: LL-2024-09: when the cycle time goes from 100 ms to 50 ms, repeat the worst-case queue cal
+  concern TC-PW-04: The sleep-current requirement WLC-032 was deleted, but battery drain still matters. Keep t
+  concern TC-DG-01: LL-2023-05: sensor plausibility checks need a sensor-removal test at the lowest supply vol
+  concern TC-UX-01: Retiring it removes the only subjective check of switch feel. WLC-033 was deleted, but the
+6444 in / 7666 out tokens, $0.1067, 55.6 s

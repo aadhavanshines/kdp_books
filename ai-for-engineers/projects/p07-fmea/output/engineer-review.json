@@ -1,0 +1,14 @@
+{
+ "note": "The keyword grader is a first pass. The engineer read every row the grader marked MISSING and decided whether another row covers it. Rows were not edited.",
+ "v1-prompt/sonnet-run1": {"auto": 12, "final": 12, "decisions": {}},
+ "sonnet-run1": {"auto": 14, "final": 14, "decisions": {"F1": "missing", "F3": "missing"}},
+ "sonnet-run2": {"auto": 14, "final": 16, "decisions": {
+   "F11": "covered by 'Estimated temperature lower than the real motor temperature'",
+   "F12": "covered by 'Opening is allowed once above the 140 °C block limit'"}},
+ "sonnet-run3": {"auto": 16, "final": 16, "decisions": {}},
+ "opus-run1": {"auto": 10, "final": 13, "decisions": {
+   "F1": "missing", "F3": "missing", "F16": "missing ('full function stays enabled below the manual-only voltage' is a different failure)",
+   "F5": "covered by 'the pinch zone is shifted, so anti-pinch is disabled too early near the top'",
+   "F9": "covered by 'Hall pulses are lost or extra pulses are counted'",
+   "F12": "covered by 'one opening is allowed after the model estimate exceeds 140 °C'"}}
+}

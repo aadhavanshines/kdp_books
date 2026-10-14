@@ -1,21 +1,5 @@
 Code found: 8 changed, 3 added, 5 deleted; 14 tests affected
-CHECK: TC-MV-02: new criteria use 10 s, not in WLC-007
-CHECK: TC-MV-02: new criteria use 15 s, not in WLC-007
-CHECK: TC-MV-02: new criteria use 55 s, not in WLC-007
-CHECK: TC-MV-02: new criteria use 65 s, not in WLC-007
-CHECK: TC-MV-07: new criteria use 10 ms, not in WLC-012
-CHECK: TC-MV-07: new criteria use 150 mm, not in WLC-012
-CHECK: TC-MV-07: new criteria use 80 N, not in WLC-012
-CHECK: TC-AP-03: new criteria use 16 V, not in WLC-014, WLC-015
-CHECK: TC-AP-04: new criteria use -30 °C, not in WLC-014, WLC-015, WLC-035
-CHECK: TC-AP-04: new criteria use 9 V, not in WLC-014, WLC-015, WLC-035
-CHECK: TC-AP-05: new criteria use 13.5 V, not in WLC-014, WLC-015, WLC-035
-CHECK: TC-AP-09: new criteria use 10 ms, not in 
-CHECK: TC-AP-09: new criteria use 80 N, not in 
-CHECK: TC-CAN-01: new criteria use 10 s, not in WLC-028
-CHECK: TC-DG-02: new criteria use 100 ms, not in WLC-030
-CHECK: TC-DG-02: new criteria use 27 A, not in WLC-030
-CHECK: TC-DG-02: new criteria use 40 ms, not in WLC-030
+  TC-PW-04   remove_trace
   TC-MV-02   update_and_rerun
   TC-MV-07   update_and_rerun
   TC-AP-01   update_and_rerun
@@ -23,25 +7,28 @@ CHECK: TC-DG-02: new criteria use 40 ms, not in WLC-030
   TC-AP-03   update_and_rerun
   TC-AP-04   update_and_rerun
   TC-AP-05   update_and_rerun
-  TC-AP-09   update_and_rerun
+  TC-AP-09   remove_trace
   TC-PS-02   no_action
   TC-TH-02   update_and_rerun
   TC-CAN-01  update_and_rerun
-  TC-DG-02   update_and_rerun
-  TC-PW-04   remove_trace
+  TC-DG-02   rerun
   TC-UX-01   retire
-  concern TC-AP-06: Not traced to a changed requirement, but it checks pinch protection in manual and express 
-  concern TC-AP-08: Repeated-pinch lockout depends on how pinches are detected and reversed (80 N, 150 mm) and
-  concern TC-AP-04: LL-2022-02: run cold plus low voltage on every software release, not just for this change.
-  concern TC-AP-09: LL-2021-07: lowering the threshold to 80 N increases the risk of false reversals on rough 
-  concern TC-MV-07: Is dropping the rain-sensor close intended, or does it now come in through WLC_CloseAll fr
-  concern TC-MV-08: Rerun it, and extend it to WLC_CloseAll (express close requested over CAN when not normali
-  concern TC-PW-04: The procedure waits only 60 s before measuring, which now equals the retained-power time i
-  concern TC-TH-01: WLC-025 now uses a fixed 130 °C limit on the estimated temperature, so thermal model accur
-  concern TC-TH-03: TC-TH-03 and TC-TH-04 use the same thermal estimate and may assume the same limit. Check t
-  concern TC-CAN-01: LL-2024-09: with the cycle cut to 50 ms, repeat the worst-case CAN transmit-queue and bus-
-  concern TC-DG-03: Diagnostic response time and fault reporting depend on the WLC_Status cycle and on bus loa
-  concern TC-DG-02: WLC-037/038 say 'when B1A02 is stored'. This can be read as a lasting state, so the motor 
-  concern TC-DG-01: Not affected by the change, but LL-2023-05 requires removing the Hall sensor while the mot
-  concern TC-UX-01: WLC-033 was untestable, and WLC-034 was a process requirement with no test. Deleting both 
-6305 in / 8038 out tokens, $0.2155, 72.5 s
+  concern TC-AP-09: Lowering the threshold from 100 N to 80 N raises the risk of false reversals on rough road
+  concern TC-AP-04: LL-2022-02: cold plus low voltage is the worst case for stop time. With the new 80 N / 150
+  concern TC-AP-06: Pinch protection in manual and express mode (WLC-016) uses the same detection threshold. R
+  concern TC-AP-08: Repeated pinch lockout (WLC-019) interacts with the new 2 s express-close inhibit (WLC-039
+  concern TC-MV-07: WLC-012 asks for express close with anti-pinch active, but WLC-017 turns anti-pinch off wh
+  concern TC-MV-08: Express close only when normalized: rerun it with WLC_CloseAll as a new express-close sour
+  concern TC-PW-04: The 100 µA limit came from deleted WLC-032. Confirm that WLC-004 contains a sleep-current 
+  concern TC-DG-02: New WLC-037/038 say 'when B1A02 is stored'. A stored DTC stays in memory, so read literall
+  concern TC-TH-01: WLC-025 now uses a fixed 130 °C limit on the temperature estimate, so the estimate's accur
+  concern TC-TH-03: TC-TH-03 and TC-TH-04 (opening blocked when hot, release) should be checked against the ne
+  concern TC-MV-05: With current limited to 15 A when hot, full close time (WLC-010) may not be met, and the l
+  concern TC-AP-05: At 85 °C ambient, the motor estimate may pass 130 °C during the test, so the 15 A limit co
+  concern TC-CAN-01: LL-2024-09: halving the cycle time to 50 ms needs the worst-case transmit-queue calculatio
+  concern TC-DG-03: Diagnostic response time (WLC-031) may include reporting through WLC_Status, whose cycle i
+  concern TC-DG-01: Hall sensor loss: rerun it at the lowest supply voltage with the sensor removed while the 
+  concern TC-PW-01: Full function across the supply range (WLC-001) includes anti-pinch, so rerun it with the 
+  concern TC-EN-01: Climatic operation (WLC-035) shares its traces with TC-AP-04/05. Rerun it after the anti-p
+  concern TC-UX-01: The test is retired for traceability, but the switch-feel review may still be worth keepin
+6440 in / 10404 out tokens, $0.2639, 93.6 s

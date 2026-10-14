@@ -1,0 +1,25 @@
+Code found: 8 changed, 3 added, 5 deleted; 14 tests affected
+  TC-PW-04   remove_trace
+  TC-MV-02   update_and_rerun
+  TC-MV-07   update_and_rerun
+  TC-AP-01   update_and_rerun
+  TC-AP-02   update_and_rerun
+  TC-AP-03   update_and_rerun
+  TC-AP-04   update_and_rerun
+  TC-AP-05   update_and_rerun
+  TC-AP-09   remove_trace
+  TC-PS-02   no_action
+  TC-TH-02   update_and_rerun
+  TC-CAN-01  update_and_rerun
+  TC-DG-02   update_and_rerun
+  TC-UX-01   retire
+  concern TC-AP-09: The 80 N threshold (WLC-014) makes false pinch detection more likely. The lesson LL-2021-0
+  concern TC-AP-04: LL-2022-02 says the cold, low-voltage corner is the worst case for stop time. TC-AP-04 use
+  concern TC-PW-04: The 100 µA sleep limit was in deleted WLC-032. Confirm that WLC-004 still states a sleep c
+  concern TC-MV-07: Rain-triggered closing has been removed with no replacement, and no test now covers rain. 
+  concern TC-TH-02: LL-2024-01 says a limit check using an estimate must use a current estimate. The platform 
+  concern TC-CAN-01: LL-2024-09 says to repeat the worst-case queue calculation when the cycle time is shortene
+  concern TC-DG-03: This test (WLC-031, diagnostic response time) does not trace to a changed requirement. WLC
+  concern TC-AP-01: The reversal distance is 150 mm or fully open, whichever is less. With the rod at 100 mm, 
+  concern TC-PW-01: This test covers full function across the supply range (WLC-001). It does not trace to a c
+6444 in / 8808 out tokens, $0.1181, 61.2 s

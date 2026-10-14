@@ -1,0 +1,57 @@
+Unknown child process pid 6427, will report returncode 255
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+Unknown child process pid 7048, will report returncode 255
+Unknown child process pid 7088, will report returncode 255
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+Unknown child process pid 7481, will report returncode 255
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+Unknown child process pid 7812, will report returncode 255
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/query.py", line 391, in _read_messages
+    async for message in self.transport.read_messages():
+  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/transport/subprocess_cli.py", line 1162, in _read_messages_impl
+    raise self._exit_error
+claude_agent_sdk._errors.ProcessError: Command failed with exit code 1 (exit code: 1)
+Error output: Check stderr output for details
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 122, in <module>
+    main()
+  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 109, in main
+    asyncio.run(run_all(args[1] if len(args) > 1 else model, tag))
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 92, in run_all
+    results = await asyncio.gather(*(answer(q["question"], docs, model, limit)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/kdp_books/ai-for-engineers/projects/p08-knowledge/ask.py", line 82, in answer
+    r = await ask_async(question, system_prompt(docs), SCHEMA, model=model,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/kdp_books/ai-for-engineers/projects/common/claude_call.py", line 36, in ask_async
+    async for message in query(prompt=prompt, options=options):
+  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/query.py", line 129, in query
+    async for message in client.process_query(
+  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/client.py", line 56, in process_query
+    async for msg in inner:
+  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/client.py", line 204, in _process_query_inner
+    async for data in query.receive_messages():
+  File "/usr/local/lib/python3.11/dist-packages/claude_agent_sdk/_internal/query.py", line 1144, in receive_messages
+    raise exc
+claude_agent_sdk._errors.ResultError: Claude Code returned an error result: You've hit your session limit · resets 7:40pm (UTC) (exit code: 1)

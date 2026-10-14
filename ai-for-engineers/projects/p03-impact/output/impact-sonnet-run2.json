@@ -4,199 +4,331 @@
       {
         "id": "WLC-007",
         "kind": "meaning",
-        "summary": "Retained-power window after ignition off extends from 45 s to 60 s (front-door-open exit unchanged). This now absorbs the deleted duplicate WLC-023."
+        "summary": "Retained power after ignition off extended from 45 s to 60 s; the front-door-open cut-off is unchanged."
       },
       {
         "id": "WLC-012",
         "kind": "meaning",
-        "summary": "Trigger changed from rain sensor to the CAN request WLC_CloseAll. The vague 'quickly' is replaced by express mode with anti-pinch active. The rain trigger is no longer specified."
+        "summary": "Trigger changed from the rain sensor to the CAN request WLC_CloseAll. The vague 'quickly' became express-mode close with anti-pinch active."
       },
       {
         "id": "WLC-014",
         "kind": "meaning",
-        "summary": "Pinch detection threshold lowered from 100 N to 80 N, so detection is more sensitive."
+        "summary": "Pinch detection force threshold lowered from 100 N to 80 N."
       },
       {
         "id": "WLC-015",
         "kind": "meaning",
-        "summary": "Minimum reversal distance increased from 125 mm to 150 mm. The 10 ms stop time and the 'or fully open' limit are unchanged."
+        "summary": "Minimum reversal distance increased from 125 mm to 150 mm. The 10 ms stop time and the 'or fully open, whichever is less' clause are unchanged."
       },
       {
         "id": "WLC-021",
         "kind": "editorial",
-        "summary": "Wording only ('set itself to' became 'set its state to'). The 500 ms limit and the not-normalized result are the same."
+        "summary": "Rewording only ('set itself to' became 'set its state to'). The 500 ms interruption and the not-normalized result are unchanged."
       },
       {
         "id": "WLC-025",
         "kind": "meaning",
-        "summary": "The vague 'limit' and 'safe value' are replaced by numbers: the temperature threshold is 130 °C and the current is limited to 15 A."
+        "summary": "The vague 'limit' and 'safe value' are now quantified: the temperature threshold is 130 °C and the motor current limit is 15 A."
       },
       {
         "id": "WLC-028",
         "kind": "meaning",
-        "summary": "WLC_Status period is halved from 100 ms ± 10 ms to 50 ms ± 5 ms. The content (four signals) is unchanged."
+        "summary": "WLC_Status period shortened from 100 ms ± 10 ms to 50 ms ± 5 ms. The content is unchanged."
       },
       {
         "id": "WLC-030",
         "kind": "meaning",
-        "summary": "Narrowed to storing B1A02 (above 25 A for more than 50 ms). The motor-stop and fault-state reactions moved to the new WLC-037 and WLC-038."
+        "summary": "Narrowed to storing DTC B1A02 at more than 25 A for more than 50 ms. Stopping the motor and setting the fault state moved to the new WLC-037 and WLC-038."
       }
     ],
     "tests": [
       {
         "id": "TC-PW-04",
         "action": "remove_trace",
-        "new_pass_criteria": "Unchanged: mean current below 100 µA, provided WLC-004 states this limit.",
-        "reason": "Remove the trace to deleted WLC-032 and keep the test under WLC-004, because sleep current is still a real requirement. Confirm that WLC-004 carries the 100 µA limit."
+        "new_procedure": "",
+        "new_pass_criteria": [],
+        "reason": "Remove the trace to deleted WLC-032. The test stays because WLC-004 still traces to it, and the 100 µA sleep-current check is still worth running (see concerns)."
       },
       {
         "id": "TC-MV-02",
         "action": "update_and_rerun",
-        "new_pass_criteria": "Movement at 55 s after ignition off; no movement at 65 s; no movement after a front door is opened at 10 s. Remove the trace to deleted WLC-023.",
-        "reason": "The window grows from 45 s to 60 s, so the 40 s and 50 s sample points no longer straddle the limit. The new points sit either side of 60 s, and the WLC-023 trace goes."
+        "new_procedure": "Switch ignition off. Press the switch at 55 s and at 65 s, and also at 59 s and 61 s to bracket the limit. Repeat with a front door opened at 10 s, then press the switch. Also remove the trace to deleted WLC-023.",
+        "new_pass_criteria": [
+          {
+            "measure": "Window movement after ignition off, with no door opened",
+            "limit": "Allowed for 60 s"
+          },
+          {
+            "measure": "Window movement after 60 s",
+            "limit": "Not allowed"
+          },
+          {
+            "measure": "Window movement after a front door is opened",
+            "limit": "Not allowed"
+          }
+        ],
+        "reason": "WLC-007 changed from 45 s to 60 s, so the 40 s and 50 s test points no longer bracket the limit. WLC-023 is deleted and its trace must go."
       },
       {
         "id": "TC-MV-07",
         "action": "update_and_rerun",
-        "new_pass_criteria": "With the window half open, send the CAN request WLC_CloseAll. The window closes fully in express mode (no further switch input). With the pinch rod in the closing path, the anti-pinch function is active and detects a pinch per WLC-014 (above 80 N) and reverses.",
-        "reason": "The trigger is now a CAN request instead of a rain signal, and anti-pinch must be active during the close, so both the procedure and the criteria change."
+        "new_procedure": "With the window half open and the controller normalized, send the CAN request WLC_CloseAll from the body controller (the old rain signal is no longer the trigger). Repeat with an obstacle in the pinch zone to check that anti-pinch is active during the close.",
+        "new_pass_criteria": [
+          {
+            "measure": "Window response to WLC_CloseAll",
+            "limit": "Closes in express mode"
+          },
+          {
+            "measure": "Anti-pinch during the WLC_CloseAll close",
+            "limit": "Active"
+          }
+        ],
+        "reason": "The trigger and the required behaviour both changed, so the rain stimulus no longer verifies WLC-012. The test needs a different stimulus and new checks."
       },
       {
         "id": "TC-AP-01",
         "action": "update_and_rerun",
-        "new_pass_criteria": "Motor stops within 10 ms of the force exceeding 80 N; reversal of at least 150 mm, or to fully open if that is less.",
-        "reason": "The threshold changes to 80 N and the reversal distance to 150 mm. Check that the rod at 100 mm still allows 150 mm of reversal or full open."
+        "new_procedure": "At 13.5 V and 23 °C, express close onto the 10 N/mm pinch rod placed at 100 mm. Confirm that the window can travel the full 150 mm reversal from the pinch position, or is fully open before that.",
+        "new_pass_criteria": [
+          {
+            "measure": "Pinch detection force",
+            "limit": "Detected when force exceeds 80 N"
+          },
+          {
+            "measure": "Motor stop time after detection",
+            "limit": "Within 10 ms"
+          },
+          {
+            "measure": "Reversal distance",
+            "limit": "At least 150 mm or to fully open, whichever is less"
+          }
+        ],
+        "reason": "Both the detection threshold (80 N) and the reversal distance (150 mm) changed."
       },
       {
         "id": "TC-AP-02",
         "action": "update_and_rerun",
-        "new_pass_criteria": "At 9.0 V: motor stops within 10 ms of the force exceeding 80 N; reversal of at least 150 mm, or to fully open if that is less.",
-        "reason": "It inherits the new 80 N and 150 mm limits from TC-AP-01, so it must be updated and rerun."
+        "new_procedure": "As TC-AP-01 (updated) at 9.0 V.",
+        "new_pass_criteria": [
+          {
+            "measure": "Pinch detection force",
+            "limit": "Detected when force exceeds 80 N"
+          },
+          {
+            "measure": "Motor stop time after detection",
+            "limit": "Within 10 ms"
+          },
+          {
+            "measure": "Reversal distance",
+            "limit": "At least 150 mm or to fully open, whichever is less"
+          }
+        ],
+        "reason": "The criteria inherit from TC-AP-01, so the 80 N threshold and the 150 mm reversal now apply at low voltage."
       },
       {
         "id": "TC-AP-03",
         "action": "update_and_rerun",
-        "new_pass_criteria": "At 16.0 V: motor stops within 10 ms of the force exceeding 80 N; reversal of at least 150 mm, or to fully open if that is less.",
-        "reason": "It inherits the new 80 N and 150 mm limits from TC-AP-01, so it must be updated and rerun."
+        "new_procedure": "As TC-AP-01 (updated) at 16.0 V.",
+        "new_pass_criteria": [
+          {
+            "measure": "Pinch detection force",
+            "limit": "Detected when force exceeds 80 N"
+          },
+          {
+            "measure": "Motor stop time after detection",
+            "limit": "Within 10 ms"
+          },
+          {
+            "measure": "Reversal distance",
+            "limit": "At least 150 mm or to fully open, whichever is less"
+          }
+        ],
+        "reason": "The criteria inherit from TC-AP-01, so the 80 N threshold and the 150 mm reversal now apply at high voltage."
       },
       {
         "id": "TC-AP-04",
         "action": "update_and_rerun",
-        "new_pass_criteria": "At 9.0 V and -30 °C: motor stops within 10 ms of the force exceeding 80 N; reversal of at least 150 mm, or to fully open if that is less.",
-        "reason": "It inherits the new limits. This is the cold, low-voltage worst-case corner, so run it first and on every software release."
+        "new_procedure": "As TC-AP-01 (updated) at 9.0 V and -30 °C. This is the cold and low-voltage corner that LL-2022-02 names as the worst case for stop time. Run it on every software release.",
+        "new_pass_criteria": [
+          {
+            "measure": "Pinch detection force",
+            "limit": "Detected when force exceeds 80 N"
+          },
+          {
+            "measure": "Motor stop time after detection",
+            "limit": "Within 10 ms"
+          },
+          {
+            "measure": "Reversal distance",
+            "limit": "At least 150 mm or to fully open, whichever is less"
+          }
+        ],
+        "reason": "The criteria inherit from TC-AP-01, so the new threshold and reversal apply in the worst-case corner for stop time."
       },
       {
         "id": "TC-AP-05",
         "action": "update_and_rerun",
-        "new_pass_criteria": "At 13.5 V and 85 °C: motor stops within 10 ms of the force exceeding 80 N; reversal of at least 150 mm, or to fully open if that is less.",
-        "reason": "It inherits the new 80 N and 150 mm limits from TC-AP-01, so it must be updated and rerun."
+        "new_procedure": "As TC-AP-01 (updated) at 13.5 V and 85 °C.",
+        "new_pass_criteria": [
+          {
+            "measure": "Pinch detection force",
+            "limit": "Detected when force exceeds 80 N"
+          },
+          {
+            "measure": "Motor stop time after detection",
+            "limit": "Within 10 ms"
+          },
+          {
+            "measure": "Reversal distance",
+            "limit": "At least 150 mm or to fully open, whichever is less"
+          }
+        ],
+        "reason": "The criteria inherit from TC-AP-01, so the new threshold and reversal apply when hot."
       },
       {
         "id": "TC-AP-09",
         "action": "remove_trace",
-        "new_pass_criteria": "Keep the pass criteria: no false pinch detection on the rough-road vibration profile, now at the 80 N threshold. Retrace to WLC-014.",
-        "reason": "Remove the trace to deleted WLC-018. The test is still needed, because a lower threshold raises the risk of false reversals (LL-2021-07), so retrace it to WLC-014 and rerun it."
+        "new_procedure": "Remove the trace to deleted WLC-018. Keep the test and re-trace it to WLC-014. Rerun it with the 80 N threshold (see concerns).",
+        "new_pass_criteria": [],
+        "reason": "WLC-018 is deleted, but the test checks for false pinch detection under vibration. It becomes more important with the lower threshold, so it is kept and re-traced rather than retired."
       },
       {
         "id": "TC-PS-02",
         "action": "no_action",
-        "new_pass_criteria": "",
-        "reason": "The WLC-021 change is wording only; the 500 ms limit and the result are unchanged."
+        "new_procedure": "",
+        "new_pass_criteria": [],
+        "reason": "The WLC-021 change is editorial. The 500 ms interruption and the not-normalized result are unchanged, and the 400 ms and 600 ms test points still bracket the limit."
       },
       {
         "id": "TC-TH-02",
         "action": "update_and_rerun",
-        "new_pass_criteria": "Once the estimated motor temperature exceeds 130 °C, motor current is limited to 15 A. Below 130 °C no limiting is applied.",
-        "reason": "The requirement now has numeric limits, so the vague 'current reduced' criterion must check 130 °C and 15 A."
+        "new_procedure": "Run open-close cycles until the estimated motor temperature exceeds 130 °C. Check that the estimate is current before the limit check (LL-2024-01), and confirm the WLC-200 thermal module fix is present. Measure motor current while the limit is active.",
+        "new_pass_criteria": [
+          {
+            "measure": "Estimated motor temperature at which limiting starts",
+            "limit": "Exceeds 130 °C"
+          },
+          {
+            "measure": "Motor current while limiting",
+            "limit": "Limited to 15 A"
+          }
+        ],
+        "reason": "WLC-025 now gives numeric values (130 °C and 15 A), so 'motor current reduced' no longer verifies it."
       },
       {
         "id": "TC-CAN-01",
         "action": "update_and_rerun",
-        "new_pass_criteria": "Over a 10 s recording, WLC_Status period is 50 ms ± 5 ms; all four signals (window position, movement state, normalization state, fault state) are present. Repeat under worst-case bus load, including a diagnostic session.",
-        "reason": "The period requirement halves to 50 ms ± 5 ms, and LL-2024-09 requires the worst-bus-load check at the shorter cycle."
+        "new_procedure": "Record WLC_Status for 10 s while moving the window. Run once on a quiet bus and again under worst-case bus load, including a diagnostic session (LL-2024-09).",
+        "new_pass_criteria": [
+          {
+            "measure": "WLC_Status period",
+            "limit": "50 ms ± 5 ms"
+          },
+          {
+            "measure": "Signals present",
+            "limit": "Window position, movement state, normalization state and fault state"
+          }
+        ],
+        "reason": "The cycle time changed from 100 ms ± 10 ms to 50 ms ± 5 ms."
       },
       {
         "id": "TC-DG-02",
         "action": "update_and_rerun",
-        "new_pass_criteria": "Blocking the window and injecting 27 A for 100 ms: B1A02 is stored (WLC-030), the motor is stopped (WLC-037) and the fault state is set in WLC_Status (WLC-038). Add a negative case: 25 A or less, or above 25 A for less than 50 ms, stores no B1A02.",
-        "reason": "The criteria stay the same, but the stop and fault-state checks now trace to the new WLC-037 and WLC-038 instead of WLC-030, so add those traces and rerun."
+        "new_procedure": "Block the window and inject 27 A for 100 ms. Add negative cases: 23 A for 100 ms, and 27 A for 40 ms. The motor-stop and fault-state checks move to the extension for WLC-037 and WLC-038 (see added requirements).",
+        "new_pass_criteria": [
+          {
+            "measure": "DTC B1A02",
+            "limit": "Stored when motor current exceeds 25 A for more than 50 ms"
+          }
+        ],
+        "reason": "WLC-030 now only requires storing B1A02. Stopping the motor and setting the fault state moved to WLC-037 and WLC-038."
       },
       {
         "id": "TC-UX-01",
         "action": "retire",
-        "new_pass_criteria": "",
-        "reason": "WLC-033 ('user friendly') is deleted and this is its only trace, so the test verifies no requirement. It could be run as non-requirement feedback if the team wants."
+        "new_procedure": "",
+        "new_pass_criteria": [],
+        "reason": "Its only trace, WLC-033 'user friendly', is deleted, so it verifies no requirement in the new version."
       }
     ],
     "added": [
       {
         "id": "WLC-037",
-        "extend_test": "TC-DG-02",
-        "pass_criteria": "With B1A02 stored by injecting 27 A for 100 ms, the motor is stopped. Confirm the motor stays stopped for as long as the code remains stored. Add WLC-037 to the test's traces."
+        "extend_test": "TC-DG-02 (extend and add the trace to WLC-037)",
+        "pass_criteria": "With B1A02 stored after the 27 A for 100 ms injection, the motor is stopped. Run the same stimulus as TC-DG-02 and check motor current and movement. Also confirm the motor is not stopped by this requirement in the 23 A and 40 ms cases, where B1A02 is not stored."
       },
       {
         "id": "WLC-038",
-        "extend_test": "TC-DG-02",
-        "pass_criteria": "With B1A02 stored, the fault state signal in WLC_Status is set in the next WLC_Status frame (50 ms ± 5 ms period). Add WLC-038 to the test's traces."
+        "extend_test": "TC-DG-02 (extend and add the trace to WLC-038)",
+        "pass_criteria": "With B1A02 stored, the fault state signal in WLC_Status is set. Check this in the recorded WLC_Status frames. Also confirm it is not set in the cases where B1A02 is not stored."
       },
       {
         "id": "WLC-039",
-        "extend_test": "New test (suggest TC-AP-10). TC-AP-01 and TC-AP-08 could provide the setup.",
-        "pass_criteria": "Trigger a pinch reversal. An express close command at about 1 s after the reversal is not executed. An express close command after 2 s from the reversal is executed. Repeat at 9.0 V and at 13.5 V. Check how this interacts with the repeated-pinch lockout (WLC-019) so the two do not conflict. WLC-039 gives no tolerance on the 2 s, so ask for one before fixing the test points close to 2 s."
+        "extend_test": "New test needed: TC-AP-10, 'Express close inhibit after pinch reversal'. TC-AP-08 (repeated pinch lockout, WLC-019) is a possible host, but its content is not given, so confirm before extending it.",
+        "pass_criteria": "After a pinch reversal, an express close request at about 1 s is not executed. Express close is accepted again after 2 s (test at 1.9 s and 2.1 s). Measure the time from the reversal, and state in the test whether it starts at detection or at the end of the reversal. Also check that manual close is still available during the 2 s."
       }
     ],
     "concerns": [
       {
-        "test": "TC-AP-09 / TC-AP-01..05",
-        "concern": "LL-2021-07: the threshold change from 100 N to 80 N needs a new check of both false reversals (vibration profile) and stop time. Rerun TC-AP-09 even though its requirement is deleted, and do not retire it."
+        "test": "TC-AP-09",
+        "concern": "The threshold dropped from 100 N to 80 N, so false reversals are more likely. LL-2021-07 requires a new check of both false reversals and stop time after any threshold change. Rerun TC-AP-09 on the rough-road profile and add vibration to the TC-AP-01 to TC-AP-05 runs."
+      },
+      {
+        "test": "TC-AP-06",
+        "concern": "It traces to WLC-016 (pinch protection in manual and express mode), not to a changed requirement, but it uses the pinch threshold and reversal. Rerun it. TC-AP-07 (anti-pinch off when not normalized) and TC-AP-08 (repeated pinch lockout) should also be rerun, because the threshold and reversal changed."
       },
       {
         "test": "TC-AP-04",
-        "concern": "LL-2022-02: cold plus low voltage is the worst case for stop time. With the lower threshold and longer reversal, run this corner first and on every software release."
-      },
-      {
-        "test": "TC-AP-06, TC-AP-07, TC-MV-08",
-        "concern": "They do not trace to a changed requirement but depend on the anti-pinch behaviour. TC-AP-06 (WLC-016) may quote the old thresholds; check and rerun it. The new WLC-012 requires anti-pinch active on a CAN close, while TC-AP-07 and WLC-017 turn it off when not normalized. Clarify what WLC_CloseAll does when the controller is not normalized, and add a test case."
-      },
-      {
-        "test": "TC-MV-07",
-        "concern": "WLC-012 drops the rain trigger. Confirm that removing automatic closing on rain is intended and that the body controller now owns it. If the rain function is still wanted, it needs its own requirement."
-      },
-      {
-        "test": "TC-AP-08",
-        "concern": "The new WLC-039 (2 s express-close inhibit) may overlap or conflict with the repeated-pinch lockout WLC-019. Review that test and its requirement together."
-      },
-      {
-        "test": "TC-TH-01, TC-TH-03, TC-TH-04",
-        "concern": "LL-2024-01: a limit check on an estimate must use a current estimate. Check that the shared thermal module fix for WLC-200 is present before TC-TH-02 is trusted. Also check whether the thresholds in TH-03 and TH-04 are consistent with the new 130 °C."
-      },
-      {
-        "test": "TC-AP-05, TC-MV-05",
-        "concern": "The 15 A current limit above 130 °C could lengthen the full close time (WLC-010) or affect pinch detection and stop time when hot. Check both under limiting."
-      },
-      {
-        "test": "TC-CAN-01",
-        "concern": "LL-2024-09: when the cycle time shortens from 100 ms to 50 ms, repeat the worst-case queue calculation. Test the frames under the worst bus load, including diagnostic sessions."
-      },
-      {
-        "test": "TC-DG-01, TC-DG-03",
-        "concern": "B1A02 now drives the motor stop and fault state through WLC-037 and WLC-038. Check the response time (WLC-031) for the diagnostic reaction. LL-2023-05 also says the sensor-removal test must run at the lowest supply voltage; check that TC-DG-01 does."
-      },
-      {
-        "test": "TC-MV-02",
-        "concern": "The window now lasts 60 s, which also drives the TC-PW-04 current and power budget. Check that nothing else assumed 45 s."
+        "concern": "LL-2022-02: cold and low voltage together is the worst case for stop time. TC-AP-04 covers it at 9.0 V and -30 °C, so keep it in every software release run. The 80 N threshold takes less force before detection but needs the 10 ms stop in the same corner."
       },
       {
         "test": "TC-EN-01",
-        "concern": "It traces to WLC-035 only, but climatic operation includes anti-pinch at the new thresholds. Check whether it needs a rerun at the end of the program."
+        "concern": "Climatic operation (WLC-035) is linked to the pinch tests in the cold and hot corners. Rerun it after the 80 N and 150 mm changes."
       },
       {
-        "test": "WLC-034 (no test)",
-        "concern": "The software process requirement is deleted and has no test, so no test action is needed. Confirm the process evidence is still tracked outside the test set."
+        "test": "TC-MV-08",
+        "concern": "WLC-012 now makes WLC_CloseAll an express close. Express close needs the controller to be normalized (WLC-013 and WLC-017). Add a case for WLC_CloseAll when not normalized and confirm the intended behaviour with the requirement owner."
+      },
+      {
+        "test": "TC-MV-07",
+        "concern": "The rain-sensor trigger was removed from WLC-012. Confirm that closing on rain is covered by a requirement elsewhere, for example in the body controller specification, and not dropped by mistake. Also check that the controller's WLC_CloseAll handling keeps anti-pinch active across the whole close."
+      },
+      {
+        "test": "TC-AP-01",
+        "concern": "With a 150 mm reversal, check that the rod position and window travel allow the full reversal, or the window reaches fully open first. Otherwise the pass limit cannot be checked. The reversal rule in WLC-015 says 'whichever is less'."
+      },
+      {
+        "test": "TC-PW-04",
+        "concern": "WLC-032 (sleep current below 100 µA) is deleted. Check that this is intentional. If the 100 µA limit is still a real need (battery drain), keep the check and make sure WLC-004 states it. Otherwise this test only checks whatever WLC-004 says."
+      },
+      {
+        "test": "TC-UX-01",
+        "concern": "Retiring the usability review removes the only check of switch feel and response. Confirm with the requirement owner that a product-level review exists elsewhere. A deleted vague requirement does not mean the review has no value."
+      },
+      {
+        "test": "TC-TH-01",
+        "concern": "LL-2024-01: a limit check that uses an estimate must make sure the estimate is current. WLC-025 now has hard limits (130 °C, 15 A). Check that the fix for the shared platform thermal module (WLC-200) is present. Rerun TC-TH-01, TC-TH-03 and TC-TH-04, because they depend on the same estimate and limit."
+      },
+      {
+        "test": "TC-CAN-01",
+        "concern": "LL-2024-09: when the cycle time gets shorter (100 ms to 50 ms), repeat the worst-case queue calculation. Run under worst bus load, including diagnostic sessions. The fault state signal now also comes from WLC-038, so check it in the same frames."
+      },
+      {
+        "test": "TC-DG-03",
+        "concern": "Diagnostic response time (WLC-031) may depend on the old combined WLC-030 behaviour of stop motor and set fault state. Check its criteria against WLC-037 and WLC-038."
+      },
+      {
+        "test": "TC-DG-01",
+        "concern": "No change here, but LL-2023-05 asks for a sensor plausibility check with a timeout, and a sensor-removal test at the lowest supply voltage. Check that TC-DG-01 does this at the lowest supply voltage."
+      },
+      {
+        "test": "TC-PS-02",
+        "concern": "WLC-021 is editorial, so no test action is needed. Update the requirement text in the trace record only."
       }
     ]
   },
-  "cost_usd": 0.0809,
+  "cost_usd": 0.1095,
   "model_usage": {
     "claude-haiku-4-5-20251001": {
       "inputTokens": 4185,
@@ -214,22 +346,22 @@
     },
     "claude-sonnet-5-5": {
       "inputTokens": 2,
-      "outputTokens": 7598,
-      "cacheReadInputTokens": 6307,
-      "cacheCreationInputTokens": 0,
+      "outputTokens": 7950,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 6442,
       "webSearchRequests": 0,
-      "costUSD": 0.07724539999999999,
+      "costUSD": 0.105272,
       "contextWindow": 1000000,
       "maxOutputTokens": 128000,
-      "thinkingTokens": 3359,
+      "thinkingTokens": 2522,
       "canonicalModel": "claude-sonnet-5-5",
       "provider": "firstParty",
       "costBasis": "list"
     }
   },
-  "input_tokens": 6309,
-  "output_tokens": 7598,
-  "seconds": 53.7,
+  "input_tokens": 6444,
+  "output_tokens": 7950,
+  "seconds": 55.1,
   "model": "claude-sonnet-5-5",
   "code_diff": {
     "added": {
@@ -295,17 +427,5 @@
     "TC-DG-02",
     "TC-UX-01"
   ],
-  "problems": [
-    "TC-MV-02: new criteria use 10 s, not in WLC-007",
-    "TC-MV-02: new criteria use 55 s, not in WLC-007",
-    "TC-MV-02: new criteria use 65 s, not in WLC-007",
-    "TC-MV-07: new criteria use 80 N, not in WLC-012",
-    "TC-AP-03: new criteria use 16 V, not in WLC-014, WLC-015",
-    "TC-AP-04: new criteria use -30 °C, not in WLC-014, WLC-015, WLC-035",
-    "TC-AP-04: new criteria use 9 V, not in WLC-014, WLC-015, WLC-035",
-    "TC-AP-05: new criteria use 13.5 V, not in WLC-014, WLC-015, WLC-035",
-    "TC-CAN-01: new criteria use 10 s, not in WLC-028",
-    "TC-DG-02: new criteria use 100 ms, not in WLC-030",
-    "TC-DG-02: new criteria use 27 A, not in WLC-030"
-  ]
+  "problems": []
 }

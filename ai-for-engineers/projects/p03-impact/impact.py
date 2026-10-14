@@ -58,8 +58,11 @@ and which test cases trace to them. Your job is the engineering judgement.
 1. For each changed requirement, decide whether the meaning changed
    ("meaning") or only the wording ("editorial"), and summarise the change.
 2. For each affected test case, choose one action:
-   - update_and_rerun: the procedure or pass criteria must change; give the
-     new pass criteria, using only limits from the new requirement text.
+   - update_and_rerun: the procedure or pass criteria must change. Give the
+     new pass criteria as a list of checks, each with a measure and a limit.
+     Write each limit as the new requirement gives it; never invent one.
+     Test conditions and boundary values go in new_procedure, not in a
+     limit.
    - rerun: the test stays as it is but must be run again.
    - remove_trace: the test stays, but its trace to a deleted requirement
      must be removed; say which.
@@ -87,9 +90,15 @@ SCHEMA = {
             "id": {"type": "string"},
             "action": {"enum": ["update_and_rerun", "rerun", "remove_trace",
                                 "retire", "no_action"]},
-            "new_pass_criteria": {"type": "string"},
+            "new_procedure": {"type": "string"},
+            "new_pass_criteria": {"type": "array", "items": {
+                "type": "object",
+                "properties": {"measure": {"type": "string"},
+                               "limit": {"type": "string"}},
+                "required": ["measure", "limit"]}},
             "reason": {"type": "string"}},
-            "required": ["id", "action", "new_pass_criteria", "reason"]}},
+            "required": ["id", "action", "new_procedure", "new_pass_criteria",
+                         "reason"]}},
         "added": {"type": "array", "items": {"type": "object", "properties": {
             "id": {"type": "string"},
             "extend_test": {"type": "string"},
@@ -121,7 +130,8 @@ def check(answer, changes, hit, all_tests, new):
         if t["action"] == "update_and_rerun":
             reqs = [r for r in all_tests.get(tid, []) if r in new]
             allowed = set().union(*(values(new[r]) for r in reqs)) if reqs else set()
-            for v in sorted(values(t["new_pass_criteria"]) - allowed):
+            limits = " ".join(c["limit"] for c in t["new_pass_criteria"])
+            for v in sorted(values(limits) - allowed):
                 problems.append(f"{tid}: new criteria use {v}, not in {', '.join(reqs)}")
     for a in answer["added"]:
         if a["id"] not in changes["added"]:

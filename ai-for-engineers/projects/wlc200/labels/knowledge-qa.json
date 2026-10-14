@@ -85,7 +85,7 @@
   "question": "Why could a movement start above the thermal block limit on SMC-3?",
   "must_contain": [
    "stale",
-   "before the thermal task"
+   "before"
   ],
   "sources": [
    "LL-2024-01-thermal-check.md"

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "wlc200-testdb": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["testdb_server.py"]
+    }
+  }
+}

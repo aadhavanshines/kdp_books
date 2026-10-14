@@ -1,0 +1,2 @@
+CHECK: function not analysed: Detect a pinch in the pinch zone and reverse the window
+36 rows, 35 need action; 8448 in / 16774 out tokens, $0.2042, 118.3 s

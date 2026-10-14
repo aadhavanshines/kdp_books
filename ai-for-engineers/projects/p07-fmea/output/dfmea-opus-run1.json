@@ -1,0 +1,1166 @@
+{
+  "answer": {
+    "rows": [
+      {
+        "function": "1. Move the window as the driver commands, in manual and express mode",
+        "element": "Supply monitor",
+        "failure_mode": "No function too early: the window stops responding before the 60 s retained-power period after ignition off has ended",
+        "effect": "Vehicle: the window ignores the switch 45 to 50 s after ignition off. Driver: can't close a window they left open after getting out unless they switch the ignition back on, so the car may be left open.",
+        "cause": "The retained-power timer ends early (about 45 to 50 s instead of 60 s) because of a timer calibration or tick-base error.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 7,
+        "occurrence": 8,
+        "detection_rating": 7,
+        "rating_reasons": "S: Closing is lost only for part of the retained-power period and comes back with ignition on, so this is a degraded main function. O: Two open defects show the cause has already occurred. D: No existing control targets retained-power timing; both defects came from ad-hoc testing.",
+        "recommended_action": "Correct the timer configuration. Add a HIL test that measures switch response at 55, 59 and 61 s after ignition off, at 9, 13.5 and 16 V.",
+        "evidence": [
+          "DR-1002",
+          "DR-1015"
+        ],
+        "rpn": 392,
+        "action_needed": true
+      },
+      {
+        "function": "1. Move the window as the driver commands, in manual and express mode",
+        "element": "Switch input",
+        "failure_mode": "Unintended function / too late: the motor keeps running after the switch is released in manual mode",
+        "effect": "Vehicle: in manual close the window travels about 180 ms further than commanded at 16 V. Driver: loses precise control of the window position; anti-pinch stays active.",
+        "cause": "The release detection, or the switch input threshold and filter, depends on the supply voltage, so release is recognised late at high voltage.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 5,
+        "occurrence": 8,
+        "detection_rating": 7,
+        "rating_reasons": "S: Manual control is degraded but anti-pinch still protects, so this is a degraded comfort function; the team should confirm that no legal stop-on-release requirement applies. O: An open defect (180 ms against a 100 ms limit at 16 V) shows the cause has occurred. D: No existing control measures release-to-stop time across the voltage range.",
+        "recommended_action": "Make the switch threshold ratiometric or independent of supply. Add a HIL test of release-to-motor-off time at 9, 13.5 and 16 V and at -30, 23 and 85 °C.",
+        "evidence": [
+          "DR-1014"
+        ],
+        "rpn": 280,
+        "action_needed": true
+      },
+      {
+        "function": "1. Move the window as the driver commands, in manual and express mode",
+        "element": "Switch input",
+        "failure_mode": "Function too late: the window starts moving with a noticeable delay after the switch is pressed",
+        "effect": "Vehicle: delayed start of window movement. Driver: the switch feels slow and unresponsive.",
+        "cause": "The short/held press classification time delays the motor start until the press type is decided.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 4,
+        "occurrence": 5,
+        "detection_rating": 7,
+        "rating_reasons": "S: This is a feel issue that most customers notice. O: There is only a subjective clinic report with no measurement, so the cause is plausible but not confirmed. D: No existing test measures press-to-motion latency.",
+        "recommended_action": "Measure press-to-motor-on latency on HIL. Start the motor at press and decide express versus manual in parallel, with a latency requirement added to the SRS.",
+        "evidence": [
+          "DR-1010"
+        ],
+        "rpn": 140,
+        "action_needed": true
+      },
+      {
+        "function": "1. Move the window as the driver commands, in manual and express mode",
+        "element": "Switch input",
+        "failure_mode": "Unintended function: express close is available while the window is not normalized",
+        "effect": "Vehicle: after battery reconnection, a short press closes the window fully without valid position, so the pinch zone and anti-pinch reference are not valid. Passenger: a hand or neck could be trapped by an automatic close with no warning.",
+        "cause": "The express-close enable logic does not check the normalization state from the position counter.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 10,
+        "occurrence": 8,
+        "detection_rating": 7,
+        "rating_reasons": "S: An automatic close without valid pinch protection could injure a person with no warning. O: An open defect shows the interlock is missing in the current software. D: No existing control tests express mode in the non-normalized state.",
+        "recommended_action": "Add an interlock that blocks express close unless normalized. Add a HIL test: battery disconnect, then short press up, which must give manual movement only; run it after every release.",
+        "evidence": [
+          "DR-1020"
+        ],
+        "rpn": 560,
+        "action_needed": true
+      },
+      {
+        "function": "2. Stop the window at the end positions",
+        "element": "Motor driver",
+        "failure_mode": "No function: end stop is not detected and the motor keeps pushing against the seal or block",
+        "effect": "Vehicle: stall current into the seal until thermal protection acts, stressing the regulator and seal; the thermal block may then prevent opening. Driver: hears the motor straining and the window is temporarily unusable.",
+        "cause": "The end-stop current threshold is fixed and is not reached at low supply voltage, where stall current is lower.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 7,
+        "occurrence": 5,
+        "detection_rating": 7,
+        "rating_reasons": "S: The window functions are degraded after the overrun because the thermal protection blocks movement. O: This is a new design with a voltage-dependent threshold, and similar symptoms appeared in the field on WLC-100. D: No existing control targets end-stop detection at low voltage.",
+        "recommended_action": "Make the end-stop threshold voltage-compensated or add a position and speed criterion. Add a HIL stall test at both ends at 9 V and 16 V, at -30 and 85 °C.",
+        "evidence": [
+          "LL-2023-05"
+        ],
+        "rpn": 245,
+        "action_needed": true
+      },
+      {
+        "function": "2. Stop the window at the end positions",
+        "element": "Motor driver",
+        "failure_mode": "Premature function: end stop is detected before the window reaches the top seal",
+        "effect": "Vehicle: the window stops short of the seal and is left partly open, letting in water and wind noise and weakening security. Driver: the window does not close fully.",
+        "cause": "Higher motor current from cold grease reaches the end-stop current threshold before the seal.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 8,
+        "occurrence": 5,
+        "detection_rating": 6,
+        "rating_reasons": "S: The window can't close fully, so a main function is lost. O: Cold friction effects are known from LL-2022-02 and cold misbehaviour is open in DR-1004, but this cause is not confirmed. D: TP-AP-01 runs at -30 °C and could reveal an early stop, but it does not check the final position.",
+        "recommended_action": "Add a full-close test at -30 °C and 9 V that checks the final position at the seal (0 mm ± tolerance). Combine the end-stop decision with the position window.",
+        "evidence": [
+          "LL-2022-02",
+          "DR-1004"
+        ],
+        "rpn": 240,
+        "action_needed": true
+      },
+      {
+        "function": "2. Stop the window at the end positions",
+        "element": "Position counter",
+        "failure_mode": "Degraded function: the window hits the top seal at full speed (no soft stop)",
+        "effect": "Vehicle: a loud knock when the window reaches the top, and long-term seal wear. Driver: hears an unpleasant knock.",
+        "cause": "The soft-stop zone is based on counted position, and position drift places the slow-down zone too late.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Hall signal plausibility check, 200 ms timeout"
+        ],
+        "severity": 4,
+        "occurrence": 6,
+        "detection_rating": 7,
+        "rating_reasons": "S: This is noise that most customers notice. O: Clinic complaints and a measured 3.5 mm drift suggest the cause is active but not yet confirmed as the root cause. D: No test checks soft-stop behaviour after endurance cycling.",
+        "recommended_action": "Re-synchronize position at every detected end stop. Add an endurance test (at least 1000 cycles) that measures position error and seal impact speed.",
+        "evidence": [
+          "DR-1026",
+          "DR-1013"
+        ],
+        "rpn": 168,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "Function too late: stop after a pinch takes longer than 10 ms at cold temperature and low voltage",
+        "effect": "Vehicle: higher pinch force on the trapped object before reversal. Passenger: a trapped finger, hand or neck could be injured, with no warning.",
+        "cause": "The 2 ms cold sampling from LL-2022-02, combined with the 30 ms debounce from LL-2021-07, does not keep the stop-time margin for the slower force rise of the WLC-200 motor in cold and at low voltage.",
+        "prevention": [
+          "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+        ],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 10,
+        "occurrence": 8,
+        "detection_rating": 3,
+        "rating_reasons": "S: A late pinch stop could injure a person with no warning. O: Two open defects (13 and 14 ms against a 10 ms limit) show the cause has occurred. D: TP-AP-01 targets stop time at all relevant corners, including -30 °C and 9 V.",
+        "recommended_action": "Confirm that 2 ms sampling below 0 °C is implemented on WLC-200. Re-verify the debounce start margin from LL-2021-07, item 3. Run TP-AP-01 at -30 °C and 9 V on every software release. Re-check stop time after any threshold change made to fix false reversals in cold.",
+        "evidence": [
+          "DR-1001",
+          "DR-1006",
+          "LL-2022-02",
+          "LL-2021-07"
+        ],
+        "rpn": 240,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "Partial function: reversal distance after a pinch is shorter than required at high temperature",
+        "effect": "Vehicle: the window reverses only 146 mm instead of the required 150 mm. Passenger: a trapped body part may not be released fully; the legal or specified release distance is not met.",
+        "cause": "The reversal is ended by a fixed time rather than by a counted distance, so a slower hot motor travels less.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 9,
+        "occurrence": 8,
+        "detection_rating": 3,
+        "rating_reasons": "S: The release requirement is broken, and a person could be harmed even though the pinch is detected. O: An open defect at 85 °C shows the cause has occurred. D: TP-AP-01 targets reversal at all temperature and voltage corners.",
+        "recommended_action": "End the reversal on Hall-counted distance (at least 150 mm, or the end position), not on time. Add the 85 °C and 9 V corner to the reversal-distance checks in TP-AP-01.",
+        "evidence": [
+          "DR-1030"
+        ],
+        "rpn": 216,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "Unintended function: false pinch reversal on rough roads",
+        "effect": "Vehicle: the window reverses by itself while closing on cobblestones. Driver: can't close the window while driving on rough roads.",
+        "cause": "The speed-ripple filter and debounce were tuned for the WLC-100 motor and body vibration and were not re-tuned for WLC-200.",
+        "prevention": [
+          "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+        ],
+        "detection": [
+          "Rough-road vibration HIL profile"
+        ],
+        "severity": 7,
+        "occurrence": 8,
+        "detection_rating": 4,
+        "rating_reasons": "S: Closing is degraded on rough roads but works on smooth roads. O: Two open defects (2 out of 10 tries) despite the carried-over filter show the cause has occurred. D: The rough-road HIL profile targets it, but only for one profile (RR-04 at 30 km/h).",
+        "recommended_action": "Re-tune the filter for the WLC-200 motor. Extend the rough-road HIL to more speeds and profiles, and at 9 V and -30 °C. Re-check stop time (TP-AP-01) after any filter change.",
+        "evidence": [
+          "DR-1008",
+          "DR-1023",
+          "LL-2021-07"
+        ],
+        "rpn": 224,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Anti-pinch algorithm",
+        "failure_mode": "Unintended function: false pinch reversal in cold weather with no obstacle",
+        "effect": "Vehicle: express close stops at about 150 mm and reverses at -18 to -20 °C. Driver: can't close the window on cold mornings without retrying.",
+        "cause": "The pinch force estimate is not compensated for higher regulator friction from cold grease, so cold friction reads as pinch force.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 7,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "S: Closing is degraded in cold but succeeds on a retry. O: Two open defects show the cause has occurred. D: TP-AP-01 runs at -30 °C but tests pinch detection, not full no-obstacle closing.",
+        "recommended_action": "Add a learned or temperature-dependent friction compensation. Add a no-obstacle full express-close test at -30 and -20 °C, at 9, 13.5 and 16 V. Verify that the fix does not lengthen the stop time (DR-1001/1006).",
+        "evidence": [
+          "DR-1004",
+          "DR-1011"
+        ],
+        "rpn": 336,
+        "action_needed": true
+      },
+      {
+        "function": "3. Detect a pinch in the pinch zone and reverse the window",
+        "element": "Position counter",
+        "failure_mode": "Partial function: the pinch zone is shifted, so anti-pinch is disabled too early near the top seal",
+        "effect": "Vehicle: anti-pinch is switched off a few millimetres before the real seal. Passenger: a finger caught in the last few millimetres could be crushed, with no warning.",
+        "cause": "Hall pulse counting drifts over cycles and there is no re-synchronization at the end stop.",
+        "prevention": [
+          "Hall signal plausibility check, 200 ms timeout"
+        ],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 10,
+        "occurrence": 7,
+        "detection_rating": 7,
+        "rating_reasons": "S: A pinch near the seal could injure a person with no warning. O: An open defect shows 3.5 mm drift after only 200 cycles. D: TP-AP-01 runs on a freshly normalized window and does not target pinch near the seal after drift.",
+        "recommended_action": "Re-synchronize position at the top end stop. Add a test with a 4 mm pinch rod near the seal, run after 200 and 1000 endurance cycles.",
+        "evidence": [
+          "DR-1013"
+        ],
+        "rpn": 490,
+        "action_needed": true
+      },
+      {
+        "function": "4. Keep track of window position",
+        "element": "Diagnostics",
+        "failure_mode": "No function: Hall signal loss is not detected at low supply voltage (motor runs on, no DTC)",
+        "effect": "Vehicle: the motor runs 1.2 s into the end stop with no position and no speed signal, so anti-pinch has no input, and no DTC is stored. Passenger: no pinch protection while the motor runs, with a risk of injury with no warning.",
+        "cause": "The 200 ms Hall plausibility timer is restarted by noise edges at slow pulse rates (9 V), hiding the loss, as warned in LL-2023-05.",
+        "prevention": [
+          "Hall signal plausibility check, 200 ms timeout"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 10,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "S: Losing the speed signal disables pinch detection, and a person could be injured with no warning. O: Two open defects at 9 V and during auto-up show the cause has occurred. D: The listed controls do not include a Hall-disconnect test at 9 V; the plausibility check is a product mechanism, not a test.",
+        "recommended_action": "Restart the timer only on valid edges (with minimum pulse width and plausible period). Make the LL-2023-05 Hall-disconnect HIL test mandatory at 9 and 13.5 V, in manual and express, checking motor stop within 200 ms and DTC B1A01.",
+        "evidence": [
+          "DR-1018",
+          "DR-1027",
+          "LL-2023-05"
+        ],
+        "rpn": 480,
+        "action_needed": true
+      },
+      {
+        "function": "4. Keep track of window position",
+        "element": "Position counter",
+        "failure_mode": "Intermittent function: Hall pulses are lost or extra pulses are counted through the connector interface",
+        "effect": "Vehicle: position errors and possible motor overrun into the seal. Passenger: the pinch zone and anti-pinch are degraded, so injury is possible.",
+        "cause": "The Hall connector interface lacks sealing, as on WLC-100, so pins corrode.",
+        "prevention": [
+          "Hall signal plausibility check, 200 ms timeout"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 10,
+        "occurrence": 4,
+        "detection_rating": 8,
+        "rating_reasons": "S: Corrupted speed and position can defeat anti-pinch with no warning. O: A sealed connector was introduced after LL-2023-05, but it is not confirmed on WLC-200. D: No salt-spray or corrosion test of the interface is planned.",
+        "recommended_action": "Confirm the sealed connector in the WLC-200 interface specification. Add a salt-spray test followed by a Hall plausibility check.",
+        "evidence": [
+          "LL-2023-05"
+        ],
+        "rpn": 320,
+        "action_needed": true
+      },
+      {
+        "function": "5. Protect the motor from overheating",
+        "element": "Thermal model",
+        "failure_mode": "Function too late: one opening is allowed after the model estimate exceeds 140 °C",
+        "effect": "Vehicle: the motor runs once more above its thermal limit, risking winding damage and a later loss of the window function. Driver: the window may later fail to close.",
+        "cause": "The block decision reads a stale estimate before the 100 ms thermal task updates it; the platform fix from LL-2024-01 is not present.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Thermal model reviewed against thermocouple data (TP-TH-01)"
+        ],
+        "severity": 8,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "S: Motor damage could make the window unable to close. O: Two open defects show the cause has occurred despite the known platform lesson. D: TP-TH-01 checks the model's accuracy, not the timing of the block decision.",
+        "recommended_action": "Port the LL-2024-01 fix so the block decision reads the estimate after the thermal task in the same cycle. Add a test that requests opening right after the estimate crosses 140 °C.",
+        "evidence": [
+          "DR-1012",
+          "DR-1019",
+          "LL-2024-01"
+        ],
+        "rpn": 384,
+        "action_needed": true
+      },
+      {
+        "function": "5. Protect the motor from overheating",
+        "element": "Thermal model",
+        "failure_mode": "Partial function: the model underestimates motor temperature",
+        "effect": "Vehicle: the motor overheats without being limited and its winding may be damaged. Driver: the window may later fail to close.",
+        "cause": "Model parameters are carried over from the WLC-100 motor and do not match the WLC-200 motor, ambient conditions or stall cases.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Thermal model reviewed against thermocouple data (TP-TH-01)"
+        ],
+        "severity": 8,
+        "occurrence": 5,
+        "detection_rating": 4,
+        "rating_reasons": "S: Motor damage could make the window unable to close. O: The model is proven on the predecessor, but whether its parameters fit the new motor is an open question. D: TP-TH-01 targets model error, but not necessarily at all conditions such as 85 °C ambient and repeated stalls.",
+        "recommended_action": "Extend TP-TH-01 to 85 °C ambient, at 16 V, with repeated end-stop stalls and short pauses.",
+        "evidence": [],
+        "rpn": 160,
+        "action_needed": true
+      },
+      {
+        "function": "5. Protect the motor from overheating",
+        "element": "Thermal model",
+        "failure_mode": "Unintended function: opening is blocked although the motor is not hot",
+        "effect": "Vehicle: the window refuses to open. Driver: can't open the window, for example at a toll booth or for ventilation.",
+        "cause": "The model cools too slowly, or it is not updated or reset correctly over sleep periods.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Thermal model reviewed against thermocouple data (TP-TH-01)"
+        ],
+        "severity": 7,
+        "occurrence": 4,
+        "detection_rating": 5,
+        "rating_reasons": "S: Opening is temporarily lost, which is a degraded main function. O: The model is proven on the predecessor, but cooling behaviour over sleep is an open question. D: TP-TH-01 targets model accuracy, but probably not cooling over sleep and wake cycles.",
+        "recommended_action": "Add a test that heats the motor, sends the controller to sleep for different times, wakes it, and compares the estimate with the thermocouple.",
+        "evidence": [],
+        "rpn": 140,
+        "action_needed": true
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "CAN interface",
+        "failure_mode": "Intermittent function: a WLC_Status frame is missing during diagnostic sessions",
+        "effect": "Vehicle: the body controller sees a 200 ms gap, may set a timeout fault and uses stale window status. Driver: possible warnings or wrong behaviour of body comfort functions.",
+        "cause": "The status frame shares the transmit queue with long diagnostic responses; LL-2024-09 (own buffer, worst-case queue calculation) is not fully applied on WLC-200.",
+        "prevention": [
+          "CAN transmit queue sized for the worst-case bus load (from LL-2024-09)"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 5,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "S: A body comfort function is degraded; the window itself still works. O: An open defect shows the cause occurs despite the queue sizing. D: The listed controls include no planned status-timing test under diagnostic load; TC-DG-03 found it as a side effect.",
+        "recommended_action": "Give WLC_Status its own transmit buffer and repeat the worst-case queue calculation. Add a HIL test of status-frame timing during 100 or more diagnostic requests and during motor start.",
+        "evidence": [
+          "DR-1016",
+          "LL-2024-09"
+        ],
+        "rpn": 240,
+        "action_needed": true
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "Diagnostics",
+        "failure_mode": "No function: overcurrent DTC B1A02 is not stored and the WLC_Status fault state stays 0",
+        "effect": "Vehicle: an overcurrent event is invisible to the body controller and the workshop, and repeated faults go undiagnosed. Driver: repeat failures and longer workshop visits.",
+        "cause": "The overcurrent stop path in the motor driver does not trigger the DTC store or the fault-state update.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 5,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "S: The motor stops correctly; only fault reporting and service are degraded. O: Two open defects show the cause has occurred. D: Code review did not catch it; no listed test targets DTC storage.",
+        "recommended_action": "Link the overcurrent stop to the DTC and fault-state handling. Add an overcurrent-injection HIL test that checks the motor stop, B1A02 and the fault state.",
+        "evidence": [
+          "DR-1009",
+          "DR-1029"
+        ],
+        "rpn": 240,
+        "action_needed": true
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "CAN interface",
+        "failure_mode": "Function too late: diagnostic responses take longer than 50 ms during motor start",
+        "effect": "Vehicle: the tester may time out or retry. Driver: none; the workshop may see communication errors.",
+        "cause": "The diagnostic task is pre-empted by motor-start processing with higher priority.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 3,
+        "occurrence": 8,
+        "detection_rating": 6,
+        "rating_reasons": "S: Only some users, mainly workshop staff, notice it. O: An open defect (3 out of 100 requests late) shows the cause has occurred. D: No listed test measures diagnostic response time during motor activity.",
+        "recommended_action": "Rework task priorities or scheduling. Add a test of diagnostic response time during motor start and stop.",
+        "evidence": [
+          "DR-1022"
+        ],
+        "rpn": 144,
+        "action_needed": true
+      },
+      {
+        "function": "6. Report status and faults to the body controller",
+        "element": "CAN interface",
+        "failure_mode": "Unintended function: the window closes on a corrupted or spurious WLC_CloseAll",
+        "effect": "Vehicle: the windows close without a command. Passenger: an unexpected close with no warning while someone is reaching through; only anti-pinch protects.",
+        "cause": "WLC_CloseAll is accepted without an end-to-end check (CRC, alive counter) or plausibility check against vehicle state.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 9,
+        "occurrence": 5,
+        "detection_rating": 7,
+        "rating_reasons": "S: An unattended close could injure a person and may break remote-closing regulations. O: This is a new interface and it is not documented whether E2E protection exists. D: No test injects corrupted or spurious CloseAll frames.",
+        "recommended_action": "Add E2E protection and plausibility checks to WLC_CloseAll. Add a CAN fault-injection test with corrupted, repeated and out-of-state frames.",
+        "evidence": [],
+        "rpn": 315,
+        "action_needed": true
+      },
+      {
+        "function": "7. Behave safely at low and high supply voltage",
+        "element": "Supply monitor",
+        "failure_mode": "No function after reverse polarity: the controller is permanently dead",
+        "effect": "Vehicle: the window can't move after a jump-start with reversed polarity. Driver: the window may stay open.",
+        "cause": "Protection diode D3 is not rated for continuous reverse polarity at -14 V for 60 s.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 8,
+        "occurrence": 8,
+        "detection_rating": 7,
+        "rating_reasons": "S: The window can't close, so a main function is lost. O: An open defect shows D3 fails in the specified test. D: No listed control covers reverse polarity; it was found in a one-off test.",
+        "recommended_action": "Change the reverse-polarity protection (a higher-rated diode or a MOSFET protection) and add the -14 V, 60 s test to design verification.",
+        "evidence": [
+          "DR-1024"
+        ],
+        "rpn": 448,
+        "action_needed": true
+      },
+      {
+        "function": "7. Behave safely at low and high supply voltage",
+        "element": "Supply monitor",
+        "failure_mode": "Unintended function: full function (express close) stays enabled below the manual-only voltage threshold",
+        "effect": "Vehicle: express close runs with a slow motor and anti-pinch outside its validated range. Passenger: a late pinch stop could cause injury with no warning.",
+        "cause": "The supply monitor's hysteresis or filtering delays the switch to manual-only during slowly falling voltage.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+        ],
+        "severity": 10,
+        "occurrence": 4,
+        "detection_rating": 7,
+        "rating_reasons": "S: A pinch stop could fail with no warning. O: The undervoltage stop works (DR-1025), but threshold behaviour on slow ramps is an open question. D: TP-AP-01 runs only at fixed voltages and does not target the threshold transitions.",
+        "recommended_action": "Add a HIL voltage-ramp test (slow and fast ramps through the manual-only and stop thresholds) during express close, and check that the mode changes at the specified voltages.",
+        "evidence": [
+          "DR-1025"
+        ],
+        "rpn": 280,
+        "action_needed": true
+      },
+      {
+        "function": "7. Behave safely at low and high supply voltage",
+        "element": "CAN interface",
+        "failure_mode": "Unintended function: excess current in sleep mode (140 µA against a 100 µA limit)",
+        "effect": "Vehicle: the battery drains during long parking. Driver: the car may not start after an extended standstill.",
+        "cause": "The CAN transceiver is left in standby instead of being commanded to sleep.",
+        "prevention": [
+          "Code review and static analysis"
+        ],
+        "detection": [
+          "Code review and static analysis"
+        ],
+        "severity": 8,
+        "occurrence": 8,
+        "detection_rating": 7,
+        "rating_reasons": "S: A flat battery stops the vehicle from being used, which is worse than losing a window function. O: An open defect shows the cause has occurred. D: No listed control measures sleep current.",
+        "recommended_action": "Command the transceiver to sleep mode in the shutdown sequence. Add a sleep-current measurement after 60 s to the release test set.",
+        "evidence": [
+          "DR-1007"
+        ],
+        "rpn": 448,
+        "action_needed": true
+      }
+    ]
+  },
+  "cost_usd": 0.3913,
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 5797,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.005887,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-opus-5-5": {
+      "inputTokens": 2,
+      "outputTokens": 15893,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 8442,
+      "webSearchRequests": 0,
+      "costUSD": 0.385404,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 5962,
+      "canonicalModel": "claude-opus-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "input_tokens": 8444,
+  "output_tokens": 15893,
+  "seconds": 158.3,
+  "model": "claude-opus-5-5",
+  "rows": [
+    {
+      "function": "1. Move the window as the driver commands, in manual and express mode",
+      "element": "Switch input",
+      "failure_mode": "Unintended function: express close is available while the window is not normalized",
+      "effect": "Vehicle: after battery reconnection, a short press closes the window fully without valid position, so the pinch zone and anti-pinch reference are not valid. Passenger: a hand or neck could be trapped by an automatic close with no warning.",
+      "cause": "The express-close enable logic does not check the normalization state from the position counter.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 10,
+      "occurrence": 8,
+      "detection_rating": 7,
+      "rating_reasons": "S: An automatic close without valid pinch protection could injure a person with no warning. O: An open defect shows the interlock is missing in the current software. D: No existing control tests express mode in the non-normalized state.",
+      "recommended_action": "Add an interlock that blocks express close unless normalized. Add a HIL test: battery disconnect, then short press up, which must give manual movement only; run it after every release.",
+      "evidence": [
+        "DR-1020"
+      ],
+      "rpn": 560,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Position counter",
+      "failure_mode": "Partial function: the pinch zone is shifted, so anti-pinch is disabled too early near the top seal",
+      "effect": "Vehicle: anti-pinch is switched off a few millimetres before the real seal. Passenger: a finger caught in the last few millimetres could be crushed, with no warning.",
+      "cause": "Hall pulse counting drifts over cycles and there is no re-synchronization at the end stop.",
+      "prevention": [
+        "Hall signal plausibility check, 200 ms timeout"
+      ],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 10,
+      "occurrence": 7,
+      "detection_rating": 7,
+      "rating_reasons": "S: A pinch near the seal could injure a person with no warning. O: An open defect shows 3.5 mm drift after only 200 cycles. D: TP-AP-01 runs on a freshly normalized window and does not target pinch near the seal after drift.",
+      "recommended_action": "Re-synchronize position at the top end stop. Add a test with a 4 mm pinch rod near the seal, run after 200 and 1000 endurance cycles.",
+      "evidence": [
+        "DR-1013"
+      ],
+      "rpn": 490,
+      "action_needed": true
+    },
+    {
+      "function": "4. Keep track of window position",
+      "element": "Diagnostics",
+      "failure_mode": "No function: Hall signal loss is not detected at low supply voltage (motor runs on, no DTC)",
+      "effect": "Vehicle: the motor runs 1.2 s into the end stop with no position and no speed signal, so anti-pinch has no input, and no DTC is stored. Passenger: no pinch protection while the motor runs, with a risk of injury with no warning.",
+      "cause": "The 200 ms Hall plausibility timer is restarted by noise edges at slow pulse rates (9 V), hiding the loss, as warned in LL-2023-05.",
+      "prevention": [
+        "Hall signal plausibility check, 200 ms timeout"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 10,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "S: Losing the speed signal disables pinch detection, and a person could be injured with no warning. O: Two open defects at 9 V and during auto-up show the cause has occurred. D: The listed controls do not include a Hall-disconnect test at 9 V; the plausibility check is a product mechanism, not a test.",
+      "recommended_action": "Restart the timer only on valid edges (with minimum pulse width and plausible period). Make the LL-2023-05 Hall-disconnect HIL test mandatory at 9 and 13.5 V, in manual and express, checking motor stop within 200 ms and DTC B1A01.",
+      "evidence": [
+        "DR-1018",
+        "DR-1027",
+        "LL-2023-05"
+      ],
+      "rpn": 480,
+      "action_needed": true
+    },
+    {
+      "function": "4. Keep track of window position",
+      "element": "Position counter",
+      "failure_mode": "Intermittent function: Hall pulses are lost or extra pulses are counted through the connector interface",
+      "effect": "Vehicle: position errors and possible motor overrun into the seal. Passenger: the pinch zone and anti-pinch are degraded, so injury is possible.",
+      "cause": "The Hall connector interface lacks sealing, as on WLC-100, so pins corrode.",
+      "prevention": [
+        "Hall signal plausibility check, 200 ms timeout"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 10,
+      "occurrence": 4,
+      "detection_rating": 8,
+      "rating_reasons": "S: Corrupted speed and position can defeat anti-pinch with no warning. O: A sealed connector was introduced after LL-2023-05, but it is not confirmed on WLC-200. D: No salt-spray or corrosion test of the interface is planned.",
+      "recommended_action": "Confirm the sealed connector in the WLC-200 interface specification. Add a salt-spray test followed by a Hall plausibility check.",
+      "evidence": [
+        "LL-2023-05"
+      ],
+      "rpn": 320,
+      "action_needed": true
+    },
+    {
+      "function": "7. Behave safely at low and high supply voltage",
+      "element": "Supply monitor",
+      "failure_mode": "Unintended function: full function (express close) stays enabled below the manual-only voltage threshold",
+      "effect": "Vehicle: express close runs with a slow motor and anti-pinch outside its validated range. Passenger: a late pinch stop could cause injury with no warning.",
+      "cause": "The supply monitor's hysteresis or filtering delays the switch to manual-only during slowly falling voltage.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 10,
+      "occurrence": 4,
+      "detection_rating": 7,
+      "rating_reasons": "S: A pinch stop could fail with no warning. O: The undervoltage stop works (DR-1025), but threshold behaviour on slow ramps is an open question. D: TP-AP-01 runs only at fixed voltages and does not target the threshold transitions.",
+      "recommended_action": "Add a HIL voltage-ramp test (slow and fast ramps through the manual-only and stop thresholds) during express close, and check that the mode changes at the specified voltages.",
+      "evidence": [
+        "DR-1025"
+      ],
+      "rpn": 280,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "Function too late: stop after a pinch takes longer than 10 ms at cold temperature and low voltage",
+      "effect": "Vehicle: higher pinch force on the trapped object before reversal. Passenger: a trapped finger, hand or neck could be injured, with no warning.",
+      "cause": "The 2 ms cold sampling from LL-2022-02, combined with the 30 ms debounce from LL-2021-07, does not keep the stop-time margin for the slower force rise of the WLC-200 motor in cold and at low voltage.",
+      "prevention": [
+        "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+      ],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 10,
+      "occurrence": 8,
+      "detection_rating": 3,
+      "rating_reasons": "S: A late pinch stop could injure a person with no warning. O: Two open defects (13 and 14 ms against a 10 ms limit) show the cause has occurred. D: TP-AP-01 targets stop time at all relevant corners, including -30 °C and 9 V.",
+      "recommended_action": "Confirm that 2 ms sampling below 0 °C is implemented on WLC-200. Re-verify the debounce start margin from LL-2021-07, item 3. Run TP-AP-01 at -30 °C and 9 V on every software release. Re-check stop time after any threshold change made to fix false reversals in cold.",
+      "evidence": [
+        "DR-1001",
+        "DR-1006",
+        "LL-2022-02",
+        "LL-2021-07"
+      ],
+      "rpn": 240,
+      "action_needed": true
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "CAN interface",
+      "failure_mode": "Unintended function: the window closes on a corrupted or spurious WLC_CloseAll",
+      "effect": "Vehicle: the windows close without a command. Passenger: an unexpected close with no warning while someone is reaching through; only anti-pinch protects.",
+      "cause": "WLC_CloseAll is accepted without an end-to-end check (CRC, alive counter) or plausibility check against vehicle state.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 9,
+      "occurrence": 5,
+      "detection_rating": 7,
+      "rating_reasons": "S: An unattended close could injure a person and may break remote-closing regulations. O: This is a new interface and it is not documented whether E2E protection exists. D: No test injects corrupted or spurious CloseAll frames.",
+      "recommended_action": "Add E2E protection and plausibility checks to WLC_CloseAll. Add a CAN fault-injection test with corrupted, repeated and out-of-state frames.",
+      "evidence": [],
+      "rpn": 315,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "Partial function: reversal distance after a pinch is shorter than required at high temperature",
+      "effect": "Vehicle: the window reverses only 146 mm instead of the required 150 mm. Passenger: a trapped body part may not be released fully; the legal or specified release distance is not met.",
+      "cause": "The reversal is ended by a fixed time rather than by a counted distance, so a slower hot motor travels less.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 9,
+      "occurrence": 8,
+      "detection_rating": 3,
+      "rating_reasons": "S: The release requirement is broken, and a person could be harmed even though the pinch is detected. O: An open defect at 85 °C shows the cause has occurred. D: TP-AP-01 targets reversal at all temperature and voltage corners.",
+      "recommended_action": "End the reversal on Hall-counted distance (at least 150 mm, or the end position), not on time. Add the 85 °C and 9 V corner to the reversal-distance checks in TP-AP-01.",
+      "evidence": [
+        "DR-1030"
+      ],
+      "rpn": 216,
+      "action_needed": true
+    },
+    {
+      "function": "7. Behave safely at low and high supply voltage",
+      "element": "Supply monitor",
+      "failure_mode": "No function after reverse polarity: the controller is permanently dead",
+      "effect": "Vehicle: the window can't move after a jump-start with reversed polarity. Driver: the window may stay open.",
+      "cause": "Protection diode D3 is not rated for continuous reverse polarity at -14 V for 60 s.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 8,
+      "occurrence": 8,
+      "detection_rating": 7,
+      "rating_reasons": "S: The window can't close, so a main function is lost. O: An open defect shows D3 fails in the specified test. D: No listed control covers reverse polarity; it was found in a one-off test.",
+      "recommended_action": "Change the reverse-polarity protection (a higher-rated diode or a MOSFET protection) and add the -14 V, 60 s test to design verification.",
+      "evidence": [
+        "DR-1024"
+      ],
+      "rpn": 448,
+      "action_needed": true
+    },
+    {
+      "function": "7. Behave safely at low and high supply voltage",
+      "element": "CAN interface",
+      "failure_mode": "Unintended function: excess current in sleep mode (140 µA against a 100 µA limit)",
+      "effect": "Vehicle: the battery drains during long parking. Driver: the car may not start after an extended standstill.",
+      "cause": "The CAN transceiver is left in standby instead of being commanded to sleep.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 8,
+      "occurrence": 8,
+      "detection_rating": 7,
+      "rating_reasons": "S: A flat battery stops the vehicle from being used, which is worse than losing a window function. O: An open defect shows the cause has occurred. D: No listed control measures sleep current.",
+      "recommended_action": "Command the transceiver to sleep mode in the shutdown sequence. Add a sleep-current measurement after 60 s to the release test set.",
+      "evidence": [
+        "DR-1007"
+      ],
+      "rpn": 448,
+      "action_needed": true
+    },
+    {
+      "function": "5. Protect the motor from overheating",
+      "element": "Thermal model",
+      "failure_mode": "Function too late: one opening is allowed after the model estimate exceeds 140 °C",
+      "effect": "Vehicle: the motor runs once more above its thermal limit, risking winding damage and a later loss of the window function. Driver: the window may later fail to close.",
+      "cause": "The block decision reads a stale estimate before the 100 ms thermal task updates it; the platform fix from LL-2024-01 is not present.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Thermal model reviewed against thermocouple data (TP-TH-01)"
+      ],
+      "severity": 8,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "S: Motor damage could make the window unable to close. O: Two open defects show the cause has occurred despite the known platform lesson. D: TP-TH-01 checks the model's accuracy, not the timing of the block decision.",
+      "recommended_action": "Port the LL-2024-01 fix so the block decision reads the estimate after the thermal task in the same cycle. Add a test that requests opening right after the estimate crosses 140 °C.",
+      "evidence": [
+        "DR-1012",
+        "DR-1019",
+        "LL-2024-01"
+      ],
+      "rpn": 384,
+      "action_needed": true
+    },
+    {
+      "function": "2. Stop the window at the end positions",
+      "element": "Motor driver",
+      "failure_mode": "Premature function: end stop is detected before the window reaches the top seal",
+      "effect": "Vehicle: the window stops short of the seal and is left partly open, letting in water and wind noise and weakening security. Driver: the window does not close fully.",
+      "cause": "Higher motor current from cold grease reaches the end-stop current threshold before the seal.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 8,
+      "occurrence": 5,
+      "detection_rating": 6,
+      "rating_reasons": "S: The window can't close fully, so a main function is lost. O: Cold friction effects are known from LL-2022-02 and cold misbehaviour is open in DR-1004, but this cause is not confirmed. D: TP-AP-01 runs at -30 °C and could reveal an early stop, but it does not check the final position.",
+      "recommended_action": "Add a full-close test at -30 °C and 9 V that checks the final position at the seal (0 mm ± tolerance). Combine the end-stop decision with the position window.",
+      "evidence": [
+        "LL-2022-02",
+        "DR-1004"
+      ],
+      "rpn": 240,
+      "action_needed": true
+    },
+    {
+      "function": "5. Protect the motor from overheating",
+      "element": "Thermal model",
+      "failure_mode": "Partial function: the model underestimates motor temperature",
+      "effect": "Vehicle: the motor overheats without being limited and its winding may be damaged. Driver: the window may later fail to close.",
+      "cause": "Model parameters are carried over from the WLC-100 motor and do not match the WLC-200 motor, ambient conditions or stall cases.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Thermal model reviewed against thermocouple data (TP-TH-01)"
+      ],
+      "severity": 8,
+      "occurrence": 5,
+      "detection_rating": 4,
+      "rating_reasons": "S: Motor damage could make the window unable to close. O: The model is proven on the predecessor, but whether its parameters fit the new motor is an open question. D: TP-TH-01 targets model error, but not necessarily at all conditions such as 85 °C ambient and repeated stalls.",
+      "recommended_action": "Extend TP-TH-01 to 85 °C ambient, at 16 V, with repeated end-stop stalls and short pauses.",
+      "evidence": [],
+      "rpn": 160,
+      "action_needed": true
+    },
+    {
+      "function": "1. Move the window as the driver commands, in manual and express mode",
+      "element": "Supply monitor",
+      "failure_mode": "No function too early: the window stops responding before the 60 s retained-power period after ignition off has ended",
+      "effect": "Vehicle: the window ignores the switch 45 to 50 s after ignition off. Driver: can't close a window they left open after getting out unless they switch the ignition back on, so the car may be left open.",
+      "cause": "The retained-power timer ends early (about 45 to 50 s instead of 60 s) because of a timer calibration or tick-base error.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 7,
+      "occurrence": 8,
+      "detection_rating": 7,
+      "rating_reasons": "S: Closing is lost only for part of the retained-power period and comes back with ignition on, so this is a degraded main function. O: Two open defects show the cause has already occurred. D: No existing control targets retained-power timing; both defects came from ad-hoc testing.",
+      "recommended_action": "Correct the timer configuration. Add a HIL test that measures switch response at 55, 59 and 61 s after ignition off, at 9, 13.5 and 16 V.",
+      "evidence": [
+        "DR-1002",
+        "DR-1015"
+      ],
+      "rpn": 392,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "Unintended function: false pinch reversal in cold weather with no obstacle",
+      "effect": "Vehicle: express close stops at about 150 mm and reverses at -18 to -20 °C. Driver: can't close the window on cold mornings without retrying.",
+      "cause": "The pinch force estimate is not compensated for higher regulator friction from cold grease, so cold friction reads as pinch force.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Anti-pinch HIL tests at 9, 13.5 and 16 V, -30, 23 and 85 °C (TP-AP-01)"
+      ],
+      "severity": 7,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "S: Closing is degraded in cold but succeeds on a retry. O: Two open defects show the cause has occurred. D: TP-AP-01 runs at -30 °C but tests pinch detection, not full no-obstacle closing.",
+      "recommended_action": "Add a learned or temperature-dependent friction compensation. Add a no-obstacle full express-close test at -30 and -20 °C, at 9, 13.5 and 16 V. Verify that the fix does not lengthen the stop time (DR-1001/1006).",
+      "evidence": [
+        "DR-1004",
+        "DR-1011"
+      ],
+      "rpn": 336,
+      "action_needed": true
+    },
+    {
+      "function": "2. Stop the window at the end positions",
+      "element": "Motor driver",
+      "failure_mode": "No function: end stop is not detected and the motor keeps pushing against the seal or block",
+      "effect": "Vehicle: stall current into the seal until thermal protection acts, stressing the regulator and seal; the thermal block may then prevent opening. Driver: hears the motor straining and the window is temporarily unusable.",
+      "cause": "The end-stop current threshold is fixed and is not reached at low supply voltage, where stall current is lower.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 7,
+      "occurrence": 5,
+      "detection_rating": 7,
+      "rating_reasons": "S: The window functions are degraded after the overrun because the thermal protection blocks movement. O: This is a new design with a voltage-dependent threshold, and similar symptoms appeared in the field on WLC-100. D: No existing control targets end-stop detection at low voltage.",
+      "recommended_action": "Make the end-stop threshold voltage-compensated or add a position and speed criterion. Add a HIL stall test at both ends at 9 V and 16 V, at -30 and 85 °C.",
+      "evidence": [
+        "LL-2023-05"
+      ],
+      "rpn": 245,
+      "action_needed": true
+    },
+    {
+      "function": "3. Detect a pinch in the pinch zone and reverse the window",
+      "element": "Anti-pinch algorithm",
+      "failure_mode": "Unintended function: false pinch reversal on rough roads",
+      "effect": "Vehicle: the window reverses by itself while closing on cobblestones. Driver: can't close the window while driving on rough roads.",
+      "cause": "The speed-ripple filter and debounce were tuned for the WLC-100 motor and body vibration and were not re-tuned for WLC-200.",
+      "prevention": [
+        "Speed-ripple filter with 30 ms debounce (from LL-2021-07)"
+      ],
+      "detection": [
+        "Rough-road vibration HIL profile"
+      ],
+      "severity": 7,
+      "occurrence": 8,
+      "detection_rating": 4,
+      "rating_reasons": "S: Closing is degraded on rough roads but works on smooth roads. O: Two open defects (2 out of 10 tries) despite the carried-over filter show the cause has occurred. D: The rough-road HIL profile targets it, but only for one profile (RR-04 at 30 km/h).",
+      "recommended_action": "Re-tune the filter for the WLC-200 motor. Extend the rough-road HIL to more speeds and profiles, and at 9 V and -30 °C. Re-check stop time (TP-AP-01) after any filter change.",
+      "evidence": [
+        "DR-1008",
+        "DR-1023",
+        "LL-2021-07"
+      ],
+      "rpn": 224,
+      "action_needed": true
+    },
+    {
+      "function": "5. Protect the motor from overheating",
+      "element": "Thermal model",
+      "failure_mode": "Unintended function: opening is blocked although the motor is not hot",
+      "effect": "Vehicle: the window refuses to open. Driver: can't open the window, for example at a toll booth or for ventilation.",
+      "cause": "The model cools too slowly, or it is not updated or reset correctly over sleep periods.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Thermal model reviewed against thermocouple data (TP-TH-01)"
+      ],
+      "severity": 7,
+      "occurrence": 4,
+      "detection_rating": 5,
+      "rating_reasons": "S: Opening is temporarily lost, which is a degraded main function. O: The model is proven on the predecessor, but cooling behaviour over sleep is an open question. D: TP-TH-01 targets model accuracy, but probably not cooling over sleep and wake cycles.",
+      "recommended_action": "Add a test that heats the motor, sends the controller to sleep for different times, wakes it, and compares the estimate with the thermocouple.",
+      "evidence": [],
+      "rpn": 140,
+      "action_needed": true
+    },
+    {
+      "function": "1. Move the window as the driver commands, in manual and express mode",
+      "element": "Switch input",
+      "failure_mode": "Unintended function / too late: the motor keeps running after the switch is released in manual mode",
+      "effect": "Vehicle: in manual close the window travels about 180 ms further than commanded at 16 V. Driver: loses precise control of the window position; anti-pinch stays active.",
+      "cause": "The release detection, or the switch input threshold and filter, depends on the supply voltage, so release is recognised late at high voltage.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 5,
+      "occurrence": 8,
+      "detection_rating": 7,
+      "rating_reasons": "S: Manual control is degraded but anti-pinch still protects, so this is a degraded comfort function; the team should confirm that no legal stop-on-release requirement applies. O: An open defect (180 ms against a 100 ms limit at 16 V) shows the cause has occurred. D: No existing control measures release-to-stop time across the voltage range.",
+      "recommended_action": "Make the switch threshold ratiometric or independent of supply. Add a HIL test of release-to-motor-off time at 9, 13.5 and 16 V and at -30, 23 and 85 °C.",
+      "evidence": [
+        "DR-1014"
+      ],
+      "rpn": 280,
+      "action_needed": true
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "CAN interface",
+      "failure_mode": "Intermittent function: a WLC_Status frame is missing during diagnostic sessions",
+      "effect": "Vehicle: the body controller sees a 200 ms gap, may set a timeout fault and uses stale window status. Driver: possible warnings or wrong behaviour of body comfort functions.",
+      "cause": "The status frame shares the transmit queue with long diagnostic responses; LL-2024-09 (own buffer, worst-case queue calculation) is not fully applied on WLC-200.",
+      "prevention": [
+        "CAN transmit queue sized for the worst-case bus load (from LL-2024-09)"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 5,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "S: A body comfort function is degraded; the window itself still works. O: An open defect shows the cause occurs despite the queue sizing. D: The listed controls include no planned status-timing test under diagnostic load; TC-DG-03 found it as a side effect.",
+      "recommended_action": "Give WLC_Status its own transmit buffer and repeat the worst-case queue calculation. Add a HIL test of status-frame timing during 100 or more diagnostic requests and during motor start.",
+      "evidence": [
+        "DR-1016",
+        "LL-2024-09"
+      ],
+      "rpn": 240,
+      "action_needed": true
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "Diagnostics",
+      "failure_mode": "No function: overcurrent DTC B1A02 is not stored and the WLC_Status fault state stays 0",
+      "effect": "Vehicle: an overcurrent event is invisible to the body controller and the workshop, and repeated faults go undiagnosed. Driver: repeat failures and longer workshop visits.",
+      "cause": "The overcurrent stop path in the motor driver does not trigger the DTC store or the fault-state update.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 5,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "S: The motor stops correctly; only fault reporting and service are degraded. O: Two open defects show the cause has occurred. D: Code review did not catch it; no listed test targets DTC storage.",
+      "recommended_action": "Link the overcurrent stop to the DTC and fault-state handling. Add an overcurrent-injection HIL test that checks the motor stop, B1A02 and the fault state.",
+      "evidence": [
+        "DR-1009",
+        "DR-1029"
+      ],
+      "rpn": 240,
+      "action_needed": true
+    },
+    {
+      "function": "2. Stop the window at the end positions",
+      "element": "Position counter",
+      "failure_mode": "Degraded function: the window hits the top seal at full speed (no soft stop)",
+      "effect": "Vehicle: a loud knock when the window reaches the top, and long-term seal wear. Driver: hears an unpleasant knock.",
+      "cause": "The soft-stop zone is based on counted position, and position drift places the slow-down zone too late.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Hall signal plausibility check, 200 ms timeout"
+      ],
+      "severity": 4,
+      "occurrence": 6,
+      "detection_rating": 7,
+      "rating_reasons": "S: This is noise that most customers notice. O: Clinic complaints and a measured 3.5 mm drift suggest the cause is active but not yet confirmed as the root cause. D: No test checks soft-stop behaviour after endurance cycling.",
+      "recommended_action": "Re-synchronize position at every detected end stop. Add an endurance test (at least 1000 cycles) that measures position error and seal impact speed.",
+      "evidence": [
+        "DR-1026",
+        "DR-1013"
+      ],
+      "rpn": 168,
+      "action_needed": true
+    },
+    {
+      "function": "1. Move the window as the driver commands, in manual and express mode",
+      "element": "Switch input",
+      "failure_mode": "Function too late: the window starts moving with a noticeable delay after the switch is pressed",
+      "effect": "Vehicle: delayed start of window movement. Driver: the switch feels slow and unresponsive.",
+      "cause": "The short/held press classification time delays the motor start until the press type is decided.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 4,
+      "occurrence": 5,
+      "detection_rating": 7,
+      "rating_reasons": "S: This is a feel issue that most customers notice. O: There is only a subjective clinic report with no measurement, so the cause is plausible but not confirmed. D: No existing test measures press-to-motion latency.",
+      "recommended_action": "Measure press-to-motor-on latency on HIL. Start the motor at press and decide express versus manual in parallel, with a latency requirement added to the SRS.",
+      "evidence": [
+        "DR-1010"
+      ],
+      "rpn": 140,
+      "action_needed": true
+    },
+    {
+      "function": "6. Report status and faults to the body controller",
+      "element": "CAN interface",
+      "failure_mode": "Function too late: diagnostic responses take longer than 50 ms during motor start",
+      "effect": "Vehicle: the tester may time out or retry. Driver: none; the workshop may see communication errors.",
+      "cause": "The diagnostic task is pre-empted by motor-start processing with higher priority.",
+      "prevention": [
+        "Code review and static analysis"
+      ],
+      "detection": [
+        "Code review and static analysis"
+      ],
+      "severity": 3,
+      "occurrence": 8,
+      "detection_rating": 6,
+      "rating_reasons": "S: Only some users, mainly workshop staff, notice it. O: An open defect (3 out of 100 requests late) shows the cause has occurred. D: No listed test measures diagnostic response time during motor activity.",
+      "recommended_action": "Rework task priorities or scheduling. Add a test of diagnostic response time during motor start and stop.",
+      "evidence": [
+        "DR-1022"
+      ],
+      "rpn": 144,
+      "action_needed": true
+    }
+  ],
+  "problems": []
+}

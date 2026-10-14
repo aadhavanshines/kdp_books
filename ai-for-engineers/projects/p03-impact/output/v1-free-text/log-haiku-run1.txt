@@ -1,0 +1,42 @@
+Code found: 8 changed, 3 added, 5 deleted; 14 tests affected
+[claude-code:unrecognized_model] {"model":"claude-haiku-5-5","query_source":"sdk"}
+CHECK: TC-MV-02: new criteria use 10 s, not in WLC-007
+CHECK: TC-MV-02: new criteria use 50 s, not in WLC-007
+CHECK: TC-MV-02: new criteria use 65 s, not in WLC-007
+CHECK: TC-AP-03: new criteria use 16 V, not in WLC-014, WLC-015
+CHECK: TC-AP-04: new criteria use -30 °C, not in WLC-014, WLC-015, WLC-035
+CHECK: TC-AP-04: new criteria use 9 V, not in WLC-014, WLC-015, WLC-035
+CHECK: TC-AP-05: new criteria use 13.5 V, not in WLC-014, WLC-015, WLC-035
+CHECK: TC-CAN-01: new criteria use 10 s, not in WLC-028
+  TC-PW-04   remove_trace
+  TC-MV-02   update_and_rerun
+  TC-MV-07   update_and_rerun
+  TC-AP-01   update_and_rerun
+  TC-AP-02   update_and_rerun
+  TC-AP-03   update_and_rerun
+  TC-AP-04   update_and_rerun
+  TC-AP-05   update_and_rerun
+  TC-AP-09   remove_trace
+  TC-PS-02   no_action
+  TC-TH-02   update_and_rerun
+  TC-CAN-01  update_and_rerun
+  TC-DG-02   rerun
+  TC-UX-01   retire
+  concern TC-AP-06 (WLC-016, not in the affected list): Pinch protection in manual and express mode uses the pinch threshold, which changed from 1
+  concern WLC-012 vs WLC-017 / WLC-013 (TC-AP-07, TC-MV-08, not in the affected list): Possible requirement conflict. WLC-012 says the CAN-triggered express close is 'with anti-
+  concern WLC-039 (TC-AP-01 extension): The 2 s inhibit does not say whether it covers the CAN WLC_CloseAll request (WLC-012) as w
+  concern TC-AP-01 to TC-AP-05 (pinch reversal criteria): The rod is placed at 100 mm. If it is near the top, the 'whichever is less' fully-open cla
+  concern TC-AP-08 (WLC-019, not in the affected list): A lower threshold (80 N) changes the count of pinch detections, which can change the repea
+  concern TC-AP-04 (LL-2022): Cold plus low voltage is the worst case for stop time. Run TC-AP-04 at the start of this r
+  concern TC-AP-09 (LL-2021): Do not retire this test because WLC-018 was deleted. It is the only false-reversal check f
+  concern TC-TH-02, TC-TH-01 (WLC-024, not in the affected list): The new 130 °C limit uses an estimate, so LL-2024-01 applies. Check that the estimate is c
+  concern TC-TH-03, TC-TH-04 (WLC-026, WLC-027, not in the affected list): Confirm the new 130 °C current limit does not conflict with the opening-block and thermal-
+  concern TC-CAN-01 / WLC-028 (LL-2024-09): Halving the cycle time from 100 ms to 50 ms doubles the WLC_Status frame rate. This is a r
+  concern TC-DG-03 (WLC-031, not in the affected list): The diagnostic response time may need to bound the B1A02 stop and fault reactions now in W
+  concern TC-DG-01 (WLC-029, not in the affected list) and LL-2023: Not changed, but check the lesson: the Hall sensor test should remove the sensor while the
+  concern TC-PW-04 (WLC-032 deleted): Deleting WLC-032 may leave a gap, not just cleanup. If WLC-004 does not state a sleep curr
+  concern TC-MV-02 (WLC-023 / WLC-007 history): The old specification had a 45 s vs 60 s conflict for the same function. Check other docum
+  concern TC-UX-01 (WLC-033 retired): Usability is no longer verified. If it is still a product need, write a measurable require
+  concern WLC-034 (deleted, no traced test): The software-process requirement is deleted and no test traces to it. Handle it through a 
+  concern WLC-018 (deleted, vague): WLC-018 ('robust against all disturbances') was not testable. Its intent is covered only b
+6272 in / 26422 out tokens, $0.0187, 110.3 s

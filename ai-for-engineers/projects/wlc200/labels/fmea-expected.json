@@ -7,11 +7,16 @@
    "no movement",
    "does not move",
    "doesn't move",
-   "fails to move"
+   "fails to move",
+   "not moving",
+   "no response"
   ],
   "severity_range": [
    7,
    8
+  ],
+  "functions": [
+   1
   ]
  },
  {
@@ -20,13 +25,19 @@
   "failure_mode": "Window keeps moving after the switch is released",
   "keywords": [
    "after release",
+   "after switch release",
    "keeps moving",
-   "continues",
-   "does not stop"
+   "keeps running after",
+   "does not stop",
+   "doesn't stop",
+   "stays on"
   ],
   "severity_range": [
    6,
    9
+  ],
+  "functions": [
+   1
   ]
  },
  {
@@ -34,13 +45,18 @@
   "function": "Move the window as commanded",
   "failure_mode": "Express mode starts on a held press, or not on a short press",
   "keywords": [
-   "express",
+   "express mode start",
+   "express start",
    "short press",
-   "held press"
+   "held press",
+   "long press"
   ],
   "severity_range": [
    4,
    6
+  ],
+  "functions": [
+   1
   ]
  },
  {
@@ -50,12 +66,17 @@
   "keywords": [
    "end stop",
    "end position",
-   "seal",
-   "stall"
+   "against the seal",
+   "stall",
+   "into the seal",
+   "top seal hard"
   ],
   "severity_range": [
    4,
    8
+  ],
+  "functions": [
+   2
   ]
  },
  {
@@ -63,14 +84,19 @@
   "function": "Detect a pinch and reverse",
   "failure_mode": "Pinch not detected",
   "keywords": [
-   "not detected",
-   "no detection",
+   "pinch not detected",
+   "no pinch detect",
    "missed pinch",
-   "fails to detect"
+   "fails to detect",
+   "not detected",
+   "pinch undetected"
   ],
   "severity_range": [
    10,
    10
+  ],
+  "functions": [
+   3
   ]
  },
  {
@@ -79,13 +105,18 @@
   "failure_mode": "Pinch detected late (stop time too long)",
   "keywords": [
    "late",
+   "later than",
    "stop time",
    "latency",
+   "delayed",
    "too slow"
   ],
   "severity_range": [
    9,
    10
+  ],
+  "functions": [
+   3
   ]
  },
  {
@@ -93,14 +124,19 @@
   "function": "Detect a pinch and reverse",
   "failure_mode": "Reversal too short",
   "keywords": [
-   "reversal",
-   "reverse distance",
+   "reversal too short",
+   "reversal distance",
    "short reversal",
-   "reverses too little"
+   "reverses too little",
+   "reversal short",
+   "insufficient reversal"
   ],
   "severity_range": [
    9,
    10
+  ],
+  "functions": [
+   3
   ]
  },
  {
@@ -109,15 +145,18 @@
   "failure_mode": "False pinch detection (reversal with no obstacle)",
   "keywords": [
    "false",
-   "no obstacle",
-   "nothing trapped",
    "without obstacle",
+   "no obstacle",
    "unwanted reversal",
-   "spurious"
+   "spurious",
+   "nuisance"
   ],
   "severity_range": [
    5,
    8
+  ],
+  "functions": [
+   3
   ]
  },
  {
@@ -129,11 +168,17 @@
    "wrong position",
    "position error",
    "position offset",
-   "miscount"
+   "miscount",
+   "lost pulse",
+   "position wrong",
+   "incorrect position"
   ],
   "severity_range": [
    5,
    9
+  ],
+  "functions": [
+   4
   ]
  },
  {
@@ -141,11 +186,16 @@
   "function": "Keep track of position",
   "failure_mode": "Normalization state wrong (express close available when not normalized)",
   "keywords": [
+   "not normalized",
    "normaliz"
   ],
   "severity_range": [
    9,
    10
+  ],
+  "functions": [
+   4,
+   1
   ]
  },
  {
@@ -154,13 +204,17 @@
   "failure_mode": "Thermal model underestimates temperature",
   "keywords": [
    "underestimat",
-   "too low",
+   "estimate too low",
    "model error",
-   "temperature estimate"
+   "model inaccurate",
+   "too low"
   ],
   "severity_range": [
    5,
    8
+  ],
+  "functions": [
+   5
   ]
  },
  {
@@ -168,13 +222,20 @@
   "function": "Protect the motor from overheating",
   "failure_mode": "Opening not blocked above the limit",
   "keywords": [
-   "block",
-   "above 140",
-   "opening"
+   "opening not blocked",
+   "opening above",
+   "above the block",
+   "allowed above",
+   "not blocked",
+   "opening allowed",
+   "opens above"
   ],
   "severity_range": [
    4,
    7
+  ],
+  "functions": [
+   5
   ]
  },
  {
@@ -182,15 +243,19 @@
   "function": "Report status and faults",
   "failure_mode": "WLC_Status frames late or missing",
   "keywords": [
-   "frame",
-   "cycle",
-   "period",
-   "missing",
-   "late"
+   "wlc_status",
+   "status frame",
+   "frame missing",
+   "frames late",
+   "cycle time",
+   "status message"
   ],
   "severity_range": [
    4,
    7
+  ],
+  "functions": [
+   6
   ]
  },
  {
@@ -203,6 +268,10 @@
   "severity_range": [
    8,
    10
+  ],
+  "functions": [
+   4,
+   6
   ]
  },
  {
@@ -212,11 +281,16 @@
   "keywords": [
    "overcurrent",
    "b1a02",
-   "current"
+   "over-current"
   ],
   "severity_range": [
    6,
    8
+  ],
+  "functions": [
+   6,
+   2,
+   5
   ]
  },
  {
@@ -225,12 +299,17 @@
   "failure_mode": "Motor not stopped at undervoltage",
   "keywords": [
    "undervoltage",
+   "under-voltage",
+   "below 6",
    "low voltage",
-   "below 6"
+   "low supply"
   ],
   "severity_range": [
    6,
    8
+  ],
+  "functions": [
+   7
   ]
  }
 ]
