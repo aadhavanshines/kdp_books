@@ -80,7 +80,10 @@ def check(triage, defects):
 
 def main(path, model="claude-sonnet-5-5", tag="sonnet"):
     defects = json.loads(Path(path).read_text())
-    prompt = "Triage these defect reports:\n\n" + json.dumps(defects, indent=1, ensure_ascii=False)
+    # Send only what triage needs: no reporter names
+    needed = [{k: d[k] for k in ("id", "date", "found_in", "title", "description")}
+              for d in defects]
+    prompt = "Triage these defect reports:\n\n" + json.dumps(needed, indent=1, ensure_ascii=False)
     result = ask(prompt, SYSTEM, SCHEMA, model=model, max_budget_usd=2.00)
     triage = result["answer"]["triage"]
     problems = check(triage, defects)
