@@ -81,11 +81,11 @@ The changed paragraph is the second one: work through the functions one at a tim
 | Method prompt, Sonnet 5.5, run 2 | 36 | 35 | 14 / 16 | 16 / 16 | 16,774 | $0.20 | 118 s |
 | Method prompt, Sonnet 5.5, run 3 | 32 | 31 | 16 / 16 | 16 / 16 | 16,047 | $0.20 | 112 s |
 | Method prompt, Opus 5.5 | 24 | 24 | 10 / 16 | 13 / 16 | 15,893 | $0.39 | 158 s |
-<<RUN:fmea-haiku>>
+| Method prompt, Haiku 5.5 | 17 | 15 | 7 / 16 | 11 / 16 | 63,840 | $0.04 | 294 s |
 
 The grader's keyword matching is only a first pass. For every row it marked missing, the engineer read the draft to see whether another row covered it, and recorded each decision in `engineer-review.json`. For example, Sonnet's second run described F12 as "Opening is allowed once above the 140 °C block limit", which the key phrases didn't match. The "Covered (engineer)" column is the real score.
 
-With the method, Sonnet's drafts covered 14, 16 and 16 of the 16 expected failure modes, and every run included "Pinch not detected at all", rated severity 10. Opus wrote fewer, more detailed rows and still missed three, including "Motor not stopped at undervoltage". More capable is not always more complete; a method and a checklist matter more than the model.
+With the method, Sonnet's drafts covered 14, 16 and 16 of the 16 expected failure modes, and every run included "Pinch not detected at all", rated severity 10. Opus wrote fewer, more detailed rows and still missed three, including "Motor not stopped at undervoltage". More capable is not always more complete; a method and a checklist matter more than the model. Haiku 5.5, given the same method, still produced a defect list: 17 rows, almost all from the defect reports, covering 11 of 16 and missing "pinch not detected". It also wrote phrases such as "None in the existing controls table" into the control fields, which the control check reported 26 times. For this task, the cheapest model wasn't good enough.
 
 Here is that row from Sonnet's first run with the method, as the team would see it:
 
@@ -111,7 +111,7 @@ Severity describes the effect, which follows from the function, so it's consiste
 
 ## When Everything Needs Action
 
-In every draft with the method, more than 95% of rows needed action under the company rule (RPN 100 or more, or severity 9 or 10). Partly that is right: the WLC-200 has many open defects, and an open defect means a high occurrence rating. But when nearly every row is a priority, the rule no longer prioritises. That is a question for the quality team, not for the tool: perhaps the threshold, perhaps the occurrence scale's guidance for open defects. A useful side effect of an AI draft is that it shows how a rule behaves on a full analysis before the workshop.
+In every Sonnet and Opus draft with the method, more than 95% of rows needed action under the company rule (RPN 100 or more, or severity 9 or 10). Partly that is right: the WLC-200 has many open defects, and an open defect means a high occurrence rating. But when nearly every row is a priority, the rule no longer prioritises. That is a question for the quality team, not for the tool: perhaps the threshold, perhaps the occurrence scale's guidance for open defects. A useful side effect of an AI draft is that it shows how a rule behaves on a full analysis before the workshop.
 
 ## Checks
 
@@ -121,7 +121,7 @@ Code checks four things in every draft: every function was analysed; every piece
 @include projects/p07-fmea/fmea.py::check
 ```
 
-All method-prompt drafts passed. One earlier version of the check reported "function not analysed" for a function that had seven rows, because Claude had shortened its name. The enum now prevents that, and the checker also accepts the function's number.
+All Sonnet and Opus drafts with the method passed; the Haiku draft failed the control check 26 times. One earlier version of the check reported "function not analysed" for a function that had seven rows, because Claude had shortened its name. The enum now prevents that, and the checker also accepts the function's number.
 
 ## The Workshop Spreadsheet
 

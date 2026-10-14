@@ -1,14 +1,56 @@
 {
  "note": "The keyword grader is a first pass. The engineer read every row the grader marked MISSING and decided whether another row covers it. Rows were not edited.",
- "v1-prompt/sonnet-run1": {"auto": 12, "final": 12, "decisions": {}},
- "sonnet-run1": {"auto": 14, "final": 14, "decisions": {"F1": "missing", "F3": "missing"}},
- "sonnet-run2": {"auto": 14, "final": 16, "decisions": {
+ "v1-prompt/sonnet-run1": {
+  "auto": 12,
+  "final": 12,
+  "decisions": {}
+ },
+ "sonnet-run1": {
+  "auto": 14,
+  "final": 14,
+  "decisions": {
+   "F1": "missing",
+   "F3": "missing"
+  }
+ },
+ "sonnet-run2": {
+  "auto": 14,
+  "final": 16,
+  "decisions": {
    "F11": "covered by 'Estimated temperature lower than the real motor temperature'",
-   "F12": "covered by 'Opening is allowed once above the 140 °C block limit'"}},
- "sonnet-run3": {"auto": 16, "final": 16, "decisions": {}},
- "opus-run1": {"auto": 10, "final": 13, "decisions": {
-   "F1": "missing", "F3": "missing", "F16": "missing ('full function stays enabled below the manual-only voltage' is a different failure)",
+   "F12": "covered by 'Opening is allowed once above the 140 °C block limit'"
+  }
+ },
+ "sonnet-run3": {
+  "auto": 16,
+  "final": 16,
+  "decisions": {}
+ },
+ "opus-run1": {
+  "auto": 10,
+  "final": 13,
+  "decisions": {
+   "F1": "missing",
+   "F3": "missing",
+   "F16": "missing ('full function stays enabled below the manual-only voltage' is a different failure)",
    "F5": "covered by 'the pinch zone is shifted, so anti-pinch is disabled too early near the top'",
    "F9": "covered by 'Hall pulses are lost or extra pulses are counted'",
-   "F12": "covered by 'one opening is allowed after the model estimate exceeds 140 °C'"}}
+   "F12": "covered by 'one opening is allowed after the model estimate exceeds 140 °C'"
+  }
+ },
+ "haiku-run1": {
+  "auto": 7,
+  "final": 11,
+  "decisions": {
+   "F4": "covered by 'Window hits the top seal with a loud knock at full speed' (same as the first-prompt Sonnet row the grader accepted)",
+   "F6": "covered by 'Motor stops 13 to 14 ms after the pinch force passes 100 N'",
+   "F8": "covered by 'Window reverses by itself without an obstacle'",
+   "F12": "covered by 'Opening is allowed once after the estimated temperature passes 140 °C'",
+   "F1": "missing",
+   "F3": "missing",
+   "F5": "missing",
+   "F11": "missing",
+   "F16": "missing"
+  }
+ }
 }
