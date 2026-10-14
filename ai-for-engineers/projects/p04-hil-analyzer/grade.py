@@ -1,6 +1,7 @@
 """Grade the analyzer's results.json against the engineer's measurements.
 
 Run it with:  python grade.py results.json
+         or:  python grade.py results-2026-10-07.json ../wlc200/labels/hil-truth-2026-10-07.json
 """
 
 import json
@@ -31,8 +32,8 @@ def found(result, name):
     return result["values"].get(name)
 
 
-def grade(path):
-    truth = json.loads(TRUTH.read_text())
+def grade(path, truth_path=TRUTH):
+    truth = json.loads(Path(truth_path).read_text())
     results = {r["run"]: r for r in json.loads(Path(path).read_text())["results"]}
     verdicts = values = 0
     notes, compared = [], 0
@@ -73,7 +74,7 @@ def grade(path):
 
 
 if __name__ == "__main__":
-    g = grade(sys.argv[1])
+    g = grade(*sys.argv[1:3])
     for n in g.pop("notes"):
         print(" ", n)
     print(json.dumps(g))

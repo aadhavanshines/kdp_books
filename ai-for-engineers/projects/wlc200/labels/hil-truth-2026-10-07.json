@@ -1,0 +1,136 @@
+{
+ "R01": {
+  "test": "TC-AP-01",
+  "verdict": "PASS",
+  "measured": {
+   "stop_latency_ms": 6,
+   "peak_force_n": 91.4,
+   "reversal_mm": 162.0
+  },
+  "failed_criteria": [],
+  "notes": ""
+ },
+ "R02": {
+  "test": "TC-AP-02",
+  "verdict": "PASS",
+  "measured": {
+   "stop_latency_ms": 7,
+   "peak_force_n": 89.7,
+   "reversal_mm": 160.0
+  },
+  "failed_criteria": [],
+  "notes": ""
+ },
+ "R03": {
+  "test": "TC-AP-03",
+  "verdict": "FAIL",
+  "measured": {
+   "stop_latency_ms": 12,
+   "peak_force_n": 103.2,
+   "reversal_mm": 163.0
+  },
+  "failed_criteria": [
+   "stop_latency_ms"
+  ],
+  "notes": "Late stop at 16 V: 12 ms against a 10 ms limit."
+ },
+ "R04": {
+  "test": "TC-AP-04",
+  "verdict": "FAIL",
+  "measured": {
+   "stop_latency_ms": 13,
+   "peak_force_n": 93.2,
+   "reversal_mm": 158.0
+  },
+  "failed_criteria": [
+   "stop_latency_ms"
+  ],
+  "notes": "Late stop when cold at low voltage: 13 ms against a 10 ms limit."
+ },
+ "R05": {
+  "test": "TC-AP-05",
+  "verdict": "PASS",
+  "measured": {
+   "stop_latency_ms": 5,
+   "peak_force_n": 91.8,
+   "reversal_mm": 151.0
+  },
+  "failed_criteria": [],
+  "notes": "Passes, but the reversal margin is only about 1 mm above the 150 mm limit."
+ },
+ "R06": {
+  "test": "TC-AP-06",
+  "verdict": "PASS",
+  "measured": {
+   "stop_latency_ms": 6,
+   "peak_force_n": 91.7,
+   "reversal_mm": 161.0
+  },
+  "failed_criteria": [],
+  "notes": "Manual close (switch held), pinch rod at 20 mm."
+ },
+ "R07": {
+  "test": "TC-MV-05",
+  "verdict": "PASS",
+  "measured": {
+   "close_time_s": 3.82
+  },
+  "failed_criteria": [],
+  "notes": ""
+ },
+ "R08": {
+  "test": "TC-MV-01",
+  "verdict": "PASS",
+  "measured": {
+   "stop_after_release_ms": {
+    "close": 62,
+    "open": 58
+   }
+  },
+  "failed_criteria": [],
+  "notes": ""
+ },
+ "R09": {
+  "test": "TC-CAN-01",
+  "verdict": "PASS",
+  "measured": {
+   "frames": 200,
+   "min_period_ms": 49,
+   "max_period_ms": 51,
+   "gap_at_ms": 418
+  },
+  "failed_criteria": [],
+  "notes": ""
+ },
+ "R10": {
+  "test": "TC-TH-03",
+  "verdict": "PASS",
+  "measured": {
+   "open_started_above_140_c": [],
+   "open_refused_at_c": 143.9,
+   "max_current_above_130_c": 14.76,
+   "close_allowed_when_hot": true
+  },
+  "failed_criteria": [],
+  "notes": "The first opening request above 140 °C was refused at 143.9 °C."
+ },
+ "R11": {
+  "test": "TC-PW-03",
+  "verdict": "PASS",
+  "measured": {
+   "stop_after_undervoltage_ms": 21
+  },
+  "failed_criteria": [],
+  "notes": ""
+ },
+ "R12": {
+  "test": "TC-DG-01",
+  "verdict": "PASS",
+  "measured": {
+   "dtc": "B1A01",
+   "stop_after_hall_loss_ms": 203
+  },
+  "failed_criteria": [],
+  "notes": ""
+ }
+}

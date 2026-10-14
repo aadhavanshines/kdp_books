@@ -1,0 +1,104 @@
+{
+ "night": "2026-10-07",
+ "bench": "HIL-2",
+ "software": "2.4.0-rc4",
+ "spec": "ADS-WLC200-SRS v1.3",
+ "runs": [
+  {
+   "run": "R01",
+   "test": "TC-AP-01",
+   "supply_v": 13.5,
+   "ambient_c": 23,
+   "sample_ms": 1,
+   "file": "R01.csv"
+  },
+  {
+   "run": "R02",
+   "test": "TC-AP-02",
+   "supply_v": 9.0,
+   "ambient_c": 23,
+   "sample_ms": 1,
+   "file": "R02.csv"
+  },
+  {
+   "run": "R03",
+   "test": "TC-AP-03",
+   "supply_v": 16.0,
+   "ambient_c": 23,
+   "sample_ms": 1,
+   "file": "R03.csv"
+  },
+  {
+   "run": "R04",
+   "test": "TC-AP-04",
+   "supply_v": 9.0,
+   "ambient_c": -30,
+   "sample_ms": 1,
+   "file": "R04.csv"
+  },
+  {
+   "run": "R05",
+   "test": "TC-AP-05",
+   "supply_v": 13.5,
+   "ambient_c": 85,
+   "sample_ms": 1,
+   "file": "R05.csv"
+  },
+  {
+   "run": "R06",
+   "test": "TC-AP-06",
+   "supply_v": 13.5,
+   "ambient_c": 23,
+   "sample_ms": 1,
+   "file": "R06.csv"
+  },
+  {
+   "run": "R07",
+   "test": "TC-MV-05",
+   "supply_v": 13.5,
+   "ambient_c": 23,
+   "sample_ms": 1,
+   "file": "R07.csv"
+  },
+  {
+   "run": "R08",
+   "test": "TC-MV-01",
+   "supply_v": 13.5,
+   "ambient_c": 23,
+   "sample_ms": 1,
+   "file": "R08.csv"
+  },
+  {
+   "run": "R09",
+   "test": "TC-CAN-01",
+   "supply_v": 13.5,
+   "ambient_c": 23,
+   "sample_ms": 1,
+   "file": "R09.csv"
+  },
+  {
+   "run": "R10",
+   "test": "TC-TH-03",
+   "supply_v": 13.5,
+   "ambient_c": 23,
+   "sample_ms": 10,
+   "file": "R10.csv"
+  },
+  {
+   "run": "R11",
+   "test": "TC-PW-03",
+   "supply_v": 13.5,
+   "ambient_c": 23,
+   "sample_ms": 1,
+   "file": "R11.csv"
+  },
+  {
+   "run": "R12",
+   "test": "TC-DG-01",
+   "supply_v": 13.5,
+   "ambient_c": 23,
+   "sample_ms": 1,
+   "file": "R12.csv"
+  }
+ ]
+}

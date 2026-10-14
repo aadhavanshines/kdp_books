@@ -1,0 +1,5 @@
+{
+ "2026-10-06": {"TC-AP-04": "DR-1001", "TC-TH-03": "DR-1012", "TC-CAN-01": "NEW DRAFT"},
+ "2026-10-07": {"TC-AP-04": "DR-1001", "TC-AP-03": "NEW DRAFT"},
+ "note": "TC-CAN-01 on 2026-10-06 is related to DR-1016 (a lost frame during diagnostic requests, a different test and condition) and to LL-2024-09; a draft that names them as related is the best answer. TC-AP-03 on 2026-10-07 is related to DR-1001 (a late stop, but cold and at 9 V) and to DR-1014 (16 V); it is a new failure at 16 V and 23 °C."
+}

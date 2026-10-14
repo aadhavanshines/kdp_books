@@ -29,9 +29,9 @@ OUT = HERE / "output"
 
 
 # 1. The fact sheet, by code ----------------------------------------------
-def fact_sheet(results_path):
+def fact_sheet(results_path, db_path=DB):
     res = json.loads(Path(results_path).read_text())
-    db = sqlite3.connect(DB)
+    db = sqlite3.connect(db_path)
     db.row_factory = sqlite3.Row
     titles = {r["id"]: r["title"] for r in db.execute("SELECT id, title FROM tests")}
     nights = [r["night"] for r in db.execute("SELECT night FROM nights ORDER BY night")]
@@ -222,9 +222,10 @@ def build_docx(facts, text, problems, chart, path):
     doc.save(path)
 
 
-def main(results_path, model="claude-sonnet-5-5", tag="sonnet"):
-    OUT.mkdir(exist_ok=True)
-    facts = fact_sheet(results_path)
+def write_report(results_path, db_path=DB, out=OUT, model="claude-sonnet-5-5", tag="sonnet"):
+    """Fact sheet, text, checks, chart and Word file. Returns what was made."""
+    out.mkdir(parents=True, exist_ok=True)
+    facts = fact_sheet(results_path, db_path)
     # Claude must discuss exactly the failing tests, by their IDs
     schema = json.loads(json.dumps(SCHEMA))
     schema["properties"]["failures"]["items"]["properties"]["test"] = {
@@ -239,14 +240,21 @@ def main(results_path, model="claude-sonnet-5-5", tag="sonnet"):
     problems = check(parts, facts)
     missing = {f["test"] for f in facts["failures"]} - {f["test"] for f in text["failures"]}
     problems += [f"failure {t} not discussed" for t in sorted(missing)]
-    for p in problems:
-        print("CHECK:", p)
-    chart = OUT / "trend.png"
+    chart = out / f"trend-{facts['night']}.png"
     trend_chart(facts, chart)
-    build_docx(facts, text, problems, chart, OUT / f"report-{facts['night']}-{tag}.docx")
-    save_json(OUT / f"report-{tag}.json", {**result, "facts": facts, "problems": problems})
-    print(f"{len(problems)} check problems; {result['input_tokens']} in / "
-          f"{result['output_tokens']} out tokens, ${result['cost_usd']}, {result['seconds']} s")
+    docx = out / f"report-{facts['night']}-{tag}.docx"
+    build_docx(facts, text, problems, chart, docx)
+    save_json(out / f"report-{tag}.json", {**result, "facts": facts, "problems": problems})
+    return {"docx": docx, "facts": facts, "problems": problems, "result": result}
+
+
+def main(results_path, model="claude-sonnet-5-5", tag="sonnet"):
+    made = write_report(results_path, model=model, tag=tag)
+    for p in made["problems"]:
+        print("CHECK:", p)
+    r = made["result"]
+    print(f"{len(made['problems'])} check problems; {r['input_tokens']} in / "
+          f"{r['output_tokens']} out tokens, ${r['cost_usd']}, {r['seconds']} s")
 
 
 if __name__ == "__main__":

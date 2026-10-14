@@ -25,9 +25,16 @@ import random
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent.parent
-NIGHT = "2026-10-06"
-OUT = HERE / "hil" / NIGHT
-TRUTH = HERE / "labels" / "hil-truth.json"
+# What differs between the nights: the software and its faults
+NIGHTS = {
+    "2026-10-06": dict(software="2.4.0-rc3", latency={"R04": 14}, can_drop=6400,
+                       hot_open_fault=True, current_limit=15.0, seed=0,
+                       truth="hil-truth.json"),
+    "2026-10-07": dict(software="2.4.0-rc4", latency={"R03": 13, "R04": 13}, can_drop=None,
+                       hot_open_fault=False, current_limit=14.6, seed=100,
+                       truth="hil-truth-2026-10-07.json"),
+}
+NIGHT = OUT = TRUTH = CFG = None
 FULL_OPEN = 480.0
 ROD_STIFFNESS = 10.0          # N per mm of compression
 
@@ -146,7 +153,11 @@ def measure_pinch(rows):
             "reversal_mm": rows[-1][5] - lowest}
 
 
-def main():
+def main(night):
+    global NIGHT, OUT, TRUTH, CFG
+    NIGHT, CFG = night, NIGHTS[night]
+    OUT = HERE / "hil" / night
+    TRUTH = HERE / "labels" / CFG["truth"]
     runs, truth = [], {}
 
     def record(run, measured, verdict, failed=None, notes=""):
@@ -167,13 +178,16 @@ def main():
         ("R06", "TC-AP-06", 13.5, 23, 20, 6, 161, {"manual": True}),
     ]
     for n, (rid, tc, volts, amb, rod, lat, rev, kw) in enumerate(pinch):
-        run, m = pinch_run(rid, tc, volts, amb, rod, lat, rev, seed=10 + n, **kw)
+        lat = CFG["latency"].get(rid, lat)
+        run, m = pinch_run(rid, tc, volts, amb, rod, lat, rev, seed=10 + n + CFG["seed"], **kw)
         failed = []
         if m["stop_latency_ms"] > 10:
             failed.append("stop_latency_ms")
         if m["reversal_mm"] < 150:
             failed.append("reversal_mm")
         notes = {
+            "R03": (f"Late stop at 16 V: {m['stop_latency_ms']} ms against a 10 ms limit."
+                    if m["stop_latency_ms"] > 10 else ""),
             "R04": f"Late stop when cold at low voltage: {m['stop_latency_ms']} ms against a 10 ms limit.",
             "R05": "Passes, but the reversal margin is only about 1 mm above the 150 mm limit.",
             "R06": "Manual close (switch held), pinch rod at 20 mm.",
@@ -181,7 +195,7 @@ def main():
         record(run, m, "FAIL" if failed else "PASS", failed, notes)
 
     # R07: full close time (TC-MV-05)
-    r = Run("R07", "TC-MV-05", 13.5, 23, seed=21)
+    r = Run("R07", "TC-MV-05", 13.5, 23, seed=21 + CFG["seed"])
     pos, v = FULL_OPEN, speed_mm_per_ms(13.5, 23)
     for _ in range(200):
         r.add(0, 0, 0, pos, 0, 31)
@@ -200,7 +214,7 @@ def main():
     record(r, {"close_time_s": close_s}, "PASS" if 3.0 <= close_s <= 4.5 else "FAIL")
 
     # R08: manual move and stop on release (TC-MV-01)
-    r = Run("R08", "TC-MV-01", 13.5, 23, seed=22)
+    r = Run("R08", "TC-MV-01", 13.5, 23, seed=22 + CFG["seed"])
     pos, v = 240.0, speed_mm_per_ms(13.5, 23)
     lat = {}
     for direction, stop_ms in ((1, 62), (-1, 58)):
@@ -219,8 +233,8 @@ def main():
     record(r, {"stop_after_release_ms": lat}, "PASS")
 
     # R09: WLC_Status timing (TC-CAN-01), one frame lost at about 6.4 s
-    r = Run("R09", "TC-CAN-01", 13.5, 23, seed=23)
-    r.drop_can_at = 6400
+    r = Run("R09", "TC-CAN-01", 13.5, 23, seed=23 + CFG["seed"])
+    r.drop_can_at = CFG["can_drop"]
     pos = 240.0
     while r.t < 10000:
         phase = (r.t // 2500) % 2
@@ -233,11 +247,13 @@ def main():
     worst = max(gaps)
     record(r, {"frames": len(ts), "min_period_ms": min(gaps), "max_period_ms": worst,
                "gap_at_ms": ts[gaps.index(worst)]},
-           "FAIL", ["max_period_ms"],
-           f"One WLC_Status frame missing; the gap is {worst} ms against 50 ms ± 5 ms.")
+           "FAIL" if worst > 55 or min(gaps) < 45 else "PASS",
+           ["max_period_ms"] if worst > 55 else [],
+           f"One WLC_Status frame missing; the gap is {worst} ms against 50 ms ± 5 ms."
+           if worst > 55 else "")
 
     # R10: thermal (TC-TH-02 current limit, TC-TH-03 opening blocked), 10 ms samples
-    r = Run("R10", "TC-TH-03", 13.5, 23, sample_ms=10, seed=24)
+    r = Run("R10", "TC-TH-03", 13.5, 23, sample_ms=10, seed=24 + CFG["seed"])
     temp, pos, cmd = 112.0, FULL_OPEN, 1
     opens_hot = []
     stall_peaks = []
@@ -248,7 +264,7 @@ def main():
             r.add(0, 0, 0, pos, 0, temp)
         want = cmd
         if want == -1 and temp > 140:
-            if not opens_hot:
+            if not opens_hot and CFG["hot_open_fault"]:
                 opens_hot.append(round(temp, 1))    # the fault: this open is executed
             else:
                 # second request refused: switch pressed, no movement
@@ -264,7 +280,7 @@ def main():
             r.add(sw, want, 3.4 + 9 * max(0, 1 - since / 40), pos, 0, temp)
             pos = max(0.0, min(FULL_OPEN, pos - want * 1.26))
             temp += 0.0062
-        limit = 15.0 if temp > 130 else 18.0
+        limit = CFG["current_limit"] if temp > 130 else 18.0
         stall_peaks.append((round(temp, 1), limit))
         for _ in range(4):                          # 40 ms stall at the end stop
             r.add(0, want, limit, pos, 0, temp)
@@ -281,19 +297,21 @@ def main():
     r.write()
     # Measured from the logged samples, which include sensor noise
     hot_current = max(row[4] for row in r.rows if row[7] > 130)
-    failed = ["open_started_above_140_c"] + (
+    failed = (["open_started_above_140_c"] if opens_hot else []) + (
         ["max_current_above_130_c"] if hot_current > 15 else [])
     record(r, {"open_started_above_140_c": opens_hot, "open_refused_at_c": refused_at,
                "max_current_above_130_c": hot_current,
                "close_allowed_when_hot": True},
-           "FAIL", failed,
-           f"One opening started at an estimated {opens_hot[0]} °C; the next request "
-           f"was refused. The current limiter holds 15.0 A, but the logged current "
-           f"reaches {hot_current} A with measurement noise; the procedure has no "
-           f"tolerance, so this is reported as a failure for an engineer to judge.")
+           "FAIL" if failed else "PASS", failed,
+           (f"One opening started at an estimated {opens_hot[0]} °C; the next request "
+            f"was refused. The current limiter holds 15.0 A, but the logged current "
+            f"reaches {hot_current} A with measurement noise; the procedure has no "
+            f"tolerance, so this is reported as a failure for an engineer to judge.")
+           if opens_hot else
+           f"The first opening request above 140 °C was refused at {refused_at} °C.")
 
     # R11: undervoltage stop (TC-PW-03)
-    r = Run("R11", "TC-PW-03", 13.5, 23, seed=25)
+    r = Run("R11", "TC-PW-03", 13.5, 23, seed=25 + CFG["seed"])
     pos, v = 300.0, speed_mm_per_ms(13.5, 23)
     for _ in range(200):
         r.add(0, 0, 0, pos, 0, 31)
@@ -314,7 +332,7 @@ def main():
     record(r, {"stop_after_undervoltage_ms": 21}, "PASS")
 
     # R12: Hall sensor loss (TC-DG-01)
-    r = Run("R12", "TC-DG-01", 13.5, 23, seed=26)
+    r = Run("R12", "TC-DG-01", 13.5, 23, seed=26 + CFG["seed"])
     pos, v = 300.0, speed_mm_per_ms(13.5, 23)
     for _ in range(200):
         r.add(0, 0, 0, pos, 0, 31)
@@ -337,7 +355,7 @@ def main():
     r.write()
     record(r, {"dtc": "B1A01", "stop_after_hall_loss_ms": 203}, "PASS")
 
-    manifest = {"night": NIGHT, "bench": "HIL-2", "software": "2.4.0-rc3",
+    manifest = {"night": NIGHT, "bench": "HIL-2", "software": CFG["software"],
                 "spec": "ADS-WLC200-SRS v1.3", "runs": runs}
     (OUT / "manifest.json").write_text(json.dumps(manifest, indent=1) + "\n")
     TRUTH.write_text(json.dumps(truth, indent=1, ensure_ascii=False) + "\n")
@@ -346,4 +364,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    for night in NIGHTS:
+        main(night)
