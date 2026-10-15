@@ -1,0 +1,1 @@
+-m mypy --no-error-summary --hide-error-context --no-color-output type_mistakes.py
