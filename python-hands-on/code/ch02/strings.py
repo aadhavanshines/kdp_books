@@ -1,5 +1,6 @@
 first = "Ada"
 last = "Lovelace"
+born = 1815
 
 full = first + " " + last
 print(full)
@@ -8,4 +9,4 @@ print(full.upper())
 print(full.lower())
 print("First letter:", full[0])
 print("Last letter:", full[-1])
-print(f"{first} was born in {1815}.")
+print(f"{first} was born in {born}.")  # an f-string: values go in {}

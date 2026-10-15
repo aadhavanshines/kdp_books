@@ -22,3 +22,9 @@ by_letter = defaultdict(list)
 for word in ["apple", "avocado", "banana", "blueberry", "cherry"]:
     by_letter[word[0]].append(word)
 print(dict(by_letter))
+
+from decimal import Decimal            # exact decimal arithmetic, for money
+
+print(0.1 + 0.2, Decimal("0.10") + Decimal("0.20"))
+price = Decimal("19.99")
+print(price * 3, (price * Decimal("1.08")).quantize(Decimal("0.01")))

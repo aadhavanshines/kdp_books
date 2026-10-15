@@ -5,4 +5,4 @@ pandas==3.0.6
 matplotlib==3.11.2
 fastapi==0.143.2
 httpx==0.28.1
-uvicorn
+uvicorn==0.54.0
