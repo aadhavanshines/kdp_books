@@ -1,6 +1,8 @@
 import logging
 
-logging.basicConfig(level=logging.DEBUG, format="%(levelname)-8s %(name)s: %(message)s")
+logging.basicConfig(
+    level=logging.DEBUG, format="%(levelname)-8s %(name)s: %(message)s"
+)
 log = logging.getLogger("library")
 
 
@@ -17,6 +19,7 @@ def borrow(stock, title):
 stock = {"Dune": 1}
 borrow(stock, "Dune")
 borrow(stock, "Dune")
-logging.getLogger().setLevel(logging.WARNING)     # from now on, only warnings and worse
+# From now on, show only warnings and worse
+logging.getLogger().setLevel(logging.WARNING)
 borrow(stock, "Emma")
 borrow(stock, "Dune")

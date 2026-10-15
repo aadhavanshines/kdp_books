@@ -36,7 +36,9 @@ while True:
         break
     author = input("Author: ").strip()
     year = ask_year("Year: ")
-    books.append({"title": title, "author": author, "year": year, "read": False})
+    books.append(
+        {"title": title, "author": author, "year": year, "read": False}
+    )
 
 save_books(books)
 print(f"Saved {len(books)} books to {DATA}.")

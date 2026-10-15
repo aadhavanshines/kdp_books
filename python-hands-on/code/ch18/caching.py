@@ -11,5 +11,5 @@ def fibonacci(n):
 
 
 print(fibonacci(80))
-print("Function calls:", calls)        # without the cache: about 76 quadrillion
+print("Function calls:", calls)  # without the cache: about 76 quadrillion
 print(fibonacci.cache_info())

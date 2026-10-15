@@ -17,4 +17,4 @@ def test_rejects_bad_percent():
 
 
 def test_full_discount():
-    assert apply_discount(10.0, 100) == 1.0      # a mistake in the test itself
+    assert apply_discount(10.0, 100) == 1.0  # wrong: the test is mistaken

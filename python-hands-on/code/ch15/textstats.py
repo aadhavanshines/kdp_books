@@ -14,7 +14,7 @@ def average_word_length(text):
 
 
 def reading_time_minutes(text, words_per_minute=200):
-    """Whole minutes needed to read text, rounded up; at least 1 for any text."""
+    """Whole minutes to read text, rounded up; at least 1 for any text."""
     words = word_count(text)
     if words == 0:
         return 0

@@ -24,14 +24,21 @@ def books_by(books, author):
 def show(books):
     for book in books:
         mark = "x" if book["read"] else " "
-        print(f"[{mark}] {book['title']} ({book['author']}, {book['year']})")
+        print(
+            f"[{mark}] {book['title']} ({book['author']}, {book['year']})"
+        )
 
 
 library = []
-add_book(library, make_book("The Hobbit", "J. R. R. Tolkien", 1937, read=True))
+add_book(
+    library, make_book("The Hobbit", "J. R. R. Tolkien", 1937, read=True)
+)
 add_book(library, make_book("Dune", "Frank Herbert", 1965))
 add_book(library, make_book("The Silmarillion", "J. R. R. Tolkien", 1977))
-print("Added again?", add_book(library, make_book("dune", "Frank Herbert", 1965)))
+print(
+    "Added again?",
+    add_book(library, make_book("dune", "Frank Herbert", 1965)),
+)
 
 show(library)
 print()

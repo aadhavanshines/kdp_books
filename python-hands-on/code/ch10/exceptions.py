@@ -19,4 +19,4 @@ for text in ["42", "4.2", "forty-two"]:
         number = int(text)
         print(f"{text!r} -> {number}")
     except ValueError as error:
-        print(f"{text!r} is not a whole number ({error})")
+        print(f"{text!r} failed: {error}")

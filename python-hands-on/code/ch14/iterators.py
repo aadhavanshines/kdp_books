@@ -1,9 +1,9 @@
-colours = ["red", "green", "blue"]
-it = iter(colours)
+colors = ["red", "green", "blue"]
+it = iter(colors)
 print(next(it))
 print(next(it))
 print(next(it))
-print(next(it, "no more colours"))     # a default instead of an error
+print(next(it, "no more colors"))  # a default instead of an error
 
 
 class Countdown:

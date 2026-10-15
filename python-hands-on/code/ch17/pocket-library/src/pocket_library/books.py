@@ -16,7 +16,12 @@ class Library:
         self.path = Path(path)
         self.books = []
         if self.path.exists():
-            self.books = [Book(**item) for item in json.loads(self.path.read_text(encoding="utf-8"))]
+            self.books = [
+                Book(**item)
+                for item in json.loads(
+                    self.path.read_text(encoding="utf-8")
+                )
+            ]
 
     def add(self, book):
         if any(b.title.lower() == book.title.lower() for b in self.books):

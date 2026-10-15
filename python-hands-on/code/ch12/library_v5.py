@@ -18,8 +18,12 @@ class Book:
         return f"[{mark}] {self.title} by {self.author} ({self.year})"
 
     def to_dict(self):
-        return {"title": self.title, "author": self.author,
-                "year": self.year, "read": self.read}
+        return {
+            "title": self.title,
+            "author": self.author,
+            "year": self.year,
+            "read": self.read,
+        }
 
 
 class Library:

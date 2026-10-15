@@ -1,7 +1,7 @@
 def apply_discounts(prices, percent):
     result = []
     for price in prices:
-        breakpoint()                          # stop here and look around
+        breakpoint()  # stop here and look around
         result.append(price - price * percent // 100)
     return result
 

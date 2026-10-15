@@ -1,5 +1,5 @@
 class Money:
-    """An amount of money in one currency, stored in cents to avoid rounding errors."""
+    """An amount of money in one currency, stored in cents."""
 
     def __init__(self, amount, currency="EUR"):
         self.cents = round(amount * 100)

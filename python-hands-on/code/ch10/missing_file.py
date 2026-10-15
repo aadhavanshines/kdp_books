@@ -8,4 +8,5 @@ except FileNotFoundError:
     text = ""
 print("Lines:", len(text.splitlines()))
 
-Path("does_not_exist.txt").read_text(encoding="utf-8")   # without try: a crash
+# The same again, without try: the program stops with a traceback
+path.read_text(encoding="utf-8")

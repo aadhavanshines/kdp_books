@@ -1,3 +1,8 @@
 [('ben', 95), ('ana', 82), ('cy', 82)]
 HELLO!
-['success', 'redirect', 'not found', 'client error', 'server error', 'unknown']
+200 success
+302 redirect
+404 not found
+418 client error
+503 server error
+99 unknown

@@ -12,7 +12,7 @@ def fibonacci(limit):
 
 
 def read_records(lines):
-    """Turn 'name,score' lines into (name, score) pairs, skipping bad lines."""
+    """Turn 'name,score' lines into (name, score) pairs; skip bad ones."""
     for line in lines:
         name, _, score = line.partition(",")
         if score.strip().isdigit():
@@ -22,7 +22,8 @@ def read_records(lines):
 print(list(countdown(4)))
 print(list(fibonacci(100)))
 
-total = sum(n * n for n in range(1, 1_000_001))     # no million-item list in memory
+# No list of a million numbers is ever built in memory
+total = sum(n * n for n in range(1, 1_000_001))
 print(total)
 
 data = ["asha, 91", "ben, absent", "chen, 78", "", "dev, 85"]

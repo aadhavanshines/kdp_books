@@ -1,5 +1,5 @@
-# What a web API sends back: text in JSON format, which json.loads turns into
-# ordinary dictionaries and lists.
+# What a web API sends back: text in JSON format, which json.loads
+# turns into ordinary dictionaries and lists.
 import json
 
 response_text = """
@@ -16,7 +16,10 @@ data = json.loads(response_text)
 print(type(data))
 print("Books returned:", data["count"])
 for book in data["books"]:
-    print(f"  #{book['id']} {book['title']} by {book['author']} ({book['year']})")
+    print(
+        f"  #{book['id']} {book['title']} by {book['author']}"
+        f" ({book['year']})"
+    )
 
 # Sending data works the other way round: a dictionary becomes JSON text
 new_book = {"title": "Educated", "author": "Tara Westover", "year": 2018}

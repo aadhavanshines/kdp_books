@@ -1,8 +1,14 @@
 # Sort the files in a folder into sub-folders by type.
 from pathlib import Path
 
-FOLDERS = {".jpg": "images", ".png": "images", ".pdf": "documents",
-           ".txt": "documents", ".xlsx": "documents", ".mp3": "music"}
+FOLDERS = {
+    ".jpg": "images",
+    ".png": "images",
+    ".pdf": "documents",
+    ".txt": "documents",
+    ".xlsx": "documents",
+    ".mp3": "music",
+}
 
 folder = Path("files_to_tidy")
 for path in sorted(folder.iterdir()):

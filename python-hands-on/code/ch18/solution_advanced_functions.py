@@ -4,6 +4,7 @@ from contextlib import contextmanager
 
 def retry(times, exceptions=(Exception,)):
     """Call the function up to `times` times until it doesn't raise."""
+
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
@@ -14,7 +15,9 @@ def retry(times, exceptions=(Exception,)):
                     print(f"attempt {attempt} failed: {error}")
                     if attempt == times:
                         raise
+
         return wrapper
+
     return decorator
 
 
@@ -23,13 +26,14 @@ def count_calls(func):
     def wrapper(*args, **kwargs):
         wrapper.calls += 1
         return func(*args, **kwargs)
+
     wrapper.calls = 0
     return wrapper
 
 
 @contextmanager
 def temporary_value(mapping, key, value):
-    """Set mapping[key] = value inside the 'with' block, then put it back."""
+    """Set mapping[key] = value inside the with block, then restore it."""
     missing = object()
     old = mapping.get(key, missing)
     mapping[key] = value

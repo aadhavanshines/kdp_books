@@ -4,6 +4,7 @@ from pathlib import Path
 
 class Indented:
     """Indent everything printed through it, one level per 'with'."""
+
     level = 0
 
     def __enter__(self):
@@ -12,7 +13,7 @@ class Indented:
 
     def __exit__(self, exc_type, exc, tb):
         Indented.level -= 1
-        return False                       # don't hide exceptions
+        return False  # don't hide exceptions
 
     def print(self, text):
         print("    " * Indented.level + text)
@@ -36,5 +37,5 @@ with tag("ul"):
         print(f"  <li>{item}</li>")
 
 with suppress(FileNotFoundError):
-    Path("missing.txt").unlink()           # no error if it isn't there
+    Path("missing.txt").unlink()  # no error if it isn't there
 print("Done.")

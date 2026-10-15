@@ -4,14 +4,19 @@ import pytest
 
 
 def load_titles(path):
-    return [book["title"] for book in json.loads(path.read_text(encoding="utf-8"))]
+    return [
+        book["title"]
+        for book in json.loads(path.read_text(encoding="utf-8"))
+    ]
 
 
 @pytest.fixture
 def library_file(tmp_path):
-    """A temporary library.json, made fresh for every test that asks for it."""
+    """A temporary library.json, made fresh for each test that uses it."""
     path = tmp_path / "library.json"
-    path.write_text(json.dumps([{"title": "Dune"}, {"title": "Emma"}]), encoding="utf-8")
+    path.write_text(
+        json.dumps([{"title": "Dune"}, {"title": "Emma"}]), encoding="utf-8"
+    )
     return path
 
 

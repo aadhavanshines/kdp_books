@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 
 def word_counts(texts):
-    """Count words in many texts using a pool of threads; results keep their order."""
+    """Count words in many texts with a pool of threads, in order."""
     with ThreadPoolExecutor(max_workers=4) as pool:
         return list(pool.map(lambda text: len(text.split()), texts))
 
@@ -29,5 +29,7 @@ async def fetch_all(names, limit):
 
 if __name__ == "__main__":
     print(word_counts(["one two", "three", "", "four five six"]))
-    results, most = asyncio.run(fetch_all(["a", "b", "c", "d", "e"], limit=2))
+    results, most = asyncio.run(
+        fetch_all(["a", "b", "c", "d", "e"], limit=2)
+    )
     print(results, "at most", most, "at once")

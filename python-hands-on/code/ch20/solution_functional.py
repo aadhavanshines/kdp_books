@@ -31,4 +31,5 @@ if __name__ == "__main__":
     print(top_n({"ana": 82, "ben": 95, "cy": 82, "dee": 70}, 3))
     shout = compose(lambda s: s + "!", str.upper, str.strip)
     print(shout("  hello "))
-    print([http_status(c) for c in (200, 302, 404, 418, 503, 99)])
+    for code in (200, 302, 404, 418, 503, 99):
+        print(code, http_status(code))

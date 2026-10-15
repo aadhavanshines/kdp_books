@@ -16,5 +16,13 @@ def handle(command):
             return f"I don't understand {command!r}."
 
 
-for text in ["add Dune", "add Emma 1815", "remove Dune Emma", "?", "", "fly", "exit"]:
+for text in [
+    "add Dune",
+    "add Emma 1815",
+    "remove Dune Emma",
+    "?",
+    "",
+    "fly",
+    "exit",
+]:
     print(f"{text!r:20} -> {handle(text)}")

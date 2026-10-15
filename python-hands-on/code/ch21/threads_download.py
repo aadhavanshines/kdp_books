@@ -8,7 +8,14 @@ def download(name):
     return f"{name}: {len(name) * 1000} bytes"
 
 
-files = ["report.pdf", "photo.jpg", "data.csv", "song.mp3", "notes.txt", "map.png"]
+files = [
+    "report.pdf",
+    "photo.jpg",
+    "data.csv",
+    "song.mp3",
+    "notes.txt",
+    "map.png",
+]
 
 start = time.perf_counter()
 results = [download(f) for f in files]
@@ -16,7 +23,8 @@ sequential = time.perf_counter() - start
 
 start = time.perf_counter()
 with ThreadPoolExecutor(max_workers=6) as pool:
-    threaded_results = list(pool.map(download, files))   # results in the original order
+    # map gives the results in the original order
+    threaded_results = list(pool.map(download, files))
 threaded = time.perf_counter() - start
 
 print("\n".join(threaded_results))

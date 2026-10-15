@@ -17,7 +17,7 @@ def grade_for(score, cut_offs=(60, 70, 80, 90), grades="FDCBA"):
 
 
 def pair_with_sum(numbers, target):
-    """Return a pair of numbers that adds up to target, or None (in O(n))."""
+    """Return a pair of numbers adding up to target, or None. O(n)."""
     seen = set()
     for n in numbers:
         if target - n in seen:

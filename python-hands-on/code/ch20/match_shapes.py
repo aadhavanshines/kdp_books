@@ -9,7 +9,7 @@ class Point:
 
 @dataclass
 class Circle:
-    centre: Point
+    center: Point
     radius: float
 
 
@@ -21,7 +21,7 @@ def describe(shape):
             return f"a point on the y-axis at {y}"
         case Point(x=x, y=y):
             return f"a point at ({x}, {y})"
-        case Circle(centre=Point(x=0, y=0), radius=r):
+        case Circle(center=Point(x=0, y=0), radius=r):
             return f"a circle of radius {r} around the origin"
         case Circle(radius=r) if r <= 0:
             return "an impossible circle"
@@ -33,6 +33,14 @@ def describe(shape):
             return "something unknown"
 
 
-for shape in [Point(0, 0), Point(0, 5), Point(2, 3), Circle(Point(0, 0), 4),
-              Circle(Point(1, 1), -1), Circle(Point(1, 1), 2), {"type": "point", "x": 7, "y": 8}, 42]:
+for shape in [
+    Point(0, 0),
+    Point(0, 5),
+    Point(2, 3),
+    Circle(Point(0, 0), 4),
+    Circle(Point(1, 1), -1),
+    Circle(Point(1, 1), 2),
+    {"type": "point", "x": 7, "y": 8},
+    42,
+]:
     print(describe(shape))

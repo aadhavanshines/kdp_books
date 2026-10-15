@@ -1,8 +1,8 @@
 (540, 7)
-      date    store category             title  quantity  unit_price  revenue
-2026-01-01 Old Town   Travel Walking the Coast         3        13.5     40.5
-2026-01-01  Station   Travel Walking the Coast         1        13.5     13.5
-2026-01-01  Station   Travel Walking the Coast         3        13.5     40.5
+      date    store             title  quantity  revenue
+2026-01-01 Old Town Walking the Coast         3     40.5
+2026-01-01  Station Walking the Coast         1     13.5
+2026-01-01  Station Walking the Coast         3     40.5
 
 store
 Station      10856.16

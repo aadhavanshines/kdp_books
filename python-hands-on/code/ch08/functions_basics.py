@@ -9,7 +9,7 @@ def area(width, height):
 
 
 def price_with_tax(price, rate=0.18):
-    """Return the price including tax. The rate is 18% unless you say otherwise."""
+    """Return the price including tax: 18% unless you say otherwise."""
     return round(price * (1 + rate), 2)
 
 

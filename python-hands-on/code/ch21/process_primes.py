@@ -2,16 +2,22 @@ from concurrent.futures import ProcessPoolExecutor
 
 
 def count_primes(start, stop):
-    """Count the primes in range(start, stop): pure calculation, no waiting."""
+    """Count the primes in range(start, stop): pure calculation."""
     count = 0
     for n in range(max(start, 2), stop):
-        if all(n % d for d in range(2, int(n ** 0.5) + 1)):
+        if all(n % d for d in range(2, int(n**0.5) + 1)):
             count += 1
     return count
 
 
-if __name__ == "__main__":          # required: each worker process imports this file
-    ranges = [(0, 50_000), (50_000, 100_000), (100_000, 150_000), (150_000, 200_000)]
+# Required: each worker process imports this file
+if __name__ == "__main__":
+    ranges = [
+        (0, 50_000),
+        (50_000, 100_000),
+        (100_000, 150_000),
+        (150_000, 200_000),
+    ]
     with ProcessPoolExecutor() as pool:
         counts = list(pool.map(count_primes, *zip(*ranges)))
     for (start, stop), count in zip(ranges, counts):

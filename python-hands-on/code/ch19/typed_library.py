@@ -12,6 +12,7 @@ class Book:
 
 class Shelf(Protocol):
     """Anything with a books attribute counts as a Shelf."""
+
     books: list[Book]
 
 
@@ -33,11 +34,15 @@ def count_tagged(shelf: Shelf, tag: str) -> int:
     return sum(1 for book in shelf.books if tag in book.tags)
 
 
-library = Library([Book("Dune", "Frank Herbert", 1965, ["sci-fi"]),
-                   Book("Dune Messiah", "Frank Herbert", 1969, ["sci-fi"]),
-                   Book("Educated", "Tara Westover", 2018)])
+library = Library(
+    [
+        Book("Dune", "Frank Herbert", 1965, ["sci-fi"]),
+        Book("Dune Messiah", "Frank Herbert", 1969, ["sci-fi"]),
+        Book("Educated", "Tara Westover", 2018),
+    ]
+)
 print(library.by_decade())
 newest = library.newest()
-if newest is not None:                      # mypy insists on this check
+if newest is not None:  # mypy insists on this check
     print("Newest:", newest.title)
 print("Sci-fi:", count_tagged(library, "sci-fi"))

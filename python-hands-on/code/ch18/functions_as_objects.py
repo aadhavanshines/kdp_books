@@ -7,17 +7,18 @@ def whisper(text):
 
 
 def speak(style, text):
-    return style(text)                  # a function passed in like any value
+    return style(text)  # a function passed in like any value
 
 
-say = shout                            # a second name for the same function
+say = shout  # a second name for the same function
 print(say("hello"))
 print(speak(whisper, "Hello"))
 
 
 def make_multiplier(factor):
     def multiply(n):
-        return n * factor              # remembers factor: this is a closure
+        return n * factor  # remembers factor: this is a closure
+
     return multiply
 
 

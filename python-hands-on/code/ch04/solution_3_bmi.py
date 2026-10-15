@@ -1,6 +1,6 @@
 weight = float(input("Weight (kg): "))
 height = float(input("Height (m): "))
-bmi = weight / height ** 2
+bmi = weight / height**2
 if bmi < 18.5:
     category = "underweight"
 elif bmi < 25:

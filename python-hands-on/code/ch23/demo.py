@@ -9,17 +9,20 @@ commands = [
     'add "Emma" "Jane Austen" --year 1815',
     'add "Educated" "Tara Westover" --year 2018',
     'add "Dune" "Frank Herbert"',
-    'read 1 --date 2026-09-14 --rating 5',
-    'read 4 --date 2026-10-02 --rating 4',
-    'list',
-    'list --unread',
-    'list --search austen',
-    'read 9 --date 2026-10-15',
-    'stats',
-    'export books.csv',
+    "read 1 --date 2026-09-14 --rating 5",
+    "read 4 --date 2026-10-02 --rating 4",
+    "list",
+    "list --unread",
+    "list --search austen",
+    "read 9 --date 2026-10-15",
+    "stats",
+    "export books.csv",
 ]
 for command in commands:
     print(f"$ python -m pocket {command}")
-    result = subprocess.run([sys.executable, "-m", "pocket", *shlex.split(command)],
-                            capture_output=True, text=True)
+    result = subprocess.run(
+        [sys.executable, "-m", "pocket", *shlex.split(command)],
+        capture_output=True,
+        text=True,
+    )
     print(result.stdout + result.stderr, end="")

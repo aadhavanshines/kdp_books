@@ -33,7 +33,7 @@ def transcript(version):
         project = tmp / "pocket-library"
         shutil.copytree(PACKAGE, project)
         env = {k: v for k, v in os.environ.items() if not k.startswith("PYTHON")}
-        env.update(NO_COLOR="1", PYTHONDONTWRITEBYTECODE="1")
+        env.update(NO_COLOR="1", PYTHONDONTWRITEBYTECODE="1", COLUMNS="76")
         venv = tmp / ".venv"
         bin_dir = venv / "bin"
         env["PATH"] = f"{bin_dir}{os.pathsep}{env['PATH']}"

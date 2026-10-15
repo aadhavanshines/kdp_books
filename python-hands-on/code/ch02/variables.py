@@ -6,5 +6,5 @@ print(name)
 print(age)
 print(height_m)
 
-age = age + 1          # a variable can change: Meera has a birthday
+age = age + 1  # a variable can change: Meera has a birthday
 print(name, "is now", age)

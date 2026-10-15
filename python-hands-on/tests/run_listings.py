@@ -46,7 +46,7 @@ TIMEOUT = 60
 def env_for():
     env = {k: v for k, v in os.environ.items() if not k.startswith("PYTHON")}
     env.update(PYTHONDONTWRITEBYTECODE="1", NO_COLOR="1", PYTHON_COLORS="0",
-               PYTHONHASHSEED="0", PYTHONUNBUFFERED="1", TERM="dumb", COLUMNS="80", LANG="C.UTF-8",
+               PYTHONHASHSEED="0", PYTHONUNBUFFERED="1", TERM="dumb", COLUMNS="76", LANG="C.UTF-8",
                PYTHONIOENCODING="utf-8")
     return env
 

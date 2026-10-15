@@ -5,13 +5,13 @@ import pstats
 def slow_unique(items):
     result = []
     for item in items:
-        if item not in result:          # searching a list: slow for big lists
+        if item not in result:  # searching a list: slow for big lists
             result.append(item)
     return result
 
 
 def fast_unique(items):
-    return list(dict.fromkeys(items))   # keeps the order, uses hashing
+    return list(dict.fromkeys(items))  # keeps the order, uses hashing
 
 
 data = [n % 3000 for n in range(20_000)]

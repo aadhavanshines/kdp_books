@@ -3,7 +3,7 @@ from pathlib import Path
 notes = Path("notes.txt")
 
 notes.write_text("Buy bread\nCall the plumber\n", encoding="utf-8")
-with notes.open("a", encoding="utf-8") as f:       # "a" adds to the end
+with notes.open("a", encoding="utf-8") as f:  # "a" adds to the end
     f.write("Return library books\n")
 
 print(notes.read_text(encoding="utf-8"))

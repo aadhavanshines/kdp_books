@@ -1,5 +1,6 @@
 def is_palindrome(text):
-    """True if text reads the same backwards, ignoring case, spaces and punctuation."""
+    """True if text reads the same backwards, ignoring case,
+    spaces and punctuation."""
     letters = ""
     for ch in text.lower():
         if ch.isalnum():
@@ -17,7 +18,7 @@ def count_vowels(text):
 
 
 def largest(numbers):
-    """Return the largest number in a non-empty list, without using max()."""
+    """Return the largest number in a non-empty list, without max()."""
     best = numbers[0]
     for n in numbers[1:]:
         if n > best:

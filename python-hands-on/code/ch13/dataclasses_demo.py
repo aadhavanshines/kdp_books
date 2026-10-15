@@ -7,7 +7,6 @@ class Book:
     author: str
     year: int
     tags: list[str] = field(default_factory=list)
-    read: bool = False
 
 
 @dataclass(frozen=True, order=True)
@@ -17,10 +16,12 @@ class Version:
 
 
 dune = Book("Dune", "Frank Herbert", 1965)
-dune.tags.append("science fiction")
+dune.tags.append("novel")
 print(dune)
-print(dune == Book("Dune", "Frank Herbert", 1965, ["science fiction"]))
+print(dune == Book("Dune", "Frank Herbert", 1965, ["novel"]))
 
-print(sorted([Version(3, 15), Version(3, 9), Version(3, 12)]))
+versions = sorted([Version(3, 15), Version(3, 9), Version(3, 12)])
+print("Oldest:", versions[0])
+print("Newest:", versions[-1])
 v = Version(3, 15)
 v.minor = 16

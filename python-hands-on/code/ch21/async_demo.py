@@ -10,7 +10,9 @@ async def fetch(name, seconds):
 
 async def main():
     start = time.perf_counter()
-    pages = await asyncio.gather(fetch("news", 0.3), fetch("weather", 0.1), fetch("sport", 0.2))
+    pages = await asyncio.gather(
+        fetch("news", 0.3), fetch("weather", 0.1), fetch("sport", 0.2)
+    )
     elapsed = time.perf_counter() - start
     print("In the order asked:", pages)
     print("Took less than 0.5 s in total:", elapsed < 0.5)

@@ -7,7 +7,12 @@
   budget 2026.xlsx -> spreadsheets/
   holiday photo (1).jpg -> pictures/
   scan 2.pdf -> documents/
-['documents/My Notes.TXT', 'documents/Scan 1.PDF', 'documents/scan 2.pdf', 'pictures/Holiday Photo.JPG', 'pictures/holiday photo (1).jpg', 'spreadsheets/budget 2026.xlsx']
+   documents/My Notes.TXT
+   documents/Scan 1.PDF
+   documents/scan 2.pdf
+   pictures/Holiday Photo.JPG
+   pictures/holiday photo (1).jpg
+   spreadsheets/budget 2026.xlsx
 title     author         finished    pages  rating
 --------  -------------  ----------  -----  ------
 Dune      Frank Herbert  2026-01-19  612    5

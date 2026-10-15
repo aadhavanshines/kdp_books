@@ -18,7 +18,7 @@ def average_rating(csv_path):
 
 
 def divide(a_text, b_text):
-    """Divide two numbers given as text; return a message instead of crashing."""
+    """Divide two numbers given as text; return a message on errors."""
     try:
         return f"{float(a_text) / float(b_text):g}"
     except ValueError:
@@ -30,4 +30,6 @@ def divide(a_text, b_text):
 if __name__ == "__main__":
     print(file_stats("books.csv"))
     print(f"{average_rating('books.csv'):.1f}")
-    print(divide("7", "2"), "|", divide("7", "0"), "|", divide("seven", "2"))
+    print(
+        divide("7", "2"), "|", divide("7", "0"), "|", divide("seven", "2")
+    )

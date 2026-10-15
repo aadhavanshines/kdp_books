@@ -5,7 +5,10 @@ Created documents-2026-10-14.zip
   removed documents-2026-10-11.zip
 Created documents-2026-10-15.zip
   removed documents-2026-10-12.zip
-Kept: ['documents-2026-10-13.zip', 'documents-2026-10-14.zip', 'documents-2026-10-15.zip']
+Kept:
+   documents-2026-10-13.zip
+   documents-2026-10-14.zip
+   documents-2026-10-15.zip
 documents-2026-10-15.zip contains 6 files:
    documents/budget.csv
    documents/letters/renewal.md

@@ -34,7 +34,7 @@ class Thermostat:
         self.target = target
 
     def set_target(self, value):
-        """Set the target, clamped to the allowed range; return the new target."""
+        """Set the target within the allowed range; return it."""
         self.target = min(max(value, self.low), self.high)
         return self.target
 

@@ -37,8 +37,12 @@ def test_stats(store):
     store.add("Dune", "Frank Herbert")
     store.add("Children of Dune", "Frank Herbert")
     store.mark_read(1, "2026-10-01", 4)
-    assert store.stats() == {"books": 2, "read": 1, "average_rating": 4.0,
-                             "top_author": "Frank Herbert"}
+    assert store.stats() == {
+        "books": 2,
+        "read": 1,
+        "average_rating": 4.0,
+        "top_author": "Frank Herbert",
+    }
 
 
 def test_mark_read_unknown_id(store):
@@ -56,4 +60,15 @@ def test_export_csv(store, tmp_path):
 
 def test_cli_rating_must_be_1_to_5(tmp_path):
     with pytest.raises(SystemExit):
-        main(["--db", str(tmp_path / "x.db"), "read", "1", "--date", "2026-10-01", "--rating", "9"])
+        main(
+            [
+                "--db",
+                str(tmp_path / "x.db"),
+                "read",
+                "1",
+                "--date",
+                "2026-10-01",
+                "--rating",
+                "9",
+            ]
+        )

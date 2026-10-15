@@ -1,5 +1,5 @@
-# Report what a folder tree contains: files per type, total size, the biggest
-# files, and files with the same contents.
+# Report what a folder tree contains: files per type, total size,
+# the biggest files, and files with the same contents.
 import hashlib
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -20,7 +20,9 @@ for p in sorted(files, key=lambda p: p.stat().st_size, reverse=True)[:3]:
 # Same contents = same fingerprint (hash), whatever the file is called
 groups = defaultdict(list)
 for p in files:
-    groups[hashlib.sha256(p.read_bytes()).hexdigest()].append(p.relative_to(root))
+    groups[hashlib.sha256(p.read_bytes()).hexdigest()].append(
+        p.relative_to(root)
+    )
 for same in groups.values():
     if len(same) > 1:
         print("Duplicates:", ", ".join(str(p) for p in same))

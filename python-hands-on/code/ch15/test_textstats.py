@@ -19,7 +19,9 @@ def test_average_word_length_of_empty_text():
     assert average_word_length("") == 0.0
 
 
-@pytest.mark.parametrize("words, minutes", [(0, 0), (1, 1), (200, 1), (201, 2), (1000, 5)])
+@pytest.mark.parametrize(
+    "words, minutes", [(0, 0), (1, 1), (200, 1), (201, 2), (1000, 5)]
+)
 def test_reading_time(words, minutes):
     text = "word " * words
     assert reading_time_minutes(text) == minutes

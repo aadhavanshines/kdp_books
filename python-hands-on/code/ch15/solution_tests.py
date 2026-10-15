@@ -1,4 +1,4 @@
-"""Exercise solutions for Chapter 15: tests for functions from earlier chapters."""
+"""Chapter 15 solutions: tests for functions from earlier chapters."""
 
 
 def is_leap_year(year):

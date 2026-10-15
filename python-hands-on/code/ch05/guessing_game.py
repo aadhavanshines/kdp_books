@@ -1,6 +1,6 @@
 import random
 
-random.seed(7)      # remove this line to get a different number each game
+random.seed(7)  # remove this line to get a different number each game
 secret = random.randint(1, 100)
 tries = 0
 

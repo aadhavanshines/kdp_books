@@ -7,11 +7,12 @@ def median(numbers):
     """Return the median; fixed version of the buggy one in the exercise."""
     if not numbers:
         raise ValueError("median of an empty list")
-    ordered = sorted(numbers)              # the bug: the list wasn't sorted
+    ordered = sorted(numbers)  # the bug: the list wasn't sorted
     middle = len(ordered) // 2
     if len(ordered) % 2 == 1:
         return ordered[middle]
-    return (ordered[middle - 1] + ordered[middle]) / 2   # and both middle values are needed
+    # The second bug: both middle values are needed
+    return (ordered[middle - 1] + ordered[middle]) / 2
 
 
 def safe_int(text, default=0):

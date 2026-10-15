@@ -8,6 +8,7 @@ app = FastAPI(title="Pocket Library API")
 
 class NewBook(BaseModel):
     """What a client sends to add a book."""
+
     title: str = Field(min_length=1)
     author: str = Field(min_length=1)
     year: int | None = Field(default=None, ge=0, le=2100)
@@ -15,10 +16,11 @@ class NewBook(BaseModel):
 
 class Book(NewBook):
     """What the API sends back: the book plus its id."""
+
     id: int
 
 
-books: dict[int, Book] = {}          # kept in memory: empty again on every restart
+books: dict[int, Book] = {}  # kept in memory: empty again on every restart
 
 
 @app.get("/books")
@@ -32,7 +34,9 @@ def list_books(author: str | None = None) -> list[Book]:
 @app.get("/books/{book_id}")
 def get_book(book_id: int) -> Book:
     if book_id not in books:
-        raise HTTPException(status_code=404, detail=f"No book with id {book_id}")
+        raise HTTPException(
+            status_code=404, detail=f"No book with id {book_id}"
+        )
     return books[book_id]
 
 
@@ -47,4 +51,6 @@ def add_book(new: NewBook) -> Book:
 @app.delete("/books/{book_id}", status_code=204)
 def delete_book(book_id: int) -> None:
     if books.pop(book_id, None) is None:
-        raise HTTPException(status_code=404, detail=f"No book with id {book_id}")
+        raise HTTPException(
+            status_code=404, detail=f"No book with id {book_id}"
+        )

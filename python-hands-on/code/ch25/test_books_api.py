@@ -8,24 +8,34 @@ client = TestClient(books_api.app)
 
 @pytest.fixture(autouse=True)
 def empty_library():
-    books_api.books.clear()          # every test starts with no books
+    books_api.books.clear()  # every test starts with no books
 
 
 def add(title, author, year=None):
-    return client.post("/books", json={"title": title, "author": author, "year": year})
+    return client.post(
+        "/books", json={"title": title, "author": author, "year": year}
+    )
 
 
 def test_add_and_get():
     response = add("Dune", "Frank Herbert", 1965)
     assert response.status_code == 201
-    assert response.json() == {"id": 1, "title": "Dune", "author": "Frank Herbert", "year": 1965}
+    assert response.json() == {
+        "id": 1,
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "year": 1965,
+    }
     assert client.get("/books/1").json()["title"] == "Dune"
 
 
 def test_list_filters_by_author():
     add("Dune", "Frank Herbert")
     add("Emma", "Jane Austen")
-    titles = [b["title"] for b in client.get("/books", params={"author": "austen"}).json()]
+    titles = [
+        b["title"]
+        for b in client.get("/books", params={"author": "austen"}).json()
+    ]
     assert titles == ["Emma"]
 
 

@@ -13,7 +13,9 @@ with open("sales.csv", newline="", encoding="utf-8") as f:
         copies_by_title[row["title"]] += int(row["quantity"])
 
 print("Revenue by store:")
-for store, revenue in sorted(revenue_by_store.items(), key=lambda kv: kv[1], reverse=True):
+for store, revenue in sorted(
+    revenue_by_store.items(), key=lambda kv: kv[1], reverse=True
+):
     print(f"  {store:10} {revenue:>10,.2f}")
 
 print("Revenue by month:")

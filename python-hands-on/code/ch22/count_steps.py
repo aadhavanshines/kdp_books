@@ -1,4 +1,5 @@
-# Count the comparisons each search needs: a measure that doesn't depend on your computer.
+# Count the comparisons each search needs: a measure that doesn't
+# depend on how fast your computer is.
 
 
 def linear_search(items, target):
@@ -28,6 +29,10 @@ def binary_search(items, target):
 
 for size in [1_000, 1_000_000]:
     numbers = list(range(size))
-    target = size - 1                       # the worst case for linear search
-    print(f"{size:>9,} items: linear {linear_search(numbers, target):>9,} steps, "
-          f"binary {binary_search(numbers, target):>2} steps")
+    target = size - 1  # the worst case for linear search
+    linear = linear_search(numbers, target)
+    binary = binary_search(numbers, target)
+    print(
+        f"{size:>9,} items: linear {linear:>9,} steps, "
+        f"binary {binary:>2} steps"
+    )

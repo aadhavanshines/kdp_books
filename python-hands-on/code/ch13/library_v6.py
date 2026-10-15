@@ -1,4 +1,5 @@
-# Pocket Library, version 6: a dataclass and a Library that works like a collection.
+# Pocket Library, version 6: a dataclass, and a Library that works
+# like a collection.
 from dataclasses import dataclass
 
 
@@ -35,8 +36,12 @@ class Library:
         return f"Library({len(self)} books)"
 
 
-library = Library([Book("The Hobbit", "J. R. R. Tolkien", 1937, True),
-                   Book("Dune", "Frank Herbert", 1965)])
+library = Library(
+    [
+        Book("The Hobbit", "J. R. R. Tolkien", 1937, True),
+        Book("Dune", "Frank Herbert", 1965),
+    ]
+)
 library.add(Book("Educated", "Tara Westover", 2018))
 print(library, "| len:", len(library))
 print(Book("DUNE", "?", 0) in library)

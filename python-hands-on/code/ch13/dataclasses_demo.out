@@ -1,8 +1,9 @@
-Book(title='Dune', author='Frank Herbert', year=1965, tags=['science fiction'], read=False)
+Book(title='Dune', author='Frank Herbert', year=1965, tags=['novel'])
 True
-[Version(major=3, minor=9), Version(major=3, minor=12), Version(major=3, minor=15)]
+Oldest: Version(major=3, minor=9)
+Newest: Version(major=3, minor=15)
 Traceback (most recent call last):
-  File "dataclasses_demo.py", line 26, in <module>
+  File "dataclasses_demo.py", line 27, in <module>
     v.minor = 16
     ^^^^^^^
   File "<string>", line 32, in __setattr__

@@ -14,11 +14,15 @@ def every(seconds, name, times, start):
     if runs[name] < times:
         # Book the next run at an exact time, so small delays don't add up
         next_time = start + seconds * (runs[name] + 1)
-        scheduler.enterabs(next_time, 1, every, (seconds, name, times, start))
+        scheduler.enterabs(
+            next_time, 1, every, (seconds, name, times, start)
+        )
 
 
 start = time.monotonic()
 scheduler.enterabs(start + 0.1, 1, every, (0.1, "check inbox", 4, start))
-scheduler.enterabs(start + 0.25, 1, every, (0.25, "back up notes", 2, start))
-scheduler.run()                     # blocks until no tasks are left
+scheduler.enterabs(
+    start + 0.25, 1, every, (0.25, "back up notes", 2, start)
+)
+scheduler.run()  # blocks until no tasks are left
 print("All tasks done.")

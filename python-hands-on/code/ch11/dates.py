@@ -1,6 +1,6 @@
 from datetime import date, datetime, timedelta
 
-today = date(2026, 10, 15)           # a fixed date, so the output matches the book
+today = date(2026, 10, 15)  # a fixed date, so the output matches the book
 deadline = date(2026, 12, 24)
 print("Days to go:", (deadline - today).days)
 print("In two weeks:", today + timedelta(weeks=2))

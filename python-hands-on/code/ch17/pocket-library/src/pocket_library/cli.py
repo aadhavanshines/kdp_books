@@ -6,9 +6,15 @@ from .books import Book, Library
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(prog="pocket", description="Your book collection.")
-    parser.add_argument("--version", action="version", version=f"pocket {__version__}")
-    parser.add_argument("--file", default="library.json", help="where the books are kept")
+    parser = argparse.ArgumentParser(
+        prog="pocket", description="Your book collection."
+    )
+    parser.add_argument(
+        "--version", action="version", version=f"pocket {__version__}"
+    )
+    parser.add_argument(
+        "--file", default="library.json", help="where the books are kept"
+    )
     commands = parser.add_subparsers(dest="command", required=True)
 
     add = commands.add_parser("add", help="add a book")

@@ -35,16 +35,22 @@ class BookStore:
 
     def add(self, title, author, year=None):
         try:
-            with self.conn:                   # commits, or rolls back on error
+            with self.conn:  # commits, or rolls back on error
                 cur = self.conn.execute(
-                    "INSERT INTO books (title, author, year) VALUES (?, ?, ?)",
-                    (title, author, year))
+                    "INSERT INTO books (title, author, year)"
+                    " VALUES (?, ?, ?)",
+                    (title, author, year),
+                )
         except sqlite3.IntegrityError:
-            raise ValueError(f"already in the library: {title} by {author}") from None
+            raise ValueError(
+                f"already in the library: {title} by {author}"
+            ) from None
         return cur.lastrowid
 
     def get(self, book_id):
-        row = self.conn.execute("SELECT * FROM books WHERE id = ?", (book_id,)).fetchone()
+        row = self.conn.execute(
+            "SELECT * FROM books WHERE id = ?", (book_id,)
+        ).fetchone()
         if row is None:
             raise KeyError(book_id)
         return Book(*row)
@@ -61,26 +67,37 @@ class BookStore:
         return [Book(*row) for row in self.conn.execute(sql, params)]
 
     def mark_read(self, book_id, date, rating=None):
-        self.get(book_id)                     # raises KeyError if there is no such book
+        self.get(book_id)  # raises KeyError if there is no such book
         with self.conn:
-            self.conn.execute("UPDATE books SET read_on = ?, rating = ? WHERE id = ?",
-                              (date, rating, book_id))
+            self.conn.execute(
+                "UPDATE books SET read_on = ?, rating = ? WHERE id = ?",
+                (date, rating, book_id),
+            )
 
     def stats(self):
         total, read, avg = self.conn.execute(
-            "SELECT COUNT(*), COUNT(read_on), AVG(rating) FROM books").fetchone()
+            "SELECT COUNT(*), COUNT(read_on), AVG(rating) FROM books"
+        ).fetchone()
         top = self.conn.execute(
             "SELECT author, COUNT(*) AS n FROM books GROUP BY author "
-            "ORDER BY n DESC, author LIMIT 1").fetchone()
-        return {"books": total, "read": read,
-                "average_rating": round(avg, 1) if avg else None,
-                "top_author": top[0] if top else None}
+            "ORDER BY n DESC, author LIMIT 1"
+        ).fetchone()
+        return {
+            "books": total,
+            "read": read,
+            "average_rating": round(avg, 1) if avg else None,
+            "top_author": top[0] if top else None,
+        }
 
     def export_csv(self, path):
         books = self.list()
         with open(path, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow(["id", "title", "author", "year", "rating", "read_on"])
+            writer.writerow(
+                ["id", "title", "author", "year", "rating", "read_on"]
+            )
             for b in books:
-                writer.writerow([b.id, b.title, b.author, b.year, b.rating, b.read_on])
+                writer.writerow(
+                    [b.id, b.title, b.author, b.year, b.rating, b.read_on]
+                )
         return len(books)

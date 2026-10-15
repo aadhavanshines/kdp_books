@@ -2,5 +2,5 @@
 print("Welcome to Python!")
 print("2 + 3 =", 2 + 3)
 print("Python" * 3)
-print()                      # an empty line
+print()  # an empty line
 print("Done.")

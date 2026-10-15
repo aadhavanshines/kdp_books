@@ -7,4 +7,6 @@ for extra in ([], ["--apply"]):
     command = ["tidy_names.py", "downloads", *extra]
     print("$ python", " ".join(command))
     subprocess.run([sys.executable, *command])
-print("Now in downloads:", sorted(p.name for p in Path("downloads").iterdir()))
+print("Now in downloads:")
+for path in sorted(Path("downloads").iterdir()):
+    print("  ", path.name)

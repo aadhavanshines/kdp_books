@@ -2,7 +2,9 @@
 import warnings
 
 # The same message pytest.ini hides for the tests (see the chapter)
-warnings.filterwarnings("ignore", message="Using `httpx` with `starlette.testclient`")
+warnings.filterwarnings(
+    "ignore", message="Using `httpx` with `starlette.testclient`"
+)
 
 from fastapi import HTTPException  # noqa: E402
 from fastapi.testclient import TestClient  # noqa: E402
@@ -25,7 +27,9 @@ ratings: dict[int, int] = {}
 @app.put("/books/{book_id}/rating")
 def rate_book(book_id: int, reading: Reading) -> dict[str, int]:
     if book_id not in books_api.books:
-        raise HTTPException(status_code=404, detail=f"No book with id {book_id}")
+        raise HTTPException(
+            status_code=404, detail=f"No book with id {book_id}"
+        )
     ratings[book_id] = reading.rating
     return {"id": book_id, "rating": reading.rating}
 
@@ -37,7 +41,9 @@ def stats() -> dict[str, float | int | None]:
     return {
         "books": len(books_api.books),
         "rated": len(ratings),
-        "average_rating": round(sum(ratings.values()) / len(ratings), 2) if ratings else None,
+        "average_rating": round(sum(ratings.values()) / len(ratings), 2)
+        if ratings
+        else None,
         "oldest": min(years, default=None),
     }
 
@@ -52,8 +58,13 @@ def find_book(client: TestClient, book_id: int) -> Book | None:
 
 
 client = TestClient(app)
-for title, author, year in [("Dune", "Frank Herbert", 1965), ("Emma", "Jane Austen", 1815)]:
-    client.post("/books", json={"title": title, "author": author, "year": year})
+for title, author, year in [
+    ("Dune", "Frank Herbert", 1965),
+    ("Emma", "Jane Austen", 1815),
+]:
+    client.post(
+        "/books", json={"title": title, "author": author, "year": year}
+    )
 print(client.put("/books/1/rating", json={"rating": 5}).json())
 print(client.put("/books/2/rating", json={"rating": 4}).json())
 print(client.put("/books/2/rating", json={"rating": 9}).status_code)

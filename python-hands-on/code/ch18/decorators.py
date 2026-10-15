@@ -3,23 +3,28 @@ import functools
 
 def log_calls(func):
     """Print each call and its result."""
+
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
         print(f"{func.__name__}{args} -> {result!r}")
         return result
+
     return wrapper
 
 
 def repeat(times):
     """A decorator with an argument: run the function several times."""
+
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             for _ in range(times):
                 result = func(*args, **kwargs)
             return result
+
         return wrapper
+
     return decorator
 
 

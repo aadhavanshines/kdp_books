@@ -16,7 +16,7 @@ print(product)
 
 
 def power(base, exponent):
-    return base ** exponent
+    return base**exponent
 
 
 square = partial(power, exponent=2)

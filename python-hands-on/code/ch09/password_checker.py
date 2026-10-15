@@ -1,5 +1,5 @@
 def password_problems(password):
-    """Return a list of the ways a password is too weak (empty list = strong)."""
+    """Return the ways a password is too weak (an empty list if none)."""
     problems = []
     if len(password) < 10:
         problems.append("use at least 10 characters")
@@ -32,6 +32,8 @@ while True:
         break
     problems = password_problems(password)
     if problems:
-        print("Weak:", "; ".join(problems))
+        print("Weak:")
+        for problem in problems:
+            print("  -", problem)
     else:
         print("Strong password!")

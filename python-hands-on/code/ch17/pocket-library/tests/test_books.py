@@ -24,9 +24,14 @@ def test_cli_add_list_read(tmp_path, capsys):
     assert main(["--file", file, "add", "Emma", "Jane Austen", "1815"]) == 0
     assert main(["--file", file, "read", "emma"]) == 0
     assert main(["--file", file, "list"]) == 0
-    assert capsys.readouterr().out.splitlines()[-1] == "[x] Emma (Jane Austen, 1815)"
+    assert (
+        capsys.readouterr().out.splitlines()[-1]
+        == "[x] Emma (Jane Austen, 1815)"
+    )
 
 
 def test_cli_unknown_title(tmp_path, capsys):
-    assert main(["--file", str(tmp_path / "b.json"), "read", "Nothing"]) == 1
+    assert (
+        main(["--file", str(tmp_path / "b.json"), "read", "Nothing"]) == 1
+    )
     assert "pocket:" in capsys.readouterr().err

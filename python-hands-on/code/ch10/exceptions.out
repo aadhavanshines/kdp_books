@@ -3,5 +3,5 @@
   Can't divide 10 by zero.
   (finished trying)
 '42' -> 42
-'4.2' is not a whole number (invalid literal for int() with base 10: '4.2')
-'forty-two' is not a whole number (invalid literal for int() with base 10: 'forty-two')
+'4.2' failed: invalid literal for int() with base 10: '4.2'
+'forty-two' failed: invalid literal for int() with base 10: 'forty-two'

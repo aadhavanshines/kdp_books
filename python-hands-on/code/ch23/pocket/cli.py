@@ -5,8 +5,14 @@ from .db import BookStore
 
 
 def build_parser():
-    parser = argparse.ArgumentParser(prog="pocket", description="Track your books.")
-    parser.add_argument("--db", default="pocket.db", help="database file (default: pocket.db)")
+    parser = argparse.ArgumentParser(
+        prog="pocket", description="Track your books."
+    )
+    parser.add_argument(
+        "--db",
+        default="pocket.db",
+        help="database file (default: pocket.db)",
+    )
     sub = parser.add_subparsers(dest="command", required=True)
 
     p = sub.add_parser("add", help="add a book")
@@ -15,12 +21,16 @@ def build_parser():
     p.add_argument("--year", type=int)
 
     p = sub.add_parser("list", help="list books")
-    p.add_argument("--unread", action="store_true", help="only books not read yet")
+    p.add_argument(
+        "--unread", action="store_true", help="only books not read yet"
+    )
     p.add_argument("--search", help="match part of a title or author")
 
     p = sub.add_parser("read", help="mark a book as read")
     p.add_argument("id", type=int)
-    p.add_argument("--date", required=True, help="date read, such as 2026-10-15")
+    p.add_argument(
+        "--date", required=True, help="date read, such as 2026-10-15"
+    )
     p.add_argument("--rating", type=int, choices=range(1, 6))
 
     sub.add_parser("stats", help="show statistics")

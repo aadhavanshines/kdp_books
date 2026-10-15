@@ -26,14 +26,23 @@ for text, count in errors.most_common():
 
 
 # Exercise 2: sort files into folders by type, with a dry run first
-FOLDERS = {".pdf": "documents", ".txt": "documents", ".jpg": "pictures", ".xlsx": "spreadsheets"}
+FOLDERS = {
+    ".pdf": "documents",
+    ".txt": "documents",
+    ".jpg": "pictures",
+    ".xlsx": "spreadsheets",
+}
 
 
 def sort_by_type(folder, apply=False):
     moves = []
     for path in sorted(Path(folder).iterdir()):
         if path.is_file():
-            target = Path(folder) / FOLDERS.get(path.suffix.lower(), "other") / path.name
+            target = (
+                Path(folder)
+                / FOLDERS.get(path.suffix.lower(), "other")
+                / path.name
+            )
             moves.append((path, target))
             if apply:
                 target.parent.mkdir(exist_ok=True)
@@ -44,7 +53,9 @@ def sort_by_type(folder, apply=False):
 for old, new in sort_by_type("downloads"):
     print(f"  {old.name} -> {new.parent.name}/")
 sort_by_type("downloads", apply=True)
-print(sorted(str(p.relative_to("downloads")) for p in Path("downloads").rglob("*") if p.is_file()))
+for path in sorted(Path("downloads").rglob("*")):
+    if path.is_file():
+        print("  ", path.relative_to("downloads").as_posix())
 
 
 # Exercise 3: the reading log as a text table, widest value sets the width
@@ -53,7 +64,9 @@ def text_table(rows):
     lines = ["  ".join(k.ljust(w) for k, w in widths.items()).rstrip()]
     lines.append("  ".join("-" * w for w in widths.values()))
     for r in rows:
-        lines.append("  ".join(r[k].ljust(w) for k, w in widths.items()).rstrip())
+        lines.append(
+            "  ".join(r[k].ljust(w) for k, w in widths.items()).rstrip()
+        )
     return "\n".join(lines)
 
 

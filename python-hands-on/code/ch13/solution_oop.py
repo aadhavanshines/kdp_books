@@ -30,8 +30,10 @@ class Fraction:
         self.bottom = sign * bottom // g
 
     def __add__(self, other):
-        return Fraction(self.top * other.bottom + other.top * self.bottom,
-                        self.bottom * other.bottom)
+        return Fraction(
+            self.top * other.bottom + other.top * self.bottom,
+            self.bottom * other.bottom,
+        )
 
     def __eq__(self, other):
         return (self.top, self.bottom) == (other.top, other.bottom)
