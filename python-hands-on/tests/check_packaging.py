@@ -61,7 +61,28 @@ def transcript(version):
     return "\n".join(lines) + "\n"
 
 
+def wheel_check(version):
+    """Build a wheel (Chapter 17 mentions python -m build), install it in a
+    fresh environment, and run the command it provides."""
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = Path(tmp)
+        shutil.copytree(PACKAGE, tmp / "pkg")
+        venv = tmp / ".venv"
+        subprocess.run([base_python(version), "-m", "venv", str(venv)], check=True)
+        py = str(venv / "bin" / "python")
+        subprocess.run([py, "-m", "pip", "install", "-q", "build"], check=True)
+        subprocess.run([py, "-m", "build", "-q", "--wheel", "--outdir", str(tmp / "dist"),
+                        str(tmp / "pkg")], check=True, capture_output=True)
+        wheel = next((tmp / "dist").glob("*.whl"))
+        subprocess.run([py, "-m", "pip", "install", "-q", str(wheel)], check=True)
+        out = subprocess.run([str(venv / "bin" / "pocket"), "--version"], cwd=tmp,
+                             capture_output=True, text=True, check=True).stdout.strip()
+        return wheel.name, out
+
+
 def main():
+    name, version_line = wheel_check(VERSIONS[0])
+    print(f"Wheel: {name} installs and runs: {version_line}")
     results = {v: transcript(v) for v in VERSIONS}
     out_file = ROOT / "code" / "ch17" / "install_transcript.out"
     out_file.write_text(results[VERSIONS[0]])

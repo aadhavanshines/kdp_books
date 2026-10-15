@@ -122,5 +122,5 @@ The standard library is documented at docs.python.org, under "Library Reference"
 
 - Any `.py` file is a module. `import module` gives access with a prefix; `from module import name` imports one name.
 - Code under `if __name__ == "__main__":` runs only when the file is run directly, not when it's imported.
-- The standard library covers maths, randomness, statistics, counting, exact decimals, dates, files and folders, and command-line arguments, among much else.
+- The standard library covers math, randomness, statistics, counting, exact decimals, dates, files and folders, and command-line arguments, among much else.
 - `pathlib` paths join with `/` and can be listed, created and moved. `argparse` turns command-line arguments into a tidy object, with help text for free.

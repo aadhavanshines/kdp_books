@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from operator import attrgetter
 
 
 @dataclass
@@ -15,7 +16,7 @@ def order_total(items: list[Item], discount: float = 0.0) -> float:
 
 
 def cheapest(items: list[Item]) -> Item | None:
-    return min(items, key=lambda item: item.price, default=None)
+    return min(items, key=attrgetter("price"), default=None)
 
 
 def parse_quantities(text: str) -> dict[str, int]:

@@ -3,7 +3,7 @@
 ____________________________ test_full_discount ____________________________
 
     def test_full_discount():
->       assert apply_discount(10.0, 100) == 1.0  # wrong: the test is mistaken
+>       assert apply_discount(10.0, 100) == 1.0  # the test is wrong
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 E       assert 0.0 == 1.0
 E        +  where 0.0 = apply_discount(10.0, 100)

@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from operator import attrgetter
 from typing import Protocol
 
 
@@ -27,7 +28,7 @@ class Library:
         return result
 
     def newest(self) -> Book | None:
-        return max(self.books, key=lambda b: b.year, default=None)
+        return max(self.books, key=attrgetter("year"), default=None)
 
 
 def count_tagged(shelf: Shelf, tag: str) -> int:

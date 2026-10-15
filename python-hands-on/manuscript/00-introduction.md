@@ -12,6 +12,8 @@ This book teaches you Python by having you write it. You'll start with one line 
 
 **One project grows with you.** Pocket Library is a small program for keeping track of the books you own and read. It starts in Chapter 6 as a list in memory. It learns to save to a file in Chapter 10, becomes a set of classes in Chapter 12, a tested and installable package in Chapter 17, and a command-line app with a SQLite database in Chapter 23. In Chapter 25 it gets a web API. You'll see how a real program evolves, and why each new tool is worth learning.
 
+![Pocket Library grows through the book: a list of titles in Chapter 6, a dictionary per book in Chapter 7, functions in Chapter 8, a JSON file in Chapter 10, classes in Chapter 12, a dataclass collection in Chapter 13, an installable package in Chapter 17, a SQLite command-line app in Chapter 23 and a web API in Chapter 25.](images/diagram-pocket-evolution.png)
+
 **Errors are part of the lesson.** You'll make mistakes on purpose: a missing quote, a misspelled name, text added to a number. You'll see the exact message Python prints and learn to read it. Appendix C collects the most common errors and their fixes.
 
 ## Who This Book Is For
@@ -31,7 +33,7 @@ This book teaches you Python by having you write it. You'll start with one line 
 | IV. Advanced Python | 18 to 22 | Decorators, type hints, functional tools, concurrency, performance |
 | V. Real-World Projects | 23 to 27 | A database app, data analysis, web APIs, automation, and what to learn next |
 
-Each chapter opening shows its level: **Beginner**, **Intermediate** or **Advanced**. Read Parts I and II in order. After that, chapters mostly stand on their own, although the projects in Part V use ideas from Parts III and IV.
+Each chapter opening shows its level: **Beginner**, **Intermediate** or **Advanced**; the projects in Part V are marked **Project**. Read Parts I and II in order. After that, chapters mostly stand on their own, although the projects in Part V use ideas from Parts III and IV.
 
 ## How to Read the Code
 

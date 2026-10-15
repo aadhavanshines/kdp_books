@@ -114,7 +114,8 @@ def main():
     a = ap.parse_args()
     listings = sorted(p for p in CODE.glob("ch*/*.py")
                       if not p.name.startswith("_") and not (a.only and a.only not in str(p)))
-    sessions = sorted(p for p in CODE.glob("ch*/*.txt") if not (a.only and a.only not in str(p)))
+    sessions = sorted(p for p in [*CODE.glob("ch*/*.txt"), *CODE.glob("appendix/*.txt")]
+                      if not (a.only and a.only not in str(p)))
     failures, checked = [], 0
     for listing in listings:
         if listing.with_suffix(".skip").exists():

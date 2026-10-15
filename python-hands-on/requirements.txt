@@ -1,4 +1,4 @@
-# The packages used in Parts III to V, at the versions the book was tested with.
+# Packages for Parts III to V, at the versions the book was tested with.
 pytest==9.1.1
 mypy==2.4.0
 pandas==3.0.6

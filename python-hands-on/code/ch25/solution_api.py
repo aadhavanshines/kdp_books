@@ -38,12 +38,13 @@ def rate_book(book_id: int, reading: Reading) -> dict[str, int]:
 @app.get("/stats")
 def stats() -> dict[str, float | int | None]:
     years = [b.year for b in books_api.books.values() if b.year is not None]
+    average = None
+    if ratings:
+        average = round(sum(ratings.values()) / len(ratings), 2)
     return {
         "books": len(books_api.books),
         "rated": len(ratings),
-        "average_rating": round(sum(ratings.values()) / len(ratings), 2)
-        if ratings
-        else None,
+        "average_rating": average,
         "oldest": min(years, default=None),
     }
 

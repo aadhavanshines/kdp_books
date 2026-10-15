@@ -35,7 +35,12 @@
   "paper": "white",
   "reuse_note": "Readers may freely use and adapt the example programs, exercises and project code in this book for their own work.",
   "trademarks": "Python and the Python logos are trademarks or registered trademarks of the Python Software Foundation. Visual Studio Code and Windows are trademarks of Microsoft Corporation. Apple and macOS are trademarks of Apple Inc. Linux is a trademark of Linus Torvalds. GitHub is a trademark of GitHub, Inc. SQLite is in the public domain; pandas, matplotlib, pytest, mypy, FastAPI, httpx and uv are open-source projects and their names belong to their owners. All people, books, data and figures in the example programs are fictional. Product names are used solely for identification. This book is independent and is not affiliated with, sponsored by, or endorsed by the Python Software Foundation or any of these companies.",
-  "back_cover_blurb": [],
+  "back_cover_blurb": [
+    "Learn Python by writing it. This book takes you from your first line of code to tested, packaged programs, one small, clear step at a time.",
+    "Every example is a real program, run on Python 3.12, 3.13, 3.14 and 3.15 before publication, with the exact output printed beneath it. Type what you see, and you'll get what you see.",
+    "You'll learn variables, decisions, loops, lists, dictionaries, functions, files and errors; then classes, testing with pytest, debugging, packaging, type hints, decorators, concurrency and performance. Then you'll put it all to work: a command-line app with a SQLite database, a data analysis with pandas and charts, a web API with FastAPI, and scripts that automate everyday tasks.",
+    "Every chapter ends with exercises, and every exercise has a tested, worked solution. No programming experience needed."
+  ],
   "dedication": [
     "To my father and my mother,",
     "for your love, your sacrifices, and every lesson you taught me.",
@@ -49,6 +54,33 @@
     "This book is for you."
   ],
   "author_short_bio": "Aadhavan Muthurengan is an automation and AI professional with more than 15 years of experience in the automotive industry, where Aadhavan has built in-house tools that transformed product development and validation.",
-  "levels": {},
+  "levels": {
+    "1": "Beginner",
+    "2": "Beginner",
+    "3": "Beginner",
+    "4": "Beginner",
+    "5": "Beginner",
+    "6": "Beginner",
+    "7": "Beginner",
+    "8": "Beginner",
+    "9": "Intermediate",
+    "10": "Intermediate",
+    "11": "Intermediate",
+    "12": "Intermediate",
+    "13": "Intermediate",
+    "14": "Intermediate",
+    "15": "Intermediate",
+    "16": "Intermediate",
+    "17": "Intermediate",
+    "18": "Advanced",
+    "19": "Advanced",
+    "20": "Advanced",
+    "21": "Advanced",
+    "22": "Advanced",
+    "23": "Project",
+    "24": "Project",
+    "25": "Project",
+    "26": "Project"
+  },
   "examples_note": "All people, books, sales figures and other data in the example programs are fictional, created for this book. Any resemblance to real persons or businesses is coincidental."
 }

@@ -17,6 +17,7 @@ ACCENT_ON_WHITE = {
     "vibe-coding-for-beginners": (4, 140, 98),
     "building-ai-agents-with-claude": (4, 140, 98),
     "ai-for-engineers": (180, 100, 0),
+    "python-hands-on": (180, 100, 0),
 }
 
 

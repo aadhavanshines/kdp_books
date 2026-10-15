@@ -7,7 +7,7 @@ from datetime import date, timedelta
 
 random.seed(2026)
 STORES = {"Riverside": 1.0, "Old Town": 0.8, "Station": 1.3}
-CATALOGUE = {
+CATALOG = {
     "Fiction": [
         ("The Lighthouse Keeper", 12.99),
         ("Salt and Stars", 9.99),
@@ -25,8 +25,8 @@ day = date(2026, 1, 1)
 while day <= date(2026, 6, 30):
     for store, size in STORES.items():
         for _ in range(random.randint(0, 2)):
-            category = random.choice(list(CATALOGUE))
-            title, price = random.choice(CATALOGUE[category])
+            category = random.choice(list(CATALOG))
+            title, price = random.choice(CATALOG[category])
             weekend = 1.4 if day.weekday() >= 5 else 1.0
             quantity = max(
                 1,

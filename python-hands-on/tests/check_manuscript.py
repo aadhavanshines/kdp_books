@@ -6,7 +6,8 @@
 3. Code typed directly in the manuscript (not @include) must be one of:
    - a ">>>" session, which is run with doctest on every Python version;
    - terminal commands, every line starting with "$ ";
-   - lines that appear word for word in a tested file in code/.
+   - lines that appear word for word in a tested file in code/;
+   - a folder tree, whose entries must all exist in code/.
 4. Tables with "Example" and "Result" columns: each example is evaluated
    and compared with its result.
 
@@ -31,6 +32,7 @@ PYTHONS = [ROOT / ".venvs" / f"py{v}" / "bin" / "python"
 NOT_PRINTED_OK = {
     "code/ch19/check_typed_library.py",  # placeholder for the mypy command
     "code/ch23/run_tests.py",            # placeholder for the pytest command
+    "code/ch26/tidy_names.out",          # repeated in tidy_names_demo.out
 }
 
 
@@ -46,6 +48,24 @@ def code_blocks(text):
                 i += 1
             yield start, "\n".join(lines[start:i])
         i += 1
+
+
+def check_tree(block, where):
+    """A folder tree drawn with 4-space indents must match a folder in code/."""
+    lines = [ln for ln in block.split("\n") if ln.strip()]
+    root = lines[0].strip().rstrip("/")
+    matches = [p for p in CODE.glob(f"*/{root}") if p.is_dir()]
+    if not matches:
+        return [f"{where}: no folder {root} in code/"]
+    stack, problems = [matches[0]], []
+    for ln in lines[1:]:
+        depth = (len(ln) - len(ln.lstrip())) // 4
+        del stack[depth:]
+        path = stack[-1] / ln.strip().rstrip("/")
+        if not path.exists():
+            problems.append(f"{where}: tree entry missing: {path}")
+        stack.append(path)
+    return problems
 
 
 def main():
@@ -87,6 +107,10 @@ def main():
                         problems.append(f"{where}: session fails on "
                                         f"{python.parent.parent.name}:\n"
                                         f"{r.stdout}{r.stderr}")
+                continue
+            if parts[0].endswith("/") and " " not in parts[0]:
+                # A folder tree: every entry must exist in code/
+                problems += check_tree(code, where)
                 continue
             for p in parts:
                 if p and not p.startswith("$ ") and p not in tested_lines:

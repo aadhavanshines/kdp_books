@@ -40,6 +40,8 @@ A **slice** takes part of a list: `numbers[1:3]` takes the items from index 1 up
 
 The middle of the session shows something that surprises nearly everyone. `b = a` doesn't copy the list: it makes `b` a second name for the **same** list, so appending through `b` changes what `a` shows. When you want an independent copy, use `a.copy()` (or `a[:]`).
 
+![The names a and b both point to one list object, so a change made through b shows through a. The name c points to a separate copy.](images/diagram-names-objects.png)
+
 `sum`, `min` and `max` work on any list of numbers. `sorted` gives you a new sorted list and leaves the original alone, unlike the `sort` method. Capital letters sort before lower-case ones, so `"Fig"` comes first; `key=str.lower` sorts as if everything were in lower case. You'll learn more about `key` in Chapter 7.
 
 ## Looping Over Lists

@@ -55,3 +55,9 @@ def test_delete():
     add("Dune", "Frank Herbert")
     assert client.delete("/books/1").status_code == 204
     assert client.delete("/books/1").status_code == 404
+
+
+def test_docs_page_is_generated():
+    assert client.get("/docs").status_code == 200
+    schema = client.get("/openapi.json").json()
+    assert "/books/{book_id}" in schema["paths"]
