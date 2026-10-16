@@ -30,7 +30,7 @@ Your prompt now starts with `(.venv)`. Install pytest:
 $ python -m pip install pytest
 ```
 
-The book's code folder has a `requirements.txt` file listing the exact versions the examples were tested with. `python -m pip install -r requirements.txt` installs them all, including the packages for later chapters.
+The book's code repository (see the Introduction) has a `requirements.txt` file listing the exact versions the examples were tested with. `python -m pip install -r requirements.txt` installs them all, including the packages for later chapters.
 
 ## Your First Tests
 

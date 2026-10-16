@@ -33,7 +33,7 @@
     "height_in": 9.0
   },
   "paper": "white",
-  "reuse_note": "Readers may freely use and adapt the example programs, exercises and project code in this book for their own work.",
+  "reuse_note": "Readers may freely use and adapt the example programs, exercises and project code in this book for their own work. All the code is available at github.com/aadhavanshines/python-programming-hands-on under the MIT License.",
   "trademarks": "Python and the Python logos are trademarks or registered trademarks of the Python Software Foundation. Visual Studio Code and Windows are trademarks of Microsoft Corporation. Apple and macOS are trademarks of Apple Inc. Linux is a trademark of Linus Torvalds. GitHub is a trademark of GitHub, Inc. SQLite is in the public domain; pandas, matplotlib, pytest, mypy, FastAPI, httpx and uv are open-source projects and their names belong to their owners. All people, books, data and figures in the example programs are fictional. Product names are used solely for identification. This book is independent and is not affiliated with, sponsored by, or endorsed by the Python Software Foundation or any of these companies.",
   "back_cover_blurb": [
     "Learn Python by writing it. This book takes you from your first line of code to tested, packaged programs, one small, clear step at a time.",

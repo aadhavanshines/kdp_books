@@ -6,7 +6,7 @@ This book teaches you Python by having you write it. You'll start with one line 
 
 ## What Makes This Book Different
 
-**Every example is tested.** Every program in this book is a real file in the book's code folder. Before publication, each one was run on Python 3.12, 3.13, 3.14 and 3.15, and its output was compared with the output printed in the book. If you type a program exactly as printed, you'll see exactly the output printed below it. Where output can't be identical (timings, for example), the book says so.
+**Every example is tested.** Every program in this book is a real file in the book's code repository on GitHub. Before publication, each one was run on Python 3.12, 3.13, 3.14 and 3.15, and its output was compared with the output printed in the book. If you type a program exactly as printed, you'll see exactly the output printed below it. Where output can't be identical (timings, for example), the book says so.
 
 **You learn by doing.** Each chapter introduces a few ideas, shows them in short programs, and asks you to try them. Every chapter ends with exercises, and every exercise has a worked solution in Appendix A. The solutions are tested too.
 
@@ -64,12 +64,16 @@ $ python hello.py
 
 ## Getting the Code
 
-All the programs, data files, exercise solutions and tests are available in the book's code folder, arranged by chapter: `code/ch01`, `code/ch02` and so on. A file named in the text, such as `variables.py`, is in the folder for that chapter. You'll learn more if you type the short programs yourself, at least in the early chapters. Typing mistakes are how you learn to read error messages.
+All the programs, data files, exercise solutions and tests are free to download from the book's code repository on GitHub:
+
+**github.com/aadhavanshines/python-programming-hands-on**
+
+On that page, click the green **Code** button and choose **Download ZIP**, or, if you use Git, clone the repository. The code is arranged by chapter: `code/ch01`, `code/ch02` and so on, each with a short README. A file named in the text, such as `variables.py`, is in the folder for that chapter, together with its expected output in a file such as `variables.out`. The repository also checks every program automatically on Python 3.12, 3.13, 3.14 and 3.15, and shows the results publicly. You'll learn more if you type the short programs yourself, at least in the early chapters. Typing mistakes are how you learn to read error messages.
 
 > **Tip:** When an exercise feels hard, try it for fifteen minutes before you look at the solution. Then compare your answer with the book's. There is usually more than one correct answer.
 
 ## Versions
 
-The book uses Python 3.12 or newer and was tested on Python 3.12, 3.13, 3.14 and 3.15, the newest version at the time of writing. Everything in Parts I to IV uses only the standard library, the tools that come with Python. Parts III to V also use a few widely used packages: pytest, mypy, pandas, matplotlib, FastAPI, httpx and uvicorn. Chapter 17 shows how to install them, and the code folder's `requirements.txt` lists the exact versions the book was tested with.
+The book uses Python 3.12 or newer and was tested on Python 3.12, 3.13, 3.14 and 3.15, the newest version at the time of writing. Everything in Parts I to IV uses only the standard library, the tools that come with Python. Parts III to V also use a few widely used packages: pytest, mypy, pandas, matplotlib, FastAPI, httpx and uvicorn. Chapter 17 shows how to install them, and the code repository's `requirements.txt` lists the exact versions the book was tested with.
 
 Let's start.

@@ -128,7 +128,7 @@ To share your package, `python -m build` (after `python -m pip install build`) c
 
 ## Try It
 
-1. Create a new virtual environment, install the package from the book's code folder with `python -m pip install -e ".[test]"`, and run the tests.
+1. Create a new virtual environment, install the package from the book's code repository (`code/ch17/pocket-library`) with `python -m pip install -e ".[test]"`, and run the tests.
 2. Run `pocket --help` and `pocket add --help`. Where does the help text come from?
 3. Run `python -m pocket_library list`. Which file makes that work?
 

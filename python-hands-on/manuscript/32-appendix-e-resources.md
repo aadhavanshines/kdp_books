@@ -25,4 +25,4 @@ These official sources were checked in October 2026. Web addresses change, so if
 
 ## The Book's Code
 
-All the programs, data files, exercise solutions and tests from this book are in its code folder, arranged by chapter, together with `requirements.txt`, which lists the package versions used for testing. Each listing was checked on Python 3.12, 3.13, 3.14 and 3.15. If a newer version of Python or of a package changes an output, the change is usually small, such as a reworded error message; the ideas stay the same.
+All the programs, data files, exercise solutions and tests from this book are in its code repository, **github.com/aadhavanshines/python-programming-hands-on**, arranged by chapter, together with `requirements.txt`, which lists the package versions used for testing. Each listing was checked on Python 3.12, 3.13, 3.14 and 3.15, and the repository repeats those checks automatically after every change; its README explains how to run them on your own computer. If a newer version of Python or of a package changes an output, the change is usually small, such as a reworded error message; the ideas stay the same.

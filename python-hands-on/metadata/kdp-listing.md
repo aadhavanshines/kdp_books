@@ -61,6 +61,8 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p><b>Then you put it all to work in four projects:</b> a command-line app with SQLite, a data analysis with pandas and charts, a web API with FastAPI, and scripts that automate everyday tasks such as renaming files, finding duplicates, making backups and sending reports.</p>
 
+<p><b>All the code is free to download</b> from the book's GitHub repository, arranged by chapter, with every program checked automatically on Python 3.12 to 3.15.</p>
+
 <p>Written by an automation professional with more than 15 years of experience building in-house tools, many of them in Python.</p>
 
 <p><i>This book is independent and is not affiliated with, sponsored by, or endorsed by the Python Software Foundation. Python is a trademark of the Python Software Foundation.</i></p>
