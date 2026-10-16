@@ -1,0 +1,57 @@
+{
+  "title": "How Large Language Models Are Made",
+  "subtitle": "The Complete Plain-English Story of AI, from Data and Chips to Chatbots, Reasoning, Images, Video and Agents",
+  "cover_title": [
+    [
+      "HOW",
+      false
+    ],
+    [
+      "LARGE LANGUAGE",
+      false
+    ],
+    [
+      "MODELS",
+      true
+    ],
+    [
+      "ARE MADE",
+      false
+    ]
+  ],
+  "short_subtitle": "The Complete Story, End to End",
+  "cover_tagline": "From Data and Chips to Chatbots, Reasoning, Images, Video and Agents, in Plain English",
+  "cover_features": [
+    "NO MATH NEEDED",
+    "100+ FASCINATING FACTS",
+    "EVERY FACT SOURCED"
+  ],
+  "slug": "how-large-language-models-are-made",
+  "author": "Aadhavan Muthurengan",
+  "language": "en",
+  "year": 2026,
+  "identifier": "how-large-language-models-are-made-aadhavan-muthurengan-2026",
+  "trim": {
+    "width_in": 6.0,
+    "height_in": 9.0
+  },
+  "paper": "white",
+  "reuse_note": "Brief quotations for review or teaching are welcome with attribution.",
+  "trademarks": "ChatGPT, GPT, Sora and DALL·E are trademarks of OpenAI. Claude is a trademark of Anthropic. Gemini, Gemma, Veo and TPU are trademarks of Google LLC. Llama and Muse are trademarks of Meta Platforms, Inc. NVIDIA, H100, Blackwell and Rubin are trademarks of NVIDIA Corporation. Grok is a trademark of xAI. Mistral and Mixtral are trademarks of Mistral AI. Qwen is a trademark of Alibaba Group. DeepSeek, Kimi, Phi, OLMo, Midjourney, FLUX, Stable Diffusion and other names belong to their respective owners. Product and model names are used solely to identify and describe them. This book is independent and is not affiliated with, sponsored by, or endorsed by any company or organization it mentions.",
+  "back_cover_blurb": [],
+  "dedication": [
+    "To my father and my mother,",
+    "for your love, your sacrifices, and every lesson you taught me.",
+    "",
+    "To my wife,",
+    "for your patience, your encouragement, and your belief in me.",
+    "",
+    "And to our three children,",
+    "may you always build the things you dream of.",
+    "",
+    "This book is for you."
+  ],
+  "author_short_bio": "Aadhavan Muthurengan is an automation and AI professional with more than 15 years of experience in the automotive industry, where Aadhavan has built in-house tools that transformed product development and validation.",
+  "levels": {},
+  "examples_note": "Facts and figures were checked against the sources listed at the end of each chapter, as of October 2026. Artificial intelligence changes quickly; model names, prices and rankings will change after publication."
+}
