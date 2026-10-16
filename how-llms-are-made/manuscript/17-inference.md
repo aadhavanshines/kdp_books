@@ -1,4 +1,4 @@
-# Part V: Using and Shaping Models
+# Part V: Using the Model
 
 # Chapter 17: Inference: What Happens When You Press Enter
 

@@ -20,6 +20,8 @@ The book follows a language model's whole life, in the order it happens:
 - **Part VI, The Model Zoo:** what "open" really means, a tour of the major open models and the frontier labs, and what makes each one different.
 - **Part VII, Beyond Text:** models that see, draw, make videos, listen and speak, and what all of this means for society.
 
+At the back, four appendices collect the essentials: a **timeline** of language AI, a **glossary** of every technical term, **fact sheets** for the major model families, and a list of **credits**: who invented what.
+
 ## How This Book Is Written
 
 **No mathematics, no programming.** Every idea is explained in everyday language, usually with an analogy. Where a number helps, you'll get the number and what it means.

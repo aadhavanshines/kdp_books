@@ -1,4 +1,4 @@
-# Part VI: The Models
+# Part VI: The Model Zoo
 
 # Chapter 21: Open and Closed: Two Ways to Share a Model
 

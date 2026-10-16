@@ -1,4 +1,4 @@
-# Part IV: From Mimic to Assistant
+# Part IV: From Autocomplete to Assistant
 
 # Chapter 13: Post-Training: Teaching Manners and Helpfulness
 
