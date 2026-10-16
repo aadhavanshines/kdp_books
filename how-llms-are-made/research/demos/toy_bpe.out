@@ -1,0 +1,10 @@
+Start: low_ lower_ lowest_ slow_ slower_ newest_ widest_
+Merge 1: 'l' + 'o' -> 'lo' (seen 5 times)
+Merge 2: 'lo' + 'w' -> 'low' (seen 5 times)
+Merge 3: 'low' + 'e' -> 'lowe' (seen 3 times)
+Merge 4: 's' + 't' -> 'st' (seen 3 times)
+Merge 5: 'st' + '_' -> 'st_' (seen 3 times)
+Merge 6: 'low' + '_' -> 'low_' (seen 2 times)
+Merge 7: 'lowe' + 'r' -> 'lower' (seen 2 times)
+Merge 8: 'lower' + '_' -> 'lower_' (seen 2 times)
+Result: low_ | lower_ | lowe st_ | s low_ | s lower_ | n e w e st_ | w i d e st_
