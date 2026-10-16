@@ -1,4 +1,5 @@
 import csv
+import datetime
 import sqlite3
 from dataclasses import dataclass
 
@@ -23,6 +24,16 @@ class Book:
     year: int | None
     rating: int | None
     read_on: str | None
+
+
+def check_date(text):
+    """Accept only real dates written as YYYY-MM-DD."""
+    try:
+        valid = datetime.date.fromisoformat(text).isoformat() == text
+    except ValueError:
+        valid = False
+    if not valid:
+        raise ValueError(f"not a date in the form YYYY-MM-DD: {text!r}")
 
 
 class BookStore:
@@ -67,6 +78,7 @@ class BookStore:
         return [Book(*row) for row in self.conn.execute(sql, params)]
 
     def mark_read(self, book_id, date, rating=None):
+        check_date(date)  # raises ValueError for a date that isn't real
         self.get(book_id)  # raises KeyError if there is no such book
         with self.conn:
             self.conn.execute(

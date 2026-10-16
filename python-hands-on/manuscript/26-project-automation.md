@@ -18,7 +18,7 @@ Downloads arrive with names like `Scan 1.PDF` and `holiday photo (1).jpg`. This 
 @include code/ch26/tidy_names.py
 ```
 
-`tidy` works out the new name with string methods and regular expressions from Chapter 9. `plan_renames` builds a list of changes without touching anything, skipping any rename that would overwrite an existing file. Only with `--apply` does the script rename. This short program runs it twice on the sample `downloads` folder, first as a dry run, then for real:
+`tidy` works out the new name with string methods and regular expressions from Chapter 9. `plan_renames` builds a list of changes without touching anything. It leaves folders alone, renaming only files, and skips any rename that would overwrite an existing file. Only with `--apply` does the script rename. This short program runs it twice on the sample `downloads` folder, which also contains a folder called `Old Photos`, first as a dry run, then for real:
 
 ```
 @include code/ch26/tidy_names_demo.py
@@ -74,7 +74,7 @@ This script zips a folder into a file named by date and keeps only the newest th
 @include code/ch26/backup.out
 ```
 
-`zipfile` creates the archive; each file is stored with its path relative to the folder's parent, so the archive unpacks into a `documents` folder. Because the names use ISO dates, sorting them alphabetically sorts them by date, and `backups[:-KEEP]` is every backup except the newest three. `testzip` reads every file back and checks it, returning `None` if all is well. A backup you haven't checked isn't a backup.
+Before writing anything, `make_backup` checks whether a backup for that day already exists, and if so returns `None` instead of replacing it: opening a zip file with `"w"` would silently empty an existing one. The demo runs the last day twice to show it. `zipfile` creates the archive; each file is stored with its path relative to the folder's parent, so the archive unpacks into a `documents` folder. Because the names use ISO dates, sorting them alphabetically sorts them by date, and `backups[:-KEEP]` is every backup except the newest three. `testzip` reads every file back and checks it, returning `None` if all is well. A backup you haven't checked isn't a backup.
 
 ## Running Tasks on a Schedule
 

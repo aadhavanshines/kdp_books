@@ -15,6 +15,7 @@ $ python tidy_names.py downloads --apply
   'scan 2.pdf'                 -> 'scan-2.pdf'
 Renamed 6 files.
 Now in downloads:
+   Old Photos
    budget-2026.xlsx
    holiday-photo-1.jpg
    holiday-photo.jpg

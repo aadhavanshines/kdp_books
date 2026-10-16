@@ -9,8 +9,11 @@ KEEP = 3
 
 
 def make_backup(day):
+    """Zip SOURCE into backups/; None if today's backup already exists."""
     BACKUPS.mkdir(exist_ok=True)
     target = BACKUPS / f"documents-{day.isoformat()}.zip"
+    if target.exists():  # never overwrite a backup silently
+        return None
     with zipfile.ZipFile(
         target, "w", compression=zipfile.ZIP_DEFLATED
     ) as zf:
@@ -29,18 +32,23 @@ def remove_old_backups():
 
 
 # Pretend the script ran on five days in a row
-# (normally you would use date.today())
+# (normally you would use date.today()), then run again on the last day
 start = date(2026, 10, 11)
-for n in range(5):
-    target = make_backup(start + timedelta(days=n))
+days = [start + timedelta(days=n) for n in range(5)]
+for day in [*days, days[-1]]:
+    target = make_backup(day)
+    if target is None:
+        print("Skipped: a backup for", day, "already exists")
+        continue
     print("Created", target.name)
+    last = target
     remove_old_backups()
 
 print("Kept:")
 for path in sorted(BACKUPS.iterdir()):
     print("  ", path.name)
-with zipfile.ZipFile(target) as zf:
-    print(f"{target.name} contains {len(zf.namelist())} files:")
+with zipfile.ZipFile(last) as zf:
+    print(f"{last.name} contains {len(zf.namelist())} files:")
     for name in zf.namelist():
         print("  ", name)
     print("Archive test:", zf.testzip() or "all files OK")

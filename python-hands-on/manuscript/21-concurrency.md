@@ -82,7 +82,7 @@ The `if __name__ == "__main__":` line, from Chapter 11, is **required** here. On
 - `async def` defines a **coroutine function**. Calling it doesn't run it; it creates a coroutine, which runs when it's awaited.
 - `await` waits for something to finish. While one task waits, the event loop runs others. `asyncio.sleep` stands in for real waiting, such as a network request.
 - `asyncio.run(main())` starts the **event loop**, the scheduler that runs the tasks, and runs `main` until it finishes.
-- `asyncio.gather` runs several coroutines at the same time and returns their results in the order you gave them. The three fetches take 0.3 seconds in total, not 0.6.
+- `asyncio.gather` runs several coroutines at the same time and returns their results in the order you gave them. The three fetches take about 0.3 seconds in total, not 0.6. The program checks this against 0.6 seconds rather than printing the time; on a very heavily loaded computer even that check could fail, which is why the book never relies on exact timings.
 - `asyncio.as_completed` gives the results in the order they finish, quickest first.
 - `asyncio.wait_for` gives up after a timeout and raises `TimeoutError`. Always put a time limit on waiting for things that might never answer.
 

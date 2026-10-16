@@ -87,7 +87,7 @@ The chapter folder also has a `pytest.ini` file:
 @include code/ch25/pytest.ini
 ```
 
-Recent versions of Starlette, the toolkit FastAPI is built on, print a deprecation warning when `TestClient` uses the `httpx` package, suggesting a newer package called `httpx2` instead. httpx works fine, and this book's tested versions use it, so this setting hides that one message. If you install `httpx2`, the warning disappears on its own. This is typical of real projects: libraries change, and you decide when to follow.
+Recent versions of Starlette, the toolkit FastAPI is built on, recommend a newer package called `httpx2` for `TestClient`. Using `httpx` is deprecated but still supported, and Starlette prints a warning when it's used. This book deliberately stays with the long-established `httpx` 0.28.1, pinned in `requirements.txt`, because it's also the client the rest of the chapter uses, so this setting hides that one message. To follow Starlette's recommendation instead, run `python -m pip install httpx2` and delete `pytest.ini`: `TestClient` uses `httpx2` automatically when it's installed, and the tests are unchanged. This is typical of real projects: libraries change, and you decide when to follow, rather than letting warnings pile up unread.
 
 ## Calling an API from Python
 

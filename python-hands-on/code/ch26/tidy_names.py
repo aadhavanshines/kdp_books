@@ -18,6 +18,8 @@ def tidy(name):
 def plan_renames(folder):
     plan, taken = [], {p.name for p in folder.iterdir()}
     for path in sorted(folder.iterdir()):
+        if not path.is_file():  # leave folders alone
+            continue
         new_name = tidy(path.name)
         if new_name == path.name:
             continue

@@ -56,10 +56,12 @@ Look closely at how values get into the SQL: never with an f-string, always as `
 ## Queries
 
 ```
-@include code/ch23/pocket/db.py::BookStore.list,BookStore.mark_read,BookStore.stats
+@include code/ch23/pocket/db.py::BookStore.list,check_date,BookStore.mark_read,BookStore.stats
 ```
 
 `list` builds its query from the options it's given. `WHERE 1 = 1` is always true, which simply lets every condition start with `AND`. `LIKE ?` with `%` around the search text matches it anywhere in the title or author, ignoring case for English letters. Even here, the search text goes in through a placeholder.
+
+The `read_on` column is `TEXT`, and SQLite will store any text there, so the Python layer checks dates before saving them. `check_date` accepts only real dates written as `YYYY-MM-DD`: `date.fromisoformat` rejects text like `not-a-date` and impossible dates like `2026-02-30`, and comparing with `isoformat()` also rejects other layouts that `fromisoformat` accepts, such as `20261001`. `mark_read` calls it before changing anything.
 
 `stats` asks the database to do the counting. `COUNT(*)` counts rows, `COUNT(read_on)` counts rows where `read_on` isn't `NULL`, and `AVG(rating)` averages the ratings, ignoring books without one. `GROUP BY author` makes one group per author, `ORDER BY n DESC` puts the largest first, and `LIMIT 1` keeps just the top author. With thousands of books, letting the database do this work is far faster than loading every row into Python.
 

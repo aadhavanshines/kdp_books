@@ -15,6 +15,7 @@ commands = [
     "list --unread",
     "list --search austen",
     "read 9 --date 2026-10-15",
+    "read 2 --date 2026-02-30",
     "stats",
     "export books.csv",
 ]

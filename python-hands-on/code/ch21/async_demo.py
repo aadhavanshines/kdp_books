@@ -15,7 +15,8 @@ async def main():
     )
     elapsed = time.perf_counter() - start
     print("In the order asked:", pages)
-    print("Took less than 0.5 s in total:", elapsed < 0.5)
+    # One after another, the three would take 0.6 s
+    print("Faster than one after another:", elapsed < 0.6)
 
     tasks = [fetch("news", 0.3), fetch("weather", 0.1), fetch("sport", 0.2)]
     for finished in asyncio.as_completed(tasks):

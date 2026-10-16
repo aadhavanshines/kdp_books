@@ -45,6 +45,14 @@ def test_stats(store):
     }
 
 
+@pytest.mark.parametrize("bad", ["not-a-date", "2026-02-30", "20261001"])
+def test_mark_read_rejects_bad_dates(store, bad):
+    book_id = store.add("Dune", "Frank Herbert")
+    with pytest.raises(ValueError):
+        store.mark_read(book_id, bad)
+    assert store.get(book_id).read_on is None
+
+
 def test_mark_read_unknown_id(store):
     with pytest.raises(KeyError):
         store.mark_read(99, "2026-10-01")

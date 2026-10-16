@@ -24,6 +24,8 @@ $ python -m pocket list --search austen
   3  Emma (Jane Austen, 1815)  [unread]
 $ python -m pocket read 9 --date 2026-10-15
 pocket: no book with id 9
+$ python -m pocket read 2 --date 2026-02-30
+pocket: not a date in the form YYYY-MM-DD: '2026-02-30'
 $ python -m pocket stats
 books           4
 read            2
