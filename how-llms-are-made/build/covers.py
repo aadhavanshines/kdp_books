@@ -16,7 +16,6 @@ NAVY_TOP = (8, 20, 36)      # deep steel blue, top of the gradient
 NAVY_BOT = (22, 54, 88)     # steel blue, bottom of the gradient
 AMBER = (245, 158, 11)      # amber accent
 SPINE = (12, 30, 50)
-TERMINAL_GREEN = (52, 211, 153)  # text inside the cover's terminal window
 CYAN = (56, 189, 248)       # sky blue: back-cover bullets
 WHITE = (255, 255, 255)
 SOFT = (196, 210, 228)
@@ -79,110 +78,76 @@ def gradient(img, box):
         d.line([(x0, y0 + i), (x1, y0 + i)], fill=c)
 
 
-# The program shown on the cover, and its real output (checked by
-# tests/check_cover_code.py).
-COVER_CODE = [
-    "def shelf(books):",
-    "    for n, title in enumerate(books, 1):",
-    "        print(f\"{n}. {title}\")",
-    "",
-    "shelf(sorted([\"Dune\", \"Emma\"]))",
-]
-COVER_OUTPUT = ["1. Dune", "2. Emma"]
-
-KEYWORD = (251, 191, 36)
-FUNC = (125, 211, 252)
-STRING = (134, 239, 172)
-PLAIN = (226, 232, 240)
-
-
-def _code_tokens(line):
-    """Split one line of the cover code into (text, color) pieces."""
-    import re
-    pieces = []
-    for m in re.finditer(r'(f?"[^"]*")|(\b(?:def|for|in)\b)|(\b\w+(?=\())|(.)', line):
-        text = m.group(0)
-        if m.group(1):
-            color = STRING
-        elif m.group(2):
-            color = KEYWORD
-        elif m.group(3):
-            color = FUNC
-        else:
-            color = PLAIN
-        if pieces and pieces[-1][1] == color:
-            pieces[-1] = (pieces[-1][0] + text, color)
-        else:
-            pieces.append((text, color))
-    return pieces
-
-
-def python_scene(img, box):
-    """A code editor with a short Python program, its output in a terminal,
-    and a checklist of the book's topics."""
+def llm_scene(img, box):
+    """A glowing neural network reading tokens, with the next-token probabilities beside it."""
     x0, y0, x1, y1 = box
     w, h = x1 - x0, y1 - y0
     s = w / 1600
-    shadow = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    ex0, ey0, ex1, ey1 = x0 + 80 * s, y0 + 60 * s, x0 + 1060 * s, y1 - 30 * s
-    ImageDraw.Draw(shadow).rounded_rectangle(
-        [ex0 + 20 * s, ey0 + 30 * s, ex1 + 20 * s, ey1 + 30 * s], radius=int(30 * s),
-        fill=(0, 0, 0, 150))
-    img.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(30 * s)))
-    layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    d = ImageDraw.Draw(layer)
-    d.rounded_rectangle([ex0, ey0, ex1, ey1], radius=int(30 * s), fill=(12, 28, 48, 255),
-                        outline=(70, 110, 150, 255), width=max(2, int(4 * s)))
-    # title bar
-    for i, c in enumerate([(251, 113, 133), AMBER, TERMINAL_GREEN]):
-        cx = ex0 + (50 + i * 44) * s
-        d.ellipse([cx - 13 * s, ey0 + 42 * s - 13 * s, cx + 13 * s, ey0 + 42 * s + 13 * s],
-                  fill=c + (255,))
-    small = font(SANS_BOLD, 30 * s)
-    d.text((ex0 + 200 * s, ey0 + 42 * s), "shelf.py", font=small, fill=(150, 185, 215, 255),
-           anchor="lm")
-    d.line([(ex0, ey0 + 84 * s), (ex1, ey0 + 84 * s)], fill=(70, 110, 150, 255),
-           width=max(1, int(3 * s)))
-    # code with line numbers
-    mono = font(MONO, 33 * s)
-    lh = 52 * s
-    cy = ey0 + 110 * s
-    for n, line in enumerate(COVER_CODE, 1):
-        d.text((ex0 + 40 * s, cy), f"{n}", font=mono, fill=(90, 120, 150, 255))
-        x = ex0 + 100 * s
-        for text, color in _code_tokens(line):
-            d.text((x, cy), text, font=mono, fill=color + (255,))
-            x += d.textlength(text, font=mono)
-        cy += lh
-    # terminal strip
-    ty0 = cy + 18 * s
-    d.rectangle([ex0 + 4 * s, ty0, ex1 - 4 * s, ey1 - 26 * s], fill=(6, 16, 28, 255))
-    d.text((ex0 + 40 * s, ty0 + 20 * s), "$ python shelf.py", font=mono,
-           fill=(150, 185, 215, 255))
-    oy = ty0 + 20 * s + lh
-    for out in COVER_OUTPUT:
-        d.text((ex0 + 40 * s, oy), out, font=mono, fill=TERMINAL_GREEN + (255,))
-        oy += lh
-    img.alpha_composite(layer)
-    # checklist of topics
-    layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    d = ImageDraw.Draw(layer)
-    cx0, cy0, cx1, cy1 = x0 + 1120 * s, y0 + 90 * s, x0 + 1540 * s, y1 - 60 * s
-    items = ["BASICS", "FUNCTIONS", "CLASSES", "TESTING", "DATA", "WEB APIs"]
-    step = (cy1 - cy0) / len(items)
-    f_item = font(SANS_BOLD, 32 * s)
-    for i, name in enumerate(items):
-        yy = cy0 + step * i + step / 2
-        d.rounded_rectangle([cx0, yy - 36 * s, cx1, yy + 36 * s], radius=int(36 * s),
-                            fill=(16, 38, 64, 255), outline=(70, 110, 150, 255),
-                            width=max(2, int(3 * s)))
-        r = 22 * s
-        ccx = cx0 + 48 * s
-        d.ellipse([ccx - r, yy - r, ccx + r, yy + r], fill=TERMINAL_GREEN + (255,))
-        d.line([(ccx - 10 * s, yy), (ccx - 3 * s, yy + 8 * s), (ccx + 11 * s, yy - 8 * s)],
-               fill=(10, 22, 40, 255), width=max(2, int(5 * s)))
-        d.text((ccx + 46 * s, yy), name, font=f_item, fill=(235, 242, 250, 255), anchor="lm")
-    img.alpha_composite(layer)
+    rnd = random.Random(11)
+    # network: 5 layers of nodes between a token row (bottom) and an output node (top right)
+    nx0, nx1 = x0 + 110 * s, x0 + 1010 * s
+    ny0, ny1 = y0 + 90 * s, y1 - 170 * s
+    layers = [7, 9, 9, 9, 7]
+    pts = []
+    for li, n in enumerate(layers):
+        yy = ny1 - li * (ny1 - ny0) / (len(layers) - 1)
+        pts.append([(nx0 + (k + 0.5) * (nx1 - nx0) / n, yy) for k in range(n)])
+    glow = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    gd = ImageDraw.Draw(glow)
+    lines = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ld = ImageDraw.Draw(lines)
+    for a, b in zip(pts[:-1], pts[1:]):
+        for p in a:
+            for q in b:
+                strong = rnd.random() < 0.12
+                col = AMBER + (200,) if strong else (90, 140, 190, 70)
+                ld.line([p, q], fill=col, width=max(1, int((4 if strong else 2) * s)))
+                if strong:
+                    gd.line([p, q], fill=AMBER + (160,), width=max(2, int(10 * s)))
+    img.alpha_composite(glow.filter(ImageFilter.GaussianBlur(10 * s)))
+    img.alpha_composite(lines)
+    nodes = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    nd = ImageDraw.Draw(nodes)
+    for li, layer in enumerate(pts):
+        for (px, py) in layer:
+            r = 15 * s
+            hot = rnd.random() < 0.25
+            nd.ellipse([px - r * 1.9, py - r * 1.9, px + r * 1.9, py + r * 1.9],
+                       fill=(CYAN if not hot else AMBER) + (60,))
+            nd.ellipse([px - r, py - r, px + r, py + r], fill=(AMBER if hot else CYAN) + (255,))
+    img.alpha_composite(nodes.filter(ImageFilter.GaussianBlur(2 * s)))
+    img.alpha_composite(nodes)
+    # token chips under the network
+    d = ImageDraw.Draw(img)
+    toks = ["How", "large", "language", "models", "are"]
+    ft = font(SANS_BOLD, 34 * s)
+    widths = [d.textlength(t, font=ft) + 44 * s for t in toks]
+    gap = 18 * s
+    tx = (nx0 + nx1) / 2 - (sum(widths) + gap * (len(toks) - 1)) / 2
+    ty = y1 - 110 * s
+    for t, tw in zip(toks, widths):
+        d.rounded_rectangle([tx, ty, tx + tw, ty + 70 * s], radius=int(16 * s),
+                            fill=(16, 38, 64), outline=(70, 110, 150), width=max(2, int(3 * s)))
+        d.text((tx + tw / 2, ty + 35 * s), t, font=ft, fill=(235, 242, 250), anchor="mm")
+        tx += tw + gap
+    # next-token probability panel
+    px0, py0, px1, py1 = x0 + 1080 * s, y0 + 100 * s, x0 + 1540 * s, y1 - 60 * s
+    d.rounded_rectangle([px0, py0, px1, py1], radius=int(28 * s), fill=(10, 26, 46),
+                        outline=(70, 110, 150), width=max(2, int(4 * s)))
+    fl = font(SANS_BOLD, 28 * s)
+    d.text(((px0 + px1) / 2, py0 + 40 * s), "NEXT WORD?", font=fl, fill=SOFT, anchor="mm")
+    probs = [("made", 0.71), ("built", 0.15), ("trained", 0.09), ("born", 0.03)]
+    fw = font(SANS_BOLD, 34 * s)
+    row = (py1 - py0 - 100 * s) / len(probs)
+    for i, (word, p) in enumerate(probs):
+        yy = py0 + 90 * s + i * row
+        d.text((px0 + 30 * s, yy + 10 * s), word, font=fw,
+               fill=AMBER if i == 0 else (235, 242, 250))
+        bw = (px1 - px0 - 60 * s) * p
+        d.rounded_rectangle([px0 + 30 * s, yy + 62 * s, px0 + 30 * s + max(bw, 10 * s), yy + 92 * s],
+                            radius=int(12 * s), fill=AMBER if i == 0 else CYAN)
+        d.text((px1 - 30 * s, yy + 10 * s), f"{int(round(p * 100))}%", font=fl, fill=SOFT,
+               anchor="ra")
 
 
 def draw_front(img, box, meta):
@@ -191,7 +156,7 @@ def draw_front(img, box, meta):
     w, h = x1 - x0, y1 - y0
     s = min(w / 1600, h / 2560)  # design units are based on a 1600 x 2560 px cover
     gradient(img, box)
-    python_scene(img, (x0, y0 + int(0.025 * h), x1, y0 + int(0.39 * h)))
+    llm_scene(img, (x0, y0 + int(0.025 * h), x1, y0 + int(0.39 * h)))
     margin = int(130 * w / 1600)
     text_w = w - 2 * margin
     author_y = y1 - int(0.075 * h)

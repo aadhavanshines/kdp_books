@@ -25,7 +25,7 @@ Language model benchmarks follow a familiar life cycle: a test is created; it se
 As models became useful for real tasks, benchmarks followed:
 
 - **SWE-bench** (2023), by **Carlos Jimenez**, **John Yang** and colleagues at Princeton, gives the model real bug reports from popular open-source Python projects on GitHub and asks it to fix the code, checking the result with the project's own tests. When it was published, the best model solved under 2% of the problems. A human-checked subset, **SWE-bench Verified** (2024), became the standard measure of AI coding agents, and top systems now solve the large majority.
-- **Agent benchmarks** test whether a model can complete multi-step tasks on a computer, such as booking a trip on a website, using a spreadsheet or researching a question on the web.
+- **Agent benchmarks** test whether a model can complete multistep tasks on a computer, such as booking a trip on a website, using a spreadsheet or researching a question on the web.
 - **METR**, a research nonprofit, measures the length of tasks, timed by how long they take skilled humans, that AI agents can complete. In 2025, it reported that this "time horizon" had been doubling roughly every seven months for six years: from tasks of a few seconds to tasks of about an hour.
 
 ## Arena: Let the Public Decide

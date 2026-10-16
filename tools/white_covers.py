@@ -18,6 +18,7 @@ ACCENT_ON_WHITE = {
     "building-ai-agents-with-claude": (4, 140, 98),
     "ai-for-engineers": (180, 100, 0),
     "python-hands-on": (180, 100, 0),
+    "how-llms-are-made": (180, 100, 0),
 }
 
 

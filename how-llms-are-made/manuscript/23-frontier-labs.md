@@ -28,7 +28,7 @@ A small number of organizations build the most capable models in the world, the 
 
 ## xAI
 
-**Founded:** 2023, by **Elon Musk**, after his departure from OpenAI's board years earlier. In 2025 it merged with Musk's social network X.
+**Founded:** 2023, by **Elon Musk**, after his departure from OpenAI's board years earlier. In 2025, it merged with Musk's social network X.
 
 **The models:** **Grok** (November 2023), named after a word from Robert Heinlein's novel *Stranger in a Strange Land* meaning to understand something deeply, was designed with a deliberately irreverent personality and access to real-time posts on X. Grok was trained on the Colossus supercomputer (Chapter 10). **Grok 4** (July 2025) and **Grok 4.7** (September 2026) are the main releases; Grok 5 was announced as in training but not released as of October 2026.
 

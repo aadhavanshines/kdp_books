@@ -35,7 +35,7 @@ The catch is memory. The KV cache grows with every token of the conversation, an
 
 A single conversation uses an expensive chip very inefficiently, because decoding leaves its arithmetic units mostly idle. The solution is **batching**: processing many users' requests together, so that each read of the parameters from memory is shared by dozens of conversations.
 
-In 2023, **Woosuk Kwon** and colleagues at UC Berkeley released **vLLM**, a serving system built around **PagedAttention**, which manages the KV cache the way an operating system manages memory, in small pages, so that many more conversations fit on the same chips. Together with **continuous batching**, which slots new requests in the moment others finish, techniques like this increased the number of users a chip could serve several times over. vLLM and similar open-source systems, such as SGLang and NVIDIA's TensorRT-LLM, now run much of the world's AI.
+In 2023, **Woosuk Kwon** and colleagues at UC Berkeley released **vLLM**, a serving system built around **PagedAttention**, which manages the KV cache the way an operating system manages memory, in small pages, so that many more conversations fit on the same chips. Together with **continuous batching**, which slots new requests in as soon as others finish, techniques like this increased the number of users a chip could serve several times over. vLLM and similar open-source systems, such as SGLang and NVIDIA's TensorRT-LLM, now run much of the world's AI.
 
 ## Clever Shortcuts
 

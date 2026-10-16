@@ -88,7 +88,7 @@
 
 **MCP (Model Context Protocol).** An open standard for connecting AI applications to tools and data.
 
-**Mixture of experts (MoE).** A design in which a router sends each token to a few of many expert sub-networks.
+**Mixture of experts (MoE).** A design in which a router sends each token to a few of many expert subnetworks.
 
 **Model card.** A document describing a model's abilities, training, testing and limits; also called a system card.
 

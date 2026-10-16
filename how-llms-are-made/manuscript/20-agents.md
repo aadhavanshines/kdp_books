@@ -27,7 +27,7 @@ OpenAI added this "function calling" to its API in June 2023, and every major pr
 
 In March 2023, a project called **AutoGPT** went viral. It wrapped GPT-4 in a loop and let it pursue goals autonomously, and it quickly became one of the fastest-growing projects in GitHub's history. It was also mostly unreliable: agents got stuck in loops, forgot what they were doing, or confidently declared success after doing nothing useful. The models weren't yet good enough at long chains of steps.
 
-Three things changed. Models became much better at reasoning and at recovering from mistakes (Chapter 14); they were trained specifically on long, multi-step tasks with tools; and context windows grew, letting agents keep track of long jobs. METR's measurement of the length of task agents could complete, doubling about every seven months (Chapter 15), captures the progress.
+Three things changed. Models became much better at reasoning and at recovering from mistakes (Chapter 14); they were trained specifically on long, multistep tasks with tools; and context windows grew, letting agents keep track of long jobs. METR's measurement of the length of task agents could complete, doubling about every seven months (Chapter 15), captures the progress.
 
 ## Kinds of Agents
 

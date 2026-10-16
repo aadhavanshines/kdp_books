@@ -23,7 +23,7 @@
   "cover_tagline": "From Data and Chips to Chatbots, Reasoning, Images, Video and Agents, in Plain English",
   "cover_features": [
     "NO MATH NEEDED",
-    "100+ FASCINATING FACTS",
+    "25 CLEAR DIAGRAMS",
     "EVERY FACT SOURCED"
   ],
   "slug": "how-large-language-models-are-made",
@@ -38,7 +38,16 @@
   "paper": "white",
   "reuse_note": "Brief quotations for review or teaching are welcome with attribution.",
   "trademarks": "ChatGPT, GPT, Sora and DALL·E are trademarks of OpenAI. Claude is a trademark of Anthropic. Gemini, Gemma, Veo and TPU are trademarks of Google LLC. Llama and Muse are trademarks of Meta Platforms, Inc. NVIDIA, H100, Blackwell and Rubin are trademarks of NVIDIA Corporation. Grok is a trademark of xAI. Mistral and Mixtral are trademarks of Mistral AI. Qwen is a trademark of Alibaba Group. DeepSeek, Kimi, Phi, OLMo, Midjourney, FLUX, Stable Diffusion and other names belong to their respective owners. Product and model names are used solely to identify and describe them. This book is independent and is not affiliated with, sponsored by, or endorsed by any company or organization it mentions.",
-  "back_cover_blurb": [],
+  "back_cover_blurb": [
+    "How does a chatbot actually work, and what does it take to build one?",
+    "This book follows a large language model from start to finish, in plain English with no math: the data it reads, the chips and data centers it's trained on, the electricity and water it uses, and the training that turns a word predictor into a helpful assistant.",
+    "- Tokens, embeddings and the Transformer, explained with everyday analogies",
+    "- GPUs, TPUs, AI factories, and the real numbers on energy and water",
+    "- Post-training, reasoning models, benchmarks and safety",
+    "- A guided tour of the open models (Llama, Qwen, DeepSeek, Mistral, Gemma and more) and the frontier labs",
+    "- Models that see, draw, make video, speak and act as agents",
+    "Dozens of surprising facts, every one sourced, with credit to the people who invented each idea. Current as of October 2026."
+  ],
   "dedication": [
     "To my father and my mother,",
     "for your love, your sacrifices, and every lesson you taught me.",

@@ -66,7 +66,7 @@ Three big shifts followed.
 
 **Seeing and creating.** Models became **multimodal**: able to take in images, audio and video, and to generate them (Part VII).
 
-**Doing.** Models learned to use tools, run code, browse the web and operate computers, becoming **agents** that carry out multi-step tasks (Chapter 20). In November 2024, Anthropic introduced the **Model Context Protocol** as an open way to connect models to tools; a year later it was handed to a new foundation under the Linux Foundation, backed by most of the major AI companies.
+**Doing.** Models learned to use tools, run code, browse the web and operate computers, becoming **agents** that carry out multistep tasks (Chapter 20). In November 2024, Anthropic introduced the **Model Context Protocol** as an open way to connect models to tools; a year later it was handed to a new foundation under the Linux Foundation, backed by most of the major AI companies.
 
 By October 2026, when this book was written, the leading labs were on their fifth or sixth generations: Anthropic's **Claude 5** family, OpenAI's **GPT-6**, Google's **Gemini 4**, xAI's **Grok 4** series and Meta's new **Muse** models, while open models from China, Europe and the United States had passed a trillion parameters. Part VI tours them all.
 

@@ -4,7 +4,7 @@ Why are companies spending billions of dollars on chips and building data center
 
 ## The Bitter Lesson
 
-In March 2019, **Richard Sutton**, one of the founders of reinforcement learning, wrote a short essay called "The Bitter Lesson". Looking back over seventy years of AI research, he observed that clever methods built on human knowledge, such as hand-written rules about language or chess, kept losing in the long run to simple, general methods that could make use of more computation. As computers got cheaper, the general methods kept getting better, and the clever ones didn't. The lesson was "bitter" because it suggested that researchers' insights mattered less than they'd like to believe.
+In March 2019, **Richard Sutton**, one of the founders of reinforcement learning, wrote a short essay called "The Bitter Lesson". Looking back over seventy years of AI research, he observed that clever methods built on human knowledge, such as handwritten rules about language or chess, kept losing in the long run to simple, general methods that could make use of more computation. As computers got cheaper, the general methods kept getting better, and the clever ones didn't. The lesson was "bitter" because it suggested that researchers' insights mattered less than they'd like to believe.
 
 Language models turned out to be the most dramatic example yet.
 

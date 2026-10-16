@@ -58,7 +58,7 @@ A few trends seem likely to continue:
 
 ## A Closing Thought
 
-At its heart, a large language model is a strange and wonderful thing: a mathematical structure, built from the collected writing of humanity, that learned to continue our sentences so well that it learned to explain, reason, code and create along the way. It is made by thousands of people, from the researchers who invented its pieces, credited throughout this book, to the data workers, chip makers, engineers and power-plant operators behind every answer. It's neither magic nor "just autocomplete". Understanding how it's made, from the data to the chips to the training and beyond, is the best way to use it wisely, question it intelligently, and help decide what it should become.
+At its heart, a large language model is a strange and wonderful thing: a mathematical structure, built from the collected writing of humanity, that learned to continue our sentences so well that it learned to explain, reason, code and create along the way. It is made by thousands of people, from the researchers who invented its pieces, credited throughout this book, to the data workers, chipmakers, engineers and power-plant operators behind every answer. It's neither magic nor "just autocomplete". Understanding how it's made, from the data to the chips to the training and beyond, is the best way to use it wisely, question it intelligently, and help decide what it should become.
 
 ## Key Takeaways
 
