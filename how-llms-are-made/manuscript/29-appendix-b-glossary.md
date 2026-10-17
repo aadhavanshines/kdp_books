@@ -1,5 +1,7 @@
 # Appendix B: Glossary
 
+**A/B test.** Giving some users a new version and others the old one, then comparing results.
+
 **Active parameters.** In a mixture-of-experts model, the parameters actually used for each token, as opposed to the total. DeepSeek-V3 has 671 billion parameters, 37 billion active.
 
 **Agent.** A model running in a loop that chooses and uses tools to achieve a goal over many steps.
@@ -66,11 +68,15 @@
 
 **Gradient descent.** Training by taking small steps "downhill" on the loss.
 
+**Held-out data.** Data kept out of training and used only to test the model.
+
 **Hallucination.** Fluent, confident output that is false or made up.
 
 **HBM (high-bandwidth memory).** Stacked memory chips placed beside an AI processor to feed it data quickly.
 
 **Inference.** Using a trained model to produce outputs.
+
+**Judge model (LLM-as-a-judge).** A strong model used to grade or compare other models' answers.
 
 **Jailbreak.** A prompt designed to trick a model into ignoring its safety training.
 
@@ -116,6 +122,8 @@
 
 **RAG (retrieval-augmented generation).** Fetching relevant documents at question time and giving them to the model.
 
+**Regression.** A skill that gets worse in a new version of a model.
+
 **Reasoning model.** A model trained, usually with reinforcement learning, to think step by step before answering.
 
 **Red-teaming.** Deliberately trying to make a model behave badly, to find and fix weaknesses.
@@ -153,6 +161,8 @@
 **TPU (Tensor Processing Unit).** Google's custom AI chip.
 
 **Transformer.** The neural network design, built on attention, behind nearly all modern language models.
+
+**Validation.** The staged testing of a model, during training and before and after release, to confirm its skills and safety.
 
 **Vector database.** A database designed to search embeddings by similarity.
 

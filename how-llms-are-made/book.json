@@ -23,7 +23,7 @@
   "cover_tagline": "From Data and Chips to Chatbots, Reasoning, Images, Video and Agents, in Plain English",
   "cover_features": [
     "NO MATH NEEDED",
-    "25 CLEAR DIAGRAMS",
+    "26 CLEAR DIAGRAMS",
     "EVERY FACT SOURCED"
   ],
   "slug": "how-large-language-models-are-made",
@@ -43,7 +43,7 @@
     "This book follows a large language model from start to finish, in plain English with no math: the data it reads, the chips and data centers it's trained on, the electricity and water it uses, and the training that turns a word predictor into a helpful assistant.",
     "- Tokens, embeddings and the Transformer, explained with everyday analogies",
     "- GPUs, TPUs, AI factories, and the real numbers on energy and water",
-    "- Post-training, reasoning models, benchmarks and safety",
+    "- Post-training, reasoning models, benchmarks, validation and safety",
     "- A guided tour of the open models (Llama, Qwen, DeepSeek, Mistral, Gemma and more) and the frontier labs",
     "- Models that see, draw, make video, speak and act as agents",
     "Dozens of surprising facts, every one sourced, with credit to the people who invented each idea. Current as of October 2026."

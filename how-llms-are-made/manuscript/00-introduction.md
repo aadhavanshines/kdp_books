@@ -15,7 +15,7 @@ The book follows a language model's whole life, in the order it happens:
 - **Part I, The Big Idea:** what a language model actually does, where it came from, and how it turns words into numbers.
 - **Part II, The Ingredients:** the data it learns from, how neural networks learn at all, the Transformer design behind every modern model, and the "scaling laws" that made companies spend billions.
 - **Part III, The Factory:** the chips, the data centers, the electricity and the water, with real numbers, and the months-long training run itself.
-- **Part IV, From Autocomplete to Assistant:** how a raw model is taught to be helpful and safe, how "reasoning" models think before they answer, and how anyone can tell whether a model is any good.
+- **Part IV, From Autocomplete to Assistant:** how a raw model is taught to be helpful and safe, how "reasoning" models think before they answer, and how a new model is tested and validated before anyone gets to use it.
 - **Part V, Using the Model:** what happens in the second between your question and the answer, how models are made smaller, how they look things up, and how they become agents that use tools.
 - **Part VI, The Model Zoo:** what "open" really means, a tour of the major open models and the frontier labs, and what makes each one different.
 - **Part VII, Beyond Text:** models that see, draw, make videos, listen and speak, and what all of this means for society.

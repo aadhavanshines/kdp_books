@@ -51,7 +51,8 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>How neural networks learn, and how the Transformer works, with everyday analogies</li>
 <li>Why scaling laws made companies spend billions</li>
 <li>GPUs, TPUs, high-bandwidth memory, AI data centers and the real numbers on energy and water</li>
-<li>Post-training, reasoning models, benchmarks, and safety and alignment</li>
+<li>Post-training, reasoning models, safety and alignment</li>
+<li>Benchmarks, and how a new model is tested and validated before release</li>
 <li>What happens in the second after you press Enter, and how models are made smaller and faster</li>
 <li>Long context, retrieval and agents that use tools</li>
 <li>A guided tour of the open models and the frontier labs</li>
@@ -61,7 +62,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p><b>Credit where it is due.</b> You'll meet the people behind each idea, from Claude Shannon's 1951 guessing game to the eight authors of the Transformer, and an appendix lists who invented what. A timeline, a glossary and fact sheets for the major model families make it a reference you'll come back to.</p>
 
-<p>Twenty-five clear diagrams. Dozens of surprising facts. Current as of October 2026.</p>
+<p>Twenty-six clear diagrams. Dozens of surprising facts. Current as of October 2026.</p>
 
 <p><i>This book is independent and is not affiliated with, sponsored by, or endorsed by any company or organization it mentions.</i></p>
 ```

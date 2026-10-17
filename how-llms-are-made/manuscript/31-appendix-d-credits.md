@@ -85,6 +85,10 @@ Modern AI was built by thousands of people over decades. This appendix credits t
 - **Chatbot Arena**: Wei-Lin Chiang, Lianmin Zheng and colleagues, UC Berkeley (2023).
 - **ARC**: François Chollet (2019).
 - **Humanity's Last Exam**: Center for AI Safety and Scale AI, with Long Phan, Dan Hendrycks and nearly a thousand contributors (2025).
+- **GSM8K**: Karl Cobbe and colleagues, OpenAI (2021).
+- **HumanEval**: Mark Chen and colleagues, OpenAI (2021).
+- **LLM-as-a-judge and MT-Bench**: Lianmin Zheng and colleagues, UC Berkeley (2023).
+- **Model cards**: Margaret Mitchell and colleagues, Google (2019).
 - **Elo rating system**: Arpad Elo (1960s).
 
 ## Vision, Images, Video and Sound
