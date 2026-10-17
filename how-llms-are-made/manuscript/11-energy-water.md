@@ -71,6 +71,19 @@ How big is that? For comparison, 281,000 cubic meters of water is roughly what a
 
 The real issue is **local**: a data center that evaporates millions of liters a day in a drought-stricken area competes directly with farms and homes for scarce water, whatever the global totals say. Several communities, from Arizona to Chile and Spain, have contested new data centers over water.
 
+## Water Stories From the Real World
+
+Averages hide the most striking facts. Here are some of the best-documented cases.
+
+> **Did You Know?** GPT-4 was trained partly in Iowa, on a Microsoft supercomputer near Des Moines. According to the local water utility, in July 2022, the month before OpenAI finished training GPT-4, Microsoft's Iowa data centers drew about 11.5 million gallons (about 43 million liters) of water, roughly 6% of all the water used in the district, which also supplies the city's drinking water. Most of the year, Iowa is cool enough to use outside air; the water is needed only on hot days, above about 29 °C (85 °F). The utility later said it would only consider future Microsoft data centers that could significantly reduce peak water use.
+
+- **A city's secret.** In The Dalles, Oregon, home to some of Google's oldest data centers, the city fought for 13 months, at Google's request, to keep the company's water use secret, before agreeing in December 2022 to release it. The figure: about 274.5 million gallons (about 1 billion liters) in 2021, more than a quarter of all the water used in the city, nearly triple the amount five years earlier.
+- **Company totals.** Microsoft's water consumption jumped 34% from 2021 to 2022, to nearly 1.7 billion gallons (6.4 million cubic meters), enough to fill more than 2,500 Olympic swimming pools, a rise researchers linked largely to AI. Google's data centers consumed about 4.3 billion gallons (16.3 million cubic meters) in 2021, rising to over 6 billion gallons in 2023.
+- **One email, one bottle?** In 2024, *The Washington Post*, working with Shaolei Ren's team at the University of California, Riverside, estimated that using GPT-4 to write a single 100-word email could use about 519 milliliters of water, a little more than a standard bottle, once both data center cooling and power-station water were counted, in a typical US location. The estimate went viral. It includes power-station water as well as cooling water, and depends on assumptions about the hardware and location; companies' own per-prompt figures count much less, which is exactly the disagreement shown in the table above.
+- **The chip factories.** Before an AI chip ever runs, it must be made. TSMC reported needing about 156,000 tonnes of water a day for its Taiwan factories in 2019, much of it recycled. In 2021, during Taiwan's worst drought in decades, the government cut water to chipmakers, and TSMC hired fleets of tanker trucks to bring water to its factories to keep production running.
+
+> **Did You Know?** Not every data center is thirsty. One built in a cool climate and cooled with outside air, or with closed-loop liquid cooling, may consume almost no water for cooling at all, while one in a hot, dry place using evaporative cooling may consume millions of liters a day. Where an AI model runs can matter more than which model it is.
+
 ## What's Being Done
 
 - **Cleaner electricity.** Tech companies are among the world's largest buyers of wind and solar power, and are increasingly turning to nuclear. In September 2024, Microsoft agreed to buy the output of the reactor at Three Mile Island in Pennsylvania for 20 years, enabling Constellation Energy to restart it as the Crane Clean Energy Center. In October 2024, Google ordered small modular reactors from Kairos Power, aiming for 500 megawatts by 2035, and Amazon invested in X-energy. Critics note that many new data centers are, in practice, being powered by new gas plants.
@@ -86,6 +99,7 @@ There's also a well-known catch, the **rebound effect**: as AI gets cheaper and 
 - Data centers used about 1.5% of world electricity in 2024 (IEA), projected to more than double by 2030; in the US, 4.4% in 2023, possibly 6.7% to 12% by 2028.
 - Water is used on-site for cooling, off-site in power stations, and in chip factories. **Withdrawal** is not the same as **consumption**.
 - Per-answer water estimates range from a quarter of a milliliter to about 50 milliliters, because they measure different things; local scarcity matters more than global totals.
+- Local cases show the stakes: Microsoft's Iowa data centers drew about 6% of a district's water in the month before GPT-4's training finished, and Google's data centers used over a quarter of the water in The Dalles, Oregon.
 - Responses include clean power (including nuclear), closed-loop cooling, more efficient chips and models, and better reporting.
 
 ## Sources and Further Reading
@@ -101,4 +115,8 @@ There's also a well-known catch, the **rebound effect**: as AI gets cheaper and 
 - Mistral AI, "Our contribution to a global environmental standard for AI," July 2025 (with Carbone 4 and ADEME). mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai
 - Google, *2024 Environmental Report* (emissions up 48% since 2019; water use). sustainability.google/reports
 - Microsoft, *2024 Environmental Sustainability Report*; Microsoft, "Sustainable by design: Next-generation datacenters consume zero water for cooling," December 2024. microsoft.com/sustainability
+- Matt O'Brien and Hannah Fingerhut, "Artificial intelligence technology behind ChatGPT was built in Iowa — with a lot of water," Associated Press, 9 September 2023 (West Des Moines Water Works figures; Microsoft water use up 34%).
+- Mike Rogoway, reporting in *The Oregonian* on Google's water use in The Dalles, 2022; Associated Press, "Oregon city drops fight to keep Google water use private," December 2022.
+- Pranshu Verma and Shelly Tan, "A bottle of water per email: the hidden environmental costs of using AI chatbots," *The Washington Post*, 18 September 2024.
+- TSMC, Corporate Social Responsibility Report 2019 (daily water use); *Fortune*, "Taiwan's drought is exposing just how much water chipmakers like TSMC use," 12 June 2021.
 - Constellation Energy, "Constellation to Launch Crane Clean Energy Center," 20 September 2024; Google, "New nuclear clean energy agreement with Kairos Power," 14 October 2024.

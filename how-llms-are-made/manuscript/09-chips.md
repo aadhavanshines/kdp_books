@@ -31,6 +31,23 @@ Today's AI chips are far removed from gaming cards. NVIDIA's **H100**, the workh
 
 The tensor cores were a key turn. Starting in 2017, NVIDIA added circuits dedicated to the exact calculation neural networks need. Each generation since has added more of them and support for **smaller numbers**.
 
+## A Decade of AI Chips
+
+NVIDIA has released a new generation of data-center GPU every two years or so, each named after a scientist. Here is how its flagship AI chips have grown:
+
+| Chip (scientist) | Year | Transistors | Memory | Memory speed |
+| --- | --- | --- | --- | --- |
+| V100 (Volta) | 2017 | 21 billion | 16 to 32 GB | 0.9 TB/s |
+| A100 (Ampere) | 2020 | 54 billion | 40 to 80 GB | about 2 TB/s |
+| H100 (Hopper) | 2022 | 80 billion | 80 GB | 3.35 TB/s |
+| H200 (Hopper) | 2024 | 80 billion | 141 GB | 4.8 TB/s |
+| B200 (Blackwell) | 2024 | 208 billion | 192 GB | 8 TB/s |
+| Rubin (Vera Rubin) | 2026 | not yet published | 288 GB | about 22 TB/s (announced) |
+
+The V100 was the chip OpenAI used to train GPT-3; the A100 trained a generation of models, including Meta's first LLaMA, which used 2,048 of them; the H100 powered the boom of 2023 to 2025; and Blackwell and Rubin power the giant clusters of 2025 and 2026. In under a decade, the memory on one chip grew about nine times and its memory speed about twenty-five times, while the arithmetic for AI grew far more, thanks to smaller number formats. The power drawn by each chip grew too: from about 300 watts for the V100 to around 1,000 watts for a B200.
+
+> **Did You Know?** The B200 is really two chips pretending to be one. A single piece of silicon can't be made larger than the maximum area a lithography machine can print in one exposure, roughly the size of a large postage stamp. So NVIDIA joined two of the largest possible dies side by side with a connection carrying 10 terabytes per second, fast enough that software sees them as a single GPU. The same trick, called **chiplets**, is now used by AMD and others to keep building bigger chips.
+
 ## Smaller Numbers, Faster Chips
 
 A surprising discovery helped speed up AI enormously: neural networks don't need very precise numbers. Scientific computing traditionally uses 64-bit or 32-bit numbers, with many digits of precision. AI training moved to 16-bit numbers around 2017 to 2018, and then to 8-bit numbers. NVIDIA's Blackwell chips (2024) support 4-bit numbers for some work.
@@ -86,6 +103,7 @@ And yet chips are only part of the story. To use them, you need a building, enor
 - AI work is mostly simple multiplications that can be done in parallel, so it runs on chips with thousands of simple cores: **GPUs**, **TPUs** and other accelerators.
 - GPUs came from video games; AlexNet (2012) was trained on two gaming cards, and NVIDIA's CUDA software helped make it the leader in AI.
 - Using smaller, less precise numbers (16, 8 and even 4 bits) made AI chips much faster.
+- NVIDIA's flagship chips grew from 21 billion transistors (V100, 2017) to 208 billion (B200, 2024), with memory speed up about twenty-five times by Rubin (2026).
 - The real bottleneck is **memory**: stacked high-bandwidth memory (HBM) beside the chip feeds the processor.
 - Chips are joined into racks and clusters; NVIDIA's GB200 NVL72 combines 72 GPUs in one rack drawing about 120 kW.
 - Nearly all advanced chips are made by TSMC using EUV machines made only by ASML, a concentrated supply chain at the center of global politics.
@@ -101,4 +119,6 @@ And yet chips are only part of the story. To use them, you need a building, enor
 - Counterpoint Research, HBM market share estimates, 2025 (SK hynix leading, followed by Samsung and Micron), as reported in the trade press.
 - ASML, "EUV lithography systems" (tin-plasma light source, 13.5 nm). asml.com; Tom's Hardware reporting on High-NA EUV pricing and shipping, 2023-2024.
 - US Department of Commerce, Bureau of Industry and Security, export controls on advanced computing and semiconductor manufacturing items, 7 October 2022 and later updates.
+- NVIDIA data-center GPU datasheets: V100, A100, H100, H200 and B200; NVIDIA, Rubin platform announcements, 2026 (Rubin memory figures as announced). nvidia.com/en-us/data-center
+- Tom B. Brown et al., "Language Models are Few-Shot Learners" (GPT-3 trained on V100 GPUs), 2020. arxiv.org/abs/2005.14165; Hugo Touvron et al., "LLaMA" (2,048 A100 GPUs), 2023. arxiv.org/abs/2302.13971
 - Chris Miller, *Chip War: The Fight for the World's Most Critical Technology* (Scribner, 2022), a readable history of the chip industry.

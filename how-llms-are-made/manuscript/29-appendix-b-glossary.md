@@ -24,6 +24,8 @@
 
 **BPE (byte-pair encoding).** A tokenizer method that builds a vocabulary by repeatedly merging the most common pairs of symbols.
 
+**Calibration.** How well a model's stated confidence matches how often it is actually right.
+
 **Chain of thought.** Step-by-step reasoning written out by a model before its answer.
 
 **Chat template.** The special tokens that mark who is speaking in a conversation, such as system, user and assistant.
@@ -53,6 +55,8 @@
 **Emergent ability.** A skill that seems to appear suddenly as models grow; whether it is truly sudden is debated.
 
 **Epoch.** One complete pass through a training dataset. (Also the name of the research group Epoch AI.)
+
+**Evaluation harness.** A program that runs a model on a benchmark: building prompts, extracting answers and scoring them.
 
 **Feed-forward network.** The part of each Transformer layer that processes each token on its own after attention.
 
@@ -105,6 +109,8 @@
 **Overfitting.** Memorizing training data instead of learning general patterns.
 
 **Parameter.** One of the adjustable numbers inside a neural network; models have billions.
+
+**pass@k.** The share of coding problems solved by at least one of *k* attempts; pass@1 means one attempt.
 
 **Post-training.** All training after pretraining that turns a base model into a helpful, safe assistant.
 

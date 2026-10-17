@@ -10,7 +10,7 @@ Twenty-seven chapters in seven parts, written for readers with no math or progra
 | --- | --- |
 | `manuscript/` | The book in Markdown, one file per chapter; `images/` holds the generated diagrams. |
 | `research/` | `facts.md`, the research log of checked facts and their sources; `demos/`, the toy BPE tokenizer run used in Chapter 3. |
-| `build/` | The build pipeline: Markdown parser, PDF interior, EPUB, covers, diagrams (`diagrams.py` draws all 26). |
+| `build/` | The build pipeline: Markdown parser, PDF interior, EPUB, covers, diagrams (`diagrams.py` draws all 27). |
 | `metadata/` | KDP listing details. |
 | `dist/` | Upload-ready files: EPUB, eBook covers (dark and white), paperback interior PDF, paperback cover PDF. |
 

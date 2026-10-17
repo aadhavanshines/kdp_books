@@ -52,6 +52,106 @@ Fixed tests can't capture whether people actually *like* a model's answers. In 2
 
 The Arena became one of the most watched leaderboards in AI. It has its own limits: votes reward style as well as substance, such as longer answers, friendly formatting and confident tone, and companies can test many private versions before release. In April 2025, Meta drew criticism after it emerged that the Llama 4 version ranked highly on the Arena was an "experimental chat version" tuned for conversation, not the one released to the public.
 
+## Inside a Benchmark Run
+
+What actually happens when a lab "runs MMLU" or "runs SWE-bench"? Every benchmark run follows the same basic recipe, carried out by a program called an **evaluation harness**:
+
+![Inside a benchmark run: the harness takes each test question, wraps it in a prompt template with any examples and instructions, sends it to the model with fixed settings, extracts the final answer from the reply, scores it with the benchmark's checker, and averages the scores into one number with an error bar.](images/diagram-eval-harness.png)
+
+1. **Load the test set.** A fixed list of questions with their correct answers, or tasks with automatic checks.
+2. **Build the prompt.** Each question is wrapped in a standard template: instructions, sometimes a few solved examples, then the question.
+3. **Run the model with fixed settings.** Temperature, whether it may think first and for how long, whether it may use tools, and how many attempts it gets are all set in advance and kept the same for every model being compared.
+4. **Extract the answer.** The harness finds the final answer in the model's reply: a letter, a number, a block of code, a change to a file.
+5. **Score it.** The answer is compared with the key, or checked by running tests, or graded by a judge model.
+6. **Add it up.** The scores are averaged into one number, ideally reported with an **error bar** showing how much it might vary by chance.
+
+Widely used open-source harnesses include EleutherAI's **lm-evaluation-harness**, Stanford's **HELM** (Holistic Evaluation of Language Models), and **Inspect**, released by the UK AI Security Institute in 2024 and used by many safety testers. Labs also run large private harnesses of their own.
+
+### The Settings That Change a Score
+
+The same model can get very different scores on the same test depending on how it is run. That's why serious reports state their settings, and why comparing two companies' numbers is risky unless the settings match.
+
+- **Zero-shot or few-shot.** "Zero-shot" means the question is asked cold. "Five-shot" means five solved examples are shown first, to demonstrate the format. MMLU is traditionally reported five-shot.
+- **Thinking or not.** Letting a model reason step by step, or giving a reasoning model a larger thinking budget, can raise math and science scores by tens of points.
+- **Tools.** A model allowed to run code or search the web can do far better on some tests. Humanity's Last Exam, for example, is reported both with and without tools.
+- **Number of attempts.** Is the score from one try, the best of several, or a majority vote? These are reported with different names, explained below.
+- **Answer extraction.** If a model writes "The answer is probably (B), although (C) is tempting", a sloppy harness might mark it wrong. Small differences in extraction rules can move scores by several points.
+
+### Ways of Scoring
+
+- **Exact match.** The extracted answer must equal the key: right for multiple-choice letters and for math answers that are a single number.
+- **Accuracy.** The share of questions answered correctly: the usual headline number.
+- **pass@k.** For coding tests, the model writes *k* attempts at each problem; a problem counts as solved if at least one attempt passes all the tests. **pass@1**, one attempt, is the strictest and most common figure. The measure was introduced with OpenAI's HumanEval benchmark in 2021.
+- **Majority vote (maj@k or cons@k).** The model answers each question *k* times and its most common answer is scored. This rewards consistent reasoning and usually raises scores a little.
+- **pass^k.** For agents, the opposite question: does the agent succeed on *all* of *k* tries at the same task? This measures **reliability**, which matters for a customer-service agent that handles the same request thousands of times. It was introduced with the τ-bench agent benchmark in 2024.
+- **Judge scores.** For open-ended answers, a judge model scores each answer against a rubric, or picks the better of two (see "Models Grading Models" below).
+- **Ratings from comparisons.** Arena-style leaderboards turn many head-to-head votes into a rating for each model, with a confidence range.
+
+## How Each Kind of Benchmark Is Run
+
+Here is how a model is actually tested on each of the main benchmark families.
+
+### Knowledge: MMLU-Style Multiple Choice
+
+The model sees a question and four options, such as:
+
+*Which gas makes up most of the Earth's atmosphere? (A) Oxygen (B) Carbon dioxide (C) Nitrogen (D) Argon*
+
+In the classic setup, five solved questions from the same subject come first, and the model must reply with a single letter. (An older method doesn't let the model write at all: it checks which of the four letters the model considers most probable.) Each correct letter scores one point; MMLU's test set has about 14,000 questions over 57 subjects, so the final score is an average across all of them. Random guessing would score 25%, which gives a useful floor: a score of 30% means the model knows very little.
+
+### Math: From Word Problems to Olympiads
+
+For **GSM8K**, the model reads a grade-school word problem, works through it step by step, and writes a final number, which is compared with the key. For competition math such as **AIME**, the answer is always a whole number from 0 to 999, so a lucky guess is almost impossible.
+
+AIME has a statistical catch: each year's exam has only 15 problems (30 across its two versions). One problem is worth more than three percentage points, so a single lucky or unlucky answer moves the score a lot. Labs therefore run each problem many times, often 8 to 64 attempts, and report the average, to get a stable number. Because new AIME problems are written every year, they are also a good check against contamination: a model released before an exam can't have seen its questions.
+
+### Coding: Tests Decide
+
+For **HumanEval**, the model is given the start of a Python function: its name and a description of what it should do, in plain English. It writes the body of the function. The harness then runs a set of hidden **unit tests**, small programs that call the function with different inputs and check the outputs. If every test passes, the problem is solved. The code is run in a **sandbox**, an isolated environment, because model-written code could do something harmful by accident.
+
+**SWE-bench** is far more realistic, and its harness is more elaborate:
+
+1. For each task, the harness builds a container, a sealed mini-computer, with a real open-source project exactly as it was when a real bug was reported.
+2. The model, usually working as an agent, reads the bug report, explores the code, runs commands and finally produces a **patch**: a set of changes to the files.
+3. The harness applies the patch and runs two groups of tests: tests that failed before the real human fix and must now pass, proving the bug is fixed; and tests that passed before and must still pass, proving nothing else was broken.
+4. The task counts as solved only if both groups pass.
+
+> **Did You Know?** When OpenAI worked with professional software developers in 2024 to create SWE-bench Verified, they had every original task reviewed by human engineers and filtered out the many that were unfair: bug reports too vague to act on, or tests that checked details the bug report never mentioned. The result was a set of 500 tasks that a capable engineer could reasonably solve. Even good benchmarks can contain impossible questions, and cleaning them up is part of validation.
+
+### Agents: Checking the End Result
+
+Agent benchmarks put the model in a working environment and check what it achieved, not what it said.
+
+- **OSWorld** (2024) gives the agent a real computer, with an operating system, a browser and office apps, and tasks such as "change the spreadsheet's chart to a bar chart". After the agent finishes, a checking script inspects the files and settings to see whether the job was really done. In the original study, people completed about 72% of the tasks; the best AI agent of the time, about 12%.
+- **τ-bench** (2024), from the company Sierra, simulates customer service: another language model plays a customer with a goal, such as changing a flight booking, and the agent must follow the airline's or shop's policy using its tools. At the end, the harness compares the database with the correct final state, and it reruns each task several times to measure reliability with pass^k.
+- **BrowseComp** (OpenAI, 2025) asks hard-to-find questions whose answers are buried deep on the web but easy to check once found.
+
+### Long Context: Needles and Beyond
+
+A long document, such as hundreds of pages of text, is generated, and facts are planted at chosen positions. The model is asked to find them, combine them, count them or track how a value changes. Repeating this at different lengths and positions draws a map of where the model's attention fails. **RULER** (NVIDIA, 2024) extended the simple needle test with harder variations, showing that many models' "effective" context was much shorter than the length they claimed.
+
+### The Hardest Questions: Humanity's Last Exam
+
+Each question has one short, unambiguous answer, and some are multiple choice. Because a correct answer can be written in different ways, such as "1/2" or "0.5", a judge model checks whether the model's answer means the same as the key. The model must also state how confident it is, and the benchmark measures **calibration**: whether a model that says "90% sure" is right about 90% of the time. Early models were badly overconfident, giving high confidence to wrong answers.
+
+### Safety Benchmarks
+
+- **Refusal tests** use two sets of prompts: harmful requests the model should decline, and harmless requests that merely *sound* dangerous, such as "How do I kill a Python process?". A good model scores high on the first set and low on refusals in the second.
+- **Jailbreak tests** measure the **attack success rate**: how often known or automatically generated attacks make the model comply with a harmful request. HarmBench (2024) standardized this.
+- **Hazardous-knowledge tests** such as **WMDP** (2024) use multiple-choice questions that act as a proxy for dangerous knowledge in biology, chemistry and cybersecurity, without publishing anything dangerous themselves. Results feed into the safety levels described in Chapter 16.
+
+### Human Preference: Arena Ratings
+
+As described earlier in this chapter, each vote in LMArena is a single comparison: model A beat model B on one prompt. Millions of such votes are combined with a statistical method (since late 2023, the Bradley-Terry model, a close cousin of Elo) into a rating for each model, with a confidence range. Two models whose ranges overlap are effectively tied. The Arena also offers "style control", which adjusts for answer length and formatting, so that models aren't rewarded just for writing longer answers with more bullet points.
+
+## How Sure Is a Score?
+
+A benchmark score is an estimate, not an exact measurement, because each test contains a limited sample of questions. Suppose a model scores 80% on a 500-question test. By the ordinary statistics of sampling, a fresh set of similar questions could easily have given anywhere from about 76% to 84%. So if a new model scores 81% and the old one 80%, the difference may be pure chance.
+
+In 2024, Anthropic researcher **Evan Miller** published "Adding Error Bars to Evals", urging the field to report a margin of error with every score, to compare models on the same questions, and to use enough questions to make differences meaningful. More model reports now include error bars or averages over several runs.
+
+> **In Plain Words:** When you read a launch table, check the footnotes: how many attempts, how much thinking, which tools, which version of the test. A one- or two-point lead on a small test often means nothing.
+
 ## Teaching to the Test
 
 The economist Charles Goodhart gave his name to a principle that haunts AI evaluation: **when a measure becomes a target, it ceases to be a good measure.**
@@ -100,6 +200,8 @@ As models pass test after test, researchers keep looking for questions that meas
 - **LMArena** ranks models by public votes using Elo ratings, but rewards style as well as substance.
 - **Contamination** and over-optimization (Goodhart's law) mean scores should be read with caution.
 - Strong models are often used as **judges** to grade open-ended answers; they agree with people about as often as people agree with each other, but have biases.
+- Every benchmark run follows the same recipe: test set, prompt template, fixed settings, answer extraction, scoring and averaging. Settings such as examples, thinking time, tools and number of attempts can change scores a lot.
+- Scoring methods include exact match, **pass@k** for code, **majority vote**, **pass^k** for agent reliability, judge models and Arena ratings; scores should come with **error bars**.
 - **Validation** happens in stages: held-out loss and quick benchmarks during training, a large skills suite and behavior checks after post-training, safety red-teaming and outside testing, human evaluation, limited release and A/B tests, then a system card and monitoring after launch.
 
 ## Sources and Further Reading
@@ -118,6 +220,13 @@ As models pass test after test, researchers keep looking for questions that meas
 - Xiang Yue et al., "MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark," 2023. arxiv.org/abs/2311.16502
 - Tianbao Xie et al., "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments," 2024. arxiv.org/abs/2404.07972
 - Stephanie Lin, Jacob Hilton, Owain Evans, "TruthfulQA: Measuring How Models Mimic Human Falsehoods," 2021. arxiv.org/abs/2109.07958; OpenAI, "Introducing SimpleQA," October 2024.
+- EleutherAI, lm-evaluation-harness. github.com/EleutherAI/lm-evaluation-harness; Percy Liang et al., "Holistic Evaluation of Language Models" (HELM), 2022. arxiv.org/abs/2211.09110; UK AI Security Institute, Inspect. inspect.aisi.org.uk
+- Aitor Lewkowycz et al., "Solving Quantitative Reasoning Problems with Language Models" (Minerva; majority voting), 2022. arxiv.org/abs/2206.14858
+- Shunyu Yao et al., "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains," Sierra, 2024. arxiv.org/abs/2406.12045
+- Jason Wei et al., "BrowseComp: A Simple Yet Challenging Benchmark for Browsing Agents," OpenAI, 2025. arxiv.org/abs/2504.12516
+- Cheng-Ping Hsieh et al., "RULER: What's the Real Context Size of Your Long-Context Language Models?," NVIDIA, 2024. arxiv.org/abs/2404.06654
+- Mantas Mazeika et al., "HarmBench," 2024. arxiv.org/abs/2402.04249; Nathaniel Li et al., "The WMDP Benchmark," 2024. arxiv.org/abs/2403.03218
+- Evan Miller, "Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations," Anthropic, November 2024. arxiv.org/abs/2411.00640
 - Lianmin Zheng et al., "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena," NeurIPS 2023. arxiv.org/abs/2306.05685
 - US AI Safety Institute and UK AI Safety Institute, "Pre-Deployment Evaluation of Anthropic's Upgraded Claude 3.5 Sonnet," 19 November 2024. nist.gov; aisi.gov.uk
 - Margaret Mitchell et al., "Model Cards for Model Reporting," FAT* 2019. arxiv.org/abs/1810.03993

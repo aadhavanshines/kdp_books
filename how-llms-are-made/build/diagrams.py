@@ -837,6 +837,28 @@ def validation():
     return img
 
 
+def eval_harness():
+    """Chapter 15: inside a benchmark run."""
+    steps = [("Test set", "questions with answer keys, or tasks with checks"),
+             ("Prompt template", "instructions + examples + the question"),
+             ("Model, fixed settings", "thinking, tools, temperature, attempts"),
+             ("Extract the answer", "a letter, a number, code, a file change"),
+             ("Score it", "exact match, unit tests, judge model"),
+             ("Average + error bar", "e.g. 80% \u00b1 3.5 points")]
+    row_h, top = 128, 30
+    img, d = canvas(top * 2 + row_h * len(steps))
+    for i, (name, text) in enumerate(steps):
+        y = top + i * row_h
+        dark = name.startswith("Model")
+        box(d, (40, y + 12, 500, y + row_h - 16), name, fill=AMBER if dark else NAVY, color=WHITE,
+            font=f(BOLD, 34))
+        box(d, (540, y + 12, W - 40, y + row_h - 16), text, fill=SOFT if dark else PALE,
+            font=f(REG, 32), radius=18)
+        if i < len(steps) - 1:
+            arrow(d, (270, y + row_h - 16), (270, y + row_h + 14), width=6, head=20)
+    return img
+
+
 DIAGRAMS = {
     "diagram-lifecycle": lifecycle, "diagram-next-word": next_word, "diagram-timeline": timeline,
     "diagram-embeddings": embeddings, "diagram-data-funnel": data_funnel,
@@ -845,7 +867,7 @@ DIAGRAMS = {
     "diagram-chip": chip, "diagram-datacenter": datacenter, "diagram-water": water,
     "diagram-parallelism": parallelism, "diagram-loss-curve": loss_curve,
     "diagram-rlhf": rlhf, "diagram-reasoning-rl": reasoning_rl,
-    "diagram-benchmarks": benchmarks, "diagram-validation": validation, "diagram-kv-cache": kv_cache, "diagram-lora": lora,
+    "diagram-benchmarks": benchmarks, "diagram-validation": validation, "diagram-eval-harness": eval_harness, "diagram-kv-cache": kv_cache, "diagram-lora": lora,
     "diagram-rag": rag, "diagram-agent-loop": agent_loop, "diagram-open-models": open_models,
     "diagram-vision": vision, "diagram-diffusion": diffusion,
 }
