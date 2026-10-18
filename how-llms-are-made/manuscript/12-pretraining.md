@@ -1,6 +1,6 @@
 # Chapter 12: Pretraining: The Big Run
 
-All the pieces are now on the table: the data (Chapter 5), the learning method (Chapter 6), the Transformer design (Chapter 7), the scaling laws that tell you how big to go (Chapter 8), and the chips and buildings to run it on (Chapters 9 and 10). **Pretraining** is where they come together: a single, enormous training run, lasting weeks or months, that turns a randomly initialized network into a **base model** that has absorbed the patterns of trillions of words. This chapter follows such a run from planning to finish.
+All the pieces are now on the table: the data (Chapter 5), the learning method (Chapter 6), the Transformer design (Chapter 7), the scaling laws that tell you how big to go (Chapter 8), and the chips and buildings to run it on (Chapters 9 and 10). **Pretraining** is where they come together: a single, enormous training run, lasting weeks or months, that turns a randomly initialized network into a **base model** that has absorbed the patterns of trillions of tokens of text. This chapter follows such a run from planning to finish.
 
 ## Planning: Small Experiments Before the Big Bet
 

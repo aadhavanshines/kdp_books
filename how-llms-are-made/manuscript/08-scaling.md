@@ -24,7 +24,7 @@ The first scaling laws suggested that the best way to spend extra computing powe
 
 They tested it directly. DeepMind's earlier model **Gopher** had 280 billion parameters but was trained on only 300 billion tokens, about one token per parameter. Using the same amount of computation, they trained **Chinchilla**, with just 70 billion parameters, on 1.4 trillion tokens: four times smaller, with four times more data. Chinchilla beat Gopher, and also GPT-3 and other much larger models, on almost every test.
 
-The Chinchilla result gave the field a famous rule of thumb: about **20 training tokens per parameter** is the most efficient use of a fixed training budget. It also revealed that many earlier models had been "undertrained": far too big for the amount of text they'd seen.
+The Chinchilla result gave the field a famous rule of thumb: about **20 training tokens per parameter** is the most efficient use of a fixed training budget. It also revealed that many earlier models had been "undertrained": far too big for the amount of text they'd seen. But it's a rule of thumb, not a law of nature: the best balance depends on the training budget, the quality of the data, the model's design and, above all, how much the model will be used after training, as the next section explains.
 
 ## Why Train "Too Long"?
 

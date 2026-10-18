@@ -20,13 +20,13 @@ The book follows a language model's whole life, in the order it happens:
 - **Part VI, The Model Zoo:** what "open" really means, a tour of the major open models and the frontier labs, and what makes each one different.
 - **Part VII, Beyond Text:** models that see, draw, make videos, listen and speak, and what all of this means for society.
 
-At the back, four appendices collect the essentials: a **timeline** of language AI, a **glossary** of every technical term, **fact sheets** for the major model families, and a list of **credits**: who invented what.
+At the back, five appendices collect the essentials: a **timeline** of language AI, a **glossary** of every technical term, **fact sheets** for the major model families, **credits** for who invented what, and a guide that **decodes model names and abbreviations**, from GPT and BERT to "235B-A22B".
 
 ## How This Book Is Written
 
 **No mathematics, no programming.** Every idea is explained in everyday language, usually with an analogy. Where a number helps, you'll get the number and what it means.
 
-**Every fact has a source.** Language AI is surrounded by hype and by myths. Every figure in this book, whether it's the cost of a training run, the water used per question or the size of a model, comes from the people who did the work or from careful independent studies, and each chapter ends with its sources. When sources disagree, the book says so and explains why.
+**Every key fact has a source.** Language AI is surrounded by hype and by myths. Every key figure in this book, whether it's the cost of a training run, the water used per question or the size of a model, comes from the people who did the work or from careful independent studies, and each chapter ends with its sources. When sources disagree, the book says so and explains why.
 
 **Credit where it's due.** The ideas in this book were invented by real people, often years before anyone noticed. You'll meet them: the mathematician who played a guessing game with letters in 1951, the eight authors of a 2017 paper that changed everything, and the teams in many countries who built the models you use.
 

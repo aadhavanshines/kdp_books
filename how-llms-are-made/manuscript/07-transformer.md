@@ -1,6 +1,6 @@
 # Chapter 7: The Transformer: Attention Is All You Need
 
-Every model in this book, from GPT to Claude, Gemini, Llama, Qwen and DeepSeek, is built on the same basic design: the **Transformer**, introduced by eight Google researchers in 2017. This chapter explains how it works, in plain language. The central idea, **attention**, is surprisingly intuitive: when you read a word, you know which other words in the sentence it relates to. A Transformer learns to do the same.
+Most of today's leading general-purpose language models, including the GPT, Claude, Gemini, Llama, Qwen and DeepSeek families, are built on the same basic design, or on a close hybrid of it: the **Transformer**, introduced by eight Google researchers in 2017. Other approaches exist, such as the state-space models described at the end of this chapter, and some systems combine both. This chapter explains how it works, in plain language. The central idea, **attention**, is surprisingly intuitive: when you read a word, you know which other words in the sentence it relates to. A Transformer learns to do the same.
 
 ## The Problem: Reading One Word at a Time
 

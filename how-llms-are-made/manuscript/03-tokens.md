@@ -14,14 +14,14 @@ Modern tokenizers use a compromise: **subwords**. Common words get a single toke
 
 ## How a Tokenizer Learns Its Pieces
 
-The most widely used method is called **byte-pair encoding (BPE)**. It was invented in 1994 by **Philip Gage** as a way to compress files, and adapted for language by **Rico Sennrich**, **Barry Haddow** and **Alexandra Birch** in 2015. The idea is beautifully simple:
+The most widely used method is called **byte-pair encoding (BPE)**. It was invented in 1994 by **Philip Gage** as a way to compress files, and adapted for language by **Rico Sennrich**, **Barry Haddow** and **Alexandra Birch** in 2015. The idea is beautifully simple. In its simplest, character-level form:
 
 1. Start with every individual character as a token.
 2. Look through a large amount of text and find the pair of neighboring tokens that appears most often.
 3. Merge that pair into a new token, and add it to the vocabulary.
 4. Repeat, tens of thousands of times.
 
-Here is the algorithm run for real on a tiny sample of seven words, *low lower lowest slow slower newest widest*, with "_" marking the end of each word:
+Most modern tokenizers, including GPT's and Llama's, use **byte-level BPE**: they start from the 256 possible **bytes**, the basic units computers use to store text, rather than from characters, so any text in any language, and even emoji, can be represented. The merging process is the same. Here is the simple character-level version run for real on a tiny sample of seven words, *low lower lowest slow slower newest widest*, with "_" marking the end of each word:
 
 ```
 Start: low_ lower_ lowest_ slow_ slower_ newest_ widest_
@@ -88,7 +88,7 @@ After tokenization, a sentence is just a list of IDs, perhaps `[1102, 374, 264, 
 ## Key Takeaways
 
 - Models read **tokens**, pieces of text, each with an ID number. Common words are one token; rare words are several.
-- Most tokenizers use **byte-pair encoding**: start with characters and repeatedly merge the most frequent pair.
+- Most tokenizers use **byte-pair encoding**: start with characters or, in most modern models, bytes, and repeatedly merge the most frequent pair.
 - Vocabularies range from about 50,000 to over 250,000 tokens, plus special tokens that mark speakers, messages and tool calls.
 - In English, a token averages about four characters, or three-quarters of a word. Prices, speed, context windows and training data are all measured in tokens.
 - Tokens explain the "strawberry" problem and the **token tax**: some languages need up to 15 times more tokens for the same text.

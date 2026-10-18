@@ -73,7 +73,7 @@ Understanding the next-word trick clears up several common misconceptions.
 
 A language model is a kind of **neural network**, a mathematical structure loosely inspired by the brain and made of a huge number of adjustable numbers called **parameters**. You can picture parameters as the knobs on an enormous mixing desk. Training is the process of turning all those knobs, a tiny amount at a time, until the model's predictions become good. Chapter 6 explains how.
 
-"Large" refers to the number of knobs and the amount of text used to set them. The models of the early 2010s had millions of parameters. GPT-3, in 2020, had 175 billion. Today's largest models are reported to have more than a trillion, trained on tens of trillions of words. That scale, more than any single clever idea, is what turned autocomplete into something that can pass exams and write working software, and it is why making these models takes data centers, enormous amounts of electricity and months of computing time.
+"Large" refers to the number of knobs and the amount of text used to set them. The models of the early 2010s had millions of parameters. GPT-3, in 2020, had 175 billion. Today's largest models are reported to have more than a trillion, trained on tens of trillions of tokens (pieces of words; Chapter 3). That scale, more than any single clever idea, is what turned autocomplete into something that can pass exams and write working software, and it is why making these models takes data centers, enormous amounts of electricity and months of computing time.
 
 ## The Three Stages of a Model's Life
 
@@ -91,7 +91,7 @@ Before we dive into how each stage works, it's worth seeing how humanity got her
 - It writes answers one token at a time, sampling from those probabilities; temperature controls how adventurous the choices are.
 - Predicting text well forces the model to absorb facts, grammar, reasoning and common sense, because they all make predictions better.
 - It isn't a database or a search engine, and it can confidently produce plausible but false text, called hallucination.
-- "Large" means billions to trillions of adjustable numbers, trained on trillions of words. Every model goes through pretraining, post-training and inference.
+- "Large" means billions to trillions of adjustable numbers, trained on trillions of tokens. Every model goes through pretraining, post-training and inference.
 
 ## Sources and Further Reading
 

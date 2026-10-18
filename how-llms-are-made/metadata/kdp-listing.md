@@ -60,7 +60,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>What it all means for work, learning, trust and the future</li>
 </ul>
 
-<p><b>Credit where it is due.</b> You'll meet the people behind each idea, from Claude Shannon's 1951 guessing game to the eight authors of the Transformer, and an appendix lists who invented what. A timeline, a glossary and fact sheets for the major model families make it a reference you'll come back to.</p>
+<p><b>Credit where it is due.</b> You'll meet the people behind each idea, from Claude Shannon's 1951 guessing game to the eight authors of the Transformer, and an appendix lists who invented what. A timeline, a glossary, fact sheets for the major model families and a guide that decodes model names and abbreviations make it a reference you'll come back to.</p>
 
 <p>Twenty-seven clear diagrams. Dozens of surprising facts. Current as of October 2026.</p>
 

@@ -13,7 +13,7 @@ Benchmarks have driven AI progress for decades. The ImageNet challenge, with its
 Language model benchmarks follow a familiar life cycle: a test is created; it seems very hard; models improve rapidly; within a few years, top models score near the maximum and the test stops being useful. This is called **saturation**.
 
 - **MMLU** (Massive Multitask Language Understanding), created by **Dan Hendrycks** and colleagues in 2020, has about 16,000 multiple-choice questions across 57 subjects, from law and medicine to history and physics. GPT-3 scored about 44% when it was published, well above guessing (25%) but far from experts. By 2024, top models scored around 90%, and it was effectively saturated.
-- **GPQA** (2023) was designed to be "Google-proof": 448 very hard science questions written by PhD experts. Experts in the field answered about 65% correctly; skilled non-experts, with unlimited web access and over 30 minutes per question, managed only about 34%. Within two years, reasoning models were scoring above the experts.
+- **GPQA** (2023) was designed to be "Google-proof": 448 very hard science questions written by PhD experts. Experts in the field answered about 65% correctly; skilled non-experts, with unlimited web access and over 30 minutes per question, managed only about 34%. Within a year, in September 2024, OpenAI reported that its o1 reasoning model had exceeded the experts' accuracy on GPQA's hardest subset, and scores have kept rising since. A high score on a hard test doesn't mean a model is generally more intelligent than an expert, though; it means it answers that kind of question well.
 - **Humanity's Last Exam** (2025), organized by the Center for AI Safety and Scale AI, gathered about 2,500 questions from nearly a thousand experts around the world, each chosen because frontier models of the time got it wrong. Early models scored in single digits; scores have risen quickly since.
 
 ![The benchmark treadmill: each new test starts with low AI scores, then scores rise steeply within a few years until the test is saturated near its maximum, and researchers create a harder one.](images/diagram-benchmarks.png)
@@ -24,7 +24,7 @@ Language model benchmarks follow a familiar life cycle: a test is created; it se
 
 As models became useful for real tasks, benchmarks followed:
 
-- **SWE-bench** (2023), by **Carlos Jimenez**, **John Yang** and colleagues at Princeton, gives the model real bug reports from popular open-source Python projects on GitHub and asks it to fix the code, checking the result with the project's own tests. When it was published, the best model solved under 2% of the problems. A human-checked subset, **SWE-bench Verified** (2024), became the standard measure of AI coding agents, and top systems now solve the large majority.
+- **SWE-bench** (2023), by **Carlos Jimenez**, **John Yang** and colleagues at Princeton, gives the model real bug reports from popular open-source Python projects on GitHub and asks it to fix the code, checking the result with the project's own tests. When it was published, the best model solved under 2% of the problems. A human-checked subset, **SWE-bench Verified** (2024), became the standard measure of AI coding agents. Scores rose fast: in May 2025, Anthropic reported 72.5% for Claude Opus 4, and later models reported higher still. Results depend heavily on the setup: the agent software around the model, the tools it may use, how many retries it gets and how much computation it spends.
 - **Agent benchmarks** test whether a model can complete multistep tasks on a computer, such as booking a trip on a website, using a spreadsheet or researching a question on the web.
 - **METR**, a research nonprofit, measures the length of tasks, timed by how long they take skilled humans, that AI agents can complete. In 2025, it reported that this "time horizon" had been doubling roughly every seven months for six years: from tasks of a few seconds to tasks of about an hour.
 
@@ -172,7 +172,7 @@ In 2023, **Lianmin Zheng** and colleagues at UC Berkeley tested this idea and fo
 
 ## How a Model Is Validated, Start to Finish
 
-A public benchmark score is the tip of an iceberg. Before a frontier model is released, it goes through months of testing, in stages, each designed to catch different problems. The details differ between labs, but the overall process looks like this:
+A public benchmark score is the tip of an iceberg. Before a frontier model is released, it typically goes through months of testing, in stages, each designed to catch different problems. Procedures differ between labs, and even between releases from the same lab, and not every lab does every step; the outline below is a synthesis of what major labs describe in their system cards and safety frameworks:
 
 ![How a model is validated: during training, checkpoints are tested on held-out text and quick benchmarks; after post-training, a large evaluation suite checks skills; safety teams and outside experts red-team it; people and judge models grade its answers; a limited release gathers real-world feedback; and after launch the model is monitored and its results are published in a system card.](images/diagram-validation.png)
 
@@ -211,6 +211,7 @@ As models pass test after test, researchers keep looking for questions that meas
 - Long Phan et al., "Humanity's Last Exam," Center for AI Safety and Scale AI, 2025. arxiv.org/abs/2501.14249; lastexam.ai
 - Aryo Pradipta Gema et al., "Are We Done with MMLU?," 2024 (errors in MMLU questions). arxiv.org/abs/2406.04127
 - Carlos E. Jimenez et al., "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?," ICLR 2024. arxiv.org/abs/2310.06770; OpenAI, "Introducing SWE-bench Verified," August 2024.
+- OpenAI, "Learning to Reason with LLMs," 12 September 2024 (o1 and GPQA Diamond). openai.com/index/learning-to-reason-with-llms; Anthropic, "Introducing Claude 4," 22 May 2025 (72.5% on SWE-bench Verified). anthropic.com/news/claude-4
 - Thomas Kwa et al., "Measuring AI Ability to Complete Long Tasks," METR, March 2025. arxiv.org/abs/2503.14499
 - Wei-Lin Chiang et al., "Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference," 2024. arxiv.org/abs/2403.04132; lmarena.ai
 - Reporting by *TechCrunch* and *The Verge* on the Llama 4 Arena version, April 2025.

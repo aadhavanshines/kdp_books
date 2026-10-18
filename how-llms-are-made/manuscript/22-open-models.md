@@ -1,8 +1,8 @@
 # Chapter 22: A Tour of the Open Models
 
-This chapter is a guided tour of the most important open model families: who made them, what's special about each, and the ideas they introduced. Model versions change every few months, so the focus is on each family's story and design, with the latest releases noted as of October 2026. Appendix C collects the key numbers in one place.
+This chapter is a guided tour of the most important open model families: who made them, what's special about each, and the ideas they introduced. Model versions change every few months, so the focus is on each family's story and design, with the latest releases noted as of October 2026. Appendix C collects the key numbers in one place, and Appendix E explains what the names and abbreviations mean.
 
-When reading the numbers, remember two terms from Chapter 7. A **dense** model uses all its parameters for every token. A **mixture-of-experts (MoE)** model has a large total but activates only a fraction per token, written here as "total / active", for example "671B / 37B".
+When reading the numbers, remember two terms from Chapter 7. A **dense** model uses all its parameters for every token. A **mixture-of-experts (MoE)** model has a large total but activates only a fraction per token, written here as "total / active", for example "671B / 37B". In model names, B means billion parameters, T means trillion, and a part such as "A22B" means 22 billion active.
 
 ![A family tree of open models from 2023 to 2026: Meta's Llama and Muse, Mistral, Alibaba's Qwen, DeepSeek, Google's Gemma, Microsoft's Phi, Moonshot's Kimi, Zhipu's GLM, OpenAI's gpt-oss and AI2's OLMo, with the size of the largest model in each family growing over time.](images/diagram-open-models.png)
 

@@ -4,7 +4,7 @@
 
 Throughout a career focused on product development and validation, Aadhavan has designed and built a wide range of in-house tools that automate complex engineering workflows, speed up testing, and help teams deliver reliable, high-quality results. In recent years, much of that work has involved putting large language models to practical use.
 
-That experience shaped this book. Engineers learn to ask how things really work, where the numbers come from, and what the limits are. This book applies those questions to AI itself: every fact is sourced, every claim is checked against the people who did the work, and every idea is explained so that anyone can follow it.
+That experience shaped this book. Engineers learn to ask how things really work, where the numbers come from, and what the limits are. This book applies those questions to AI itself: every key fact is sourced, claims are checked against the people who did the work wherever possible, and every idea is explained so that anyone can follow it.
 
 Aadhavan is also the author of *Prompt Engineering Mastery*, a beginner-to-advanced guide to getting better results from AI; *Vibe Coding for Beginners*, a guide to building real software with AI coding tools; *Building AI Agents with Claude*, a guide to agents that use tools, remember, and get real work done; and *Python Programming Hands-On*, a practical, tested introduction to programming.
 

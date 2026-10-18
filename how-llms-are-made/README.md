@@ -2,7 +2,7 @@
 
 *The Complete Plain-English Story of AI, from Data and Chips to Chatbots, Reasoning, Images, Video and Agents*, by Aadhavan Muthurengan.
 
-Twenty-seven chapters in seven parts, written for readers with no math or programming background: tokens and embeddings, training data, how networks learn, the Transformer, scaling laws, chips, data centers, energy and water, pretraining, post-training, reasoning models, benchmarks, safety, inference, small models and fine-tuning, long context and retrieval, agents, open and closed models, a tour of the open model families, the frontier labs, vision, image, video, speech and music models, and AI's effects on society. Appendices: timeline, glossary, model fact sheets, and credits (who invented what). Status as of October 2026.
+Twenty-seven chapters in seven parts, written for readers with no math or programming background: tokens and embeddings, training data, how networks learn, the Transformer, scaling laws, chips, data centers, energy and water, pretraining, post-training, reasoning models, benchmarks, safety, inference, small models and fine-tuning, long context and retrieval, agents, open and closed models, a tour of the open model families, the frontier labs, vision, image, video, speech and music models, and AI's effects on society. Appendices: timeline, glossary, model fact sheets, credits (who invented what), and model names and abbreviations decoded. Status as of October 2026.
 
 ## Folders
 
