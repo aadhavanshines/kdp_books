@@ -79,7 +79,7 @@ Quick reference for the major model families, as of October 2026. Model names an
 **Gemini (Google DeepMind)**
 - Gemini 1.0 (December 2023), 1.5 (2024), 2.5 (2025) and Gemini 3 (November 2025): Released.
 - Gemini 4 Argon: announced 30 September 2026, Limited at first (an initial group of cybersecurity defenders through Google's Fairwind program); Released globally from 13 October 2026.
-- Sources: Google blog, "Gemini 4 Argon: our next era of frontier intelligence," 30 September 2026, and "Gemini 4 Argon is now available in the Gemini app," October 2026, blog.google; Gemini model cards, deepmind.google/models/gemini.
+- Sources: announcement date from Google's and Google DeepMind's posts on X and *TechCrunch*, 30 September 2026; global availability from Google's blog and the Gemini 4 Argon model card, 13 October 2026, blog.google and deepmind.google; Gemini model cards, deepmind.google/models/gemini.
 
 **Grok (xAI)**
 - Grok 4 (July 2025) and Grok 4.7 (September 2026): Released.
