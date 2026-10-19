@@ -1,0 +1,6 @@
+# Code style for the book's solutions: 76 characters fit on a printed line.
+line-length = 76
+
+[lint.per-file-ignores]
+# CHECK and NORMALIZE are uppercase on purpose: they are settings the test harness reads.
+"code/**/*.py" = ["N802"]
