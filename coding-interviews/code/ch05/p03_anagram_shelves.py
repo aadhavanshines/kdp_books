@@ -47,6 +47,8 @@ def CHECK(args, result):
 
 
 def random_case(rng):
-    words = ["".join(rng.choice("abc") for _ in range(rng.randint(0, 3)))
-             for _ in range(rng.randint(0, 8))]
+    words = [
+        "".join(rng.choice("abc") for _ in range(rng.randint(0, 3)))
+        for _ in range(rng.randint(0, 8))
+    ]
     return (words,)
