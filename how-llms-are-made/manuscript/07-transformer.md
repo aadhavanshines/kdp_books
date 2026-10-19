@@ -26,7 +26,7 @@ Attention lets the model do exactly this. For each token, the model asks: **whic
 
 The model compares each query with every key to score how relevant each token is, turns the scores into percentages, and then gives each token a blend of the other tokens' values, weighted by those percentages. After this step, the numbers for *it* contain a large share of the information from *trophy*.
 
-![Attention in action: in the sentence "The trophy didn't fit in the suitcase because it was too big", the word "it" sends its strongest attention to "trophy", weaker attention to "suitcase", and very little to the other words.](images/diagram-attention.png)
+![Attention in action: in the sentence "The trophy didn't fit in the suitcase because it was too big", the word "it" sends its strongest attention to "trophy", weaker attention to "suitcase", and very little to the other words. The percentages are illustrative, not measured from a real model.](images/diagram-attention.png)
 
 The queries, keys and values aren't programmed: they're produced by parameters that are learned during training, just like everything else.
 
@@ -40,7 +40,7 @@ After attention, each token's numbers pass through a **feed-forward network**, a
 
 Attention plus feed-forward makes one **layer** (also called a **block**). A Transformer stacks many layers on top of each other: GPT-3 had 96; the largest Llama 3 has 126. As information flows up through the layers, the representations become steadily more abstract: early layers handle spelling and grammar, middle layers meaning and relationships, and later layers what to say next.
 
-![The Transformer stack: tokens become embeddings, then pass up through many identical layers, each containing attention and a feed-forward network, before a final step turns the top layer's numbers into probabilities for the next token.](images/diagram-transformer.png)
+![The Transformer stack: tokens become embeddings, then pass up through many identical layers, each containing attention and a feed-forward network, before a final step turns the top layer's numbers into probabilities for the next token (the probabilities shown are illustrative).](images/diagram-transformer.png)
 
 Two small engineering tricks make deep stacks trainable. **Residual connections** let each layer *add* its contribution to a running total rather than replace it, so information can flow straight through, and **normalization** keeps the numbers in a sensible range. You can think of the running total as a stream flowing up through the model, which each layer reads from and writes to.
 
@@ -67,7 +67,7 @@ In a standard Transformer, every token goes through every parameter. A **mixture
 
 The result is a model that *contains* a huge number of parameters but *uses* only a fraction for any one token. Mistral's Mixtral 8x7B (2023) had about 47 billion parameters but used about 13 billion per token. DeepSeek-V3 has 671 billion, with 37 billion active. Kimi K2 has a trillion parameters, of which 32 billion work on any one token, chosen from 384 experts. MoE lets a model store far more knowledge for roughly the same running cost. Despite the name, the experts don't neatly specialize in subjects like "history" or "chemistry"; the specialization that emerges is usually much harder for people to label.
 
-The idea is older than the Transformer: **Noam Shazeer** and colleagues at Google described a sparsely-gated mixture-of-experts layer in 2017, and Google's Switch Transformer (2021) scaled it up. Today most of the largest open models use MoE.
+The idea is older than the Transformer: **Noam Shazeer** and colleagues at Google described a sparsely-gated mixture-of-experts layer in 2017, and Google's Switch Transformer (2021) scaled it up. By 2026, most of the largest open models used MoE.
 
 ## Beyond Attention?
 

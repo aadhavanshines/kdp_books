@@ -34,7 +34,7 @@ For language, a landmark came in 2013, when **Tomas Mikolov** and colleagues at 
 
 ## Attention Is All You Need (2017)
 
-In June 2017, eight researchers at Google, **Ashish Vaswani**, **Noam Shazeer**, **Niki Parmar**, **Jakob Uszkoreit**, **Llion Jones**, **Aidan Gomez**, **Łukasz Kaiser** and **Illia Polosukhin**, published a paper with a cheeky title: "Attention Is All You Need". It introduced the **Transformer**, a design that threw away the older step-by-step machinery and used attention for everything. Transformers could be trained in parallel on many chips at once, which meant they could finally be scaled up. Every model in this book is a Transformer or a close descendant.
+In June 2017, eight researchers at Google, **Ashish Vaswani**, **Noam Shazeer**, **Niki Parmar**, **Jakob Uszkoreit**, **Llion Jones**, **Aidan Gomez**, **Łukasz Kaiser** and **Illia Polosukhin**, published a paper with a cheeky title: "Attention Is All You Need". It introduced the **Transformer**, a design that threw away the older step-by-step machinery and used attention for everything. Transformers could be trained in parallel on many chips at once, which meant they could finally be scaled up. The Transformer became the dominant design for modern language models, and many newer systems combine it with other architectures (Chapter 7).
 
 > **Did You Know?** The paper's title is a nod to the Beatles song "All You Need Is Love". The eight authors are listed as equal contributors, in random order, and every one of them later left Google, several to found AI companies of their own.
 

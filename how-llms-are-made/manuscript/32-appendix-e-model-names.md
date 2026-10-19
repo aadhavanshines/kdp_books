@@ -4,28 +4,28 @@ AI model names can look like secret codes: *Qwen3-235B-A22B-Instruct*, *gemma-4-
 
 ## How to Read a Model Name
 
-Most names are built from a family name plus a few standard parts:
+Most names are built from a family name plus a few common parts. These are **conventions, not rules**: each company uses them a little differently, and the same letter or word can mean different things in different families. The table gives the usual meaning and an example from a family that uses it; always check the model card for the exact meaning.
 
-| Part of the name | Example | Meaning |
+| Part of the name | Example | Usual meaning |
 | --- | --- | --- |
-| Number + B or T | Llama 3 **70B** | Total parameters: B = billion, T = trillion |
-| Number x number | Mixtral **8x7B** | Mixture of experts: 8 experts of about 7 billion parameters each (shared parts make the real total smaller, about 47 billion) |
-| A + number | Qwen3-235B-**A22B** | Active parameters per token in a mixture-of-experts model: 22 billion of 235 billion |
-| E + number | Gemma 4 **E4B** | "Effective" size: runs with roughly the memory and speed of a 4-billion-parameter model, though it stores more |
-| Version number | Claude **3.5**, Llama **3.1** | Generation; a decimal usually means an improved release of the same generation |
-| Base | Llama-3-8B-**Base** | The raw pretrained model, before post-training (Chapter 12) |
-| Instruct, Chat, -it | gemma-4-31B-**it** | Post-trained to follow instructions and chat (Chapter 13); "it" means instruction-tuned |
-| Thinking, Reasoning, R | Kimi K2 **Thinking**, DeepSeek-**R1** | Trained to reason step by step before answering (Chapter 14) |
-| Zero | DeepSeek-R1-**Zero** | Trained without human-written examples, by reinforcement learning only, a nod to DeepMind's AlphaZero |
-| Mini, Nano, Lite, Flash, Small | Gemini 3 **Flash** | Smaller, faster and cheaper versions |
-| Pro, Max, Ultra, Large | DeepSeek-V4-**Pro** | Larger, more capable and more expensive versions |
-| Preview, Experimental, Beta | **Preview** | Early access; may change before full release |
-| Coder, Math, VL, Audio, Omni | Qwen3-**Coder** | Specialized for code, math, vision-language, audio, or all modalities |
-| A date | V4-Flash-**0731** | A snapshot from that date (here, 31 July) |
-| Context length | **-128k**, **-1M** | The context window, in tokens (Chapter 19) |
-| GGUF, AWQ, GPTQ, Q4, FP8, INT4 | model-**Q4_K_M**.gguf | A quantized, compressed version and its file format (Chapter 18) |
+| Number + B or T | Llama 3 **70B** | Usually total parameters: B = billion, T = trillion |
+| Number x number | Mixtral **8x7B** | In Mistral's naming, a mixture of experts: 8 experts of about 7 billion parameters each (shared parts make the real total smaller, about 47 billion) |
+| A + number | Qwen3-235B-**A22B** | In families such as Qwen, active parameters per token in a mixture-of-experts model: 22 billion of 235 billion |
+| E + number | Gemma 4 **E4B** | In Google's Gemma family, "effective" size: Google describes it as running with roughly the resources of a 4-billion-parameter model, though it stores more |
+| Version number | Claude **3.5**, Llama **3.1** | Usually the generation; a decimal often means an improved release of the same generation, but companies number versions differently |
+| Base | Llama-3-8B-**Base** | Usually the raw pretrained model, before post-training (Chapter 12) |
+| Instruct, Chat, -it | gemma-4-31B-**it** | Usually post-trained to follow instructions and chat (Chapter 13); in Gemma's names, "it" means instruction-tuned |
+| Thinking, Reasoning, R | Kimi K2 **Thinking**, DeepSeek-**R1** | Usually trained to reason step by step before answering (Chapter 14) |
+| Zero | DeepSeek-R1-**Zero** | In DeepSeek-R1-Zero, trained without human-written reasoning examples, by reinforcement learning only; the name echoes DeepMind's AlphaZero, which also learned without human examples |
+| Mini, Nano, Lite, Flash, Small | Gemini 3 **Flash** | Usually smaller, faster and cheaper versions; the exact size differs by company |
+| Pro, Max, Ultra, Large | DeepSeek-V4-**Pro** | Usually larger, more capable and more expensive versions; "Pro" is a mid-tier name for some companies and a top tier for others |
+| Preview, Experimental, Beta | **Preview** | Usually early access that may change before full release |
+| Coder, Math, VL, Audio, Omni | Qwen3-**Coder** | Usually specialized for code, math, vision-language, audio, or all modalities |
+| A date | V4-Flash-**0731** | Usually a snapshot from that date (here, 31 July); some companies use other date formats, such as 2507 for July 2025 |
+| Context length | **-128k**, **-1M** | Usually the context window, in tokens (Chapter 19) |
+| GGUF, AWQ, GPTQ, Q4, FP8, INT4 | model-**Q4_K_M**.gguf | Usually a quantized, compressed version and its file format (Chapter 18); these tags come from the tools that made the file, not from the model's maker |
 
-So *Qwen3-235B-A22B-Instruct* reads: Qwen family, third generation, 235 billion parameters in total, 22 billion active per token, post-trained to follow instructions.
+Following Qwen's own convention, *Qwen3-235B-A22B-Instruct* reads: Qwen family, third generation, 235 billion parameters in total, 22 billion active per token, post-trained to follow instructions.
 
 ## Language Model Families
 

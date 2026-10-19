@@ -284,7 +284,7 @@ def attention():
         d.text((tx, y), w, font=f(BOLD if wt > 0.15 or w == "it" else REG, 40),
                fill=AMBER if w == "it" else INK, anchor="rm")
         if wt >= 0.05:
-            d.text((tx + 30, y - 30), f"{int(wt * 100)}%", font=f(REG, 26), fill=MID)
+            d.text((tx + 30, y - 30), f"{int(wt * 100)}%", font=f(REG, 30), fill=MID)
     box(d, (target[0] - 120, target[1] - 70, target[0] + 120, target[1] + 70), "\"it\"",
         fill=AMBER, color=WHITE, font=f(BOLD, 44))
     d.text((target[0], target[1] + 100), "attends mostly\nto \"trophy\"", font=f(ITAL, 32),
@@ -352,7 +352,7 @@ def scaling():
     for k in range(9):
         x = L + k * (R - L) / 8
         d.line((x, B, x, B + 12), fill=INK, width=3)
-        d.text((x, B + 20), f"10^{18 + k}", font=f(REG, 26), fill=INK, anchor="ma")
+        d.text((x, B + 20), f"10^{18 + k}", font=f(REG, 30), fill=INK, anchor="ma")
     d.text(((L + R) / 2, B + 70), "Training compute (operations, each step is 10 times more)",
            font=f(BOLD, 30), fill=INK, anchor="ma")
     d.text((60, (T + B) / 2), "Error\n(loss)", font=f(BOLD, 30), fill=INK, anchor="mm",
@@ -733,7 +733,7 @@ def open_models():
             d.ellipse((x - 13, y - 13, x + 13, y + 13), fill=NAVY if k < len(rel) - 1 else AMBER)
             up = k % 2 == 0
             h = "r" if x > 1220 else "m"
-            d.text((x + (14 if h == "r" else 0), y - 20 if up else y + 20), lab, font=f(REG, 26),
+            d.text((x + (14 if h == "r" else 0), y - 20 if up else y + 20), lab, font=f(REG, 30),
                    fill=INK, anchor=h + ("d" if up else "a"))
     return img
 

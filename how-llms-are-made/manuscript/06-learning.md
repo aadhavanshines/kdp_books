@@ -13,7 +13,7 @@ In 1943, **Warren McCulloch** and **Walter Pitts** proposed a mathematical model
 
 That's all. One neuron is almost useless. But connect millions of them in layers, the outputs of one layer becoming the inputs of the next, and the network can represent extraordinarily complicated patterns. The weights and biases are the **parameters**: the knobs that training turns.
 
-![A neural network: input numbers flow through layers of connected neurons; each connection has a weight; the final layer produces a probability for every possible next token.](images/diagram-network.png)
+![A neural network: input numbers flow through layers of connected neurons; each connection has a weight; the final layer produces a probability for every possible next token (the probabilities shown are illustrative).](images/diagram-network.png)
 
 > **In Plain Words:** A neural network is many simple calculators wired together in layers. Each connection has a strength, and learning means adjusting those strengths.
 
