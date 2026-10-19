@@ -38,15 +38,15 @@ def levels_dfs(root):
     return out
 
 
-def levels_main(values):
+def level_lists(values):
     return levels(build_tree(values))
 
 
-def levels_rec(values):
+def level_lists_dfs(values):
     return levels_dfs(build_tree(values))
 
 
-SOLUTIONS = [levels_main, levels_rec]
+SOLUTIONS = [level_lists, level_lists_dfs]
 EXAMPLES = [
     (([3, 9, 20, None, None, 15, 7],), [[3], [9, 20], [15, 7]]),
     (([],), []),

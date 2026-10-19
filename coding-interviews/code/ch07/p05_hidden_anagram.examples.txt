@@ -1,0 +1,8 @@
+>>> hidden_anagram('ab', 'eidbaooo')
+True
+>>> hidden_anagram('ab', 'eidboaoo')
+False
+>>> hidden_anagram('', 'abc')
+True
+>>> hidden_anagram('abcd', 'abc')
+False

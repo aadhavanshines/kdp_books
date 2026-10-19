@@ -1,0 +1,10 @@
+>>> is_power_of_two(1)
+True
+>>> is_power_of_two(16)
+True
+>>> is_power_of_two(18)
+False
+>>> is_power_of_two(0)
+False
+>>> is_power_of_two(-8)
+False

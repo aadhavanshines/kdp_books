@@ -39,15 +39,15 @@ def make(values, pos):
     return head
 
 
-def loop_main(values, pos):
+def loop_exists(values, pos):
     return has_loop(make(values, pos))
 
 
-def loop_set(values, pos):
+def loop_exists_set(values, pos):
     return has_loop_set(make(values, pos))
 
 
-SOLUTIONS = [loop_main, loop_set]
+SOLUTIONS = [loop_exists, loop_exists_set]
 EXAMPLES = [
     (([3, 2, 0, -4], 1), True),
     (([1, 2], -1), False),

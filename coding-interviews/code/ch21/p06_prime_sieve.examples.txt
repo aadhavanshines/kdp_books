@@ -1,0 +1,6 @@
+>>> primes_below(10)
+[2, 3, 5, 7]
+>>> primes_below(2)
+[]
+>>> primes_below(3)
+[2]

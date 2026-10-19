@@ -16,7 +16,7 @@ def merge_lists(a, b):
     return dummy.next
 
 
-def merge_main(a, b):
+def merged_values(a, b):
     return list_values(merge_lists(build_list(a), build_list(b)))
 
 
@@ -24,7 +24,7 @@ def merge_brute(a, b):
     return sorted(a + b)
 
 
-SOLUTIONS = [merge_main, merge_brute]
+SOLUTIONS = [merged_values, merge_brute]
 EXAMPLES = [(([1, 4, 6], [2, 4, 5]), [1, 2, 4, 4, 5, 6]), (([], []), [])]
 
 

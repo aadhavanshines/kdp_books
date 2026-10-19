@@ -1,0 +1,9 @@
+>>> config_diff(
+...     {'db': {'host': 'a.example', 'port': 5432}, 'debug': True},
+...     {'db': {'host': 'b.example', 'port': 5432, 'pool': 10}},
+... )
+[('db.host', 'changed', 'a.example', 'b.example'),
+ ('db.pool', 'added', None, 10),
+ ('debug', 'removed', True, None)]
+>>> config_diff({}, {})
+[]

@@ -1,0 +1,8 @@
+>>> even_split([0, 1, 1, 0, 1, 1, 1, 0])
+4
+>>> even_split([1, 1, 1])
+0
+>>> even_split([0, 1])
+2
+>>> even_split([])
+0

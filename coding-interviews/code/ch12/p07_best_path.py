@@ -50,15 +50,15 @@ def best_path_brute(root):
     return best
 
 
-def best_main(values):
+def best_path_sum(values):
     return best_path(build_tree(values))
 
 
-def best_brute(values):
+def best_path_sum_brute(values):
     return best_path_brute(build_tree(values))
 
 
-SOLUTIONS = [best_main, best_brute]
+SOLUTIONS = [best_path_sum, best_path_sum_brute]
 EXAMPLES = [
     (([-10, 9, 20, None, None, 15, 7],), 42),
     (([1, 2, 3],), 6),

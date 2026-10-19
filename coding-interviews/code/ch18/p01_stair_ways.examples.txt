@@ -1,0 +1,8 @@
+>>> stair_ways(1)
+1
+>>> stair_ways(2)
+2
+>>> stair_ways(5)
+8
+>>> stair_ways(0)
+1

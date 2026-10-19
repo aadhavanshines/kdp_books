@@ -1,0 +1,6 @@
+>>> reversed_values([1, 2, 3, 4])
+[4, 3, 2, 1]
+>>> reversed_values([])
+[]
+>>> reversed_values([7])
+[7]

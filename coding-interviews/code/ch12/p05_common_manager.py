@@ -27,11 +27,11 @@ def path_to(root, x):
     return None
 
 
-def lca_main(values, a, b):
+def common_manager(values, a, b):
     return common_ancestor(build_tree(values), a, b).val
 
 
-def lca_paths(values, a, b):
+def common_manager_paths(values, a, b):
     root = build_tree(values)
     pa, pb = path_to(root, a), path_to(root, b)
     last = None
@@ -42,7 +42,7 @@ def lca_paths(values, a, b):
     return last
 
 
-SOLUTIONS = [lca_main, lca_paths]
+SOLUTIONS = [common_manager, common_manager_paths]
 EXAMPLES = [
     (([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4], 5, 1), 3),
     (([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4], 5, 4), 5),

@@ -1,0 +1,8 @@
+>>> is_search_tree([5, 3, 8, 1, 4, 7, 9])
+True
+>>> is_search_tree([5, 3, 8, 1, 6])
+False
+>>> is_search_tree([])
+True
+>>> is_search_tree([2, 2])
+False

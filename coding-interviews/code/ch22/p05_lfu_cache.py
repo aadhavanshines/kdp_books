@@ -79,15 +79,15 @@ def run(cls, capacity, ops):
     return out
 
 
-def run_main(capacity, ops):
+def lfu_session(capacity, ops):
     return run(LFUCache, capacity, ops)
 
 
-def run_brute(capacity, ops):
+def lfu_session_brute(capacity, ops):
     return run(LFUCacheBrute, capacity, ops)
 
 
-SOLUTIONS = [run_main, run_brute]
+SOLUTIONS = [lfu_session, lfu_session_brute]
 EXAMPLES = [
     (
         (

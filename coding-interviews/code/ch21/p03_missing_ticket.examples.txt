@@ -1,0 +1,6 @@
+>>> missing_ticket([3, 0, 1])
+2
+>>> missing_ticket([0])
+1
+>>> missing_ticket([])
+0

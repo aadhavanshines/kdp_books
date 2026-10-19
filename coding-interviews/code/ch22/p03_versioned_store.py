@@ -20,7 +20,7 @@ class VersionedStore:
         return self.values[key][i - 1] if i else ""
 
 
-def run_ops(ops):
+def store_session(ops):
     store, out = VersionedStore(), []
     for op in ops:
         if op[0] == "set":
@@ -30,7 +30,7 @@ def run_ops(ops):
     return out
 
 
-def run_ops_brute(ops):
+def store_session_brute(ops):
     rows, out = [], []
     for op in ops:
         if op[0] == "set":
@@ -42,7 +42,7 @@ def run_ops_brute(ops):
     return out
 
 
-SOLUTIONS = [run_ops, run_ops_brute]
+SOLUTIONS = [store_session, store_session_brute]
 EXAMPLES = [
     (
         (

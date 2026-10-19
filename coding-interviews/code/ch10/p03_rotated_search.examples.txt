@@ -1,0 +1,8 @@
+>>> rotated_search([9, 12, 1, 4, 7], 4)
+3
+>>> rotated_search([9, 12, 1, 4, 7], 10)
+-1
+>>> rotated_search([5], 5)
+0
+>>> rotated_search([], 3)
+-1

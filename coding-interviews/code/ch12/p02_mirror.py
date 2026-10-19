@@ -19,15 +19,15 @@ def mirror_iterative(root):
     return root
 
 
-def mirror_main(values):
+def mirrored(values):
     return tree_values(mirror(build_tree(values)))
 
 
-def mirror_stack(values):
+def mirrored_stack(values):
     return tree_values(mirror_iterative(build_tree(values)))
 
 
-SOLUTIONS = [mirror_main, mirror_stack]
+SOLUTIONS = [mirrored, mirrored_stack]
 EXAMPLES = [
     (([4, 2, 7, 1, 3, 6, 9],), [4, 7, 2, 9, 6, 3, 1]),
     (([],), []),

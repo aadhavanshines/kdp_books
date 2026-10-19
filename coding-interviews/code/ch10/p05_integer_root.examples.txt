@@ -1,0 +1,10 @@
+>>> integer_root(0)
+0
+>>> integer_root(1)
+1
+>>> integer_root(8)
+2
+>>> integer_root(9)
+3
+>>> integer_root(1000000000000)
+1000000

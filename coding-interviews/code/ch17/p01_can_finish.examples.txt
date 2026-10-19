@@ -1,0 +1,6 @@
+>>> can_finish(2, [(1, 0)])
+True
+>>> can_finish(2, [(1, 0), (0, 1)])
+False
+>>> can_finish(3, [])
+True

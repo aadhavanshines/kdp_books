@@ -1,0 +1,4 @@
+>>> random_set_session(
+...     [('add', 1), ('add', 1), ('remove', 2), ('add', 2), ('remove', 1)],
+... )
+([True, False, False, True, True], [2])

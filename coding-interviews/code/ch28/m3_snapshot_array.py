@@ -55,15 +55,15 @@ def run(cls, n, ops):
     return out
 
 
-def run_main(n, ops):
+def snapshot_session(n, ops):
     return run(SnapshotArray, n, ops)
 
 
-def run_copy(n, ops):
+def snapshot_session_copy(n, ops):
     return run(SnapshotArrayCopy, n, ops)
 
 
-SOLUTIONS = [run_main, run_copy]
+SOLUTIONS = [snapshot_session, snapshot_session_copy]
 EXAMPLES = [
     ((3, [("set", 0, 5), ("snap",), ("set", 0, 6), ("get", 0, 0)]), [0, 5])
 ]

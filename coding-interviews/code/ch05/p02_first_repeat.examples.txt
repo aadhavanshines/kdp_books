@@ -1,0 +1,8 @@
+>>> first_repeat(['A7', 'B2', 'C9', 'B2', 'A7'])
+'B2'
+>>> first_repeat(['X1', 'X2'])
+None
+>>> first_repeat([])
+None
+>>> first_repeat(['Q', 'Q'])
+'Q'

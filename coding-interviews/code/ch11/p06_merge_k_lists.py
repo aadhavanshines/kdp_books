@@ -20,7 +20,7 @@ def merge_k(heads):
     return dummy.next
 
 
-def merge_k_main(lists):
+def merged_k_values(lists):
     return list_values(merge_k([build_list(v) for v in lists]))
 
 
@@ -28,7 +28,7 @@ def merge_k_brute(lists):
     return sorted(v for lst in lists for v in lst)
 
 
-SOLUTIONS = [merge_k_main, merge_k_brute]
+SOLUTIONS = [merged_k_values, merge_k_brute]
 EXAMPLES = [
     (([[1, 4, 5], [1, 3, 4], [2, 6]],), [1, 1, 2, 3, 4, 4, 5, 6]),
     (([],), []),

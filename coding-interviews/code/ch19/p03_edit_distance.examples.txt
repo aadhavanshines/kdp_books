@@ -1,0 +1,8 @@
+>>> typo_distance('horse', 'ros')
+3
+>>> typo_distance('intention', 'execution')
+5
+>>> typo_distance('', 'abc')
+3
+>>> typo_distance('same', 'same')
+0

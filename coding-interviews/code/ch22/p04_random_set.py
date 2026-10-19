@@ -31,14 +31,14 @@ class RandomSet:
         return self.rng.choice(self.items)
 
 
-def run_ops(ops):
+def random_set_session(ops):
     s, out = RandomSet(), []
     for op, x in ops:
         out.append(s.add(x) if op == "add" else s.remove(x))
     return out, sorted(s.items)
 
 
-def run_ops_brute(ops):
+def set_session(ops):
     s, out = set(), []
     for op, x in ops:
         if op == "add":
@@ -50,7 +50,7 @@ def run_ops_brute(ops):
     return out, sorted(s)
 
 
-SOLUTIONS = [run_ops, run_ops_brute]
+SOLUTIONS = [random_set_session, set_session]
 EXAMPLES = [
     (
         (

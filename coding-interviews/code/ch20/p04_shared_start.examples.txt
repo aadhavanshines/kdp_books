@@ -1,0 +1,8 @@
+>>> shared_start(['flower', 'flow', 'flight'])
+'fl'
+>>> shared_start(['dog', 'car'])
+''
+>>> shared_start([])
+''
+>>> shared_start(['solo'])
+'solo'

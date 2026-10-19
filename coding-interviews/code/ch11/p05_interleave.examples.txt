@@ -1,0 +1,8 @@
+>>> interleaved_values([1, 2, 3, 4, 5])
+[1, 5, 2, 4, 3]
+>>> interleaved_values([1, 2, 3, 4])
+[1, 4, 2, 3]
+>>> interleaved_values([])
+[]
+>>> interleaved_values([9])
+[9]

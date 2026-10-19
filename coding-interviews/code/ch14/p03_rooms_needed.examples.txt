@@ -1,0 +1,8 @@
+>>> rooms_needed([[0, 30], [5, 10], [15, 20]])
+2
+>>> rooms_needed([[7, 10], [2, 4]])
+1
+>>> rooms_needed([[1, 5], [5, 9]])
+1
+>>> rooms_needed([])
+0

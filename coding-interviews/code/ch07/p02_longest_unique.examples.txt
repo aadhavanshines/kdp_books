@@ -1,0 +1,10 @@
+>>> longest_unique('abcabcbb')
+3
+>>> longest_unique('bbbb')
+1
+>>> longest_unique('')
+0
+>>> longest_unique('dvdf')
+3
+>>> longest_unique('abba')
+2

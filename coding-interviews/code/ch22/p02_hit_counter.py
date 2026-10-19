@@ -23,7 +23,7 @@ class HitCounter:
         return sum(c for _, c in self.hits)
 
 
-def run_ops(ops):
+def hit_counter_session(ops):
     hc, out = HitCounter(), []
     for op, t in ops:
         if op == "hit":
@@ -33,7 +33,7 @@ def run_ops(ops):
     return out
 
 
-def run_ops_brute(ops):
+def hit_counter_brute(ops):
     hits, out = [], []
     for op, t in ops:
         if op == "hit":
@@ -43,7 +43,7 @@ def run_ops_brute(ops):
     return out
 
 
-SOLUTIONS = [run_ops, run_ops_brute]
+SOLUTIONS = [hit_counter_session, hit_counter_brute]
 EXAMPLES = [
     (
         (

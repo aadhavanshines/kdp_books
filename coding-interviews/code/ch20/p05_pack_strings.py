@@ -17,7 +17,7 @@ def unpack(packed):
     return out
 
 
-def round_trip(strings):
+def pack_and_unpack(strings):
     return unpack(pack(strings))
 
 
@@ -25,7 +25,7 @@ def identity(strings):
     return list(strings)
 
 
-SOLUTIONS = [round_trip, identity]
+SOLUTIONS = [pack_and_unpack, identity]
 EXAMPLES = [
     ((["hello", "", "a:b", "12:"],), ["hello", "", "a:b", "12:"]),
     (([],), []),

@@ -19,7 +19,7 @@ class MinStack:
         return self.items[-1][1]
 
 
-def run_ops(ops):
+def min_stack_session(ops):
     """Run ("push", x), ("pop",), ("top",), ("min",); collect results."""
     s, out = MinStack(), []
     for op in ops:
@@ -34,7 +34,7 @@ def run_ops(ops):
     return out
 
 
-def run_ops_brute(ops):
+def list_session(ops):
     s, out = [], []
     for op in ops:
         if op[0] == "push":
@@ -48,7 +48,7 @@ def run_ops_brute(ops):
     return out
 
 
-SOLUTIONS = [run_ops, run_ops_brute]
+SOLUTIONS = [min_stack_session, list_session]
 EXAMPLES = [
     (
         (

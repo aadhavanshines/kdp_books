@@ -24,15 +24,15 @@ def run(n, first, solver):
     return solver(n, lambda b: b >= first)
 
 
-def first_bad_main(n, first):
+def find_first_bad(n, first):
     return run(n, first, first_bad)
 
 
-def first_bad_check(n, first):
+def find_first_bad_brute(n, first):
     return run(n, first, first_bad_brute)
 
 
-SOLUTIONS = [first_bad_main, first_bad_check]
+SOLUTIONS = [find_first_bad, find_first_bad_brute]
 EXAMPLES = [((10, 7), 7), ((1, 1), 1), ((5, 99), -1)]
 
 

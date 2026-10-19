@@ -1,0 +1,8 @@
+>>> find_all('abababa', 'aba')
+[0, 2, 4]
+>>> find_all('aaaa', 'aa')
+[0, 1, 2]
+>>> find_all('abc', 'd')
+[]
+>>> find_all('ab', '')
+[0, 1, 2]

@@ -25,15 +25,15 @@ def depth_iterative(root):
     return levels
 
 
-def depth_main(values):
+def tree_depth(values):
     return depth(build_tree(values))
 
 
-def depth_bfs(values):
+def tree_depth_bfs(values):
     return depth_iterative(build_tree(values))
 
 
-SOLUTIONS = [depth_main, depth_bfs]
+SOLUTIONS = [tree_depth, tree_depth_bfs]
 EXAMPLES = [
     (([3, 9, 20, None, None, 15, 7],), 3),
     (([],), 0),

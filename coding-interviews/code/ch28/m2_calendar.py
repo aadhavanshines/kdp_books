@@ -20,12 +20,12 @@ class Calendar:
         return True
 
 
-def run_main(requests):
+def calendar_session(requests):
     cal = Calendar()
     return [cal.book(s, e) for s, e in requests]
 
 
-def run_brute(requests):
+def calendar_session_brute(requests):
     booked, out = [], []
     for s, e in requests:
         ok = all(e <= bs or be <= s for bs, be in booked)
@@ -35,7 +35,7 @@ def run_brute(requests):
     return out
 
 
-SOLUTIONS = [run_main, run_brute]
+SOLUTIONS = [calendar_session, calendar_session_brute]
 EXAMPLES = [(([(10, 20), (15, 25), (20, 30)],), [True, False, True])]
 
 

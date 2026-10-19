@@ -1,0 +1,16 @@
+>>> parse_duration('1h30m')
+5400
+>>> parse_duration('45s')
+45
+>>> parse_duration('2h5s')
+7205
+>>> parse_duration('')
+'error'
+>>> parse_duration('5m1h')
+'error'
+>>> parse_duration('10')
+'error'
+>>> parse_duration('1h1h')
+'error'
+>>> parse_duration('h')
+'error'

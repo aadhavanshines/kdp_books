@@ -26,15 +26,15 @@ def run(values, fn):
     return list_values(fn(build_list(values)))
 
 
-def reverse_main(values):
+def reversed_values(values):
     return run(values, reverse_list)
 
 
-def reverse_rec(values):
+def reversed_values_rec(values):
     return run(values, reverse_list_recursive)
 
 
-SOLUTIONS = [reverse_main, reverse_rec]
+SOLUTIONS = [reversed_values, reversed_values_rec]
 EXAMPLES = [(([1, 2, 3, 4],), [4, 3, 2, 1]), (([],), []), (([7],), [7])]
 
 

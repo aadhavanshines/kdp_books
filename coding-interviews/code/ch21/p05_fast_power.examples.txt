@@ -1,0 +1,6 @@
+>>> fast_power(2, 10, 1000)
+24
+>>> fast_power(3, 0, 7)
+1
+>>> fast_power(5, 3, 1)
+0

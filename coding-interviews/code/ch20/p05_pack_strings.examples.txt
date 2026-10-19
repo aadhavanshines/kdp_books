@@ -1,0 +1,4 @@
+>>> pack_and_unpack(['hello', '', 'a:b', '12:'])
+['hello', '', 'a:b', '12:']
+>>> pack_and_unpack([])
+[]

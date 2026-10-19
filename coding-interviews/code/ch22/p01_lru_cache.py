@@ -73,15 +73,15 @@ def run(cls, capacity, ops):
     return out
 
 
-def run_main(capacity, ops):
+def lru_session(capacity, ops):
     return run(LRUCache, capacity, ops)
 
 
-def run_ordered(capacity, ops):
+def lru_session_ordered(capacity, ops):
     return run(LRUCacheOrdered, capacity, ops)
 
 
-SOLUTIONS = [run_main, run_ordered]
+SOLUTIONS = [lru_session, lru_session_ordered]
 EXAMPLES = [
     (
         (

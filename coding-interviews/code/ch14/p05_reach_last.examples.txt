@@ -1,0 +1,6 @@
+>>> reach_last([2, 3, 1, 1, 4])
+True
+>>> reach_last([3, 2, 1, 0, 4])
+False
+>>> reach_last([0])
+True

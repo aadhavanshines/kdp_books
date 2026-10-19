@@ -1,0 +1,6 @@
+>>> shared('abcde', 'ace')
+3
+>>> shared('abc', 'def')
+0
+>>> shared('', 'x')
+0

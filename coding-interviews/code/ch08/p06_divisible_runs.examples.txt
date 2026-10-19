@@ -1,0 +1,6 @@
+>>> divisible_runs([4, 5, 0, -2, -3, 1], 5)
+7
+>>> divisible_runs([5], 9)
+0
+>>> divisible_runs([], 3)
+0

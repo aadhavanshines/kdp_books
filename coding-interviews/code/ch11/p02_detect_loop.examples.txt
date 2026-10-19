@@ -1,0 +1,8 @@
+>>> loop_exists([3, 2, 0, -4], 1)
+True
+>>> loop_exists([1, 2], -1)
+False
+>>> loop_exists([1], 0)
+True
+>>> loop_exists([], -1)
+False

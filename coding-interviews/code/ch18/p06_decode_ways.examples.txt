@@ -1,0 +1,10 @@
+>>> decode_ways('12')
+2
+>>> decode_ways('226')
+3
+>>> decode_ways('06')
+0
+>>> decode_ways('10')
+1
+>>> decode_ways('')
+0

@@ -1,0 +1,5 @@
+>>> join_tables(
+...     'order_id,customer_id,amount\n3,c2,9.50\n1,c1,20\n2,c9,5\n',
+...     'customer_id,name\nc1,Asha\nc2,"Lee, Jordan"\n',
+... )
+[(1, 'Asha', 20.0), (2, 'UNKNOWN', 5.0), (3, 'Lee, Jordan', 9.5)]

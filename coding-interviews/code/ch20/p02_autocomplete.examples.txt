@@ -1,0 +1,9 @@
+>>> autocomplete(
+...     ['mobile', 'mouse', 'moneypot', 'monitor', 'mousepad'],
+...     'mou',
+... )
+[['mobile', 'moneypot', 'monitor'],
+ ['mobile', 'moneypot', 'monitor'],
+ ['mouse', 'mousepad']]
+>>> autocomplete(['a'], 'b')
+[[]]

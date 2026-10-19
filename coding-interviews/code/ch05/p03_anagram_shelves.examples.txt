@@ -1,0 +1,8 @@
+>>> anagram_shelves(
+...     ['listen', 'enlist', 'google', 'silent', 'elgoog', 'cat'],
+... )
+[['listen', 'enlist', 'silent'], ['google', 'elgoog'], ['cat']]
+>>> anagram_shelves([])
+[]
+>>> anagram_shelves(['', ''])
+[['', '']]

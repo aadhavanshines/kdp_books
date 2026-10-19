@@ -34,7 +34,7 @@ def deserialize(text):
     return build()
 
 
-def round_trip(values):
+def save_and_restore(values):
     return tree_values(deserialize(serialize(build_tree(values))))
 
 
@@ -42,7 +42,7 @@ def identity(values):
     return tree_values(build_tree(values))
 
 
-SOLUTIONS = [round_trip, identity]
+SOLUTIONS = [save_and_restore, identity]
 EXAMPLES = [
     (([1, 2, 3, None, None, 4, 5],), [1, 2, 3, None, None, 4, 5]),
     (([],), []),

@@ -15,7 +15,7 @@ def remove_from_end(head, k):
     return dummy.next
 
 
-def remove_main(values, k):
+def removed_values(values, k):
     return list_values(remove_from_end(build_list(values), k))
 
 
@@ -25,7 +25,7 @@ def remove_brute(values, k):
     return values
 
 
-SOLUTIONS = [remove_main, remove_brute]
+SOLUTIONS = [removed_values, remove_brute]
 EXAMPLES = [
     (([1, 2, 3, 4, 5], 2), [1, 2, 3, 5]),
     (([1], 1), []),

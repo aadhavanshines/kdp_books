@@ -1,0 +1,10 @@
+>>> balanced('f(a[i]) {}')
+True
+>>> balanced('([)]')
+False
+>>> balanced('((')
+False
+>>> balanced('')
+True
+>>> balanced(')(')
+False

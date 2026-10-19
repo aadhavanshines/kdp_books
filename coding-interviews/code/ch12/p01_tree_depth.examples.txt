@@ -1,0 +1,6 @@
+>>> tree_depth([3, 9, 20, None, None, 15, 7])
+3
+>>> tree_depth([])
+0
+>>> tree_depth([1, None, 2, None, 3])
+3

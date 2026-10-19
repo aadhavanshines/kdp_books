@@ -1,0 +1,10 @@
+>>> same_pattern('paper', 'title')
+True
+>>> same_pattern('foo', 'bar')
+False
+>>> same_pattern('ab', 'aa')
+False
+>>> same_pattern('', '')
+True
+>>> same_pattern('abc', 'ab')
+False

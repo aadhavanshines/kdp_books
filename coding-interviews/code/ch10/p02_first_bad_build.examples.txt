@@ -1,0 +1,6 @@
+>>> find_first_bad(10, 7)
+7
+>>> find_first_bad(1, 1)
+1
+>>> find_first_bad(5, 99)
+-1

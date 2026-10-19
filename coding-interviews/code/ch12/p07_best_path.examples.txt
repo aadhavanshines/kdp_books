@@ -1,0 +1,6 @@
+>>> best_path_sum([-10, 9, 20, None, None, 15, 7])
+42
+>>> best_path_sum([1, 2, 3])
+6
+>>> best_path_sum([-3])
+-3

@@ -1,0 +1,6 @@
+>>> split_words('applepenapple', ['apple', 'pen'])
+True
+>>> split_words('catsandog', ['cats', 'dog', 'sand', 'and', 'cat'])
+False
+>>> split_words('', ['a'])
+True

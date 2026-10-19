@@ -28,7 +28,7 @@ class Trie:
         return bool(node)  # an empty node means no word goes this way
 
 
-def run_ops(ops):
+def trie_session(ops):
     t, out = Trie(), []
     for op, arg in ops:
         if op == "add":
@@ -40,7 +40,7 @@ def run_ops(ops):
     return out
 
 
-def run_ops_brute(ops):
+def set_session(ops):
     words, out = set(), []
     for op, arg in ops:
         if op == "add":
@@ -52,7 +52,7 @@ def run_ops_brute(ops):
     return out
 
 
-SOLUTIONS = [run_ops, run_ops_brute]
+SOLUTIONS = [trie_session, set_session]
 EXAMPLES = [
     (
         (

@@ -1,0 +1,8 @@
+>>> fewest_coins([1, 2, 5], 11)
+3
+>>> fewest_coins([2], 3)
+-1
+>>> fewest_coins([1], 0)
+0
+>>> fewest_coins([1, 3, 4], 6)
+2

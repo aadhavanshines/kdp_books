@@ -31,7 +31,7 @@ def flatten_gen(nested):
             yield item
 
 
-def flatten_main(nested):
+def flatten(nested):
     return list(Flattener(nested))
 
 
@@ -39,7 +39,7 @@ def flatten_recursive(nested):
     return list(flatten_gen(nested))
 
 
-SOLUTIONS = [flatten_main, flatten_recursive]
+SOLUTIONS = [flatten, flatten_recursive]
 EXAMPLES = [(([1, [2, [3, []]], 4],), [1, 2, 3, 4]), (([[], [[]]],), [])]
 
 

@@ -1,0 +1,9 @@
+>>> trie_session(
+...     [('add', 'apple'),
+...      ('word', 'apple'),
+...      ('word', 'app'),
+...      ('prefix', 'app'),
+...      ('add', 'app'),
+...      ('word', 'app')],
+... )
+[True, False, True, True]

@@ -1,0 +1,8 @@
+>>> repaint('RRGRBB', 1)
+4
+>>> repaint('AABABBA', 1)
+4
+>>> repaint('', 2)
+0
+>>> repaint('ABC', 0)
+1

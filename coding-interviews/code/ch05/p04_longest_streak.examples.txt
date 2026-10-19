@@ -1,0 +1,8 @@
+>>> longest_streak([5, 2, 99, 3, 4, 100])
+4
+>>> longest_streak([])
+0
+>>> longest_streak([7, 7, 7])
+1
+>>> longest_streak([-1, 0, 1])
+3

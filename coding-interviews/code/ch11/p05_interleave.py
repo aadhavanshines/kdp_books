@@ -24,7 +24,7 @@ def interleave(head):
     return head
 
 
-def interleave_main(values):
+def interleaved_values(values):
     return list_values(interleave(build_list(values)))
 
 
@@ -38,7 +38,7 @@ def interleave_brute(values):
     return out
 
 
-SOLUTIONS = [interleave_main, interleave_brute]
+SOLUTIONS = [interleaved_values, interleave_brute]
 EXAMPLES = [
     (([1, 2, 3, 4, 5],), [1, 5, 2, 4, 3]),
     (([1, 2, 3, 4],), [1, 4, 2, 3]),

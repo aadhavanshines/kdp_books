@@ -1,0 +1,10 @@
+>>> is_palindrome('Step on no pets!')
+True
+>>> is_palindrome('Race-car 7')
+False
+>>> is_palindrome('')
+True
+>>> is_palindrome(' ,. ')
+True
+>>> is_palindrome('A1b1a')
+True

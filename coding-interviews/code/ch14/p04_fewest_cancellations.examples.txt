@@ -1,0 +1,6 @@
+>>> fewest_cancellations([[1, 2], [2, 3], [3, 4], [1, 3]])
+1
+>>> fewest_cancellations([[1, 2], [1, 2], [1, 2]])
+2
+>>> fewest_cancellations([])
+0

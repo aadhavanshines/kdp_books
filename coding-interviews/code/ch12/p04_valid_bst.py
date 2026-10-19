@@ -27,15 +27,15 @@ def valid_bst_inorder(root):
     return all(a < b for a, b in zip(values, values[1:]))
 
 
-def valid_main(values):
+def is_search_tree(values):
     return valid_bst(build_tree(values))
 
 
-def valid_inorder(values):
+def is_search_tree_inorder(values):
     return valid_bst_inorder(build_tree(values))
 
 
-SOLUTIONS = [valid_main, valid_inorder]
+SOLUTIONS = [is_search_tree, is_search_tree_inorder]
 EXAMPLES = [
     (([5, 3, 8, 1, 4, 7, 9],), True),
     (([5, 3, 8, 1, 6],), False),  # 6 is left of 5 but bigger
