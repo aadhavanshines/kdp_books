@@ -1,0 +1,5 @@
+E1
+C1
+580
+error: station Museum is full
+300
