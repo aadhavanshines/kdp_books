@@ -136,7 +136,8 @@ def parse_blocks(text, root=None):
             rows = []
             while i < n and lines[i].strip().startswith("|"):
                 row = lines[i].strip().strip("|")
-                cells = [c.strip() for c in row.split("|")]
+                # "\|" is a literal pipe inside a cell, as in GitHub tables.
+                cells = [c.strip().replace("\\|", "|") for c in re.split(r"(?<!\\)\|", row)]
                 if not all(re.match(r"^:?-+:?$", c) for c in cells):
                     rows.append(cells)
                 i += 1
