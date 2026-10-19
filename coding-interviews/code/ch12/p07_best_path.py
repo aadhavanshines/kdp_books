@@ -60,8 +60,8 @@ def best_path_sum_brute(values):
 
 SOLUTIONS = [best_path_sum, best_path_sum_brute]
 EXAMPLES = [
-    (([-10, 9, 20, None, None, 15, 7],), 42),
-    (([1, 2, 3],), 6),
+    (([-6, 4, 9, None, None, 7, 5],), 21),
+    (([2, -1, 3],), 5),
     (([-3],), -3),
 ]
 

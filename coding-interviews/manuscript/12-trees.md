@@ -8,7 +8,7 @@ A binary tree is a set of nodes in which each node has at most two children, a l
 @include code/common/structures.py::TreeNode
 ```
 
-The examples describe trees in level order, with `None` for missing children, the format most interview platforms use. `[3, 9, 20, None, None, 15, 7]` is a root 3 with children 9 and 20; 9 has no children; 20 has children 15 and 7. Two helpers, `build_tree` and `tree_values`, convert between this format and nodes.
+The examples describe trees in level order, with `None` for missing children, the format most interview platforms use. `[8, 4, 12, None, 6, 10]` is a root 8 with children 4 and 12; 4 has no left child and a right child 6; 12 has a left child 10. Two helpers, `build_tree` and `tree_values`, convert between this format and nodes.
 
 ## When to Use Which Traversal
 

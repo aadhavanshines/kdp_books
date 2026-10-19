@@ -47,10 +47,10 @@ SOLUTIONS = [board_words, board_words_brute]
 EXAMPLES = [
     (
         (
-            [list("oaan"), list("etae"), list("ihkr"), list("iflv")],
-            ["oath", "pea", "eat", "rain"],
+            [list("cart"), list("aoen"), list("tpis")],
+            ["cat", "cap", "pie", "rent", "spin"],
         ),
-        ["eat", "oath"],
+        ["cat", "pie", "rent"],
     ),
 ]
 

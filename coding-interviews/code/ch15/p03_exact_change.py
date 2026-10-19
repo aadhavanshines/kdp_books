@@ -39,7 +39,7 @@ def exact_change_brute(coins, amount):
 
 SOLUTIONS = [exact_change, exact_change_brute]
 EXAMPLES = [
-    (([2, 3, 6, 7], 7), [[2, 2, 3], [7]]),
+    (([2, 5, 3], 8), [[2, 2, 2, 2], [2, 3, 3], [3, 5]]),
     (([2], 1), []),
     (([5], 0), [[]]),
 ]

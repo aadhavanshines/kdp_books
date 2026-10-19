@@ -30,8 +30,8 @@ def shared_start_lib(strings):
 
 SOLUTIONS = [shared_start, shared_start_minmax, shared_start_lib]
 EXAMPLES = [
-    ((["flower", "flow", "flight"],), "fl"),
-    ((["dog", "car"],), ""),
+    ((["interview", "internet", "interval"],), "inter"),
+    ((["cat", "dog"],), ""),
     (([],), ""),
     ((["solo"],), "solo"),
 ]

@@ -35,7 +35,7 @@ def tree_depth_bfs(values):
 
 SOLUTIONS = [tree_depth, tree_depth_bfs]
 EXAMPLES = [
-    (([3, 9, 20, None, None, 15, 7],), 3),
+    (([8, 4, 12, None, 6, 10],), 3),
     (([],), 0),
     (([1, None, 2, None, 3],), 3),
 ]

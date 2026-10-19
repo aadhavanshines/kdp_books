@@ -1,6 +1,6 @@
->>> no_neighbours('aab')
-'aba'
->>> no_neighbours('aaab')
+>>> no_neighbours('ppa')
+'pap'
+>>> no_neighbours('pppa')
 ''
 >>> no_neighbours('')
 ''

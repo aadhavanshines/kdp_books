@@ -59,8 +59,8 @@ def spreading_mould_simulate(tray):
 
 SOLUTIONS = [spreading_mould, spreading_mould_simulate]
 EXAMPLES = [
-    (([[2, 1, 1], [1, 1, 0], [0, 1, 1]],), 4),
-    (([[2, 1, 1], [0, 1, 1], [1, 0, 1]],), -1),
+    (([[1, 1, 0, 2], [0, 1, 1, 1], [0, 0, 0, 1]],), 5),
+    (([[2, 1, 0], [0, 0, 1]],), -1),
     (([[0, 2]],), 0),
 ]
 

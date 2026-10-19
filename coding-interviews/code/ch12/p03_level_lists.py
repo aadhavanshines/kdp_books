@@ -48,7 +48,7 @@ def level_lists_dfs(values):
 
 SOLUTIONS = [level_lists, level_lists_dfs]
 EXAMPLES = [
-    (([3, 9, 20, None, None, 15, 7],), [[3], [9, 20], [15, 7]]),
+    (([8, 4, 12, None, 6, 10],), [[8], [4, 12], [6, 10]]),
     (([],), []),
 ]
 

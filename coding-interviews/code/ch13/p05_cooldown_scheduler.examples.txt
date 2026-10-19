@@ -1,6 +1,6 @@
->>> cooldown(['A', 'A', 'A', 'B', 'B', 'B'], 2)
-8
->>> cooldown(['A', 'A', 'A', 'B', 'B', 'B'], 0)
+>>> cooldown(['X', 'X', 'X', 'Y', 'Z', 'Z'], 3)
+9
+>>> cooldown(['X', 'X', 'X', 'Y', 'Z', 'Z'], 0)
 6
 >>> cooldown(['A', 'B', 'C', 'A'], 3)
 5

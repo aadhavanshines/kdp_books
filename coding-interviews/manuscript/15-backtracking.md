@@ -68,7 +68,7 @@ Given distinct coin values, which may each be used any number of times, list all
 @include code/ch15/p03_exact_change.examples.txt
 ```
 
-**Think first:** How do you avoid listing both [2, 2, 3] and [3, 2, 2]?
+**Think first:** How do you avoid listing both [2, 3, 3] and [3, 2, 3]?
 
 **The idea.** Only allow coins in non-decreasing order: after choosing coin i, the next choice starts from i again (reuse is allowed), never from an earlier coin. Sorting the coins lets the loop stop as soon as a coin is too big.
 

@@ -1,5 +1,5 @@
->>> charging_loop([1, 2, 3, 4, 5], [3, 4, 5, 1, 2])
-3
+>>> charging_loop([2, 6, 1, 4], [3, 2, 5, 2])
+1
 >>> charging_loop([2, 3, 4], [3, 4, 3])
 -1
 >>> charging_loop([5], [5])

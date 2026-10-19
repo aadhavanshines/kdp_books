@@ -20,7 +20,7 @@ def missing_ticket_set(tickets):
 
 
 SOLUTIONS = [missing_ticket, missing_ticket_xor, missing_ticket_set]
-EXAMPLES = [(([3, 0, 1],), 2), (([0],), 1), (([],), 0)]
+EXAMPLES = [(([4, 0, 1, 3, 5],), 2), (([0],), 1), (([],), 0)]
 
 
 def random_case(rng):

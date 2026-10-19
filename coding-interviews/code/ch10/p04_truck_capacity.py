@@ -32,8 +32,8 @@ def truck_capacity(parcels, days):
 
 SOLUTIONS = [truck_capacity, truck_capacity_brute]
 EXAMPLES = [
-    (([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5), 15),
-    (([3, 2, 2, 4, 1, 4], 3), 6),
+    (([4, 8, 2, 6, 5, 3, 7, 1], 3), 13),
+    (([5, 5, 5, 5], 2), 10),
     (([7], 1), 7),
 ]
 

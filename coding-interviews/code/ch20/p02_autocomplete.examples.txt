@@ -1,9 +1,17 @@
 >>> autocomplete(
-...     ['mobile', 'mouse', 'moneypot', 'monitor', 'mousepad'],
-...     'mou',
+...     ['stapler', 'stand', 'stamp', 'stool', 'star', 'stack'],
+...     'sta',
 ... )
-[['mobile', 'moneypot', 'monitor'],
- ['mobile', 'moneypot', 'monitor'],
- ['mouse', 'mousepad']]
+[['stack', 'stamp', 'stand'],
+ ['stack', 'stamp', 'stand'],
+ ['stack', 'stamp', 'stand']]
+>>> autocomplete(
+...     ['stapler', 'stand', 'stamp', 'stool', 'star', 'stack'],
+...     'stap',
+... )
+[['stack', 'stamp', 'stand'],
+ ['stack', 'stamp', 'stand'],
+ ['stack', 'stamp', 'stand'],
+ ['stapler']]
 >>> autocomplete(['a'], 'b')
 [[]]

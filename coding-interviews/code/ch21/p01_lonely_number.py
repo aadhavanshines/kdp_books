@@ -22,7 +22,7 @@ def lonely_count(values):
 
 
 SOLUTIONS = [lonely, lonely_reduce, lonely_count]
-EXAMPLES = [(([4, 1, 2, 1, 2],), 4), (([7],), 7), (([-3, 5, 5],), -3)]
+EXAMPLES = [(([6, 3, 9, 3, 6],), 9), (([7],), 7), (([-3, 5, 5],), -3)]
 
 
 def random_case(rng):

@@ -26,11 +26,20 @@ def autocomplete_brute(products, typed):
 SOLUTIONS = [autocomplete, autocomplete_brute]
 EXAMPLES = [
     (
-        (["mobile", "mouse", "moneypot", "monitor", "mousepad"], "mou"),
+        (["stapler", "stand", "stamp", "stool", "star", "stack"], "sta"),
         [
-            ["mobile", "moneypot", "monitor"],
-            ["mobile", "moneypot", "monitor"],
-            ["mouse", "mousepad"],
+            ["stack", "stamp", "stand"],
+            ["stack", "stamp", "stand"],
+            ["stack", "stamp", "stand"],
+        ],
+    ),
+    (
+        (["stapler", "stand", "stamp", "stool", "star", "stack"], "stap"),
+        [
+            ["stack", "stamp", "stand"],
+            ["stack", "stamp", "stand"],
+            ["stack", "stamp", "stand"],
+            ["stapler"],
         ],
     ),
     ((["a"], "b"), [[]]),

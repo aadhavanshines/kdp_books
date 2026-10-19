@@ -33,7 +33,7 @@ def CHECK(args, result):
 
 
 SOLUTIONS = [no_neighbours]
-EXAMPLES = [(("aab",), "aba"), (("aaab",), ""), (("",), "")]
+EXAMPLES = [(("ppa",), "pap"), (("pppa",), ""), (("",), "")]
 
 
 def random_case(rng):

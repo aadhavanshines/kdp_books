@@ -23,8 +23,8 @@ def reach_last_brute(hops):
 
 SOLUTIONS = [reach_last, reach_last_brute]
 EXAMPLES = [
-    (([2, 3, 1, 1, 4],), True),
-    (([3, 2, 1, 0, 4],), False),
+    (([1, 3, 0, 1, 2, 0],), True),
+    (([2, 1, 0, 3],), False),
     (([0],), True),
 ]
 

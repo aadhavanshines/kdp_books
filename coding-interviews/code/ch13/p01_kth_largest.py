@@ -19,7 +19,7 @@ def kth_largest(scores, k):
 
 SOLUTIONS = [kth_largest, kth_largest_sort]
 EXAMPLES = [
-    (([3, 2, 1, 5, 6, 4], 2), 5),
+    (([71, 88, 64, 93, 88, 50], 3), 88),
     (([3, 2, 3, 1, 2, 4, 5, 5, 6], 4), 4),
     (([7], 1), 7),
 ]

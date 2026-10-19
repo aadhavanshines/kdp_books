@@ -32,7 +32,7 @@ def charging_loop(charge, cost):
 
 SOLUTIONS = [charging_loop, charging_loop_brute]
 EXAMPLES = [
-    (([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]), 3),
+    (([2, 6, 1, 4], [3, 2, 5, 2]), 1),
     (([2, 3, 4], [3, 4, 3]), -1),
     (([5], [5]), 0),
 ]

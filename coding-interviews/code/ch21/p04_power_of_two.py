@@ -38,5 +38,5 @@ def random_case(rng):
 
 def test():
     assert reverse_bits(0b1011) == 0b1101 << 28
-    for x in (0, 1, 43261596, 2**32 - 1):
+    for x in (0, 1, 123456789, 2**32 - 1):
         assert reverse_bits(x) == int(f"{x:032b}"[::-1], 2)

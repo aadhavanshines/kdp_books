@@ -32,8 +32,8 @@ def cooldown(tasks, n):
 
 SOLUTIONS = [cooldown, cooldown_simulate]
 EXAMPLES = [
-    ((["A", "A", "A", "B", "B", "B"], 2), 8),
-    ((["A", "A", "A", "B", "B", "B"], 0), 6),
+    ((["X", "X", "X", "Y", "Z", "Z"], 3), 9),
+    ((["X", "X", "X", "Y", "Z", "Z"], 0), 6),
     ((["A", "B", "C", "A"], 3), 5),
 ]
 

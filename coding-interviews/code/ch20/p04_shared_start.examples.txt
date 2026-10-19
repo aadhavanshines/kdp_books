@@ -1,6 +1,6 @@
->>> shared_start(['flower', 'flow', 'flight'])
-'fl'
->>> shared_start(['dog', 'car'])
+>>> shared_start(['interview', 'internet', 'interval'])
+'inter'
+>>> shared_start(['cat', 'dog'])
 ''
 >>> shared_start([])
 ''

@@ -57,12 +57,12 @@ EXAMPLES = [
     (
         (
             [
-                ("add", "apple"),
-                ("word", "apple"),
-                ("word", "app"),
-                ("prefix", "app"),
-                ("add", "app"),
-                ("word", "app"),
+                ("add", "rocket"),
+                ("word", "rocket"),
+                ("word", "rock"),
+                ("prefix", "rock"),
+                ("add", "rock"),
+                ("word", "rock"),
             ],
         ),
         [True, False, True, True],
