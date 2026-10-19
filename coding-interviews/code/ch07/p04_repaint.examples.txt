@@ -1,7 +1,7 @@
 >>> repaint('RRGRBB', 1)
 4
->>> repaint('AABABBA', 1)
-4
+>>> repaint('ABBBAB', 1)
+5
 >>> repaint('', 2)
 0
 >>> repaint('ABC', 0)

@@ -30,8 +30,8 @@ def split_words_memo(text, words):
 
 SOLUTIONS = [split_words, split_words_memo]
 EXAMPLES = [
-    (("applepenapple", ["apple", "pen"]), True),
-    (("catsandog", ["cats", "dog", "sand", "and", "cat"]), False),
+    (("sunflowerseed", ["sun", "flower", "flowers", "seed"]), True),
+    (("parkingspace", ["park", "parking", "king", "spa"]), False),
     (("", ["a"]), True),
 ]
 

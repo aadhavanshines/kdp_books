@@ -1,7 +1,7 @@
 >>> decode_ways('12')
 2
->>> decode_ways('226')
-3
+>>> decode_ways('2611')
+4
 >>> decode_ways('06')
 0
 >>> decode_ways('10')

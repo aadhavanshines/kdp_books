@@ -1,5 +1,5 @@
->>> longest_unique('abcabcbb')
-3
+>>> longest_unique('launchpad')
+7
 >>> longest_unique('bbbb')
 1
 >>> longest_unique('')

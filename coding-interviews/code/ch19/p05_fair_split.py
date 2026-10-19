@@ -34,8 +34,8 @@ def fair_split_brute(weights):
 
 SOLUTIONS = [fair_split, fair_split_bits, fair_split_brute]
 EXAMPLES = [
-    (([1, 5, 11, 5],), True),
-    (([1, 2, 3, 5],), False),
+    (([3, 1, 4, 2, 2],), True),
+    (([1, 2, 4, 9],), False),
     (([],), True),
 ]
 

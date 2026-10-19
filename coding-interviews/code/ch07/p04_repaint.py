@@ -31,7 +31,7 @@ def repaint(boards, k):
 SOLUTIONS = [repaint, repaint_brute]
 EXAMPLES = [
     (("RRGRBB", 1), 4),
-    (("AABABBA", 1), 4),
+    (("ABBBAB", 1), 5),
     (("", 2), 0),
     (("ABC", 0), 1),
 ]

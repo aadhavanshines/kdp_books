@@ -1,7 +1,7 @@
->>> longest_mirror('babad')
-'bab'
->>> longest_mirror('cbbd')
-'bb'
+>>> longest_mirror('noonday')
+'noon'
+>>> longest_mirror('xyz')
+'x'
 >>> longest_mirror('')
 ''
 >>> longest_mirror('a')

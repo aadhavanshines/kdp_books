@@ -28,7 +28,7 @@ def fewest_coins_memo(coins, amount):
 
 SOLUTIONS = [fewest_coins, fewest_coins_memo]
 EXAMPLES = [
-    (([1, 2, 5], 11), 3),
+    (([1, 5, 10, 25], 63), 6),
     (([2], 3), -1),
     (([1], 0), 0),
     (([1, 3, 4], 6), 2),

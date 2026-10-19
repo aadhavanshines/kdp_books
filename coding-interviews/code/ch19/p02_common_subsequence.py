@@ -29,7 +29,7 @@ def shared_memo(a, b):
 
 
 SOLUTIONS = [shared, shared_memo]
-EXAMPLES = [(("abcde", "ace"), 3), (("abc", "def"), 0), (("", "x"), 0)]
+EXAMPLES = [(("dynamic", "drama"), 3), (("abc", "def"), 0), (("", "x"), 0)]
 
 
 def random_case(rng):

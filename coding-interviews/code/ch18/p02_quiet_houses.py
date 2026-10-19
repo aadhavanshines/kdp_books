@@ -20,7 +20,11 @@ def quiet_street_brute(gifts):
 
 
 SOLUTIONS = [quiet_street, quiet_street_brute]
-EXAMPLES = [(([2, 7, 9, 3, 1],), 12), (([],), 0), (([5, 1, 1, 5],), 10)]
+EXAMPLES = [
+    (([4, 1, 2, 7, 5, 3, 1],), 14),
+    (([],), 0),
+    (([5, 1, 1, 5],), 10),
+]
 
 
 def random_case(rng):

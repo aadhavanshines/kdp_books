@@ -26,7 +26,7 @@ def rising(values):
 
 SOLUTIONS = [rising, rising_quadratic]
 EXAMPLES = [
-    (([10, 9, 2, 5, 3, 7, 101, 18],), 4),
+    (([3, 8, 4, 5, 1, 9, 6, 7],), 5),
     (([7, 7, 7],), 1),
     (([],), 0),
 ]

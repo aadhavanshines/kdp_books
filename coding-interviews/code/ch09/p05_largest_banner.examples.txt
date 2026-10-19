@@ -1,5 +1,5 @@
->>> largest_banner([2, 1, 5, 6, 2, 3])
-10
+>>> largest_banner([2, 4, 5, 3, 1, 3])
+9
 >>> largest_banner([4])
 4
 >>> largest_banner([])

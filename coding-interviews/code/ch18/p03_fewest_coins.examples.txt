@@ -1,5 +1,5 @@
->>> fewest_coins([1, 2, 5], 11)
-3
+>>> fewest_coins([1, 5, 10, 25], 63)
+6
 >>> fewest_coins([2], 3)
 -1
 >>> fewest_coins([1], 0)

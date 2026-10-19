@@ -1,5 +1,5 @@
->>> smallest_cover('ADOBECODEBANC', 'ABC')
-'BANC'
+>>> smallest_cover('PLANETARY', 'TAN')
+'ANET'
 >>> smallest_cover('a', 'aa')
 ''
 >>> smallest_cover('aa', 'aa')

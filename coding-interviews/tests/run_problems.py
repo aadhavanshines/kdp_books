@@ -10,6 +10,7 @@ Each problem module may define:
 
 Usage: python tests/run_problems.py [-k substring] [--cases N]
 """
+
 import argparse
 import copy
 import importlib.util
@@ -45,7 +46,9 @@ def check_module(mod, cases):
             got = call(fn, args)
             ok = check(args, got) if check else got == expected
             if not ok:
-                problems.append(f"{fn.__name__}{args!r}: expected {expected!r}, got {got!r}")
+                problems.append(
+                    f"{fn.__name__}{args!r}: expected {expected!r}, got {got!r}"
+                )
     gen = getattr(mod, "random_case", None)
     if gen and sols:
         rng = random.Random(1234)
@@ -55,12 +58,16 @@ def check_module(mod, cases):
             if check:
                 for fn, r in zip(sols, results):
                     if not check(args, r):
-                        problems.append(f"random {fn.__name__}{args!r}: invalid {r!r}")
+                        problems.append(
+                            f"random {fn.__name__}{args!r}: invalid {r!r}"
+                        )
                         break
             ref = norm(results[0])
             for fn, r in zip(sols[1:], results[1:]):
                 if not check and norm(r) != ref:
-                    problems.append(f"random {fn.__name__}{args!r}: {r!r} != {results[0]!r}")
+                    problems.append(
+                        f"random {fn.__name__}{args!r}: {r!r} != {results[0]!r}"
+                    )
                     break
             if problems:
                 break

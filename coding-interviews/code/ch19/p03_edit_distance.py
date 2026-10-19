@@ -15,8 +15,8 @@ def typo_distance(a, b):
                 cur[j] = 1 + min(
                     prev[j],  # delete a[i-1]
                     cur[j - 1],  # insert b[j-1]
-                    prev[j - 1],
-                )  # replace
+                    prev[j - 1],  # replace
+                )
         prev = cur
     return prev[len(b)]
 
@@ -37,8 +37,8 @@ def typo_distance_memo(a, b):
 
 SOLUTIONS = [typo_distance, typo_distance_memo]
 EXAMPLES = [
-    (("horse", "ros"), 3),
-    (("intention", "execution"), 5),
+    (("rocket", "pocket"), 1),
+    (("launch", "lunches"), 3),
     (("", "abc"), 3),
     (("same", "same"), 0),
 ]

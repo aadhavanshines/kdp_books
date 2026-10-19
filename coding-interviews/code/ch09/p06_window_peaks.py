@@ -23,7 +23,7 @@ def window_peaks(values, k):
 
 SOLUTIONS = [window_peaks, window_peaks_brute]
 EXAMPLES = [
-    (([1, 3, -1, -3, 5, 3, 6, 7], 3), [3, 3, 5, 5, 6, 7]),
+    (([4, 2, 12, 3, 8, 1, 5], 3), [12, 12, 12, 8, 8]),
     (([4], 1), [4]),
     (([2, 2, 2], 2), [2, 2]),
 ]

@@ -31,7 +31,7 @@ def decode_ways_brute(digits):
 SOLUTIONS = [decode_ways, decode_ways_brute]
 EXAMPLES = [
     (("12",), 2),
-    (("226",), 3),
+    (("2611",), 4),
     (("06",), 0),
     (("10",), 1),
     (("",), 0),

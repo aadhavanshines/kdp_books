@@ -1,5 +1,5 @@
->>> quiet_street([2, 7, 9, 3, 1])
-12
+>>> quiet_street([4, 1, 2, 7, 5, 3, 1])
+14
 >>> quiet_street([])
 0
 >>> quiet_street([5, 1, 1, 5])

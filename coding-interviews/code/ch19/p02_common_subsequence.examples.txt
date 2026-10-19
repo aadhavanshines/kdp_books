@@ -1,4 +1,4 @@
->>> shared('abcde', 'ace')
+>>> shared('dynamic', 'drama')
 3
 >>> shared('abc', 'def')
 0

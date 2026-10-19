@@ -25,7 +25,7 @@ def longest_unique(s):
 
 SOLUTIONS = [longest_unique, longest_unique_brute]
 EXAMPLES = [
-    (("abcabcbb",), 3),
+    (("launchpad",), 7),
     (("bbbb",), 1),
     (("",), 0),
     (("dvdf",), 3),

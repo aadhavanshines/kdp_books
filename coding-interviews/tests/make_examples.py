@@ -12,6 +12,7 @@ function also get <name>.demo.txt holding what demo() prints.
 
 Usage: python tests/make_examples.py [--check]   (--check: fail if stale)
 """
+
 import contextlib
 import copy
 import io
@@ -60,7 +61,9 @@ def main():
         mod = load(path)
         targets = []
         if getattr(mod, "EXAMPLES", None) and mod.SOLUTIONS:
-            targets.append((path.with_suffix(".examples.txt"), session(mod)))
+            targets.append(
+                (path.with_suffix(".examples.txt"), session(mod))
+            )
         if hasattr(mod, "demo"):
             buf = io.StringIO()
             with contextlib.redirect_stdout(buf):

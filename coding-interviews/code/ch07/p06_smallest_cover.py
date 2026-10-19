@@ -45,7 +45,7 @@ def smallest_cover(text, needed):
 
 SOLUTIONS = [smallest_cover, smallest_cover_brute]
 EXAMPLES = [
-    (("ADOBECODEBANC", "ABC"), "BANC"),
+    (("PLANETARY", "TAN"), "ANET"),
     (("a", "aa"), ""),
     (("aa", "aa"), "aa"),
     (("xyz", ""), ""),

@@ -27,7 +27,7 @@ def largest_banner(heights):
 
 SOLUTIONS = [largest_banner, largest_banner_brute]
 EXAMPLES = [
-    (([2, 1, 5, 6, 2, 3],), 10),
+    (([2, 4, 5, 3, 1, 3],), 9),
     (([4],), 4),
     (([],), 0),
     (([3, 3, 3],), 9),

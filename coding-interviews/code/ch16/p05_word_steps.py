@@ -49,8 +49,8 @@ def word_steps_pairs(start, goal, words):
 
 SOLUTIONS = [word_steps, word_steps_pairs]
 EXAMPLES = [
-    (("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]), 5),
-    (("hit", "cog", ["hot", "dot", "dog", "lot", "log"]), 0),
+    (("cat", "dog", ["cot", "cut", "cog", "dot", "dog"]), 4),
+    (("cat", "dog", ["cut", "cog", "dot", "dog"]), 0),
     (("aa", "aa", ["aa"]), 1),
 ]
 

@@ -1,6 +1,6 @@
->>> fair_split([1, 5, 11, 5])
+>>> fair_split([3, 1, 4, 2, 2])
 True
->>> fair_split([1, 2, 3, 5])
+>>> fair_split([1, 2, 4, 9])
 False
 >>> fair_split([])
 True

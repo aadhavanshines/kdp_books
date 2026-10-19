@@ -1,6 +1,6 @@
->>> word_steps('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log', 'cog'])
-5
->>> word_steps('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log'])
+>>> word_steps('cat', 'dog', ['cot', 'cut', 'cog', 'dot', 'dog'])
+4
+>>> word_steps('cat', 'dog', ['cut', 'cog', 'dot', 'dog'])
 0
 >>> word_steps('aa', 'aa', ['aa'])
 1

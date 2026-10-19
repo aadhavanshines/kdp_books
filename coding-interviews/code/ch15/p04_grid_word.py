@@ -53,11 +53,11 @@ def grid_word_paths(grid, word):
 
 
 SOLUTIONS = [grid_word, grid_word_paths]
-GRID = [list("ABCE"), list("SFCS"), list("ADEE")]
+GRID = [list("STAR"), list("POOL"), list("ENDS")]
 EXAMPLES = [
-    ((GRID, "ABCCED"), True),
-    ((GRID, "SEE"), True),
-    ((GRID, "ABCB"), False),
+    ((GRID, "STOP"), True),
+    ((GRID, "POOLS"), True),
+    ((GRID, "POOP"), False),
 ]
 
 

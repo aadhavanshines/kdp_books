@@ -34,8 +34,8 @@ def longest_mirror_brute(text):
 
 SOLUTIONS = [longest_mirror, longest_mirror_brute]
 EXAMPLES = [
-    (("babad",), "bab"),
-    (("cbbd",), "bb"),
+    (("noonday",), "noon"),
+    (("xyz",), "x"),
     (("",), ""),
     (("a",), "a"),
 ]
