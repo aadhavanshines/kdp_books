@@ -14,7 +14,7 @@ The **context window** is the amount of text a model can consider at once: the s
 | Gemini 1.5 Pro | 2024 | 1 million tokens, later 2 million |
 | Llama 4 Scout | 2025 | 10 million tokens |
 
-A million tokens is about 750,000 words: several long novels, an hour of video or a large codebase, all at once.
+As rough illustrations, a million tokens is about 750,000 words of English: several long novels, or a large codebase. Google said a million tokens could hold about an hour of video for Gemini 1.5, though how many tokens video takes depends on how a model encodes its frames and sound.
 
 > **Did You Know?** When Google introduced Gemini 1.5 in February 2024, it demonstrated a striking use of a long context. It gave the model a grammar book and dictionary for **Kalamang**, a language spoken by fewer than 200 people in western New Guinea, with almost no presence on the web. Using only those materials in its context, the model learned to translate English into Kalamang at a level similar to a person who had studied the same materials.
 
@@ -24,7 +24,7 @@ Chapter 7 explained that attention's cost grows with the square of the length: t
 
 ## Does the Model Actually Use It All?
 
-Having a long context isn't the same as using it well.
+Having a long context isn't the same as using it well. A published maximum is the most a model can accept, not a guarantee that it recalls everything in the window equally well.
 
 - **Needle in a haystack.** In 2023, the developer **Greg Kamradt** popularized a simple test: hide one odd sentence, such as a fact about the best thing to do in San Francisco, somewhere in a long document, and ask the model to find it. Early long-context models often missed needles in certain positions; modern models find them almost perfectly. But finding one sentence is much easier than understanding a whole book.
 - **Lost in the middle.** In 2023, **Nelson Liu** and colleagues at Stanford found that models used information at the beginning and end of a long context much better than information in the middle, a little like people remembering the start and end of a list.

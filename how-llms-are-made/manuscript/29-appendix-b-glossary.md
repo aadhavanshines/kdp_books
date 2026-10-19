@@ -166,7 +166,7 @@
 
 **TPU (Tensor Processing Unit).** Google's custom AI chip.
 
-**Transformer.** The neural network design, built on attention, behind nearly all modern language models.
+**Transformer.** The neural network design, built on attention, behind most modern language models, sometimes combined with other designs.
 
 **Validation.** The staged testing of a model, during training and before and after release, to confirm its skills and safety.
 

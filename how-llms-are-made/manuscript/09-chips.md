@@ -8,7 +8,7 @@ Chapter 6 ended with a number: training a frontier model takes around 10²⁵ ar
 
 The processor in your laptop, the **CPU**, is a brilliant generalist. It has a handful of powerful cores, each able to run complicated, unpredictable programs very quickly, one step after another.
 
-A language model doesn't need that. Almost all of its work is one simple operation repeated on an unimaginable scale: multiply lots of numbers together and add up the results. These multiplications don't depend on each other, so they can all be done at the same time. What the job needs is not a few brilliant workers but an army of simple ones working in parallel.
+A language model doesn't need that. Almost all of its work is one simple operation repeated on an unimaginable scale: multiply lots of numbers together and add up the results. Within each step, most of these multiplications don't depend on each other, so they can be done at the same time. (Each layer still has to wait for the one before it, and each generated word for the words before it, but the work inside each step is massively parallel.) What the job needs is not a few brilliant workers but an army of simple ones working in parallel.
 
 > **In Plain Words:** A CPU is like a few expert chefs who can cook anything. An AI chip is like a stadium full of people who can each only chop onions, but who all chop at once. For a mountain of onions, the stadium wins.
 
@@ -25,7 +25,7 @@ In 2006, NVIDIA released **CUDA**, a way for programmers to use GPUs for general
 Today's AI chips are far removed from gaming cards. NVIDIA's **H100**, the workhorse of the 2023-2025 AI boom, gives an idea of the scale:
 
 - **80 billion transistors**, the tiny switches that do the computing, packed onto a piece of silicon about the size of a postage stamp.
-- About **2,000 trillion operations per second** on the 8-bit numbers used in AI work, from thousands of cores and special "tensor cores" built just for multiplying grids of numbers.
+- A peak of about **2,000 trillion operations per second** on 8-bit numbers (NVIDIA's theoretical maximum; its headline figure of nearly 4,000 trillion assumes a shortcut called sparsity, and real workloads achieve less), from thousands of cores and special "tensor cores" built just for multiplying grids of numbers.
 - **80 GB of memory** right next to the chip, able to deliver 3.35 terabytes per second: the equivalent of about 700 DVDs every second.
 - Up to **700 watts** of power, as much as a microwave oven, from a single chip.
 
@@ -33,7 +33,7 @@ The tensor cores were a key turn. Starting in 2017, NVIDIA added circuits dedica
 
 ## A Decade of AI Chips
 
-NVIDIA has released a new generation of data-center GPU every two years or so, each named after a scientist. Here is how its flagship AI chips have grown:
+NVIDIA has released a new generation of data-center GPU every two years or so, each named after a scientist. Here is how its flagship AI chips have grown, using NVIDIA's published specifications for the top data-center version of each chip (Rubin's figures are as announced, before wide availability):
 
 | Chip (scientist) | Year | Transistors | Memory | Memory speed |
 | --- | --- | --- | --- | --- |
@@ -52,7 +52,7 @@ The V100 was the chip OpenAI used to train GPT-3; the A100 trained a generation 
 
 A surprising discovery helped speed up AI enormously: neural networks don't need very precise numbers. Scientific computing traditionally uses 64-bit or 32-bit numbers, with many digits of precision. AI training moved to 16-bit numbers around 2017 to 2018, and then to 8-bit numbers. NVIDIA's Blackwell chips (2024) support 4-bit numbers for some work.
 
-Halving the size of each number roughly doubles how many calculations a chip can do, and halves the memory needed. It's like doing rough mental arithmetic instead of working to ten decimal places. For predicting the next word, the rough answer is good enough, and it is vastly faster.
+Halving the size of each number halves the memory needed to store it, and on chips built to support the smaller format, it can roughly double the peak number of calculations per second; the real gain depends on the chip, the operation and the format. It's like doing rough mental arithmetic instead of working to ten decimal places. For predicting the next word, the rough answer is good enough, and it is vastly faster.
 
 ## The Memory Wall
 
@@ -70,7 +70,7 @@ The answer is **high-bandwidth memory (HBM)**: memory chips stacked on top of ea
 
 One chip is never enough. Training a frontier model requires thousands, or now hundreds of thousands, of chips working as one machine. They must constantly exchange results, so the connections between chips matter as much as the chips themselves.
 
-NVIDIA's **NVLink** connects chips within a server or rack at very high speed. The **GB200 NVL72**, introduced in 2024, joins 72 Blackwell GPUs and 36 of NVIDIA's own Grace CPUs into a single liquid-cooled rack that behaves like one giant GPU, with 130 terabytes per second of connection bandwidth, and draws around 120 kilowatts: the power of about a hundred homes, in one cabinet. Racks are then linked by high-speed networks of fiber-optic cables.
+NVIDIA's **NVLink** connects chips within a server or rack at very high speed. The **GB200 NVL72**, announced in 2024 and shipping to customers from early 2025, joins 72 Blackwell GPUs and 36 of NVIDIA's own Grace CPUs into a single liquid-cooled rack that behaves like one giant GPU, with 130 terabytes per second of connection bandwidth, and draws around 120 kilowatts: the power of about a hundred homes, in one cabinet. Racks are then linked by high-speed networks of fiber-optic cables.
 
 ## Not Only NVIDIA
 
@@ -90,7 +90,7 @@ To print features only a few dozen atoms wide, TSMC uses **extreme ultraviolet (
 
 > **Did You Know?** An EUV machine makes its light by firing a laser at tiny droplets of molten tin, about 50,000 of them every second, turning each into a plasma hotter than the surface of the Sun. The light it gives off, with a wavelength of 13.5 nanometers, is bounced off some of the smoothest mirrors ever made onto a silicon wafer. The newest "High-NA" model costs around $380 million, weighs about 150 tonnes, and ships in some 250 crates. It took ASML and its partners decades to make the technology work.
 
-This chain, with chips designed in America, made in Taiwan with Dutch machines, and memory from South Korea, is one of the most concentrated and strategically important supply chains in the world. That is why governments have become deeply involved. Since October 2022, the United States has restricted the sale of the most advanced AI chips and chipmaking tools to China. NVIDIA responded by designing slower versions for the Chinese market, such as the H800, which is what DeepSeek used to train its models (Chapter 22). China, in turn, is investing heavily in its own chips, such as Huawei's Ascend series.
+This chain, with chips designed in America, made in Taiwan with Dutch machines, and memory from South Korea, is one of the most concentrated and strategically important supply chains in the world. That is why governments have become deeply involved. Since October 2022, the United States has restricted the sale of the most advanced AI chips and chipmaking tools to China. NVIDIA responded by designing lower-performance versions for the Chinese market, such as the H800; DeepSeek's technical report states that its V3 model was trained on H800 chips (Chapter 22), though the hardware labs use can vary by model and training stage. China, in turn, is investing heavily in its own chips, such as Huawei's Ascend series.
 
 ## The Price of a Brain
 
@@ -121,4 +121,5 @@ And yet chips are only part of the story. To use them, you need a building, enor
 - US Department of Commerce, Bureau of Industry and Security, export controls on advanced computing and semiconductor manufacturing items, 7 October 2022 and later updates.
 - NVIDIA data-center GPU datasheets: V100, A100, H100, H200 and B200; NVIDIA, Rubin platform announcements, 2026 (Rubin memory figures as announced). nvidia.com/en-us/data-center
 - Tom B. Brown et al., "Language Models are Few-Shot Learners" (GPT-3 trained on V100 GPUs), 2020. arxiv.org/abs/2005.14165; Hugo Touvron et al., "LLaMA" (2,048 A100 GPUs), 2023. arxiv.org/abs/2302.13971
+- DeepSeek-AI, "DeepSeek-V3 Technical Report," 2024 (trained on 2,048 NVIDIA H800 GPUs). arxiv.org/abs/2412.19437
 - Chris Miller, *Chip War: The Fight for the World's Most Critical Technology* (Scribner, 2022), a readable history of the chip industry.

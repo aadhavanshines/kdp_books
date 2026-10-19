@@ -55,7 +55,7 @@ Think about what it takes to predict the next word in each of these:
 
 A model that has been trained to predict billions of sentences like these is pushed, step by tiny step, to build internal patterns that capture facts, grammar, logic, style and common sense, because those patterns make its predictions better. Nobody programs the facts in. They are absorbed, the way a child absorbs grammar without ever being taught the rules.
 
-Researchers sometimes describe this as **compression**. A model has far fewer numbers inside it than the text it was trained on contains letters. To predict that much text with that little space, it can't memorize everything; it has to find the underlying regularities. Learning the rule "add the numbers" is far more compact than memorizing every sum ever written.
+Researchers sometimes describe this as **compression**. A model has far fewer numbers inside it than the text it was trained on contains letters. To predict that much text with that little space, it can't memorize everything; it has to find the underlying regularities. (Models do memorize some passages, especially ones repeated many times in their training data, as Chapter 6 explains, but mostly they generalize.) Learning the rule "add the numbers" is far more compact than memorizing every sum ever written.
 
 ## What a Language Model Is Not
 

@@ -6,7 +6,7 @@ Training happens once. **Inference**, using the trained model to generate answer
 
 ## The Journey of a Message
 
-1. **Your message is packaged.** The app combines your message with the system prompt, the earlier conversation, any attached documents, and instructions about available tools, into one long text.
+1. **Your message is packaged.** The app combines your message with the system prompt, the earlier conversation, any attached documents, and instructions about available tools, into one structured input: mostly text, plus any images, audio or files, in a format the model was trained on.
 2. **Tokenization.** The text is split into tokens (Chapter 3).
 3. **It travels to a data center**, where a **load balancer** sends it to a group of chips that hold a copy of the model.
 4. **Prefill.** The model reads the whole input at once, in parallel, building up its internal understanding of every token.
@@ -23,7 +23,7 @@ That's also why, when you pay for an AI service by the token, **output tokens us
 
 ## The KV Cache: Not Repeating Work
 
-Here's a problem. To generate token number 1,001, the model needs to attend to all 1,000 tokens before it (Chapter 7). Recomputing everything about those 1,000 tokens for every new token would be hugely wasteful.
+Here's a problem. In a standard Transformer with full attention, generating token number 1,001 means attending to all 1,000 tokens before it (Chapter 7). (Some designs limit which earlier tokens are attended to, for example with sliding windows, but the problem is similar.) Recomputing everything about those 1,000 tokens for every new token would be hugely wasteful.
 
 Instead, the model saves the **keys and values** it computed for each earlier token, in a store called the **KV cache**. Each new token only needs its own calculation, plus a look-up of the cached keys and values.
 
@@ -35,11 +35,11 @@ The catch is memory. The KV cache grows with every token of the conversation, an
 
 A single conversation uses an expensive chip very inefficiently, because decoding leaves its arithmetic units mostly idle. The solution is **batching**: processing many users' requests together, so that each read of the parameters from memory is shared by dozens of conversations.
 
-In 2023, **Woosuk Kwon** and colleagues at UC Berkeley released **vLLM**, a serving system built around **PagedAttention**, which manages the KV cache the way an operating system manages memory, in small pages, so that many more conversations fit on the same chips. Together with **continuous batching**, which slots new requests in as soon as others finish, techniques like this increased the number of users a chip could serve several times over. vLLM and similar open-source systems, such as SGLang and NVIDIA's TensorRT-LLM, now run much of the world's AI.
+In 2023, **Woosuk Kwon** and colleagues at UC Berkeley released **vLLM**, a serving system built around **PagedAttention**, which manages the KV cache the way an operating system manages memory, in small pages, so that many more conversations fit on the same chips. Together with **continuous batching**, which slots new requests in as soon as others finish, techniques like this increased the number of users a chip could serve several times over. vLLM and similar systems, such as SGLang and NVIDIA's TensorRT-LLM, are widely used to serve both open and commercial language models.
 
 ## Clever Shortcuts
 
-- **Speculative decoding.** A small, fast "draft" model guesses the next several tokens; the big model then checks all of them at once, in a single pass, keeping the ones it agrees with. Because checking in parallel is cheap, this can double or triple speed with exactly the same output. It was introduced in 2022 and 2023 by **Yaniv Leviathan** and colleagues at Google and, independently, by researchers at DeepMind.
+- **Speculative decoding.** A small, fast "draft" model guesses the next several tokens; the big model then checks all of them at once, in a single pass, keeping the ones it agrees with. Because checking in parallel is cheap, when the draft model's guesses are accepted often enough this can substantially increase speed, often two or three times in published tests, while producing the same distribution of outputs the big model would have produced on its own. It was introduced in 2022 and 2023 by **Yaniv Leviathan** and colleagues at Google and, independently, by researchers at DeepMind.
 - **Quantization.** Storing the parameters as 8-bit or 4-bit numbers instead of 16-bit shrinks the model and speeds up memory reads, with a small loss of quality if done carefully (Chapter 18).
 - **Splitting prefill and decode.** Because prefill needs arithmetic and decode needs memory bandwidth, large services increasingly run them on different groups of chips, each tuned for its job.
 - **Specialized chips.** Companies such as Groq and Cerebras have designed chips that keep the model in very fast on-chip memory, generating hundreds or even thousands of tokens per second.
@@ -48,7 +48,7 @@ In 2023, **Woosuk Kwon** and colleagues at UC Berkeley released **vLLM**, a serv
 
 ## The Price of Intelligence Keeps Falling
 
-All this engineering, along with smaller and better models, has made AI dramatically cheaper. The investment firm Andreessen Horowitz estimated in 2024 that the price of using a model of a given capability had been falling about **ten times every year**, a trend it called "LLMflation". Capabilities that cost tens of dollars per million tokens in 2023 cost cents a couple of years later.
+All this engineering, along with smaller and better models, has made AI dramatically cheaper. The investment firm Andreessen Horowitz estimated in 2024 that, for the models and benchmarks it tracked, the price of a given level of capability had been falling about **ten times every year** since 2021, a trend it called "LLMflation". It's an estimate for a particular period, not a law, but other analyses, such as Epoch AI's, found similarly steep declines. Capabilities that cost tens of dollars per million tokens in 2023 cost cents a couple of years later.
 
 > **Did You Know?** When GPT-4 was launched in March 2023, using it through OpenAI's API cost $30 per million input tokens and $60 per million output tokens. By 2025, small models that beat the original GPT-4 on most benchmarks were available for well under a dollar per million tokens, a drop of about a hundred times in two years.
 
@@ -70,4 +70,5 @@ At the same time, people use far more tokens than before: reasoning models think
 - Reiner Pope et al., "Efficiently Scaling Transformer Inference," Google, 2022. arxiv.org/abs/2211.05102
 - Yinmin Zhong et al., "DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving," 2024. arxiv.org/abs/2401.09670
 - Guido Appenzeller, "Welcome to LLMflation: LLM inference cost is going down fast," Andreessen Horowitz, November 2024. a16z.com
+- Epoch AI, "LLM inference prices have fallen rapidly but unequally across tasks," March 2025. epoch.ai/data-insights/llm-inference-price-trends
 - OpenAI, GPT-4 API pricing at launch, March 2023.

@@ -42,10 +42,12 @@ Despite this, the team kept the chips doing useful training work more than 90% o
 
 The demand for computing power has turned data center construction into a race.
 
-- In 2024, Elon Musk's xAI built **Colossus**, a cluster of 100,000 NVIDIA H100 GPUs in Memphis, Tennessee, in what Musk said was 122 days, in a converted factory. It was later expanded to around 200,000 GPUs.
-- In January 2025, OpenAI, SoftBank, Oracle and the investment firm MGX announced **Stargate**, a plan to invest up to $500 billion in AI infrastructure in the United States. Its first campus, in Abilene, Texas, was planned at about 1.2 gigawatts, and several buildings were running by 2026.
-- In July 2025, Mark Zuckerberg announced that Meta was building **Prometheus**, a 1-gigawatt cluster in Ohio due in 2026, and **Hyperion** in Louisiana, planned to grow to 5 gigawatts, with a footprint, he said, that would cover most of Manhattan.
-- Microsoft, Google, Amazon and others are building on a similar scale, and new national AI campuses are being planned from the Gulf states to Europe and India.
+- In 2024, Elon Musk's xAI built **Colossus**, a cluster of 100,000 NVIDIA H100 GPUs in Memphis, Tennessee, in what Musk said was 122 days, in a converted factory. It was later expanded to around 200,000 GPUs (operating).
+- In January 2025, OpenAI, SoftBank, Oracle and the investment firm MGX announced **Stargate**, a plan to invest up to $500 billion in AI infrastructure in the United States. Its first campus, in Abilene, Texas, was planned at about 1.2 gigawatts; by mid-2026, Epoch AI estimated that about half of that was operating, with the rest under construction.
+- In July 2025, Mark Zuckerberg announced that Meta was building **Prometheus**, a 1-gigawatt cluster in Ohio due to come online in 2026, and **Hyperion** in Louisiana, under construction and planned to reach 2 gigawatts by 2030 and later 5 gigawatts, with a footprint, he said, that would cover most of Manhattan.
+- Microsoft, Google, Amazon and others are building on a similar scale, and new national AI campuses have been announced or planned from the Gulf states to Europe and India.
+
+As of October 2026, these sites range from operating to under construction to merely planned; announced capacities and investment totals are plans, which can be scaled back, as Stargate's Abilene site was from an initial 2 gigawatts.
 
 A **gigawatt** is roughly the output of a large nuclear reactor, or the electricity used by a city of several hundred thousand homes. Just a few years ago, a 30-megawatt data center was considered large. The new campuses are 30 to 150 times bigger.
 

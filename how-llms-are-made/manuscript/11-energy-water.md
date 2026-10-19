@@ -23,7 +23,7 @@ Training is a one-time cost per model, but a large one:
 - **BLOOM** (2022), trained in France on a supercomputer powered mostly by nuclear energy, emitted about 25 tonnes of CO₂ from the electricity used for its final training run, or about 50 tonnes including the manufacturing of its hardware and idle power. The choice of power grid made a tenfold difference.
 - **Llama 3.1 405B** (2024): Meta reported about 31 million GPU-hours and, by its calculation, about 8,900 tonnes of CO₂ based on the local grids' power.
 
-Frontier models in 2025 and 2026 use considerably more. Notice, though, that the total footprint of a popular model is increasingly dominated by **using it**, not training it: once hundreds of millions of people use a model every day, the electricity spent on answers soon exceeds the electricity spent on training.
+Frontier models in 2025 and 2026 use considerably more. Notice, though, that for a heavily used model, the total footprint can come to be dominated by **using it**, not training it: once hundreds of millions of people use a model every day, the electricity spent on answers can exceed the electricity spent on training. The balance depends on the model's size, the hardware and how much it is used; Mistral's study (below) found training still dominated for its model over 18 months.
 
 ## The Big Picture: Data Centers and the Grid
 
