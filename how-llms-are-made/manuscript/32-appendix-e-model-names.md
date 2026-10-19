@@ -83,7 +83,7 @@ Following Qwen's own convention, *Qwen3-235B-A22B-Instruct* reads: Qwen family, 
 
 **MiniMax** (MiniMax, China). The company's name; in game theory, "minimax" is a strategy for minimizing the worst possible loss.
 
-**Muse** (Meta, 2026). Meta's family name; in Greek myth, the Muses inspired the arts and sciences. **Spark**, **Glimmer** and **Open** distinguish versions.
+**Muse** (Meta, 2026). Meta's family name; in Greek myth, the Muses inspired the arts and sciences. **Spark**, **Glimmer** and **Wonder** are release names that Meta hasn't explained; **Open** marks the open-weights version of Muse Spark, and **Full** the largest Wonder model.
 
 **Nemotron** (NVIDIA). NVIDIA's name for its open model family; no official expansion.
 

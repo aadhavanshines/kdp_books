@@ -20,8 +20,8 @@ Quick reference for the major model families, as of October 2026. Model names an
 - LLaMA (February 2023; research license). Source: Touvron et al., "LLaMA: Open and Efficient Foundation Language Models," arXiv:2302.13971 (section 2).
 - Llama 3.1 405B (July 2024; dense; 15.6T training tokens; Llama 3.1 Community License). Source: Llama Team, "The Llama 3 Herd of Models," arXiv:2407.21783 (sections 1 and 3); model card meta-llama/Llama-3.1-405B.
 - Llama 4 Scout (about 109B total / 17B active, 10M context) and Maverick (about 400B / 17B) (April 2025; Llama 4 Community License). Source: Meta AI, "The Llama 4 herd," 5 April 2025; model card meta-llama/Llama-4-Scout-17B-16E-Instruct.
-- Muse Spark Open (October 2026; 816B / 42B; 1M context; multimodal; Muse Model License). Status: Released (open weights). Source: Meta's announcement of 15 October 2026 and the accompanying model card on Hugging Face.
-- Muse Glimmer (August 2026). Status: Released (open weights) (reported). Size and license: see Meta's model card.
+- Muse Spark Open (October 2026; 816B / 42B; 1M context; multimodal; Muse Model License). Status: Released (open weights). Source: model card meta-models/Muse-Spark-Open-816B-A42B; Hugging Face blog, "Welcome Muse Spark Open," 15 October 2026. License: Meta's custom Muse Model License, not an open-source license; check its attribution and commercial-use terms.
+- Muse Glimmer (10 August 2026; dense, about 30B parameters; distilled from Muse Spark; Apache 2.0) (reported). Status: Released (open weights). Source: Meta's release on Hugging Face, as reported by SiliconANGLE and *The Register*, 10 August 2026; confirm the exact size in the model card.
 
 **Mistral (Mistral AI, France)**
 - Mistral 7B (September 2023; Apache 2.0). Source: Jiang et al., "Mistral 7B," arXiv:2310.06825; model card mistralai/Mistral-7B-v0.1.
@@ -65,9 +65,9 @@ Quick reference for the major model families, as of October 2026. Model names an
 
 **GPT (OpenAI)**
 - GPT-4 (March 2023), GPT-4o (May 2024), o1 (September 2024) and GPT-5 (August 2025): Released.
-- GPT-6 Astra: Limited at first (September 2026), first to vetted partners including cybersecurity defenders, then wider availability.
-- GPT-6 Sol and Luna: Released (September 2026).
-- GPT-6 became ChatGPT's default in October 2026.
+- GPT-6 Astra: unveiled as a limited preview on 3 September 2026; Released to the public from 4 September.
+- GPT-6 Sol and Luna: Released (22 September 2026).
+- GPT-6 became ChatGPT's default from 7 October 2026 (reported).
 - Sources: OpenAI announcements and system cards, openai.com/index.
 
 **Claude (Anthropic)**
@@ -78,15 +78,20 @@ Quick reference for the major model families, as of October 2026. Model names an
 
 **Gemini (Google DeepMind)**
 - Gemini 1.0 (December 2023), 1.5 (2024), 2.5 (2025) and Gemini 3 (November 2025): Released.
-- Gemini 4 Argon: announced in autumn 2026, Limited at first (trusted cybersecurity defenders through Google's Fairwind program), with a wider rollout following.
-- Sources: Google blog, "Gemini 4 Argon," blog.google; Gemini model cards, deepmind.google/models/gemini.
+- Gemini 4 Argon: announced 30 September 2026, Limited at first (an initial group of cybersecurity defenders through Google's Fairwind program); Released globally from 13 October 2026.
+- Sources: Google blog, "Gemini 4 Argon: our next era of frontier intelligence," 30 September 2026, and "Gemini 4 Argon is now available in the Gemini app," October 2026, blog.google; Gemini model cards, deepmind.google/models/gemini.
 
 **Grok (xAI)**
 - Grok 4 (July 2025) and Grok 4.7 (September 2026): Released.
 - Grok 5: Announced as in training, not released as of October 2026.
 - Sources: xAI announcements, x.ai/news.
 
-**Others**: Meta Muse Spark (closed version); ByteDance Doubao; Baidu ERNIE; Tencent Hunyuan; Amazon Nova; Microsoft MAI; Cohere Command.
+**Muse (Meta)**
+- Muse Spark (April 2026): Released, closed.
+- Muse Wonder and Muse Wonder Full (12 October 2026): Released to developers through Meta's Model API and Muse Code; Muse Wonder Full for Muse Code subscribers.
+- Sources: Meta announcements, ai.meta.com.
+
+**Others**: ByteDance Doubao; Baidu ERNIE; Tencent Hunyuan; Amazon Nova; Microsoft MAI; Cohere Command.
 
 ## Image, Video and Speech Models
 

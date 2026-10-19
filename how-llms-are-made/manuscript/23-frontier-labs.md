@@ -6,7 +6,7 @@ A small number of organizations build the most capable models in the world, the 
 
 **Founded:** December 2015 in San Francisco, as a nonprofit research lab, by a group including **Sam Altman**, **Greg Brockman**, **Ilya Sutskever** and **Elon Musk**, with the mission of ensuring that artificial general intelligence benefits all of humanity. It later created a capped-profit company, attracted billions of dollars from Microsoft, and in 2025 restructured its for-profit arm as a public benefit corporation still controlled by the nonprofit.
 
-**The models:** The **GPT** series ("generative pre-trained transformer") defined the field: GPT-1 (2018), GPT-2 (2019), GPT-3 (2020) and **GPT-4** (March 2023), the first model to pass many professional exams at a high level. **ChatGPT** (November 2022) brought it all to the public. **GPT-4o** (May 2024) added fluent voice conversation and image understanding in one model; the **o-series** (from September 2024) introduced reasoning (Chapter 14). **GPT-5** (August 2025) combined fast answers and deep reasoning in one system that decides how long to think. In 2026, OpenAI rolled out the **GPT-6** family in stages: **GPT-6 Astra**, its flagship, from September 2026, first to vetted partners including cybersecurity defenders, and the smaller, cheaper **GPT-6 Sol** and **Luna**; GPT-6 became ChatGPT's default in October 2026.
+**The models:** The **GPT** series ("generative pre-trained transformer") defined the field: GPT-1 (2018), GPT-2 (2019), GPT-3 (2020) and **GPT-4** (March 2023), the first model to pass many professional exams at a high level. **ChatGPT** (November 2022) brought it all to the public. **GPT-4o** (May 2024) added fluent voice conversation and image understanding in one model; the **o-series** (from September 2024) introduced reasoning (Chapter 14). **GPT-5** (August 2025) combined fast answers and deep reasoning in one system that decides how long to think. In 2026, OpenAI rolled out the **GPT-6** family in stages: **GPT-6 Astra**, its flagship, unveiled as a limited preview on 3 September 2026 and opened to the public the next day; the smaller, cheaper **GPT-6 Sol** and **Luna** on 22 September; and GPT-6 as ChatGPT's default from 7 October 2026.
 
 **Known for:** Starting the chatbot era, the biggest consumer AI product, and pioneering reasoning models. OpenAI also makes image (GPT Image), voice and coding (Codex) products.
 
@@ -22,7 +22,7 @@ A small number of organizations build the most capable models in the world, the 
 
 **Founded:** DeepMind was founded in London in 2010 by **Demis Hassabis**, **Shane Legg** and **Mustafa Suleyman**, and bought by Google in 2014. In April 2023, Google merged it with its other AI lab, Google Brain, where the Transformer was invented, to form Google DeepMind, led by Hassabis.
 
-**The models:** Before chatbots, DeepMind was famous for **AlphaGo**, which beat the world Go champion Lee Sedol in 2016, and **AlphaFold**, which solved protein-structure prediction and won Hassabis and John Jumper a share of the 2024 Nobel Prize in Chemistry. Google's first chatbot, **Bard** (March 2023), was followed by **Gemini** (December 2023), designed from the start to be **multimodal**: understanding text, images, audio and video together. Gemini 1.5 (2024) introduced the million-token context window; Gemini 2.5 (2025) added built-in reasoning; **Gemini 3** (November 2025) launched with Deep Think reasoning and an agentic coding platform. In September 2026, Google announced **Gemini 4 Argon**, initially made available to trusted cybersecurity defenders before a wider rollout.
+**The models:** Before chatbots, DeepMind was famous for **AlphaGo**, which beat the world Go champion Lee Sedol in 2016, and **AlphaFold**, which solved protein-structure prediction and won Hassabis and John Jumper a share of the 2024 Nobel Prize in Chemistry. Google's first chatbot, **Bard** (March 2023), was followed by **Gemini** (December 2023), designed from the start to be **multimodal**: understanding text, images, audio and video together. Gemini 1.5 (2024) introduced the million-token context window; Gemini 2.5 (2025) added built-in reasoning; **Gemini 3** (November 2025) launched with Deep Think reasoning and an agentic coding platform. On 30 September 2026, Google announced **Gemini 4 Argon**, first made available to an initial group of cybersecurity defenders through its Fairwind program; it became globally available on 13 October 2026.
 
 **Known for:** Its own TPU chips, the longest context windows, deep integration with Google Search, Android and Workspace, and leading image and video models (Chapters 25 and 26).
 
@@ -36,7 +36,7 @@ A small number of organizations build the most capable models in the world, the 
 
 ## Meta
 
-After years of leading open models with Llama (Chapter 22), Meta formed **Meta Superintelligence Labs** in 2025, hiring researchers from rival labs with widely reported pay packages, and launched the **Muse** family in 2026: **Muse Spark** first as a closed model powering Meta AI across Facebook, Instagram and WhatsApp, followed by open-weight versions.
+After years of leading open models with Llama (Chapter 22), Meta formed **Meta Superintelligence Labs** in 2025, hiring researchers from rival labs with widely reported pay packages, and launched the **Muse** family in 2026: **Muse Spark** first as a closed model powering Meta AI across Facebook, Instagram and WhatsApp, followed by open-weight versions (Chapter 22). On 12 October 2026, Meta announced **Muse Wonder** and **Muse Wonder Full**, larger closed models that it describes as its most capable to date, available to developers through its Model API and Muse Code.
 
 ## Labs in China
 
@@ -69,8 +69,8 @@ Because the frontier moves so fast, the best sources are primary ones: the labs'
 - OpenAI, "Introducing OpenAI," December 2015; OpenAI, "GPT-4 Technical Report," 2023. arxiv.org/abs/2303.08774; openai.com/index (GPT-5, GPT-6 announcements)
 - CNBC, "OpenAI launches GPT-6 Astra," 3 September 2026; *TechCrunch*, coverage of GPT-6 Sol and Luna, 22 September 2026.
 - Anthropic, "Introducing Claude," March 2023; "Introducing the next generation of Claude" (Claude 3), March 2024; Claude Opus 5.5 and Claude Haiku 5.5 announcements. anthropic.com/claude-opus-5-5; anthropic.com/claude-haiku-5-5
-- Google DeepMind, "Gemini: A Family of Highly Capable Multimodal Models," 2023. arxiv.org/abs/2312.11805; Google, "Gemini 3," 18 November 2025, and "Gemini 4 Argon," 30 September 2026. blog.google
+- Google DeepMind, "Gemini: A Family of Highly Capable Multimodal Models," 2023. arxiv.org/abs/2312.11805; Google, "Gemini 3," 18 November 2025, "Gemini 4 Argon: our next era of frontier intelligence," 30 September 2026, and "Gemini 4 Argon is now available in the Gemini app," October 2026. blog.google; *TechCrunch*, "Google releases Gemini 4 Argon," 30 September 2026.
 - David Silver et al., "Mastering the game of Go with deep neural networks and tree search," *Nature* 529 (2016); John Jumper et al., "Highly accurate protein structure prediction with AlphaFold," *Nature* 596 (2021).
 - xAI, "Announcing Grok," November 2023; "Grok 4," July 2025. x.ai/news
-- Meta, Muse Spark announcement, April 2026. ai.meta.com
+- Meta, Muse Spark announcement, April 2026; Muse Wonder and Muse Wonder Full announcement, 12 October 2026. ai.meta.com
 - Baidu, ERNIE Bot launch, March 2023; ByteDance Seed, Doubao models. seed.bytedance.com

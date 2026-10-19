@@ -13,7 +13,7 @@ The book follows a language model's whole life, in the order it happens:
 ![The life of a language model: collect and clean data, build the tokenizer, pretrain on thousands of chips, post-train it into an assistant, test it for skills and safety, then serve it to users, who reach it through apps and agents.](images/diagram-lifecycle.png)
 
 - **Part I, The Big Idea:** what a language model actually does, where it came from, and how it turns words into numbers.
-- **Part II, The Ingredients:** the data it learns from, how neural networks learn at all, the Transformer design behind every modern model, and the "scaling laws" that made companies spend billions.
+- **Part II, The Ingredients:** the data it learns from, how neural networks learn at all, the Transformer design behind most modern language models, and the alternative and hybrid designs that build on or complement it, and the "scaling laws" that made companies spend billions.
 - **Part III, The Factory:** the chips, the data centers, the electricity and the water, with real numbers, and the months-long training run itself.
 - **Part IV, From Autocomplete to Assistant:** how a raw model is taught to be helpful and safe, how "reasoning" models think before they answer, and how a new model is tested and validated before anyone gets to use it.
 - **Part V, Using the Model:** what happens in the second between your question and the answer, how models are made smaller, how they look things up, and how they become agents that use tools.
