@@ -1,6 +1,6 @@
 """Mock 2: My Calendar. book(start, end) adds [start, end) and returns True
 unless it would overlap an existing booking, in which case it returns
-False and adds nothing. Aim for O(log n) per call on average."""
+False and adds nothing. Find the place to check with binary search."""
 
 from bisect import bisect_right
 
