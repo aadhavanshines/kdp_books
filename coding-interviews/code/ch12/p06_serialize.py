@@ -44,7 +44,7 @@ def identity(values):
 
 SOLUTIONS = [save_and_restore, identity]
 EXAMPLES = [
-    (([1, 2, 3, None, None, 4, 5],), [1, 2, 3, None, None, 4, 5]),
+    (([7, 3, 9, None, 5, 8],), [7, 3, 9, None, 5, 8]),
     (([],), []),
     (([-7],), [-7]),
 ]

@@ -65,7 +65,21 @@ def snapshot_session_copy(n, ops):
 
 SOLUTIONS = [snapshot_session, snapshot_session_copy]
 EXAMPLES = [
-    ((3, [("set", 0, 5), ("snap",), ("set", 0, 6), ("get", 0, 0)]), [0, 5])
+    (
+        (
+            2,
+            [
+                ("set", 1, 4),
+                ("snap",),
+                ("set", 1, 7),
+                ("snap",),
+                ("get", 1, 0),
+                ("get", 1, 1),
+                ("get", 0, 1),
+            ],
+        ),
+        [0, 1, 4, 7, 0],
+    )
 ]
 
 

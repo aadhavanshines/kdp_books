@@ -30,7 +30,7 @@ def shortest_span(weights, target):
 
 SOLUTIONS = [shortest_span, shortest_span_brute]
 EXAMPLES = [
-    (([2, 3, 1, 2, 4, 3], 7), 2),
+    (([4, 1, 1, 3, 2, 5], 8), 3),
     (([1, 1, 1], 5), 0),
     (([8], 7), 1),
 ]

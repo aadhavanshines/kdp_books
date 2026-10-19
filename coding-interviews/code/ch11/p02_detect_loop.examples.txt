@@ -1,6 +1,6 @@
->>> loop_exists([3, 2, 0, -4], 1)
+>>> loop_exists([5, 8, 1, 6], 2)
 True
->>> loop_exists([1, 2], -1)
+>>> loop_exists([4, 9], -1)
 False
 >>> loop_exists([1], 0)
 True

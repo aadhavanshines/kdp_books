@@ -1,5 +1,5 @@
->>> save_and_restore([1, 2, 3, None, None, 4, 5])
-[1, 2, 3, None, None, 4, 5]
+>>> save_and_restore([7, 3, 9, None, 5, 8])
+[7, 3, 9, None, 5, 8]
 >>> save_and_restore([])
 []
 >>> save_and_restore([-7])

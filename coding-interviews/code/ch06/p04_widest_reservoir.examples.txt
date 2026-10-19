@@ -1,5 +1,5 @@
->>> reservoir([2, 8, 6, 2, 5, 4, 8, 3])
-40
+>>> reservoir([3, 7, 2, 6, 4, 8, 1])
+28
 >>> reservoir([1, 1])
 1
 >>> reservoir([5])

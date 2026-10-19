@@ -28,7 +28,7 @@ def reservoir(heights):
 
 SOLUTIONS = [reservoir, reservoir_brute]
 EXAMPLES = [
-    (([2, 8, 6, 2, 5, 4, 8, 3],), 40),
+    (([3, 7, 2, 6, 4, 8, 1],), 28),
     (([1, 1],), 1),
     (([5],), 0),
 ]

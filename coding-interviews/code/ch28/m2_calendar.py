@@ -36,7 +36,9 @@ def calendar_session_brute(requests):
 
 
 SOLUTIONS = [calendar_session, calendar_session_brute]
-EXAMPLES = [(([(10, 20), (15, 25), (20, 30)],), [True, False, True])]
+EXAMPLES = [
+    (([(9, 12), (11, 13), (12, 14), (8, 9)],), [True, False, True, True])
+]
 
 
 def random_case(rng):

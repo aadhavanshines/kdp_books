@@ -49,8 +49,8 @@ def loop_exists_set(values, pos):
 
 SOLUTIONS = [loop_exists, loop_exists_set]
 EXAMPLES = [
-    (([3, 2, 0, -4], 1), True),
-    (([1, 2], -1), False),
+    (([5, 8, 1, 6], 2), True),
+    (([4, 9], -1), False),
     (([1], 0), True),
     (([], -1), False),
 ]

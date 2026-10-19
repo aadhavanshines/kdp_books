@@ -27,7 +27,7 @@ def remove_brute(values, k):
 
 SOLUTIONS = [removed_values, remove_brute]
 EXAMPLES = [
-    (([1, 2, 3, 4, 5], 2), [1, 2, 3, 5]),
+    (([6, 7, 8, 9], 3), [6, 8, 9]),
     (([1], 1), []),
     (([1, 2], 2), [2]),
 ]

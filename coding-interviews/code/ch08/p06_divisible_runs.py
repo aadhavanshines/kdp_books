@@ -27,7 +27,7 @@ def divisible_runs(values, k):
 
 SOLUTIONS = [divisible_runs, divisible_runs_brute]
 EXAMPLES = [
-    (([4, 5, 0, -2, -3, 1], 5), 7),
+    (([3, 1, 4, 1, 5, 9], 5), 6),
     (([5], 9), 0),
     (([], 3), 0),
 ]

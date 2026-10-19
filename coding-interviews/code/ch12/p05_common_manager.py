@@ -44,8 +44,8 @@ def common_manager_paths(values, a, b):
 
 SOLUTIONS = [common_manager, common_manager_paths]
 EXAMPLES = [
-    (([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4], 5, 1), 3),
-    (([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4], 5, 4), 5),
+    (([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5], 2, 8), 6),
+    (([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5], 2, 5), 2),
     (([1, 2], 1, 2), 1),
 ]
 

@@ -147,7 +147,7 @@ For each position in a list of numbers, compute the product of all the *other* n
 
 ## 5.6 Same Pattern (Easy)
 
-Two product codes "follow the same pattern" if the letters of one can be replaced consistently to give the other: every occurrence of a letter maps to the same letter, and no two different letters map to the same letter. *paper* and *title* follow the same pattern; *foo* and *bar* do not.
+Two product codes "follow the same pattern" if the letters of one can be replaced consistently to give the other: every occurrence of a letter maps to the same letter, and no two different letters map to the same letter. *moon* and *feet* follow the same pattern; *tree* and *tool* do not.
 
 ```
 @include code/ch05/p06_same_pattern.examples.txt

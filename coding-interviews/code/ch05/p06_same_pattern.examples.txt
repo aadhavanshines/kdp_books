@@ -1,6 +1,6 @@
->>> same_pattern('paper', 'title')
+>>> same_pattern('moon', 'feet')
 True
->>> same_pattern('foo', 'bar')
+>>> same_pattern('tree', 'tool')
 False
 >>> same_pattern('ab', 'aa')
 False

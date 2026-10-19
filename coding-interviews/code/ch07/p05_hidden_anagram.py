@@ -32,8 +32,8 @@ def hidden_anagram(word, text):
 
 SOLUTIONS = [hidden_anagram, hidden_anagram_brute]
 EXAMPLES = [
-    (("ab", "eidbaooo"), True),
-    (("ab", "eidboaoo"), False),
+    (("tea", "slate"), True),
+    (("tea", "tablet"), False),
     (("", "abc"), True),
     (("abcd", "abc"), False),
 ]

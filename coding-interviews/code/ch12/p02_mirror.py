@@ -29,7 +29,7 @@ def mirrored_stack(values):
 
 SOLUTIONS = [mirrored, mirrored_stack]
 EXAMPLES = [
-    (([4, 2, 7, 1, 3, 6, 9],), [4, 7, 2, 9, 6, 3, 1]),
+    (([5, 3, 9, 1, 4, 8, 11],), [5, 9, 3, 11, 8, 4, 1]),
     (([],), []),
     (([1, 2],), [1, None, 2]),
 ]

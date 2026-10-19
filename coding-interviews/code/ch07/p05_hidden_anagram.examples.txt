@@ -1,6 +1,6 @@
->>> hidden_anagram('ab', 'eidbaooo')
+>>> hidden_anagram('tea', 'slate')
 True
->>> hidden_anagram('ab', 'eidboaoo')
+>>> hidden_anagram('tea', 'tablet')
 False
 >>> hidden_anagram('', 'abc')
 True

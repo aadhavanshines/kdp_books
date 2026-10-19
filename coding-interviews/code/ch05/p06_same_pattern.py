@@ -25,8 +25,8 @@ def same_pattern(a, b):
 
 SOLUTIONS = [same_pattern, same_pattern_brute]
 EXAMPLES = [
-    (("paper", "title"), True),
-    (("foo", "bar"), False),
+    (("moon", "feet"), True),
+    (("tree", "tool"), False),
     (("ab", "aa"), False),
     (("", ""), True),
     (("abc", "ab"), False),

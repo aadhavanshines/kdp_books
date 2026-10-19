@@ -28,7 +28,7 @@ def count_runs(values, k):
 SOLUTIONS = [count_runs, count_runs_brute]
 EXAMPLES = [
     (([1, 2, 3, -3, 3], 3), 5),
-    (([1, 1, 1], 2), 2),
+    (([2, 2, 2], 4), 2),
     (([], 0), 0),
     (([0, 0], 0), 3),
 ]
