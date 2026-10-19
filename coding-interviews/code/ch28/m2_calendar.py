@@ -1,0 +1,47 @@
+"""Mock 2: My Calendar. book(start, end) adds [start, end) and returns True
+unless it would overlap an existing booking, in which case it returns
+False and adds nothing. Aim for O(log n) per call on average."""
+
+from bisect import bisect_right
+
+
+class Calendar:
+    def __init__(self):
+        self.starts, self.ends = [], []  # sorted, non-overlapping
+
+    def book(self, start, end):
+        i = bisect_right(self.starts, start)  # bookings before i start <=
+        if i > 0 and self.ends[i - 1] > start:
+            return False  # the previous booking runs into ours
+        if i < len(self.starts) and self.starts[i] < end:
+            return False  # ours runs into the next booking
+        self.starts.insert(i, start)
+        self.ends.insert(i, end)
+        return True
+
+
+def run_main(requests):
+    cal = Calendar()
+    return [cal.book(s, e) for s, e in requests]
+
+
+def run_brute(requests):
+    booked, out = [], []
+    for s, e in requests:
+        ok = all(e <= bs or be <= s for bs, be in booked)
+        if ok:
+            booked.append((s, e))
+        out.append(ok)
+    return out
+
+
+SOLUTIONS = [run_main, run_brute]
+EXAMPLES = [(([(10, 20), (15, 25), (20, 30)],), [True, False, True])]
+
+
+def random_case(rng):
+    reqs = []
+    for _ in range(rng.randint(1, 12)):
+        s = rng.randint(0, 30)
+        reqs.append((s, s + rng.randint(1, 6)))
+    return (reqs,)
