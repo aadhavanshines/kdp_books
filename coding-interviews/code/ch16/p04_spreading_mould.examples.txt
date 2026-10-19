@@ -1,6 +1,0 @@
->>> spreading_mould([[1, 1, 0, 2], [0, 1, 1, 1], [0, 0, 0, 1]])
-5
->>> spreading_mould([[2, 1, 0], [0, 0, 1]])
--1
->>> spreading_mould([[0, 2]])
-0

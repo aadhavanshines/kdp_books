@@ -36,9 +36,18 @@
     "height_in": 9.0
   },
   "paper": "white",
-  "reuse_note": "Readers may freely use and adapt the example programs, exercises and project code in this book for their own work. All the code is available at github.com/aadhavanshines/python-programming-hands-on under the MIT License.",
-  "trademarks": "Google, Meta, Amazon, Apple, Microsoft, Netflix, NVIDIA, SpaceX and other company names are trademarks of their respective owners and are used only to describe their publicly stated hiring practices. LeetCode, HackerRank, CoderPad and Python are trademarks of their respective owners. This book is independent and is not affiliated with, sponsored by, or endorsed by any company it mentions. No problem in this book is claimed to have been asked by any particular company.",
-  "back_cover_blurb": [],
+  "reuse_note": "Readers may freely use and adapt the example code in this book for their own study, practice and work.",
+  "trademarks": "Google, Meta, Amazon, Apple, Microsoft and SpaceX are trademarks of their respective owners; their names are used only to describe publicly stated or publicly reported hiring practices. Java is a trademark of Oracle and/or its affiliates. Python, Redis, Kafka and other product names are trademarks of their respective owners. This book is independent and is not affiliated with, sponsored by, or endorsed by any company it mentions. No problem in this book is claimed to have been asked by any particular company.",
+  "back_cover_blurb": [
+    "Walk into your coding interview with a plan.",
+    "Top technology companies test the same core skills: recognizing the pattern behind a problem, explaining your thinking, and writing correct code under time pressure. This book teaches all three, with 120 original problems and solutions that were actually run and tested.",
+    "- A six-step method for any problem: clarify, examples, brute force, optimize, code, test",
+    "- 18 pattern chapters, from hashing and sliding windows to graphs and dynamic programming",
+    "- Practical coding, object-oriented design, system design and behavioral interviews",
+    "- AI-assisted rounds, take-homes and online assessments",
+    "- Four full mock interviews with the interviewer's notes, and two-, six- and twelve-week study plans",
+    "Most solutions are checked against a simpler version on thousands of random inputs, and all of them run on Python 3.12 to 3.15. Current as of October 2026."
+  ],
   "dedication": [
     "To my father and my mother,",
     "for your love, your sacrifices, and every lesson you taught me.",

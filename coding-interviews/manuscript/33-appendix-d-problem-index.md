@@ -34,9 +34,9 @@ All 120 problems in the book, with their difficulty and the chapter that teaches
 | 9.4 | Next Warmer Day | Medium | Stacks and Queues |
 | 9.5 | Largest Banner | Hard | Stacks and Queues |
 | 9.6 | Window Peaks | Hard | Stacks and Queues |
-| 10.1 | Find in a Sorted Catalogue | Easy | Binary Search |
+| 10.1 | Find in a Sorted Catalog | Easy | Binary Search |
 | 10.2 | First Bad Build | Easy | Binary Search |
-| 10.3 | Rotated Catalogue | Medium | Binary Search |
+| 10.3 | Rotated Catalog | Medium | Binary Search |
 | 10.4 | Truck Capacity | Medium | Binary Search |
 | 10.5 | Integer Square Root | Easy | Binary Search |
 | 10.6 | Median of Two Sorted Lists | Hard | Binary Search |
@@ -74,7 +74,7 @@ All 120 problems in the book, with their difficulty and the chapter that teaches
 | 16.1 | Count Islands | Medium | Graphs: BFS and DFS |
 | 16.2 | Paint Bucket | Easy | Graphs: BFS and DFS |
 | 16.3 | Warehouse Route | Medium | Graphs: BFS and DFS |
-| 16.4 | Spreading Mould | Medium | Graphs: BFS and DFS |
+| 16.4 | Spreading Mold | Medium | Graphs: BFS and DFS |
 | 16.5 | Word Steps | Hard | Graphs: BFS and DFS |
 | 16.6 | Two Teams | Medium | Graphs: BFS and DFS |
 | 17.1 | Can I Graduate? | Medium | Advanced Graphs |

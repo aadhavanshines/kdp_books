@@ -16,7 +16,7 @@ For most software engineering roles at large technology companies, the process l
 4. **Technical screen.** One or two interviews of about 45 to 60 minutes, by video, with an engineer and a shared code editor. Usually one or two coding problems.
 5. **The final round, or "onsite" loop.** Four to six interviews, often on one day, in person or by video. For most software roles: two or three coding interviews; a system design interview for mid-level and senior candidates; and a behavioral interview about how you work with others.
 6. **The decision.** Each interviewer writes feedback independently. At some companies a hiring committee of people who did not interview you makes the decision; at others, the interviewers and hiring manager meet in a "debrief".
-7. **Team matching and offer.** Some companies hire into a specific team; others hire first and match you with a team afterwards.
+7. **Team matching and offer.** Some companies hire into a specific team; others hire first and match you with a team afterward.
 
 The whole process typically takes from three weeks to two months.
 
@@ -44,7 +44,7 @@ Companies publish a surprising amount of advice for candidates. The table summar
 | Google | Think out loud, ask clarifying questions, state assumptions, discuss trade-offs; decisions are made by a hiring committee; in 2025 Google said it was bringing back at least one in-person interview round for some roles, partly because of concerns about AI-assisted cheating in virtual interviews | Google's candidate guide; reported remarks by Sundar Pichai in 2025 |
 | Apple | Expect open-ended questions about your past work; bring specific examples; ask about the team and how success is measured | Apple careers interview tips |
 | Microsoft | Recruiters single out fundamental coding skills as one of the hardest parts of the interview; know the technical skills the role requires | Microsoft's careers blog |
-| SpaceX | Candidates commonly report a strong emphasis on C++ for many software roles, timed or take-home coding tests, and practical, engineering-flavored problems such as parsing data or modelling state machines | Candidate reports (no official guide found); treat as anecdotal |
+| SpaceX | Candidates commonly report a strong emphasis on C++ for many software roles, timed or take-home coding tests, and practical, engineering-flavored problems such as parsing data or modeling state machines | Candidate reports (no official guide found); treat as anecdotal |
 
 Two lessons stand out. First, the core skills are the same everywhere: data structures, algorithms, clean code and clear communication. Second, each company adds its own emphasis. Amazon weights behavioral questions heavily, hardware and aerospace companies often care more about C++ and systems knowledge, and some companies now test how well you work *with* an AI assistant.
 

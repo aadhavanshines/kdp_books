@@ -64,7 +64,7 @@ A sensor sends a stream of readings. Flag every reading that differs from the av
 
 Look closely at the first example. The spike at index 3 is flagged, as it should be, but so are the normal readings at indices 4, 5 and 6. The spike is still inside the window, pulling the average up to about 17, so readings near 10 now look abnormal. The code does exactly what the specification says, and the specification is the problem.
 
-> **Follow-Up:** "How would you stop one spike from flagging the readings after it?" Good answers: leave flagged readings out of the window; compare with the *median* of the window, which a single outlier barely moves; or use an exponentially weighted average with a limit that adapts to the noise. Raising this yourself, before the interviewer does, is exactly the kind of engineering judgement practical rounds look for.
+> **Follow-Up:** "How would you stop one spike from flagging the readings after it?" Good answers: leave flagged readings out of the window; compare with the *median* of the window, which a single outlier barely moves; or use an exponentially weighted average with a limit that adapts to the noise. Raising this yourself, before the interviewer does, is exactly the kind of engineering judgment practical rounds look for.
 
 ## 23.3 Launch Sequence Validator (Medium)
 

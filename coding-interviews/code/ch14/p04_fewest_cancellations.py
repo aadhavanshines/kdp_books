@@ -6,13 +6,13 @@ from itertools import combinations
 
 def fewest_cancellations(bookings):
     kept_end = float("-inf")
-    cancelled = 0
+    canceled = 0
     for start, end in sorted(bookings, key=lambda b: b[1]):
         if start >= kept_end:
             kept_end = end  # keep the booking that finishes earliest
         else:
-            cancelled += 1
-    return cancelled
+            canceled += 1
+    return canceled
 
 
 def cancellations_brute(bookings):

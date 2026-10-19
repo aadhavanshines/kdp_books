@@ -1,4 +1,4 @@
-"""10.3 Rotated Catalogue: a sorted list of distinct values was rotated
+"""10.3 Rotated Catalog: a sorted list of distinct values was rotated
 (e.g. [9, 12, 1, 4, 7]). Find target's index in O(log n), or -1."""
 
 

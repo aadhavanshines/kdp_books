@@ -55,7 +55,7 @@ That's correct but takes exponential time: `stair_ways_brute(40)` makes over 300
 
 ## 18.2 Quiet Street (Medium)
 
-Volunteers collect donations along a street of houses in a row. To avoid annoying the neighbours, they never visit two neighbouring houses. Given the donation each house would give, what is the largest total they can collect?
+Volunteers collect donations along a street of houses in a row. To avoid annoying the neighbors, they never visit two neighboring houses. Given the donation each house would give, what is the largest total they can collect?
 
 ```
 @include code/ch18/p02_quiet_houses.examples.txt
@@ -71,7 +71,7 @@ Volunteers collect donations along a street of houses in a row. To avoid annoyin
 
 **Complexity:** O(n) time, O(1) space.
 
-> **Follow-Up:** "The houses are arranged in a circle, so the first and last are neighbours." Solve the row twice, once without the first house and once without the last, and take the better result.
+> **Follow-Up:** "The houses are arranged in a circle, so the first and last are neighbors." Solve the row twice, once without the first house and once without the last, and take the better result.
 
 ## 18.3 Fewest Coins (Medium)
 

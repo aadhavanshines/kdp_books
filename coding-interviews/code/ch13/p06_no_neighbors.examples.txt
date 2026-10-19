@@ -1,0 +1,6 @@
+>>> no_neighbors('ppa')
+'pap'
+>>> no_neighbors('pppa')
+''
+>>> no_neighbors('')
+''

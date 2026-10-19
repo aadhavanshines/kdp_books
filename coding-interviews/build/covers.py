@@ -14,7 +14,7 @@ MONO = f"{FONT_DIR}/dejavu/DejaVuSansMono.ttf"
 
 NAVY_TOP = (8, 20, 36)      # deep steel blue, top of the gradient
 NAVY_BOT = (22, 54, 88)     # steel blue, bottom of the gradient
-AMBER = (245, 158, 11)      # amber accent
+AMBER = (251, 146, 60)      # warm orange accent
 SPINE = (12, 30, 50)
 TERMINAL_GREEN = (52, 211, 153)  # text inside the cover's terminal window
 CYAN = (56, 189, 248)       # sky blue: back-cover bullets
@@ -81,14 +81,18 @@ def gradient(img, box):
 
 # The program shown on the cover, and its real output (checked by
 # tests/check_cover_code.py).
+COVER_FILE = "budget_pair.py"
 COVER_CODE = [
-    "def shelf(books):",
-    "    for n, title in enumerate(books, 1):",
-    "        print(f\"{n}. {title}\")",
+    "def budget_pair(prices, budget):",
+    "    seen = {}",
+    "    for i, p in enumerate(prices):",
+    "        if budget - p in seen:",
+    "            return [seen[budget - p], i]",
+    "        seen[p] = i",
     "",
-    "shelf(sorted([\"Dune\", \"Emma\"]))",
+    "print(budget_pair([12, 7, 30, 18], 25))",
 ]
-COVER_OUTPUT = ["1. Dune", "2. Emma"]
+COVER_OUTPUT = ["[1, 3]"]
 
 KEYWORD = (251, 191, 36)
 FUNC = (125, 211, 252)
@@ -100,7 +104,7 @@ def _code_tokens(line):
     """Split one line of the cover code into (text, color) pieces."""
     import re
     pieces = []
-    for m in re.finditer(r'(f?"[^"]*")|(\b(?:def|for|in)\b)|(\b\w+(?=\())|(.)', line):
+    for m in re.finditer(r'(f?"[^"]*")|(\b(?:def|for|in|if|return)\b)|(\b\w+(?=\())|(.)', line):
         text = m.group(0)
         if m.group(1):
             color = STRING
@@ -139,7 +143,7 @@ def python_scene(img, box):
         d.ellipse([cx - 13 * s, ey0 + 42 * s - 13 * s, cx + 13 * s, ey0 + 42 * s + 13 * s],
                   fill=c + (255,))
     small = font(SANS_BOLD, 30 * s)
-    d.text((ex0 + 200 * s, ey0 + 42 * s), "shelf.py", font=small, fill=(150, 185, 215, 255),
+    d.text((ex0 + 200 * s, ey0 + 42 * s), COVER_FILE, font=small, fill=(150, 185, 215, 255),
            anchor="lm")
     d.line([(ex0, ey0 + 84 * s), (ex1, ey0 + 84 * s)], fill=(70, 110, 150, 255),
            width=max(1, int(3 * s)))
@@ -157,31 +161,39 @@ def python_scene(img, box):
     # terminal strip
     ty0 = cy + 18 * s
     d.rectangle([ex0 + 4 * s, ty0, ex1 - 4 * s, ey1 - 26 * s], fill=(6, 16, 28, 255))
-    d.text((ex0 + 40 * s, ty0 + 20 * s), "$ python shelf.py", font=mono,
+    d.text((ex0 + 40 * s, ty0 + 20 * s), f"$ python {COVER_FILE}", font=mono,
            fill=(150, 185, 215, 255))
     oy = ty0 + 20 * s + lh
     for out in COVER_OUTPUT:
         d.text((ex0 + 40 * s, oy), out, font=mono, fill=TERMINAL_GREEN + (255,))
         oy += lh
     img.alpha_composite(layer)
-    # checklist of topics
+    # a binary tree with one root-to-leaf path highlighted
     layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
-    cx0, cy0, cx1, cy1 = x0 + 1120 * s, y0 + 90 * s, x0 + 1540 * s, y1 - 60 * s
-    items = ["BASICS", "FUNCTIONS", "CLASSES", "TESTING", "DATA", "WEB APIs"]
-    step = (cy1 - cy0) / len(items)
-    f_item = font(SANS_BOLD, 32 * s)
-    for i, name in enumerate(items):
-        yy = cy0 + step * i + step / 2
-        d.rounded_rectangle([cx0, yy - 36 * s, cx1, yy + 36 * s], radius=int(36 * s),
-                            fill=(16, 38, 64, 255), outline=(70, 110, 150, 255),
-                            width=max(2, int(3 * s)))
-        r = 22 * s
-        ccx = cx0 + 48 * s
-        d.ellipse([ccx - r, yy - r, ccx + r, yy + r], fill=TERMINAL_GREEN + (255,))
-        d.line([(ccx - 10 * s, yy), (ccx - 3 * s, yy + 8 * s), (ccx + 11 * s, yy - 8 * s)],
-               fill=(10, 22, 40, 255), width=max(2, int(5 * s)))
-        d.text((ccx + 46 * s, yy), name, font=f_item, fill=(235, 242, 250, 255), anchor="lm")
+    tx0, tx1 = x0 + 1130 * s, x0 + 1480 * s
+    ty0, ty1 = y0 + 130 * s, y1 - 110 * s
+    levels = 3
+    pos = {}
+    for lv in range(levels):
+        count = 2 ** lv
+        for k in range(count):
+            px = tx0 + (k + 0.5) * (tx1 - tx0) / count
+            py = ty0 + lv * (ty1 - ty0) / (levels - 1)
+            pos[(lv, k)] = (px, py)
+    path = {(0, 0), (1, 1), (2, 2)}
+    for (lv, k), (px, py) in pos.items():
+        if lv:
+            qx, qy = pos[(lv - 1, k // 2)]
+            on = (lv, k) in path and (lv - 1, k // 2) in path
+            d.line([(qx, qy), (px, py)], fill=(AMBER if on else (70, 110, 150)) + (255,),
+                   width=max(2, int((9 if on else 4) * s)))
+    for (lv, k), (px, py) in pos.items():
+        r = (40 - 4 * lv) * s
+        on = (lv, k) in path
+        d.ellipse([px - r, py - r, px + r, py + r],
+                  fill=(AMBER if on else (16, 38, 64)) + (255,),
+                  outline=(AMBER if on else (110, 150, 190)) + (255,), width=max(2, int(4 * s)))
     img.alpha_composite(layer)
 
 

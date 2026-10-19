@@ -1,4 +1,4 @@
-"""10.1 Find in a Sorted Catalogue: index of target, or -1."""
+"""10.1 Find in a Sorted Catalog: index of target, or -1."""
 
 
 def find_sorted_brute(items, target):

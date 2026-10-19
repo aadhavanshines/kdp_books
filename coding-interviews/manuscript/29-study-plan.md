@@ -1,10 +1,10 @@
 # Chapter 29: Your Study Plan
 
-Knowing what to study matters less than studying it consistently and in the right way. This chapter gives three plans, for two, six and twelve weeks, and the practice habits that make the hours count. Adjust them to your situation: the plans assume about one to two hours on weekdays and a longer session at the weekend.
+Knowing what to study matters less than studying it consistently and in the right way. This chapter gives three plans, for two, six and twelve weeks, and the practice habits that make the hours count. Adjust them to your situation: the plans assume about one to two hours on weekdays and a longer session on the weekend.
 
-## How to Practise a Problem
+## How to Practice a Problem
 
-Most candidates practise by reading solutions. It feels productive, but it builds recognition, not recall. In an interview you have to produce a solution, so practise producing them:
+Most candidates practice by reading solutions. It feels productive, but it builds recognition, not recall. In an interview you have to produce a solution, so practice producing them:
 
 1. **Set a timer for 25 to 30 minutes.** Read the problem only, and cover the rest of the page.
 2. **Talk aloud** through the six steps of Chapter 2, even when alone. Speaking feels strange at first; it's a skill, and it improves with practice.
@@ -46,7 +46,7 @@ The recommended plan for most candidates: every pattern, every problem, with rev
 | 3 | Chapters 12 to 15 (trees, heaps, intervals, backtracking) | Write your behavioral story bank |
 | 4 | Chapters 16 to 19 (graphs, advanced graphs, both DP chapters) | Mock 1 and 2, timed |
 | 5 | Chapters 20 to 23 (strings, bits, design, practical) | Chapter 24 (OOD); Chapter 25 if needed |
-| 6 | Mocks 3 and 4; re-solve every logged failure | Chapters 26 and 27; practise stories aloud |
+| 6 | Mocks 3 and 4; re-solve every logged failure | Chapters 26 and 27; practice stories aloud |
 
 ## The Twelve-Week Plan
 
@@ -57,7 +57,7 @@ For career changers, students preparing for their first interviews, or anyone re
 - **Week 6 and week 10:** a mock interview with another person. Swap roles: being the interviewer teaches you what interviewers notice.
 - **Weeks 11 to 12:** Part III, all four mocks, system design if your level requires it, and the story bank.
 
-## Practising With Other People
+## Practicing With Other People
 
 Solo practice can't fully prepare you for being watched while you think. Ways to add an audience:
 
@@ -80,8 +80,8 @@ Most successful candidates have been rejected before, often by the same companie
 
 ## Key Takeaways
 
-- Practise producing solutions, aloud and timed, not reading them.
+- Practice producing solutions, aloud and timed, not reading them.
 - Keep a problem log and re-solve failures after a few days and again after two weeks.
 - Choose the plan that matches your time: two, six or twelve weeks.
-- Practise with other people, and take turns as interviewer.
+- Practice with other people, and take turns as interviewer.
 - Confirm the format with your recruiter, prepare your setup, and rest before the day.

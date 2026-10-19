@@ -51,6 +51,6 @@ Use this table to go from the wording of a problem to a likely pattern. The sign
 
 - **Sliding window (variable):** expand right every step; while the window is invalid, shrink from the left; record the answer.
 - **Binary search for the first "yes":** `lo, hi = low, high`; while `lo < hi`: `mid = (lo + hi) // 2`; if `ok(mid)`: `hi = mid`, else `lo = mid + 1`.
-- **BFS:** queue with the start; mark visited when queued; pop, process, push unvisited neighbours.
+- **BFS:** queue with the start; mark visited when queued; pop, process, push unvisited neighbors.
 - **Backtracking:** if complete, record a copy; for each choice, apply, recurse, undo.
 - **DP:** state in words; recurrence; base cases; order (memoized recursion or a table).

@@ -1,6 +1,6 @@
 # Appendix E: Glossary
 
-**Adjacency list.** A graph representation that maps each node to the list of its neighbours (Chapter 16).
+**Adjacency list.** A graph representation that maps each node to the list of its neighbors (Chapter 16).
 
 **Amortized cost.** The average cost per operation over a long sequence, even if a single operation is occasionally expensive; appending to a Python list is amortized O(1) (Chapter 3).
 
@@ -20,7 +20,7 @@
 
 **Binary search tree (BST).** A binary tree in which every node's left subtree holds smaller values and its right subtree larger values (Chapter 12).
 
-**Bipartite graph.** A graph whose nodes can be split into two groups with every edge between the groups; equivalently, two-colourable (Chapter 16).
+**Bipartite graph.** A graph whose nodes can be split into two groups with every edge between the groups; equivalently, two-colorable (Chapter 16).
 
 **Brute force.** The straightforward solution that tries every possibility; the usual starting point in an interview (Chapter 2).
 

@@ -88,7 +88,7 @@ Can a word be spelled by moving up, down, left or right through a grid of letter
 @include code/ch15/p04_grid_word.examples.txt
 ```
 
-**The idea.** Try every cell as a starting point. From each, explore the four neighbours that match the next letter. Mark a cell as used by temporarily replacing its letter with `#`, and restore it on the way back, so other paths can use it.
+**The idea.** Try every cell as a starting point. From each, explore the four neighbors that match the next letter. Mark a cell as used by temporarily replacing its letter with `#`, and restore it on the way back, so other paths can use it.
 
 ```python
 @include code/ch15/p04_grid_word.py::grid_word

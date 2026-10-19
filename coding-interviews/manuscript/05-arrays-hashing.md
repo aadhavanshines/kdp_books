@@ -157,7 +157,7 @@ Two product codes "follow the same pattern" if the letters of one can be replace
 
 **Brute force.** For every pair of positions, check that the letters are equal in one code exactly when they are equal in the other: O(n²).
 
-**The better idea.** Keep two dictionaries, one mapping letters of `a` to letters of `b` and one mapping back. `setdefault` records a mapping the first time and returns the existing one afterwards; any disagreement means the patterns differ.
+**The better idea.** Keep two dictionaries, one mapping letters of `a` to letters of `b` and one mapping back. `setdefault` records a mapping the first time and returns the existing one afterward; any disagreement means the patterns differ.
 
 ```python
 @include code/ch05/p06_same_pattern.py::same_pattern

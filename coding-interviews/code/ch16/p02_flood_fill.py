@@ -1,11 +1,11 @@
-"""16.2 Paint Bucket: recolour the region of same-coloured cells that
+"""16.2 Paint Bucket: recolor the region of same-colored cells that
 contains (r, c), like a paint program's fill tool."""
 
 
-def flood_fill(image, r, c, colour):
+def flood_fill(image, r, c, color):
     image = [row[:] for row in image]
     old = image[r][c]
-    if old == colour:
+    if old == color:
         return image
     stack = [(r, c)]
     while stack:
@@ -15,12 +15,12 @@ def flood_fill(image, r, c, colour):
             and 0 <= c < len(image[0])
             and image[r][c] == old
         ):
-            image[r][c] = colour
+            image[r][c] = color
             stack.extend([(r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)])
     return image
 
 
-def flood_fill_recursive(image, r, c, colour):
+def flood_fill_recursive(image, r, c, color):
     image = [row[:] for row in image]
     old = image[r][c]
 
@@ -30,11 +30,11 @@ def flood_fill_recursive(image, r, c, colour):
             and 0 <= c < len(image[0])
             and image[r][c] == old
         ):
-            image[r][c] = colour
+            image[r][c] = color
             for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 paint(r + dr, c + dc)
 
-    if old != colour:
+    if old != color:
         paint(r, c)
     return image
 

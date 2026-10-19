@@ -1,5 +1,5 @@
 """15.4 Grid Word: can word be spelled by moving up, down, left or right
-through neighbouring cells, using each cell at most once?"""
+through neighboring cells, using each cell at most once?"""
 
 
 def grid_word(grid, word):

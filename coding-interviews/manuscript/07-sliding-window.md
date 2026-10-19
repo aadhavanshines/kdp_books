@@ -17,7 +17,7 @@ Two kinds of windows:
 
 The variable-size template, in words: for each `right`, add `items[right]` to the window's state; then, while the state is invalid (or while it satisfies the goal), update the answer if appropriate and remove `items[left]`, moving `left` forward. Each item enters once and leaves at most once, so the total work is O(n).
 
-> **Warning:** Variable-size windows rely on a property called *monotonicity*: making the window bigger can only move it towards "invalid" (or towards "goal met"). If values can be negative, a sum doesn't behave this way, and a sliding window gives wrong answers. Use prefix sums instead (Chapter 8).
+> **Warning:** Variable-size windows rely on a property called *monotonicity*: making the window bigger can only move it toward "invalid" (or toward "goal met"). If values can be negative, a sum doesn't behave this way, and a sliding window gives wrong answers. Use prefix sums instead (Chapter 8).
 
 ## 7.1 Best Week (Easy)
 
@@ -79,15 +79,15 @@ Deliveries arrive with positive weights. What is the shortest run of consecutive
 
 ## 7.4 Repaint the Fence (Medium)
 
-A fence's boards are painted in colours, given as capital letters. You may repaint at most k boards. What is the longest run of boards of a single colour you can achieve?
+A fence's boards are painted in colors, given as capital letters. You may repaint at most k boards. What is the longest run of boards of a single color you can achieve?
 
 ```
 @include code/ch07/p04_repaint.examples.txt
 ```
 
-**Think first:** For a given window, how many boards would you need to repaint to make it all one colour?
+**Think first:** For a given window, how many boards would you need to repaint to make it all one color?
 
-**The idea.** A window can be made one colour by repainting everything except its most common colour: `length - most`. Keep counts of the colours in the window. If `length - most` exceeds k, slide the window: move the left edge forward by one.
+**The idea.** A window can be made one color by repainting everything except its most common color: `length - most`. Keep counts of the colors in the window. If `length - most` exceeds k, slide the window: move the left edge forward by one.
 
 ```python
 @include code/ch07/p04_repaint.py::repaint
@@ -95,7 +95,7 @@ A fence's boards are painted in colours, given as capital letters. You may repai
 
 A subtle point: `most` is the highest count seen in *any* window so far, and is never decreased when boards leave. That's safe, because the answer can only improve when some window has a higher count than before, and until then, the window just slides at its best length without shrinking.
 
-**Complexity:** O(n) time, O(1) space for 26 colours.
+**Complexity:** O(n) time, O(1) space for 26 colors.
 
 ## 7.5 Hidden Anagram (Medium)
 
@@ -105,7 +105,7 @@ Does `text` contain a block of consecutive characters that is a rearrangement of
 @include code/ch07/p05_hidden_anagram.examples.txt
 ```
 
-**The idea.** Slide a fixed window of length `len(word)` across the text, keeping a `Counter` of its characters. Compare it with the word's counts after each step, adding the new character and removing the old one, and deleting a count when it reaches zero so the comparison stays exact.
+**The idea.** Slide a fixed window of length `len(word)` across the text, keeping a `Counter` of its characters. Compare it with the word's counts after each step, adding the new character and removing the old one, and deleting a count when it reaches zero, so the comparison stays exact.
 
 ```python
 @include code/ch07/p05_hidden_anagram.py::hidden_anagram

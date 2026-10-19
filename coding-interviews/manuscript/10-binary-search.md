@@ -15,12 +15,12 @@ The safest template searches for the *first* position where a condition is true,
 
 1. While `lo < hi`: take `mid = (lo + hi) // 2`.
 2. If the condition holds at `mid`, the answer is at `mid` or to its left: `hi = mid`.
-3. Otherwise it is to the right: `lo = mid + 1`.
+3. Otherwise, it is to the right: `lo = mid + 1`.
 4. When the loop ends, `lo == hi` is the answer.
 
 Because `mid` is rounded down and `lo` moves past it, the range always shrinks, so the loop never runs forever. If you need the *last* position where something is true, round `mid` up instead, as in Problem 10.5.
 
-## 10.1 Find in a Sorted Catalogue (Easy)
+## 10.1 Find in a Sorted Catalog (Easy)
 
 Return the position of a value in a sorted list of distinct values, or -1.
 
@@ -54,7 +54,7 @@ The examples use a small wrapper that makes every build from `first` onward bad.
 
 **Complexity:** O(log n) calls. The test for this problem checks that a million builds need at most 21 calls.
 
-## 10.3 Rotated Catalogue (Medium)
+## 10.3 Rotated Catalog (Medium)
 
 A sorted list of distinct values was rotated at some unknown point, for example `[9, 12, 1, 4, 7]`. Find a target's position in O(log n), or return -1.
 

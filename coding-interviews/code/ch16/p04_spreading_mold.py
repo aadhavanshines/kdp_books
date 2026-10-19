@@ -1,11 +1,11 @@
-"""16.4 Spreading Mould: each minute, mould (2) spreads to fresh bread (1)
+"""16.4 Spreading Mold: each minute, mold (2) spreads to fresh bread (1)
 next to it (up, down, left, right). How many minutes until no fresh bread
 is left? -1 if some can never be reached."""
 
 from collections import deque
 
 
-def spreading_mould(tray):
+def spreading_mold(tray):
     rows, cols = len(tray), len(tray[0])
     tray = [row[:] for row in tray]
     queue = deque()
@@ -13,7 +13,7 @@ def spreading_mould(tray):
     for r in range(rows):
         for c in range(cols):
             if tray[r][c] == 2:
-                queue.append((r, c, 0))  # every mouldy cell starts at once
+                queue.append((r, c, 0))  # every moldy cell starts at once
             elif tray[r][c] == 1:
                 fresh += 1
     minutes = 0
@@ -28,7 +28,7 @@ def spreading_mould(tray):
     return minutes if fresh == 0 else -1
 
 
-def spreading_mould_simulate(tray):
+def spreading_mold_simulate(tray):
     tray = [row[:] for row in tray]
     minutes = 0
     while True:
@@ -57,7 +57,7 @@ def spreading_mould_simulate(tray):
     return minutes
 
 
-SOLUTIONS = [spreading_mould, spreading_mould_simulate]
+SOLUTIONS = [spreading_mold, spreading_mold_simulate]
 EXAMPLES = [
     (([[1, 1, 0, 2], [0, 1, 1, 1], [0, 0, 0, 1]],), 5),
     (([[2, 1, 0], [0, 0, 1]],), -1),

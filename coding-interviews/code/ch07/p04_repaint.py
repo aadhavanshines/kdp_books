@@ -1,5 +1,5 @@
-"""7.4 Repaint the Fence: longest run of one colour after repainting at
-most k boards. Colours are capital letters."""
+"""7.4 Repaint the Fence: longest run of one color after repainting at
+most k boards. Colors are capital letters."""
 
 
 def repaint_brute(boards, k):
@@ -15,12 +15,12 @@ def repaint_brute(boards, k):
 
 def repaint(boards, k):
     counts = {}
-    most = 0  # highest count of one colour seen in a window so far
+    most = 0  # highest count of one color seen in a window so far
     left = 0
     best = 0
-    for right, colour in enumerate(boards):
-        counts[colour] = counts.get(colour, 0) + 1
-        most = max(most, counts[colour])
+    for right, color in enumerate(boards):
+        counts[color] = counts.get(color, 0) + 1
+        most = max(most, counts[color])
         if right - left + 1 - most > k:  # too many boards to repaint
             counts[boards[left]] -= 1
             left += 1

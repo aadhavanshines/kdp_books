@@ -1,11 +1,11 @@
-"""13.6 No Two Alike: rearrange letters so no two neighbours are equal.
+"""13.6 No Two Alike: rearrange letters so no two neighbors are equal.
 Return "" if impossible. Any valid answer is accepted."""
 
 import heapq
 from collections import Counter
 
 
-def no_neighbours(s):
+def no_neighbors(s):
     heap = [(-c, ch) for ch, c in Counter(s).items()]
     heapq.heapify(heap)
     out = []
@@ -32,7 +32,7 @@ def CHECK(args, result):
     )
 
 
-SOLUTIONS = [no_neighbours]
+SOLUTIONS = [no_neighbors]
 EXAMPLES = [(("ppa",), "pap"), (("pppa",), ""), (("",), "")]
 
 

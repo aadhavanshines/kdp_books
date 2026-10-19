@@ -4,7 +4,7 @@
 
 This chapter replays four complete 45-minute coding interviews, as conversations between a candidate and an interviewer. They are written to show the parts of an interview that solutions alone can't: clarifying questions, thinking aloud, getting stuck, taking hints, finding a bug, and answering follow-ups. Each one ends with the interviewer's notes, the kind of written feedback that goes to a hiring committee or a hiring manager.
 
-The interviews are fictional and the problems are original to this book, but the structure matches the six-step method of Chapter 2.
+The interviews are fictional, and the problems are original to this book, but the structure matches the six-step method of Chapter 2.
 
 **How to use this chapter:** before reading each interview, read only the problem statement and try it yourself for 30 minutes, out loud, with a timer. Then read the conversation and compare: not just your code, but your clarifying questions, your explanation and your testing.
 
@@ -14,7 +14,7 @@ The interviews are fictional and the problems are original to this book, but the
 
 **Interviewer:** Here's the problem. Take a moment to read it, and tell me how you'd like to start.
 
-**Candidate:** Let me make sure I understand. We're minimizing the number of buses, not the number of stops travelled. So riding one bus through ten stops counts as one. Is that right?
+**Candidate:** Let me make sure I understand. We're minimizing the number of buses, not the number of stops traveled. So riding one bus through ten stops counts as one. Is that right?
 
 **Interviewer:** Yes.
 
@@ -26,7 +26,7 @@ The interviews are fictional and the problems are original to this book, but the
 
 **Interviewer:** Good. How would you approach it?
 
-**Candidate:** "Fewest" with each step costing the same, one bus, suggests BFS. My first instinct is a BFS over stops, where neighbours are stops reachable on any bus through the current stop... but then each level is one bus ride, so the BFS level is exactly the number of buses. That works.
+**Candidate:** "Fewest" with each step costing the same, one bus, suggests BFS. My first instinct is a BFS over stops, where neighbors are stops reachable on any bus through the current stop... but then each level is one bus ride, so the BFS level is exactly the number of buses. That works.
 
 **Interviewer:** What's the cost?
 
@@ -74,7 +74,7 @@ The interviews are fictional and the problems are original to this book, but the
 @include code/ch28/m2_calendar.py::calendar_session_brute
 ```
 
-**Candidate:** To improve it, I'll keep the bookings sorted by start. Since they never overlap, sorting by start also sorts them by end. A new booking can only conflict with its two neighbours in sorted order: the one before it, which must end by our start, and the one after it, which must start at or after our end. Binary search finds the position.
+**Candidate:** To improve it, I'll keep the bookings sorted by start. Since they never overlap, sorting by start also sorts them by end. A new booking can only conflict with its two neighbors in sorted order: the one before it, which must end by our start, and the one after it, which must start at or after our end. Binary search finds the position.
 
 **Interviewer:** Show me.
 
@@ -198,7 +198,7 @@ You won't be perfect in an interview, and you don't need to be. Interviewers are
 
 ## Key Takeaways
 
-- Practise full interviews out loud, with a timer, not just problems.
+- Practice full interviews out loud, with a timer, not just problems.
 - Clarify the objective and constraints before choosing an algorithm.
 - Use the input limits to estimate, and say the estimate aloud.
 - When an interviewer asks "does that handle every case?", look for a counterexample.

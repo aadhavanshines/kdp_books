@@ -13,7 +13,7 @@ How to do well:
 - **Write a brute force first** if the optimal solution isn't clear; it may pass most tests, and it's useful to check the faster version.
 - **Test edge cases yourself**: the empty input, one element, all equal, the maximum size. Hidden tests always include them.
 - **Know your language's input handling.** Some platforms give you a function to complete; others make you read standard input. Practice both.
-- **Practise in the same conditions**: a timer, no autocomplete, and no outside help unless the instructions allow it.
+- **Practice in the same conditions**: a timer, no autocomplete, and no outside help unless the instructions allow it.
 
 > **Warning:** Follow the rules of each test exactly. If an assessment says no outside help, using an AI assistant or searching for the problem is cheating. Companies use proctoring, plagiarism checks and follow-up interviews that ask you to explain your submitted code. Being caught ends the process, and a solution you can't explain is worthless in the next round anyway.
 
@@ -34,11 +34,11 @@ Take-homes are usually followed by a review conversation. Expect "walk me throug
 
 ## AI-Assisted Rounds
 
-Some companies now include an approved AI assistant in technical interviews. Meta's hiring process page says that select roles include an authorized AI assistant within the coding environment during technical interviews, and that candidates can practise in the same tool beforehand. Candidates who have taken such rounds describe a longer session, around an hour, built around a small multi-file codebase and a task with several stages, such as fixing a bug, adding a feature and extending it; they report being judged on problem solving, code quality, how they verify the assistant's output, and communication. Those details come from candidates' reports rather than official descriptions, and formats differ between companies and roles, so ask your recruiter exactly what to expect.
+Some companies now include an approved AI assistant in technical interviews. Meta's hiring process page says that select roles include an authorized AI assistant within the coding environment during technical interviews, and that candidates can practice in the same tool beforehand. Candidates who have taken such rounds describe a longer session, around an hour, built around a small multi-file codebase and a task with several stages, such as fixing a bug, adding a feature and extending it; they report being judged on problem solving, code quality, how they verify the assistant's output, and communication. Those details come from candidates' reports rather than official descriptions, and formats differ between companies and roles, so ask your recruiter exactly what to expect.
 
 What changes when an assistant is allowed:
 
-- **Typing speed matters less; judgement matters more.** The assistant writes code quickly. Your job is to decide what to ask for, to notice when its answer is wrong, and to keep the overall design coherent.
+- **Typing speed matters less; judgment matters more.** The assistant writes code quickly. Your job is to decide what to ask for, to notice when its answer is wrong, and to keep the overall design coherent.
 - **Reading code becomes central.** You must understand an unfamiliar codebase quickly, and review generated code as carefully as a colleague's pull request.
 - **Verification is visible.** Interviewers watch whether you run the code, write tests, and check edge cases, or simply accept what the assistant produced.
 
@@ -65,17 +65,17 @@ This is exactly the bug the book's own random tests found in an early version of
 
 > **Interviewer's View:** In an AI-assisted round, "I'd like to check that before we move on" is one of the strongest things you can say. Accepting large blocks of generated code without reading them is one of the weakest.
 
-### How to Practise
+### How to Practice
 
 - Use an AI coding assistant on the problems in this book, but only *after* solving each problem yourself, then compare and critique its solution.
-- Practise reading unfamiliar code: open a small open-source project, pick an issue, and find the relevant files within 15 minutes.
+- Practice reading unfamiliar code: open a small open-source project, pick an issue, and find the relevant files within 15 minutes.
 - Use the practice environment the company provides, if there is one, so that the tool itself holds no surprises on the day.
 
 ## Key Takeaways
 
 - Online assessments: solve the easy problems fully, respect the limits, and test edge cases yourself.
 - Take-homes: working, tested, readable code with a clear README, within the time suggested.
-- AI-assisted rounds reward judgement, code reading and verification, not typing.
+- AI-assisted rounds reward judgment, code reading and verification, not typing.
 - Follow every format's rules on outside help exactly.
 - In every format, you must be able to explain every line you submit.
 

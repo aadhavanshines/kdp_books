@@ -13,7 +13,7 @@ An object-oriented design (OOD) interview asks you to model a small system in co
 
 ## Principles Worth Naming
 
-You don't need to recite design-pattern catalogues, but a few principles help you explain choices:
+You don't need to recite design-pattern catalogs, but a few principles help you explain choices:
 
 - **Encapsulation:** an object protects its own state; other objects call its methods instead of changing its data directly. `station.dock(bike)` checks capacity; code outside the class never appends to the list.
 - **Single responsibility:** a class has one reason to change. Pricing rules change for business reasons; docking rules change for hardware reasons. Keep them in separate classes.
@@ -80,12 +80,12 @@ Practice the same approach on these prompts. For each, list the use cases, the c
 | Chat room | Message types; notification channels | User not in room; message too long |
 | Food delivery order | Order states; delivery options | Restaurant closes mid-order |
 
-> **Tip:** The order and elevator prompts contain hidden state machines, like the launch sequence in Chapter 23. Writing the allowed transitions as a table is a quick way to show rigour.
+> **Tip:** The order and elevator prompts contain hidden state machines, like the launch sequence in Chapter 23. Writing the allowed transitions as a table is a quick way to show rigor.
 
 ## Key Takeaways
 
 - Clarify use cases first, then turn nouns into classes and verbs into methods.
 - Give each class one responsibility, and let objects protect their own state.
-- Put what varies behind an interface; new behaviour should mean new classes, not edited ones.
+- Put what varies behind an interface; new behavior should mean new classes, not edited ones.
 - Prefer composition: a rider has a plan.
 - Write and walk through working code for the core, including failures, and be ready to extend it.

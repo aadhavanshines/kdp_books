@@ -4,8 +4,8 @@ palindrome. If several are equally long, return the leftmost."""
 
 def longest_mirror(text):
     best_start, best_len = 0, 0
-    for centre in range(len(text)):
-        for left, right in ((centre, centre), (centre, centre + 1)):
+    for center in range(len(text)):
+        for left, right in ((center, center), (center, center + 1)):
             while (
                 left >= 0
                 and right < len(text)

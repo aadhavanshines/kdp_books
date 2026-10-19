@@ -1,5 +1,5 @@
 """18.2 Quiet Street: collect donations from houses in a row, but never
-from two neighbouring houses. What is the largest total?"""
+from two neighboring houses. What is the largest total?"""
 
 from itertools import product
 

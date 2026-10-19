@@ -117,7 +117,7 @@ Can a set of parcels be divided into two groups of exactly equal total weight?
 
 **Think first:** What does the total weight tell you, and what single question is left?
 
-**The idea.** An odd total can't be split. Otherwise the question becomes: can some group of parcels weigh exactly half the total? Track the set of reachable sums, adding each parcel in turn.
+**The idea.** An odd total can't be split. Otherwise, the question becomes: can some group of parcels weigh exactly half the total? Track the set of reachable sums, adding each parcel in turn.
 
 ```python
 @include code/ch19/p05_fair_split.py::fair_split
@@ -143,7 +143,7 @@ Find the longest block of consecutive characters that reads the same backwards (
 
 **The DP view.** `t[i][j]` is true when `text[i:j+1]` is a palindrome: its two end characters match, and the inside is a palindrome too. That takes O(n²) time and O(n²) space.
 
-**The better idea.** Every palindrome has a centre: a character (odd length) or the gap between two characters (even length). Expand outward from each of the 2n - 1 centres while the characters match. Same time, no table.
+**The better idea.** Every palindrome has a center: a character (odd length) or the gap between two characters (even length). Expand outward from each of the 2n - 1 centers while the characters match. Same time, no table.
 
 ```python
 @include code/ch19/p06_longest_mirror.py::longest_mirror
@@ -159,4 +159,4 @@ Find the longest block of consecutive characters that reads the same backwards (
 - Grid problems combine the cell above and the cell to the left; one row of memory is often enough.
 - 0/1 knapsack loops capacities backwards; the unlimited version loops forwards.
 - "Split into two equal groups" is subset sum in disguise.
-- Before building a table, check whether a simpler structure, such as expanding from centres, does the same job.
+- Before building a table, check whether a simpler structure, such as expanding from centers, does the same job.

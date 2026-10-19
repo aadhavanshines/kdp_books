@@ -49,7 +49,7 @@ You don't need precise figures, only the right order of magnitude.
 | Peak traffic | often 2 to 10 times the average; state your assumption |
 | One character of ASCII text | 1 byte |
 | A short database row | a few hundred bytes |
-| Reading from memory vs. a network round trip in a data centre vs. a disk seek | roughly 100 nanoseconds vs. hundreds of microseconds vs. milliseconds |
+| Reading from memory vs. a network round trip in a data center vs. a disk seek | roughly 100 nanoseconds vs. hundreds of microseconds vs. milliseconds |
 
 > **Warning:** Latency figures depend on hardware and change over time. Use them to compare options ("a cache hit avoids a network call to the database"), not as exact predictions.
 
@@ -95,7 +95,7 @@ GET  /{short}  redirects (301 or 302) to the long URL
 
 **High-level design.**
 
-1. **Ingestion gateways** behind a load balancer accept messages, authenticate the vehicle, validate the format and publish to a partitioned **log** (such as Kafka), keyed by vehicle ID so each vehicle's messages stay in order.
+1. **Ingestion gateways** behind a load balancer accept messages, authenticate the vehicle, validate the format and publish to a partitioned **log** (such as Kafka), keyed by vehicle ID, so each vehicle's messages stay in order.
 2. **Consumers** read the log independently:
    - a *latest-state* consumer updates a key-value store holding each vehicle's last status, which the dashboard reads;
    - an *alerting* consumer runs rules like the spike detector from Chapter 23 and sends alerts;
@@ -108,7 +108,7 @@ GET  /{short}  redirects (301 or 302) to the long URL
 - **Out-of-order data:** a vehicle that was offline sends old messages late. The latest-state consumer should ignore messages older than the stored one.
 - **Hot partitions:** if one vehicle sends far more data, its partition becomes a bottleneck; monitor partition lag.
 
-> **Interviewer's View:** Notice how the estimates drove the design: the read-heavy system centred on caching, the write-heavy one on a log and independent consumers. Explicitly linking your numbers to your choices is what separates strong answers from a list of buzzwords.
+> **Interviewer's View:** Notice how the estimates drove the design: the read-heavy system centered on caching, the write-heavy one on a log and independent consumers. Explicitly linking your numbers to your choices is what separates strong answers from a list of buzzwords.
 
 ## Key Takeaways
 

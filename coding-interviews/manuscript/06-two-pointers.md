@@ -1,6 +1,6 @@
 # Chapter 6: Two Pointers
 
-Many problems on arrays and strings can be solved by walking two positions through the data at the same time: one from each end, moving towards each other, or both from the start at different speeds. Because each pointer only ever moves forward, the whole walk takes O(n), and usually needs no extra memory.
+Many problems on arrays and strings can be solved by walking two positions through the data at the same time: one from each end, moving toward each other, or both from the start at different speeds. Because each pointer only ever moves forward, the whole walk takes O(n), and usually needs no extra memory.
 
 ## When to Use It
 
@@ -133,7 +133,7 @@ The heights of a row of blocks form a skyline. After heavy rain, water collects 
 
 **Think first:** How much water sits on top of a single block?
 
-**The key observation.** The water above block i is `min(tallest to its left, tallest to its right) - height[i]`, counting the block itself in both directions so the result is never negative.
+**The key observation.** The water above block i is `min(tallest to its left, tallest to its right) - height[i]`, counting the block itself in both directions, so the result is never negative.
 
 **Brute force.** For each block, scan left and right for the tallest blocks: O(n²). An O(n) improvement precomputes two arrays of "tallest so far" from each side, using O(n) space.
 

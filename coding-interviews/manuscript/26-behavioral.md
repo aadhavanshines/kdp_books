@@ -10,7 +10,7 @@ The good news: behavioral interviews are the most *preparable* part of the proce
 - **Impact:** did your work make a measurable difference?
 - **Collaboration and conflict:** can you disagree constructively and work with difficult people?
 - **Learning:** do you reflect on failures and improve?
-- **Judgement under ambiguity:** how do you decide with incomplete information?
+- **Judgment under ambiguity:** how do you decide with incomplete information?
 - **Leadership,** at any level: did you influence others, mentor, or raise the bar?
 - **Communication:** can you tell a clear, structured story?
 
@@ -39,7 +39,7 @@ The most common failure is spending two minutes on the situation and twenty seco
 
 **Action:** I was worried about two things: we needed transactions across orders and payments, and nobody on call knew how to operate the new database. Instead of arguing in the meeting, I asked for two days to compare options. I wrote a one-page comparison and built a small prototype of the payment flow on both databases. The prototype showed that the new database would need a custom retry mechanism to keep orders and payments consistent. I shared the results with the lead first, privately, and then we presented them together to the team.
 
-**Result:** We kept our existing relational database for orders and used the new one only for the menu catalogue, where it fitted well. We launched on time, with no data-consistency incidents in the first six months. I learned that a quick prototype settles a disagreement faster than a debate, and since then I've suggested time-boxed prototypes whenever the team is split.
+**Result:** We kept our existing relational database for orders and used the new one only for the menu catalog, where it fitted well. We launched on time, with no data-consistency incidents in the first six months. I learned that a quick prototype settles a disagreement faster than a debate, and since then I've suggested time-boxed prototypes whenever the team is split.
 
 Why it works: the disagreement is about substance, not personality; the candidate gathers data instead of escalating; the relationship with the lead is respected; the result is concrete; and there's a lesson.
 
@@ -60,9 +60,9 @@ Prepare **eight to ten stories** from the last few years, and map each to severa
 | Customer focus | "Tell me about a time you improved things for users." |
 | Mentoring or leadership | "Tell me about helping someone grow." |
 
-For each story, write bullet points, not a script: the situation in one line, your three or four key actions, the result with a number, and the lesson. Practise telling each one aloud in about two minutes.
+For each story, write bullet points, not a script: the situation in one line, your three or four key actions, the result with a number, and the lesson. Practice telling each one aloud in about two minutes.
 
-> **Common Mistake:** Choosing a "failure" that is really a disguised success ("I work too hard"). Interviewers see through it. Choose a real failure with real consequences, show what you did to recover, and, most important, what you changed afterwards.
+> **Common Mistake:** Choosing a "failure" that is really a disguised success ("I work too hard"). Interviewers see through it. Choose a real failure with real consequences, show what you did to recover, and, most important, what you changed afterward.
 
 ## Questions About You and the Company
 

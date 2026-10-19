@@ -111,10 +111,10 @@ A machine runs tasks of several types, one task per time unit. Two tasks of the 
 
 ## 13.6 No Two Alike (Medium)
 
-Rearrange the letters of a string so that no two neighbouring letters are equal. Return any valid arrangement, or "" if it's impossible.
+Rearrange the letters of a string so that no two neighboring letters are equal. Return any valid arrangement, or "" if it's impossible.
 
 ```
-@include code/ch13/p06_no_neighbours.examples.txt
+@include code/ch13/p06_no_neighbors.examples.txt
 ```
 
 **Think first:** Which letter is most at risk of ending up next to itself?
@@ -122,12 +122,12 @@ Rearrange the letters of a string so that no two neighbouring letters are equal.
 **The idea.** Greedily place the most frequent remaining letter, but never the letter just placed: hold it back for one step, then return it to the heap. If the held letter can never be placed, the arrangement is impossible, which happens exactly when one letter fills more than half the positions (rounded up).
 
 ```python
-@include code/ch13/p06_no_neighbours.py::no_neighbours
+@include code/ch13/p06_no_neighbors.py::no_neighbors
 ```
 
 **Complexity:** O(n log k) for k distinct letters.
 
-> **Tip:** When several answers are valid, the tests in this book check the *properties* of the answer, the same letters and no equal neighbours, rather than one exact string. In an interview, say how you would test it the same way.
+> **Tip:** When several answers are valid, the tests in this book check the *properties* of the answer, the same letters and no equal neighbors, rather than one exact string. In an interview, say how you would test it the same way.
 
 ## Key Takeaways
 

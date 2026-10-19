@@ -30,7 +30,7 @@ The examples replay a session of operations: `('add', w)` stores w, `('word', w)
 
 **Complexity:** O(L) per operation for a word of length L; space proportional to the total length of the stored words.
 
-> **Common Mistake:** In an early version of this solution, `has_prefix` returned `node is not None`. That looks right, but for the empty prefix the walk stops at the root, which exists even when the trie is empty, so `has_prefix("")` claimed a word existed in an empty trie. The random tests against a simple set-based version found the case. Returning `bool(node)` fixes it, because an empty root is an empty dict. Edge cases like the empty string are exactly where hand-written tests miss bugs and comparisons with a brute force find them.
+> **Common Mistake:** In an early version of this solution, `has_prefix` returned `node is not None`. That looks right, but for the empty prefix the walk stops at the root, which exists even when the trie is empty, so `has_prefix("")` claimed a word existed in an empty trie. The random tests against a simple set-based version found the case. Returning `bool(node)` fixes it, because an empty root is an empty dict. Edge cases like the empty string are exactly where handwritten tests miss bugs and comparisons with a brute force find them.
 
 ## 20.2 Autocomplete (Medium)
 
