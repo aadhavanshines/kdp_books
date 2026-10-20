@@ -47,7 +47,7 @@ Find the length of the longest block of a string in which no character repeats.
 
 **Think first:** When the next character is already in the window, where must the window's new start be?
 
-**Brute force.** Check every block for repeats: O(n³) as written below, or O(n²) with a running set.
+**Brute force.** Check every block for repeats: O(n³) if each block is checked from scratch, or O(n²) if each block grows from its start with a running set.
 
 **The better idea.** Remember the last position of each character. When the next character was last seen *inside* the current window, jump the start of the window to just after that position. Positions before the window are ignored.
 

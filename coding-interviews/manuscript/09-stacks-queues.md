@@ -68,7 +68,7 @@ Evaluate an arithmetic expression written in postfix (reverse Polish) notation, 
 
 **Complexity:** O(n) time, O(n) space.
 
-> **Common Mistake:** In Python, `//` rounds toward negative infinity, so `-7 // 2` is -4. "Truncate toward zero" requires `int(a / b)`, which gives -3. The example `7 / -2` checks this.
+> **Common Mistake:** In Python, `//` rounds toward negative infinity, so `-7 // 2` is -4. "Truncate toward zero" gives -3. `int(a / b)` produces -3 too, but it goes through floating point, which loses precision for integers above about 2⁵³. The solution divides the absolute values with `//` and then fixes the sign, which is exact for any size. The example `7 / -2` checks the sign.
 
 ## 9.4 Next Warmer Day (Medium)
 

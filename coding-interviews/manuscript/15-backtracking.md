@@ -128,7 +128,7 @@ Generate all strings of n pairs of correctly nested parentheses.
 @include code/ch15/p06_bracket_sets.py::bracket_sets
 ```
 
-**Complexity:** proportional to the number of results, the n-th Catalan number, which grows roughly like 4ⁿ.
+**Complexity:** proportional to the number of results, the n-th Catalan number, which grows roughly like 4ⁿ divided by n√n.
 
 ## Key Takeaways
 

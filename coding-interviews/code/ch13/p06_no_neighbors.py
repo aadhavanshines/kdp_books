@@ -38,3 +38,15 @@ EXAMPLES = [(("ppa",), "pap"), (("pppa",), ""), (("",), "")]
 
 def random_case(rng):
     return ("".join(rng.choice("aabc") for _ in range(rng.randint(0, 10))),)
+
+
+def test():
+    from itertools import permutations, product
+
+    for n in range(7):  # possible() agrees with trying every arrangement
+        for s in map("".join, product("abc", repeat=n)):
+            exists = any(
+                all(a != b for a, b in zip(p, p[1:]))
+                for p in permutations(s)
+            )
+            assert possible(s) == exists, s

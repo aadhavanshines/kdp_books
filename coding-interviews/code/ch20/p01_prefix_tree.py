@@ -80,3 +80,15 @@ def random_case(rng):
             for _ in range(rng.randint(1, 12))
         ],
     )
+
+
+def test():
+    class BuggyTrie(Trie):  # the early version described in the book
+        def has_prefix(self, prefix):
+            return self._walk(prefix) is not None
+
+    assert BuggyTrie().has_prefix("") is True  # the bug: no words stored
+    assert Trie().has_prefix("") is False
+    t = Trie()
+    t.insert("")
+    assert t.has_prefix("") and t.contains("")

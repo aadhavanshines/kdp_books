@@ -42,4 +42,5 @@ EXAMPLES = [((1,), 1), ((2,), 0), ((4,), 2), ((6,), 4), ((8,), 92)]
 
 
 def test():
-    assert safe_queens(10) == 724
+    known = [1, 0, 0, 2, 10, 4, 40, 92, 352, 724]  # n = 1 to 10
+    assert [safe_queens(n) for n in range(1, 11)] == known

@@ -68,7 +68,7 @@ n computers, numbered 1 to n, were connected by cables into a tree (every comput
 @include code/ch17/p03_extra_cable.py::extra_cable
 ```
 
-**Complexity:** nearly O(n). *Path compression*, the line that shortens paths as it walks them, keeps the trees of the union-find structure almost flat.
+**Complexity:** O(n log n) in the worst case, and nearly O(n) in practice. *Path compression*, the line that shortens paths as it walks them, keeps the trees of the union-find structure almost flat. Adding *union by size*, always attaching the smaller tree under the larger, guarantees nearly O(1) per operation, so nearly O(n) in total; mention it as the follow-up.
 
 ## 17.4 Signal Time (Medium)
 

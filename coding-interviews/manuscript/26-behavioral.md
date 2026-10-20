@@ -1,6 +1,6 @@
 # Chapter 26: Behavioral Interviews
 
-Technical candidates often treat behavioral questions as small talk before the real interview. That's a costly mistake. At most large companies, behavioral interviews are scored with the same care as coding rounds, and a weak one can sink an otherwise strong loop. Amazon is the clearest example: its own guides say behavioral questions are based on its Leadership Principles, and that for software roles roughly half of the interview process covers them. Other companies use different names, "Googleyness and leadership" in candidate reports about Google, for example, but they ask very similar questions.
+Technical candidates often treat behavioral questions as small talk before the real interview. That's a costly mistake. At most large companies, behavioral interviews are scored with the same care as coding rounds, and a weak one can sink an otherwise strong loop. Amazon is the clearest example: its own guides say behavioral questions are based on its Leadership Principles, and its prep page for senior software engineers (SDE III) says about half of the interview time goes to them, the other half to coding and system design. Other companies use different names, "Googleyness and leadership" in candidate reports about Google, for example, but they ask very similar questions.
 
 The good news: behavioral interviews are the most *preparable* part of the process. The questions are predictable, and the stories come from your own experience.
 
@@ -78,7 +78,7 @@ Behavior is assessed in every round, not only in behavioral interviews. In a cod
 
 ## Key Takeaways
 
-- Behavioral rounds are scored seriously; at some companies they're half the process.
+- Behavioral rounds are scored seriously; at Amazon, for senior engineers, they take about half the interview time.
 - Use STAR, and spend most of the time on your own actions.
 - Build a bank of eight to ten stories that cover the common themes, with numbers and lessons.
 - Say "I" for your actions; give credit to the team elsewhere.
@@ -86,5 +86,5 @@ Behavior is assessed in every round, not only in behavioral interviews. In a cod
 
 ## Sources
 
-- Amazon: "Your complete guide to the Amazon interview process" and related interview guides on aboutamazon.com and amazon.jobs (STAR method, Leadership Principles, use "I").
+- Amazon: "SDE III Interview Prep" on amazon.jobs (half Leadership Principles, half coding and system design); "Your complete guide to the Amazon interview process" and related interview guides on aboutamazon.com and amazon.jobs (STAR method, Leadership Principles, use "I").
 - Apple careers: interview tips (open-ended questions about past performance; questions about the team).

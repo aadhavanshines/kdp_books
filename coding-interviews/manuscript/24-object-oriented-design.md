@@ -25,8 +25,6 @@ You don't need to recite design-pattern catalogs, but a few principles help you 
 
 **The requirements, after clarifying:** stations have a fixed number of docks. Bikes are classic or electric. A rider rents one bike at a time from a station and returns it to any station with a free dock. Casual riders pay an unlock fee plus a per-minute rate, higher for electric bikes; members get a lower electric rate, and classic rides up to 45 minutes are included. Payments, maps and maintenance are out of scope.
 
-![Classes in the bike-share design: BikeShare coordinates Stations and Rides; Riders have a PricingPlan, with PayPerRide and Membership as two implementations.](images/diagram-bike-share.png)
-
 The simple, stable parts are data classes and an enumeration:
 
 ```python
@@ -54,6 +52,10 @@ A short session shows the design at work, including a failed return to a full st
 ```
 @include code/ch24/bike_share.demo.txt
 ```
+
+The whole design fits in one picture:
+
+![Classes in the bike-share design: BikeShare coordinates Stations and Rides; Riders have a PricingPlan, with PayPerRide and Membership as two implementations.](images/diagram-bike-share.png)
 
 The book's test for this design checks every failure path (a second rental, no bike of the requested kind, returning without a bike, returning to a full station) as well as the fees.
 

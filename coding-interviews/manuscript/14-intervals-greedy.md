@@ -87,7 +87,7 @@ Cancel as few bookings `[start, end)` as possible so that the rest don't overlap
 @include code/ch14/p04_fewest_cancellations.py::fewest_cancellations
 ```
 
-**Complexity:** O(n log n) time, O(1) extra space.
+**Complexity:** O(n log n) time; O(n) space for the sorted copy, or O(1) extra if you may sort the input in place.
 
 > **Interviewer's View:** That one-sentence "exchange argument" (swapping in the earliest-ending booking never hurts) is the proof the interviewer is looking for. Practice saying it.
 

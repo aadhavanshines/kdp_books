@@ -40,7 +40,7 @@ Companies publish a surprising amount of advice for candidates. The table summar
 | Company | Key points | Source |
 | --- | --- | --- |
 | Meta | Review core data structures and big-O; practice without autocomplete and under a time limit; talk through your approach. Select roles now include an authorized AI assistant in some technical interviews, with a practice environment provided in advance | Meta careers site: interview preparation pages and hiring process page |
-| Amazon | Behavioral questions are based on Amazon's 16 Leadership Principles; answer with the STAR method; for software roles, roughly half the process is technical; a "Bar Raiser" from outside the hiring team helps protect the hiring standard | Amazon's official interview guides on aboutamazon.com and amazon.jobs |
+| Amazon | Behavioral questions are based on Amazon's 16 Leadership Principles; answer with the STAR method; Amazon's interview prep page for senior software engineers (SDE III) says about half the interview time goes to Leadership Principles and half to coding and system design; a "Bar Raiser" from outside the hiring team helps protect the hiring standard | Amazon's official interview guides on aboutamazon.com and amazon.jobs |
 | Google | Think out loud, ask clarifying questions, state assumptions, discuss trade-offs; decisions are made by a hiring committee; in 2025 Google said it was bringing back at least one in-person interview round for some roles, partly because of concerns about AI-assisted cheating in virtual interviews | Google's candidate guide; reported remarks by Sundar Pichai in 2025 |
 | Apple | Expect open-ended questions about your past work; bring specific examples; ask about the team and how success is measured | Apple careers interview tips |
 | Microsoft | Recruiters single out fundamental coding skills as one of the hardest parts of the interview; know the technical skills the role requires | Microsoft's careers blog |
@@ -81,8 +81,8 @@ Expectations scale with the level of the role:
 ## Sources and Further Reading
 
 - Meta Careers, "Preparing for your software engineering interview at Meta"; "Preparing for your technical screen"; "Preparing for your full loop interview"; "Hiring process". metacareers.com
-- Amazon, "Your complete guide to the Amazon interview process"; "Exploring Amazon's unique interview process" (the Bar Raiser program); "What's it like to interview at Amazon?". aboutamazon.com; amazon.jobs/content/en/how-we-hire
+- Amazon, "Your complete guide to the Amazon interview process"; "Exploring Amazon's unique interview process" (the Bar Raiser program); "What's it like to interview at Amazon?". aboutamazon.com; "SDE III Interview Prep", amazon.jobs/content/en/how-we-hire
 - Google, "Preparing for Google technical internship interviews" (candidate guide). services.google.com
-- Reports of Sundar Pichai's remarks on in-person interviews, 2025, for example CXO Digital Pulse, "Google Reinstates In-Person Job Interviews Amid Rising AI Cheating Concerns".
+- Sundar Pichai on the Lex Fridman Podcast, June 2025 ("some fraction of the interviews being in person"), and later press reports of Google reintroducing at least one in-person round, August 2025.
 - Apple Careers, "Interview tips". apple.com/careers/us/interview_tips.html
 - Microsoft, "How to land a job at Microsoft". news.microsoft.com/life

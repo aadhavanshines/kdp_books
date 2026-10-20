@@ -181,8 +181,7 @@ Turn strings such as "1h30m", "45s" or "2h5s" into a number of seconds. Each of 
 
 ## Key Takeaways
 
-- Practical rounds reward clean structure, careful handling of bad input, and the standard library.
-- Write state machines and rules as data (dictionaries and sets), not long `if` chains.
+- Practical rounds reward clean structure, careful handling of bad input, the standard library, and rules written as data rather than long `if` chains.
 - Build a dictionary first, then look up: the hash join turns O(n × m) into O(n + m).
 - When there's no simple reference to compare against, test a property, such as "applying the diff gives the new version".
 - Question the specification: a spike that corrupts its own baseline is a design flaw, and noticing it is a strong signal.

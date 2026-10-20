@@ -119,7 +119,7 @@ Two servers each produce a sorted list of event timestamps. Merge them into a si
 @include code/ch06/p05_merge_logs.py::merge_logs
 ```
 
-**Complexity:** O(m + n) time; O(m + n) space for the result. Calling `sorted(a + b)` also works, but is O(N log N) and ignores the fact that both inputs are already sorted, which is what the interviewer wants to see you use.
+**Complexity:** O(m + n) time; O(m + n) space for the result. Calling `sorted(a + b)` also works, and Python's sort even detects the two sorted runs and merges them in linear time, but the interviewer wants to see you write the merge yourself, since it is the core of merge sort and of Problem 11.3.
 
 > **Follow-Up:** "Merge into the first list in place, if it has empty space at the end." Fill from the back: compare the largest remaining items and write them at the end, so nothing is overwritten before it is used.
 

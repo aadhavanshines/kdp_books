@@ -47,7 +47,7 @@ Return the k most frequent tags, most frequent first; break ties alphabetically.
 
 **Complexity:** O(n + u log k) for n tags with u distinct values.
 
-An alternative uses "bucket sort" by count, which avoids the log factor:
+An alternative uses "bucket sort" by count, which avoids the heap: tags go into a list indexed by their count, so only tags with equal counts need sorting:
 
 ```python
 @include code/ch13/p02_top_k_words.py::top_k_buckets
@@ -107,7 +107,7 @@ A machine runs tasks of several types, one task per time unit. Two tasks of the 
 @include code/ch13/p05_cooldown_scheduler.py::cooldown
 ```
 
-**Complexity:** O(n) for the formula. The tests compare the formula with the simulation on thousands of random cases.
+**Complexity:** O(number of tasks) for the formula. The tests compare the formula with the simulation on thousands of random cases.
 
 ## 13.6 No Two Alike (Medium)
 

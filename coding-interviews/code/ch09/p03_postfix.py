@@ -16,7 +16,8 @@ def postfix(tokens):
             elif tok == "*":
                 stack.append(a * b)
             else:
-                stack.append(int(a / b))  # truncate toward zero
+                q = abs(a) // abs(b)  # exact integer division
+                stack.append(q if (a < 0) == (b < 0) else -q)  # toward zero
         else:
             stack.append(int(tok))
     return stack[0]
@@ -64,3 +65,9 @@ def random_case(rng):
         return build(depth - 1) + right + [op]
 
     return (build(3),)
+
+
+def test():
+    big = 10**20 + 1
+    assert postfix([str(big), "3", "/"]) == big // 3
+    assert postfix([str(-big), "3", "/"]) == -(big // 3)

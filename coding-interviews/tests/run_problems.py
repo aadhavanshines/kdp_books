@@ -8,7 +8,7 @@ Each problem module may define:
   random_case   optional f(rng) -> args_tuple; all SOLUTIONS must agree on it
   test()        optional extra checks (design problems, classes, streams)
 
-Usage: python tests/run_problems.py [-k substring] [--cases N]
+Usage: python tests/run_problems.py [-k substring] [--cases N] [--seed S]
 """
 
 import argparse
@@ -36,7 +36,7 @@ def call(fn, args):
     return fn(*copy.deepcopy(args))
 
 
-def check_module(mod, cases):
+def check_module(mod, cases, seed=1234):
     problems = []
     sols = getattr(mod, "SOLUTIONS", [])
     check = getattr(mod, "CHECK", None)
@@ -51,7 +51,7 @@ def check_module(mod, cases):
                 )
     gen = getattr(mod, "random_case", None)
     if gen and sols:
-        rng = random.Random(1234)
+        rng = random.Random(seed)
         for _ in range(cases):
             args = gen(rng)
             results = [call(fn, args) for fn in sols]
@@ -80,6 +80,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("-k", default="")
     ap.add_argument("--cases", type=int, default=300)
+    ap.add_argument("--seed", type=int, default=1234)
     a = ap.parse_args()
     files = sorted(p for p in CODE.glob("ch*/*.py") if a.k in str(p))
     failed = 0
@@ -87,7 +88,7 @@ def main():
     for path in files:
         count += 1
         try:
-            problems = check_module(load(path), a.cases)
+            problems = check_module(load(path), a.cases, a.seed)
         except Exception:
             problems = [traceback.format_exc()]
         if problems:
