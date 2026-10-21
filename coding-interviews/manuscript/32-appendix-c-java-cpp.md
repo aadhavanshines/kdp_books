@@ -7,7 +7,7 @@ Most companies let you choose your interview language, and Python is the most po
 | Python | Java | C++ |
 | --- | --- | --- |
 | `list` | `ArrayList<T>` | `std::vector<T>` |
-| `dict` | `HashMap<K, V>` | `std::unordered_map<K, V>` |
+| `dict` | `HashMap<K, V>`; `LinkedHashMap<K, V>` if insertion order matters | `std::unordered_map<K, V>` (no order) |
 | `set` | `HashSet<T>` | `std::unordered_set<T>` |
 | Sorted dict / set (no built-in) | `TreeMap<K, V>`, `TreeSet<T>` | `std::map<K, V>`, `std::set<T>` |
 | `collections.deque` | `ArrayDeque<T>` | `std::deque<T>` |
@@ -23,10 +23,10 @@ Most companies let you choose your interview language, and Python is the most po
 | --- | --- | --- |
 | `len(x)` | `x.size()`, `arr.length`, `s.length()` | `x.size()` |
 | `x in d` | `d.containsKey(x)`, `s.contains(x)` | `d.count(x)` or `d.find(x) != d.end()` |
-| `sorted(x)` / `x.sort()` | `Collections.sort(x)`, `Arrays.sort(a)` | `std::sort(x.begin(), x.end())` |
-| Sort with a key | `x.sort(Comparator.comparingInt(...))` | `std::sort(..., [](auto& a, auto& b) {...})` |
-| `bisect_left(a, x)` | `Collections.binarySearch` (returns a negative value if absent) | `std::lower_bound(a.begin(), a.end(), x)` |
-| `bisect_right(a, x)` | write it yourself | `std::upper_bound(...)` |
+| `sorted(x)` / `x.sort()` | `Collections.sort(x)`, `Arrays.sort(a)` | `std::sort(x.begin(), x.end())`; `std::stable_sort` to keep equal items in order, as Python does |
+| Sort with a key | `x.sort(Comparator.comparingInt(...))` (stable) | `std::stable_sort(..., [](auto& a, auto& b) {...})` |
+| `bisect_left(a, x)` | write a lower-bound search (`lowerBound` below); `Collections.binarySearch` may return any of several equal items | `std::lower_bound(a.begin(), a.end(), x)` |
+| `bisect_right(a, x)` | write an upper-bound search (`upperBound` below) | `std::upper_bound(a.begin(), a.end(), x)` |
 | `float("inf")` | `Double.POSITIVE_INFINITY`; as an integer sentinel, `Integer.MAX_VALUE` or `Long.MAX_VALUE` | `std::numeric_limits<double>::infinity()`; as an integer sentinel, `std::numeric_limits<int>::max()` (both need `#include <limits>`) |
 | `a // b` | `Math.floorDiv(a, b)` | careful: `/` truncates toward zero |
 | `a % b` (never negative for positive b) | `Math.floorMod(a, b)` | `((a % b) + b) % b` |
@@ -42,6 +42,21 @@ Most companies let you choose your interview language, and Python is the most po
 - **Comparing objects in Java.** `==` compares references for `Integer` objects and strings. It seems to work for small integers, from -128 to 127, because Java reuses those objects, and then fails for larger values. Use `.equals`.
 - **Recursion depth.** Java and C++ allow deeper recursion than Python's default limit of about 1,000, but very deep recursion can still overflow the stack. Iterative versions remain safer for large inputs.
 - **Modifying a collection while iterating** over it throws `ConcurrentModificationException` in Java and invalidates iterators in C++. Python raises an error for dictionaries and sets, but not for lists, so habits from Python may not protect you.
+
+## Close, but Not the Same
+
+Some mappings above look equivalent but behave differently in edge cases:
+
+- **Binary search with duplicates.** Python's `bisect_left` returns the *first* position where `x` could be inserted. Java's `Collections.binarySearch` and `Arrays.binarySearch` return the position of *some* matching item, not necessarily the first, and a negative value if there is none. C++'s `std::lower_bound` and `std::upper_bound` match Python exactly. In Java, write the search yourself:
+
+```java
+@include code/appendix_c/Bounds.java::lowerBound,upperBound
+```
+
+- **Stable sorting.** Python's sort keeps equal items in their original order. Java's `Collections.sort` and `Arrays.sort` on objects do too, but C++'s `std::sort` does not; use `std::stable_sort` when the order of ties matters.
+- **Dictionary order.** Python dictionaries remember insertion order. `HashMap` and `std::unordered_map` don't; Java's `LinkedHashMap` does.
+
+The test suite runs `lowerBound` and `upperBound` on 10,000 random arrays with duplicates, comparing them with a simple scan, and checks that they agree with Python's `bisect` on a fixed example.
 
 ## Two Solutions, Translated
 

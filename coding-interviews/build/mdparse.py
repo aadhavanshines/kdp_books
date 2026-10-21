@@ -47,6 +47,30 @@ def python_parts(source, names):
     return "\n\n\n".join(parts)
 
 
+def java_parts(source, names):
+    """Return the named Java methods (with the comment lines just above them),
+    dedented, separated by a blank line."""
+    lines = source.split("\n")
+    parts = []
+    for name in names:
+        start = next((i for i, l in enumerate(lines)
+                      if re.search(rf"\b{re.escape(name)}\(", l) and l.rstrip().endswith("{")), None)
+        if start is None:
+            raise ValueError(f"@include: not found: {name}")
+        first = start
+        while first > 0 and lines[first - 1].strip().startswith("//"):
+            first -= 1
+        depth, end = 0, start
+        for end in range(start, len(lines)):
+            depth += lines[end].count("{") - lines[end].count("}")
+            if depth == 0:
+                break
+        block = lines[first:end + 1]
+        indent = min(len(l) - len(l.lstrip()) for l in block if l.strip())
+        parts.append("\n".join(l[indent:] for l in block))
+    return "\n\n".join(parts)
+
+
 def expand_include(code, root):
     """A code block whose only line is '@include path' is replaced by that file's text.
     'path#L10-L20' takes those lines; 'path::name,other' takes those Python definitions.
@@ -59,6 +83,8 @@ def expand_include(code, root):
         return code
     text = (Path(root) / m.group(1)).read_text(encoding="utf-8").rstrip("\n")
     if m.group(4):
+        if m.group(1).endswith(".java"):
+            return java_parts(text, m.group(4).split(","))
         return python_parts(text, m.group(4).split(","))
     lines = text.split("\n")
     if m.group(2):

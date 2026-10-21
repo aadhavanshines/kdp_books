@@ -11,7 +11,7 @@ Run on 19 October 2026 before release, and again on 20 October 2026 after the fu
 | `tests/check_cover_code.py` | The program on the front cover runs and prints `[1, 3]`, as shown |
 | `ruff check` and `ruff format --check` (code, tests) | Clean, line length 76 |
 | EPUBCheck 5.1.0 | 0 fatals, 0 errors, 0 warnings |
-| `build/check_pdf.py` | 279 pages; margins within KDP limits; 40 TOC entries; no chapter starts on a left-hand page |
+| `build/check_pdf.py` | 281 pages; margins within KDP limits; 40 TOC entries; no chapter starts on a left-hand page |
 | codespell | Clean (one intentional hit: the prefix `"stap"` in an autocomplete example) |
 | LanguageTool (en-US) | Reviewed; real issues fixed, remaining hits are false positives such as `O(n)` spacing and the variable `i` |
 | Personal email search | Not present anywhere in the book or repository |
@@ -55,3 +55,9 @@ A second, systematic pass over every problem, after an editorial review asked fo
 - Chapter 2: the pattern hint now distinguishes "longest block satisfying a rule" (sliding window) from "longest run of consecutive values in an unsorted list" (hash set, Problem 5.4).
 - Appendix C: infinity is now given as complete expressions: `std::numeric_limits<double>::infinity()` and `std::numeric_limits<int>::max()` with `#include <limits>`, and Java's `Double.POSITIVE_INFINITY`; all were compiled and run. Every other cell of the translation tables was rechecked.
 - Chapter 1 and 26 sources rechecked: Apple's tips say to ask about the role and what success looks like (wording aligned); the Microsoft row now reflects what Microsoft's own articles say (live coding can be daunting; interviewers want to see how you think), replacing a claim that could not be confirmed; Google's hiring committee is marked as reported by candidates.
+
+## Third review (21 October 2026)
+
+- Appendix C: `bisect_left`/`bisect_right` no longer map to `Collections.binarySearch`, which may return any of several equal items. A new "Close, but Not the Same" section gives tested Java `lowerBound` and `upperBound` methods (`code/appendix_c/Bounds.java`), checked against a linear scan on 10,000 random arrays with duplicates and against Python's `bisect` on a fixed example.
+- Appendix C reviewed for other mappings that imply exact equivalence: C++ sorting now points to `std::stable_sort` where Python's stable order matters, and `dict` notes that `HashMap`/`unordered_map` don't keep insertion order (`LinkedHashMap` does).
+- The complete output of every release check is kept in `tests/results/release-checks-2026-10-21.txt`.
