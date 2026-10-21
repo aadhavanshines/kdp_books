@@ -70,7 +70,7 @@ Expect these at every company, and prepare them as carefully as the stories:
 
 - **"Tell me about yourself."** A 60- to 90-second summary: what you do now, one or two highlights, and why you're interested in this role. It isn't your life story.
 - **"Why this company?"** Be specific: a product you use, a technical problem that interests you, something from their engineering blog. Generic praise ("it's a great company") is a weak answer.
-- **"Do you have questions for me?"** Always have two or three. Apple's interview tips suggest asking about the team and how success is measured. Good examples: "What does a successful first six months look like in this role?" and "What's the hardest technical problem the team is working on?"
+- **"Do you have questions for me?"** Always have two or three. Apple's interview tips suggest asking about the role and what success looks like in it. Good examples: "What does a successful first six months look like in this role?" and "What's the hardest technical problem the team is working on?"
 
 ## Behavioral Questions in Technical Rounds
 
@@ -87,4 +87,4 @@ Behavior is assessed in every round, not only in behavioral interviews. In a cod
 ## Sources
 
 - Amazon: "SDE III Interview Prep" on amazon.jobs (half Leadership Principles, half coding and system design); "Your complete guide to the Amazon interview process" and related interview guides on aboutamazon.com and amazon.jobs (STAR method, Leadership Principles, use "I").
-- Apple careers: interview tips (open-ended questions about past performance; questions about the team).
+- Apple careers: interview tips (open-ended questions about past performance; asking about the role and what success looks like).

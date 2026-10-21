@@ -31,7 +31,7 @@ State the simplest correct solution, even if it is slow, and give its complexity
 Now look for a better approach. Ask yourself:
 
 - **What work does the brute force repeat?** Can a hash map, a running total or a sorted order remember it instead?
-- **Which pattern does this look like?** The signals listed at the start of each chapter in Part II are designed for exactly this moment: "longest consecutive run" suggests a sliding window; "sorted" suggests two pointers or binary search; "all combinations" suggests backtracking; "fewest steps" suggests breadth-first search.
+- **Which pattern does this look like?** The signals listed at the start of each chapter in Part II are designed for exactly this moment: "longest block of a string or list that satisfies a rule" suggests a sliding window, while "longest run of consecutive values in an unsorted list" suggests a hash set (Problem 5.4); "sorted" suggests two pointers or binary search; "all combinations" suggests backtracking; "fewest steps" suggests breadth-first search.
 - **What is the best possible complexity?** If you must read every item, you can't do better than O(n). If your current solution is O(n), you may already be done.
 
 Before you write any code, describe your approach and its complexity to the interviewer and ask whether it sounds reasonable. This is the cheapest moment to catch a wrong idea.

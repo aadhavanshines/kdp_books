@@ -27,7 +27,7 @@ Most companies let you choose your interview language, and Python is the most po
 | Sort with a key | `x.sort(Comparator.comparingInt(...))` | `std::sort(..., [](auto& a, auto& b) {...})` |
 | `bisect_left(a, x)` | `Collections.binarySearch` (returns a negative value if absent) | `std::lower_bound(a.begin(), a.end(), x)` |
 | `bisect_right(a, x)` | write it yourself | `std::upper_bound(...)` |
-| `float("inf")` | `Integer.MAX_VALUE`, `Long.MAX_VALUE` | `INT_MAX`, `LLONG_MAX`, `std::numeric_limits` |
+| `float("inf")` | `Double.POSITIVE_INFINITY`; as an integer sentinel, `Integer.MAX_VALUE` or `Long.MAX_VALUE` | `std::numeric_limits<double>::infinity()`; as an integer sentinel, `std::numeric_limits<int>::max()` (both need `#include <limits>`) |
 | `a // b` | `Math.floorDiv(a, b)` | careful: `/` truncates toward zero |
 | `a % b` (never negative for positive b) | `Math.floorMod(a, b)` | `((a % b) + b) % b` |
 | `s[::-1]` | `new StringBuilder(s).reverse().toString()` | `std::string(s.rbegin(), s.rend())` |

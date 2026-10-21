@@ -49,3 +49,9 @@ A second, systematic pass over every problem, after an editorial review asked fo
 **Facts.** Company claims were re-checked against current sources. Meta's hiring page confirms the authorized AI assistant for select roles. Amazon's "half Leadership Principles, half coding and system design" comes from its SDE III prep page, so Chapters 1 and 26 now say that instead of applying it to all software roles. The Google in-person interview source now cites Sundar Pichai's June 2025 podcast remarks.
 
 **Print check.** All 279 pages were rendered and reviewed visually, and checked automatically for text or images outside the safe area, Markdown leaking into the output, headings stranded at the bottom of a page, and nearly empty pages. Fixed: a figure that floated into the middle of a code block (Chapter 24), a dialogue whose lines ran together in one box (Chapter 2), and two pages holding a single overflow bullet. Blank pages are the intended left-hand pages before chapter openings.
+
+## Second review (21 October 2026)
+
+- Chapter 2: the pattern hint now distinguishes "longest block satisfying a rule" (sliding window) from "longest run of consecutive values in an unsorted list" (hash set, Problem 5.4).
+- Appendix C: infinity is now given as complete expressions: `std::numeric_limits<double>::infinity()` and `std::numeric_limits<int>::max()` with `#include <limits>`, and Java's `Double.POSITIVE_INFINITY`; all were compiled and run. Every other cell of the translation tables was rechecked.
+- Chapter 1 and 26 sources rechecked: Apple's tips say to ask about the role and what success looks like (wording aligned); the Microsoft row now reflects what Microsoft's own articles say (live coding can be daunting; interviewers want to see how you think), replacing a claim that could not be confirmed; Google's hiring committee is marked as reported by candidates.
