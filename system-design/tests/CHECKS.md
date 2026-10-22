@@ -5,7 +5,7 @@ Run on 22 October 2026 before release. The raw output is in `results/release-che
 | Check | Result |
 | --- | --- |
 | `tests/run_all_versions.sh --cases 2000` | 58 model files (building blocks, design components and per-design estimates), 0 failures on Python 3.12.3, 3.13.14, 3.14.8 and 3.15.0 |
-| `tests/run_problems.py --cases 20000`, and `--cases 5000` with seeds 1, 2 and 3 | `--cases 20000`: 0 failures (Python 3.11.15); seeded runs: see below |
+| `tests/run_problems.py --cases 20000`, and `--cases 5000` with seeds 1, 2 and 3 | 0 failures in all four runs (Python 3.11.15) |
 | `tests/make_examples.py --check` | Every printed example and demo output matches the code (0 stale files) |
 | `tests/check_cover_code.py` | The program on the front cover runs and prints `(116, 347)` and `20.0 TB/day`, as shown |
 | `ruff check` and `ruff format --check` (code, tests) | Clean, line length 76 |
