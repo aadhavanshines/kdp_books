@@ -1,0 +1,2 @@
+naive consumer     : 1273 deliveries, total 31825 (expected 25000)
+idempotent consumer: 1273 deliveries, total 25000 (expected 25000)

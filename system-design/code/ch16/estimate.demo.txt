@@ -1,0 +1,6 @@
+new links per second (avg)      38.6
+redirects per second (avg)      3.86K
+redirects per second (peak x5)  19.3K
+storage per year (500 B/link)   608 GB
+7-char base-62 codes            3.52T
+years until codes run out       2,894

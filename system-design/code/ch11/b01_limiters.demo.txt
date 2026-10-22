@@ -1,0 +1,4 @@
+FixedWindow    allows 20 of 20 requests in 2 seconds
+SlidingLog     allows 10 of 20 requests in 2 seconds
+SlidingCounter allows 10 of 20 requests in 2 seconds
+TokenBucket    allows 10 of 20 requests in 2 seconds

@@ -1,0 +1,5 @@
+adding an 11th node: ring moves 9% of keys,
+                     mod-N moves 91% of keys
+  1 virtual nodes each: busiest node has 3.38x its share
+ 10 virtual nodes each: busiest node has 1.41x its share
+100 virtual nodes each: busiest node has 1.16x its share

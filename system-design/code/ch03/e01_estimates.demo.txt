@@ -1,0 +1,8 @@
+uploads per second (avg)      116
+uploads per second (peak x3)  347
+views per second (avg)        11.6K
+upload bandwidth              231 MB/s
+view bandwidth                23.1 GB/s
+storage, 5 years x 3          110 PB
+web servers (1,000 rps each)  50
+requests in flight (200 ms)   6.94K

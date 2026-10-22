@@ -1,0 +1,2 @@
+always 8 Mbps  rebuffering 162.0 s, average 8.0 Mbps
+buffer-based   rebuffering   0.1 s, average 4.58 Mbps

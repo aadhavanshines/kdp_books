@@ -1,0 +1,4 @@
+1000000 -> https://example.com/articles/2026/10/system-design
+sale -> https://example.com/sale
+sale after an hour -> None
+error: alias 'sale' is taken

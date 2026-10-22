@@ -1,0 +1,4 @@
+true     1,000  estimate         998  error 0.2%
+true   100,000  estimate      99,313  error 0.7%
+true 1,000,000  estimate     994,858  error 0.5%
+memory: 4096 registers, about 3 KB at 6 bits each

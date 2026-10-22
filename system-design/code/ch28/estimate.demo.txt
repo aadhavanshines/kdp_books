@@ -1,0 +1,6 @@
+drivers online (peak)                  5M
+location pings per second (every 4 s)  1.25M
+ping size                              about 100 B
+ingest bandwidth                       125 MB/s
+live driver index (100 B each)         500 MB
+ride requests per second (peak)        50K

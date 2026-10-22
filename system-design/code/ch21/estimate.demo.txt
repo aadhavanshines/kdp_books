@@ -1,0 +1,4 @@
+notifications per second (avg)      23.1K
+peak (x10, e.g. breaking news)      231K
+queue storage, 1 day (1 KB each)    2 TB
+dedup keys kept 1 hour (50 B each)  4.17 GB

@@ -1,0 +1,5 @@
+suggestion requests per second           347K
+peak (x3)                                1.04M
+distinct popular phrases kept            100M
+trie + top-5 lists (about 200 B/phrase)  20 GB
+latency target per keystroke             under 100 ms end to end

@@ -1,0 +1,7 @@
+>>> breaker_states(
+...     [False, False, False, True, True, False, True],
+...     [0, 1, 2, 3, 40, 41, 80],
+... )
+['closed', 'closed', 'open', 'open', 'closed', 'closed', 'closed']
+>>> breaker_states([False, False, False, False], [0, 1, 2, 40])
+['closed', 'closed', 'open', 'open']

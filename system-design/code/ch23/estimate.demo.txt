@@ -1,0 +1,4 @@
+messages per second (avg)          231K
+open connections (60% online)      300M
+gateway servers (100K conns each)  3,000
+storage per year (200 B/msg)       1.46 PB

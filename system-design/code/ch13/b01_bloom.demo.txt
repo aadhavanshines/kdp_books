@@ -1,0 +1,2 @@
+95,851 bits (11.7 KB), 7 hash functions
+false positive rate: 1.01% (target 1%)

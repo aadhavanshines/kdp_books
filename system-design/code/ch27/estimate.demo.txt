@@ -1,0 +1,5 @@
+places                                  200M
+place records (1 KB each)               200 GB
+geo index entries (geohash + id, 24 B)  4.8 GB
+searches per second                     1.93K
+place updates per day (1%)              2M

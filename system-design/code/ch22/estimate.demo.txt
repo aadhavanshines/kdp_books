@@ -1,0 +1,5 @@
+posts per second                     1.74K
+feed reads per second                34.7K
+inbox writes per second (push)       347K
+feed cache per user (500 ids x 8 B)  4 KB
+feed cache for all users             1.2 TB

@@ -1,0 +1,2 @@
+fixed 2 KiB      upload  489 of 489 chunks after a 1-byte insert
+content-defined  upload    1 of 383 chunks after a 1-byte insert

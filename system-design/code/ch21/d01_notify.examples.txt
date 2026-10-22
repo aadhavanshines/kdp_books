@@ -1,0 +1,9 @@
+>>> decide(
+...     [(32400, 'ana', 'like:7', 'push', False),
+...      (32460, 'ana', 'like:7', 'push', False),
+...      (32520, 'ana', 'news', 'email', False),
+...      (82800, 'ana', 'promo', 'push', False),
+...      (82805, 'ana', 'login-alert', 'push', True)],
+...     {'ana': {'off': {'email'}, 'quiet': (22, 7)}},
+... )
+['send', 'duplicate', 'channel off', 'quiet hours', 'send']

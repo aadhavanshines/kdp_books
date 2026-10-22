@@ -1,0 +1,4 @@
+random       busiest server held 12 requests
+round robin  busiest server held 9 requests
+two choices  busiest server held 6 requests
+least        busiest server held 5 requests

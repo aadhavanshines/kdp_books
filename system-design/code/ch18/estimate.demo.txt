@@ -1,0 +1,4 @@
+data with 3 copies             300 TB
+nodes for storage (4 TB each)  75
+nodes for 1M ops/s (20K each)  50
+cluster size (the larger)      75

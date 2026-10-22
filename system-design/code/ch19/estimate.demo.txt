@@ -1,0 +1,5 @@
+IDs per second needed (peak)    2M
+max per Snowflake worker        4.1M per second
+worker IDs available (10 bits)  1,024
+years of 41-bit milliseconds    69.7
+64-bit IDs per day at peak      173B

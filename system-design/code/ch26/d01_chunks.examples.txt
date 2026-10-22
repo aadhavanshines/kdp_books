@@ -1,0 +1,4 @@
+>>> rebuild(b'sync me')
+b'sync me'
+>>> rebuild(b'')
+b''

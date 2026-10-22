@@ -1,0 +1,2 @@
+100,000 keys, 1,024 buckets: 21 hashes compared;
+1 bucket differs, holding 94 keys to compare

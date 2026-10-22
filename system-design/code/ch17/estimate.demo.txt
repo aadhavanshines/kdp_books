@@ -1,0 +1,6 @@
+checks per second (peak)        500K
+store ops per check             1 (an atomic script)
+bucket state per client         16 B (tokens + timestamp)
+state for all clients           160 MB
+store shards (100K ops/s each)  5
+added latency budget per check  1-2 ms (same data center)

@@ -1,0 +1,6 @@
+documents open at once                     5M
+editors per active document (avg)          2
+operations per second per editor (typing)  5
+operations per second, total               50M
+operation size                             about 50 B
+op log per day (8 busy hours, all kept)    72 TB

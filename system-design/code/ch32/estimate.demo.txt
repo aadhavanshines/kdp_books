@@ -1,0 +1,4 @@
+jobs per second (avg)                           11.6K
+jobs due on the hour (x20 spike)                231K
+heartbeats per second (50K running, every 5 s)  10K
+job rows kept 30 days (500 B)                   15 TB

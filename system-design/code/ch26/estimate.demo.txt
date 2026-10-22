@@ -1,0 +1,5 @@
+logical data                      2,000 PB
+after dedup (assume 30% saved)    1,400 PB
+stored with 1.5x erasure coding   2,100 PB
+vs. 3 full copies                 4,200 PB
+metadata rows (1,000 files/user)  200B

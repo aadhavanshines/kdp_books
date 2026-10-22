@@ -1,0 +1,8 @@
+mean 49 ms
+p50   30 ms
+p95   39 ms
+p99   1002 ms
+p99.9 1180 ms
+SLO 99.00%: 432.0 minutes of downtime per 30 days
+SLO 99.90%: 43.2 minutes of downtime per 30 days
+SLO 99.99%: 4.3 minutes of downtime per 30 days

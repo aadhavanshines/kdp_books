@@ -1,0 +1,3 @@
+cache holds  0.1% of keys -> hit rate 29%
+cache holds  1.0% of keys -> hit rate 51%
+cache holds 10.0% of keys -> hit rate 73%

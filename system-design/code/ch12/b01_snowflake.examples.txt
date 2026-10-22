@@ -1,0 +1,4 @@
+>>> ids_for([1767225600005, 1767225600005, 1767225600006], 7)
+[{'time_ms': 1767225600005, 'machine': 7, 'sequence': 0},
+ {'time_ms': 1767225600005, 'machine': 7, 'sequence': 1},
+ {'time_ms': 1767225600006, 'machine': 7, 'sequence': 0}]

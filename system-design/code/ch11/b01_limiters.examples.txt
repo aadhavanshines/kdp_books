@@ -1,0 +1,2 @@
+>>> sliding_log(2, 10, [0, 1, 2, 10, 10.5, 11])
+[True, True, False, True, False, True]

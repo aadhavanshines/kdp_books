@@ -1,0 +1,5 @@
+>>> run(
+...     ['rain', 'rainbow', 'rain', 'railway', 'rainbow', 'rain', 'rails'],
+...     'rai',
+... )
+['rain', 'rainbow', 'rails']

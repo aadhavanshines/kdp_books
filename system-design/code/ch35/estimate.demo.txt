@@ -1,0 +1,5 @@
+messages per second (peak)   2M
+ingest                       2 GB/s
+average rate (peak / 3)      667K
+retained 7 days, 3 replicas  1.21 PB
+partitions at 10 MB/s each   200

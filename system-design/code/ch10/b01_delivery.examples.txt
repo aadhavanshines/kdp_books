@@ -1,0 +1,2 @@
+>>> idempotent_total([10, 20, 30])
+60

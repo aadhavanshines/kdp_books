@@ -1,0 +1,2 @@
+12 events, consumer crashed once: 15 deliveries
+duplicates: ['event 5', 'event 8', 'event 9']

@@ -1,0 +1,4 @@
+payments per second (avg)            579
+peak (x10, holiday sales)            5.79K
+ledger rows per day (2 per payment)  100M
+ledger storage, 7 years (200 B/row)  51.1 TB

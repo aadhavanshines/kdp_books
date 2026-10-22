@@ -1,0 +1,5 @@
+players                                 50M
+score updates per second (peak)         100K
+rank reads per second (peak)            300K
+sorted-set memory (about 100 B/player)  5 GB
+Fenwick tree for scores 0..1,000,000    8 MB

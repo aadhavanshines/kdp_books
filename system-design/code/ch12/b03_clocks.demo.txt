@@ -1,0 +1,3 @@
+A's version vs B's version: concurrent
+resolved vs A's version:    after
+resolved vs B's version:    after

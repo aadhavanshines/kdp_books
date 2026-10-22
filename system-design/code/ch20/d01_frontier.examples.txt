@@ -1,0 +1,8 @@
+>>> norm_all(
+...     ['HTTPS://Example.com:443/a?x=1#top',
+...      'http://example.com',
+...      'http://EXAMPLE.com:8080/b'],
+... )
+['https://example.com/a?x=1',
+ 'http://example.com/',
+ 'http://example.com:8080/b']

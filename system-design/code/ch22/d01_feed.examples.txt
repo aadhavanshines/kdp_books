@@ -1,0 +1,7 @@
+>>> run(
+...     {'ann': {'star', 'bob'}, 'cy': {'star'}, 'dee': {'star'}},
+...     1,
+...     [(1, 'bob', 'hi'), (2, 'star', 'new song'), (3, 'bob', 'lunch')],
+...     'ann',
+... )
+[(3, 'bob', 'lunch'), (2, 'star', 'new song'), (1, 'bob', 'hi')]

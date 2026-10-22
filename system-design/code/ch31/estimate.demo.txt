@@ -1,0 +1,4 @@
+points per second                    10M
+raw, 15 days (2 B/point compressed)  25.9 TB
+1-minute rollups, 1 year (16 B)      841 TB
+1-hour rollups, 5 years (16 B)       70.1 TB

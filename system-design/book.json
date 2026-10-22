@@ -1,0 +1,61 @@
+{
+  "title": "The System Design Interview Playbook",
+  "subtitle": "A Step-by-Step Framework, 20 Worked Designs, Tested Building Blocks and Mock Interviews to Prepare for Senior Engineering Interviews at Top Tech Companies",
+  "cover_title": [
+    [
+      "THE",
+      false
+    ],
+    [
+      "SYSTEM",
+      false
+    ],
+    [
+      "DESIGN",
+      true
+    ],
+    [
+      "INTERVIEW",
+      false
+    ],
+    [
+      "PLAYBOOK",
+      false
+    ]
+  ],
+  "short_subtitle": "20 Worked Designs, Every Building Block Tested",
+  "cover_tagline": "A Framework, Estimates, Trade-offs and Mock Interviews for Senior Engineering Interviews",
+  "cover_features": [
+    "20 DESIGNS",
+    "TESTED MODELS",
+    "MOCK INTERVIEWS"
+  ],
+  "slug": "the-system-design-interview-playbook",
+  "author": "Aadhavan Muthurengan",
+  "language": "en",
+  "year": 2026,
+  "identifier": "the-system-design-interview-playbook-aadhavan-muthurengan-2026",
+  "trim": {
+    "width_in": 6.0,
+    "height_in": 9.0
+  },
+  "paper": "white",
+  "reuse_note": "Readers may freely use and adapt the example code and designs in this book for their own study, practice and work.",
+  "trademarks": "Google, Meta, Amazon and other company names are trademarks of their respective owners; they are used only to describe publicly stated or publicly reported hiring practices. Product names such as Redis, Kafka, Cassandra, PostgreSQL and Python are trademarks of their respective owners and are mentioned only to describe widely used technologies. This book is independent and is not affiliated with, sponsored by, or endorsed by any company it mentions. The designs are generic teaching designs and do not describe any company's actual systems unless a published source is cited.",
+  "back_cover_blurb": [],
+  "dedication": [
+    "To my father and my mother,",
+    "for your love, your sacrifices, and every lesson you taught me.",
+    "",
+    "To my wife,",
+    "for your patience, your encouragement, and your belief in me.",
+    "",
+    "And to our three children,",
+    "may you always build the things you dream of.",
+    "",
+    "This book is for you."
+  ],
+  "author_short_bio": "Aadhavan Muthurengan is an automation and AI professional with more than 15 years of experience in the automotive industry, where Aadhavan has built in-house tools that transformed product development and validation.",
+  "levels": {},
+  "examples_note": "Every building block and design model in this book is runnable Python, tested on Python 3.12, 3.13, 3.14 and 3.15. Interview formats described were checked against companies' own published guidance where available, as of October 2026, and change over time."
+}

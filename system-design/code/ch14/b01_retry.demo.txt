@@ -1,0 +1,3 @@
+busiest 10 ms of retries from 1,000 clients:
+  fixed exponential backoff: 1000
+  with full jitter:          38

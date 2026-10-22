@@ -1,0 +1,5 @@
+hours uploaded per day              720K
+storage per day, all renditions     5.48 PB
+concurrent viewers (peak)           20M
+egress at 3 Mbps average            7.5 TB/s
+videos per second (10 min average)  50

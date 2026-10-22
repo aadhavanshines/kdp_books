@@ -1,0 +1,2 @@
+without transforming, site 1 gets: 'cht'
+with OT, both sites get:           ('cha', 'cha')

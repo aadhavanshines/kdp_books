@@ -1,0 +1,11 @@
+>>> run(
+...     [('k1', 'world', 'ana', 5000),
+...      ('k2', 'ana', 'shop', 3000),
+...      ('k2', 'ana', 'shop', 3000),
+...      ('k3', 'ana', 'shop', 3000)],
+... )
+(['ok: transfer 1',
+  'ok: transfer 2',
+  'ok: transfer 2',
+  'rejected: insufficient funds'],
+ {'ana': 2000, 'shop': 3000})

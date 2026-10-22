@@ -1,0 +1,5 @@
+seats on sale                           60K
+fans arriving in 10 minutes             3M
+arrivals per second                     5K
+buyers per seat                         50
+queue admission rate (sell in ~30 min)  100 per second
