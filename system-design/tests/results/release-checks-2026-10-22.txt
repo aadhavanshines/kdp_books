@@ -1,0 +1,27 @@
+Release checks, 22 October 2026
+
+tests/run_all_versions.sh --cases 2000
+Python 3.12.3: 58 problem files, 0 failed
+Python 3.13.14: 58 problem files, 0 failed
+Python 3.14.8: 58 problem files, 0 failed
+Python 3.15.0: 58 problem files, 0 failed
+
+tests/run_problems.py --cases 20000
+Python 3.11.15: 58 problem files, 0 failed
+
+tests/make_examples.py --check
+stale: 0 file(s)
+
+tests/check_cover_code.py
+cover code OK: ['(116, 347)', '20.0 TB/day']
+
+ruff check / ruff format --check (line length 76): All checks passed! / 63 files already formatted
+
+EPUBCheck 5.1.0: Messages: 0 fatals / 0 errors / 0 warnings / 0 infos
+
+build/check_pdf.py
+pages: 263
+smallest inside margin: 0.793 in (page 174), KDP minimum 0.5 in
+smallest outside margin: 0.579 in (page 117), KDP minimum 0.25 in
+TOC entries: 49; starting on a left-hand page: none
+gaps over 2.5 in before the end of a chapter: none

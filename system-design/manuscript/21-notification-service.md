@@ -26,7 +26,7 @@ Notification systems look simple, call a provider's API, but users judge them ha
 @include code/ch21/estimate.demo.txt
 ```
 
-About 23,000 notifications per second on average and 230,000 at peak. The volume is high but each message is small; the real constraints are provider rate limits, provider failures, and bursts. Deduplication state for an hour fits in a few gigabytes of memory.
+About 23,000 notifications per second on average and 230,000 at peak. The volume is high, but each message is small; the real constraints are provider rate limits, provider failures, and bursts. Deduplication state for an hour fits in a few gigabytes of memory.
 
 ## API
 

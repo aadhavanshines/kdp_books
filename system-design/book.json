@@ -41,8 +41,17 @@
   },
   "paper": "white",
   "reuse_note": "Readers may freely use and adapt the example code and designs in this book for their own study, practice and work.",
-  "trademarks": "Google, Meta, Amazon and other company names are trademarks of their respective owners; they are used only to describe publicly stated or publicly reported hiring practices. Product names such as Redis, Kafka, Cassandra, PostgreSQL and Python are trademarks of their respective owners and are mentioned only to describe widely used technologies. This book is independent and is not affiliated with, sponsored by, or endorsed by any company it mentions. The designs are generic teaching designs and do not describe any company's actual systems unless a published source is cited.",
-  "back_cover_blurb": [],
+  "trademarks": "Google, Meta, Amazon, Twitter and other company names are trademarks of their respective owners; they are used only to describe publicly stated or publicly reported hiring practices. Product names such as Redis, Memcached, Kafka, Cassandra, PostgreSQL, MySQL, ZooKeeper, etcd and Python are trademarks of their respective owners and are mentioned only to describe widely used technologies. This book is independent and is not affiliated with, sponsored by, or endorsed by any company it mentions. The designs are generic teaching designs and do not describe any company's actual systems unless a published source is cited.",
+  "back_cover_blurb": [
+    "Design systems out loud, with numbers, trade-offs and confidence.",
+    "Senior engineering interviews at top technology companies include a system design round: an open-ended conversation in which you design a large system on a whiteboard. This book gives you a repeatable framework, the building blocks behind every design, and 20 complete worked designs to practice with.",
+    "- A seven-step framework for any prompt, from requirements and estimates to deep dives",
+    "- Caching, databases, replication, partitioning, queues, rate limiting, IDs and reliability",
+    "- 20 designs, from a link shortener and news feed to payments, ticketing and collaborative editing",
+    "- Four full mock interviews, mid-level to staff, with the interviewer's notes",
+    "- Two- and six-week study plans, a numbers cheat sheet and a one-page template",
+    "Every building block is a runnable Python model, tested on Python 3.12 to 3.15, so every claim about its behavior is measured. Current as of October 2026."
+  ],
   "dedication": [
     "To my father and my mother,",
     "for your love, your sacrifices, and every lesson you taught me.",

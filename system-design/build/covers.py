@@ -81,18 +81,18 @@ def gradient(img, box):
 
 # The program shown on the cover, and its real output (checked by
 # tests/check_cover_code.py).
-COVER_FILE = "budget_pair.py"
+COVER_FILE = "estimate.py"
 COVER_CODE = [
-    "def budget_pair(prices, budget):",
-    "    seen = {}",
-    "    for i, p in enumerate(prices):",
-    "        if budget - p in seen:",
-    "            return [seen[budget - p], i]",
-    "        seen[p] = i",
+    "def qps(per_day, peak=3):",
+    "    avg = per_day / 86_400",
+    "    return round(avg), round(avg * peak)",
     "",
-    "print(budget_pair([12, 7, 30, 18], 25))",
+    "uploads = 10_000_000",
+    "photo_mb = 2",
+    "print(qps(uploads))",
+    "print(uploads * photo_mb / 1e6, \"TB/day\")",
 ]
-COVER_OUTPUT = ["[1, 3]"]
+COVER_OUTPUT = ["(116, 347)", "20.0 TB/day"]
 
 KEYWORD = (251, 191, 36)
 FUNC = (125, 211, 252)
@@ -168,32 +168,43 @@ def python_scene(img, box):
         d.text((ex0 + 40 * s, oy), out, font=mono, fill=TERMINAL_GREEN + (255,))
         oy += lh
     img.alpha_composite(layer)
-    # a binary tree with one root-to-leaf path highlighted
+    # a small architecture: users, load balancer, servers, database,
+    # with one request path highlighted
     layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
-    tx0, tx1 = x0 + 1130 * s, x0 + 1480 * s
-    ty0, ty1 = y0 + 130 * s, y1 - 110 * s
-    levels = 3
-    pos = {}
-    for lv in range(levels):
-        count = 2 ** lv
-        for k in range(count):
-            px = tx0 + (k + 0.5) * (tx1 - tx0) / count
-            py = ty0 + lv * (ty1 - ty0) / (levels - 1)
-            pos[(lv, k)] = (px, py)
-    path = {(0, 0), (1, 1), (2, 2)}
-    for (lv, k), (px, py) in pos.items():
-        if lv:
-            qx, qy = pos[(lv - 1, k // 2)]
-            on = (lv, k) in path and (lv - 1, k // 2) in path
-            d.line([(qx, qy), (px, py)], fill=(AMBER if on else (70, 110, 150)) + (255,),
-                   width=max(2, int((9 if on else 4) * s)))
-    for (lv, k), (px, py) in pos.items():
-        r = (40 - 4 * lv) * s
-        on = (lv, k) in path
-        d.ellipse([px - r, py - r, px + r, py + r],
-                  fill=(AMBER if on else (16, 38, 64)) + (255,),
-                  outline=(AMBER if on else (110, 150, 190)) + (255,), width=max(2, int(4 * s)))
+    tx0, tx1 = x0 + 1120 * s, x0 + 1490 * s
+    ty0, ty1 = y0 + 120 * s, y1 - 110 * s
+    mx = (tx0 + tx1) / 2
+    steel, dark = (70, 110, 150), (16, 38, 64)
+    thick, thin = max(2, int(9 * s)), max(2, int(4 * s))
+    user_y, lb_y = ty0, ty0 + 0.32 * (ty1 - ty0)
+    srv_y, db_y = ty0 + 0.64 * (ty1 - ty0), ty1
+    srv_x = [tx0 + 55 * s, mx, tx1 - 55 * s]
+    d.line([(mx, user_y), (mx, lb_y)], fill=AMBER + (255,), width=thick)
+    for k, sx in enumerate(srv_x):
+        on = k == 1
+        d.line([(mx, lb_y), (sx, srv_y)], fill=(AMBER if on else steel) + (255,),
+               width=thick if on else thin)
+        d.line([(sx, srv_y), (mx, db_y)], fill=(AMBER if on else steel) + (255,),
+               width=thick if on else thin)
+    r = 38 * s
+    d.ellipse([mx - r, user_y - r, mx + r, user_y + r], fill=AMBER + (255,))
+    d.rounded_rectangle([mx - 120 * s, lb_y - 34 * s, mx + 120 * s, lb_y + 34 * s],
+                        radius=int(14 * s), fill=dark + (255,), outline=AMBER + (255,),
+                        width=thin)
+    for k, sx in enumerate(srv_x):
+        on = k == 1
+        d.rounded_rectangle([sx - 46 * s, srv_y - 40 * s, sx + 46 * s, srv_y + 40 * s],
+                            radius=int(10 * s), fill=dark + (255,),
+                            outline=(AMBER if on else (110, 150, 190)) + (255,), width=thin)
+    cw, ch = 110 * s, 28 * s
+    d.rectangle([mx - cw, db_y - 30 * s, mx + cw, db_y + 40 * s], fill=dark + (255,))
+    d.line([(mx - cw, db_y - 30 * s), (mx - cw, db_y + 40 * s)], fill=AMBER + (255,), width=thin)
+    d.line([(mx + cw, db_y - 30 * s), (mx + cw, db_y + 40 * s)], fill=AMBER + (255,), width=thin)
+    d.arc([mx - cw, db_y + 40 * s - ch, mx + cw, db_y + 40 * s + ch], 0, 180,
+          fill=AMBER + (255,), width=thin)
+    d.ellipse([mx - cw, db_y - 30 * s - ch, mx + cw, db_y - 30 * s + ch], fill=dark + (255,),
+              outline=AMBER + (255,), width=thin)
     img.alpha_composite(layer)
 
 
