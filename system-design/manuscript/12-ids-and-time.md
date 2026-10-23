@@ -30,7 +30,9 @@ Each machine generates IDs alone, with no coordination after its machine ID is a
 @include code/ch12/b01_snowflake.py::SnowflakeGenerator
 ```
 
-Two details matter. When a machine uses all 4,096 sequence numbers in one millisecond, it waits for the next millisecond. And if the clock moves backwards, for example after a time-synchronization correction, it refuses to generate IDs rather than risk duplicates. Decoding shows the fields:
+> **Warning:** Everything depends on machine IDs being unique. If two generators are ever started with the same machine ID, for example after a server is cloned or a container is rescheduled, they can produce the same ID in the same millisecond, and nothing in the generator will notice. Assign machine IDs from a coordination service (such as ZooKeeper or etcd) with leases, or from a database table with a unique constraint, and refuse to start without one.
+
+Two more details matter. When a machine uses all 4,096 sequence numbers in one millisecond, it waits for the next millisecond. And if the clock moves backwards, for example after a time-synchronization correction, it refuses to generate IDs rather than risk duplicates. Decoding shows the fields:
 
 ```
 @include code/ch12/b01_snowflake.examples.txt

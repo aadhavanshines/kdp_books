@@ -30,7 +30,7 @@ The model below writes a new version to W random replicas, then reads R random r
 @include code/ch08/b01_quorum.demo.txt
 ```
 
-With N = 3, W = 2 and R = 2, reads are never stale; with W = 1 and R = 1, two thirds are. The test checks the rule for every combination of N, W and R up to 5: zero stale reads whenever R + W > N, and some stale reads otherwise.
+The model is deliberately simple: one writer, one write at a time, every write fully finished before the read starts, and no replicas failing or being replaced. Under those assumptions, with N = 3, W = 2 and R = 2, reads are never stale; with W = 1 and R = 1, two thirds are. The test checks the rule for every combination of N, W and R up to 5: zero stale reads whenever R + W > N, and some stale reads otherwise.
 
 Choosing the numbers is a trade-off:
 
@@ -38,7 +38,7 @@ Choosing the numbers is a trade-off:
 - **W = 1, R = N:** fast writes, slow reads.
 - **W = R = majority** (2 of 3, 3 of 5): balanced, and tolerates a minority of failures for both reads and writes. The usual choice.
 
-> **Warning:** R + W > N is necessary but not sufficient for strong consistency in real systems. Concurrent writes, clock-based conflict resolution and replicas that are replaced can still produce surprises. For "exactly one winner" decisions, such as leader election or locks, use a consensus protocol.
+> **Warning:** Quorum overlap guarantees only that a read *sees* the latest acknowledged write; it doesn't make the system linearizable. A read that overlaps a write still in progress can return the new value to one client and the old value to the next; concurrent writes need a conflict rule; clock-based "last write wins" can drop writes; and sloppy quorums or replaced replicas can break the overlap entirely. R + W > N is necessary, not sufficient, for strong consistency. For "exactly one winner" decisions, such as leader election or locks, use a consensus protocol.
 
 ## Consistency Models
 

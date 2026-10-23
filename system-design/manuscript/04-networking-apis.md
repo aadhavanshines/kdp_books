@@ -63,6 +63,8 @@ Here, two new items arrive between each page load:
 
 The offset version shows 19, 18 and 17 more than once; the cursor version shows each item exactly once. Cursors are also faster for databases: "WHERE id < cursor ORDER BY id DESC LIMIT 20" uses an index, while a large OFFSET forces the database to count past all the skipped rows. In a real API, encode the cursor as an opaque string so clients don't depend on its contents.
 
+Cursors fix skipped and repeated items, but they don't freeze the data. An item inserted above the cursor after page one won't appear until the client starts again from the top, and an item that is edited or deleted mid-scroll appears as it is when its page is read. If a client needs a consistent snapshot, such as an export or a report, read from a database snapshot or include a "read as of" timestamp in the cursor.
+
 ### Idempotency
 
 Networks fail in the worst possible place: after the server has done the work but before the client receives the answer. The client can't tell, so it retries. For reads that's harmless; for "charge the card" it's a disaster. The fix is an **idempotency key**: the client sends a unique ID with each logical operation, and the server stores the result under that key and returns the same result on a retry instead of repeating the work. Chapter 29 implements this for payments.

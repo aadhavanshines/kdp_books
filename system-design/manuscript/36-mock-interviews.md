@@ -42,6 +42,8 @@ Each interview targets a different level, and ends with the interviewer's notes,
 
 **Interviewer's notes.** *Hire at mid-level. Scoped the problem crisply and made explicit assumptions. Estimates were correct and, importantly, used: object storage, CDN, read-heavy design all followed from them. Clean API with cursor pagination and direct uploads. Knew the push/pull hybrid for large accounts without prompting beyond the question. Asynchronous like counts was a good touch. Deep dives were adequate rather than deep; failure modes were not discussed until asked.*
 
+**What would have raised the rating:** raising failure modes without being asked (what happens when the CDN or the metadata database is down), going one level deeper in one deep dive, such as how a deleted photo is removed from CDN caches, and naming the two or three metrics to watch.
+
 ## Mock 2: Distributed Cache (Senior)
 
 **The prompt:** "Design a distributed in-memory cache that application servers across the company can use."
@@ -78,6 +80,8 @@ Each interview targets a different level, and ends with the interviewer's notes,
 
 **Interviewer's notes.** *Strong hire, senior. Drove the conversation and quantified everything: node count from memory versus throughput was exactly the right analysis. Clear explanation of consistent hashing and why virtual nodes matter, with numbers. Handled node failure with two options and their costs. Good depth on hot keys and stampedes. Thought about the platform's users (guidance, limits, metrics), which is a senior signal.*
 
+**What would have raised the rating:** to reach staff, treating the cache as a platform for many teams: per-tenant limits and isolation, resharding and upgrades without downtime, and cost per gigabyte against the database load it saves.
+
 ## Mock 3: Online Auctions (Senior)
 
 **The prompt:** "Design an online auction site. Sellers list items; buyers bid until the auction ends; the highest bid wins."
@@ -109,6 +113,8 @@ Each interview targets a different level, and ends with the interviewer's notes,
 **Candidate:** The close is a conditional update from "open" to "closed", so the second run sees it's already closed and does nothing. Payment uses the auction ID as its idempotency key, so it can't charge twice.
 
 **Interviewer's notes.** *Hire, senior. Immediately identified correctness under contention and end-time fairness as the hard parts. Conditional updates with versions, plus the single-owner serialization option for extreme hot spots, were well reasoned. Separated the real-time display path from the authoritative decision path. Good handling of closing with leases and idempotency. Could have estimated storage and discussed search for listings, but the focus on the hard parts was right.*
+
+**What would have raised the rating:** a quick estimate of peak bids per second on the single most popular auction, which would have justified the single-owner option with a number, plus a sentence on listing search and how losing bidders are notified.
 
 ## Mock 4: Global Configuration Service (Staff)
 
@@ -145,6 +151,24 @@ Each interview targets a different level, and ends with the interviewer's notes,
 **Candidate:** Propagation delay per region, the version each host is running, so we can see stragglers, validation failures, rollbacks, and the error-rate checks between rollout stages. And a dashboard that answers "what changed in the last hour?", the first question in most incidents.
 
 **Interviewer's notes.** *Strong hire, staff. Reframed the problem around its real risk, configuration-caused outages, before designing. Correctly identified that reads must be local and the system off the critical path; designed push distribution with local caching and last-known-good fallback. Safety mechanisms were comprehensive and practical. Covered concurrency, migration, ownership and incident response, which is exactly the breadth expected at staff level.*
+
+**What would have raised the rating:** little at staff level. A principal-level answer would add how to roll the service out across the organization and how to measure whether it actually reduces configuration-caused incidents.
+
+## How the Mocks Are Scored
+
+Interviewers score a design round on a handful of dimensions, then decide a level. The details vary by company, but the signals in the notes above follow this pattern:
+
+| Dimension | Acceptable | Strong senior | Staff |
+| --- | --- | --- | --- |
+| Problem exploration | Asks about features and scale | Finds the hard part early and scopes the problem around it | Reframes the problem around its real risk or business goal |
+| Estimation | Computes the numbers | Uses the numbers to make choices | Adds cost, growth and the limits that will bite first |
+| High-level design | A working design, with prompting | A complete design by the halfway mark, one request traced end to end | The same, plus how teams will build and operate it |
+| Deep dives | Correct but shallow | Two or three hard parts, with options compared and a reasoned choice | Correctness under failure, migration and rollout |
+| Trade-offs | Names them when asked | Raises them unprompted, with numbers | Weighs them against organizational and operational cost |
+| Failure and operations | Discussed when asked | Failure modes, monitoring and recovery raised unprompted | Incident response, safe rollout and blast-radius limits |
+| Communication | Clear when asked | Drives the conversation and checks in with the interviewer | Brings the interviewer along on complex reasoning, concisely |
+
+A hire at a level usually means "strong" on most rows for that level, with no serious gaps. The single most common difference between a mid-level and a senior answer is the last two rows: seniors bring up trade-offs and failure modes before the interviewer has to ask.
 
 ## What the Four Interviews Have in Common
 

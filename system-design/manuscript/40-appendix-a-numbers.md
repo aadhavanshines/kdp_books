@@ -23,7 +23,7 @@ These figures are for back-of-the-envelope estimates. They are orders of magnitu
 | 1 GB | 10⁹ |
 | 1 TB | 10¹² |
 | 1 PB | 10¹⁵ |
-| 2¹⁰, 2²⁰, 2³⁰, 2⁴⁰ | about 10³, 10⁶, 10⁹, 10¹² |
+| 2¹⁰, 2²⁰, 2³⁰, 2⁴⁰ (KiB, MiB, GiB, TiB) | about 10³, 10⁶, 10⁹, 10¹² (2⁴⁰ is about 10% more than 10¹²) |
 
 | Item | Typical size |
 | --- | --- |

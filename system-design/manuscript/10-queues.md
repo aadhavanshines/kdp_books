@@ -18,7 +18,7 @@ Use a queue for "do this task once"; use a log when several systems need the sam
 Networks and processes fail, so a message system can promise one of three things:
 
 - **At most once:** a message may be lost, but never delivered twice. Acknowledge before processing.
-- **At least once:** a message is never lost, but may be delivered more than once. Acknowledge after processing; if the acknowledgement is lost, the message is delivered again.
+- **At least once:** a message is never lost, but may be delivered more than once. Acknowledge after processing; if the acknowledgement is lost, the message is delivered again. "Never lost" assumes the broker stores messages durably (replicated to disk before it confirms them to the producer), the producer retries until it gets that confirmation, and messages are kept long enough for a slow or failed consumer to come back. Idempotency prevents duplicates; it doesn't prevent loss.
 - **Exactly once:** each message affects the system exactly once. Hard in general; in practice it's built from at-least-once delivery plus **idempotent processing**.
 
 The model below sends 1,000 payments of 25 through a queue in which 20% of acknowledgements are lost, so those messages are redelivered:

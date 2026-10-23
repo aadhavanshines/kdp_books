@@ -12,7 +12,7 @@ Use this template to practice, and keep it in your head during interviews. The t
 - **Durability and availability:** what must never be lost; what must never be down?
 - **Geography:** one region or global?
 
-## 2. Estimates (5 minutes)
+## 2. Estimates (3 to 5 minutes)
 
 - Reads and writes per second, average and peak.
 - Storage over the data's lifetime, with replication.
@@ -20,12 +20,12 @@ Use this template to practice, and keep it in your head during interviews. The t
 - Memory for caches; connections for real-time features.
 - **One sentence on what the numbers imply.**
 
-## 3. API (3 to 5 minutes)
+## 3. API (3 minutes)
 
 - Main endpoints or functions, with key parameters and responses.
 - Cursor pagination; idempotency keys for writes; authentication.
 
-## 4. Data Model (3 to 5 minutes)
+## 4. Data Model (2 to 3 minutes)
 
 - Main entities and key fields.
 - Access patterns, and the store chosen for each.
@@ -36,7 +36,7 @@ Use this template to practice, and keep it in your head during interviews. The t
 - Five to ten boxes: clients, load balancer, services, stores, caches, queues, CDN.
 - **Trace one read and one write end to end.**
 
-## 6. Deep Dives (10 to 15 minutes)
+## 6. Deep Dives (12 to 15 minutes)
 
 For each of the two or three hardest parts:
 

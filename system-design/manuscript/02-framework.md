@@ -7,14 +7,14 @@ The biggest risk in a system design interview isn't a wrong answer; it's running
 | Step | Time | Output on the whiteboard |
 | --- | --- | --- |
 | 1. Requirements | 5 min | A short list of functional and non-functional requirements, and what's out of scope |
-| 2. Estimates | 5 min | Requests per second, storage, bandwidth; read-heavy or write-heavy |
-| 3. API | 3 to 5 min | The main endpoints or functions, with parameters |
-| 4. Data model | 3 to 5 min | The main entities and how they're stored |
+| 2. Estimates | 3 to 5 min | Requests per second, storage, bandwidth; read-heavy or write-heavy |
+| 3. API | 3 min | The main endpoints or functions, with parameters |
+| 4. Data model | 2 to 3 min | The main entities and how they're stored |
 | 5. High-level design | 10 min | Boxes and arrows; one request traced end to end |
-| 6. Deep dives | 10 to 15 min | Two or three hard parts, with options and a choice |
+| 6. Deep dives | 12 to 15 min | Two or three hard parts, with options and a choice |
 | 7. Wrap-up | 3 to 5 min | Bottlenecks, failure modes, what you'd do next |
 
-The times are a guide, not a rule. If the interviewer wants to skip the API and go straight to scaling, follow them. But keep an eye on the clock: when 25 minutes have passed, you should have a complete high-level design on the board.
+The times are a guide, not a rule. If the interviewer wants to skip the API and go straight to scaling, follow them. But keep an eye on the clock: steps 1 to 5 take 23 to 26 minutes in the table, so when about 25 minutes have passed, you should have a complete high-level design on the board. That leaves 15 to 20 minutes for deep dives and the wrap-up.
 
 ## Step 1: Requirements
 

@@ -205,9 +205,9 @@ def N(cx, cy, title, sub=None, style="light", w=250, h=100):
 # ---------------------------------------------------------- part I and II
 
 def framework():
-    steps = [("1. Requirements", "5 min"), ("2. Estimates", "5 min"), ("3. API", "3-5 min"),
-             ("4. Data model", "3-5 min"), ("5. High-level design", "10 min"),
-             ("6. Deep dives", "10-15 min"), ("7. Wrap-up", "3-5 min")]
+    steps = [("1. Requirements", "5 min"), ("2. Estimates", "3-5 min"), ("3. API", "3 min"),
+             ("4. Data model", "2-3 min"), ("5. High-level design", "10 min"),
+             ("6. Deep dives", "12-15 min"), ("7. Wrap-up", "3-5 min")]
     bh, gap = 92, 34
     h = 50 + len(steps) * bh + (len(steps) - 1) * gap + 40
     img, d = canvas(h)
