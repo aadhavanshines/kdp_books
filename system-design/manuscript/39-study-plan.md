@@ -1,4 +1,4 @@
-# Chapter 38: Your Study Plan
+# Chapter 39: Your Study Plan
 
 System design skill grows from two things: understanding the building blocks well enough to explain why they work, and practicing complete designs out loud often enough that the framework becomes automatic. These plans combine both. Adjust them to the time you have; they assume an hour or two on weekdays and a longer session on the weekend.
 
@@ -26,7 +26,7 @@ System design skill grows from two things: understanding the building blocks wel
 | 10 | Practice: Payment System (29) and Ticket Booking (30) |
 | 11 | Mock 1 and Mock 2 from Chapter 36, timed, before reading them |
 | 12 | Practice two designs you haven't read, from the list below |
-| 13 | Mock 3 or 4, ideally with a partner as interviewer; Chapter 37 |
+| 13 | Mock 3 or 4, ideally with a partner as interviewer; Chapters 37 and 38 |
 | 14 | Review Appendix A, your notes and the template in Appendix C. Rest |
 
 ## The Six-Week Plan
@@ -38,7 +38,7 @@ System design skill grows from two things: understanding the building blocks wel
 | 3 | Chapters 11 to 15 | Notification Service, News Feed, Chat |
 | 4 | Revisit weak blocks | Autocomplete, Video Streaming, File Sync, Nearby Places |
 | 5 | Run and modify the models | Ride Matching, Payments, Ticket Booking, Metrics, Job Scheduler |
-| 6 | Chapter 37 | Leaderboard, Collaborative Editing, Message Queue; all four mocks |
+| 6 | Chapters 37 and 38 | Leaderboard, Collaborative Editing, Message Queue; all four mocks |
 
 ## More Prompts for Practice
 

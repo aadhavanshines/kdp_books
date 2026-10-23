@@ -4,6 +4,8 @@
 
 Autocomplete has an unusual profile: a request on every keystroke, a latency budget measured in tens of milliseconds, and data (popular queries) that changes slowly enough to be precomputed. The design separates a fast, read-only serving path from a slower pipeline that builds the data.
 
+**Interesting Fact:** Google says autocomplete reduces typing by about 25% on average, and estimates that it saves its users more than 200 years of typing time every day. Small savings per request add up when there are billions of requests.
+
 ## Requirements
 
 **Functional:**

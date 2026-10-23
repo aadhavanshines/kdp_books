@@ -69,6 +69,8 @@ The test checks, on thousands of random follow graphs, that the hybrid feed alwa
 
 The hybrid does 18,086 inbox writes instead of 218,086: the celebrity's 100 posts would have been 200,000 writes on their own. At real scale, with celebrity accounts of tens of millions of followers, the difference is what makes the system feasible.
 
+**Real-World Story:** In public talks in 2012 and 2013, Twitter engineers described their home timeline design: when someone tweets, the tweet's ID is pushed into the cached timeline of every follower, so reading a timeline, which happened about 300,000 times per second at the time, is a quick cache lookup. Accounts with huge numbers of followers were the exception; their tweets were merged in at read time. It's the same hybrid this chapter arrives at.
+
 ## Deep Dive 2: Feed Storage and Hydration
 
 Feeds store **post IDs**, not posts: a post appears in thousands of feeds but is stored once, and edits or deletions show up everywhere immediately. Reading a page of the feed means "hydrating" 20 IDs into posts with a batched lookup from a post cache. Keep only the newest few hundred IDs per feed in the cache; users rarely scroll further, and older pages can be computed by pulling.

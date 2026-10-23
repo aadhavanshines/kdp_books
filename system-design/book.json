@@ -41,14 +41,14 @@
   },
   "paper": "white",
   "reuse_note": "Readers may freely use and adapt the example code and designs in this book for their own study, practice and work.",
-  "trademarks": "Google, Meta, Amazon, Twitter and other company names are trademarks of their respective owners; they are used only to describe publicly stated or publicly reported hiring practices. Product names such as Redis, Memcached, Kafka, Cassandra, PostgreSQL, MySQL, ZooKeeper, etcd and Python are trademarks of their respective owners and are mentioned only to describe widely used technologies. This book is independent and is not affiliated with, sponsored by, or endorsed by any company it mentions. The designs are generic teaching designs and do not describe any company's actual systems unless a published source is cited.",
+  "trademarks": "Google, Meta, Amazon, Twitter and other company names are trademarks of their respective owners; they are used only to describe publicly stated or publicly reported hiring practices, and, in the Real-World Story and Interesting Fact boxes and Chapter 37, to retell incidents and designs that those companies have described publicly in postmortems, papers and statements. Product names such as Redis, Memcached, Kafka, Cassandra, ScyllaDB, PostgreSQL, MySQL, ZooKeeper, Consul, etcd, Pokémon GO and Python are trademarks of their respective owners and are mentioned only to describe widely used technologies or published events. This book is independent and is not affiliated with, sponsored by, or endorsed by any company it mentions. The designs are generic teaching designs and do not describe any company's actual systems unless a published source is cited.",
   "back_cover_blurb": [
     "Design systems out loud, with numbers, trade-offs and confidence.",
     "Senior engineering interviews at top technology companies include a system design round: an open-ended conversation in which you design a large system on a whiteboard. This book gives you a repeatable framework, the building blocks behind every design, and 20 complete worked designs to practice with.",
     "- A seven-step framework for any prompt, from requirements and estimates to deep dives",
     "- Caching, databases, replication, partitioning, queues, rate limiting, IDs and reliability",
     "- 20 designs, from a link shortener and news feed to payments, ticketing and collaborative editing",
-    "- Four full mock interviews, mid-level to staff, with the interviewer's notes",
+    "- Four full mock interviews, and lessons from real outages at well-known companies",
     "- Two- and six-week study plans, a numbers cheat sheet and a one-page template",
     "Every building block is a runnable Python model, tested on Python 3.12 to 3.15, so every claim about its behavior is measured. Current as of October 2026."
   ],

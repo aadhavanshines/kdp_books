@@ -72,6 +72,8 @@ Alerting on any minute above 90% fires twice, once for the harmless spike; requi
 
 Each unique combination of labels is a separate series. A label with unbounded values, such as user ID or request ID, can turn thousands of series into billions and overwhelm the system. Enforce limits per service, reject or drop high-cardinality labels at ingestion, and put per-request detail in logs and traces instead.
 
+**Real-World Story:** During Roblox's 73-hour outage in October 2021, its monitoring depended on the same Consul cluster that was failing, so engineers lost visibility exactly when they needed it most (Chapter 37). Run the alerting path independently of the systems it watches, ideally in a different failure domain.
+
 ## Wrap-Up
 
 - **Independence:** run monitoring on separate infrastructure, and monitor the monitoring (a "dead man's switch" alert that fires if no data arrives).

@@ -6,6 +6,7 @@ Outputs go to dist/.
 import json
 from pathlib import Path
 
+from charts import build_charts
 from diagrams import build_diagrams
 from covers import build_ebook_cover, build_paperback_cover
 from epub_build import build_epub
@@ -19,6 +20,7 @@ DIST = ROOT / "dist"
 def main():
     meta = json.loads((ROOT / "book.json").read_text())
     build_diagrams(ROOT / "manuscript" / "images")
+    build_charts(ROOT / "manuscript" / "images")
     manuscript = load_manuscript(ROOT / "manuscript")
     DIST.mkdir(exist_ok=True)
 

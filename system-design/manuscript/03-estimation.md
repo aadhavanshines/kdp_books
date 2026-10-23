@@ -65,6 +65,10 @@ Read the results like an interviewer would:
 
 Each line points to a design decision. That's what makes an estimate worth its five minutes.
 
+**Real-World Story:** When Pokémon GO launched in July 2016, its teams planned for a target level of traffic, with a worst-case estimate of five times that target. According to Google Cloud, which hosted the game, actual traffic reached 50 times the target: ten times the worst case. Estimates are educated guesses. Good designs leave room for being wrong, with autoscaling, load shedding and the option to launch one region at a time, as the game did.
+
+![Pokémon GO's launch traffic compared with its plan, as described by Google Cloud: the planned target (1x), the worst-case estimate (5x) and the actual launch traffic (50x).](images/chart-pokemon-go.png)
+
 ## Rounding Like an Engineer
 
 Round aggressively and say so:

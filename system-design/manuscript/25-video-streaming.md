@@ -29,6 +29,8 @@ Assume 500 hours uploaded per minute, five renditions per video (0.4 to 8 Mbps),
 - About **5 PB of new storage a day** for all renditions. Storage tiers and deleting rarely watched high renditions matter.
 - About **7.5 TB per second** of egress at peak. That is far beyond any single data center; it's only possible with CDNs and caches deep inside internet service providers' networks.
 
+**Interesting Fact:** In 2019, YouTube said that more than 500 hours of video were uploaded every minute: 30,000 hours of new video every hour, each encoded into several renditions. Upload volume alone justifies the asynchronous transcoding pipeline in this design.
+
 ## High-Level Design
 
 ![Video platform: uploads go to object storage; a transcoding pipeline splits each video into segments and encodes several renditions; segments and manifests are served through CDNs; metadata lives in a database.](images/diagram-video.png)
@@ -55,6 +57,8 @@ The model plays 60 two-second segments over a connection that drops from 12 Mbps
 
 Always streaming at 8 Mbps freezes for 162 seconds; the buffer-based player stalls for a tenth of a second and averages 4.6 Mbps. The test checks over 200 random bandwidth traces that the adaptive player never rebuffers more than the fixed one. Production players combine buffer level with bandwidth estimates, but the principle is the same: quality is worth less to viewers than continuity.
 
+![The adaptive bitrate model on the same network trace: a fixed 8 Mbps stream runs out of buffer in the slow patch and freezes; the buffer-based player steps its quality down and back up and keeps playing.](images/chart-abr-timeline.png)
+
 ## Deep Dive 2: Transcoding at Scale
 
 - **Parallelism:** split each video into chunks and transcode them in parallel across a worker fleet, coordinated through a queue; reassemble the segments.
@@ -67,6 +71,8 @@ Always streaming at 8 Mbps freezes for 162 seconds; the buffer-based player stal
 - **CDN caching:** popular videos are served almost entirely from edge caches. The long tail of rarely watched videos is fetched from origin storage on demand.
 - **Storage tiers:** recent and popular videos on fast storage; old, rarely watched ones on cheaper, slower tiers, with **erasure coding** instead of full copies (Chapter 26).
 - **Startup time:** the first segment at low quality, small segments at the start, and prefetching the next video in a feed.
+
+**Real-World Story:** Netflix runs its own CDN, Open Connect. Since 2012 it has offered its caching servers free of charge to qualifying internet service providers, to install inside their own networks; the provider supplies power, space and connectivity. Netflix fills these servers with popular titles ahead of time, so much of the video is served from inside the viewer's own internet provider, only a few network hops away.
 
 ## Wrap-Up
 

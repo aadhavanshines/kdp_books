@@ -51,6 +51,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>Back-of-the-envelope estimation that drives decisions, with a numbers cheat sheet</li>
 <li>Scaling, caching, databases, replication, partitioning, queues and logs, rate limiting, IDs and clocks, probabilistic data structures, reliability, observability and security</li>
 <li>20 complete worked designs: link shortener, distributed rate limiter, key-value store, unique ID generator, web crawler, notifications, news feed, chat, autocomplete, video streaming, file sync, nearby places, ride matching, payments, ticket booking, metrics and alerting, job scheduler, leaderboard, collaborative editing and a distributed message queue</li>
+<li>Real-world stories throughout, from famous outages to published designs, and a chapter retelling eight well-known incidents and the lessons they teach, each checked against the company's own postmortem</li>
 </ul>
 
 <p><b>Practice like the real thing.</b> Four full mock interviews, from mid-level to staff, show the whole conversation, including the missteps and how to recover, with the interviewer's notes. A chapter of common mistakes, two- and six-week study plans, a building-blocks reference, a one-page design template, a design index and a glossary complete the book.</p>
@@ -132,4 +133,4 @@ Answering this accurately is a KDP content-guideline requirement. The disclosure
 
 ## Keep It Current
 
-Chapter 1 describes interview formats as of October 2026. For a later edition, re-check the companies' own career pages listed in `research/facts.md`, update that chapter, rerun the tests and rebuild.
+Chapter 1 describes interview formats as of October 2026. For a later edition, re-check the companies' own career pages listed in `research/facts.md`, update that chapter, rerun the tests and rebuild. The real-world stories describe past events and don't go out of date, but check that the source links in Appendix F still work.

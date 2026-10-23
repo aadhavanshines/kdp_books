@@ -34,15 +34,19 @@ def error_budget(slo, days=30):
     return (1 - slo) * days * 24 * 60
 
 
-def demo():
-    rng = random.Random(9)
-    # 98% of requests are fast; 2% hit a slow path (cache miss + disk).
-    lat = [
+def sample_latencies(n=100_000, seed=9):
+    """98% of requests are fast; 2% hit a slow path (cache miss + disk)."""
+    rng = random.Random(seed)
+    return [
         rng.uniform(20, 40)
         if rng.random() < 0.98
         else rng.uniform(800, 1200)
-        for _ in range(100_000)
+        for _ in range(n)
     ]
+
+
+def demo():
+    lat = sample_latencies()
     print(f"mean {sum(lat) / len(lat):.0f} ms")
     for p in [50, 95, 99, 99.9]:
         print(f"p{p:<4} {percentile(lat, p):.0f} ms")

@@ -55,6 +55,8 @@ The most dangerous moment is a timeout: the processor may have charged the card 
 
 Ana tops up 50.00, then pays 30.00. The client's retry with key `k2` returns the original result without moving money again. A genuinely new payment with key `k3` is rejected, because only 20.00 is left. Amounts are stored in **integer cents**, never floating point, which can't represent most decimal amounts exactly.
 
+**Real-World Story:** Stripe's public API is a well-known example of idempotency keys in practice: the client sends a unique key with each payment request, and if a network error forces a retry, the server recognizes the key and returns the original result instead of charging the customer twice. Stripe's engineering blog post "Designing robust and predictable APIs with idempotency" explains the reasoning.
+
 ## Deep Dive 2: Double-Entry Bookkeeping
 
 Each transfer writes **two entries that sum to zero**: money leaves one account and enters another. Balances are never updated in place; they are sums of entries, so the ledger is an append-only, auditable history. For a sale of 100.00 with a 10% fee, the entries move 100.00 from the customer's payment account to an escrow account, then 90.00 to the seller and 10.00 to the marketplace's revenue.

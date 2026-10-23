@@ -14,6 +14,8 @@ When a user opens `https://app.example/feed`:
 
 Each round trip costs time proportional to distance: within a data center, well under a millisecond; across a continent, tens of milliseconds; around the world, 150 milliseconds or more. That's why reusing connections, serving content from nearby edge servers, and reducing the number of sequential calls matter so much for latency.
 
+**Real-World Story:** On October 21, 2016, an attack from tens of millions of IP addresses, many of them cameras and video recorders infected with the Mirai malware, flooded Dyn, a large DNS provider. For hours, many people couldn't reach Twitter, GitHub, Netflix, Reddit and other popular sites. The sites themselves were running; their names just couldn't be looked up. DNS is the first step of every request, so treat it as a dependency like any other, which is why some large sites spread their DNS across more than one provider.
+
 ## HTTP Versions in One Paragraph Each
 
 - **HTTP/1.1** sends one request at a time per connection; browsers open several connections to work around it.

@@ -50,6 +50,8 @@ Drivers move constantly, so the index must handle many more updates than queries
 
 The first request gets d2, the closest; the second gets d1, because d2 is no longer available; the third finds no one. The test compares the grid search with a brute force that checks every driver, over thousands of random driver and rider positions.
 
+**Interesting Fact:** Uber built, and in 2018 open-sourced, H3: a geospatial index that divides the world into hexagons instead of geohash's rectangles. All six neighbors of a hexagon are the same distance from its center, while a square's corner neighbors are farther away than its edge neighbors, which makes "nearby" calculations more even. Uber uses H3 for analysis, pricing and dispatch.
+
 ## Deep Dive 2: Never Double-Book a Driver
 
 Two dispatch servers may pick the same driver for two riders at the same moment. The reservation must be **atomic**: a compare-and-set on the driver's status from "available" to "offered to trip T" in the store that owns that driver (Chapter 17 shows why). If the set fails, try the next candidate. If the driver declines or doesn't respond within a few seconds, release them and offer the trip to the next driver.

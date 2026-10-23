@@ -26,7 +26,31 @@ from run_problems import CODE, load  # noqa: E402
 WIDTH = 76
 
 
+class _SortedSet(set):
+    """A set that prints its items in sorted order, so printed examples
+    don't depend on string hashing, which changes from run to run."""
+
+    def __repr__(self):
+        items = sorted(self, key=repr)
+        return (
+            "{" + ", ".join(repr(x) for x in items) + "}"
+            if items
+            else "set()"
+        )
+
+
+def stable(x):
+    if isinstance(x, (set, frozenset)):
+        return _SortedSet(stable(i) for i in x)
+    if isinstance(x, dict):
+        return {k: stable(v) for k, v in x.items()}
+    if isinstance(x, (list, tuple)):
+        return type(x)(stable(i) for i in x)
+    return x
+
+
 def show_call(name, args):
+    args = [stable(a) for a in args]
     one = f">>> {name}({', '.join(repr(a) for a in args)})"
     if len(one) <= WIDTH:
         return one
@@ -50,7 +74,9 @@ def session(mod):
         if not ok:
             raise SystemExit(f"{mod.__name__}: {args!r} gave {got!r}")
         out.append(show_call(fn.__name__, args))
-        out.append(pprint.pformat(got, width=WIDTH, sort_dicts=False))
+        out.append(
+            pprint.pformat(stable(got), width=WIDTH, sort_dicts=False)
+        )
     return "\n".join(out) + "\n"
 
 

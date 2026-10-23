@@ -759,6 +759,33 @@ def message_queue():
     return img
 
 
+def staged_rollout():
+    img, d = canvas(560)
+    stages = [("Canary", "a few servers"), ("1%", "one cell"), ("10%", "one region"),
+              ("100%", "everywhere")]
+    bw, gap, y0 = 250, 92, 90
+    x = (W - (4 * bw + 3 * gap)) / 2
+    xs = []
+    for i, (t, sub) in enumerate(stages):
+        box(d, (x, y0, x + bw, y0 + 120), t, NAVY if i == 3 else LIGHT,
+            WHITE if i == 3 else INK, font=f(BOLD, 36), sub=sub)
+        xs.append(x)
+        x += bw + gap
+    for i in range(3):
+        a, b = xs[i] + bw + 8, xs[i + 1] - 8
+        arrow(d, (a, y0 + 60), (b, y0 + 60), color=MID, width=6, head=20)
+        label(d, ((a + b) / 2, y0 + 140), "healthy?", 26, ITAL, MID)
+    label(d, (W / 2, 20), "Each stage waits and checks error rates before the next", 30, BOLD, NAVY)
+    d.line((xs[0] + bw / 2, y0 + 125, xs[0] + bw / 2, 400), fill=(194, 84, 0), width=5)
+    for i in range(1, 3):
+        d.line((xs[i] + bw / 2, y0 + 125, xs[i] + bw / 2, 400), fill=(194, 84, 0), width=5)
+    d.line((xs[0] + bw / 2, 400, xs[2] + bw / 2, 400), fill=(194, 84, 0), width=5)
+    box(d, (W / 2 - 420, 430, W / 2 + 420, 530), "Errors rise? Stop and roll back automatically",
+        PALE, INK, font=f(BOLD, 30), outline=(194, 84, 0))
+    d.line((W / 2, 400, W / 2, 428), fill=(194, 84, 0), width=5)
+    return img
+
+
 DIAGRAMS = {
     "framework": framework, "load-balancer": load_balancer, "cache-aside": cache_aside, "lsm": lsm,
     "replication": replication, "hash-ring": hash_ring, "queue-log": queue_log,
@@ -768,7 +795,7 @@ DIAGRAMS = {
     "chat": chat, "autocomplete": autocomplete, "video": video, "file-sync": file_sync,
     "nearby": nearby, "ride-matching": ride_matching, "payments": payments, "ticketing": ticketing,
     "metrics": metrics, "scheduler": scheduler, "leaderboard": leaderboard, "collab": collab,
-    "message-queue": message_queue,
+    "message-queue": message_queue, "staged-rollout": staged_rollout,
 }
 
 

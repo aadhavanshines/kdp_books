@@ -24,6 +24,10 @@ Latency should be reported as **percentiles**, not averages. The model below gen
 
 The average is 49 ms, which describes no real request. The median (p50) is 30 ms, and so is the experience of most requests, but the 99th percentile is about a second. If a page makes 50 backend calls, the chance that at least one hits the slow path is 1 - 0.98⁵⁰, about 64%: most page loads are slow even though the average looks excellent. That's why service objectives are written for p99 or p99.9, and why reducing tail latency matters so much in large systems.
 
+![The latency distribution from the model, on a log scale: almost all requests take 20 to 40 ms, but 2% take 800 to 1,200 ms. The mean (49 ms) describes no real request; the p99 (1,002 ms) shows the slow tail that users feel.](images/chart-latency-histogram.png)
+
+**Interesting Fact:** At a 2006 conference, Google's Marissa Mayer described an experiment in which showing 30 search results per page instead of 10 reduced searches by about 20%. The larger page took about 0.9 seconds to generate instead of 0.4, and Google attributed the drop to the extra half second. Later analysts point out that other things changed too, so speed wasn't the only cause, but the lesson stuck: users notice latency.
+
 ## SLIs, SLOs and Error Budgets
 
 - A **service level indicator (SLI)** is a measurement: the fraction of requests that succeed within 300 ms, for example.
@@ -35,6 +39,8 @@ The error budget turns reliability into a decision rule: while budget remains, s
 ## Alerting
 
 Alert on **symptoms users feel** (error rate, latency, failed checkouts), not on every cause (one server's CPU), and require a condition to last for a few minutes so a single spike doesn't wake someone at night. Chapter 31 designs a metrics and alerting system and shows this rule in code.
+
+**Real-World Story:** Before the stock market opened on August 1, 2012, Knight Capital's systems sent 97 automated emails about an error. They weren't set up as alerts, nobody acted on them, and within 45 minutes of the opening, a server running outdated code had cost the firm more than $460 million (Chapter 37). An alert only works if it reaches a person whose job is to act on it.
 
 ## Security Essentials for Designers
 

@@ -57,6 +57,8 @@ The **CAP theorem** (conjectured by Eric Brewer in 2000, proven by Gilbert and L
 
 **PACELC** (Daniel Abadi, 2012) adds the more common case: *else*, when there's no partition, there's still a trade-off between **latency** and **consistency**, because waiting for replicas to agree takes time. It's a more useful lens for everyday design decisions.
 
+**Real-World Story:** In October 2018, a 43-second network interruption led GitHub's automated failover to promote databases in another region while the original side had just accepted writes. The two sides diverged, and GitHub spent about a day restoring a consistent state without losing data. Chapter 37 tells the story; it's CAP in real life.
+
 ## Consensus, Briefly
 
 When replicas must agree on one value despite failures, such as which node is the leader, or whether a lock is held, systems use a **consensus** protocol: Paxos (Lamport, published 1998) or Raft (Ongaro and Ousterhout, 2014). They work as long as a majority of nodes can communicate, which is why clusters have an odd number of members, 3 or 5. In interviews, you rarely need the details; you need to know when to use a consensus-backed service (such as etcd or ZooKeeper) instead of inventing your own coordination.

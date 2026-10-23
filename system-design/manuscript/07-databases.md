@@ -56,6 +56,8 @@ A **tombstone** marks a deleted key, because an older file may still contain a v
 | Space | Some fragmentation | Old versions until compaction |
 | Typical use | Relational databases, read-heavy data | Write-heavy data: logs, messages, metrics |
 
+**Real-World Story:** Discord stores trillions of chat messages. In 2017, it kept them on 12 Cassandra nodes; by 2022 that had grown to 177 nodes, and garbage-collection pauses and maintenance work made latency unpredictable. Discord moved to ScyllaDB, a Cassandra-compatible database written in C++, on 72 nodes, and reported that the p99 latency of fetching old messages fell from 40 to 125 ms to a steady 15 ms. It also put a service in front of the database that merges identical requests arriving at the same time, so a busy channel causes one database read instead of thousands. Same data model, different storage engine: at scale, the engine matters as much as the database type.
+
 ## Object Storage
 
 Large binary objects (photos, videos, backups, files) go in **object storage**: a flat namespace of keys mapping to immutable blobs, built for durability and cheap capacity rather than low latency. Store the object there and its metadata (owner, size, location key) in a database. Serve popular objects through a CDN.

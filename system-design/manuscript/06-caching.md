@@ -51,6 +51,8 @@ Access patterns on real systems are usually skewed: a few items are very popular
 
 A cache holding just 1% of the keys serves about half of all requests, and 10% serves nearly three quarters. That's why caches pay off so well, and why it's worth estimating the size of the "hot set" rather than trying to cache everything.
 
+![LRU hit rate against cache size, measured with the model above on 200,000 requests to 100,000 keys with a skewed (Zipf) popularity: a cache holding 1% of the keys serves about half the requests.](images/chart-hit-rate.png)
+
 ## The Hard Parts
 
 - **Invalidation.** When the source changes, every cached copy must be removed or allowed to expire. A short TTL is the simplest safety net, even when you also invalidate explicitly.
@@ -59,6 +61,8 @@ A cache holding just 1% of the keys serves about half of all requests, and 10% s
 - **Cold start.** An empty cache after a restart sends all traffic to the database. Warm caches gradually, or restart them one at a time.
 
 > **Interviewer's View:** Saying "cache-aside with a TTL, delete on write, and request coalescing for hot entries" covers what most interviewers want to hear about caching. Then quantify: what's the hit rate, and how much load does it take off the database?
+
+**Real-World Story:** Facebook's 2013 paper "Scaling Memcache at Facebook" describes a cache tier serving billions of requests per second, and two problems from this chapter appear in it: stale values written back after an invalidation, and thundering herds when a popular key is deleted. Its fix for both is a **lease**: on a miss, the cache gives one client a token that allows it to refill the key; other clients briefly wait and retry, instead of all hitting the database at once.
 
 ## Key Takeaways
 

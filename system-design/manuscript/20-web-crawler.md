@@ -4,6 +4,8 @@
 
 A crawler is a long-running pipeline: pick a URL, fetch the page, store it, extract links, add new links to the queue, and repeat, forever. The interesting problems are not the fetching itself but deciding what to fetch next, avoiding duplicates, and being polite to the websites being crawled.
 
+**Interesting Fact:** In 2008, Google announced that its systems had found more than 1 trillion unique URLs on the web, with the number of pages growing by several billion per day. It didn't index them all. Much of the web is duplicate content and endless auto-generated pages, which is why URL normalization, deduplication and politeness matter as much as raw fetching speed.
+
 ## Requirements
 
 **Functional:**

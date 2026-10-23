@@ -10,7 +10,7 @@ Run on 22 October 2026 before release. The raw output is in `results/release-che
 | `tests/check_cover_code.py` | The program on the front cover runs and prints `(116, 347)` and `20.0 TB/day`, as shown |
 | `ruff check` and `ruff format --check` (code, tests) | Clean, line length 76 |
 | EPUBCheck 5.1.0 | 0 fatals, 0 errors, 0 warnings |
-| `build/check_pdf.py` | 263 pages; margins within KDP limits; 49 TOC entries; no chapter starts on a left-hand page; no gap over 2.5 in before a chapter ends |
+| `build/check_pdf.py` | 263 pages at release, 279 after the 23 October revision; margins within KDP limits; 51 TOC entries; no chapter starts on a left-hand page; no gap over 2.5 in before a chapter ends |
 | codespell | Clean (intentional hits: the abbreviation "OT", for operational transformation) |
 | LanguageTool (en-US) | Reviewed; one real issue fixed (a missing comma), the remaining hits are false positives such as "a write" used as a noun and `O(log n)` spacing |
 | Personal email search | Not present anywhere in the book or repository |
@@ -30,3 +30,12 @@ All prompts, designs, mock-interview dialogues and example data were written for
 ## Print check
 
 All diagram pages were rendered and reviewed visually, and every page was checked automatically for text or images outside the safe area, Markdown leaking into the output, headings stranded at the bottom of a page, and nearly empty pages. Fixed during review: several diagram labels overlapping boxes or arrows, a replication arrow in the message-queue diagram that pointed at the wrong follower, and a table whose bold first column broke "Write-through" mid-word (the table builder now measures bold words in the bold font). Blank pages are the intended left-hand pages before chapter openings; the remaining `**` hits are Python exponents in code.
+
+## Revision: real-world stories and more pictures (23 October 2026)
+
+Added after a review asked for real-life examples, interesting facts, real-world issues and more pictures.
+
+- **Real-World Story and Interesting Fact boxes** (29 in Chapters 0 to 34), **Chapter 37, "Lessons From Real Outages"** (eight incidents, from AWS S3 in 2017 to Atlassian in 2022), and **Appendix F**, which lists a source for every box. Every fact was checked against the company's own postmortem, paper or statement, or contemporary reporting where none exists; the checks are logged in `research/facts.md`. Figures the sources didn't confirm (GitLab's data size, a Ticketmaster user count) were left out, and contested claims are marked as such (Google's 2006 latency experiment).
+- **Seven new pictures:** six charts drawn by `build/charts.py` (LRU hit rate against cache size, the retry storm with and without jitter, the latency histogram with mean and percentiles, adaptive bitrate over time, Pokémon GO's planned and actual traffic, and how long eight outages lasted) and one diagram (staged rollout). The four model charts are computed at build time from the tested models, through small data helpers (`retry_slots`, `sample_latencies`, `timeline`) that have their own consistency tests.
+- **Harness fix:** printed examples now show sets in sorted order. One example (Chapter 22) printed a set whose order depended on string hashing, so `make_examples.py --check` could report it as stale on some runs.
+- After the revision: all 58 model files pass on Python 3.12 to 3.15 (`--cases 2000`); `make_examples.py --check` reports 0 stale files; ruff, EPUBCheck (0 errors, 0 warnings), `check_pdf.py` (279 pages, 51 TOC entries) and codespell are clean; LanguageTool's new hits were reviewed and fixed; all new pages were rendered and reviewed visually.

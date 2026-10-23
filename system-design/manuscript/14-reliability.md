@@ -31,6 +31,8 @@ Rules for safe retries:
 - Limit attempts, and use a **retry budget**: for example, retries may add at most 10% to normal traffic.
 - Retry at one layer only. If three layers each retry three times, one user request can become 27 calls.
 
+![Retries per 10 ms after an outage, from the same model: with fixed backoff, all 1,000 clients retry in the same 10 ms, five times; with full jitter, the same 5,000 retries spread out and the busiest slot sees 38.](images/chart-retry-storm.png)
+
 ## Circuit Breakers
 
 When a dependency is clearly down, even well-behaved retries waste time and resources. A **circuit breaker**, a pattern popularized by Michael Nygard's book *Release It!* (2007), stops calling it for a while:
@@ -62,6 +64,8 @@ While the breaker is open, return a **fallback** if one makes sense: cached data
 ## Redundancy and Failure Domains
 
 Remove single points of failure by running at least two of everything that matters, in different **failure domains**: different machines, racks, availability zones and, for the most critical systems, regions. Test failover regularly; a backup that has never been restored, or a standby that has never been promoted, is a hope, not a plan.
+
+**Real-World Story:** In 2011, Netflix described Chaos Monkey, a tool that randomly disables servers in its production environment. If any server can fail at any moment, engineers build services that survive it, and they find the weaknesses during the working day rather than at 3 a.m. "Chaos engineering", deliberately injecting failures to prove that redundancy works, has since become a common practice. Chapter 37 looks at real outages and the patterns behind them.
 
 ## Key Takeaways
 

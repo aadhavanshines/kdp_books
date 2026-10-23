@@ -45,8 +45,9 @@ Introduction
 
 ## Part IV: Practice
 36. Four Full Mock Interviews
-37. Common Mistakes and How to Recover
-38. Your Study Plan
+37. Lessons From Real Outages
+38. Common Mistakes and How to Recover
+39. Your Study Plan
 
 ## Appendices
 A. Numbers Every Designer Should Know
@@ -54,4 +55,5 @@ B. Building Blocks Reference
 C. One-Page Design Template
 D. Design Index
 E. Glossary
+F. Sources for the Real-World Stories
 About the Author

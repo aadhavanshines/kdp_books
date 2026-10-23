@@ -22,6 +22,8 @@ Less than 12 KB, and the measured false-positive rate matches the target. Storin
 
 Uses: a database checks a Bloom filter before reading a file that probably doesn't contain the key (the LSM-trees of Chapter 7); a crawler skips URLs it has probably seen (Chapter 20); a browser checks URLs against a list of malicious sites before making a slower exact check. Standard Bloom filters can't delete items; variants such as counting Bloom filters can.
 
+**Real-World Story:** Akamai, one of the largest content delivery networks, found that most objects its servers fetched were requested only once ("one-hit wonders"), so caching them wasted disk space. Its fix was a Bloom filter: an object is cached only on its second request, when the filter says it has been seen before. A false positive just means caching one extra object, which is harmless.
+
 ## Count-Min Sketch: Approximate Counts
 
 A **Count-Min sketch** (Cormode and Muthukrishnan, 2005) estimates how often each item occurs in a stream, in fixed memory. It's a small table of counters with d rows, each with its own hash function. Adding an item increments one counter in each row; the estimate is the **minimum** of the item's d counters. Collisions only ever add to counters, so the estimate is never too low, and taking the minimum picks the counter least inflated by collisions.
@@ -53,6 +55,8 @@ With 4,096 registers, about 3 KB, the error stays under 1% from a thousand to a 
 | HyperLogLog | "How many distinct items?" | About 1.04 / √m relative | Fixed: m small registers |
 
 > **Interviewer's View:** Proposing a Bloom filter where exactness isn't required, and stating what a false positive costs ("we skip crawling a few new URLs, which is acceptable"), is a strong signal. Don't use one where a false positive is unacceptable, such as checking whether a username is taken.
+
+**Real-World Story:** In 2017, Reddit described how it counts unique views of posts. Storing every viewer's ID for millions of posts would take far too much memory, so Reddit uses HyperLogLog counters in Redis, each using at most 12 KB, with a standard error of about 0.81%. A view count that is off by less than 1% is fine; nobody needs it exact.
 
 ## Key Takeaways
 

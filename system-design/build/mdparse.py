@@ -9,7 +9,7 @@ import re
 from pathlib import Path
 
 CALLOUT_RE = re.compile(
-    r"^\*\*(Tip|Try It|Warning|Note|Common Mistake|Follow-Up|Interviewer's View|In Plain Words):\*\*\s*(.*)$", re.S)
+    r"^\*\*(Tip|Try It|Warning|Note|Common Mistake|Follow-Up|Interviewer's View|In Plain Words|Real-World Story|Interesting Fact):\*\*\s*(.*)$", re.S)
 
 
 INCLUDE_RE = re.compile(r"^@include (\S+?)(?:#L(\d+)-L?(\d+)|::([\w.,]+))?$")

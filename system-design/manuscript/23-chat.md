@@ -76,6 +76,8 @@ Sequence numbers per conversation require one place to assign them. Partition co
 - **Deployments** must drain connections gradually; clients reconnect to another gateway and sync from their last sequence number, so nothing is lost.
 - **Multiple devices:** the registry maps a user to several connections; deliver to all, and sync each device by its own last sequence number.
 
+**Interesting Fact:** In January 2012, WhatsApp's engineering blog reported more than 2 million TCP connections on a single server, after tuning FreeBSD and Erlang. An idle persistent connection costs mostly memory, not CPU, so one server can hold far more connections than it could handle requests per second. In a chat design, estimate connections and messages per second separately.
+
 ## Deep Dive 3: Groups and Presence
 
 - **Groups:** for groups of a few hundred, the chat service fans out each message to the members' gateways. Very large broadcast channels need a different design, closer to the news feed (pull rather than push).

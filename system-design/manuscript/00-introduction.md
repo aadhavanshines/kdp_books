@@ -16,13 +16,17 @@ For many engineers, this is the most intimidating interview of all. Coding quest
 
 **Practice like the real thing.** Part IV contains four full mock interviews, written as conversations between candidate and interviewer, with the interviewer's notes at the end of each.
 
+**Real stories, checked.** Systems are easier to understand when you see them fail. Throughout the book, **Real-World Story** and **Interesting Fact** boxes connect each idea to something that actually happened: a famous outage, a published design, a surprising number. Chapter 37 retells eight well-known outages in depth. Every story is taken from the company's own postmortem, paper or public statement, and the sources are listed in Appendix F.
+
+**Interesting Fact:** When Facebook agreed to buy Instagram in April 2012 for about $1 billion, the app had around 30 million users and a team of just 13 people. Small teams can run very large systems when the design is simple and built from well-understood building blocks, which is what this book teaches.
+
 ## How the Book Is Organized
 
 - **Part I, The Interview and the Method:** what the interview tests, a framework for 45 minutes, estimation, and the networking and API basics every design relies on.
 - **Part II, Building Blocks:** load balancing, caching, databases and storage engines, replication, partitioning, queues and logs, rate limiting, IDs and time, probabilistic data structures, reliability patterns, and observability and security.
 - **Part III, Twenty Worked Designs.**
-- **Part IV, Practice:** four mock interviews, the common mistakes and how to recover from them, and study plans.
-- **Appendices:** the numbers every designer should know, a building-block reference, a one-page design template, an index of the designs, and a glossary.
+- **Part IV, Practice:** four mock interviews, lessons from eight real outages, the common mistakes and how to recover from them, and study plans.
+- **Appendices:** the numbers every designer should know, a building-block reference, a one-page design template, an index of the designs, a glossary, and the sources for the real-world stories.
 
 ## How to Use the Code
 
@@ -32,7 +36,7 @@ You don't need to run the code to follow the book; every listing is short, expla
 
 ## A Note on Companies, Products and Dates
 
-The book refers to companies such as Google, Meta and Amazon when describing interviews, and to widely used technologies such as Redis, Kafka and PostgreSQL when describing building blocks. Where a company publishes its own guidance, the book relies on it and says so; where information comes from candidates' reports, the book says that too. The designs in Part III are generic teaching designs, not descriptions of any company's internal systems. Interview formats change, so always confirm the details with your recruiter. The descriptions in this book reflect what was published as of **October 2026**.
+The book refers to companies such as Google, Meta and Amazon when describing interviews, and to widely used technologies such as Redis, Kafka and PostgreSQL when describing building blocks. Where a company publishes its own guidance, the book relies on it and says so; where information comes from candidates' reports, the book says that too. The designs in Part III are generic teaching designs, not descriptions of any company's internal systems. The Real-World Story and Interesting Fact boxes, and Chapter 37, retell events that companies have described publicly, using their own postmortems, papers and statements, listed in Appendix F; they are told without blame and claim nothing beyond what was published. Interview formats change, so always confirm the details with your recruiter. The descriptions in this book reflect what was published as of **October 2026**.
 
 If you have read *The Coding Interview Playbook*, you will recognize the structure: the same emphasis on method, on testing, and on explaining your thinking out loud. If you haven't, nothing in this book depends on it.
 

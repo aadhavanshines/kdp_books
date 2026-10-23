@@ -26,6 +26,18 @@ def play(bandwidth, choose):
     return round(stalled, 1), round(sum(rates) / len(rates), 2)
 
 
+def timeline(bandwidth, choose):
+    """Like play(), but return (bitrate, buffer seconds after the
+    segment) for every segment, for plotting."""
+    buffer, out = 0.0, []
+    for bw in bandwidth:
+        rate = choose(buffer)
+        buffer = max(0.0, buffer - rate * SEGMENT / bw)
+        buffer = min(buffer + SEGMENT, 30.0)
+        out.append((rate, buffer))
+    return out
+
+
 def fixed_high(buffer):
     return 8.0
 
@@ -56,3 +68,7 @@ def test():
     for _ in range(200):
         trace = [rng.choice([0.8, 2, 4, 8, 15]) for _ in range(40)]
         assert play(trace, buffer_based)[0] <= play(trace, fixed_high)[0]
+        for fn in (buffer_based, fixed_high):
+            rates = [r for r, _ in timeline(trace, fn)]
+            avg = round(sum(rates) / len(rates), 2)
+            assert avg == play(trace, fn)[1]

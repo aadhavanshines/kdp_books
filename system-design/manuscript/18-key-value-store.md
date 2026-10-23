@@ -4,6 +4,8 @@
 
 This design brings together most of Part II: partitioning, replication, quorums, conflict handling and storage engines. It's often asked of senior candidates because it's all deep dives.
 
+**Interesting Fact:** The design in this chapter descends from Amazon's 2007 Dynamo paper. Its motivating example was the shopping cart: customers should be able to add items "even if disks are failing, network routes are flapping, or data centers are being destroyed by tornados." That requirement, availability first, is why Dynamo-style stores accept writes on whichever replicas they can reach and reconcile conflicting versions later.
+
 ## Requirements
 
 **Functional:** `put(key, value)`, `get(key)`, `delete(key)`. Values up to about 1 MB.

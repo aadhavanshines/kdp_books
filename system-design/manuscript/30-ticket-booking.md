@@ -4,6 +4,8 @@
 
 The design must handle an extreme spike, many thousands of buyers per seat, while guaranteeing that no seat is ever sold twice, and while being reasonably fair to the people waiting.
 
+**Real-World Story:** On November 15, 2022, the presale for Taylor Swift's Eras Tour overwhelmed Ticketmaster. The company said its systems received 3.5 billion requests, four times its previous peak, driven by bots and by fans who didn't have presale codes. Many fans waited for hours or lost tickets mid-purchase, and the general public sale was later canceled. Even so, more than 2 million tickets sold that day, a single-day record. The waiting room, bot defenses and short seat holds in this chapter exist for exactly this kind of demand.
+
 ## Requirements
 
 **Functional:**

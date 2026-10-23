@@ -66,6 +66,8 @@ This model handles two concurrent operations. Full OT systems handle long sequen
 
 For a centralized editor with a server per document, OT is a natural fit. For offline-first or peer-to-peer collaboration, CRDTs are the usual choice. Naming the trade-off is what interviewers look for.
 
+**Real-World Story:** Figma's engineering blog explained in 2019 why its multiplayer editing doesn't use operational transformation: OT was designed for text, and a design file is a tree of objects with properties. Instead, a server process per document holds the authoritative copy, and if two people change the same property of the same object at the same time, the last change the server receives wins. The approach borrows ideas from CRDTs while keeping a server in charge. Choosing the simplest model that fits your data is a design decision worth saying out loud.
+
 ## Deep Dive 3: Session Servers and Persistence
 
 - **One owner per document** keeps ordering simple. If the session server fails, clients reconnect, a new server loads the latest snapshot plus the log, and clients resend unacknowledged operations, deduplicated by operation ID.

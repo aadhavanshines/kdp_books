@@ -38,6 +38,8 @@ Two details matter. When a machine uses all 4,096 sequence numbers in one millis
 
 The tests generate 15,000 IDs from three machines sharing a jittery clock, and check that all are unique and that each machine's IDs increase. They also confirm the 69-year lifetime of 41 bits of milliseconds and that a backwards clock raises an error.
 
+**Real-World Story:** In December 2014, Psy's "Gangnam Style" video passed 2,147,483,647 views on YouTube, the largest number a signed 32-bit integer can hold. YouTube had seen it coming and had already moved the counter to a 64-bit integer, announcing that the video had been watched so many times they had to upgrade. When you size an ID or a counter, ask what it will need to hold in ten years; 64 bits is the safe default.
+
 ## Short IDs With Base 62
 
 When IDs appear in URLs, such as a link shortener's codes (Chapter 16), they are written in **base 62**, using digits and upper- and lower-case letters:
@@ -75,6 +77,10 @@ Machine clocks drift, and synchronization (NTP) can be off by milliseconds or mo
 Many systems choose the simpler **last write wins**, keeping the version with the latest timestamp. It silently discards one of two concurrent writes, which is fine for a profile picture and wrong for a shopping cart. Saying which you'd use, and why, is the point.
 
 > **Interviewer's View:** You won't be asked to implement vector clocks. You may be asked "two users edit the same record at the same time on different replicas; what happens?" The strong answer names the options (last write wins, vector clocks with application merge, or avoiding the conflict with a single leader per record) and picks one for the use case.
+
+**Real-World Story:** Clocks really do go backwards. At midnight UTC on January 1, 2017, a leap second was added, and Cloudflare's DNS software, which calculated a duration from the wall clock, got a negative number where it expected zero or more. A small fraction of DNS requests failed until a one-line fix went out. On June 30, 2012, an earlier leap second triggered a Linux kernel bug that drove servers to high CPU use, affecting sites including Reddit and Mozilla and the reservation system that Qantas used for check-in. Measure durations with a monotonic clock, and never assume that timestamps from different machines are ordered.
+
+**Interesting Fact:** Google's Spanner database, described in a 2012 paper, takes the opposite approach: instead of distrusting clocks, it puts GPS receivers and atomic clocks in its data centers, so that its TrueTime API knows the current time within a small, bounded uncertainty, generally under 10 ms. Before a transaction commits, Spanner waits out that uncertainty, which lets it order transactions across the world by timestamp.
 
 ## Key Takeaways
 

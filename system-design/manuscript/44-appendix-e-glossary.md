@@ -10,11 +10,15 @@
 
 **Backpressure.** Signals that slow producers when consumers can't keep up (Chapter 10).
 
+**Blast radius.** How much of a system one failure or one change can affect; good designs keep it small (Chapter 37).
+
 **Bloom filter.** A compact set membership test with false positives but no false negatives (Chapter 13).
 
 **CAP theorem.** During a network partition, a system must choose between consistency and availability (Chapter 8).
 
 **CDN (content delivery network).** Edge servers that cache content close to users (Chapter 4).
+
+**Chaos engineering.** Deliberately injecting failures, such as stopping servers, to prove that a system survives them (Chapter 14).
 
 **Circuit breaker.** A wrapper that stops calling a failing dependency for a while (Chapter 14).
 
@@ -62,6 +66,8 @@
 
 **Merkle tree.** A tree of hashes used to find differences between datasets efficiently (Chapter 18).
 
+**Monotonic clock.** A clock that never goes backwards, used to measure durations; wall-clock time can jump (Chapter 12).
+
 **Object storage.** Storage of immutable blobs by key, built for durability and capacity (Chapter 7).
 
 **Offset.** A message's position in a log partition (Chapters 10 and 35).
@@ -78,6 +84,8 @@
 
 **Percentile (p99).** The value below which 99% of measurements fall (Chapter 15).
 
+**Postmortem.** A written, blameless analysis of an incident: what happened, why it spread, and what will change (Chapter 37).
+
 **Quorum.** The number of replicas that must respond for a read (R) or write (W) to succeed (Chapter 8).
 
 **Rate limiter.** A component that caps requests per client per period (Chapter 11).
@@ -89,6 +97,8 @@
 **SLI, SLO, SLA.** Service level indicator (a measurement), objective (a target), agreement (a contract) (Chapter 15).
 
 **Snowflake ID.** A 64-bit, time-ordered ID made of timestamp, machine and sequence bits (Chapter 12).
+
+**Staged rollout (canary).** Releasing a change to a small part of the system first and expanding only while health checks pass (Chapter 37).
 
 **Stateless service.** A service that keeps no request-to-request state in its own memory (Chapter 5).
 

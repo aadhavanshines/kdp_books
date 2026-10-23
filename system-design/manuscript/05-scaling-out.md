@@ -53,6 +53,8 @@ Stateless services can grow and shrink automatically, typically by watching CPU 
 - **Scaling takes time.** New instances need minutes to start and warm up, so autoscaling smooths daily patterns but doesn't absorb a sudden spike. Keep headroom (the 70% rule from Chapter 3) and use queues to absorb bursts.
 - **The bottleneck moves.** Doubling application servers doubles the load on the database behind them. Always ask what each layer can handle.
 
+**Real-World Story:** January 4, 2021, was the first working day of the year for much of the world. As people came back to Slack after the holidays, traffic rose sharply, and AWS network gateways that carried Slack's traffic, which normally scale automatically, became overloaded and dropped packets. Errors spread, and Slack's own efforts to add servers ran into limits it had never hit before. Slack's published postmortem is a good reminder that autoscaling has limits and delays: for predictable surges, such as Monday mornings, the end of a holiday or a big launch, scale up ahead of time.
+
 ## Key Takeaways
 
 - Scale horizontally with stateless services; keep state in a few shared stores.

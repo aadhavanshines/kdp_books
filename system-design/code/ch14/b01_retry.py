@@ -9,9 +9,9 @@ def backoff_delays(attempts, base=0.1, cap=10.0, rng=None):
     return [rng.uniform(0, min(cap, base * 2**i)) for i in range(attempts)]
 
 
-def retry_storm(clients=1000, jitter=True, seed=4):
-    """After an outage, all clients retry. Return the most retries that
-    land in any single 10 ms slot."""
+def retry_slots(clients=1000, jitter=True, seed=4):
+    """After an outage, all clients retry five times. Return how many
+    retries land in each 10 ms slot: {slot: count}."""
     rng = random.Random(seed)
     slots = {}
     for _ in range(clients):
@@ -21,7 +21,12 @@ def retry_storm(clients=1000, jitter=True, seed=4):
             t += rng.uniform(0, wait) if jitter else wait
             slot = int(t * 100)
             slots[slot] = slots.get(slot, 0) + 1
-    return max(slots.values())
+    return slots
+
+
+def retry_storm(clients=1000, jitter=True, seed=4):
+    """The most retries that land in any single 10 ms slot."""
+    return max(retry_slots(clients, jitter, seed).values())
 
 
 class CircuitBreaker:
@@ -100,3 +105,5 @@ def test():
     d = backoff_delays(6, rng=random.Random(1))
     assert all(0 <= x <= min(10, 0.1 * 2**i) for i, x in enumerate(d))
     assert retry_storm(jitter=True) < retry_storm(jitter=False)
+    for jitter in (True, False):
+        assert sum(retry_slots(200, jitter).values()) == 200 * 5

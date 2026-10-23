@@ -1,4 +1,4 @@
-# Chapter 37: Common Mistakes and How to Recover
+# Chapter 38: Common Mistakes and How to Recover
 
 Interviewers see the same mistakes again and again. Most are not gaps in knowledge but habits under pressure, which means they can be fixed with practice. Here are the most common ones, what they look like from the interviewer's side, and how to recover if you catch yourself making one mid-interview.
 
