@@ -14,7 +14,7 @@ Replication means keeping copies of the same data on several machines. It serves
 
 ## Synchronous or Asynchronous?
 
-A leader can wait for followers to confirm a write before acknowledging it (**synchronous**), or acknowledge immediately and replicate in the background (**asynchronous**). Synchronous replication means no acknowledged write is lost when the leader dies, but every write waits for the slowest follower. Asynchronous replication is fast but can lose recent writes on failover, and followers lag behind the leader, so a user may not see their own update if their next read goes to a follower. A common compromise is one synchronous follower and the rest asynchronous.
+A leader can wait for followers to confirm a write before acknowledging it (**synchronous**), or acknowledge immediately and replicate in the background (**asynchronous**). Synchronous replication protects acknowledged writes when the leader dies, provided the followers it waited for have written the change durably (to disk, not just to memory) and failover promotes one of those up-to-date followers rather than a lagging one. The price is that every write waits for the slowest follower it must hear from. Asynchronous replication is fast but can lose recent writes on failover, and followers lag behind the leader, so a user may not see their own update if their next read goes to a follower. A common compromise is one synchronous follower and the rest asynchronous.
 
 ## Quorums
 

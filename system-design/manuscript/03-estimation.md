@@ -9,12 +9,12 @@ You need very few facts:
 | Quantity | Value | Shortcut |
 | --- | --- | --- |
 | Seconds in a day | 86,400 | about 100,000 |
-| 1 million per day | about 12 per second | divide by 100,000 |
+| 1 million per day | about 12 per second | divide by 86,400 (or by 100,000 for a quick 10) |
 | 1 billion per day | about 12,000 per second | |
 | 1 KB, 1 MB, 1 GB, 1 TB, 1 PB | 10³, 10⁶, 10⁹, 10¹², 10¹⁵ bytes | each step is ×1,000 |
 | Peak traffic | 2 to 10 times the average | state your assumption |
 
-This book uses **decimal units** throughout: 1 KB is 1,000 bytes, 1 GB is 10⁹ bytes, and network speeds are in bits per second (Mbps, Gbps). Binary units (1 KiB = 1,024 bytes, 1 GiB = 2³⁰ bytes) are up to 10% larger at the terabyte scale, which never changes a design decision in an estimate.
+This book uses **decimal units** throughout: 1 KB is 1,000 bytes, 1 GB is 10⁹ bytes, and network speeds are in bits per second (Mbps, Gbps). Binary units (1 KiB = 1,024 bytes, 1 GiB = 2³⁰ bytes) are up to 10% larger at the terabyte scale. The difference rarely changes a first-order estimate, but use the correct units when sizing a real system, especially one close to a capacity limit.
 
 And a sense of how big things are:
 

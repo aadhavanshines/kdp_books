@@ -49,3 +49,10 @@ An outside review of the 279-page PDF was checked point by point.
 - **Chapter 2 time budget (confirmed).** Steps 1 to 5 added up to 26 to 30 minutes, against a 25-minute target. The budget is now 5, 3 to 5, 3, 2 to 3 and 10 minutes (23 to 26), with deep dives 12 to 15; the table, the framework diagram, Chapter 3 and Appendix C were updated together.
 - **Precision added where the review asked:** estimates labeled as first-order with their assumptions (Chapter 3); decimal units stated explicitly, with binary units shown in Appendix A; quorum model assumptions and why quorum overlap isn't linearizability (Chapter 8); what "never lost" requires of the broker and producer (Chapter 10); what cursors don't guarantee (Chapter 4); unique machine IDs as a hard requirement for Snowflake IDs (Chapter 12); a scoring table and a "what would have raised the rating" note for each mock interview (Chapter 36).
 - After the fixes: 281 pages; all 58 model files pass on Python 3.12 to 3.15; 0 stale examples; EPUBCheck clean; `check_pdf.py` clean, including no undrawable characters; every "Chapter N" reference points to an existing chapter; changed pages reviewed visually.
+
+## Second editorial review (23 October 2026)
+
+- **Chapter 3 shortcut (confirmed).** "1 million per day: about 12 per second" was paired with the shortcut "divide by 100,000", which gives 10. The shortcut now reads "divide by 86,400 (or by 100,000 for a quick 10)".
+- **Synchronous replication (agreed).** The claim that no acknowledged write is lost is now qualified: it holds only if the followers the leader waited for wrote the change durably and failover promotes one of them.
+- **Binary units (agreed).** "Never changes a design decision" is now "rarely changes a first-order estimate, but use the correct units when sizing a real system, especially one close to a capacity limit."
+- After the fixes: 281 pages, `check_pdf.py` clean (including no undrawable characters), EPUBCheck clean, codespell clean, and every one of the 281 pages rendered and reviewed visually, with no clipped diagrams, table overflow or broken code lines found.
