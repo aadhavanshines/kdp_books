@@ -24,3 +24,9 @@ Final state: 313 pages (6 x 9 in), about 47,000 words plus code listings, 24 cha
 | Tables | Column widths measured in the fonts that print, so numbers stay with their words and names never split; only the long code examples in Appendix D's options table wrap |
 | Privacy | The author's personal email address appears nowhere in the book or repository (checked before every commit) |
 | Not verified here | Live runs on GitHub's servers; the real Claude Console billing pages; Claude Fable 5.1 (not used) |
+
+## Print fix (23 October 2026)
+
+- Two code lines (Chapter 10's eval and Chapter 14's grader, printed pages 113 and 161) compared characters against the literal boundary code points of the Tamil Unicode block, U+0B80 and U+0BFF. Neither has an assigned character, so no font could draw them and they printed as blanks. They are now written as the escapes `"஀"` and `"௿"`, which behave identically and print readably.
+- `build/check_pdf.py` now also fails on characters the fonts can't draw.
+- The offline tests pass (30 of 30). Rebuilt and compared with the uploaded interior: still 313 pages (spine unchanged, so the uploaded cover still fits), and pages 113 and 161 are the only pages whose text or layout changed. The rebuilt EPUB passes EPUBCheck with 0 errors and 0 warnings.

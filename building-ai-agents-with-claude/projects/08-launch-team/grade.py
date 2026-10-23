@@ -57,7 +57,7 @@ def grade():
             "posts quote prices that aren't in the price list: "
             f"{hamper_prices - allowed}"
         )
-    if not any("஀" <= ch <= "௿" for ch in files["posts.md"]):
+    if not any("\u0b80" <= ch <= "\u0bff" for ch in files["posts.md"]):
         problems.append("no Tamil caption")
     if not re.search(r"VERDICT: (PASS|FAIL)", files["factcheck.md"]):
         problems.append("fact-check has no verdict line")

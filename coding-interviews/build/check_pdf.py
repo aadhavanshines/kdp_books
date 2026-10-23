@@ -2,7 +2,8 @@
 
 Measures, on every page: the inside (gutter) and outside margins of the
 text and images, whether every chapter, part and appendix starts on a
-right-hand page, and large unplanned gaps at the bottom of pages.
+right-hand page, large unplanned gaps at the bottom of pages, and
+characters the fonts can't draw (they extract as NUL or U+FFFD).
 Usage:  python3 build/check_pdf.py [dist/paperback-interior-6x9.pdf]
 """
 import sys
@@ -13,10 +14,13 @@ PATH = sys.argv[1] if len(sys.argv) > 1 else "dist/paperback-interior-6x9.pdf"
 doc = pymupdf.open(PATH)
 W = doc[0].rect.width
 GUTTER_MIN = 0.625 if doc.page_count > 300 else 0.5  # KDP, 301-500 pages
-inside, outside, gaps = [], [], []
+inside, outside, gaps, missing = [], [], [], []
 starts = {pg for _, _, pg in doc.get_toc()}
 for i, page in enumerate(doc):
     n = i + 1
+    text = page.get_text()
+    if "\x00" in text or "\ufffd" in text:
+        missing.append(n)
     boxes = [b[:4] for b in page.get_text("blocks") if b[4].strip()]
     boxes += [im["bbox"] for im in page.get_image_info()]
     boxes += [d["rect"] for d in page.get_drawings() if d["rect"].width < W]
@@ -41,5 +45,7 @@ print(f"smallest outside margin: {min(outside)[0]} in (page {min(outside)[1]}), 
       "KDP minimum 0.25 in")
 print(f"TOC entries: {len(starts)}; starting on a left-hand page: {even_starts or 'none'}")
 print(f"gaps over 2.5 in before the end of a chapter: {sorted(gaps, reverse=True)[:8] or 'none'}")
-ok = min(inside)[0] >= GUTTER_MIN and min(outside)[0] >= 0.25 and not even_starts
+print(f"pages with characters the fonts can't draw: {missing or 'none'}")
+ok = (min(inside)[0] >= GUTTER_MIN and min(outside)[0] >= 0.25 and not even_starts
+      and not missing)
 sys.exit(0 if ok else 1)

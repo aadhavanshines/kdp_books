@@ -215,7 +215,7 @@ def check(expect, refunds, tickets, reply):
     if len(reply.split()) > expect.get("max_reply_words", 10_000):
         problems.append(f"reply has {len(reply.split())} words")
     if expect.get("reply_has_tamil") and not any(
-        "஀" <= ch <= "௿" for ch in reply
+        "\u0b80" <= ch <= "\u0bff" for ch in reply
     ):
         problems.append("reply is not in Tamil")
     return problems

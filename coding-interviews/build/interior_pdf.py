@@ -73,6 +73,10 @@ SRC_SIZE = 6.85  # source-file listings, so 76 characters fit on a line
 CODE_PAD = 6
 
 
+SUPERSCRIPTS = "⁰¹²³⁴⁵⁶⁷⁸⁹"
+TO_DIGITS = str.maketrans(SUPERSCRIPTS, "0123456789")
+
+
 def inline(text):
     """Convert inline Markdown to ReportLab paragraph markup."""
     # Code spans become placeholders first, so bold and italic can wrap them.
@@ -87,6 +91,10 @@ def inline(text):
     t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
     t = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<i>\1</i>", t)
     t = t.replace("\u20b9", '<font face="Symbols">\u20b9</font>')
+    # The body fonts have no superscript zero, so a superscript number that
+    # contains one (10³⁰) is printed as ordinary digits, raised.
+    t = re.sub(f"[{SUPERSCRIPTS}]*⁰[{SUPERSCRIPTS}]*",
+               lambda m: f"<super>{m.group(0).translate(TO_DIGITS)}</super>", t)
     return re.sub(r"\x00(\d+)\x00", lambda m: codes[int(m.group(1))], t)
 
 

@@ -61,3 +61,9 @@ A second, systematic pass over every problem, after an editorial review asked fo
 - Appendix C: `bisect_left`/`bisect_right` no longer map to `Collections.binarySearch`, which may return any of several equal items. A new "Close, but Not the Same" section gives tested Java `lowerBound` and `upperBound` methods (`code/appendix_c/Bounds.java`), checked against a linear scan on 10,000 random arrays with duplicates and against Python's `bisect` on a fixed example.
 - Appendix C reviewed for other mappings that imply exact equivalence: C++ sorting now points to `std::stable_sort` where Python's stable order matters, and `dict` notes that `HashMap`/`unordered_map` don't keep insertion order (`LinkedHashMap` does).
 - The complete output of every release check is kept in `tests/results/release-checks-2026-10-21.txt`.
+
+## Print fix (23 October 2026)
+
+- Appendix B, "2ⁿ" column: "about 1.3 × 10³⁰" printed as "about 1.3 × 10³", because the body fonts have no superscript zero. The builder now prints any superscript number containing a zero as ordinary raised digits; other superscripts are unchanged.
+- `build/check_pdf.py` now also fails on characters the fonts can't draw.
+- Rebuilt and compared with the uploaded interior: still 281 pages (spine unchanged, so the uploaded cover still fits), and page 261 is the only page whose text or layout changed. The EPUB was not affected.
