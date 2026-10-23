@@ -422,9 +422,11 @@ def table_block(rows, styles):
         # The column must fit its widest unbreakable word, measured in the font it prints in.
         words = []
         for ri, r in enumerate(rows):
-            for part in re.split(r"(`[^`]+`)", r[c]):
+            for part in re.split(r"(`[^`]+`|\*\*[^*]+\*\*)", r[c]):
                 code = part.startswith("`")
-                font = "Mono" if code else ("Sans-Bold" if ri == 0 else "Serif")
+                bold = part.startswith("**")
+                font = "Mono" if code else ("Sans-Bold" if ri == 0 else
+                                            "Serif-Bold" if bold else "Serif")
                 size = 8.6 if code else 8.8
                 words += [(w, font, size) for w in re.sub(r"[*`]", "", part).split(" ")]
         mins.append(max((pdfmetrics.stringWidth(w, f, z) for w, f, z in words), default=0) + 12)
