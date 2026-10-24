@@ -11,9 +11,9 @@ rng = np.random.default_rng(2026)
 DAYS_2025 = pd.date_range("2025-01-01", "2025-12-31", freq="D")
 
 
-def shop():
-    """Larkspur Home, an online homeware shop: products, customers,
-    orders, and a deliberately messy export of some orders."""
+def shop_products():
+    """The shop's 15 products: a catalog of names and list prices,
+    and a unit cost for each."""
     catalog = {
         "Kitchen": [
             ("Chef Knife", 45.0),
@@ -49,6 +49,11 @@ def shop():
         ],
         columns=["product", "category", "list_price", "unit_cost"],
     )
+    return catalog, products
+
+
+def shop_customers():
+    """1,200 customers, each with a signup date, region and segment."""
     regions = ["North", "South", "East", "West"]
     customers = pd.DataFrame(
         {
@@ -62,6 +67,12 @@ def shop():
             "birth_year": rng.integers(1955, 2006, 1200),
         }
     )
+    return customers
+
+
+def shop_orders(catalog, customers):
+    """A year of orders, with holiday peaks, a spring garden season
+    and larger orders when discounted."""
     # Busier in November and December; garden goods sell in spring.
     month_weight = np.array(
         [0.8, 0.75, 0.9, 1.0, 1.05, 1.0, 0.95, 0.95, 1.0, 1.1, 1.6, 1.9]
@@ -117,7 +128,11 @@ def shop():
     orders.insert(
         0, "order_id", [f"L{i:05d}" for i in range(1, len(orders) + 1)]
     )
+    return orders
 
+
+def messy_copy(orders):
+    """300 of the orders, exported badly on purpose (Chapter 7)."""
     raw = orders.sample(300, random_state=7).sort_values("order_id").copy()
     raw["region"] = [
         r.lower() if i % 4 == 0 else r + " " if i % 7 == 0 else r
@@ -132,7 +147,16 @@ def shop():
     raw.loc[raw.index[::23], "quantity"] = None
     raw.loc[raw.index[50], "quantity"] = 400
     raw = pd.concat([raw, raw.iloc[[10, 20, 30]]]).sort_values("order_id")
-    return products, customers, orders, raw
+    return raw
+
+
+def shop():
+    """Larkspur Home, an online homeware shop: products, customers,
+    orders, and a deliberately messy export of some orders."""
+    catalog, products = shop_products()
+    customers = shop_customers()
+    orders = shop_orders(catalog, customers)
+    return products, customers, orders, messy_copy(orders)
 
 
 def survey():
