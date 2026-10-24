@@ -104,6 +104,12 @@ def parse_blocks(text, root=None):
             # Listings pulled from project files are printed a little smaller.
             blocks.append(("code", expanded, "source" if expanded is not raw else ""))
             continue
+        # "@book images/x.jpg | text": a book cover thumbnail beside its blurb.
+        m = re.match(r"^@book (\S+) \| (.+)$", s)
+        if m:
+            blocks.append(("book", m.group(1), m.group(2)))
+            i += 1
+            continue
         m = re.match(r"^!\[(.*)\]\((.+)\)$", s)
         if m:
             blocks.append(("image", m.group(2), m.group(1)))

@@ -28,6 +28,9 @@ div.response p.resplabel { background: #EAF0F7; color: #1F3A5F; font-family: san
 div.response pre { background: #fff; border: none; margin: 0; }
 figure { margin: 1em 0; text-align: center; }
 figure img { max-width: 100%; height: auto; }
+div.book { margin: 0 0 1.2em; overflow: hidden; }
+div.book img { float: left; width: 25%; height: auto; margin: 0 1em 0.5em 0; }
+div.book p { margin: 0; }
 figcaption { font-size: 0.85em; font-style: italic; color: #555; margin-top: 0.3em; }
 .center { text-align: center; }
 .title { font-family: sans-serif; color: #1F3A5F; font-size: 2.2em; text-align: center; margin-top: 25%; }
@@ -84,6 +87,9 @@ def blocks_to_html(blocks):
             cap = html.escape(b[2])
             out.append(f'<figure><img src="{html.escape(b[1])}" alt="{cap}"/>'
                        f'<figcaption>{inline(b[2])}</figcaption></figure>')
+        elif kind == "book":
+            out.append(f'<div class="book"><img src="{html.escape(b[1])}" alt="Book cover"/>'
+                       f"<p>{inline(b[2])}</p></div>")
         elif kind == "code":
             first, _, rest = b[1].partition("\n")
             if re.match(r"^(Example output|Claude.s reply|Terminal output).*:$", first.strip()):
@@ -130,7 +136,7 @@ def build_epub(meta, manuscript, cover_jpg, out_path, image_root):
 
     for _, blocks in manuscript:
         for b in blocks:
-            if b[0] == "image":
+            if b[0] in ("image", "book"):
                 book.add_item(epub.EpubImage(uid=b[1].replace("/", "-").replace(".", "-"),
                                              file_name=b[1], media_type="image/jpeg" if b[1].endswith(".jpg") else "image/png",
                                              content=(image_root / b[1]).read_bytes()))

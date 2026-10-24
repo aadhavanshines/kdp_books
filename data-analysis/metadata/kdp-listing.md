@@ -139,6 +139,6 @@ Answering this accurately is a KDP content-guideline requirement. The disclosure
 - Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf`
 - Suggested list price: **$24.99 USD**. Check the royalty calculator on the pricing page before publishing, since printing costs change.
 
-> The paperback cover is sized for exactly the page count in `dist/build-info.json` (209 pages). KDP's free ISBN barcode is printed automatically in the white box on the back cover. If you edit the manuscript and the page count changes, rebuild so the spine width updates.
+> The paperback cover is sized for exactly the page count in `dist/build-info.json` (210 pages). KDP's free ISBN barcode is printed automatically in the white box on the back cover. If you edit the manuscript and the page count changes, rebuild so the spine width updates.
 
 > The charts are printed in black and white in the paperback. They were drawn with a print-friendly style whose first colors (dark navy, orange, mid gray) differ in lightness, so the series stay distinguishable in grayscale.

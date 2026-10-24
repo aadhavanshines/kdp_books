@@ -1,6 +1,6 @@
 # Pre-Publication Check Report
 
-Final state: 209 pages (6 x 9 in), about 21,400 words of prose plus code, 28 chapters in five parts, and appendices A to F. Checked in October 2026 on Python 3.12.3, 3.13.5, 3.14.8 and 3.15.0, with numpy 2.5.4, pandas 3.0.6, matplotlib 3.11.2, openpyxl 3.1.5 and pytest 9.1.1 (`requirements.txt`).
+Final state: 210 pages (6 x 9 in), about 21,400 words of prose plus code, 28 chapters in five parts, and appendices A to F. Checked in October 2026 on Python 3.12.3, 3.13.5, 3.14.8 and 3.15.0, with numpy 2.5.4, pandas 3.0.6, matplotlib 3.11.2, openpyxl 3.1.5 and pytest 9.1.1 (`requirements.txt`).
 
 ## Code and Data
 
@@ -21,8 +21,8 @@ Final state: 209 pages (6 x 9 in), about 21,400 words of prose plus code, 28 cha
 | --- | --- |
 | EPUBCheck 5.1 | 0 fatals, 0 errors, 0 warnings |
 | Interior PDF (`build/check_pdf.py`) | All fonts embedded; no missing glyphs; smallest inside margin 0.786 in (KDP minimum 0.5 in); smallest outside margin 0.593 in; every chapter, part and appendix starts on a right-hand page; no large gaps |
-| Visual proof | All 209 pages inspected; two tables with an escaped `\|` fixed in the parser, one badly spaced justified line reworded |
-| Paperback cover | 12.721 x 9.250 in = 2 x 0.125 bleed + 2 x 6 in + 0.471 in spine (209 x 0.002252); barcode area clear |
+| Visual proof | All pages inspected; two tables with an escaped `\|` fixed in the parser, one badly spaced justified line reworded |
+| Paperback cover | 12.723 x 9.250 in = 2 x 0.125 bleed + 2 x 6 in + 0.473 in spine (210 x 0.002252); barcode area clear |
 | eBook covers | Dark (`ebook-cover.jpg`) and white (`ebook-cover-white.jpg`), 1600 x 2560 px; no logos |
 | Spelling (codespell) | Clean |
 | Grammar (LanguageTool, en-US) | Remaining flags reviewed: false positives around code and deliberate style |

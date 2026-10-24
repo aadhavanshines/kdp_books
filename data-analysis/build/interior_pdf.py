@@ -403,6 +403,24 @@ def image_block(path, caption, styles):
     return [Figure(path, caption, styles["caption"], max_h=max_h)]
 
 
+def book_block(path, text, styles):
+    """A book's cover thumbnail with its title and blurb beside it."""
+    w = 1.0 * inch
+    cover = RLImage(str(path), width=w, height=w * 1.6)
+    blurb = ParagraphStyle("book", parent=styles["body"], alignment=TA_LEFT)
+    t = Table([[cover, Paragraph(inline(text), blurb)]],
+              colWidths=[w + 14, TEXT_W - w - 14])
+    t.setStyle(TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ("RIGHTPADDING", (0, 0), (0, 0), 14),
+        ("RIGHTPADDING", (1, 0), (1, 0), 0),
+        ("TOPPADDING", (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+    ]))
+    return [KeepTogether([Spacer(1, 6), t, Spacer(1, 10)])]
+
+
 def callout(kind, text, styles):
     label = f"<b>{kind}:</b> " if kind else ""
     p = Paragraph(label + inline(text), styles["callout"])
@@ -653,6 +671,8 @@ def build_story(meta, manuscript, styles, image_root):
                 story += image_block(image_root / block[1], block[2], styles)
             elif kind == "code":
                 story += code_block(block[1], styles, source=len(block) > 2 and block[2] == "source")
+            elif kind == "book":
+                story += book_block(image_root / block[1], block[2], styles)
             elif kind == "callout":
                 story += callout(block[1], block[2], styles)
             elif kind == "table":
