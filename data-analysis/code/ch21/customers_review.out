@@ -1,0 +1,11 @@
+customers who ordered: 1191
+ordered more than once: 0.961
+
+top 20% of customers bring 40% of revenue
+
+new_or_returning   new  returning
+order_date                       
+1                 0.67       0.33
+2                 0.23       0.77
+3                 0.10       0.90
+4                 0.02       0.98

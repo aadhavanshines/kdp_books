@@ -1,0 +1,23 @@
+       quantity  unit_price  discount
+count   5833.00     5833.00   5833.00
+mean       1.61       42.36      0.04
+std        0.86       26.11      0.07
+min        1.00       12.00      0.00
+25%        1.00       24.00      0.00
+50%        1.00       35.00      0.00
+75%        2.00       55.00      0.10
+max        7.00      120.00      0.20
+
+channel
+web            2882
+app            1767
+marketplace    1184
+Name: count, dtype: int64
+
+category
+Bedding     0.236
+Kitchen     0.217
+Lighting    0.191
+Garden      0.185
+Decor       0.171
+Name: proportion, dtype: float64

@@ -1,0 +1,304 @@
+order_id,order_date,customer_id,region,channel,category,product,quantity,unit_price,discount
+L00055,05/01/2025,C1114,south,app,Lighting,String Lights,,$18.00,0.0
+L00057,2025-01-06,C0309,West,web,Bedding,Pillow Pair,1,$35.00,0.1
+L00084,2025-01-08,C0058,East,marketplace,Bedding,Throw Blanket,1,$50.00,0.0
+L00116,2025-01-11,C0452,South,app,Lighting,Desk Lamp,3,$40.00,0.0
+L00118,2025-01-11,C0400,south,app,Bedding,Pillow Pair,1,$35.00,0.0
+L00136,12/01/2025,C1132,East,web,Bedding,Duvet Cover,1,$70.00,0.1
+L00162,2025-01-15,C0271,North,marketplace,Decor,Wall Clock,2,$32.00,0.0
+L00188,2025-01-18,C0939,East ,web,Lighting,String Lights,2,$18.00,0.1
+L00195,2025-01-18,C0807,south,web,Kitchen,Chef Knife,1,$45.00,0.0
+L00211,2025-01-20,C0676,South,web,Kitchen,Mug Set,4,$24.00,0.1
+L00245,23/01/2025,C0463,North,app,Bedding,Throw Blanket,3,$50.00,0.1
+L00245,23/01/2025,C0463,North,app,Bedding,Throw Blanket,3,$50.00,0.1
+L00247,2025-01-23,C0190,North,app,Bedding,Throw Blanket,4,$50.00,0.1
+L00276,2025-01-25,C0382,west,app,Bedding,Throw Blanket,2,$50.00,0.0
+L00306,2025-01-28,C0979,East,marketplace,Bedding,Throw Blanket,1,$50.00,0.0
+L00335,2025-01-30,C0853,North ,web,Bedding,Throw Blanket,3,$50.00,0.1
+L00360,01/02/2025,C0371,East,app,Kitchen,Cast Iron Pan,1,$60.00,0.1
+L00408,2025-02-05,C0627,west,marketplace,Lighting,Desk Lamp,1,$40.00,0.0
+L00420,2025-02-06,C0915,West,app,Kitchen,Mug Set,4,$24.00,0.1
+L00433,2025-02-08,C0342,East,marketplace,Decor,Picture Frame,2,$15.00,0.1
+L00434,2025-02-08,C0451,West,app,Garden,Seed Kit,1,$12.00,0.0
+L00474,14/02/2025,C0274,east,web,Lighting,Floor Lamp,1,$120.00,0.1
+L00474,14/02/2025,C0274,east,web,Lighting,Floor Lamp,1,$120.00,0.1
+L00501,2025-02-16,C1172,East ,web,Kitchen,Mug Set,2,$24.00,0.0
+L00522,2025-02-18,C1121,East,app,Garden,Hose Reel,1,$55.00,0.2
+L00583,2025-02-23,C0591,East,web,Lighting,Floor Lamp,,$120.00,0.2
+L00597,2025-02-24,C0443,east,app,Bedding,Pillow Pair,1,$35.00,0.0
+L00604,24/02/2025,C0767,East,web,Kitchen,Chef Knife,2,$45.00,0.2
+L00608,2025-02-24,C0414,West,web,Kitchen,Chef Knife,2,$45.00,0.0
+L00611,2025-02-25,C1158,North,web,Decor,Picture Frame,2,$15.00,0.0
+L00664,2025-03-01,C0924,east,web,Bedding,Duvet Cover,1,$70.00,0.1
+L00677,2025-03-03,C0290,North,web,Garden,Seed Kit,2,$12.00,0.0
+L00707,05/03/2025,C0529,North,marketplace,Bedding,Duvet Cover,1,$70.00,0.0
+L00707,05/03/2025,C0529,North,marketplace,Bedding,Duvet Cover,1,$70.00,0.0
+L00730,2025-03-07,C0456,North,web,Kitchen,Mug Set,3,$24.00,0.2
+L00743,2025-03-08,C1047,west,app,Lighting,String Lights,1,$18.00,0.1
+L00748,2025-03-08,C0496,West,marketplace,Bedding,Duvet Cover,1,$70.00,0.0
+L00757,2025-03-09,C0999,West,app,Garden,Hose Reel,1,$55.00,0.1
+L00853,17/03/2025,C1181,East ,web,Bedding,Throw Blanket,4,$50.00,0.0
+L00861,2025-03-18,C0989,west,web,Kitchen,Cast Iron Pan,2,$60.00,0.0
+L00869,2025-03-18,C0416,North,app,Garden,Planter,2,$22.00,0.0
+L00935,2025-03-23,C0097,West,marketplace,Decor,Picture Frame,3,$15.00,0.0
+L00954,2025-03-25,C1031,East,app,Kitchen,Cast Iron Pan,1,$60.00,0.0
+L00975,26/03/2025,C0986,east,app,Kitchen,Mug Set,1,$24.00,0.0
+L00980,2025-03-27,C0554,North,app,Garden,Planter,1,$22.00,0.0
+L01003,2025-03-29,C0772,North ,web,Lighting,Desk Lamp,1,$40.00,0.0
+L01024,2025-03-30,C0524,South,web,Bedding,Pillow Pair,2,$35.00,0.0
+L01043,2025-04-01,C0228,north,marketplace,Lighting,String Lights,1,$18.00,0.0
+L01078,03/04/2025,C0976,South,marketplace,Lighting,Floor Lamp,2,$120.00,0.0
+L01079,2025-04-03,C0684,East,web,Bedding,Throw Blanket,,$50.00,0.0
+L01108,2025-04-06,C0300,South,web,Bedding,Duvet Cover,3,$70.00,0.1
+L01122,2025-04-06,C0076,north,marketplace,Bedding,Duvet Cover,1,$70.00,0.0
+L01131,2025-04-07,C0938,North ,marketplace,Bedding,Pillow Pair,1,$35.00,0.0
+L01167,09/04/2025,C0016,North,web,Kitchen,Mug Set,400,$24.00,0.0
+L01194,2025-04-10,C0984,South,marketplace,Garden,Planter,1,$22.00,0.0
+L01228,2025-04-12,C0130,east,app,Decor,Picture Frame,1,$15.00,0.0
+L01236,2025-04-12,C0865,North,web,Kitchen,Chef Knife,1,$45.00,0.0
+L01243,2025-04-13,C0392,West,app,Garden,Planter,1,$22.00,0.0
+L01261,14/04/2025,C0270,North,web,Garden,Hose Reel,1,$55.00,0.2
+L01269,2025-04-15,C0348,north,web,Garden,Seed Kit,1,$12.00,0.0
+L01282,2025-04-16,C0084,East,app,Decor,Vase,2,$28.00,0.1
+L01321,2025-04-19,C0409,South,web,Garden,Planter,1,$22.00,0.1
+L01329,2025-04-20,C1015,West,marketplace,Bedding,Pillow Pair,3,$35.00,0.2
+L01356,21/04/2025,C0238,south,app,Bedding,Duvet Cover,1,$70.00,0.0
+L01391,2025-04-23,C1037,West,marketplace,Garden,Planter,1,$22.00,0.0
+L01407,2025-04-24,C0793,North,marketplace,Kitchen,Cast Iron Pan,2,$60.00,0.0
+L01441,2025-04-27,C0244,South ,marketplace,Garden,Seed Kit,1,$12.00,0.0
+L01499,2025-05-01,C0595,east,web,Kitchen,Mug Set,2,$24.00,0.0
+L01539,04/05/2025,C0654,West,app,Garden,Planter,1,$22.00,0.1
+L01581,2025-05-06,C0128,East,marketplace,Bedding,Pillow Pair,2,$35.00,0.0
+L01584,2025-05-06,C0492,South,app,Lighting,Desk Lamp,1,$40.00,0.1
+L01593,2025-05-07,C0476,west,web,Garden,Planter,1,$22.00,0.0
+L01603,2025-05-07,C0030,North,app,Garden,Seed Kit,,$12.00,0.2
+L01611,08/05/2025,C1010,West ,web,Garden,Seed Kit,1,$12.00,0.1
+L01641,2025-05-10,C0983,North,web,Garden,Seed Kit,1,$12.00,0.1
+L01642,2025-05-10,C0271,north,marketplace,Bedding,Throw Blanket,2,$50.00,0.2
+L01648,2025-05-11,C0971,North,web,Garden,Hose Reel,1,$55.00,0.2
+L01649,2025-05-11,C0645,South,web,Garden,Hose Reel,2,$55.00,0.1
+L01678,13/05/2025,C1060,East,app,Lighting,Desk Lamp,2,$40.00,0.0
+L01701,2025-05-15,C1169,north,web,Kitchen,Chef Knife,1,$45.00,0.1
+L01703,2025-05-15,C0499,East ,web,Garden,Seed Kit,1,$12.00,0.0
+L01705,2025-05-15,C0231,West,web,Garden,Planter,1,$22.00,0.0
+L01715,2025-05-16,C0910,East,app,Lighting,Desk Lamp,1,$40.00,0.0
+L01716,16/05/2025,C0856,east,web,Kitchen,Mug Set,3,$24.00,0.1
+L01730,2025-05-17,C0279,West,marketplace,Garden,Hose Reel,1,$55.00,0.0
+L01741,2025-05-18,C0278,South,app,Garden,Hose Reel,1,$55.00,0.1
+L01764,2025-05-20,C0594,South,app,Lighting,String Lights,1,$18.00,0.0
+L01767,2025-05-20,C0691,west,web,Garden,Seed Kit,2,$12.00,0.0
+L01770,20/05/2025,C0268,West,web,Garden,Seed Kit,2,$12.00,0.0
+L01772,2025-05-20,C0417,East,marketplace,Garden,Planter,2,$22.00,0.0
+L01783,2025-05-21,C1110,North,marketplace,Decor,Vase,2,$28.00,0.2
+L01791,2025-05-21,C0090,north,web,Lighting,Desk Lamp,1,$40.00,0.0
+L01812,2025-05-23,C0085,East,web,Garden,Hose Reel,3,$55.00,0.1
+L01815,23/05/2025,C0990,North,web,Kitchen,Mug Set,1,$24.00,0.0
+L01821,2025-05-24,C0220,North ,web,Bedding,Duvet Cover,1,$70.00,0.0
+L01858,2025-05-25,C0344,north,web,Bedding,Throw Blanket,,$50.00,0.0
+L01954,2025-06-02,C0677,North,app,Garden,Hose Reel,1,$55.00,0.0
+L01967,2025-06-02,C0694,West,marketplace,Lighting,Desk Lamp,1,$40.00,0.1
+L02001,05/06/2025,C0845,North,web,Decor,Vase,1,$28.00,0.0
+L02022,2025-06-06,C0372,north,web,Garden,Planter,1,$22.00,0.0
+L02080,2025-06-10,C0117,East,marketplace,Bedding,Pillow Pair,1,$35.00,0.0
+L02130,2025-06-13,C0918,East ,web,Decor,Wall Clock,1,$32.00,0.1
+L02135,2025-06-13,C1134,West,web,Kitchen,Chef Knife,2,$45.00,0.0
+L02176,16/06/2025,C0348,north,marketplace,Decor,Wall Clock,1,$32.00,0.0
+L02204,2025-06-17,C0791,North,web,Garden,Planter,1,$22.00,0.0
+L02209,2025-06-18,C0687,West,app,Lighting,Floor Lamp,1,$120.00,0.0
+L02216,2025-06-18,C0522,East,web,Decor,Wall Clock,1,$32.00,0.1
+L02237,2025-06-20,C0413,north,app,Kitchen,Chef Knife,2,$45.00,0.0
+L02259,21/06/2025,C1175,North ,app,Decor,Picture Frame,1,$15.00,0.0
+L02277,2025-06-22,C0321,East,marketplace,Bedding,Duvet Cover,2,$70.00,0.0
+L02278,2025-06-22,C0026,West,app,Decor,Vase,1,$28.00,0.0
+L02311,2025-06-24,C1108,east,app,Bedding,Duvet Cover,1,$70.00,0.0
+L02322,2025-06-25,C0491,East,web,Lighting,Floor Lamp,2,$120.00,0.0
+L02351,27/06/2025,C0521,North,web,Kitchen,Cast Iron Pan,1,$60.00,0.0
+L02353,2025-06-27,C0460,South,marketplace,Garden,Hose Reel,2,$55.00,0.0
+L02356,2025-06-27,C0248,north,web,Decor,Vase,1,$28.00,0.0
+L02375,2025-06-28,C1002,North,web,Garden,Hose Reel,1,$55.00,0.0
+L02384,2025-06-30,C0621,North,app,Kitchen,Mug Set,1,$24.00,0.1
+L02389,30/06/2025,C0116,South,app,Kitchen,Cast Iron Pan,,$60.00,0.2
+L02415,2025-07-02,C0890,west,marketplace,Garden,Hose Reel,2,$55.00,0.1
+L02437,2025-07-03,C0398,South,app,Bedding,Duvet Cover,1,$70.00,0.0
+L02458,2025-07-05,C0528,West,app,Bedding,Throw Blanket,1,$50.00,0.0
+L02463,2025-07-05,C0089,South ,web,Kitchen,Chef Knife,2,$45.00,0.0
+L02465,05/07/2025,C0107,east,marketplace,Kitchen,Cast Iron Pan,1,$60.00,0.0
+L02470,2025-07-05,C1159,North,web,Bedding,Throw Blanket,1,$50.00,0.0
+L02502,2025-07-07,C0673,North,web,Bedding,Pillow Pair,1,$35.00,0.0
+L02504,2025-07-07,C0663,North,web,Bedding,Duvet Cover,1,$70.00,0.0
+L02511,2025-07-08,C1096,north,app,Garden,Seed Kit,3,$12.00,0.0
+L02573,12/07/2025,C0155,East,web,Decor,Picture Frame,2,$15.00,0.0
+L02579,2025-07-12,C0220,North ,web,Bedding,Throw Blanket,3,$50.00,0.1
+L02585,2025-07-13,C0287,West,marketplace,Decor,Picture Frame,2,$15.00,0.0
+L02587,2025-07-13,C0200,north,app,Bedding,Duvet Cover,1,$70.00,0.0
+L02624,2025-07-16,C0788,East,marketplace,Bedding,Throw Blanket,1,$50.00,0.0
+L02627,16/07/2025,C0544,North,web,Bedding,Pillow Pair,2,$35.00,0.2
+L02632,2025-07-16,C0400,South,web,Bedding,Pillow Pair,1,$35.00,0.0
+L02636,2025-07-17,C0664,north,web,Bedding,Pillow Pair,2,$35.00,0.1
+L02653,2025-07-18,C0688,West ,web,Kitchen,Chef Knife,1,$45.00,0.0
+L02655,2025-07-18,C0247,East,web,Decor,Picture Frame,3,$15.00,0.0
+L02687,20/07/2025,C0820,North,marketplace,Decor,Vase,1,$28.00,0.0
+L02692,2025-07-21,C0786,east,marketplace,Kitchen,Mug Set,1,$24.00,0.0
+L02709,2025-07-22,C0155,East,marketplace,Lighting,String Lights,1,$18.00,0.0
+L02718,2025-07-23,C0996,West,web,Decor,Vase,,$28.00,0.0
+L02721,2025-07-23,C1088,South,web,Lighting,Floor Lamp,1,$120.00,0.0
+L02726,24/07/2025,C1003,east,web,Bedding,Throw Blanket,1,$50.00,0.0
+L02746,2025-07-26,C1035,West,web,Garden,Hose Reel,1,$55.00,0.0
+L02763,2025-07-27,C0589,East,marketplace,Kitchen,Mug Set,2,$24.00,0.1
+L02781,2025-07-28,C0686,West,web,Lighting,Floor Lamp,2,$120.00,0.2
+L02797,2025-07-29,C1004,west,app,Bedding,Pillow Pair,1,$35.00,0.0
+L02811,30/07/2025,C1012,North,app,Decor,Vase,1,$28.00,0.1
+L02826,2025-07-31,C0260,East,web,Kitchen,Mug Set,1,$24.00,0.1
+L02874,2025-08-04,C0558,West ,web,Decor,Wall Clock,1,$32.00,0.0
+L02893,2025-08-06,C0546,south,marketplace,Lighting,Desk Lamp,1,$40.00,0.0
+L02901,2025-08-06,C1030,North,app,Bedding,Throw Blanket,1,$50.00,0.2
+L02944,10/08/2025,C0220,North,app,Bedding,Duvet Cover,1,$70.00,0.0
+L02997,2025-08-14,C0499,East,web,Lighting,Desk Lamp,4,$40.00,0.0
+L03022,2025-08-16,C0297,north,web,Decor,Wall Clock,1,$32.00,0.1
+L03027,2025-08-16,C0256,East,marketplace,Kitchen,Chef Knife,1,$45.00,0.0
+L03037,2025-08-17,C0398,South ,web,Decor,Picture Frame,1,$15.00,0.0
+L03056,19/08/2025,C0277,East,web,Lighting,Desk Lamp,1,$40.00,0.1
+L03085,2025-08-21,C0639,east,app,Decor,Vase,2,$28.00,0.0
+L03112,2025-08-23,C0619,East,web,Lighting,Floor Lamp,3,$120.00,0.1
+L03114,2025-08-23,C0603,North,app,Bedding,Pillow Pair,1,$35.00,0.1
+L03132,2025-08-24,C0524,South,app,Decor,Vase,3,$28.00,0.0
+L03171,27/08/2025,C0796,north,marketplace,Bedding,Duvet Cover,2,$70.00,0.0
+L03229,2025-08-31,C0070,South ,web,Bedding,Duvet Cover,,$70.00,0.0
+L03237,2025-08-31,C0526,North,app,Decor,Picture Frame,2,$15.00,0.1
+L03275,2025-09-03,C0928,North,web,Garden,Planter,1,$22.00,0.0
+L03277,2025-09-03,C0669,south,web,Decor,Picture Frame,1,$15.00,0.0
+L03318,06/09/2025,C0932,West,marketplace,Garden,Planter,1,$22.00,0.0
+L03358,2025-09-09,C0342,East,marketplace,Kitchen,Mug Set,1,$24.00,0.0
+L03370,2025-09-10,C0811,West,web,Garden,Hose Reel,3,$55.00,0.2
+L03374,2025-09-10,C0402,east,web,Decor,Wall Clock,1,$32.00,0.0
+L03378,2025-09-10,C0210,North,app,Bedding,Duvet Cover,2,$70.00,0.0
+L03387,11/09/2025,C0326,East,app,Bedding,Duvet Cover,1,$70.00,0.2
+L03396,2025-09-11,C0744,East,marketplace,Kitchen,Cast Iron Pan,4,$60.00,0.2
+L03401,2025-09-12,C0022,east,web,Lighting,String Lights,1,$18.00,0.0
+L03404,2025-09-12,C0348,North,web,Bedding,Throw Blanket,1,$50.00,0.0
+L03449,2025-09-15,C0157,East,web,Bedding,Throw Blanket,2,$50.00,0.0
+L03461,15/09/2025,C0033,South ,app,Bedding,Throw Blanket,1,$50.00,0.0
+L03481,2025-09-16,C1105,north,marketplace,Lighting,Floor Lamp,1,$120.00,0.0
+L03497,2025-09-18,C0958,North,app,Lighting,Floor Lamp,1,$120.00,0.0
+L03508,2025-09-18,C1080,East,app,Decor,Picture Frame,2,$15.00,0.0
+L03546,2025-09-20,C0388,East,web,Garden,Seed Kit,2,$12.00,0.2
+L03563,22/09/2025,C0581,east,web,Garden,Planter,1,$22.00,0.1
+L03587,2025-09-23,C0893,North,web,Garden,Hose Reel,1,$55.00,0.0
+L03601,2025-09-24,C0424,East ,web,Lighting,Desk Lamp,1,$40.00,0.0
+L03603,2025-09-24,C0476,West,marketplace,Kitchen,Chef Knife,2,$45.00,0.0
+L03606,2025-09-25,C0923,south,marketplace,Bedding,Pillow Pair,,$35.00,0.0
+L03611,25/09/2025,C0783,East,web,Lighting,Desk Lamp,1,$40.00,0.0
+L03624,2025-09-26,C0776,North,web,Lighting,String Lights,2,$18.00,0.0
+L03669,2025-09-29,C0461,North,app,Lighting,String Lights,1,$18.00,0.0
+L03679,2025-09-30,C0889,west,app,Decor,Vase,1,$28.00,0.1
+L03699,2025-10-01,C0388,East ,web,Kitchen,Chef Knife,1,$45.00,0.0
+L03701,01/10/2025,C0235,North,app,Lighting,String Lights,1,$18.00,0.2
+L03716,2025-10-01,C0223,North,marketplace,Decor,Wall Clock,3,$32.00,0.2
+L03717,2025-10-01,C0523,east,marketplace,Decor,Picture Frame,1,$15.00,0.0
+L03748,2025-10-04,C0397,South,web,Kitchen,Mug Set,1,$24.00,0.0
+L03754,2025-10-04,C1134,West,app,Lighting,Floor Lamp,2,$120.00,0.0
+L03800,06/10/2025,C1179,West,web,Garden,Planter,2,$22.00,0.0
+L03805,2025-10-07,C0584,north,web,Bedding,Duvet Cover,3,$70.00,0.0
+L03806,2025-10-07,C1053,North,web,Bedding,Duvet Cover,1,$70.00,0.0
+L03815,2025-10-07,C0174,North,web,Kitchen,Chef Knife,2,$45.00,0.0
+L03853,2025-10-09,C0664,North,app,Kitchen,Chef Knife,2,$45.00,0.0
+L03859,10/10/2025,C0193,west,marketplace,Lighting,String Lights,1,$18.00,0.0
+L03869,2025-10-11,C1013,East,web,Bedding,Throw Blanket,1,$50.00,0.2
+L03996,2025-10-17,C0712,North,app,Bedding,Throw Blanket,2,$50.00,0.1
+L04000,2025-10-18,C0596,West ,marketplace,Garden,Planter,1,$22.00,0.0
+L04010,2025-10-18,C0929,east,web,Decor,Vase,2,$28.00,0.0
+L04017,19/10/2025,C0842,South,app,Kitchen,Mug Set,2,$24.00,0.0
+L04049,2025-10-21,C0430,West,marketplace,Lighting,String Lights,2,$18.00,0.0
+L04064,2025-10-22,C0715,North,web,Lighting,Desk Lamp,,$40.00,0.0
+L04074,2025-10-22,C0713,west,web,Decor,Wall Clock,1,$32.00,0.0
+L04077,2025-10-23,C1182,West,web,Lighting,Floor Lamp,1,$120.00,0.0
+L04092,23/10/2025,C1175,North ,web,Bedding,Pillow Pair,2,$35.00,0.0
+L04110,2025-10-25,C0039,South,web,Bedding,Duvet Cover,1,$70.00,0.0
+L04127,2025-10-25,C0268,west,web,Garden,Seed Kit,1,$12.00,0.0
+L04152,2025-10-27,C0488,South,web,Kitchen,Mug Set,1,$24.00,0.1
+L04168,2025-10-27,C0206,North,marketplace,Bedding,Throw Blanket,3,$50.00,0.0
+L04175,28/10/2025,C0959,South,web,Decor,Wall Clock,2,$32.00,0.0
+L04201,2025-10-29,C0703,west,web,Lighting,String Lights,2,$18.00,0.0
+L04208,2025-10-29,C0304,East ,marketplace,Lighting,Floor Lamp,3,$120.00,0.0
+L04210,2025-10-29,C0176,North,web,Kitchen,Mug Set,1,$24.00,0.1
+L04251,2025-11-01,C0965,North,web,Kitchen,Cast Iron Pan,2,$60.00,0.1
+L04289,03/11/2025,C1140,south,web,Decor,Wall Clock,1,$32.00,0.0
+L04304,2025-11-03,C0817,West,web,Bedding,Duvet Cover,1,$70.00,0.1
+L04307,2025-11-04,C0931,East,web,Lighting,String Lights,1,$18.00,0.1
+L04311,2025-11-04,C0783,East,app,Bedding,Pillow Pair,1,$35.00,0.2
+L04319,2025-11-04,C0776,north,web,Garden,Seed Kit,1,$12.00,0.1
+L04332,05/11/2025,C1027,North,marketplace,Decor,Vase,1,$28.00,0.0
+L04334,2025-11-05,C0597,West,marketplace,Bedding,Duvet Cover,1,$70.00,0.0
+L04348,2025-11-05,C0222,West,marketplace,Lighting,String Lights,4,$18.00,0.1
+L04353,2025-11-06,C0108,west,web,Kitchen,Cast Iron Pan,1,$60.00,0.0
+L04354,2025-11-06,C0329,North,marketplace,Garden,Hose Reel,1,$55.00,0.0
+L04389,07/11/2025,C1047,West,web,Decor,Picture Frame,,$15.00,0.0
+L04405,2025-11-08,C1062,North ,web,Decor,Wall Clock,3,$32.00,0.0
+L04447,2025-11-10,C1028,east,web,Decor,Vase,2,$28.00,0.1
+L04461,2025-11-10,C0829,West,marketplace,Decor,Vase,1,$28.00,0.0
+L04473,2025-11-11,C0469,North,web,Garden,Hose Reel,1,$55.00,0.0
+L04493,12/11/2025,C0467,South,web,Lighting,String Lights,1,$18.00,0.0
+L04509,2025-11-13,C0674,east,app,Kitchen,Cast Iron Pan,2,$60.00,0.0
+L04512,2025-11-13,C0498,South,web,Garden,Hose Reel,2,$55.00,0.2
+L04518,2025-11-13,C0459,West ,web,Bedding,Pillow Pair,1,$35.00,0.0
+L04523,2025-11-13,C1042,North,marketplace,Bedding,Pillow Pair,1,$35.00,0.2
+L04527,13/11/2025,C0720,north,app,Garden,Planter,2,$22.00,0.0
+L04536,2025-11-14,C0013,East,app,Decor,Picture Frame,1,$15.00,0.0
+L04594,2025-11-16,C0801,North,app,Kitchen,Cast Iron Pan,1,$60.00,0.0
+L04596,2025-11-16,C0370,North,app,Bedding,Pillow Pair,2,$35.00,0.0
+L04599,2025-11-16,C0402,east,app,Kitchen,Chef Knife,3,$45.00,0.0
+L04600,16/11/2025,C0870,South ,web,Bedding,Duvet Cover,1,$70.00,0.0
+L04614,2025-11-17,C1007,West,web,Bedding,Pillow Pair,2,$35.00,0.0
+L04631,2025-11-17,C0349,North,web,Bedding,Throw Blanket,1,$50.00,0.0
+L04649,2025-11-18,C0282,west,app,Garden,Planter,2,$22.00,0.0
+L04656,2025-11-19,C0250,East,app,Bedding,Throw Blanket,1,$50.00,0.0
+L04691,20/11/2025,C0890,West,app,Kitchen,Chef Knife,3,$45.00,0.0
+L04694,2025-11-20,C0450,East,marketplace,Kitchen,Chef Knife,1,$45.00,0.0
+L04746,2025-11-22,C0974,south,web,Kitchen,Mug Set,2,$24.00,0.2
+L04832,2025-11-26,C0885,East,app,Lighting,Floor Lamp,,$120.00,0.0
+L04838,2025-11-26,C0643,South,web,Kitchen,Mug Set,1,$24.00,0.0
+L04843,26/11/2025,C1197,East,web,Kitchen,Cast Iron Pan,2,$60.00,0.0
+L04886,2025-11-28,C0219,north,marketplace,Kitchen,Cast Iron Pan,2,$60.00,0.1
+L04937,2025-11-30,C0411,North,web,Garden,Planter,5,$22.00,0.0
+L04943,2025-11-30,C0075,West,web,Lighting,String Lights,1,$18.00,0.0
+L04947,2025-11-30,C0930,North ,app,Lighting,Floor Lamp,1,$120.00,0.0
+L04956,01/12/2025,C0803,south,web,Bedding,Pillow Pair,1,$35.00,0.0
+L04978,2025-12-01,C0891,North,web,Decor,Vase,1,$28.00,0.0
+L05020,2025-12-03,C0248,North,marketplace,Kitchen,Cast Iron Pan,1,$60.00,0.0
+L05083,2025-12-06,C0400,South,app,Garden,Planter,4,$22.00,0.0
+L05114,2025-12-06,C0215,south,web,Bedding,Duvet Cover,2,$70.00,0.0
+L05136,07/12/2025,C0021,West,web,Kitchen,Mug Set,2,$24.00,0.0
+L05152,2025-12-07,C1186,East ,web,Decor,Wall Clock,1,$32.00,0.0
+L05159,2025-12-08,C0902,North,web,Decor,Vase,4,$28.00,0.2
+L05166,2025-12-08,C0130,east,marketplace,Kitchen,Mug Set,1,$24.00,0.0
+L05186,2025-12-09,C0996,West,app,Lighting,Floor Lamp,2,$120.00,0.0
+L05193,09/12/2025,C0901,North,web,Lighting,Floor Lamp,3,$120.00,0.1
+L05231,2025-12-10,C0089,South,web,Kitchen,Mug Set,1,$24.00,0.0
+L05237,2025-12-10,C0489,west,web,Kitchen,Cast Iron Pan,3,$60.00,0.0
+L05238,2025-12-10,C0633,North ,web,Lighting,Desk Lamp,1,$40.00,0.1
+L05246,2025-12-11,C0812,East,web,Lighting,Floor Lamp,1,$120.00,0.0
+L05250,11/12/2025,C1161,North,web,Decor,Vase,1,$28.00,0.0
+L05257,2025-12-11,C0794,south,app,Decor,Wall Clock,,$32.00,0.0
+L05275,2025-12-11,C0624,South,web,Decor,Vase,1,$28.00,0.0
+L05279,2025-12-12,C1073,East,web,Bedding,Pillow Pair,2,$35.00,0.0
+L05309,2025-12-13,C1195,North,app,Decor,Vase,3,$28.00,0.0
+L05312,13/12/2025,C0622,south,web,Kitchen,Cast Iron Pan,2,$60.00,0.0
+L05378,2025-12-15,C0179,North,marketplace,Bedding,Duvet Cover,2,$70.00,0.1
+L05394,2025-12-15,C0985,South,web,Bedding,Duvet Cover,1,$70.00,0.0
+L05404,2025-12-15,C0810,South,web,Garden,Seed Kit,2,$12.00,0.0
+L05446,2025-12-17,C1056,north,web,Lighting,Floor Lamp,1,$120.00,0.0
+L05450,17/12/2025,C0427,East,app,Kitchen,Mug Set,4,$24.00,0.0
+L05502,2025-12-19,C0475,East,web,Kitchen,Mug Set,2,$24.00,0.0
+L05516,2025-12-20,C0169,East ,app,Decor,Picture Frame,1,$15.00,0.0
+L05525,2025-12-20,C0602,north,marketplace,Bedding,Throw Blanket,2,$50.00,0.1
+L05526,2025-12-20,C0287,West,app,Lighting,Desk Lamp,2,$40.00,0.0
+L05527,20/12/2025,C0466,West,web,Lighting,Desk Lamp,2,$40.00,0.0
+L05533,2025-12-20,C0643,South,marketplace,Garden,Planter,3,$22.00,0.0
+L05551,2025-12-20,C0456,north,app,Lighting,Floor Lamp,2,$120.00,0.0
+L05575,2025-12-21,C1041,North,app,Bedding,Throw Blanket,1,$50.00,0.0
+L05669,2025-12-24,C0045,West ,marketplace,Bedding,Duvet Cover,1,$70.00,0.0
+L05688,25/12/2025,C0865,North,web,Kitchen,Cast Iron Pan,1,$60.00,0.0
+L05696,2025-12-25,C1151,west,marketplace,Lighting,String Lights,2,$18.00,0.0
+L05764,2025-12-28,C0202,East,marketplace,Garden,Seed Kit,1,$12.00,0.0
+L05772,2025-12-29,C0704,East,web,Bedding,Pillow Pair,1,$35.00,0.0
+L05810,2025-12-30,C0199,North,web,Lighting,Floor Lamp,,$120.00,0.1

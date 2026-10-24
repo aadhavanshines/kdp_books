@@ -1,0 +1,13 @@
+region  channel    
+East    app             672
+        marketplace     499
+        web            1326
+North   app             856
+Name: quantity, dtype: int64
+channel  app  marketplace   web
+region                         
+East     672          499  1326
+North    856          563  1378
+South    648          436  1039
+West     643          431   896
+True

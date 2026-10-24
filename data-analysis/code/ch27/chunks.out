@@ -1,0 +1,5 @@
+read 5,000 rows; running total A 6,800.99
+read 5,000 rows; running total A 13,741.50
+read 5,000 rows; running total A 20,230.35
+read 5,000 rows; running total A 27,372.98
+same as reading it all at once: True

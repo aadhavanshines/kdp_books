@@ -1,0 +1,12 @@
+age_band
+under 30    235
+30-44       341
+45-59       364
+60+         260
+Name: count, dtype: int64
+              min  max  count
+age_quartile                 
+Q1             20   32    305
+Q2             33   45    298
+Q3             46   58    306
+Q4             59   70    291

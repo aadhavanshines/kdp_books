@@ -12,5 +12,6 @@ Book projects for Amazon Kindle Direct Publishing by **Aadhavan Muthurengan**.
 | How Large Language Models Are Made: The Complete Plain-English Story of AI, from Data and Chips to Chatbots, Reasoning, Images, Video and Agents | Ready to upload (eBook and paperback) | [`how-llms-are-made/`](how-llms-are-made/) |
 | The Coding Interview Playbook: 120 Original Problems with Tested Python Solutions, Patterns, System Design and Mock Interviews to Prepare for Top Tech Company Interviews | Ready to upload (eBook and paperback) | [`coding-interviews/`](coding-interviews/) |
 | The System Design Interview Playbook: A Step-by-Step Framework, 20 Worked Designs, Tested Building Blocks and Mock Interviews to Prepare for Senior Engineering Interviews at Top Tech Companies | Ready to upload (eBook and paperback) | [`system-design/`](system-design/) |
+| Data Analysis with Python, Hands-On: Clean, Explore, Visualize and Report on Real Data, from Spreadsheets to SQL, with Six Projects, Exercises and Every Example Tested | Ready to upload (eBook and paperback) | [`data-analysis/`](data-analysis/) |
 
 Each book folder contains the Markdown manuscript, a build script, the KDP listing metadata, and the upload-ready files in `dist/`.

@@ -1,0 +1,20 @@
+(5833, 10)
+['order_id', 'order_date', 'customer_id', 'region', 'channel']
+['category', 'product', 'quantity', 'unit_price', 'discount']
+
+  order_id order_date     product  quantity
+0   L00001 2025-01-01     Mug Set         1
+1   L00002 2025-01-01    Seed Kit         2
+2   L00003 2025-01-01  Wall Clock         1
+
+order_id                  str
+order_date     datetime64[us]
+customer_id               str
+region                    str
+channel                   str
+category                  str
+product                   str
+quantity                int64
+unit_price            float64
+discount              float64
+dtype: object

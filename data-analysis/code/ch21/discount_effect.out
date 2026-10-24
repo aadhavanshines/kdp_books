@@ -1,0 +1,12 @@
+average items per order:
+segment   Business  Consumer
+discount                    
+0.0           2.34      1.40
+0.1           2.63      1.59
+0.2           2.82      1.83
+
+discount
+0.0    4084
+0.1    1173
+0.2     576
+Name: orders, dtype: int64

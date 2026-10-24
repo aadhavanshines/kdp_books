@@ -1,0 +1,5 @@
+mood
+happy      423
+neutral    270
+unhappy    107
+Name: count, dtype: int64

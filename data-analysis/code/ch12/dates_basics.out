@@ -1,0 +1,14 @@
+2025-01-01 to 2025-12-31
+  order_date    weekday    month  week
+0 2025-01-01  Wednesday  January     1
+1 2025-01-01  Wednesday  January     1
+2 2025-01-01  Wednesday  January     1
+order_date
+Monday       815
+Tuesday      815
+Wednesday    799
+Thursday     787
+Friday       788
+Saturday     960
+Sunday       869
+Name: order_id, dtype: int64

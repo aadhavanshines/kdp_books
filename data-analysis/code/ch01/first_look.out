@@ -1,0 +1,11 @@
+Orders: 5,833
+Revenue: $379,703.40
+
+Revenue by category:
+category
+Decor        37739.0
+Garden       48115.8
+Kitchen      82609.2
+Lighting    105073.4
+Bedding     106166.0
+Name: revenue, dtype: float64

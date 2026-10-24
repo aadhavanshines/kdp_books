@@ -1,0 +1,6 @@
+Products: 15 rows, 4 columns
+Customers: 1200 rows, 5 columns
+         product category  list_price  unit_cost
+0     Chef Knife  Kitchen          45      21.46
+1  Cast Iron Pan  Kitchen          60      32.76
+2        Mug Set  Kitchen          24      12.48

@@ -21,6 +21,7 @@ ACCENT_ON_WHITE = {
     "how-llms-are-made": (180, 100, 0),
     "coding-interviews": (194, 84, 0),
     "system-design": (194, 84, 0),
+    "data-analysis": (194, 84, 0),
 }
 
 

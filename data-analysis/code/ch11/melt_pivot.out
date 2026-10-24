@@ -1,0 +1,14 @@
+  store  Jan  Feb  Mar
+0  Avon  120  130  150
+1  Bray   95   90  110
+  store month  sales
+0  Avon   Jan    120
+1  Bray   Jan     95
+2  Avon   Feb    130
+3  Bray   Feb     90
+4  Avon   Mar    150
+5  Bray   Mar    110
+month  Jan  Feb  Mar
+store               
+Avon   120  130  150
+Bray    95   90  110

@@ -1,0 +1,10 @@
+  order_id  revenue  month  weekend    size     channel
+0   L00001     24.0      1    False   small  Mobile app
+1   L00002     21.6      1    False   small     Website
+2   L00003     32.0      1    False  medium     Website
+3   L00004     18.0      1    False   small  Mobile app
+size
+medium    3260
+small     1475
+large     1098
+Name: count, dtype: int64

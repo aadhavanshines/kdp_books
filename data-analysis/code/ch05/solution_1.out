@@ -1,0 +1,4 @@
+plan            category
+satisfaction       int64
+dtype: object
+['Basic', 'Plus', 'Pro']

@@ -1,0 +1,6 @@
+mean        65.10
+median      49.50
+std         57.67
+IQR         51.20  (middle half: 29 to 80)
+skew         2.94  (positive: a long right tail)
+top 1%     288.00 and above

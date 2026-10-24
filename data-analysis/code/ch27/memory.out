@@ -1,0 +1,5 @@
+before 2.41 MB, after 1.08 MB (45% of the original)
+region      category
+quantity        int8
+discount     float32
+dtype: object

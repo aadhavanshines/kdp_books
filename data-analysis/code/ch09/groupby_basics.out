@@ -1,0 +1,13 @@
+region
+East      98878.0
+North    113274.0
+South     86223.0
+West      81328.0
+Name: revenue, dtype: float64
+
+        orders   revenue  avg_order  customers
+region                                        
+North     1768  113274.2       64.1        352
+East      1560   98878.3       63.4        316
+South     1300   86222.9       66.3        272
+West      1205   81328.0       67.5        251

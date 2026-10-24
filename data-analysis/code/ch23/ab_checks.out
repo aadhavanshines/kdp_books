@@ -1,0 +1,9 @@
+variant
+A    10024
+B     9976
+split p-value: 0.75
+
+variant       A       B    lift
+device                         
+desktop  0.0463  0.0537  0.1608
+mobile   0.0349  0.0427  0.2226

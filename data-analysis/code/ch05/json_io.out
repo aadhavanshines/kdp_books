@@ -1,0 +1,17 @@
+[
+  {
+    "product":"Chef Knife",
+    "category":"Kitchen",
+    "list_price":45.0,
+    "unit_cost":21.46
+  },
+  {
+    "product":"Cast Iron Pan",
+    "category":"Kitchen",
+    "list_price":60.0,
+    "unit_cost":32.76
+  }
+]
+   id  total customer.name customer.city
+0   1   42.5          Asha          Pune
+1   2   18.0           Ben         Leeds

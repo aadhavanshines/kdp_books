@@ -1,0 +1,17 @@
+order_id
+L00001       Mug Set
+L00002      Seed Kit
+L00003    Wall Clock
+Name: product, dtype: str
+             product  quantity
+order_id                      
+L00001       Mug Set         1
+L00002      Seed Kit         2
+L00003    Wall Clock         1
+Pillow Pair
+         region  quantity
+order_id                 
+L00010    North         2
+L00011    North         3
+L00012     West         2
+['2025-01-01', 'C0503', 'South']

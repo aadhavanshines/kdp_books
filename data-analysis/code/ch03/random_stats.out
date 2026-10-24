@@ -1,0 +1,8 @@
+mean   169.9
+std    8.1
+median 169.9
+5th and 95th percentiles: [156.6 183.1]
+share above 185 cm: 0.0308
+two dice, sums 2 to 12:
+[ 2747  5475  8240 11059 13881 16845 13884 11087  8500  5523  2759]
+most common sum: 7

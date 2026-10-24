@@ -1,0 +1,801 @@
+respondent,date,age_group,plan,satisfaction,recommend,comment
+1,2025-09-01,45-59,Basic,3,5,easy to use
+35,2025-09-01,45-59,Basic,3,4,confusing app
+50,2025-09-01,18-29,Basic,2,7,price is high
+132,2025-09-01,18-29,Basic,4,8,fast delivery
+157,2025-09-01,60+,Basic,4,7,fast delivery
+224,2025-09-01,30-44,Plus,4,9,good value
+249,2025-09-01,45-59,Plus,5,10,fast delivery
+252,2025-09-01,60+,Pro,4,8,easy to use
+341,2025-09-01,60+,Pro,4,10,good value
+347,2025-09-01,60+,Pro,4,9,good value
+364,2025-09-01,60+,Pro,4,10,great support
+368,2025-09-01,18-29,Basic,3,6,too slow
+413,2025-09-01,18-29,Basic,4,10,easy to use
+420,2025-09-01,60+,Pro,4,7,easy to use
+441,2025-09-01,45-59,Basic,3,5,good value
+490,2025-09-01,45-59,Plus,4,8,great support
+506,2025-09-01,18-29,Basic,2,5,confusing app
+527,2025-09-01,60+,Basic,4,7,easy to use
+623,2025-09-01,30-44,Plus,1,2,confusing app
+642,2025-09-01,45-59,Basic,3,6,fast delivery
+699,2025-09-01,30-44,Plus,5,10,good value
+702,2025-09-01,30-44,Plus,5,10,fast delivery
+705,2025-09-01,60+,Plus,4,9,great support
+716,2025-09-01,60+,Basic,3,5,fast delivery
+724,2025-09-01,60+,Basic,2,2,support was slow
+731,2025-09-01,30-44,Plus,2,7,support was slow
+744,2025-09-01,45-59,Plus,3,6,good value
+745,2025-09-01,45-59,Plus,3,5,confusing app
+4,2025-09-02,18-29,Pro,4,8,great support
+91,2025-09-02,30-44,Plus,4,5,good value
+150,2025-09-02,45-59,Basic,3,6,fast delivery
+168,2025-09-02,45-59,Basic,3,7,easy to use
+172,2025-09-02,30-44,Basic,4,7,fast delivery
+173,2025-09-02,60+,Pro,4,9,fast delivery
+243,2025-09-02,30-44,Basic,3,3,price is high
+253,2025-09-02,18-29,Plus,4,9,great support
+258,2025-09-02,45-59,Pro,4,10,fast delivery
+295,2025-09-02,30-44,Plus,3,5,great support
+361,2025-09-02,60+,Basic,4,8,easy to use
+369,2025-09-02,18-29,Plus,4,7,good value
+406,2025-09-02,30-44,Plus,4,8,good value
+427,2025-09-02,60+,Basic,3,6,easy to use
+430,2025-09-02,60+,Basic,4,10,fast delivery
+492,2025-09-02,60+,Pro,4,8,great support
+537,2025-09-02,45-59,Basic,4,9,great support
+573,2025-09-02,30-44,Pro,3,7,price is high
+599,2025-09-02,18-29,Plus,2,3,support was slow
+729,2025-09-02,60+,Basic,4,10,great support
+742,2025-09-02,45-59,Plus,3,6,
+756,2025-09-02,30-44,Pro,5,10,easy to use
+757,2025-09-02,18-29,Plus,3,8,great support
+769,2025-09-02,30-44,Basic,2,6,price is high
+783,2025-09-02,18-29,Plus,3,7,great support
+5,2025-09-03,60+,Basic,3,7,support was slow
+65,2025-09-03,30-44,Pro,4,8,easy to use
+101,2025-09-03,30-44,Plus,2,3,too slow
+108,2025-09-03,30-44,Basic,3,6,price is high
+160,2025-09-03,60+,Plus,5,10,easy to use
+165,2025-09-03,60+,Pro,5,9,easy to use
+187,2025-09-03,45-59,Basic,2,3,too slow
+193,2025-09-03,30-44,Plus,4,8,good value
+230,2025-09-03,18-29,Plus,2,5,price is high
+242,2025-09-03,45-59,Plus,4,8,good value
+250,2025-09-03,45-59,Basic,3,9,confusing app
+283,2025-09-03,30-44,Basic,4,6,fast delivery
+344,2025-09-03,45-59,Basic,2,2,confusing app
+385,2025-09-03,18-29,Pro,5,9,good value
+409,2025-09-03,30-44,Pro,4,10,great support
+423,2025-09-03,30-44,Basic,2,4,too slow
+439,2025-09-03,18-29,Pro,5,10,good value
+451,2025-09-03,45-59,Basic,3,7,confusing app
+464,2025-09-03,60+,Basic,4,8,good value
+515,2025-09-03,60+,Basic,4,7,fast delivery
+525,2025-09-03,45-59,Plus,4,8,good value
+544,2025-09-03,18-29,Plus,3,7,price is high
+595,2025-09-03,60+,Basic,5,10,good value
+596,2025-09-03,60+,Basic,4,9,easy to use
+598,2025-09-03,45-59,Basic,3,7,price is high
+611,2025-09-03,45-59,Pro,4,10,good value
+628,2025-09-03,60+,Plus,3,8,price is high
+645,2025-09-03,18-29,Basic,4,7,good value
+653,2025-09-03,45-59,Basic,3,5,support was slow
+681,2025-09-03,45-59,Pro,5,9,good value
+713,2025-09-03,60+,Basic,2,4,confusing app
+762,2025-09-03,45-59,Basic,4,7,easy to use
+795,2025-09-03,30-44,Plus,4,7,fast delivery
+97,2025-09-04,30-44,Pro,5,10,easy to use
+124,2025-09-04,45-59,Basic,4,7,fast delivery
+136,2025-09-04,30-44,Plus,3,7,too slow
+143,2025-09-04,45-59,Basic,3,7,fast delivery
+162,2025-09-04,30-44,Plus,5,10,good value
+183,2025-09-04,18-29,Basic,3,6,confusing app
+221,2025-09-04,60+,Plus,3,7,too slow
+233,2025-09-04,18-29,Pro,4,6,fast delivery
+310,2025-09-04,30-44,Plus,3,5,support was slow
+382,2025-09-04,18-29,Basic,3,6,
+386,2025-09-04,30-44,Pro,2,5,too slow
+407,2025-09-04,30-44,Plus,4,7,fast delivery
+434,2025-09-04,45-59,Pro,4,7,good value
+447,2025-09-04,60+,Plus,3,6,
+454,2025-09-04,60+,Pro,3,7,
+500,2025-09-04,45-59,Pro,5,9,good value
+675,2025-09-04,45-59,Basic,1,2,price is high
+687,2025-09-04,30-44,Basic,3,9,good value
+698,2025-09-04,60+,Pro,5,10,good value
+711,2025-09-04,45-59,Basic,3,7,great support
+715,2025-09-04,60+,Basic,2,7,support was slow
+746,2025-09-04,30-44,Pro,3,7,good value
+778,2025-09-04,45-59,Pro,2,4,too slow
+28,2025-09-05,60+,Basic,4,7,fast delivery
+60,2025-09-05,30-44,Pro,4,7,easy to use
+254,2025-09-05,60+,Plus,3,8,support was slow
+289,2025-09-05,60+,Plus,4,8,great support
+373,2025-09-05,30-44,Pro,5,10,fast delivery
+380,2025-09-05,45-59,Plus,4,10,good value
+426,2025-09-05,30-44,Pro,4,8,great support
+442,2025-09-05,18-29,Basic,4,7,great support
+493,2025-09-05,18-29,Basic,4,9,great support
+520,2025-09-05,45-59,Basic,3,7,price is high
+589,2025-09-05,60+,Pro,4,8,good value
+656,2025-09-05,18-29,Plus,4,7,good value
+659,2025-09-05,18-29,Basic,3,8,price is high
+671,2025-09-05,60+,Pro,4,7,good value
+678,2025-09-05,30-44,Basic,3,7,too slow
+683,2025-09-05,30-44,Plus,2,3,too slow
+706,2025-09-05,30-44,Basic,4,8,good value
+712,2025-09-05,18-29,Plus,4,9,fast delivery
+732,2025-09-05,60+,Plus,4,8,good value
+775,2025-09-05,30-44,Basic,3,8,
+22,2025-09-06,60+,Basic,3,5,good value
+61,2025-09-06,45-59,Pro,4,7,great support
+94,2025-09-06,45-59,Basic,2,3,confusing app
+109,2025-09-06,30-44,Plus,1,1,too slow
+260,2025-09-06,18-29,Plus,4,6,easy to use
+265,2025-09-06,45-59,Basic,3,5,
+285,2025-09-06,45-59,Plus,3,5,price is high
+286,2025-09-06,18-29,Basic,3,6,confusing app
+311,2025-09-06,60+,Plus,2,4,price is high
+329,2025-09-06,30-44,Plus,3,5,support was slow
+336,2025-09-06,18-29,Basic,4,6,fast delivery
+362,2025-09-06,30-44,Plus,3,8,
+370,2025-09-06,45-59,Plus,4,9,good value
+390,2025-09-06,30-44,Basic,3,7,
+466,2025-09-06,30-44,Basic,3,6,good value
+469,2025-09-06,60+,Pro,3,7,support was slow
+481,2025-09-06,30-44,Plus,5,7,easy to use
+486,2025-09-06,45-59,Basic,2,3,price is high
+503,2025-09-06,45-59,Plus,2,5,support was slow
+554,2025-09-06,60+,Pro,5,10,great support
+567,2025-09-06,30-44,Pro,4,7,fast delivery
+572,2025-09-06,45-59,Plus,3,6,good value
+647,2025-09-06,45-59,Basic,3,7,good value
+669,2025-09-06,18-29,Basic,4,7,great support
+766,2025-09-06,60+,Plus,4,7,easy to use
+781,2025-09-06,30-44,Basic,2,4,price is high
+90,2025-09-07,18-29,Basic,3,5,easy to use
+105,2025-09-07,60+,Pro,3,7,great support
+116,2025-09-07,45-59,Basic,4,9,easy to use
+179,2025-09-07,60+,Basic,5,8,fast delivery
+201,2025-09-07,60+,Basic,3,6,confusing app
+207,2025-09-07,45-59,Basic,4,10,great support
+234,2025-09-07,30-44,Pro,4,9,good value
+308,2025-09-07,18-29,Basic,3,6,great support
+319,2025-09-07,18-29,Pro,5,10,good value
+327,2025-09-07,60+,Pro,5,10,fast delivery
+350,2025-09-07,45-59,Basic,4,7,easy to use
+389,2025-09-07,30-44,Basic,2,4,support was slow
+429,2025-09-07,18-29,Basic,2,2,support was slow
+443,2025-09-07,60+,Plus,5,10,great support
+473,2025-09-07,18-29,Plus,4,7,good value
+547,2025-09-07,45-59,Basic,3,7,price is high
+612,2025-09-07,30-44,Pro,5,10,easy to use
+634,2025-09-07,30-44,Pro,3,4,easy to use
+667,2025-09-07,18-29,Plus,1,3,support was slow
+682,2025-09-07,45-59,Pro,5,10,great support
+714,2025-09-07,18-29,Plus,3,8,easy to use
+726,2025-09-07,45-59,Basic,4,9,great support
+792,2025-09-07,45-59,Plus,5,9,good value
+12,2025-09-08,60+,Basic,2,3,confusing app
+72,2025-09-08,45-59,Basic,3,7,easy to use
+122,2025-09-08,30-44,Plus,4,8,good value
+126,2025-09-08,30-44,Plus,3,6,good value
+138,2025-09-08,60+,Basic,4,6,fast delivery
+209,2025-09-08,45-59,Basic,3,9,great support
+231,2025-09-08,60+,Plus,4,6,great support
+288,2025-09-08,60+,Pro,4,9,easy to use
+309,2025-09-08,18-29,Plus,2,4,too slow
+408,2025-09-08,18-29,Plus,5,10,great support
+432,2025-09-08,18-29,Plus,3,7,price is high
+488,2025-09-08,30-44,Basic,4,7,easy to use
+498,2025-09-08,45-59,Plus,4,9,fast delivery
+517,2025-09-08,30-44,Basic,4,5,fast delivery
+585,2025-09-08,18-29,Basic,4,7,easy to use
+631,2025-09-08,30-44,Basic,4,7,great support
+658,2025-09-08,45-59,Plus,4,7,great support
+666,2025-09-08,60+,Pro,4,10,easy to use
+686,2025-09-08,30-44,Basic,2,3,too slow
+733,2025-09-08,60+,Basic,4,8,good value
+8,2025-09-09,45-59,Basic,4,8,good value
+93,2025-09-09,45-59,Basic,2,5,too slow
+107,2025-09-09,60+,Plus,4,6,great support
+197,2025-09-09,30-44,Basic,3,5,fast delivery
+238,2025-09-09,60+,Basic,3,7,
+255,2025-09-09,30-44,Plus,3,6,great support
+291,2025-09-09,60+,Plus,4,7,fast delivery
+360,2025-09-09,18-29,Basic,5,10,good value
+462,2025-09-09,18-29,Basic,3,5,easy to use
+507,2025-09-09,18-29,Plus,3,6,good value
+549,2025-09-09,60+,Basic,3,6,good value
+570,2025-09-09,30-44,Pro,3,7,confusing app
+575,2025-09-09,45-59,Pro,2,4,support was slow
+695,2025-09-09,18-29,Plus,5,9,easy to use
+17,2025-09-10,60+,Basic,2,4,too slow
+38,2025-09-10,18-29,Pro,3,6,fast delivery
+77,2025-09-10,18-29,Plus,4,8,fast delivery
+85,2025-09-10,18-29,Plus,3,4,confusing app
+104,2025-09-10,18-29,Basic,3,4,easy to use
+106,2025-09-10,30-44,Plus,4,6,great support
+131,2025-09-10,45-59,Basic,3,4,good value
+137,2025-09-10,60+,Basic,4,7,good value
+294,2025-09-10,45-59,Plus,4,8,easy to use
+302,2025-09-10,45-59,Basic,2,5,confusing app
+304,2025-09-10,60+,Basic,3,8,easy to use
+419,2025-09-10,30-44,Basic,4,8,fast delivery
+444,2025-09-10,18-29,Pro,4,8,fast delivery
+455,2025-09-10,60+,Basic,4,9,good value
+497,2025-09-10,18-29,Pro,5,7,good value
+543,2025-09-10,60+,Pro,3,6,confusing app
+557,2025-09-10,18-29,Basic,2,3,too slow
+578,2025-09-10,60+,Plus,5,10,good value
+618,2025-09-10,30-44,Basic,3,7,confusing app
+664,2025-09-10,18-29,Plus,4,7,easy to use
+694,2025-09-10,18-29,Basic,3,6,good value
+701,2025-09-10,30-44,Pro,4,7,easy to use
+718,2025-09-10,45-59,Basic,2,5,support was slow
+736,2025-09-10,18-29,Plus,4,7,fast delivery
+759,2025-09-10,45-59,Basic,2,4,price is high
+773,2025-09-10,18-29,Pro,5,10,great support
+799,2025-09-10,45-59,Basic,4,7,easy to use
+15,2025-09-11,45-59,Plus,4,9,fast delivery
+66,2025-09-11,18-29,Basic,3,5,fast delivery
+79,2025-09-11,18-29,Basic,5,9,easy to use
+113,2025-09-11,45-59,Pro,3,7,good value
+123,2025-09-11,18-29,Plus,2,4,price is high
+130,2025-09-11,30-44,Pro,4,8,easy to use
+161,2025-09-11,45-59,Pro,5,8,easy to use
+202,2025-09-11,18-29,Basic,3,5,easy to use
+237,2025-09-11,45-59,Plus,4,8,good value
+262,2025-09-11,60+,Basic,4,5,good value
+296,2025-09-11,45-59,Basic,2,2,confusing app
+301,2025-09-11,30-44,Basic,4,7,good value
+322,2025-09-11,30-44,Plus,4,6,fast delivery
+330,2025-09-11,30-44,Basic,4,8,easy to use
+343,2025-09-11,60+,Basic,4,8,great support
+371,2025-09-11,18-29,Pro,3,6,
+372,2025-09-11,45-59,Plus,5,9,easy to use
+415,2025-09-11,30-44,Basic,2,3,support was slow
+450,2025-09-11,18-29,Basic,5,8,great support
+456,2025-09-11,18-29,Basic,3,7,good value
+457,2025-09-11,45-59,Plus,3,5,easy to use
+463,2025-09-11,30-44,Plus,3,6,easy to use
+489,2025-09-11,30-44,Basic,4,9,good value
+508,2025-09-11,30-44,Basic,3,6,too slow
+512,2025-09-11,18-29,Plus,4,7,great support
+566,2025-09-11,30-44,Plus,5,10,good value
+606,2025-09-11,45-59,Basic,3,6,easy to use
+638,2025-09-11,30-44,Basic,3,7,good value
+639,2025-09-11,30-44,Plus,4,9,fast delivery
+644,2025-09-11,45-59,Plus,3,5,great support
+688,2025-09-11,60+,Plus,4,7,great support
+697,2025-09-11,30-44,Basic,3,9,
+752,2025-09-11,45-59,Basic,2,4,too slow
+789,2025-09-11,30-44,Plus,4,7,easy to use
+6,2025-09-12,60+,Pro,4,9,fast delivery
+29,2025-09-12,60+,Basic,4,7,good value
+31,2025-09-12,18-29,Basic,1,0,confusing app
+33,2025-09-12,45-59,Basic,4,7,good value
+82,2025-09-12,18-29,Basic,2,5,price is high
+88,2025-09-12,18-29,Basic,3,8,easy to use
+102,2025-09-12,60+,Basic,5,10,great support
+119,2025-09-12,30-44,Plus,3,5,confusing app
+155,2025-09-12,30-44,Pro,2,3,too slow
+164,2025-09-12,60+,Plus,3,5,good value
+178,2025-09-12,45-59,Plus,5,10,fast delivery
+182,2025-09-12,18-29,Plus,4,9,good value
+189,2025-09-12,60+,Pro,4,6,great support
+215,2025-09-12,18-29,Plus,2,4,confusing app
+223,2025-09-12,18-29,Pro,5,10,good value
+263,2025-09-12,18-29,Pro,4,10,fast delivery
+448,2025-09-12,60+,Pro,4,7,fast delivery
+533,2025-09-12,18-29,Plus,4,9,easy to use
+609,2025-09-12,60+,Plus,4,7,good value
+674,2025-09-12,60+,Plus,4,8,good value
+691,2025-09-12,60+,Plus,3,6,good value
+739,2025-09-12,18-29,Plus,4,7,fast delivery
+761,2025-09-12,30-44,Basic,2,2,price is high
+793,2025-09-12,60+,Plus,4,7,great support
+18,2025-09-13,18-29,Pro,4,8,great support
+20,2025-09-13,30-44,Plus,4,8,easy to use
+23,2025-09-13,30-44,Basic,4,10,good value
+63,2025-09-13,60+,Basic,2,5,price is high
+81,2025-09-13,30-44,Basic,3,5,support was slow
+92,2025-09-13,18-29,Pro,3,6,
+169,2025-09-13,60+,Plus,5,10,easy to use
+220,2025-09-13,60+,Basic,4,8,fast delivery
+245,2025-09-13,30-44,Plus,2,3,support was slow
+268,2025-09-13,60+,Basic,2,3,support was slow
+270,2025-09-13,60+,Pro,5,10,good value
+277,2025-09-13,60+,Basic,3,5,good value
+320,2025-09-13,60+,Basic,4,8,fast delivery
+321,2025-09-13,18-29,Plus,5,10,easy to use
+411,2025-09-13,18-29,Basic,4,10,easy to use
+445,2025-09-13,60+,Pro,3,6,too slow
+459,2025-09-13,45-59,Pro,3,4,support was slow
+487,2025-09-13,60+,Plus,5,10,fast delivery
+564,2025-09-13,45-59,Plus,5,10,great support
+581,2025-09-13,30-44,Plus,3,5,support was slow
+582,2025-09-13,45-59,Plus,5,9,easy to use
+709,2025-09-13,18-29,Plus,4,8,fast delivery
+723,2025-09-13,18-29,Basic,3,6,too slow
+787,2025-09-13,45-59,Basic,5,10,fast delivery
+796,2025-09-13,30-44,Basic,3,8,
+39,2025-09-14,18-29,Basic,4,10,easy to use
+111,2025-09-14,18-29,Basic,3,7,price is high
+129,2025-09-14,30-44,Basic,5,10,great support
+206,2025-09-14,18-29,Basic,4,8,easy to use
+211,2025-09-14,45-59,Plus,4,10,easy to use
+228,2025-09-14,30-44,Plus,4,9,fast delivery
+261,2025-09-14,45-59,Basic,2,5,support was slow
+279,2025-09-14,45-59,Basic,4,7,fast delivery
+282,2025-09-14,18-29,Pro,4,7,great support
+292,2025-09-14,30-44,Plus,3,7,confusing app
+317,2025-09-14,18-29,Basic,4,9,good value
+335,2025-09-14,30-44,Pro,5,7,good value
+424,2025-09-14,45-59,Basic,2,3,confusing app
+478,2025-09-14,45-59,Basic,4,8,easy to use
+510,2025-09-14,18-29,Basic,4,7,good value
+518,2025-09-14,30-44,Basic,3,7,too slow
+542,2025-09-14,45-59,Pro,3,7,too slow
+548,2025-09-14,30-44,Pro,3,6,too slow
+630,2025-09-14,30-44,Pro,5,10,great support
+641,2025-09-14,18-29,Pro,5,10,fast delivery
+660,2025-09-14,45-59,Basic,3,8,confusing app
+725,2025-09-14,30-44,Pro,3,4,great support
+728,2025-09-14,18-29,Basic,3,7,
+9,2025-09-15,18-29,Plus,3,6,
+36,2025-09-15,45-59,Basic,5,10,good value
+115,2025-09-15,45-59,Basic,3,9,support was slow
+118,2025-09-15,18-29,Plus,3,4,confusing app
+120,2025-09-15,60+,Basic,4,6,easy to use
+196,2025-09-15,30-44,Pro,4,8,great support
+217,2025-09-15,30-44,Basic,3,5,easy to use
+227,2025-09-15,18-29,Basic,3,6,support was slow
+232,2025-09-15,30-44,Basic,3,5,great support
+275,2025-09-15,60+,Basic,5,9,great support
+281,2025-09-15,30-44,Pro,5,10,great support
+325,2025-09-15,45-59,Plus,4,8,great support
+332,2025-09-15,45-59,Plus,4,10,good value
+333,2025-09-15,60+,Basic,3,6,confusing app
+338,2025-09-15,30-44,Plus,3,4,easy to use
+342,2025-09-15,30-44,Basic,3,6,confusing app
+391,2025-09-15,18-29,Basic,3,5,price is high
+395,2025-09-15,30-44,Basic,4,10,great support
+401,2025-09-15,30-44,Plus,2,7,too slow
+416,2025-09-15,45-59,Basic,4,8,good value
+433,2025-09-15,60+,Pro,4,7,easy to use
+545,2025-09-15,60+,Basic,3,10,price is high
+597,2025-09-15,18-29,Pro,5,9,fast delivery
+601,2025-09-15,18-29,Basic,3,6,fast delivery
+620,2025-09-15,18-29,Basic,3,5,great support
+633,2025-09-15,60+,Basic,4,8,fast delivery
+670,2025-09-15,30-44,Basic,4,8,easy to use
+703,2025-09-15,18-29,Basic,3,8,
+727,2025-09-15,60+,Plus,5,9,good value
+751,2025-09-15,18-29,Basic,3,5,fast delivery
+777,2025-09-15,30-44,Basic,4,5,fast delivery
+780,2025-09-15,60+,Basic,3,8,price is high
+798,2025-09-15,30-44,Plus,3,6,too slow
+7,2025-09-16,45-59,Basic,3,4,support was slow
+42,2025-09-16,60+,Plus,4,7,fast delivery
+48,2025-09-16,18-29,Basic,3,5,support was slow
+55,2025-09-16,45-59,Basic,5,8,fast delivery
+62,2025-09-16,18-29,Basic,4,7,fast delivery
+170,2025-09-16,60+,Basic,3,6,too slow
+210,2025-09-16,30-44,Basic,3,7,too slow
+222,2025-09-16,30-44,Pro,4,9,great support
+241,2025-09-16,45-59,Pro,5,10,good value
+274,2025-09-16,45-59,Plus,3,6,good value
+278,2025-09-16,18-29,Basic,4,7,fast delivery
+297,2025-09-16,18-29,Plus,4,9,good value
+354,2025-09-16,30-44,Basic,4,6,fast delivery
+376,2025-09-16,45-59,Pro,3,7,price is high
+383,2025-09-16,18-29,Basic,2,3,too slow
+410,2025-09-16,30-44,Plus,4,9,great support
+491,2025-09-16,18-29,Plus,4,9,fast delivery
+496,2025-09-16,45-59,Plus,4,8,easy to use
+534,2025-09-16,30-44,Basic,2,3,confusing app
+546,2025-09-16,60+,Plus,4,10,good value
+561,2025-09-16,30-44,Pro,5,10,good value
+574,2025-09-16,18-29,Basic,3,6,good value
+586,2025-09-16,18-29,Basic,4,10,easy to use
+615,2025-09-16,45-59,Basic,4,9,fast delivery
+648,2025-09-16,18-29,Basic,4,8,good value
+650,2025-09-16,45-59,Plus,5,10,great support
+676,2025-09-16,45-59,Plus,3,6,support was slow
+696,2025-09-16,18-29,Pro,4,6,good value
+771,2025-09-16,18-29,Pro,4,7,great support
+786,2025-09-16,18-29,Basic,4,5,fast delivery
+791,2025-09-16,60+,Basic,5,9,easy to use
+2,2025-09-17,45-59,Plus,5,10,good value
+52,2025-09-17,60+,Pro,4,8,great support
+56,2025-09-17,45-59,Plus,4,6,fast delivery
+99,2025-09-17,18-29,Plus,4,7,good value
+121,2025-09-17,18-29,Plus,4,7,easy to use
+142,2025-09-17,18-29,Basic,3,4,support was slow
+153,2025-09-17,30-44,Plus,3,6,
+203,2025-09-17,60+,Pro,4,7,great support
+204,2025-09-17,60+,Basic,4,8,good value
+225,2025-09-17,18-29,Plus,4,7,easy to use
+235,2025-09-17,30-44,Pro,5,10,easy to use
+236,2025-09-17,18-29,Basic,2,5,too slow
+287,2025-09-17,30-44,Basic,4,9,great support
+331,2025-09-17,45-59,Plus,3,6,good value
+351,2025-09-17,30-44,Basic,4,7,fast delivery
+375,2025-09-17,30-44,Plus,3,5,price is high
+435,2025-09-17,18-29,Basic,3,4,price is high
+477,2025-09-17,18-29,Basic,2,7,price is high
+485,2025-09-17,18-29,Basic,2,3,too slow
+505,2025-09-17,60+,Pro,3,6,too slow
+529,2025-09-17,45-59,Basic,4,7,easy to use
+538,2025-09-17,18-29,Plus,3,5,good value
+551,2025-09-17,18-29,Basic,3,6,good value
+604,2025-09-17,30-44,Basic,3,5,good value
+637,2025-09-17,30-44,Basic,2,3,confusing app
+643,2025-09-17,45-59,Pro,5,10,great support
+657,2025-09-17,30-44,Plus,5,10,easy to use
+677,2025-09-17,60+,Basic,3,4,confusing app
+700,2025-09-17,30-44,Basic,3,9,price is high
+708,2025-09-17,30-44,Plus,5,10,easy to use
+719,2025-09-17,60+,Basic,4,6,good value
+764,2025-09-17,45-59,Plus,4,8,easy to use
+40,2025-09-18,60+,Plus,4,5,easy to use
+41,2025-09-18,30-44,Basic,4,7,fast delivery
+71,2025-09-18,60+,Plus,4,9,great support
+86,2025-09-18,60+,Basic,2,4,too slow
+96,2025-09-18,45-59,Basic,3,5,too slow
+148,2025-09-18,60+,Pro,4,8,easy to use
+194,2025-09-18,45-59,Basic,4,7,easy to use
+229,2025-09-18,45-59,Basic,2,5,too slow
+251,2025-09-18,60+,Pro,5,10,fast delivery
+307,2025-09-18,60+,Basic,2,3,confusing app
+326,2025-09-18,45-59,Basic,4,7,great support
+337,2025-09-18,60+,Basic,5,10,good value
+356,2025-09-18,18-29,Pro,5,9,fast delivery
+398,2025-09-18,45-59,Pro,4,9,fast delivery
+449,2025-09-18,30-44,Plus,2,5,price is high
+458,2025-09-18,18-29,Plus,5,9,great support
+471,2025-09-18,45-59,Pro,5,10,fast delivery
+509,2025-09-18,30-44,Basic,2,6,too slow
+514,2025-09-18,30-44,Pro,3,5,price is high
+524,2025-09-18,45-59,Basic,3,7,support was slow
+560,2025-09-18,18-29,Basic,3,5,confusing app
+563,2025-09-18,45-59,Pro,3,5,good value
+577,2025-09-18,60+,Basic,3,7,fast delivery
+600,2025-09-18,30-44,Pro,4,6,easy to use
+610,2025-09-18,30-44,Basic,3,6,easy to use
+640,2025-09-18,45-59,Plus,4,8,great support
+720,2025-09-18,45-59,Basic,5,10,great support
+743,2025-09-18,18-29,Plus,3,4,
+782,2025-09-18,60+,Basic,1,2,confusing app
+784,2025-09-18,60+,Plus,4,8,good value
+16,2025-09-19,60+,Plus,5,9,easy to use
+27,2025-09-19,60+,Basic,4,9,great support
+114,2025-09-19,30-44,Plus,3,7,
+154,2025-09-19,30-44,Basic,3,5,great support
+158,2025-09-19,30-44,Plus,5,8,easy to use
+167,2025-09-19,18-29,Pro,4,9,great support
+171,2025-09-19,60+,Plus,3,4,too slow
+200,2025-09-19,18-29,Basic,3,7,easy to use
+246,2025-09-19,45-59,Pro,4,9,great support
+266,2025-09-19,30-44,Plus,4,10,great support
+269,2025-09-19,60+,Pro,5,7,easy to use
+313,2025-09-19,60+,Basic,3,6,easy to use
+357,2025-09-19,30-44,Basic,3,6,good value
+359,2025-09-19,45-59,Plus,5,10,great support
+379,2025-09-19,45-59,Basic,4,9,fast delivery
+446,2025-09-19,60+,Basic,3,5,price is high
+465,2025-09-19,60+,Basic,3,7,easy to use
+470,2025-09-19,45-59,Plus,2,3,confusing app
+516,2025-09-19,45-59,Basic,2,4,too slow
+522,2025-09-19,60+,Basic,2,3,support was slow
+528,2025-09-19,45-59,Basic,4,7,easy to use
+532,2025-09-19,30-44,Basic,2,5,too slow
+584,2025-09-19,30-44,Basic,4,9,good value
+673,2025-09-19,60+,Basic,3,6,support was slow
+763,2025-09-19,45-59,Pro,4,7,fast delivery
+765,2025-09-19,18-29,Basic,4,5,fast delivery
+788,2025-09-19,45-59,Basic,3,7,confusing app
+14,2025-09-20,18-29,Plus,2,6,too slow
+58,2025-09-20,60+,Basic,4,6,fast delivery
+73,2025-09-20,18-29,Pro,3,6,too slow
+139,2025-09-20,30-44,Basic,3,8,support was slow
+146,2025-09-20,30-44,Basic,2,6,price is high
+159,2025-09-20,18-29,Plus,3,8,easy to use
+184,2025-09-20,30-44,Pro,5,10,easy to use
+205,2025-09-20,18-29,Basic,5,9,fast delivery
+299,2025-09-20,30-44,Plus,4,7,fast delivery
+306,2025-09-20,45-59,Plus,3,10,good value
+324,2025-09-20,45-59,Basic,2,4,price is high
+334,2025-09-20,60+,Basic,3,7,confusing app
+345,2025-09-20,18-29,Basic,4,6,easy to use
+452,2025-09-20,18-29,Basic,3,5,
+499,2025-09-20,30-44,Plus,4,8,great support
+511,2025-09-20,60+,Plus,4,9,good value
+558,2025-09-20,30-44,Pro,4,6,easy to use
+616,2025-09-20,60+,Basic,4,9,good value
+655,2025-09-20,45-59,Basic,3,9,easy to use
+685,2025-09-20,60+,Basic,3,7,price is high
+692,2025-09-20,18-29,Basic,4,10,fast delivery
+734,2025-09-20,18-29,Pro,5,10,good value
+737,2025-09-20,45-59,Plus,3,6,great support
+749,2025-09-20,45-59,Pro,5,10,great support
+21,2025-09-21,45-59,Pro,5,10,fast delivery
+47,2025-09-21,45-59,Pro,4,8,good value
+49,2025-09-21,60+,Basic,4,6,fast delivery
+54,2025-09-21,30-44,Pro,3,5,easy to use
+64,2025-09-21,45-59,Pro,4,9,fast delivery
+67,2025-09-21,60+,Pro,4,10,good value
+83,2025-09-21,30-44,Basic,4,6,great support
+145,2025-09-21,18-29,Pro,5,10,fast delivery
+163,2025-09-21,60+,Basic,4,8,good value
+267,2025-09-21,45-59,Plus,4,10,easy to use
+305,2025-09-21,60+,Basic,4,7,good value
+367,2025-09-21,60+,Basic,4,8,good value
+378,2025-09-21,18-29,Basic,3,3,price is high
+393,2025-09-21,18-29,Plus,5,9,fast delivery
+438,2025-09-21,30-44,Basic,5,10,good value
+468,2025-09-21,45-59,Basic,4,7,good value
+480,2025-09-21,60+,Basic,4,8,great support
+523,2025-09-21,18-29,Plus,4,7,good value
+550,2025-09-21,60+,Basic,2,4,confusing app
+562,2025-09-21,45-59,Pro,4,8,great support
+619,2025-09-21,45-59,Pro,5,9,fast delivery
+662,2025-09-21,60+,Basic,3,7,fast delivery
+730,2025-09-21,45-59,Basic,2,6,confusing app
+776,2025-09-21,30-44,Plus,4,7,good value
+3,2025-09-22,45-59,Basic,4,9,good value
+24,2025-09-22,45-59,Basic,3,6,easy to use
+70,2025-09-22,30-44,Pro,5,10,fast delivery
+74,2025-09-22,18-29,Basic,3,2,support was slow
+80,2025-09-22,18-29,Pro,4,7,fast delivery
+100,2025-09-22,45-59,Plus,2,4,confusing app
+125,2025-09-22,30-44,Basic,4,7,good value
+144,2025-09-22,30-44,Basic,2,6,too slow
+152,2025-09-22,18-29,Plus,4,8,good value
+191,2025-09-22,30-44,Pro,4,9,great support
+293,2025-09-22,18-29,Plus,5,10,easy to use
+312,2025-09-22,45-59,Plus,5,10,fast delivery
+315,2025-09-22,18-29,Pro,5,8,easy to use
+323,2025-09-22,60+,Basic,3,6,good value
+348,2025-09-22,45-59,Basic,3,8,easy to use
+365,2025-09-22,60+,Pro,4,9,fast delivery
+405,2025-09-22,18-29,Basic,2,4,confusing app
+412,2025-09-22,60+,Basic,3,6,good value
+425,2025-09-22,18-29,Pro,2,5,support was slow
+474,2025-09-22,45-59,Basic,3,6,price is high
+519,2025-09-22,60+,Basic,2,3,too slow
+526,2025-09-22,45-59,Basic,3,7,
+535,2025-09-22,60+,Plus,4,8,great support
+583,2025-09-22,30-44,Basic,2,3,too slow
+704,2025-09-22,60+,Plus,5,9,good value
+721,2025-09-22,45-59,Plus,4,8,fast delivery
+767,2025-09-22,45-59,Basic,2,4,price is high
+768,2025-09-22,30-44,Pro,3,9,confusing app
+25,2025-09-23,30-44,Basic,3,8,good value
+34,2025-09-23,18-29,Basic,2,5,support was slow
+46,2025-09-23,30-44,Pro,4,7,good value
+134,2025-09-23,60+,Plus,4,7,easy to use
+140,2025-09-23,60+,Basic,4,10,easy to use
+166,2025-09-23,30-44,Plus,4,9,fast delivery
+181,2025-09-23,18-29,Basic,4,8,easy to use
+190,2025-09-23,30-44,Basic,3,6,
+216,2025-09-23,60+,Plus,4,8,good value
+273,2025-09-23,30-44,Pro,4,9,great support
+316,2025-09-23,30-44,Pro,5,10,good value
+353,2025-09-23,60+,Plus,4,9,fast delivery
+384,2025-09-23,45-59,Pro,4,7,great support
+387,2025-09-23,18-29,Basic,2,3,support was slow
+404,2025-09-23,45-59,Pro,5,10,easy to use
+417,2025-09-23,18-29,Basic,3,6,confusing app
+440,2025-09-23,45-59,Plus,2,3,too slow
+475,2025-09-23,18-29,Basic,3,7,easy to use
+479,2025-09-23,45-59,Pro,3,7,
+482,2025-09-23,30-44,Plus,4,7,easy to use
+494,2025-09-23,18-29,Basic,2,4,too slow
+504,2025-09-23,45-59,Plus,5,10,good value
+580,2025-09-23,45-59,Basic,2,4,price is high
+602,2025-09-23,18-29,Basic,3,8,too slow
+608,2025-09-23,30-44,Basic,4,9,great support
+614,2025-09-23,30-44,Basic,3,4,great support
+626,2025-09-23,45-59,Basic,2,4,price is high
+661,2025-09-23,18-29,Pro,5,9,easy to use
+684,2025-09-23,45-59,Plus,4,7,fast delivery
+690,2025-09-23,18-29,Basic,5,10,fast delivery
+707,2025-09-23,60+,Basic,3,3,price is high
+770,2025-09-23,45-59,Basic,3,6,support was slow
+10,2025-09-24,60+,Pro,4,7,good value
+76,2025-09-24,30-44,Pro,5,10,easy to use
+87,2025-09-24,45-59,Plus,4,8,fast delivery
+112,2025-09-24,60+,Basic,3,6,price is high
+214,2025-09-24,45-59,Basic,5,9,good value
+257,2025-09-24,45-59,Pro,3,6,fast delivery
+280,2025-09-24,60+,Basic,3,5,support was slow
+314,2025-09-24,45-59,Plus,2,3,support was slow
+352,2025-09-24,30-44,Basic,4,9,good value
+377,2025-09-24,30-44,Basic,2,2,price is high
+392,2025-09-24,30-44,Plus,4,9,good value
+399,2025-09-24,60+,Basic,5,10,fast delivery
+414,2025-09-24,18-29,Pro,3,6,confusing app
+422,2025-09-24,30-44,Basic,3,4,good value
+461,2025-09-24,18-29,Basic,4,8,easy to use
+476,2025-09-24,18-29,Basic,2,5,confusing app
+521,2025-09-24,60+,Pro,5,10,fast delivery
+553,2025-09-24,45-59,Pro,4,8,good value
+576,2025-09-24,18-29,Pro,3,6,price is high
+588,2025-09-24,45-59,Plus,4,7,good value
+594,2025-09-24,18-29,Basic,3,7,support was slow
+613,2025-09-24,18-29,Basic,3,6,easy to use
+627,2025-09-24,45-59,Plus,4,9,great support
+632,2025-09-24,18-29,Basic,2,4,support was slow
+635,2025-09-24,45-59,Basic,4,10,great support
+646,2025-09-24,30-44,Basic,3,4,great support
+651,2025-09-24,60+,Basic,3,4,price is high
+747,2025-09-24,60+,Basic,5,10,good value
+753,2025-09-24,60+,Plus,3,5,
+30,2025-09-25,45-59,Basic,3,7,
+59,2025-09-25,18-29,Basic,3,7,too slow
+69,2025-09-25,45-59,Plus,3,4,too slow
+98,2025-09-25,30-44,Basic,4,7,easy to use
+141,2025-09-25,18-29,Basic,3,4,price is high
+149,2025-09-25,45-59,Basic,4,10,fast delivery
+213,2025-09-25,60+,Basic,3,6,price is high
+218,2025-09-25,60+,Plus,3,5,confusing app
+226,2025-09-25,18-29,Plus,4,9,fast delivery
+244,2025-09-25,45-59,Basic,3,4,good value
+298,2025-09-25,45-59,Pro,4,8,good value
+303,2025-09-25,45-59,Pro,3,7,fast delivery
+366,2025-09-25,60+,Pro,4,7,fast delivery
+394,2025-09-25,18-29,Basic,3,6,price is high
+437,2025-09-25,45-59,Basic,4,8,easy to use
+453,2025-09-25,60+,Plus,4,7,fast delivery
+472,2025-09-25,30-44,Basic,3,6,support was slow
+484,2025-09-25,18-29,Plus,5,10,great support
+541,2025-09-25,18-29,Pro,3,8,price is high
+568,2025-09-25,45-59,Pro,4,7,fast delivery
+590,2025-09-25,30-44,Pro,3,6,too slow
+621,2025-09-25,30-44,Basic,4,10,good value
+624,2025-09-25,18-29,Basic,2,4,support was slow
+625,2025-09-25,30-44,Basic,4,9,fast delivery
+741,2025-09-25,45-59,Pro,3,5,confusing app
+800,2025-09-25,30-44,Basic,4,8,great support
+57,2025-09-26,30-44,Basic,4,10,easy to use
+176,2025-09-26,30-44,Pro,5,10,easy to use
+264,2025-09-26,18-29,Basic,3,7,
+284,2025-09-26,45-59,Plus,4,7,great support
+318,2025-09-26,30-44,Pro,4,9,great support
+328,2025-09-26,18-29,Basic,3,5,fast delivery
+339,2025-09-26,18-29,Plus,4,7,great support
+396,2025-09-26,45-59,Plus,3,5,easy to use
+436,2025-09-26,45-59,Plus,4,7,great support
+460,2025-09-26,45-59,Basic,3,5,fast delivery
+531,2025-09-26,45-59,Plus,3,6,support was slow
+587,2025-09-26,60+,Pro,5,10,great support
+605,2025-09-26,18-29,Plus,4,9,great support
+622,2025-09-26,30-44,Basic,4,8,fast delivery
+672,2025-09-26,30-44,Basic,1,2,price is high
+679,2025-09-26,18-29,Pro,4,8,easy to use
+693,2025-09-26,30-44,Basic,4,6,good value
+710,2025-09-26,45-59,Pro,4,8,fast delivery
+738,2025-09-26,45-59,Pro,3,7,great support
+760,2025-09-26,18-29,Basic,3,5,support was slow
+790,2025-09-26,45-59,Basic,2,4,price is high
+797,2025-09-26,18-29,Plus,3,7,good value
+13,2025-09-27,45-59,Basic,3,5,support was slow
+53,2025-09-27,45-59,Pro,3,6,too slow
+68,2025-09-27,60+,Plus,3,7,support was slow
+110,2025-09-27,45-59,Basic,4,6,fast delivery
+117,2025-09-27,45-59,Plus,3,6,
+174,2025-09-27,45-59,Basic,3,6,price is high
+195,2025-09-27,18-29,Plus,4,8,fast delivery
+240,2025-09-27,60+,Basic,5,10,easy to use
+259,2025-09-27,60+,Basic,3,6,great support
+381,2025-09-27,18-29,Plus,5,9,good value
+403,2025-09-27,30-44,Plus,4,9,great support
+483,2025-09-27,18-29,Plus,5,8,great support
+495,2025-09-27,45-59,Basic,3,5,too slow
+501,2025-09-27,30-44,Basic,3,7,confusing app
+530,2025-09-27,60+,Plus,5,10,easy to use
+556,2025-09-27,18-29,Basic,3,7,good value
+569,2025-09-27,30-44,Plus,4,8,easy to use
+592,2025-09-27,30-44,Pro,4,7,good value
+607,2025-09-27,18-29,Basic,2,5,support was slow
+636,2025-09-27,18-29,Basic,3,6,confusing app
+649,2025-09-27,30-44,Basic,2,4,price is high
+663,2025-09-27,18-29,Basic,3,4,easy to use
+680,2025-09-27,60+,Pro,5,10,easy to use
+740,2025-09-27,18-29,Basic,1,0,confusing app
+750,2025-09-27,18-29,Pro,4,6,easy to use
+755,2025-09-27,60+,Plus,4,6,fast delivery
+32,2025-09-28,30-44,Plus,4,8,fast delivery
+37,2025-09-28,45-59,Pro,4,8,good value
+78,2025-09-28,60+,Basic,3,5,good value
+84,2025-09-28,45-59,Plus,3,7,great support
+103,2025-09-28,60+,Basic,4,10,great support
+147,2025-09-28,45-59,Basic,3,7,too slow
+151,2025-09-28,30-44,Pro,4,10,fast delivery
+180,2025-09-28,18-29,Pro,4,9,good value
+186,2025-09-28,45-59,Basic,3,5,fast delivery
+198,2025-09-28,30-44,Plus,5,10,good value
+199,2025-09-28,18-29,Plus,3,8,confusing app
+208,2025-09-28,45-59,Basic,4,6,good value
+212,2025-09-28,60+,Plus,3,5,great support
+256,2025-09-28,60+,Plus,3,6,too slow
+271,2025-09-28,45-59,Basic,5,10,fast delivery
+276,2025-09-28,45-59,Basic,3,5,confusing app
+346,2025-09-28,45-59,Basic,2,3,confusing app
+358,2025-09-28,30-44,Basic,2,5,confusing app
+363,2025-09-28,30-44,Plus,3,6,easy to use
+421,2025-09-28,45-59,Plus,2,5,too slow
+431,2025-09-28,18-29,Pro,4,9,easy to use
+539,2025-09-28,30-44,Basic,4,9,easy to use
+555,2025-09-28,60+,Pro,4,8,good value
+591,2025-09-28,45-59,Basic,4,7,great support
+593,2025-09-28,18-29,Plus,3,5,good value
+665,2025-09-28,18-29,Basic,4,7,good value
+717,2025-09-28,45-59,Plus,4,7,fast delivery
+722,2025-09-28,30-44,Basic,4,7,easy to use
+748,2025-09-28,18-29,Plus,4,7,good value
+754,2025-09-28,30-44,Basic,3,8,great support
+774,2025-09-28,60+,Basic,3,6,
+794,2025-09-28,45-59,Pro,4,7,good value
+11,2025-09-29,60+,Basic,5,10,fast delivery
+43,2025-09-29,18-29,Basic,3,7,support was slow
+44,2025-09-29,30-44,Plus,3,7,good value
+45,2025-09-29,30-44,Basic,3,7,good value
+51,2025-09-29,30-44,Plus,5,10,easy to use
+89,2025-09-29,30-44,Basic,3,8,easy to use
+95,2025-09-29,18-29,Plus,4,8,fast delivery
+127,2025-09-29,60+,Basic,3,7,easy to use
+128,2025-09-29,60+,Plus,4,9,great support
+135,2025-09-29,60+,Plus,5,10,great support
+156,2025-09-29,18-29,Basic,3,7,support was slow
+188,2025-09-29,45-59,Basic,3,6,
+219,2025-09-29,30-44,Basic,5,9,easy to use
+272,2025-09-29,45-59,Basic,3,6,easy to use
+349,2025-09-29,45-59,Basic,3,6,fast delivery
+355,2025-09-29,60+,Basic,3,7,
+374,2025-09-29,60+,Basic,3,4,great support
+400,2025-09-29,45-59,Plus,3,4,fast delivery
+467,2025-09-29,18-29,Plus,4,7,great support
+513,2025-09-29,30-44,Plus,4,10,good value
+536,2025-09-29,60+,Basic,2,4,too slow
+689,2025-09-29,45-59,Pro,5,9,easy to use
+785,2025-09-29,30-44,Basic,3,6,support was slow
+19,2025-09-30,60+,Basic,3,4,good value
+26,2025-09-30,30-44,Pro,3,5,confusing app
+75,2025-09-30,18-29,Plus,4,9,great support
+133,2025-09-30,60+,Basic,4,9,good value
+175,2025-09-30,30-44,Basic,1,2,too slow
+177,2025-09-30,45-59,Plus,3,5,great support
+185,2025-09-30,45-59,Basic,2,6,too slow
+192,2025-09-30,45-59,Plus,5,10,great support
+239,2025-09-30,18-29,Basic,5,10,great support
+247,2025-09-30,45-59,Plus,3,6,
+248,2025-09-30,60+,Basic,3,6,confusing app
+290,2025-09-30,45-59,Basic,4,10,good value
+300,2025-09-30,18-29,Pro,3,7,good value
+340,2025-09-30,30-44,Plus,5,8,easy to use
+388,2025-09-30,18-29,Plus,4,8,good value
+397,2025-09-30,45-59,Basic,2,3,too slow
+402,2025-09-30,60+,Pro,4,6,easy to use
+418,2025-09-30,45-59,Basic,5,10,great support
+428,2025-09-30,18-29,Pro,4,8,great support
+502,2025-09-30,45-59,Plus,4,9,great support
+540,2025-09-30,18-29,Plus,4,8,easy to use
+552,2025-09-30,45-59,Pro,4,6,fast delivery
+559,2025-09-30,18-29,Basic,2,4,confusing app
+565,2025-09-30,18-29,Basic,2,4,support was slow
+571,2025-09-30,18-29,Basic,2,4,too slow
+579,2025-09-30,18-29,Plus,4,8,good value
+603,2025-09-30,60+,Basic,3,6,fast delivery
+617,2025-09-30,45-59,Basic,5,8,fast delivery
+629,2025-09-30,60+,Pro,4,8,easy to use
+652,2025-09-30,60+,Pro,3,6,price is high
+654,2025-09-30,30-44,Plus,5,10,easy to use
+668,2025-09-30,60+,Basic,3,6,easy to use
+735,2025-09-30,60+,Plus,4,6,easy to use
+758,2025-09-30,45-59,Pro,5,10,easy to use
+772,2025-09-30,30-44,Basic,4,9,easy to use
+779,2025-09-30,60+,Basic,2,3,too slow

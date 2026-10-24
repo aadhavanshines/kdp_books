@@ -1,0 +1,10 @@
+income $50,400.00, spending $26,552.35, saved 47.3%
+
+category
+Housing          1556.67
+Groceries         414.82
+Shopping          154.16
+Coffee             44.51
+Transport          29.55
+Subscriptions      12.99
+Name: average per month, dtype: float64

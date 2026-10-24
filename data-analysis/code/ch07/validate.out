@@ -1,0 +1,6 @@
+PASS  order IDs are unique
+PASS  no missing values
+PASS  quantities between 1 and 20
+PASS  prices are positive
+PASS  dates are in 2025
+PASS  known regions only

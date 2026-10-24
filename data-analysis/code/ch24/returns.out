@@ -1,0 +1,11 @@
+       total return  annual volatility  best day  worst day
+ALDR          0.595              0.196     0.042     -0.038
+BRKN          0.866              0.320     0.078     -0.053
+CDLX          0.307              0.134     0.029     -0.028
+INDEX         0.527              0.140     0.028     -0.021
+
+       ALDR  BRKN  CDLX  INDEX
+ALDR   1.00  0.31  0.35   0.56
+BRKN   0.31  1.00  0.32   0.52
+CDLX   0.35  0.32  1.00   0.59
+INDEX  0.56  0.52  0.59   1.00

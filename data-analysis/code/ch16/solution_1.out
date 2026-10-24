@@ -1,0 +1,9 @@
+count    87.00
+mean      6.14
+std       1.72
+min       3.20
+25%       4.72
+50%       6.35
+75%       7.70
+max       8.96
+Name: amount, dtype: float64

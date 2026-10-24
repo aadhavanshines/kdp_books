@@ -1,0 +1,12 @@
+<class 'pandas.DataFrame'>
+RangeIndex: 5833 entries, 0 to 5832
+Data columns (total 5 columns):
+ #   Column      Non-Null Count  Dtype         
+---  ------      --------------  -----         
+ 0   order_id    5833 non-null   str           
+ 1   order_date  5833 non-null   datetime64[us]
+ 2   region      5833 non-null   category      
+ 3   category    5833 non-null   category      
+ 4   quantity    5833 non-null   int64         
+dtypes: category(2), datetime64[us](1), int64(1), str(1)
+memory usage: 148.6 KB

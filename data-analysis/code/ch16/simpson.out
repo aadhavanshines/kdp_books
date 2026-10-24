@@ -1,0 +1,9 @@
+team
+Blue    0.67
+Red     0.86
+dtype: float64
+
+team  Blue  Red
+kind           
+easy  0.95  0.9
+hard  0.60  0.5

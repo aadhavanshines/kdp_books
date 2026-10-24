@@ -1,0 +1,34 @@
+order_id           str
+order_date         str
+customer_id        str
+region             str
+channel            str
+category           str
+product            str
+quantity       float64
+unit_price         str
+discount       float64
+dtype: object
+
+missing values per column:
+quantity    14
+dtype: int64
+
+region spellings:
+region
+East      51
+East      10
+North     71
+North     10
+South     31
+South      6
+West      42
+West       6
+east      22
+north     24
+south     13
+west      17
+Name: count, dtype: int64
+duplicate rows: 3
+first prices: ['$18.00', '$35.00', '$50.00']
+first dates: ['05/01/2025', '2025-01-06', '2025-01-08']

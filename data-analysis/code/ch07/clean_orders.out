@@ -1,0 +1,11 @@
+rows with an impossible quantity: 1
+rows: 303 -> 300
+regions: ['East', 'North', 'South', 'West']
+order_date    datetime64[us]
+quantity               int64
+unit_price           float64
+dtype: object
+  order_date region  quantity  unit_price
+0 2025-01-05  South         1        18.0
+1 2025-01-06   West         1        35.0
+2 2025-01-08   East         1        50.0

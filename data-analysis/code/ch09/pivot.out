@@ -1,0 +1,15 @@
+quarter      1     2     3      4  Total
+category                                
+Bedding   20.5  21.0  25.6   43.8  110.9
+Decor      7.1   7.5   9.5   15.6   39.7
+Garden     7.6  23.6   6.8   12.6   50.5
+Kitchen   16.2  14.5  21.2   34.4   86.3
+Lighting  17.5  22.5  25.6   44.4  109.9
+Total     68.9  89.0  88.7  150.8  397.4
+
+channel   app  marketplace   web
+region                          
+East     0.28         0.20  0.51
+North    0.31         0.20  0.49
+South    0.30         0.21  0.50
+West     0.32         0.20  0.48
