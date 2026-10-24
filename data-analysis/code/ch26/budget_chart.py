@@ -49,7 +49,7 @@ ax.set_xlabel("")
 ax.set_ylabel("Spending ($)")
 ax.set_title("Where the money went, month by month")
 ax.legend(
-    ncol=5, fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.1)
+    ncol=5, fontsize=9, loc="upper center", bbox_to_anchor=(0.5, -0.1)
 )
 fig.tight_layout()
 fig.savefig("budget_chart.png")

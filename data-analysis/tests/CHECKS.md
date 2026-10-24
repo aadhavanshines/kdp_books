@@ -22,6 +22,7 @@ Final state: 210 pages (6 x 9 in), about 21,400 words of prose plus code, 28 cha
 | EPUBCheck 5.1 | 0 fatals, 0 errors, 0 warnings |
 | Interior PDF (`build/check_pdf.py`) | All fonts embedded; no missing glyphs; smallest inside margin 0.786 in (KDP minimum 0.5 in); smallest outside margin 0.593 in; every chapter, part and appendix starts on a right-hand page; no large gaps |
 | Visual proof | All pages inspected; two tables with an escaped `\|` fixed in the parser, one badly spaced justified line reworded |
+| External review (October 2026) | Reported inconsistent indentation in Appendix F's generator. Not reproduced: the code printed on pages 200-205 was extracted from the PDF, is identical to `code/data/make_data.py`, and when run on all 4 versions writes all 10 CSV files byte for byte identical to the book's, with the row counts shown in Chapter 2. Acted on the review's print-size advice: chart text enlarged (labels print at about 8 pt, up from 6.5 pt), and two charts that forced 7 pt text were fixed |
 | Paperback cover | 12.723 x 9.250 in = 2 x 0.125 bleed + 2 x 6 in + 0.473 in spine (210 x 0.002252); barcode area clear |
 | eBook covers | Dark (`ebook-cover.jpg`) and white (`ebook-cover-white.jpg`), 1600 x 2560 px; no logos |
 | Spelling (codespell) | Clean |

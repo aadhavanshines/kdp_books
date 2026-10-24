@@ -12,9 +12,9 @@ weekday = orders.groupby(orders["order_date"].dt.dayofweek)["order_id"]
 weekday = weekday.count() / 52
 
 fig, axes = plt.subplots(2, 2, figsize=(6.4, 4.6))
-axes[0, 0].plot(monthly.index.strftime("%b"), monthly / 1000, marker="o")
+axes[0, 0].plot(monthly.index.month, monthly / 1000, marker="o")
 axes[0, 0].set_title("Revenue by month ($k)")
-axes[0, 0].tick_params(axis="x", labelsize=7)
+axes[0, 0].set_xticks(range(1, 13))
 axes[0, 1].barh(by_cat.index, by_cat / 1000)
 axes[0, 1].set_title("Revenue by category ($k)")
 axes[1, 0].bar(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], weekday)
