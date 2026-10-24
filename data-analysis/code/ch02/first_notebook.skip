@@ -1,0 +1,1 @@
+Notebook cells (# %% markers), not a script: its values appear only in a notebook. Built into first_notebook.ipynb by tests/make_notebooks.py and run by tests/check_notebooks.py.

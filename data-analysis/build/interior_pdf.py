@@ -343,8 +343,9 @@ def code_block(code, styles, source=False):
 class Figure(Flowable):
     """Image plus centered caption that shrinks (down to 65%) to fit the space left on a page."""
 
-    def __init__(self, path, caption, style, max_h=3.4 * inch):
+    def __init__(self, path, caption, style, max_h=3.4 * inch, min_fit=0.85):
         super().__init__()
+        self.min_fit = min_fit
         from PIL import Image as PILImage
         w_px, h_px = PILImage.open(path).size
         self.path = str(path)
@@ -361,7 +362,7 @@ class Figure(Flowable):
         self.scale = 1.0
         if self._height(1.0, aw) > ah:
             fit = (ah - (self._height(0, aw))) / (self.full_w * self.ratio)
-            if fit >= 0.85:
+            if fit >= self.min_fit:
                 self.scale = fit
         self.width = aw
         self.height = self._height(self.scale, aw)
@@ -398,9 +399,12 @@ class FloatMarker(Flowable):
 
 
 def image_block(path, caption, styles):
-    # Terminal screenshots may be taller, so they keep the full text width and readable text.
-    max_h = 4.8 * inch if os.path.basename(str(path)).startswith("term-") else 3.4 * inch
-    return [Figure(path, caption, styles["caption"], max_h=max_h)]
+    # Terminal and app screenshots may be taller, so they keep the full text width and readable text.
+    name = os.path.basename(str(path))
+    max_h = 4.8 * inch if name.startswith(("term-", "shot-")) else 3.4 * inch
+    # App screenshots never shrink: their small text must stay readable.
+    min_fit = 1.0 if name.startswith("shot-") else 0.85
+    return [Figure(path, caption, styles["caption"], max_h=max_h, min_fit=min_fit)]
 
 
 def book_block(path, text, styles):

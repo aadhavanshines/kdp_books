@@ -75,7 +75,7 @@ Check the installation:
 @include code/ch02/check_setup.out
 ```
 
-> **Tip:** Many analysts also like **Jupyter notebooks**, where code, output and charts sit together on one page. Everything in this book works in a notebook as well (install it with `python -m pip install notebook` and start it with `jupyter notebook`). The book uses plain `.py` files because they're easier to test, rerun and share.
+> **Tip:** Prefer **Jupyter notebooks**, where code, output and charts sit together on one page? Everything in this book works in a notebook too, and the end of this chapter shows how to use one.
 
 ## The Folder Layout
 
@@ -149,6 +149,75 @@ Here's what each one holds.
 
 **CSV** (comma-separated values) is the most common way to share tables: plain text, one row per line, columns separated by commas, with the column names on the first line. Every spreadsheet program and database can read and write it.
 
+## Working in Jupyter Notebooks
+
+So far you've run programs from a terminal. Many analysts prefer a **Jupyter notebook**: a page in your web browser made of **cells**. A code cell holds a few lines of Python; when you run it, its output appears right underneath, tables as neat tables and charts as pictures. Text cells hold headings and notes. You build up an analysis one small step at a time and see each result as you go.
+
+Jupyter came with `requirements.txt` if you downloaded the book's code. If you made your own folder, install it too:
+
+```
+$ python -m pip install notebook==7.6.3
+```
+
+With your virtual environment active, start Jupyter from the book's folder:
+
+```
+$ jupyter notebook
+```
+
+Your web browser opens and lists the files in that folder. (The terminal must stay open while you work; to stop Jupyter afterwards, click in the terminal and press Ctrl+C twice.) Open `code`, then `ch02`, then `first_notebook.ipynb`. Notebook files end in `.ipynb`.
+
+### Your First Notebook
+
+The notebook starts with a text cell, a heading and one line of notes, and then four code cells. Click in the first code cell and press **Shift+Enter**: Jupyter runs the cell and moves to the next one. Press Shift+Enter four times to run them all.
+
+The first cell loads the orders:
+
+```python
+@include code/ch02/first_notebook.py#L6-L9
+```
+
+There's no `print` here, yet the notebook shows 5833 under the cell. That's the first thing to know about notebooks: **the value of a cell's last line is shown automatically.** The second cell shows the first three orders, four of their columns, as a table (double brackets pick columns, which Chapter 6 explains):
+
+```python
+@include code/ch02/first_notebook.py#L12-L12
+```
+
+![The top of the notebook in Jupyter: the menu and toolbar, the "My First Notebook" heading, the first cell with its result 5833, and the second cell with a three-row table of order ID, product, quantity and unit price.](images/shot-jupyter-1.png)
+
+The number in brackets beside each cell, `[1]`, `[2]`, counts the order in which cells were run. The third cell adds a revenue column and totals it by category:
+
+```python
+@include code/ch02/first_notebook.py#L15-L17
+```
+
+![The third cell and its result: revenue by category from Decor, 39,707, to Bedding, 110,935.](images/shot-jupyter-2.png)
+
+Variables live on between cells: the third cell uses `orders` from the first, and the fourth uses `by_category` from the third. The fourth cell draws a chart, which appears under the cell, with no `savefig` needed:
+
+```python
+@include code/ch02/first_notebook.py#L20-L20
+```
+
+![The fourth cell and its chart: horizontal bars of revenue by category, Bedding and Lighting longest, Decor shortest.](images/shot-jupyter-3.png)
+
+The chart is assigned to `ax` only so that the cell's last line has no value to show; without `ax =`, Jupyter would print a line describing the chart object above the picture.
+
+> **Common Mistake:** Because variables live on, the order you run cells in matters. Run the third cell before the first, and you get `NameError: name 'orders' is not defined`. Change a cell near the top, and the cells below still show results from the old version until you run them again. When results look odd, choose **Kernel > Restart Kernel and Run All Cells**: Jupyter forgets everything and runs the notebook from top to bottom, which is exactly how anyone else will run it.
+
+A few more things worth knowing:
+
+- **Saving:** Jupyter saves automatically every few minutes, and Ctrl+S (Cmd+S on a Mac) saves at once. The `.ipynb` file keeps the outputs too, so you can reopen it later and see your results without running anything.
+- **New notebooks:** choose **File > New > Notebook** and pick the Python 3 kernel. Save it in a chapter folder, so paths like `"../data/orders.csv"` work.
+- **Text cells:** change a cell's type from Code to Markdown in the toolbar and write notes, with `#` for a heading. A notebook with a few sentences between the steps is a report someone else can follow.
+- **"Not Trusted":** Jupyter marks a notebook it didn't run on your computer, like the ones you downloaded, as not trusted, and holds back anything interactive in its saved outputs until you run it yourself. Running the cells fixes it.
+
+### A Notebook for Every Chapter
+
+Each chapter folder in the download also has a notebook with all of that chapter's programs, in the book's order: `code/ch09/ch09.ipynb` for Chapter 9, and so on. Each code cell is one program, under the heading of the section it comes from, and the saved notebooks show every output and chart, so you can browse them on GitHub without running anything. The book's tests run every chapter notebook on Python 3.12 to 3.15 and check that each cell prints exactly what the book prints. Choose **Run > Run All Cells** to run a whole chapter.
+
+Notebooks are best for exploring: trying an idea, looking at a table, adjusting a chart. Plain `.py` files are best for analyses you rerun, test and schedule, which is why this book's programs are files (Chapter 19 shows why). Many analysts explore in a notebook and then move the finished steps into a `.py` file. In fact, `first_notebook.py`, next to the notebook, is the same notebook written as a plain file: each `# %%` line starts a new cell, and code editors such as Visual Studio Code can run those cells one at a time, notebook style.
+
 ## Key Takeaways
 
 - Every program, its expected output, the exercise solutions and the datasets are free at github.com/aadhavanshines/data-analysis-with-python-hands-on.
@@ -156,3 +225,4 @@ Here's what each one holds.
 - The book's four libraries: NumPy (arrays), pandas (tables), matplotlib (charts) and openpyxl (Excel files).
 - Keep each chapter's programs in their own folder beside a shared `data` folder.
 - A fixed random seed makes "random" data identical everywhere, so your results match the book's.
+- A Jupyter notebook runs code in cells and shows the last line's value, tables and charts under each cell; restart and run all cells before trusting the results.

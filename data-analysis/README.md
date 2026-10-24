@@ -29,6 +29,8 @@ python3 tests/check_data.py            # make_data.py gives identical files on e
 python3 tests/check_widths.py          # no code or output line is wider than the printed page
 python3 tests/check_manuscript.py      # printed code is tested code; nothing tested is left out
 python3 tests/check_cover_code.py      # the program on the front cover prints what it shows
+python3 tests/check_notebooks.py       # every chapter notebook runs and prints the .out files
+.venvs/py3.15/bin/python tests/make_notebooks.py   # rebuild code/chNN/chNN.ipynb after changing a listing
 python3 tests/run_listings.py --record # re-record .out files after changing a listing
 ```
 

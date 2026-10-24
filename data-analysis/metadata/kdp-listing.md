@@ -48,6 +48,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p><b>Inside, you will learn to:</b></p>
 <ul>
+<li>Work in plain Python files or Jupyter notebooks</li>
 <li>Load CSV files, spreadsheets, JSON and databases, and save your results</li>
 <li>Find and clean messy data: missing values, duplicates, inconsistent text and the date trap that swaps days and months</li>
 <li>Select, filter, transform, group, join and reshape tables</li>
@@ -66,7 +67,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p>Every chapter ends with exercises, and every exercise has a tested, worked solution.</p>
 
-<p><b>All the code and data are free to download</b> from the book's GitHub repository, arranged by chapter, with the expected output of every program and an automatic check that runs everything on Python 3.12 to 3.15.</p>
+<p><b>All the code and data are free to download</b> from the book's GitHub repository, arranged by chapter, with the expected output of every program, a ready-to-run Jupyter notebook for every chapter, and an automatic check that runs everything on Python 3.12 to 3.15. Chapter 2 shows how to work in Jupyter notebooks, step by step.</p>
 
 <p>Written by an automation professional with more than 15 years of experience turning engineering data into reliable tools and reports.</p>
 
