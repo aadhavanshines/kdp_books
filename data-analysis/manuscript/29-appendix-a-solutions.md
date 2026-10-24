@@ -1,6 +1,6 @@
 # Appendix A: Exercise Solutions
 
-Here are worked solutions to the exercises. Each one was run on Python 3.12, 3.13, 3.14 and 3.15, and the output shown is the output it produced. There's usually more than one good answer: if yours gives the same result and you can explain it, it's right.
+Here are worked solutions to the exercises. Each one was run on Python 3.12, 3.13, 3.14 and 3.15, and the output shown is the output it produced. There's usually more than one good answer: if yours gives the same result and you can explain it, it's right. The same files are in the book's code repository as `solution_1.py`, `solution_2.py` and so on, in each chapter's folder.
 
 ## Chapter 3: NumPy Essentials
 

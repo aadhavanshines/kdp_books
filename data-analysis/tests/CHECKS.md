@@ -1,6 +1,6 @@
 # Pre-Publication Check Report
 
-Final state: 210 pages (6 x 9 in), about 21,400 words of prose plus code, 28 chapters in five parts, and appendices A to F. Checked in October 2026 on Python 3.12.3, 3.13.5, 3.14.8 and 3.15.0, with numpy 2.5.4, pandas 3.0.6, matplotlib 3.11.2, openpyxl 3.1.5 and pytest 9.1.1 (`requirements.txt`).
+Final state: 212 pages (6 x 9 in), about 21,400 words of prose plus code, 28 chapters in five parts, and appendices A to F. Checked in October 2026 on Python 3.12.3, 3.13.5, 3.14.8 and 3.15.0, with numpy 2.5.4, pandas 3.0.6, matplotlib 3.11.2, openpyxl 3.1.5 and pytest 9.1.1 (`requirements.txt`).
 
 ## Code and Data
 
@@ -13,6 +13,7 @@ Final state: 210 pages (6 x 9 in), about 21,400 words of prose plus code, 28 cha
 | Charts | All 13 charts are drawn at build time by the printed listings (`build/figures.py`), in a print-friendly style |
 | Front cover program (`tests/check_cover_code.py`) | Prints exactly the output shown on the cover, on all 4 versions |
 | Style | `ruff format` (76 columns) and `ruff check`: listings and tests clean |
+| Public code repository | github.com/aadhavanshines/data-analysis-with-python-hands-on: the same code and data by chapter, MIT license, with a GitHub Actions workflow that regenerates the datasets and runs every listing on Python 3.12, 3.13, 3.14 and 3.15 after every change. Its first run found that `ch06/sorting.py` printed tied rows in a different order on the GitHub machines: NumPy's fastest sort depends on the processor's instruction set (AVX-512 here). Reproduced locally by switching those instructions off (`NPY_DISABLE_CPU_FEATURES`); the listing now breaks ties by `order_id`, and Chapter 6 explains why. Every listing was then run with AVX-512 on, with it off, and with AVX2 also off: identical output on all three |
 | Network | No listing calls the internet; databases are SQLite in memory or local files |
 
 ## Book
@@ -23,7 +24,7 @@ Final state: 210 pages (6 x 9 in), about 21,400 words of prose plus code, 28 cha
 | Interior PDF (`build/check_pdf.py`) | All fonts embedded; no missing glyphs; smallest inside margin 0.786 in (KDP minimum 0.5 in); smallest outside margin 0.593 in; every chapter, part and appendix starts on a right-hand page; no large gaps |
 | Visual proof | All pages inspected; two tables with an escaped `\|` fixed in the parser, one badly spaced justified line reworded |
 | External review (October 2026) | Reported inconsistent indentation in Appendix F's generator. Not reproduced: the code printed on pages 200-205 was extracted from the PDF, is identical to `code/data/make_data.py`, and when run on all 4 versions writes all 10 CSV files byte for byte identical to the book's, with the row counts shown in Chapter 2. Acted on the review's print-size advice: chart text enlarged (labels print at about 8 pt, up from 6.5 pt), and two charts that forced 7 pt text were fixed. A second review repeated the Appendix F report for pages 201-202; measured in the PDF, those lines sit at four spaces inside `shop()`, so the code was correct, but a page that starts mid-function shows no `def` line. `shop()` was split into four short functions (same random calls in the same order, so every dataset is byte for byte unchanged), Appendix F now prints the generator in 12 parts that each start at the left margin, with a note on indentation across pages. The printed code was extracted from the final PDF again, is identical to the source, and run on all 4 versions writes all 10 files identical to the book's |
-| Paperback cover | 12.723 x 9.250 in = 2 x 0.125 bleed + 2 x 6 in + 0.473 in spine (210 x 0.002252); barcode area clear |
+| Paperback cover | 12.727 x 9.250 in = 2 x 0.125 bleed + 2 x 6 in + 0.477 in spine (212 x 0.002252); barcode area clear |
 | eBook covers | Dark (`ebook-cover.jpg`) and white (`ebook-cover-white.jpg`), 1600 x 2560 px; no logos |
 | Spelling (codespell) | Clean |
 | Grammar (LanguageTool, en-US) | Remaining flags reviewed: false positives around code and deliberate style |

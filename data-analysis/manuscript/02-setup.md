@@ -1,6 +1,18 @@
 # Chapter 2: Setting Up and the Book's Data
 
-In this chapter you'll install the four libraries the book uses, create the folders for your work, make the datasets, and take a first look at them. It takes about fifteen minutes, and then everything else in the book just works.
+In this chapter you'll install the four libraries the book uses, get the book's code and data, and take a first look at the datasets. It takes about fifteen minutes, and then everything else in the book just works.
+
+## Getting the Code and Data
+
+Every program in this book, with its exact expected output, every exercise solution and all ten datasets are in a free repository on GitHub:
+
+**github.com/aadhavanshines/data-analysis-with-python-hands-on**
+
+Open that address in a web browser, click the green **Code** button and choose **Download ZIP**, then unzip it wherever you keep your projects. If you use Git, you can clone it instead: type `git clone`, a space, and the address above with `https://` in front, all on one line.
+
+Either way you get a folder called `data-analysis-with-python-hands-on`. Its `code` folder holds one folder per chapter (`ch01` to `ch27`) and a shared `data` folder with the datasets, ready to use. The repository's README file repeats these steps and lists what each chapter contains.
+
+You can also work without downloading anything: make the folders yourself and type the programs from the book, as the rest of this chapter shows. Many readers do both: they type each program and compare it with the tested file when something doesn't match.
 
 ## Python and a Virtual Environment
 
@@ -10,11 +22,10 @@ You need Python 3.12 or newer. Check what you have from a terminal (on Windows, 
 $ python3 --version
 ```
 
-Make a folder for the book's work and, inside it, a **virtual environment**: a private set of installed libraries for this project, so it can't clash with anything else on your computer:
+Go to the folder you downloaded (or make your own, `data-analysis`) and create a **virtual environment** inside it: a private set of installed libraries for this project, so it can't clash with anything else on your computer:
 
 ```
-$ mkdir data-analysis
-$ cd data-analysis
+$ cd data-analysis-with-python-hands-on
 $ python3 -m venv .venv
 ```
 
@@ -39,7 +50,13 @@ The book uses four libraries:
 - **matplotlib:** charts.
 - **openpyxl:** reading and writing Excel files, which pandas uses behind the scenes.
 
-Install the versions the book was tested with, so your output matches the book exactly:
+Install the versions the book was tested with, so your output matches the book exactly. In the downloaded folder, one command installs them all from the repository's `requirements.txt` file:
+
+```
+$ python -m pip install -r requirements.txt
+```
+
+If you made your own folder, name the versions instead:
 
 ```
 $ python -m pip install numpy==2.5.4 pandas==3.0.6 matplotlib==3.11.2
@@ -62,7 +79,7 @@ Check the installation:
 
 ## The Folder Layout
 
-Each chapter's programs go in their own folder, next to a shared `data` folder:
+Each chapter's programs go in their own folder, next to a shared `data` folder. In the download, these folders are inside `code`; if you type the programs yourself, create the same layout:
 
 ```
 data-analysis/
@@ -84,11 +101,13 @@ $ cd ch01
 $ python first_look.py
 ```
 
+In the download, each program's expected output is stored next to it, in a file with the same name ending in `.out` (`first_look.out`), so you can compare your run with the book's at any time.
+
 ## Making the Data
 
 All the datasets in this book are fictional, and one program makes all of them: `make_data.py`, printed in full in Appendix F. It uses NumPy's random number generator with a fixed **seed** (2026), so it makes exactly the same "random" data on every computer, every time. That's why your results will match the book's to the last digit.
 
-Type or copy `make_data.py` into your `data` folder and run it there:
+The download already contains the datasets, made by this program, so you can skip this step. If you're typing the programs yourself, type or copy `make_data.py` into your `data` folder and run it there:
 
 ```
 $ cd data
@@ -132,6 +151,7 @@ Here's what each one holds.
 
 ## Key Takeaways
 
+- Every program, its expected output, the exercise solutions and the datasets are free at github.com/aadhavanshines/data-analysis-with-python-hands-on.
 - Use a virtual environment per project, and install the exact library versions when you need reproducible results.
 - The book's four libraries: NumPy (arrays), pandas (tables), matplotlib (charts) and openpyxl (Excel files).
 - Keep each chapter's programs in their own folder beside a shared `data` folder.

@@ -1,6 +1,6 @@
 # Appendix F: The Data Generator
 
-This program makes every dataset in the book. Type the parts below, in order, into one file called `make_data.py` in your `data` folder, and run it there, as Chapter 2 describes. With the library versions from Chapter 2, it produces exactly the files the book uses; the book's tests regenerate them on Python 3.12, 3.13, 3.14 and 3.15 and check that every file is identical.
+This program makes every dataset in the book. It is also in the book's code repository (github.com/aadhavanshines/data-analysis-with-python-hands-on) as `code/data/make_data.py`, together with the files it makes. To type it yourself, enter the parts below, in order, into one file called `make_data.py` in your `data` folder, and run it there, as Chapter 2 describes. With the library versions from Chapter 2, it produces exactly the files the book uses; the book's tests regenerate them on Python 3.12, 3.13, 3.14 and 3.15 and check that every file is identical.
 
 Each function makes one dataset, with patterns built in on purpose, so your analyses have something real to find:
 

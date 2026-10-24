@@ -66,6 +66,8 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p>Every chapter ends with exercises, and every exercise has a tested, worked solution.</p>
 
+<p><b>All the code and data are free to download</b> from the book's GitHub repository, arranged by chapter, with the expected output of every program and an automatic check that runs everything on Python 3.12 to 3.15.</p>
+
 <p>Written by an automation professional with more than 15 years of experience turning engineering data into reliable tools and reports.</p>
 
 <p><i>This book is independent and is not affiliated with, sponsored by, or endorsed by the Python Software Foundation or any other company or project named in it. Python is a trademark of the Python Software Foundation.</i></p>

@@ -33,7 +33,7 @@ The book suits students, job-seekers preparing for analyst roles, spreadsheet us
 
 ## How to Use the Code
 
-Type the listings yourself if you can; you'll learn more than by reading. Each chapter's programs live in their own folder, next to a shared `data` folder, exactly as Chapter 2 sets up. Change things and rerun: filter a different region, group by another column, try another chart. When something breaks, Appendix C lists the errors analysts meet most often and how to fix them.
+Type the listings yourself if you can; you'll learn more than by reading. Each chapter's programs live in their own folder, next to a shared `data` folder, exactly as Chapter 2 sets up. Every program, exercise solution and dataset is also free to download from the book's code repository, **github.com/aadhavanshines/data-analysis-with-python-hands-on**, so you can check your work against the tested files; Chapter 2 shows how to get it. Change things and rerun: filter a different region, group by another column, try another chart. When something breaks, Appendix C lists the errors analysts meet most often and how to fix them.
 
 > **Note:** All companies, people, products, cities and figures in the datasets are fictional. Real companies and events appear only in the clearly marked real-world boxes, as published by their sources.
 

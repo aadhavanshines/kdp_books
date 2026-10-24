@@ -52,9 +52,9 @@ Filtering works exactly like a NumPy mask: a condition on a column gives True or
 @include code/ch06/sorting.out
 ```
 
-`sort_values` sorts by one or more columns; `ascending=False` puts the largest first. `nlargest(3, "quantity")` is a shortcut for "sort and take the top 3", and it's faster on big tables. The third example finds the biggest order in each region: sort by region and then by revenue (largest first), then `groupby("region").head(1)` keeps the first row of each region. You'll see `groupby` properly in Chapter 9.
+`sort_values` sorts by one or more columns, and `ascending` says which way for each: here revenue largest first, then order ID smallest first. `nlargest(3, "quantity")` is a shortcut for "sort and take the top 3", and it's faster on big tables. The third example finds the biggest order in each region: sort by region and then by revenue (largest first), then `groupby("region").head(1)` keeps the first row of each region. You'll see `groupby` properly in Chapter 9.
 
-Several orders tie at $600 (five floor lamps each). When values tie, the order among them depends on the sorting method, so don't build anything on which tied row comes first.
+Several orders tie at $600 (five floor lamps each). When values tie, a sort by revenue alone can put the tied rows in a different order on a different computer, because the fastest sorting method depends on the processor. That's why the first sort adds `order_id` as a second column: it breaks the ties, so everyone gets the same three rows. When the order of tied rows matters, always add a tie-breaker.
 
 ## Exercises
 
@@ -66,4 +66,4 @@ Several orders tie at $600 (five floor lamps each). When values tie, the order a
 - One column name gives a Series; a list of names gives a DataFrame.
 - `loc` selects by label (slices include the end); `iloc` by position (slices exclude it).
 - Filter with conditions combined by `&`, `|` and `~`, each in parentheses; `isin`, `between` and `query` keep filters readable.
-- `sort_values` and `nlargest` find the top rows; don't rely on the order of tied values.
+- `sort_values` and `nlargest` find the top rows; add a tie-breaker column when values can tie.

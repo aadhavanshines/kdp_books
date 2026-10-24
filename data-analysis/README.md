@@ -2,6 +2,8 @@
 
 *Clean, Explore, Visualize and Report on Real Data, from Spreadsheets to SQL, with Six Projects, Exercises and Every Example Tested*, by Aadhavan Muthurengan.
 
+The code and data are published for readers at [github.com/aadhavanshines/data-analysis-with-python-hands-on](https://github.com/aadhavanshines/data-analysis-with-python-hands-on); copy changes to `code/` there too.
+
 Twenty-eight chapters in five parts, from a first look at a table to six complete analysis projects. Every listing is a real file in `code/`, run on Python 3.12, 3.13, 3.14 and 3.15 with the pinned packages in `requirements.txt`, and the manuscript pulls code and output from those files at build time, so the printed code is the tested code. Every chart in the book is drawn by the listing printed next to it.
 
 ## Folders
