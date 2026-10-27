@@ -1,6 +1,7 @@
 ---
 name: packing-list
-description: Make a packing list for a trip from the destination, length and purpose, using what you remember about the owner.
+description: Make a packing list for a trip from the destination, length
+  and purpose, using what you remember about the owner.
 ---
 # Packing List
 

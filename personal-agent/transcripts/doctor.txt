@@ -1,0 +1,6 @@
+Checking ~/.sparrow
+  ok   ANTHROPIC_API_KEY is set
+  ok   the sandbox works
+  ok   3 skills load
+  ok   the web chat token is set
+All good.

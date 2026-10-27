@@ -1,6 +1,7 @@
 ---
 name: expense-log
-description: Record an expense in expenses.csv and report totals by category for a month.
+description: Record an expense in expenses.csv and report totals by
+  category for a month.
 ---
 # Expense Log
 

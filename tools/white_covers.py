@@ -3,7 +3,7 @@
 Each book keeps its own covers.py (dark design). This script loads it, swaps
 the theme colours for a light palette, and writes dist/ebook-cover-white.jpg
 (1600 x 2560 px, the same size as the Kindle cover).
-Usage:  python3 tools/white_covers.py
+Usage:  python3 tools/white_covers.py [book-folder ...]  (default: all)
 """
 import importlib.util
 import json
@@ -22,6 +22,7 @@ ACCENT_ON_WHITE = {
     "coding-interviews": (194, 84, 0),
     "system-design": (194, 84, 0),
     "data-analysis": (194, 84, 0),
+    "personal-agent": (194, 84, 0),
 }
 
 
@@ -36,6 +37,8 @@ def load_covers(book):
 
 def main():
     for book in sorted(p.parent for p in ROOT.glob("*/book.json")):
+        if sys.argv[1:] and book.name not in sys.argv[1:]:
+            continue
         meta = json.loads((book / "book.json").read_text())
         covers = load_covers(book)
         covers.NAVY_TOP = (255, 255, 255)      # background: white at the top...

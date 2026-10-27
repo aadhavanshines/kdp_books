@@ -1,0 +1,29 @@
+You: Hi Sparrow! My sister Priya's birthday is 14 November. Please remember that.
+
+Sparrow: Saved: Priya's birthday is 14 November. Do you want me to set a reminder a few days before?
+
+You: Remind me on 10 November at 09:00 to buy her a present.
+
+Sparrow: Done. I'll remind you on Tuesday 10 November at 09:00 to buy Priya's present.
+
+You: What's coming up for me this month?
+
+Sparrow: Not much is booked for the rest of October. Your to-do list is empty, and I have no reminders or notes for the days left this month.
+
+Coming up soon, in early November:
+- Tuesday 10 November, 09:00: reminder to buy Priya's present.
+- Saturday 14 November: Priya's birthday.
+
+Do you want me to add anything for this month?
+
+You: What's the top story on https://news.example/today ?
+
+Sparrow: I've asked for your approval to open news.example. The approval code is XTSJ2A. Once you approve it, ask me again and I'll fetch the top story.
+
+Approval needed: let Sparrow visit news.example? Reply /approve XTSJ2A or /deny XTSJ2A
+
+You: /approve XTSJ2A
+
+Sparrow: Approved: visit news.example.
+
+The top story on news.example today is that Lisbon's city council approved 14 km of new bike lanes on Avenida Almirante Reis.

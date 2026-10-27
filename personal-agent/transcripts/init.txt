@@ -1,0 +1,2 @@
+Sparrow's home is ready: ~/.sparrow
+Edit ~/.sparrow/sparrow.yaml and ~/.sparrow/workspace/USER.md, then run: python -m sparrow doctor

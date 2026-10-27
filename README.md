@@ -13,5 +13,6 @@ Book projects for Amazon Kindle Direct Publishing by **Aadhavan Muthurengan**.
 | The Coding Interview Playbook: 120 Original Problems with Tested Python Solutions, Patterns, System Design and Mock Interviews to Prepare for Top Tech Company Interviews | Ready to upload (eBook and paperback) | [`coding-interviews/`](coding-interviews/) |
 | The System Design Interview Playbook: A Step-by-Step Framework, 20 Worked Designs, Tested Building Blocks and Mock Interviews to Prepare for Senior Engineering Interviews at Top Tech Companies | Ready to upload (eBook and paperback) | [`system-design/`](system-design/) |
 | Data Analysis with Python, Hands-On: Clean, Explore, Visualize and Report on Real Data, from Spreadsheets to SQL, with Six Projects, Exercises and Every Example Tested | Ready to upload (eBook and paperback) | [`data-analysis/`](data-analysis/) |
+| Build Your Own AI Personal Agent: An Always-On Assistant That Chats Where You Do, Remembers, Learns Skills, Works on a Schedule and Runs Safely in a Sandbox, Built and Tested End to End in Python | Ready to upload (eBook and paperback) | [`personal-agent/`](personal-agent/) |
 
 Each book folder contains the Markdown manuscript, a build script, the KDP listing metadata, and the upload-ready files in `dist/`.

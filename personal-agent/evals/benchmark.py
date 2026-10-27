@@ -92,7 +92,8 @@ def memory_search(results: dict) -> None:
     results["index 10,000 facts + 365 notes (ms)"] = round(
         (time.perf_counter() - start) * 1000)
     times = []
-    for query in ["Priya birthday", "topic 42", "walked km", "nothing"] * 25:
+    queries = ["Priya birthday", "topic 42", "walked km", "nothing"]
+    for query in queries * 25:
         start = time.perf_counter()
         hits = core.memory.search(query)
         times.append((time.perf_counter() - start) * 1000)

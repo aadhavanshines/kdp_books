@@ -1,0 +1,22 @@
+Sparrow is running. Press Ctrl+C to stop.
+Chatting with Sparrow. Type /help for commands, Ctrl+D to quit.
+
+Sparrow: I logged both expenses for today in a new expenses.csv:
+- Lunch: 12.50 (food)
+- Taxi: 30.00 (transport)
+
+That's 42.50 in total.
+
+
+Sparrow: I logged yesterday's groceries (64.20, food). Totals for October:
+
+- Food: 76.70
+- Transport: 30.00
+- Total: 106.70
+
+
+Sparrow: Model: claude-sonnet-5-5
+Spent today: US$0.0256 of US$2.00
+Scheduled jobs: 0
+Waiting for approval: 0
+Guests: 0

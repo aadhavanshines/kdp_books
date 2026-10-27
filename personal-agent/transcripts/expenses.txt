@@ -1,0 +1,4 @@
+date,amount,category,note
+2026-10-27,12.50,food,lunch
+2026-10-27,30.00,transport,taxi
+2026-10-26,64.20,food,groceries

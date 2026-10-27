@@ -1,0 +1,50 @@
+{
+  "time": "2026-10-27T07:19:03+00:00",
+  "event": "inbound",
+  "route": "terminal:owner",
+  "sender": "terminal:owner",
+  "role": "owner",
+  "text": "I spent 12.50 on lunch and 30 on a taxi toda..."
+}
+{
+  "time": "2026-10-27T07:19:05+00:00",
+  "event": "tool",
+  "route": "terminal:owner",
+  "tool": "read_skill",
+  "args": {"name": "expense-log"},
+  "result": "# Expense Log\\n\\nThe file `expenses.csv` has..."
+}
+{
+  "time": "2026-10-27T07:19:06+00:00",
+  "event": "tool",
+  "route": "terminal:owner",
+  "tool": "read_file",
+  "args": {"path": "expenses.csv"},
+  "result": "There is no file called expenses.csv."
+}
+{
+  "time": "2026-10-27T07:19:08+00:00",
+  "event": "tool",
+  "route": "terminal:owner",
+  "tool": "write_file",
+  "args": {"path": "expenses.csv", "content": "date,amount,category..."},
+  "result": "Saved expenses.csv (86 characters)."
+}
+{
+  "time": "2026-10-27T07:19:03+00:00",
+  "event": "turn",
+  "route": "terminal:owner",
+  "session": "main",
+  "kind": "message",
+  "model": "claude-sonnet-5-5",
+  "cost_usd": 0.0128,
+  "error": null,
+  "tools": ["read_skill", "read_file", "write_file"]
+}
+{
+  "time": "2026-10-27T07:19:10+00:00",
+  "event": "outbound",
+  "route": "terminal:owner",
+  "text": "I logged both expenses for today in a new ex...",
+  "delivered": true
+}

@@ -1,6 +1,7 @@
 ---
 name: daily-briefing
-description: Give the owner a short morning briefing of today's to-dos, reminders and anything remembered for today.
+description: Give the owner a short morning briefing of today's to-dos,
+  reminders and anything remembered for today.
 ---
 # Daily Briefing
 

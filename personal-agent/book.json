@@ -1,0 +1,87 @@
+{
+  "title": "Build Your Own AI Personal Agent",
+  "subtitle": "An Always-On Assistant That Chats Where You Do, Remembers, Learns Skills, Works on a Schedule and Runs Safely in a Sandbox, Built and Tested End to End in Python",
+  "cover_title": [
+    [
+      "BUILD YOUR OWN",
+      false
+    ],
+    [
+      "AI PERSONAL",
+      true
+    ],
+    [
+      "AGENT",
+      true
+    ]
+  ],
+  "short_subtitle": "Built and Tested End to End",
+  "cover_tagline": "Chats, Remembers, Learns Skills, Works on a Schedule and Stays Safe in a Sandbox",
+  "cover_prompt": "",
+  "cover_features": [
+    "130+ TESTS",
+    "48 REAL-MODEL RUNS",
+    "RED-TEAMED"
+  ],
+  "slug": "build-your-own-ai-personal-agent",
+  "author": "Aadhavan Muthurengan",
+  "language": "en",
+  "year": 2026,
+  "identifier": "build-your-own-ai-personal-agent-aadhavan-muthurengan-2026",
+  "trim": {
+    "width_in": 6.0,
+    "height_in": 9.0
+  },
+  "paper": "white",
+  "reuse_note": "Readers may freely use and adapt the code of Sparrow, its tests and its evaluations for their own work.",
+  "trademarks": "Claude is a trademark of Anthropic, PBC. OpenClaw is an open-source project of the OpenClaw Foundation. NVIDIA, NemoClaw, OpenShell and Nemotron are trademarks of NVIDIA Corporation. Telegram is a trademark of Telegram Group Inc. WhatsApp is a trademark of WhatsApp LLC. Slack is a trademark of Slack Technologies, LLC. Discord is a trademark of Discord Inc. Signal is a trademark of Signal Technology Foundation. Python and the Python logos are trademarks or registered trademarks of the Python Software Foundation. Docker is a trademark of Docker, Inc. Linux is a trademark of Linus Torvalds. macOS is a trademark of Apple Inc. Windows and Visual Studio Code are trademarks of Microsoft Corporation. GitHub is a trademark of GitHub, Inc. VirusTotal is a trademark of Google LLC. Bubblewrap, SQLite, FastAPI, uvicorn, httpx, PyYAML, pytest and systemd are open-source projects whose names belong to their owners. Sparrow, the agent built in this book, is not OpenClaw or NemoClaw and is not derived from their code. All people, sites, messages and data in the examples are fictional, and example web addresses use the reserved .example domain. Product names are used solely for identification. This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic, NVIDIA, the OpenClaw Foundation or any of these companies or projects.",
+  "back_cover_blurb": [
+    "Build a personal AI agent that lives on your own computer: one that chats with you on Telegram, in a web page or in the terminal, remembers what matters, learns new skills, reminds you on time, checks in on its own, and does real work with real tools.",
+    "You'll build Sparrow, step by step, in plain Python with Claude as its brain. It follows the design that made OpenClaw the most talked-about open-source agent of 2026: a gateway, channels, Markdown memory, skills and a heartbeat. Then it adds the protections NVIDIA's NemoClaw brought to agents: a sandbox for commands, a deny-by-default network policy, secrets the model never sees, a privacy router that keeps personal data on your machine, approvals for risky actions, and an audit log.",
+    "Every part is tested. 136 automated tests check each piece and the whole gateway; 16 end-to-end scenarios ran three times each against the real model, including six attacks: hidden instructions in web pages and files, strangers, nosy guests, secret theft and sandbox escapes. A system test crashes the agent and checks it recovers. The tests even found a real sandbox leak, which the book shows you how to find and fix.",
+    "For developers who know basic Python. Every line of Sparrow's code is in the book."
+  ],
+  "dedication": [
+    "To my father and my mother,",
+    "for your love, your sacrifices, and every lesson you taught me.",
+    "",
+    "To my wife,",
+    "for your patience, your encouragement, and your belief in me.",
+    "",
+    "And to our three children,",
+    "may you always build the things you dream of.",
+    "",
+    "This book is for you."
+  ],
+  "author_short_bio": "Aadhavan Muthurengan is an automation and AI professional with more than 15 years of experience in the automotive industry, where Aadhavan has built in-house tools that transformed product development and validation.",
+  "levels": {
+    "1": "Beginner",
+    "2": "Beginner",
+    "3": "Beginner",
+    "4": "Intermediate",
+    "5": "Intermediate",
+    "6": "Intermediate",
+    "7": "Intermediate",
+    "8": "Intermediate",
+    "9": "Intermediate",
+    "10": "Intermediate",
+    "11": "Intermediate",
+    "12": "Intermediate",
+    "13": "Advanced",
+    "14": "Advanced",
+    "15": "Advanced",
+    "16": "Advanced",
+    "17": "Advanced",
+    "18": "Advanced",
+    "19": "Advanced",
+    "20": "Advanced",
+    "21": "Advanced",
+    "22": "Advanced",
+    "23": "Advanced",
+    "24": "Advanced",
+    "25": "Intermediate",
+    "26": "Intermediate",
+    "27": "Intermediate"
+  },
+  "examples_note": "All people, messages, sites and data in the examples are fictional. Example web addresses use the reserved .example domain. Any resemblance to real persons is coincidental."
+}

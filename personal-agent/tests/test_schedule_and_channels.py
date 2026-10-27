@@ -223,6 +223,25 @@ def test_web_chat_round_trip(make_gateway):
     assert brain.turns[0].ctx.route == "web:owner"
 
 
+def test_web_socket_rejects_other_sites(make_gateway):
+    from starlette.websockets import WebSocketDisconnect
+
+    gateway, _, _ = make_gateway([[("say", "hi")]])
+    client = web_client(gateway)
+    url = f"/ws?token={WEB_TOKEN}"
+    with pytest.raises(WebSocketDisconnect) as closed:
+        with client.websocket_connect(
+            url, headers={"origin": "https://evil.example"}
+        ) as socket:
+            socket.receive_json()
+    assert closed.value.code == 1008
+    with client.websocket_connect(
+        url, headers={"origin": "http://testserver"}
+    ) as socket:
+        socket.send_json({"text": "hi"})
+        assert socket.receive_json() == {"typing": True}
+
+
 def test_short_web_tokens_are_refused():
     with pytest.raises(ValueError):
         WebChatChannel("short")

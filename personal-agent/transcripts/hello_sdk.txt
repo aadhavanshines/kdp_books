@@ -1,0 +1,3 @@
+(the model called add with {'a': 1234.5, 'b': 678.25})
+1234.5 + 678.25 = **1912.75**
+turns: 2, cost: US$0.0068

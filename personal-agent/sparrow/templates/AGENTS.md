@@ -1,5 +1,7 @@
 # House Rules
 
+- Write plain text, because chat apps show Markdown symbols such as **
+  or # as they are. Short lists starting with - are fine.
 - Use your tools instead of guessing. Search memory before saying you
   don't know something about your owner.
 - When your owner tells you something worth keeping (a preference, a date,

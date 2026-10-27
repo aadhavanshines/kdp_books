@@ -1,0 +1,22 @@
+$ cat MEMORY.md
+# Memory
+
+Long-term facts about your owner, one per line, newest last.
+- 2026-10-20: Priya (sister) has her birthday on 14 November
+- 2026-10-22: Prefers the window seat on flights
+
+$ cat memory/2026-10-27.md
+# Tuesday 27 October 2026
+
+- 08:15 Asked for a packing list for Porto (2 nights, work)
+- 08:17 Booked the 07:09 train to Porto for Thursday
+
+>>> memory.search("Priya's birthday")
+('MEMORY.md', '2026-10-20: Priya (sister) has her birthday on 14 November')
+>>> memory.search('Porto train')
+('memory/2026-10-27.md', '08:17 Booked the 07:09 train to Porto for Thursday')
+('memory/2026-10-27.md', '08:15 Asked for a packing list for Porto (2 nights, work)')
+>>> memory.search('seat')
+('MEMORY.md', '2026-10-22: Prefers the window seat on flights')
+>>> memory.search('dentist')
+[]

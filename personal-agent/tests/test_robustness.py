@@ -125,7 +125,7 @@ async def test_placeholders_are_explained_to_the_model(make_gateway, core):
     assert "# Private Values" not in brain.turns[1].system
 
 
-# The command line ----------------------------------------------------------
+# The command line ---------------------------------------------------------
 
 
 def test_init_doctor_status_and_pairing(

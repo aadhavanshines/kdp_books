@@ -1,0 +1,91 @@
+test_gateway.py (15 tests)
+  test_owner_message_gets_a_reply
+  test_tools_run_and_results_flow_back
+  test_history_is_kept_across_channels
+  test_stranger_gets_a_code_and_never_reaches_the_model
+  test_paired_guest_gets_a_limited_sparrow
+  test_guests_cannot_use_owner_commands
+  test_new_saves_memory_then_clears
+  test_status_command
+  test_web_fetch_approval_flow
+  test_deny_and_skill_approval
+  test_daily_budget_stops_model_calls
+  test_privacy_redacts_what_the_model_sees
+  test_privacy_block_mode
+  test_model_failure_gives_a_friendly_answer
+  test_a_broken_channel_does_not_crash_the_gateway
+
+test_parts.py (54 tests)
+  test_settings_defaults_and_sections
+  test_unknown_setting_is_an_error
+  test_workspace_keeps_owner_edits
+  test_system_prompt_has_everything
+  test_guest_prompt_has_nothing_private
+  test_remember_and_search
+  test_search_sees_hand_edits_and_daily_notes
+  test_search_never_breaks_on_odd_queries (x7)
+  test_remember_keeps_one_line
+  test_bundled_skills_load
+  test_broken_skill_is_skipped_and_reported
+  test_write_skill_checks_name
+  test_parse_when (x11)
+  test_parse_when_rejects (x5)
+  test_weekdays_skip_the_weekend
+  test_daily_rule_across_clock_change
+  test_jobs_run_once_or_repeat
+  test_todo_round_trip
+  test_privacy_finds (x9)
+  test_privacy_leaves_ordinary_text (x5)
+  test_redact_and_restore_round_trip
+  test_block_and_off_modes
+
+test_robustness.py (6 tests)
+  test_brain_retries_a_failed_call
+  test_brain_never_retries_after_a_tool_ran
+  test_brain_gives_up_after_its_retries
+  test_conversations_run_in_parallel_but_each_in_order
+  test_placeholders_are_explained_to_the_model
+  test_init_doctor_status_and_pairing
+
+test_safety.py (41 tests)
+  test_egress_decisions (x12)
+  test_approved_hosts_are_remembered
+  test_unknown_can_be_denied
+  test_redirect_to_a_denied_host_is_blocked
+  test_secrets_go_only_to_their_host
+  test_html_to_text_drops_scripts_and_comments
+  test_vault_refuses_a_readable_secrets_file
+  test_sandbox_contains_commands (x9)
+  test_sandbox_hides_the_environment
+  test_sandbox_processes_hold_no_secrets
+  test_sandbox_truncates_floods
+  test_no_bwrap_means_no_commands
+  test_files_stay_in_the_files_folder (x4)
+  test_symlinks_cannot_escape
+  test_guests_get_no_private_tools
+  test_tools_get_real_values_model_gets_placeholders
+  test_outside_content_is_marked_untrusted
+  test_tool_errors_become_messages
+  test_every_tool_call_is_audited
+
+test_schedule_and_channels.py (20 tests)
+  test_reminder_arrives_on_time
+  test_task_job_runs_sparrow_and_repeats
+  test_jobs_survive_a_restart_and_say_they_are_late
+  test_first_heartbeat_waits_one_interval
+  test_heartbeat_ok_stays_silent
+  test_heartbeat_speaks_up_when_needed
+  test_heartbeat_interval_and_quiet_hours
+  test_heartbeat_goes_to_the_last_channel_used
+  test_terminal_channel
+  test_web_page_needs_the_token
+  test_web_socket_rejects_a_wrong_token
+  test_web_chat_round_trip
+  test_web_socket_rejects_other_sites
+  test_short_web_tokens_are_refused
+  test_telegram_round_trip
+  test_telegram_ignores_groups_and_non_text
+  test_telegram_strangers_are_paired_not_answered
+  test_long_replies_are_split
+  test_chunks_prefer_line_breaks
+  test_telegram_wrong_token_is_reported

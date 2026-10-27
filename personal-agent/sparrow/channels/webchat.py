@@ -44,7 +44,17 @@ class WebChatChannel:
 
         @self.app.websocket("/ws")
         async def chat(socket: WebSocket, token: str | None = None):
-            if not self.allowed(token):
+            # A browser always says which page opened the socket. Only
+            # Sparrow's own page may, so a web page you happen to visit
+            # can't talk to Sparrow, even if it guessed the address.
+            origin = socket.headers.get("origin")
+            same_site = (
+                origin is None
+                or origin
+                == f"{socket.url.scheme.replace('ws', 'http')}://"
+                f"{socket.headers.get('host')}"
+            )
+            if not (self.allowed(token) and same_site):
                 await socket.close(code=1008)  # policy violation
                 return
             await socket.accept()
