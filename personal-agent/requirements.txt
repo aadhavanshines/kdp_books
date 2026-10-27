@@ -1,0 +1,10 @@
+# Sparrow's packages, at the versions the book was tested with.
+claude-agent-sdk==0.2.174
+fastapi==0.162.0
+uvicorn==0.54.0
+websockets==17.3
+httpx==0.28.1
+pyyaml==6.0.3
+# For the tests
+pytest==9.1.1
+anyio==4.15.1

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sparrow</title>
+<style>
+  body { margin: 0; font: 16px/1.45 system-ui, sans-serif;
+         background: #eef2f7; color: #1b2430; }
+  header { background: #1f3a5f; color: #fff; padding: 12px 18px;
+           font-weight: 600; }
+  header small { font-weight: 400; opacity: .8; margin-left: 8px; }
+  #log { max-width: 760px; margin: 0 auto; padding: 16px 12px 96px; }
+  .msg { margin: 10px 0; padding: 10px 14px; border-radius: 14px;
+         max-width: 82%; white-space: pre-wrap; }
+  .you { background: #1f3a5f; color: #fff; margin-left: auto; }
+  .sparrow { background: #fff; border: 1px solid #d5dde8; }
+  .note { color: #5b6b80; font-size: 14px; text-align: center; }
+  form { position: fixed; bottom: 0; left: 0; right: 0; display: flex;
+         gap: 8px; padding: 12px; background: #fff;
+         border-top: 1px solid #d5dde8; }
+  input { flex: 1; font: inherit; padding: 10px 12px;
+          border: 1px solid #b8c4d4; border-radius: 10px; }
+  button { font: inherit; padding: 10px 18px; border: 0;
+           border-radius: 10px; background: #c25400; color: #fff; }
+</style>
+</head>
+<body>
+<header>Sparrow<small>your personal agent</small></header>
+<div id="log"></div>
+<form id="form">
+  <input id="text" autocomplete="off" placeholder="Message Sparrow"
+         autofocus>
+  <button>Send</button>
+</form>
+<script>
+const params = new URLSearchParams(location.search);
+const token = params.get("token");
+const log = document.getElementById("log");
+const scheme = location.protocol === "https:" ? "wss" : "ws";
+const socket = new WebSocket(
+  `${scheme}://${location.host}/ws?token=${encodeURIComponent(token)}`);
+let typing = null;
+
+function add(cls, text) {
+  const div = document.createElement("div");
+  div.className = "msg " + cls;
+  div.textContent = text;
+  log.appendChild(div);
+  window.scrollTo(0, document.body.scrollHeight);
+  return div;
+}
+socket.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  if (data.typing) {
+    typing = typing || add("note", "Sparrow is thinking...");
+    return;
+  }
+  if (typing) { typing.remove(); typing = null; }
+  add("sparrow", data.text);
+};
+socket.onclose = () => add("note", "Disconnected. Reload to reconnect.");
+document.getElementById("form").onsubmit = (event) => {
+  event.preventDefault();
+  const input = document.getElementById("text");
+  if (!input.value.trim()) return;
+  add("you", input.value);
+  socket.send(JSON.stringify({ text: input.value }));
+  input.value = "";
+};
+</script>
+</body>
+</html>
