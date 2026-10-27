@@ -1,0 +1,12 @@
+PASS gateway is running
+PASS stranger gets a pairing code
+PASS owner is told about the stranger
+PASS /status works
+PASS owner gets a real answer
+PASS gateway was killed
+PASS reminder delivered after the crash
+PASS web chat answers
+PASS web chat refuses a wrong token
+PASS audit log written
+PASS no tokens in the audit log
+11 of 11 checks passed

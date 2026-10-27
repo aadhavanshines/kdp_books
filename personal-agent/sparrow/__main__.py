@@ -82,11 +82,14 @@ def doctor(home: Path) -> int:
     settings = load_settings(home)
     core = Core(settings)
     print(f"Checking {home}")
-    check(
-        bool(os.environ.get("ANTHROPIC_API_KEY") or shutil.which("claude")),
-        "a model login is available",
-        "set ANTHROPIC_API_KEY (see Chapter 3)",
+    login = (
+        "ANTHROPIC_API_KEY is set"
+        if os.environ.get("ANTHROPIC_API_KEY")
+        else "Claude Code's login will be used"
+        if shutil.which("claude")
+        else ""
     )
+    check(bool(login), login, "set ANTHROPIC_API_KEY (see Chapter 3)")
     code, out = run_sandboxed(
         "echo sandbox-ok",
         core.workspace.files,

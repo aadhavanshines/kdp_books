@@ -1,0 +1,7 @@
+.venvs
+**/__pycache__
+evals
+tests
+build
+manuscript
+dist

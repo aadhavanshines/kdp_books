@@ -1,0 +1,8 @@
+running as uid 30033
+[0] 'id' -> uid=30033 gid=30033 groups=30033
+[0] 'echo hi > a.txt && cat a.txt' -> hi
+[1] 'cat /etc/passwd' -> cat: /etc/passwd: No such file or directory
+[2] 'ls /home' -> ls: cannot access '/home': No such file or directory
+[1] 'touch /usr/x' -> touch: cannot touch '/usr/x': Read-only file system
+[1] 'python3 -c "import socket; socket.create_connectio' -> OSError: [Errno 101] Network is unreachable
+[124] 'sleep 30' -> 

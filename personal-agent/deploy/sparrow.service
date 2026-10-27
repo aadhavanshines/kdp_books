@@ -1,0 +1,23 @@
+# Sparrow as a systemd user service: starts at boot, restarts if it
+# crashes. Install (see Chapter 25):
+#   mkdir -p ~/.config/systemd/user
+#   cp deploy/sparrow.service ~/.config/systemd/user/
+#   systemctl --user enable --now sparrow
+#   loginctl enable-linger $USER     # keep running after you log out
+[Unit]
+Description=Sparrow, a personal AI agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/sparrow
+ExecStart=%h/sparrow/.venv/bin/python -m sparrow run
+# ANTHROPIC_API_KEY=... lives here, readable only by you (chmod 600)
+EnvironmentFile=%h/.sparrow/state/model.env
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=default.target

@@ -190,6 +190,16 @@ def test_sandbox_hides_the_environment(box, monkeypatch):
 
 
 @needs_bwrap
+def test_sandbox_processes_hold_no_secrets(box, monkeypatch):
+    # bwrap is process 1 in the sandbox; its environment must be empty
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-should-not-leak")
+    code, output = box(
+        "cat /proc/*/environ | tr '\\0' '\\n' | grep -c should-not-leak"
+    )
+    assert output.strip() == "0"
+
+
+@needs_bwrap
 def test_sandbox_truncates_floods(box):
     code, output = box("yes | head -c 100000")
     assert len(output) < 2100 and "more chars" in output

@@ -24,6 +24,13 @@ HELP = """Commands:
 /approve CODE, /deny CODE - answer an approval request
 /pair approve CODE, /pair list, /pair remove ID - manage guests"""
 
+PRIVATE_VALUES = """# Private Values
+
+Some values appear as placeholders such as <EMAIL_1> or <PHONE_2>. Each
+stands for a real value that stays on your owner's computer. Use the
+placeholders exactly as written: tools receive the real values, and your
+owner sees them in your replies."""
+
 FLUSH = (
     "This conversation is about to be cleared. If anything in it is "
     "worth keeping, save it now with the remember tool. Then reply "
@@ -184,6 +191,8 @@ class Gateway:
                 system = ws.guest_prompt(now, skills, speaker, route)
             else:
                 system = ws.system_prompt(now, skills, speaker, route)
+            if settings.privacy == "redact":
+                system += "\n\n" + PRIVATE_VALUES
             ctx = Context(core, route, role, privacy)
             turn = Turn(
                 privacy.redact(system),

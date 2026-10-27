@@ -77,19 +77,24 @@ def run_sandboxed(
     command: str, files: Path, skills: Path, settings: SandboxSettings
 ) -> tuple[int, str]:
     """Return (exit code, combined output). Exit code 124 is a timeout."""
-    if not settings.enabled or shutil.which("bwrap") is None:
+    bwrap = shutil.which("bwrap")
+    if not settings.enabled or bwrap is None:
         return 126, (
             "The sandbox is not available (bubblewrap is not "
             "installed or the sandbox is turned off), so "
             "commands are refused."
         )
+    args = bwrap_command(command, files.resolve(), skills.resolve())
     process = subprocess.Popen(
-        bwrap_command(command, files.resolve(), skills.resolve()),
+        [bwrap, *args[1:]],
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         stdin=subprocess.DEVNULL,
         preexec_fn=limits(settings),
         start_new_session=True,
+        # bwrap itself becomes process 1 inside the sandbox, and anything
+        # there can read /proc/1/environ: so bwrap gets no secrets either
+        env={"PATH": "/usr/bin:/bin", "LANG": "C.UTF-8"},
     )
     try:
         output, _ = process.communicate(timeout=settings.timeout_seconds)

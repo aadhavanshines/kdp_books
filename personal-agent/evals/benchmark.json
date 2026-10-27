@@ -1,0 +1,19 @@
+{
+  "owner message, one after another (ms)": {
+    "median": 7.79,
+    "p95": 9.95
+  },
+  "200 guests at once (messages per second)": 270,
+  "index 10,000 facts + 365 notes (ms)": 2031,
+  "memory search (ms)": {
+    "median": 16.05,
+    "p95": 44.36
+  },
+  "sandbox start, run 'true' (ms)": {
+    "median": 15.5,
+    "p95": 20.8
+  },
+  "privacy router, 9,480 characters (ms)": 2.63,
+  "system prompt with a full memory (characters)": 7535,
+  "peak memory of this process (MB)": 94
+}
