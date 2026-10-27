@@ -56,6 +56,8 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p><b>Every line of Sparrow's code is printed in the book</b>, taken straight from the tested files, so what you read is what ran.</p>
 
+<p><b>All the code is free to download</b> from the book's GitHub repository, with the tests, the evaluations and their recorded results, and an automatic check that runs every test on Python 3.12 to 3.15.</p>
+
 <p>For developers who know basic Python. No prior experience with AI agents or security is needed.</p>
 
 <p><i>This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic, NVIDIA, the OpenClaw project or any other company or project named in it. All product names are trademarks of their owners.</i></p>

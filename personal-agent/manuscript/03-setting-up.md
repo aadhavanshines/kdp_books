@@ -31,6 +31,18 @@ bubblewrap 0.9.0
 
 > **Note:** Some Linux systems switch off "unprivileged user namespaces," which bubblewrap needs when run by a normal user. If `bwrap --version` works but Sparrow's `doctor` command later says the sandbox failed with "No permissions to create new namespace," see Appendix D. Ubuntu 24.04 and newer ship an AppArmor profile that allows bubblewrap; on other systems an administrator may need to allow it.
 
+## Getting the Code
+
+Every file of Sparrow, with its tests, its evaluations and their recorded results, is in a free repository on GitHub:
+
+**github.com/aadhavanshines/build-your-own-ai-personal-agent**
+
+Open that address in a web browser, click the green **Code** button and choose **Download ZIP**, then unzip it wherever you keep your projects. If you use Git, you can clone it instead: type `git clone`, a space, and the address above with `https://` in front, all on one line.
+
+Either way you get a folder called `build-your-own-ai-personal-agent` with the `sparrow` package, the `tests`, `evals` and `deploy` folders, and the `requirements.txt` file from this chapter. Its README repeats the setup steps and says which chapter each folder belongs to. The repository also runs Sparrow's tests automatically on Python 3.12 to 3.15 every time it changes, and shows the results on its **Actions** tab.
+
+You'll learn the most by typing the code as you read and using the repository to check your copy when a test fails. If you'd rather start from the finished Sparrow, use the downloaded folder in place of the one you're about to create, and skip the `mkdir` and `touch` steps below.
+
 ## The Project Folder
 
 Create a folder for the project and a **virtual environment** inside it, a private set of Python packages for Sparrow:

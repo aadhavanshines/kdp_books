@@ -4,6 +4,8 @@
 
 The book builds **Sparrow**, a personal agent in the style of OpenClaw (gateway, channels, Markdown workspace memory, skills, heartbeat) with the safety layer that NemoClaw and OpenShell add (sandbox, egress policy, credential injection, privacy routing, approvals, audit log). Claude is the brain, through the Claude Agent SDK. Every line of Sparrow's code is printed in the book, pulled from the tested files at build time; `build/check_book.py` proves it.
 
+The code is published for readers at [github.com/aadhavanshines/build-your-own-ai-personal-agent](https://github.com/aadhavanshines/build-your-own-ai-personal-agent); copy changes to `sparrow/`, `tests/`, `evals/`, `deploy/` and `examples/` there too.
+
 ## Folders
 
 | Folder | Contents |

@@ -49,7 +49,7 @@ It suits developers who want their own assistant and want to understand it fully
 
 ## How to Use the Code
 
-Type the listings in as you go if you can; you'll understand each part better for it. Chapter 3 sets up the project folder, and every listing names its file. The code is formatted to fit the page: no line is longer than 76 characters, so nothing in a listing is wrapped. The tests in Part IV are the fastest way to check your copy: if `pytest` passes, your Sparrow behaves like the one in the book.
+Type the listings in as you go if you can; you'll understand each part better for it. Chapter 3 sets up the project folder, and every listing names its file. All of Sparrow's code, its tests and its evaluations are also free to download from the book's code repository, **github.com/aadhavanshines/build-your-own-ai-personal-agent**, so you can check your work against the tested files; Chapter 3 shows how to get it. The code is formatted to fit the page: no line is longer than 76 characters, so nothing in a listing is wrapped. The tests in Part IV are the fastest way to check your copy: if `pytest` passes, your Sparrow behaves like the one in the book.
 
 Sparrow runs fully on Linux. On Windows, use WSL2, which is Linux; on a Mac, everything works except the sandbox, which needs Linux, so Sparrow refuses to run commands until you run it in a Linux container or virtual machine (Chapter 25 shows how).
 
