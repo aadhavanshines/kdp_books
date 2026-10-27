@@ -22,7 +22,7 @@ from sparrow.config import load_settings  # noqa: E402
 from sparrow.core import Core  # noqa: E402
 from sparrow.gateway import Gateway, Inbound  # noqa: E402
 
-from conftest import Clock, Recorder  # noqa: E402
+from conftest import Clock, Recorder, public_dns  # noqa: E402
 
 CONFIG = """
 owner_name: Asha
@@ -196,7 +196,12 @@ def make_sparrow(
     client = httpx.AsyncClient(
         transport=httpx.MockTransport(internet.handler)
     )
-    core = Core(load_settings(home), clock=clock, http_client=client)
+    core = Core(
+        load_settings(home),
+        clock=clock,
+        http_client=client,
+        resolve=public_dns,
+    )
     (core.workspace.root / "USER.md").write_text(USER)
     brain = RecordingBrain()
     gateway = Gateway(core, brain)

@@ -7,6 +7,7 @@ from the result, and writes the call to the audit log."""
 from __future__ import annotations
 
 import asyncio
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Awaitable, Callable
@@ -17,6 +18,7 @@ from .privacy import PrivacyRouter
 from .sandbox import run_sandboxed
 
 MAX_READ = 50_000
+OUTSIDE = {"web_fetch", "read_file", "run_command"}  # untrusted text
 
 
 @dataclass
@@ -54,7 +56,7 @@ def schema(**params) -> dict:
 
 def untrusted(source: str, text: str) -> str:
     """Mark content from outside, so the model treats it as data."""
-    text = text.replace("</untrusted>", "</ untrusted>")
+    text = re.sub(r"(?i)<\s*/\s*untrusted", "< /untrusted", text)
     return f'<untrusted source="{source}">\n{text}\n</untrusted>'
 
 
@@ -79,6 +81,10 @@ async def memory_search(ctx, args):
 
 
 async def remember(ctx, args):
+    if any(name in OUTSIDE for name, _, _ in ctx.calls):
+        # Memory goes into every prompt: show the owner anything saved
+        # after reading outside text, in case that text planted it
+        ctx.notices.append(f"Saved to memory: {args['fact']}")
     ctx.core.memory.note(f"Remembered: {args['fact']}", ctx.core.now())
     return ctx.core.memory.remember(args["fact"], ctx.core.now())
 
@@ -217,22 +223,30 @@ async def read_skill(ctx, args):
 
 
 async def write_skill(ctx, args):
+    name = args["name"]
     payload = {
-        "name": args["name"],
+        "name": name,
         "description": args["description"],
         "instructions": args["instructions"],
     }
+    replace = name in ctx.core.skills.load()
+    verb = "replace the existing skill" if replace else "install the skill"
     code = ctx.core.approvals.request(
         "install_skill",
         payload,
-        f"install the skill {args['name']}",
+        f"{verb} {name}",
         ctx.route,
         ctx.core.now(),
     )
+    # The owner sees exactly what they are approving
+    text = args["instructions"]
+    if len(text) > 1500:
+        text = text[:1500] + f"\n[... {len(text) - 1500} more characters]"
     ctx.notices.append(
-        f"Approval needed: install the new skill "
-        f"{args['name']!r}? Reply /approve {code} or "
-        f"/deny {code}"
+        f"Approval needed: {verb} {name!r}?\n"
+        f"Description: {args['description']}\n"
+        f"Instructions:\n{text}\n"
+        f"Reply /approve {code} or /deny {code}"
     )
     return (
         f"Waiting for approval: your owner must approve new skills "

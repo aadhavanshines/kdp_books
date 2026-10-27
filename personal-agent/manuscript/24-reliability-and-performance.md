@@ -7,7 +7,7 @@ A personal agent runs for months. In that time the model's service will be busy,
 The brain's retry rule from Chapter 4 is easy to state and easy to get wrong, so `tests/test_robustness.py` tests all three cases:
 
 ```python
-@include tests/test_robustness.py#L1-L76
+@include tests/test_robustness.py#L1-L77
 ```
 
 `monkeypatch` replaces `ClaudeBrain.once`, the method that calls the model, with a stand-in that fails on purpose, and `no_waiting` replaces `asyncio.sleep` so the back-off doesn't slow the tests. A call that fails twice then succeeds is retried and succeeds. A call that fails *after a tool ran* isn't retried at all, so nothing is done twice. And a service that's down for good produces an error after the allowed retries, which the gateway turns into an apology.
@@ -15,7 +15,7 @@ The brain's retry rule from Chapter 4 is easy to state and easy to get wrong, so
 ## Concurrency
 
 ```python
-@include tests/test_robustness.py#L79-L125
+@include tests/test_robustness.py#L80-L126
 ```
 
 The concurrency test sends thirteen messages at once: one each from ten paired guests and three from the owner. `SlowBrain` takes 0.2 seconds per answer and records the order it saw messages. Two properties must hold together:
@@ -25,10 +25,12 @@ The concurrency test sends thirteen messages at once: one each from ten paired g
 
 The second test in this group checks that the private-values note from Chapter 18 is in the system prompt when redaction is on, and absent when it's off.
 
+The third tests `supervise` from Chapter 10, with three small stand-in jobs: one that waits forever, one that crashes with "address already in use", and one that simply ends. A crash must come out as the same error; a job that ends when it shouldn't must raise "stopped unexpectedly"; and the terminal chat, the one job allowed to end, must end the wait quietly.
+
 ## The Command Line
 
 ```python
-@include tests/test_robustness.py#L128-L146
+@include tests/test_robustness.py#L151-L170
 ```
 
 `init`, `doctor`, `status` and `pairing` are tested as a user would run them, through `main`. The test checks that the secrets file is created with `chmod 600`, that the workspace exists, that `doctor` reports "All good." (with a placeholder API key set, so the test doesn't depend on your environment), and that the other commands print what they should.

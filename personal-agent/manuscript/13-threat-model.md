@@ -69,7 +69,7 @@ A threat model is honest about its limits. These are outside Sparrow's protectio
 - **A compromised Telegram account.** If someone takes over your Telegram, they *are* you to Sparrow. Turn on Telegram's two-step verification.
 - **The model provider itself.** Anthropic processes what Sparrow sends. The privacy router keeps structured private values out (Chapter 18), but the rest of your conversation is sent, as with any cloud model.
 - **Misuse within what you've allowed.** If you add a site to the allowlist, a fooled Sparrow can send data to that site, for example in a URL. If you approve a request, it happens. Approvals are only as good as your reading of them; Chapter 15 shows how Sparrow makes them easy to read.
-- **Kernel bugs.** The sandbox relies on Linux namespaces. A kernel vulnerability could break it, as with any container. Keep your system updated.
+- **Kernel bugs.** The sandbox relies on Linux namespaces or, on a Mac, Apple's Seatbelt. A kernel vulnerability could break it, as with any container. Keep your system updated.
 - **Prompt injection that changes only words.** A web page could make Sparrow give you a wrong answer, such as a wrong train time, without any tool call at all. Untrusted tags reduce this; nothing removes it. For anything important, Sparrow should show its source, and you should check.
 
 ## Key Takeaways

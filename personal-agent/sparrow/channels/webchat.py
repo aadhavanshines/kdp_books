@@ -21,7 +21,7 @@ class WebChatChannel:
     name = "web"
 
     def __init__(self, token: str):
-        if len(token) < 16:
+        if not token or len(token) < 16:
             raise ValueError("The web chat token must be 16+ characters")
         self.token = token
         self.sockets: set[WebSocket] = set()
@@ -61,7 +61,12 @@ class WebChatChannel:
             self.sockets.add(socket)
             try:
                 while True:
-                    data = await socket.receive_json()
+                    try:
+                        data = await socket.receive_json()
+                    except ValueError:  # not JSON: ignore it
+                        continue
+                    if not isinstance(data, dict):
+                        continue
                     text = str(data.get("text", ""))[:8000]
                     if text.strip():
                         await socket.send_json({"typing": True})

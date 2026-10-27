@@ -48,17 +48,17 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>Skills that teach Sparrow new tasks, which it can propose and you approve</li>
 <li>Reminders, scheduled tasks and a heartbeat that speaks only when something needs you</li>
 <li>Pairing for strangers, limited access for guests, and approvals for risky actions</li>
-<li>A kernel-level sandbox for commands, a deny-by-default network policy, secrets the model never sees, and a privacy router that keeps personal data on your machine</li>
+<li>A kernel-level sandbox for commands (bubblewrap on Linux, the built-in sandbox on macOS), a deny-by-default network policy, secrets the model never sees, and a privacy router that keeps personal data on your machine</li>
 <li>An audit log and a daily spending limit</li>
 </ul>
 
-<p><b>Tested completely.</b> 136 automated tests check every part and the whole gateway. 16 end-to-end scenarios ran three times each against the real model, including six attacks: hidden instructions in web pages and files, strangers, pushy guests, secret theft and sandbox escapes. A system test crashes the agent and checks that nothing is lost. A benchmark measures its speed. The tests even found a real sandbox leak, and the book shows how.</p>
+<p><b>Tested completely.</b> 150 automated tests check every part and the whole gateway. 16 end-to-end scenarios ran three times each against the real model, including six attacks: hidden instructions in web pages and files, strangers, pushy guests, secret theft and sandbox escapes. A system test crashes the agent and checks that nothing is lost. A benchmark measures its speed. The tests even found a real sandbox leak, and the book shows how.</p>
 
 <p><b>Every line of Sparrow's code is printed in the book</b>, taken straight from the tested files, so what you read is what ran.</p>
 
-<p><b>All the code is free to download</b> from the book's GitHub repository, with the tests, the evaluations and their recorded results, and an automatic check that runs every test on Python 3.12 to 3.15.</p>
+<p><b>All the code is free to download</b> from the book's GitHub repository, with the tests, the evaluations and their recorded results, and an automatic check that runs every test on Linux and macOS with Python 3.12 to 3.15.</p>
 
-<p>For developers who know basic Python. No prior experience with AI agents or security is needed.</p>
+<p>For developers who know basic Python, on Linux or macOS (Windows through WSL2). No prior experience with AI agents or security is needed.</p>
 
 <p><i>This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic, NVIDIA, the OpenClaw project or any other company or project named in it. All product names are trademarks of their owners.</i></p>
 ```

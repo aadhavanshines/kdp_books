@@ -8,7 +8,9 @@ Start with `python -m sparrow doctor`: most first-run problems show up there as 
 
 **`the sandbox failed: ... No permissions to create new namespace`.** Your system doesn't let normal users create user namespaces. On Debian, check `sysctl kernel.unprivileged_userns_clone`; it should be `1`. On Ubuntu 23.10 and newer, AppArmor restricts unprivileged namespaces: make sure the `bubblewrap` package from Ubuntu is installed (it comes with a profile that allows it), rather than a copy from elsewhere. Inside Docker, see Chapter 25. Until it's fixed, Sparrow works but refuses commands.
 
-**`the sandbox failed: ... bwrap: not found` or "bubblewrap is not installed".** Install it: `sudo apt install bubblewrap` (Chapter 3).
+**`the sandbox failed: ...` with "sandbox is not available".** On Linux, bubblewrap isn't installed: `sudo apt install bubblewrap` (Chapter 3). On a Mac, `sandbox-exec` should always be in `/usr/bin`; if it's missing, your macOS installation is unusual, and Sparrow refuses commands until it's back.
+
+**On a Mac, `the sandbox failed` with "Operation not permitted" or "sandbox-exec: ...".** Some security tools for Macs block other programs from starting sandboxes. Check that `sandbox-exec -p "(version 1)(allow default)" /usr/bin/true` runs in Terminal; if it doesn't, the restriction is outside Sparrow.
 
 **`...: SKILL.md must start with ---` or `bad or missing name` or `missing description`.** A skill file in `workspace/skills/` is broken. The message names the file. The header must start on the first line with `---`, have a `name` of lowercase letters, digits and hyphens, and a `description`.
 
@@ -22,11 +24,23 @@ Start with `python -m sparrow doctor`: most first-run problems show up there as 
 
 **`.../secrets.env is readable by others; run: chmod 600 ...`.** Run the command it shows.
 
-**`The web chat token must be 16+ characters`.** Use a longer token.
+**`Set SPARROW_WEB_TOKEN in state/secrets.env`** or **`The web chat token must be 16+ characters`.** Add a token, or use a longer one; `doctor` says which.
+
+**Sparrow stops with a traceback and "stopped unexpectedly" or another error.** One of its parts, such as the web chat or Telegram, failed, and Sparrow exited so that systemd or launchd restarts it. The last lines of the traceback say which part and why.
 
 **`Address already in use`.** Another program, or another copy of Sparrow, is using port 8765. Stop it, or change `webchat.port`.
 
 **`ModuleNotFoundError`.** The virtual environment isn't active, or packages aren't installed: `source .venv/bin/activate`, then `pip install -r requirements.txt`.
+
+## On a Mac
+
+**A command works in Terminal but not through Sparrow.** Commands run in the Mac sandbox can't read anything in your home folder except Sparrow's files folder and skills, and can't use the network. Put the files the command needs in `~/.sparrow/workspace/files`.
+
+**A skill script can't find Python packages.** The sandbox's `PATH` starts with the Python installation Sparrow runs on, but not its virtual environment. Skill scripts should use only Python's standard library, as `totals.py` does.
+
+**Memory limits don't apply.** macOS doesn't enforce the sandbox's memory limit; the time limit stops runaway commands instead (Chapter 16).
+
+**The launch agent doesn't start.** Run `launchctl print gui/$(id -u)/local.sparrow` and read the last exit status, and check `~/.sparrow/state/sparrow.log`. The usual causes are a `YOU` left in a path, or a key not filled in.
 
 ## Sparrow Doesn't Answer
 
@@ -52,10 +66,10 @@ Start with `python -m sparrow doctor`: most first-run problems show up there as 
 
 ## Tests Fail
 
-**Sandbox tests are skipped.** bubblewrap isn't installed; they run once it is.
+**Sandbox tests are skipped.** On Linux, bubblewrap isn't installed; they run once it is. On a Mac, four Linux-only checks are always skipped; that's expected (Chapter 20).
 
-**Sandbox tests fail with "No permissions to create new namespace".** See the doctor entry above.
+**Sandbox tests fail with "No permissions to create new namespace".** See the doctor entry above. The same applies to `test_init_doctor_status_and_pairing`, which runs `doctor` and is skipped only when there's no sandbox at all.
 
-**`test_init_doctor_status_and_pairing` fails.** It runs `doctor`, which checks the sandbox; if the sandbox doesn't work on your machine, this test fails too.
+**A test fails with "unclosed database" or `ResourceWarning`.** Something opened a file or database and didn't close it. If you changed the code, look for a `Core` you created and didn't `close`.
 
 **A test fails after you typed in the code.** The failure message shows what was expected and what came back. Compare the module it tests with the book's listing line by line; most problems are one changed word or a missing line.

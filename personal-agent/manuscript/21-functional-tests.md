@@ -74,10 +74,12 @@ The reminder test checks the edges: nothing at 29 minutes, the reminder at 30, a
 
 A task runs a full turn with the scheduled message and reschedules itself for the next day. The restart test builds one `Core`, schedules a reminder, throws the core away, moves the clock two hours on, and builds a second `Core` from the same folder, which is what a restart is. The reminder is delivered, and says it's late.
 
+The delivery-failure test reproduces the bug a review found (Chapter 12). A task adds a to-do, Telegram is down so every send raises an error, and the clock ticks three times. The task must run once, not three times: one model turn, one to-do, and a `job_error` in the audit log.
+
 ## The Heartbeat
 
 ```python
-@include tests/test_schedule_and_channels.py#L102-L168
+@include tests/test_schedule_and_channels.py#L130-L196
 ```
 
 Six behaviors from Chapter 12, one test each: the first beat waits one interval after start-up; `HEARTBEAT_OK` sends nothing and uses the cheaper model with the checklist; a due bill produces one message; beats are spaced by the interval and skipped at night; and a beat goes to whichever channel the owner last used. `beat_due` sets the stored time of the last beat, so a test can start just as a beat is due.
@@ -87,15 +89,15 @@ Six behaviors from Chapter 12, one test each: the first beat waits one interval 
 The terminal and web chat tests drive each channel the way a person would:
 
 ```python
-@include tests/test_schedule_and_channels.py#L171-L247
+@include tests/test_schedule_and_channels.py#L199-L286
 ```
 
-FastAPI's `TestClient` runs the web chat in memory and can open real WebSocket connections to it. The tests check that the page needs the right token, that a socket with a wrong token is closed with code 1008, that a message round-trips with the "typing" notice first, that a socket opened by another site is refused while one from Sparrow's own page is accepted, and that a short token is rejected when the channel is created.
+FastAPI's `TestClient` runs the web chat in memory and can open real WebSocket connections to it. The tests check that the page needs the right token, that a socket with a wrong token is closed with code 1008, that a message round-trips with the "typing" notice first, that a socket opened by another site is refused while one from Sparrow's own page is accepted, that plain text or a JSON list sent down the socket is ignored and the next real message is still answered, and that a short token is rejected when the channel is created.
 
 The Telegram tests use the fake Bot API from Chapter 11:
 
 ```python
-@include tests/test_schedule_and_channels.py#L250-L332
+@include tests/test_schedule_and_channels.py#L289-L371
 ```
 
 A round trip through `getUpdates` and `sendMessage`; the offset moving so a message is never fetched twice; group messages and photos ignored; a stranger on Telegram getting a code while the owner is notified, with no model call; a 10,000-character reply split into three messages under the limit; `chunks` preferring line breaks; and a wrong token raising an HTTP error that `run` would log.

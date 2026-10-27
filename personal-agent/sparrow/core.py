@@ -22,7 +22,9 @@ from .workspace import Workspace
 
 
 class Core:
-    def __init__(self, settings: Settings, clock=None, http_client=None):
+    def __init__(
+        self, settings: Settings, clock=None, http_client=None, resolve=None
+    ):
         self.settings = settings
         self.zone = ZoneInfo(settings.timezone)
         self.clock = clock or (lambda: datetime.now(self.zone))
@@ -46,9 +48,15 @@ class Core:
         self.egress = EgressPolicy(
             settings.egress, state / "approved-hosts.txt"
         )
-        self.fetcher = Fetcher(self.egress, self.vault, http_client)
+        self.fetcher = Fetcher(
+            self.egress, self.vault, http_client, resolve
+        )
         self.audit = Audit(state / "audit", self.vault)
         self.ledger = Ledger(self.store, settings.daily_budget_usd)
 
     def now(self) -> datetime:
         return self.clock()
+
+    def close(self) -> None:
+        self.store.close()
+        self.memory.close()

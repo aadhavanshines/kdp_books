@@ -1,29 +1,30 @@
 # Test suite inside the container (python:3.13-slim, user sparrow, no network)
 
 ## docker run --security-opt seccomp=unconfined --security-opt systempaths=unconfined
-135 passed in 9.97s
+150 passed in 15.76s
 
 ## docker run with Docker's default options
   FIX  the sandbox failed: bwrap: No permissions to create new namespace, likely because the kernel does not allow non-privileged user namespaces. See <https://deb.li/bubblewrap> or <file:///usr/share/doc/bubblewrap/README.Debi
 FAILED tests/test_robustness.py::test_init_doctor_status_and_pairing
 FAILED tests/test_safety.py::test_sandbox_contains_commands[echo hi > a.txt && cat a.txt-0-hi]
 FAILED tests/test_safety.py::test_sandbox_contains_commands[python3 /skills/tool.py-0-skill script]
-FAILED tests/test_safety.py::test_sandbox_contains_commands[cat /etc/passwd-1-No such file]
-FAILED tests/test_safety.py::test_sandbox_contains_commands[ls /home /root-2-No such file]
-FAILED tests/test_safety.py::test_sandbox_contains_commands[touch /usr/evil-1-Read-only]
-FAILED tests/test_safety.py::test_sandbox_contains_commands[touch /skills/evil-1-Read-only]
-FAILED tests/test_safety.py::test_sandbox_contains_commands[python3 -c "import socket; socket.create_connection(('1.1.1.1', 53), timeout=2)"-1-Network is unreachable]
+FAILED tests/test_safety.py::test_sandbox_contains_commands[touch /usr/evil-1-Read-only|not permitted]
+FAILED tests/test_safety.py::test_sandbox_contains_commands[touch /skills/evil-1-Read-only|not permitted]
+FAILED tests/test_safety.py::test_sandbox_contains_commands[python3 -c "import socket; socket.create_connection(('1.1.1.1', 53), timeout=2)"-1-Network is unreachable|not permitted]
 FAILED tests/test_safety.py::test_sandbox_contains_commands[sleep 30-124-]
-FAILED tests/test_safety.py::test_sandbox_contains_commands[python3 -c "x = bytearray(1024**3)"-1-MemoryError]
+FAILED tests/test_safety.py::test_sandbox_linux_extras[cat /etc/passwd-1-No such file]
+FAILED tests/test_safety.py::test_sandbox_linux_extras[ls /home /root-2-No such file]
+FAILED tests/test_safety.py::test_sandbox_linux_extras[python3 -c "x = bytearray(1024**3)"-1-MemoryError]
 FAILED tests/test_safety.py::test_sandbox_hides_the_environment
 FAILED tests/test_safety.py::test_sandbox_processes_hold_no_secrets
 FAILED tests/test_safety.py::test_sandbox_truncates_floods
-13 failed, 122 passed in 4.78s
+FAILED tests/test_safety.py::test_endless_output_is_cut_and_stopped
+14 failed, 136 passed in 6.26s
 
 ## sparrow doctor, default options
 Checking /home/sparrow/.sparrow
   ok   ANTHROPIC_API_KEY is set
-  FIX  the sandbox failed: bwrap: No permissions to create new namespace, likely because the kernel does not allow non-privileged user namespaces. 
+  FIX  the sandbox failed: bwrap: No permissions to create new namespace, likely because the kernel does not allow non-privileged user namespaces. See
   ok   3 skills load
   ok   the web chat token is set
 1 thing(s) to fix.

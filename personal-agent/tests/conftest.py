@@ -29,6 +29,12 @@ secrets_for_hosts:
 """
 
 
+async def public_dns(host: str) -> list[str]:
+    """Pretend DNS: every name is a public address (an address from the
+    range kept for documentation would count as private)."""
+    return ["93.184.215.14"]
+
+
 class Clock:
     def __init__(self, start: datetime):
         self.now = start
@@ -69,7 +75,9 @@ def clock():
 
 @pytest.fixture
 def core(home, clock):
-    return Core(load_settings(home), clock=clock)
+    core = Core(load_settings(home), clock=clock, resolve=public_dns)
+    yield core
+    core.close()
 
 
 @pytest.fixture

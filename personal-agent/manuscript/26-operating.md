@@ -72,7 +72,7 @@ Three things change over time, and each needs a different kind of care.
 
 ## When Something Goes Wrong
 
-**Sparrow doesn't answer.** Check the service (`systemctl --user status sparrow`), then the journal for start-up errors, then `doctor`. If it answers in the web chat but not on Telegram, look for `channel_error` events in the audit log; a changed bot token is the usual cause.
+**Sparrow doesn't answer.** Check the service (`systemctl --user status sparrow` on Linux, `launchctl print gui/$(id -u)/local.sparrow` on a Mac), then the journal or `~/.sparrow/state/sparrow.log` for start-up errors, then `doctor`. If it answers in the web chat but not on Telegram, look for `channel_error` events in the audit log; a changed bot token is the usual cause.
 
 **It says it's reached the spending limit.** Check `status` and the turn events to see what used the budget. A scheduled task repeating too often, a chatty heartbeat, or a guest are the usual reasons. The limit resets at midnight in your time zone.
 

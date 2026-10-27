@@ -51,7 +51,10 @@ def parse_when(text: str, now: datetime) -> tuple[datetime, str | None]:
     text = " ".join(text.lower().replace(",", " ").split())
     if m := re.fullmatch(r"(\d{4}-\d{2}-\d{2})[ t](\d{1,2}:\d{2})", text):
         day = datetime.fromisoformat(m.group(1)).replace(tzinfo=now.tzinfo)
-        return at_time(day, m.group(2)), None
+        when = at_time(day, m.group(2))
+        if when <= now:
+            raise ValueError(f"{text} is already in the past")
+        return when, None
     if m := re.fullmatch(r"in (\d+) (minute|hour|day)s?", text):
         return now + timedelta(
             minutes=int(m.group(1)) * UNITS[m.group(2)]

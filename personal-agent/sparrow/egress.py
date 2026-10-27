@@ -3,9 +3,11 @@ that enforces it on every request and every redirect."""
 
 from __future__ import annotations
 
+import asyncio
 import html
 import ipaddress
 import re
+import socket
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
 
@@ -26,14 +28,33 @@ def host_matches(host: str, pattern: str) -> bool:
     return host == pattern
 
 
+def literal_ip(host: str):
+    """The address a host means without asking DNS: '127.0.0.1', but
+    also old forms such as '127.1', '2130706433' or '0x7f000001'."""
+    host = host.strip("[]")
+    try:
+        return ipaddress.ip_address(host)
+    except ValueError:
+        pass
+    if re.fullmatch(r"[0-9a-fx.]+", host):
+        try:
+            return ipaddress.ip_address(socket.inet_aton(host))
+        except OSError:
+            return None
+    return None
+
+
 def is_private(host: str) -> bool:
     if host in ("localhost", "localhost.localdomain"):
         return True
-    try:
-        ip = ipaddress.ip_address(host.strip("[]"))
-    except ValueError:
-        return False
-    return not ip.is_global
+    ip = literal_ip(host)
+    return ip is not None and not ip.is_global
+
+
+async def system_resolve(host: str) -> list[str]:
+    """Every address DNS gives for a host name."""
+    infos = await asyncio.get_running_loop().getaddrinfo(host, None)
+    return [info[4][0] for info in infos]
 
 
 class EgressPolicy:
@@ -89,10 +110,25 @@ class Fetcher:
         policy: EgressPolicy,
         vault: Vault,
         client: httpx.AsyncClient | None = None,
+        resolve=None,
     ):
         self.policy = policy
         self.vault = vault
         self.client = client or httpx.AsyncClient(timeout=15)
+        self.resolve = resolve or system_resolve
+
+    async def private_target(self, host: str) -> str | None:
+        """Why a name must not be fetched because DNS points it at a
+        private address (such as localtest.me -> 127.0.0.1), or None.
+        Hosts on the allow list in the settings may be private."""
+        if literal_ip(host) or any(
+            host_matches(host, p) for p in self.policy.settings.allow
+        ):
+            return None
+        for address in await self.resolve(host):
+            if not ipaddress.ip_address(address.split("%")[0]).is_global:
+                return f"{host} leads to a private address ({address})"
+        return None
 
     async def fetch(self, url: str) -> tuple[str, str]:
         """Return (status, text). Status is 'ok', 'deny', 'ask' or
@@ -103,16 +139,23 @@ class Fetcher:
                 return verdict, reason
             host = urlsplit(url).hostname
             try:
+                if reason := await self.private_target(host):
+                    return "deny", reason
                 headers = self.vault.headers_for(host)
-                response = await self.client.get(
-                    url, headers=headers, follow_redirects=False
-                )
-            except (httpx.HTTPError, KeyError) as error:
+                async with self.client.stream(
+                    "GET", url, headers=headers, follow_redirects=False
+                ) as response:
+                    if response.is_redirect:
+                        url = urljoin(url, response.headers["location"])
+                        continue  # the new address is checked again
+                    data = bytearray()
+                    async for chunk in response.aiter_bytes():
+                        data += chunk
+                        if len(data) >= MAX_BYTES:
+                            break  # stop downloading, not just reading
+            except (httpx.HTTPError, KeyError, OSError) as error:
                 return "error", f"{type(error).__name__}: {error}"
-            if response.is_redirect:
-                url = urljoin(url, response.headers["location"])
-                continue  # the new address is checked again
-            body = response.content[:MAX_BYTES].decode(
+            body = bytes(data[:MAX_BYTES]).decode(
                 response.encoding or "utf-8", errors="replace"
             )
             if "html" in response.headers.get("content-type", ""):

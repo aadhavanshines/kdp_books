@@ -56,6 +56,8 @@ These are the event types Sparrow writes:
 
 Every turn adds a row to the `spending` table: the day, the model, the kind of turn (a message, a heartbeat, a flush before `/new`) and the cost in US dollars that the Agent SDK reported. `spent` totals today's rows, and `over_budget` compares that with the daily limit.
 
+One gap is worth knowing about. The SDK reports a turn's cost in its final result. A turn that ends normally, or with an error the SDK itself reports (such as running out of round trips), includes its cost. But a turn cut off by a timeout or a lost connection never gets a final result, so it's recorded as costing nothing, even though some of it may have been billed. Such turns are rare and show up as errors in the audit log, but they're why the provider's own spending limit, below, is worth setting too.
+
 The gateway checks `over_budget` at the start of every turn (Chapter 9), before calling the model, and tells you if the limit is reached. Scheduled reminders still arrive, because they don't use the model, but tasks, heartbeats and conversations wait until tomorrow. The default limit is US$2.00 a day, about a hundred typical turns; set `daily_budget_usd` to what suits you.
 
 Why a daily limit, when each turn already has `max_turns` and a timeout? Because those cap a single turn, and the expensive failures are loops of many turns: a scheduled task set to run every five minutes by mistake, a guest who chats all day, or a bug that makes the heartbeat speak every time and then answer itself. The ledger caps all of them together. Chapter 21 tests that a turn is refused, with no model call, once the limit is reached.

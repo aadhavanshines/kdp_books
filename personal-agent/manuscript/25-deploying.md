@@ -2,13 +2,14 @@
 
 # Chapter 25: Deploying
 
-A personal agent is only useful if it's always running. This chapter makes Sparrow start when your computer starts and restart if it crashes, first as a **systemd** service on Linux, which is the simplest and safest choice, then in a **Docker** container, with an honest look at what the sandbox needs there. It ends with where to run Sparrow: a home computer, a small server, or a Raspberry Pi.
+A personal agent is only useful if it's always running. This chapter makes Sparrow start when your computer starts and restart if it crashes, first as a **systemd** service on Linux, which is the simplest and safest choice, then as a **launch agent** on a Mac, then in a **Docker** container, with an honest look at what the sandbox needs there. It ends with where to run Sparrow: a home computer, a small server, or a Raspberry Pi.
 
 ## Where to Run It
 
-Sparrow needs very little: about 100 MB of memory, almost no CPU between messages, and an outgoing internet connection. It needs no incoming connections at all, because Telegram is polled and the web chat listens only on the machine itself. So any always-on Linux machine will do:
+Sparrow needs very little: about 100 MB of memory, almost no CPU between messages, and an outgoing internet connection. It needs no incoming connections at all, because Telegram is polled and the web chat listens only on the machine itself. So any always-on Linux machine or Mac will do:
 
 - **A home server, mini PC or Raspberry Pi** (64-bit Raspberry Pi OS is Debian-based, so the Chapter 3 steps work as written). Your data stays in your home.
+- **A Mac that stays on**, such as a Mac mini. Turn off automatic sleep in System Settings so reminders arrive on time.
 - **A small cloud server.** Always on and reliable, but your workspace then lives on someone else's hardware; use disk encryption if the provider offers it.
 - **Your laptop.** Fine for trying Sparrow, but it sleeps when you close the lid, and reminders arrive late (with Sparrow's "late" note) when it wakes.
 
@@ -60,15 +61,34 @@ The unit file was checked with `systemd-analyze verify`, which reported no probl
 
 > **Tip:** Run `python -m sparrow doctor` before you enable the service. A service that fails at start-up restarts every ten seconds and fills the journal; `doctor` tells you why in one screen.
 
+## A Launch Agent on macOS
+
+macOS starts and supervises programs with **launchd**. A **launch agent** is launchd's version of a systemd user service: it runs as you, when you log in. `deploy/local.sparrow.plist` describes Sparrow to launchd:
+
+```
+@include deploy/local.sparrow.plist
+```
+
+A launch agent is a **property list**, Apple's XML format for settings. `ProgramArguments` runs Sparrow with the virtual environment's Python, from the project folder. launchd doesn't read environment files, so the API key goes in `EnvironmentVariables`, which is why the installed file must be readable only by you (`chmod 600`). `KeepAlive` with `SuccessfulExit` set to false restarts Sparrow when it exits with an error, as `supervise` makes it do when any part fails (Chapter 10), but not when you stop it on purpose; `ThrottleInterval` waits ten seconds between restarts. Output and errors go to a log file in Sparrow's state folder.
+
+Replace `YOU` with your user name (run `whoami` to see it) and `sk-ant-...` with your key, then install it with the commands in the comment at the top of the file. Check on it with:
+
+```
+$ launchctl print gui/$(id -u)/local.sparrow
+$ tail -f ~/.sparrow/state/sparrow.log
+```
+
+To stop it for good, run `launchctl bootout` with the same two arguments as `bootstrap`. The test workflow checks the file with `plutil -lint`, macOS's own checker for property lists, on every change.
+
 ## Docker
 
-If you'd rather run Sparrow in a container, or you're on a Mac and need Linux for the sandbox, `deploy/Dockerfile` builds an image:
+If you'd rather run Sparrow in a container, `deploy/Dockerfile` builds an image:
 
 ```
 @include deploy/Dockerfile
 ```
 
-It starts from the slim official Python image, installs bubblewrap, creates a normal user, `sparrow`, installs the pinned packages, and copies in the code. Sparrow runs as that user, never as root, and its home folder is a volume, so your workspace and state live outside the container and survive rebuilds.
+It starts from the slim official Python image, installs bubblewrap, creates a normal user, `sparrow`, installs the pinned packages, and copies in the code. Sparrow runs as that user, never as root, and its home folder is a volume, so your workspace and state live outside the container and survive rebuilds. The image also sets `SPARROW_WEB_HOST` to `0.0.0.0`, so the web chat listens on all of the container's network addresses. That sounds less safe than the usual `127.0.0.1`, but inside a container `127.0.0.1` means the container itself, which Docker can't forward to; the first version of the image made exactly that mistake, and the web chat couldn't be reached. Who can reach it is decided by the next file.
 
 Build it from the project folder:
 
@@ -92,7 +112,9 @@ The two `--security-opt` lines need explaining, because they're a real trade-off
 @include evals/docker-test.txt
 ```
 
-With Docker's defaults, every test that needs the sandbox failed, and `doctor` said so: "No permissions to create new namespace." Sparrow then refuses all commands, which is safe, and everything else works. (That run had 135 tests; the web chat's Origin test was added afterward.) With `seccomp=unconfined` and `systempaths=unconfined`, all the tests passed.
+With Docker's defaults, every test that needs the sandbox failed, and `doctor` said so: "No permissions to create new namespace." Sparrow then refuses all commands, which is safe, and everything else works. With `seccomp=unconfined` and `systempaths=unconfined`, all 150 tests passed.
+
+The same container also confirmed the web chat setting described above: started with the image's `SPARROW_WEB_HOST=0.0.0.0`, the chat page answered through Docker's forwarded port; started listening on `127.0.0.1` inside the container, as the first version did, the connection failed.
 
 Those two options loosen the *container's* own isolation from your computer: the container may use system calls Docker would normally block, and see parts of `/proc` it would normally hide. Inside, Sparrow's sandbox is fully working, so commands from the model are still isolated; the difference is that the container as a whole is less locked down. There are three reasonable choices:
 
@@ -100,9 +122,9 @@ Those two options loosen the *container's* own isolation from your computer: the
 2. **Use Docker with the two options**, accepting a less isolated container, on a machine where Sparrow is the main thing running.
 3. **Use Docker with the defaults**, accepting that Sparrow can't run commands. Skills that need scripts, such as the expense totals, won't work, and Sparrow will say so.
 
-On a Mac, Docker Desktop runs containers in a Linux virtual machine, so option 2 gives you a working sandbox inside that machine.
+On a Mac you don't need Docker at all: Sparrow runs directly, with the Mac's own sandbox, as a launch agent. If you prefer Docker there, Docker Desktop runs containers in a Linux virtual machine, and the same three choices apply inside it.
 
-> **Warning:** Never make Sparrow's sandbox optional to "make it work." `run_sandboxed` refuses commands when bubblewrap can't run, on purpose. If you change that to run commands without the sandbox, every prompt injection that reaches `run_command` runs with your full permissions.
+> **Warning:** Never make Sparrow's sandbox optional to "make it work." `run_sandboxed` refuses commands when the sandbox can't run, on purpose. If you change that to run commands without the sandbox, every prompt injection that reaches `run_command` runs with your full permissions.
 
 ## Backups
 
@@ -110,8 +132,8 @@ Everything Sparrow knows is in `~/.sparrow`. Back it up like any important folde
 
 ## Key Takeaways
 
-- Sparrow needs no incoming connections, so any always-on Linux machine can run it.
+- Sparrow needs no incoming connections, so any always-on Linux machine or Mac can run it.
 - Keep the model's API key in a `chmod 600` file read by the service manager.
-- A systemd user service with `Restart=on-failure` and lingering keeps Sparrow running across crashes and reboots.
+- A systemd user service with `Restart=on-failure` and lingering keeps Sparrow running across crashes and reboots; on a Mac, a launch agent with `KeepAlive` does the same.
 - In Docker, run as a normal user with the state on a volume and the web chat on 127.0.0.1 only.
 - Docker's defaults block the sandbox; loosening them is a trade-off, and running directly with systemd avoids it.

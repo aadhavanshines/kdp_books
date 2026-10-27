@@ -35,6 +35,14 @@ def test_unknown_setting_is_an_error(tmp_path):
         load_settings(tmp_path)
 
 
+def test_empty_and_bad_sections(tmp_path):
+    (tmp_path / "sparrow.yaml").write_text("heartbeat:\n")
+    assert load_settings(tmp_path).heartbeat.every_minutes == 30
+    (tmp_path / "sparrow.yaml").write_text("heartbeat: 5\n")
+    with pytest.raises(ValueError, match="must be a section"):
+        load_settings(tmp_path)
+
+
 # Workspace --------------------------------------------------------------
 
 
@@ -161,6 +169,7 @@ def test_parse_when(text, first, repeat):
         "every 1 minute",
         "weekly xyz 09:00",
         "2026-10-28 25:00",
+        "2026-10-01 09:00",  # already past
     ],
 )
 def test_parse_when_rejects(text):

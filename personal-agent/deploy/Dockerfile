@@ -14,6 +14,9 @@ COPY sparrow ./sparrow
 
 USER sparrow
 ENV SPARROW_HOME=/home/sparrow/.sparrow
+# Listen on all of the container's addresses, so Docker can forward the
+# web chat; docker-run.sh publishes it on this computer's 127.0.0.1 only
+ENV SPARROW_WEB_HOST=0.0.0.0
 VOLUME /home/sparrow/.sparrow
 EXPOSE 8765
 CMD ["python", "-m", "sparrow", "run"]

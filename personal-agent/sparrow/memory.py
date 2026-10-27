@@ -34,6 +34,9 @@ class Memory:
             "  source TEXT PRIMARY KEY, mtime REAL);"
         )
 
+    def close(self) -> None:
+        self.db.close()
+
     # Writing ---------------------------------------------------------
 
     def remember(self, fact: str, now: datetime) -> str:

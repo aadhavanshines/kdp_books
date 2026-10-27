@@ -40,6 +40,8 @@
 
 **Lethal trifecta.** An agent with access to private data, exposure to untrusted content, and a way to communicate externally; together they allow data theft through prompt injection.
 
+**Launch agent.** A program that macOS's launchd starts when you log in and restarts if it fails; Sparrow's way of running all the time on a Mac.
+
 **Long polling.** Asking a server for new messages and letting it hold the request open until one arrives or a timeout passes.
 
 **Luhn check.** The checksum that every valid payment card number passes; used to avoid mistaking other numbers for cards.
@@ -69,6 +71,8 @@
 **Sandbox.** An isolated environment where a command can do its job and nothing else.
 
 **Scripted brain.** A stand-in for the model that plays back fixed tool calls and replies, used in tests.
+
+**Seatbelt.** The sandbox built into macOS; Sparrow uses it, through `sandbox-exec`, to run commands on a Mac.
 
 **seccomp.** A Linux feature that limits which system calls a process may make; Docker uses it by default.
 

@@ -47,7 +47,7 @@ The code alphabet leaves out `0`, `O`, `1` and `I`, because you'll read codes on
 The gateway's `decide` method runs approved actions:
 
 ```python
-@include sparrow/gateway.py#L277-L305
+@include sparrow/gateway.py#L278-L306
 ```
 
 The action is chosen from a fixed list in code, `allow_host` or `install_skill`, and its arguments come from the stored payload, not from anything the model says now. That's the core of the design: what you approve is exactly what runs. If the model asked to visit `news.example`, approving can't result in a visit to anywhere else.
@@ -58,7 +58,7 @@ After the action, Sparrow gets a follow-up turn in your main session, with a sys
 
 An approval is only as safe as your ability to judge it in a few seconds on a phone. Sparrow's requests follow three rules worth copying:
 
-- **Say exactly what will happen, in words.** "Let Sparrow visit news.example?" not "Approve request 4?" The summary is written by code from the payload, not by the model, so a prompt injection can't write a misleading summary such as "visit your bank (safe)".
+- **Say exactly what will happen, in words.** "Let Sparrow visit news.example?" not "Approve request 4?" The summary is written by code from the payload, not by the model, so a prompt injection can't write a misleading summary such as "visit your bank (safe)". For a skill, "in words" means the whole thing: the notice shows the description and the instructions, and says plainly when the new skill would replace one you already have (Chapter 6).
 - **One decision per request.** Bundled requests ("visit these four sites and install a skill") get approved wholesale.
 - **Make the safe answer easy.** `/deny` is as short as `/approve`, and ignoring a request is safe too: it just expires.
 

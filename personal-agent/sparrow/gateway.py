@@ -227,7 +227,8 @@ class Gateway:
                 tools=[c[0] for c in ctx.calls],
             )
             if ctx.notices:
-                answer += "\n\n" + "\n".join(ctx.notices)
+                notices = privacy.restore("\n".join(ctx.notices))
+                answer += "\n\n" + notices
             return answer
 
     # Commands ---------------------------------------------------------
@@ -331,26 +332,33 @@ class Gateway:
         """Run whatever is due. Called every few seconds."""
         now = self.core.now()
         for job in self.core.scheduler.due(now):
+            # Mark the job done first: if delivery fails, it must not run
+            # again on the next tick and repeat its model call and tools
+            self.core.scheduler.done(job, now)
             planned = datetime.fromisoformat(job["next_run"])
             late = now - planned > timedelta(minutes=10)
             note = (
                 f" (late: this was due at {planned:%H:%M})" if late else ""
             )
-            if job["kind"] == "remind":
-                await self.send(
-                    job["route"], f"Reminder: {job['message']}{note}"
+            try:
+                if job["kind"] == "remind":
+                    await self.send(
+                        job["route"], f"Reminder: {job['message']}{note}"
+                    )
+                else:
+                    answer = await self.converse(
+                        "main",
+                        "owner",
+                        job["route"],
+                        "Scheduler",
+                        f"(Scheduled task{note}) {job['message']}",
+                    )
+                    await self.send(job["route"], answer)
+                self.core.audit.log(now, "job", id=job["id"], late=late)
+            except Exception as error:  # e.g. Telegram is down
+                self.core.audit.log(
+                    now, "job_error", id=job["id"], error=repr(error)
                 )
-            else:
-                answer = await self.converse(
-                    "main",
-                    "owner",
-                    job["route"],
-                    "Scheduler",
-                    f"(Scheduled task{note}) {job['message']}",
-                )
-                await self.send(job["route"], answer)
-            self.core.scheduler.done(job, now)
-            self.core.audit.log(now, "job", id=job["id"], late=late)
         await self.heartbeat(now)
 
     async def heartbeat(self, now: datetime) -> None:

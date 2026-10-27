@@ -62,7 +62,7 @@ def init(home: Path) -> None:
             f"SPARROW_WEB_TOKEN={secrets.token_urlsafe(24)}\n"
         )
         secrets_file.chmod(0o600)
-    Core(load_settings(home))  # creates the workspace
+    Core(load_settings(home)).close()  # creates the workspace
     print(f"Sparrow's home is ready: {home}")
     print(
         f"Edit {home / 'sparrow.yaml'} and "
@@ -126,7 +126,20 @@ def doctor(home: Path) -> int:
             f"put {settings.webchat.token_env}=... in state/secrets.env",
         )
     print("All good." if not problems else f"{problems} thing(s) to fix.")
+    core.close()
     return 1 if problems else 0
+
+
+async def supervise(tasks: list, may_finish=None) -> None:
+    """Run until one task stops. Only the terminal chat may stop
+    normally; anything else stopping is a failure, raised so Sparrow
+    exits with an error and a service manager restarts it."""
+    done, _ = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+    for task in done:
+        if task.exception():
+            raise task.exception()
+        if task is not may_finish:
+            raise RuntimeError("part of Sparrow stopped unexpectedly")
 
 
 async def serve(home: Path, terminal: bool) -> None:
@@ -147,17 +160,20 @@ async def serve(home: Path, terminal: bool) -> None:
         if settings.webchat.enabled:
             from .channels.webchat import WebChatChannel
 
-            web = WebChatChannel(core.vault.get(settings.webchat.token_env))
-            gateway.add_channel(web)
-            jobs.append(
-                web.run(
-                    gateway, settings.webchat.host, settings.webchat.port
+            token = core.vault.get(settings.webchat.token_env)
+            if not token:
+                core.close()
+                raise SystemExit(
+                    f"Set {settings.webchat.token_env} in "
+                    "state/secrets.env (python -m sparrow doctor helps)"
                 )
-            )
-            print(
-                f"Web chat: http://{settings.webchat.host}:"
-                f"{settings.webchat.port}/?token=..."
-            )
+            web = WebChatChannel(token)
+            gateway.add_channel(web)
+            # In a container, SPARROW_WEB_HOST=0.0.0.0 (see the Dockerfile)
+            host = os.environ.get("SPARROW_WEB_HOST", settings.webchat.host)
+            port = settings.webchat.port
+            jobs.append(web.run(gateway, host, port))
+            print(f"Web chat: http://{host}:{port}/?token=...")
         if settings.telegram.enabled:
             from .channels.telegram import TelegramChannel
 
@@ -170,7 +186,7 @@ async def serve(home: Path, terminal: bool) -> None:
     print("Sparrow is running. Press Ctrl+C to stop.", flush=True)
     tasks = [asyncio.create_task(job) for job in jobs]
     # Stop when the terminal chat ends, or run until interrupted
-    await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+    await supervise(tasks, may_finish=tasks[-1] if terminal else None)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -203,6 +219,7 @@ def main(argv: list[str] | None = None) -> int:
 
         core = Core(load_settings(home))
         print(Gateway(core, brain=None).status(core.now()))
+        core.close()
     elif args.command == "pairing":
         core = Core(load_settings(home))
         if args.action == "list":
@@ -217,6 +234,7 @@ def main(argv: list[str] | None = None) -> int:
                 if core.pairing.remove(args.value or "")
                 else "No such guest."
             )
+        core.close()
     return 0
 
 

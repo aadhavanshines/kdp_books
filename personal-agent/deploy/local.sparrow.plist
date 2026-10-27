@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+Sparrow as a macOS launch agent: starts when you log in, restarts if it
+crashes. Replace YOU with your user name and sk-ant-... with your key,
+then install (see Chapter 25):
+  cp deploy/local.sparrow.plist ~/Library/LaunchAgents/
+  chmod 600 ~/Library/LaunchAgents/local.sparrow.plist
+  launchctl bootstrap gui/$(id -u) \
+    ~/Library/LaunchAgents/local.sparrow.plist
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>local.sparrow</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/YOU/sparrow/.venv/bin/python</string>
+    <string>-m</string>
+    <string>sparrow</string>
+    <string>run</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/YOU/sparrow</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>ANTHROPIC_API_KEY</key>
+    <string>sk-ant-...</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <!-- Restart after a crash (an exit with an error), not after a stop -->
+  <key>KeepAlive</key>
+  <dict>
+    <key>SuccessfulExit</key>
+    <false/>
+  </dict>
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+  <key>StandardOutPath</key>
+  <string>/Users/YOU/.sparrow/state/sparrow.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/YOU/.sparrow/state/sparrow.log</string>
+</dict>
+</plist>

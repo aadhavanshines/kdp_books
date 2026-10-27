@@ -16,7 +16,7 @@ from sparrow.config import load_settings
 from sparrow.core import Core
 from sparrow.gateway import Gateway
 
-from conftest import owner_says
+from conftest import OWNER, owner_says
 from fake_telegram import TOKEN, FakeTelegram
 
 pytestmark = pytest.mark.anyio
@@ -84,7 +84,7 @@ async def test_jobs_survive_a_restart_and_say_they_are_late(home, clock):
         "telegram:100",
         clock.now,
     )
-    del first  # Sparrow stops...
+    first.close()  # Sparrow stops...
     clock.advance(hours=2)  # ...and is off for 2 hours
     second = Core(load_settings(home), clock=clock)
     second.settings.heartbeat.every_minutes = 10_000
@@ -97,6 +97,34 @@ async def test_jobs_survive_a_restart_and_say_they_are_late(home, clock):
     assert telegram.texts() == [
         "Reminder: Take the cake out (late: this was due at 09:10)"
     ]
+    second.close()
+
+
+async def test_failed_delivery_does_not_repeat_a_task(
+    make_gateway, core, clock
+):
+    gateway, brain, _ = make_gateway(
+        lambda turn: [("tool", "todo_add", {"text": "Buy bread"})]
+    )
+
+    class Down:
+        name = "telegram"
+
+        async def send(self, chat_id, text):
+            raise ConnectionError("Telegram is down")
+
+    gateway.add_channel(Down())
+    core.settings.heartbeat.every_minutes = 10_000
+    core.scheduler.add(
+        "task", "Add bread to my list", "in 5 minutes", OWNER, clock.now
+    )
+    clock.advance(minutes=5)
+    for _ in range(3):  # three ticks while Telegram is down
+        await gateway.tick()
+    assert len(brain.turns) == 1  # the task ran once, not three times
+    assert core.todo.show().count("Buy bread") == 1
+    events = [e["event"] for e in core.audit.read("2026-10-27")]
+    assert "job_error" in events
 
 
 # Heartbeat ----------------------------------------------------------------
@@ -240,6 +268,17 @@ def test_web_socket_rejects_other_sites(make_gateway):
     ) as socket:
         socket.send_json({"text": "hi"})
         assert socket.receive_json() == {"typing": True}
+
+
+def test_web_chat_ignores_bad_messages(make_gateway):
+    gateway, _, _ = make_gateway([[("say", "Still here")]])
+    client = web_client(gateway)
+    with client.websocket_connect(f"/ws?token={WEB_TOKEN}") as socket:
+        socket.send_text("not json at all")
+        socket.send_json(["a", "list"])
+        socket.send_json({"text": "hi"})
+        assert socket.receive_json() == {"typing": True}
+        assert socket.receive_json()["text"] == "Still here"
 
 
 def test_short_web_tokens_are_refused():

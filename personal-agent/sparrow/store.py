@@ -68,3 +68,6 @@ class Store:
 
     def put(self, key: str, value: str) -> None:
         self.run("INSERT OR REPLACE INTO kv VALUES (?, ?)", key, value)
+
+    def close(self) -> None:
+        self.db.close()

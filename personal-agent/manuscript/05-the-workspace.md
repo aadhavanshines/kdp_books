@@ -35,10 +35,10 @@ The main `Settings` class gathers the sections and the top-level options:
 `load_settings` reads the file:
 
 ```python
-@include sparrow/config.py#L79-L108
+@include sparrow/config.py#L79-L111
 ```
 
-It uses `yaml.safe_load`, which reads only plain data, never Python objects, so a settings file can't run code. Sections become their data classes; YAML has no tuples, so the heartbeat's active hours are converted from a list. Anything else must be a known field of `Settings`. A misspelled setting, such as `daily_budjet_usd`, raises an error naming it, instead of being silently ignored while you wonder why your limit doesn't work.
+It uses `yaml.safe_load`, which reads only plain data, never Python objects, so a settings file can't run code. Sections become their data classes. A section with nothing under it, such as a bare `heartbeat:` line, keeps its defaults, and a section that isn't a list of settings (`heartbeat: 5`) is an error that names it. YAML has no tuples, so the heartbeat's active hours are converted from a list. Anything else must be a known field of `Settings`. A misspelled setting, such as `daily_budjet_usd`, raises an error naming it, instead of being silently ignored while you wonder why your limit doesn't work.
 
 > **Tip:** Fail loudly on configuration you don't understand. A setting that's silently ignored is one of the most common ways security features end up switched off without anyone noticing.
 

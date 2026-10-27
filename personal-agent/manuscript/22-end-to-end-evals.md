@@ -28,7 +28,7 @@ The settings allow two pretend sites and deny one, and give the weather API a se
 `Internet` is an `httpx` transport that serves the pretend sites, plus a weather API that answers only with the right key, and records every request, so a scenario can see exactly which hosts Sparrow contacted. `RecordingBrain` is the real `ClaudeBrain` with two additions: it keeps every turn and times each one.
 
 ```python
-@include evals/harness.py#L122-L205
+@include evals/harness.py#L122-L210
 ```
 
 The `Sparrow` class gives each scenario simple ways to act and inspect: `owner` sends a message as the owner and returns the reply; `person` sends one as someone else; `file`, `memory`, `tools_used` and `audit` look at the effects; `seen_by_model` gathers every system prompt, user prompt and tool result the model received; and `cost` totals the spending ledger. `make_sparrow` builds it all in a fresh temporary folder, with the secret in a `chmod 600` secrets file, the clock at 09:00 on Tuesday, October 27, 2026, and the pretend internet plugged into the core.

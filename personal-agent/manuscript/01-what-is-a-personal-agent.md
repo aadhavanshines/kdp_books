@@ -57,7 +57,7 @@ On March 16, 2026, at its GTC conference, NVIDIA announced NemoClaw, an open-sou
 
 ## What Sparrow Will Do
 
-Sparrow is a personal agent with OpenClaw's shape and NemoClaw's protections, small enough to read completely. It isn't OpenClaw or NemoClaw, and it doesn't use their code; it follows the same published ideas, in about 2,900 lines of Python.
+Sparrow is a personal agent with OpenClaw's shape and NemoClaw's protections, small enough to read completely. It isn't OpenClaw or NemoClaw, and it doesn't use their code; it follows the same published ideas, in about 3,100 lines of Python.
 
 | Part | OpenClaw / NemoClaw idea | In Sparrow |
 | --- | --- | --- |

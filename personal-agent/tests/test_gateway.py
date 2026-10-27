@@ -145,28 +145,31 @@ async def test_web_fetch_approval_flow(make_gateway, core):
 
 
 async def test_deny_and_skill_approval(make_gateway, core):
+    propose = [
+        (
+            "tool",
+            "write_skill",
+            {
+                "name": "plant-care",
+                "description": "Plant watering",
+                "instructions": "1. Water weekly.",
+            },
+        ),
+        ("say", "Proposed."),
+    ]
     gateway, _, telegram = make_gateway(
-        [
-            [
-                (
-                    "tool",
-                    "write_skill",
-                    {
-                        "name": "plant-care",
-                        "description": "Plant watering",
-                        "instructions": "1. Water weekly.",
-                    },
-                ),
-                ("say", "Proposed."),
-            ],
-            [("say", "Skill ready.")],
-        ]
+        [propose, [("say", "Skill ready.")], propose]
     )
     await gateway.handle(owner_says("Make a plant care skill"))
     code = core.approvals.pending(core.now())[0]["code"]
+    notice = telegram.texts()[-1]
+    assert "install the skill 'plant-care'" in notice
+    assert "1. Water weekly." in notice  # the owner sees the steps
     assert "plant-care" not in core.skills.load()  # not before approval
     await gateway.handle(owner_says(f"/approve {code}"))
     assert "plant-care" in core.skills.load()
+    await gateway.handle(owner_says("Make a plant care skill"))
+    assert "replace the existing skill" in telegram.texts()[-1]
     await gateway.handle(owner_says("/deny NOPE12"))
     assert telegram.texts()[-1] == "No pending request with code NOPE12."
 

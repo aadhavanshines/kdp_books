@@ -4,30 +4,30 @@ A security feature you haven't tried to break is a hope, not a protection. This 
 
 ## Attacking the Code
 
-`tests/test_safety.py` has 41 tests. It starts with its imports:
+`tests/test_safety.py` has 50 tests. It starts with its imports:
 
 ```python
-@include tests/test_safety.py#L1-L19
+@include tests/test_safety.py#L1-L22
 ```
 
 ### The Egress Policy
 
 ```python
-@include tests/test_safety.py#L22-L58
+@include tests/test_safety.py#L25-L64
 ```
 
-The parametrized test is a list of addresses an attacker would try, each with the verdict it must get. Allowed sites and their subdomains pass; `wiki.example` itself is *not* a subdomain of `*.wiki.example` and must be asked about; the deny list wins; and every private or odd address is denied: `127.0.0.1`, `localhost`, the cloud metadata address `169.254.169.254`, IPv6's `[::1]`, `file:` and `ftp:` addresses, and `docs.example.com.evil.example`, which starts with an allowed name but belongs to the attacker.
+The parametrized test is a list of addresses an attacker would try, each with the verdict it must get. Allowed sites and their subdomains pass; `wiki.example` itself is *not* a subdomain of `*.wiki.example` and must be asked about; the deny list wins; and every private or odd address is denied: `127.0.0.1`, `localhost`, the cloud metadata address `169.254.169.254`, IPv6's `[::1]`, `file:` and `ftp:` addresses, `docs.example.com.evil.example`, which starts with an allowed name but belongs to the attacker, and the three old ways of writing `127.0.0.1`: as one number, in hexadecimal and shortened.
 
 ```python
-@include tests/test_safety.py#L61-L122
+@include tests/test_safety.py#L67-L181
 ```
 
-`site` builds a pretend web server from a dictionary of responses and records every request. The redirect test checks the defense from Chapter 17: an allowed page redirects to a denied host, and the fetch is refused *after exactly one request*, so the denied host was never contacted. The secrets test checks three things: the weather API received the real key; the key, echoed back in the response's "debug" text as some real APIs do, was scrubbed before the model could see it; and a request to another host carried no key at all. The HTML test checks that scripts and comments, a favorite hiding place for injected instructions, are dropped entirely.
+`site` builds a pretend web server from a dictionary of responses and records every request. The redirect test checks the defense from Chapter 17: an allowed page redirects to a denied host, and the fetch is refused *after exactly one request*, so the denied host was never contacted. The secrets test checks three things: the weather API received the real key; the key, echoed back in the response's "debug" text as some real APIs do, was scrubbed before the model could see it; and a request to another host carried no key at all. Three tests use the pretend DNS. A name that leads to `127.0.0.1`, like `localtest.me`, is denied even though you approved it, and the pretend server shows it was never contacted. A name that doesn't exist is an error. And a 2 MB page comes back cut to size. The HTML test checks that scripts and comments, a favorite hiding place for injected instructions, are dropped entirely.
 
 ### The Vault
 
 ```python
-@include tests/test_safety.py#L125-L137
+@include tests/test_safety.py#L184-L196
 ```
 
 A secrets file readable by others is refused with the exact command to fix it.
@@ -35,18 +35,18 @@ A secrets file readable by others is refused with the exact command to fix it.
 ### The Sandbox
 
 ```python
-@include tests/test_safety.py#L140-L211
+@include tests/test_safety.py#L199-L301
 ```
 
-These are the tests from Chapter 16. Each row of the parametrized test is an escape attempt with the exit code and output it must produce: writing in `/work` works; skill scripts run; `/etc/passwd`, `/home` and `/root` don't exist; `/usr` and `/skills` can't be written; the network is unreachable; `sleep 30` is killed at five seconds with code 124; and allocating a gigabyte fails with a `MemoryError` under the 256 MB limit. Then the environment tests, including the `/proc` test that found the real leak, the output limit, and the refusal when bubblewrap is missing. The tests that need bubblewrap are skipped, with a reason, on a machine that doesn't have it, so the rest of the suite still runs.
+These are the tests from Chapter 16, written to run on both Linux and macOS. The `box` fixture points `HOME` at a folder holding a pretend SSH key, so both sandboxes treat it as your home folder. Each row of the main parametrized test is an escape attempt with the exit code and output it must produce, as a pattern that accepts either system's wording: writing in `/work` works; skill scripts run; `/usr` and `/skills` can't be written ("Read-only" on Linux, "not permitted" on a Mac); the network can't be reached; and `sleep 30` is killed at five seconds with code 124. The home-folder test checks that the pretend key can't be read. Three more rows run only on Linux: `/etc/passwd`, `/home` and `/root` don't exist, and allocating a gigabyte fails with a `MemoryError` under the 256 MB limit. Then the environment tests, including the `/proc` test that found the real leak (Linux only), the output limit, a command that prints forever and must be cut and stopped, and the refusal when no sandbox is available. Tests that need a sandbox are skipped, with a reason, on a computer that has none, so the rest of the suite still runs.
 
 ### Every Tool Call
 
 ```python
-@include tests/test_safety.py#L214-L289
+@include tests/test_safety.py#L304-L389
 ```
 
-The last group attacks `call_tool` directly, as a fooled model would. Four paths out of the files folder, including `../../state/secrets.env`, are refused, and so is a symbolic link planted inside it. A guest's turn asking for `memory_search`, `read_file`, `run_command` or `todo_list` gets "not available," while `read_skill` works. A placeholder written to a file arrives on disk as the real email address, but reading the file back shows the model only the placeholder. A file that tries to close the `<untrusted>` tag early fails, because the closing tag appears exactly once. Tool errors become messages. And every call, even an attacker's, is in the audit log.
+The last group attacks `call_tool` directly, as a fooled model would. Four paths out of the files folder, including `../../state/secrets.env`, are refused, and so is a symbolic link planted inside it. A guest's turn asking for `memory_search`, `read_file`, `run_command` or `todo_list` gets "not available," while `read_skill` works. A placeholder written to a file arrives on disk as the real email address, but reading the file back shows the model only the placeholder. A file that tries to close the `<untrusted>` tag early, once in lowercase and once as `</UNTRUSTED >`, fails, because the closing tag appears exactly once. A fact saved to memory stays quiet normally, but after the turn has read a file, the owner gets a notice. Tool errors become messages. And every call, even an attacker's, is in the audit log.
 
 > **Note:** These tests don't depend on how clever the attack text is, because there's no text in them: they ask for the dangerous action directly, as if the model had already been completely fooled. That's the strongest form of the test, and it's only possible because every action goes through `call_tool`.
 

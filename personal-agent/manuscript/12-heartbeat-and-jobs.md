@@ -28,7 +28,7 @@ Here is every form, with what the code makes of it at 09:00 on Tuesday, October 
 | `every 2 hours` | Tue 2026-10-27 11:00 | `every 120m` |
 | `Every 45 Minutes` | Tue 2026-10-27 09:45 | `every 45m` |
 
-And these are refused with an error the model can read and correct: `next week` (not a form), `today 08:00` (already past), `every 1 minute` (too often), `weekly xyz 09:00` (not a day) and `2026-10-28 25:00` (not a time).
+And these are refused with an error the model can read and correct: `next week` (not a form), `today 08:00` and `2026-10-01 09:00` (already past), `every 1 minute` (too often), `weekly xyz 09:00` (not a day) and `2026-10-28 25:00` (not a time).
 
 ## Parsing Times
 
@@ -41,15 +41,15 @@ And these are refused with an error the model can read and correct: `next week` 
 Time zones are handled by Python's `zoneinfo`. The `now` passed in has the owner's time zone, and adding days and setting the hour keep it, so "daily 08:00" means 08:00 on the owner's wall clock all year, including the days the clocks change. One of the tests checks the night in October 2026 when Lisbon's clocks went back an hour: the next "daily 08:00" is still 08:00, now in winter time.
 
 ```python
-@include sparrow/scheduler.py#L49-L84
+@include sparrow/scheduler.py#L49-L87
 ```
 
-`parse_when` normalizes the text (lowercase, commas to spaces, single spaces), then tries each form in turn with `re.fullmatch`, which must match the whole text, so "in 30 minutes or so" is refused rather than half-understood. A one-off time returns `None` as its repeat rule; a repeating one returns the rule in a short standard form, which is what's stored. Repeats more often than every five minutes are refused, because a job every minute is almost always a mistake, and each run of a task costs a model call. The final error lists every accepted form, so a model that guessed wrong knows exactly how to try again.
+`parse_when` normalizes the text (lowercase, commas to spaces, single spaces), then tries each form in turn with `re.fullmatch`, which must match the whole text, so "in 30 minutes or so" is refused rather than half-understood. A date and time, or "today" or "tomorrow" with a time, that has already passed is refused (otherwise a typo such as last year's date would fire at once). A one-off time returns `None` as its repeat rule; a repeating one returns the rule in a short standard form, which is what's stored. Repeats more often than every five minutes are refused, because a job every minute is almost always a mistake, and each run of a task costs a model call. The final error lists every accepted form, so a model that guessed wrong knows exactly how to try again.
 
 ## Storing Jobs
 
 ```python
-@include sparrow/scheduler.py#L87-L141
+@include sparrow/scheduler.py#L90-L144
 ```
 
 The `Scheduler` keeps jobs in the `jobs` table from Chapter 9. `add` checks the kind, parses the time and stores the job with its route, so it will be delivered to the chat where it was asked for. `list` returns active jobs, soonest first. `cancel` switches a job off rather than deleting it, so the database keeps a history of what was scheduled; it returns `False` for a job that doesn't exist or was already off, so the model hears "There is no active job 7" instead of a false success.
@@ -61,12 +61,14 @@ The `Scheduler` keeps jobs in the `jobs` table from Chapter 9. `add` checks the 
 The gateway checks for due jobs on a timer:
 
 ```python
-@include sparrow/gateway.py#L328-L354
+@include sparrow/gateway.py#L329-L362
 ```
 
-`tick` runs every due job. A **reminder** is sent as it is, prefixed with "Reminder:"; no model is involved, so it's instant, free, and exactly the words you asked for. A **task** runs a full conversation turn, as the owner, in the owner's main session, with the job's message as the request. "Send my daily briefing" at 08:00 is just as if you'd typed it at 08:00, so Sparrow reads the daily-briefing skill, checks your to-dos and memory, and answers you.
+`tick` runs every due job, and the first thing it does with a job is mark it done, which schedules a repeating job's next run or switches a one-off job off. Only then does it deliver the job. The order matters. The first version marked a job done *after* delivering it, so if Telegram was down and the send failed, the job stayed due, and the next tick, twenty seconds later, ran it again: for a task, another model call and another round of tool calls, every twenty seconds for as long as Telegram was down. A review found it by simulating exactly that. Now a failed delivery is caught, logged as a `job_error`, and the job isn't repeated; the heartbeat keeps running too. Losing one reminder during an outage is much better than repeating an action without end.
 
-If a job runs more than ten minutes late, because Sparrow was stopped or the computer was asleep, the message says so: "Reminder: Take the cake out (late: this was due at 09:10)." A reminder without that note could be dangerously misleading. Each job is marked done before the next is checked, and logged.
+A **reminder** is sent as it is, prefixed with "Reminder:"; no model is involved, so it's instant, free, and exactly the words you asked for. A **task** runs a full conversation turn, as the owner, in the owner's main session, with the job's message as the request. "Send my daily briefing" at 08:00 is just as if you'd typed it at 08:00, so Sparrow reads the daily-briefing skill, checks your to-dos and memory, and answers you.
+
+If a job runs more than ten minutes late, because Sparrow was stopped or the computer was asleep, the message says so: "Reminder: Take the cake out (late: this was due at 09:10)." A reminder without that note could be dangerously misleading. Each job that's delivered is logged as a `job` event.
 
 ## The Heartbeat
 
@@ -79,7 +81,7 @@ Scheduled jobs run at fixed times. The heartbeat is different: every 30 minutes,
 You can add your own checks, in plain language: "If it's Friday after 16:00, remind me to submit my timesheet," or "If a to-do has been overdue for three days, ask whether to drop it."
 
 ```python
-@include sparrow/gateway.py#L356-L383
+@include sparrow/gateway.py#L364-L391
 ```
 
 The heartbeat has four guards before it calls the model:
@@ -96,7 +98,7 @@ The beat runs as a turn in its own session, `heartbeat`, with role `heartbeat`, 
 ## The Loop
 
 ```python
-@include sparrow/gateway.py#L385-L393
+@include sparrow/gateway.py#L393-L401
 ```
 
 `run_scheduler` calls `tick` every 20 seconds, so a reminder is at most 20 seconds late, and catches any error so a single bad job can't stop all future ones. Twenty seconds is a trade-off: checking the database three times a minute costs nothing measurable, and nobody minds a reminder at 18:00:15.

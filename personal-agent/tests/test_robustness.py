@@ -10,9 +10,10 @@ import time
 import pytest
 from claude_agent_sdk import ClaudeSDKError
 
-from sparrow.__main__ import main
+from sparrow.__main__ import main, supervise
 from sparrow.brain import ClaudeBrain, Reply, Turn
 from sparrow.privacy import PrivacyRouter
+from sparrow.sandbox import backend
 from sparrow.tools import Context
 
 from conftest import owner_says, stranger_says
@@ -125,9 +126,32 @@ async def test_placeholders_are_explained_to_the_model(make_gateway, core):
     assert "# Private Values" not in brain.turns[1].system
 
 
+async def test_a_part_that_stops_stops_sparrow_with_an_error():
+    async def forever():
+        await asyncio.sleep(3600)
+
+    async def crashes():
+        raise OSError("address already in use")
+
+    async def ends():
+        return None
+
+    running = [asyncio.create_task(forever()) for _ in range(3)]
+    crash = asyncio.create_task(crashes())
+    with pytest.raises(OSError, match="already in use"):
+        await supervise([running[0], crash])
+    with pytest.raises(RuntimeError, match="stopped unexpectedly"):
+        await supervise([running[1], asyncio.create_task(ends())])
+    chat = asyncio.create_task(ends())  # the terminal chat may end
+    await supervise([running[2], chat], may_finish=chat)
+    for task in running:
+        task.cancel()
+
+
 # The command line ---------------------------------------------------------
 
 
+@pytest.mark.skipif(backend() is None, reason="doctor checks the sandbox")
 def test_init_doctor_status_and_pairing(
     tmp_path, capsys, core, monkeypatch
 ):

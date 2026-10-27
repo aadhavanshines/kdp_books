@@ -17,15 +17,19 @@ So outgoing requests follow three rules:
 `sparrow/egress.py` starts with two helpers:
 
 ```python
-@include sparrow/egress.py#L1-L36
+@include sparrow/egress.py#L1-L58
 ```
 
 `host_matches` compares a host with a pattern: `example.com` matches only itself, and `*.example.com` matches its subdomains. Notice that `*.example.com` does *not* match `example.com.evil.example`: the check is `endswith(".example.com")`, which needs the dot. Comparing hosts with a careless `in` or `startswith` is one of the oldest bugs in allowlists, and one of the tests tries exactly that address.
 
 `is_private` uses Python's `ipaddress` module to recognize any address that isn't a public internet address: `127.0.0.1` and `::1` (this computer), `10.x`, `192.168.x` and `172.16-31.x` (your home or office network), and `169.254.x`, the **link-local** range. That last one matters on cloud servers, where `169.254.169.254` is the metadata service that hands out the server's credentials to anything that asks. Attacks that trick a server into requesting internal addresses are called **server-side request forgery (SSRF)**, and an agent that fetches URLs on request is an SSRF waiting to happen unless it checks.
 
+An address can be written in more ways than you'd think. `http://2130706433/`, `http://0x7f000001/` and `http://127.1/` all mean `127.0.0.1`: the operating system still accepts the old shorthand forms of IPv4 addresses, as a single number, in hexadecimal or with parts left out. `ipaddress` recognizes only the standard form, so `literal_ip` also asks `socket.inet_aton`, which accepts the old forms too, for any host made only of digits, dots, `x` and hexadecimal letters. These forms weren't caught in the first version of Sparrow; a reviewer found them, and the egress tests now include all three.
+
+A name can also lead to a private address. `localtest.me`, for example, is a public name whose DNS record points at `127.0.0.1`, and anyone can create a name that points at your router. Checking the name's text can't catch that, so the fetcher checks where the name actually leads, using `system_resolve`, which asks DNS for every address of a name.
+
 ```python
-@include sparrow/egress.py#L39-L73
+@include sparrow/egress.py#L60-L94
 ```
 
 `EgressPolicy` combines the settings' allow and deny lists with the hosts you've approved, which are kept one per line in `state/approved-hosts.txt`, readable and editable. `decide` checks, in order:
@@ -41,18 +45,22 @@ It returns a verdict and a reason, and the reason is written to the audit log, s
 ## Fetching Safely
 
 ```python
-@include sparrow/egress.py#L76-L83
+@include sparrow/egress.py#L97-L104
 ```
 
 `html_to_text` turns a page into readable text without any HTML library: it removes scripts, styles and comments entirely (so instructions hidden in an HTML comment don't reach the model), turns paragraph and line breaks into newlines, strips the remaining tags, decodes entities such as `&amp;`, and drops blank lines. Pages get much shorter, which saves tokens.
 
 ```python
-@include sparrow/egress.py#L86-L122
+@include sparrow/egress.py#L107-L165
 ```
 
-The `Fetcher` is where the policy is enforced, and the important detail is **redirects**. A web server can answer "this page has moved to `https://elsewhere.example/`," and most HTTP clients follow that automatically. If Sparrow let the client follow redirects, an allowed site, or an attacker who controls a page on one, could bounce the request to any address at all, including a denied one or `169.254.169.254`. So the fetcher turns automatic redirects off and follows them itself, **checking the policy again for every hop**, at most four times.
+The `Fetcher` is where the policy is enforced. It takes a `resolve` function, the real DNS by default; the tests give it a pretend one, so they can play both an ordinary site and a name that leads to `127.0.0.1` without any network. Before each request, `private_target` resolves the name and refuses it if any of its addresses is private, unless you listed the host in the settings' allow list yourself (approving a site in chat doesn't count, because a fooled model might ask for exactly that site). A name that doesn't resolve at all becomes an `error`.
 
-For allowed requests, the vault adds any headers this host should get (next section). The response is limited to 300 KB, converted from HTML to text if it's HTML, scrubbed of secrets, and cut to 8,000 characters. A failed request becomes an `error` result with the reason, never an exception that would end the turn.
+> **Note:** A determined attacker who controls a name's DNS can answer the check with a public address and the request a moment later with a private one, a trick called **DNS rebinding**. Closing that gap fully means connecting to the exact address that was checked, through a proxy that enforces the policy, as NemoClaw does outside the agent (Chapter 27). Sparrow's check stops the simple and common cases.
+
+The other important detail is **redirects**. A web server can answer "this page has moved to `https://elsewhere.example/`," and most HTTP clients follow that automatically. If Sparrow let the client follow redirects, an allowed site, or an attacker who controls a page on one, could bounce the request to any address at all, including a denied one or `169.254.169.254`. So the fetcher turns automatic redirects off and follows them itself, **checking the policy again for every hop**, at most four times.
+
+For allowed requests, the vault adds any headers this host should get (next section). The response is **streamed**: the fetcher reads it a piece at a time and stops downloading at 300 KB, so a page of several gigabytes costs no more than a small one. (The first version downloaded the whole page and then kept the first 300 KB, which a reviewer rightly pointed out.) The text is converted from HTML if it's HTML, scrubbed of secrets, and cut to 8,000 characters. A failed request becomes an `error` result with the reason, never an exception that would end the turn.
 
 ## The Vault
 
@@ -103,6 +111,7 @@ Add the sites you use often, such as your local transport authority's timetable 
 
 - Control what leaves your machine: deny by default, ask about new sites, and never reach private addresses.
 - Match hosts exactly or by a dot-separated suffix; check the deny list first.
-- Follow redirects yourself and check the policy at every hop.
+- Recognize every way of writing a private address, and check where a name actually leads, not just how it's spelled.
+- Follow redirects yourself and check the policy at every hop, and stream downloads so you can stop at a size limit.
 - Keep API keys in a vault the model can't read; add them to requests only for their own host.
 - Scrub secrets from everything going back to the model or into logs, and refuse a secrets file others can read.

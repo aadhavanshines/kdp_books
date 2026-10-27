@@ -71,7 +71,7 @@ Sparrow is a Python package called `sparrow`. These are its modules, in the orde
 | `scheduler.py` | Reminders and scheduled tasks | 12 |
 | `pairing.py` | Owners, guests and strangers | 14 |
 | `approvals.py` | Approval codes | 15 |
-| `sandbox.py` | The bubblewrap sandbox | 16 |
+| `sandbox.py` | The sandbox: bubblewrap on Linux, Seatbelt on macOS | 16 |
 | `egress.py`, `vault.py` | Network policy and secrets | 17 |
 | `privacy.py` | The privacy router | 18 |
 | `audit.py` | Audit log and spending ledger | 19 |

@@ -59,6 +59,16 @@ Sparrow reads its settings from `sparrow.yaml` in its home folder (`~/.sparrow` 
 | `deny` | `[]` | Hosts never fetched, including their subdomains; beats `allow` |
 | `unknown` | `ask` | For other hosts: `ask` for approval, or `deny` |
 
+## Environment Variables
+
+| Variable | Meaning |
+| --- | --- |
+| `SPARROW_HOME` | Sparrow's home folder, if not `~/.sparrow` (the `--home` option wins) |
+| `SPARROW_WEB_HOST` | Overrides `webchat.host`; the Docker image sets `0.0.0.0` (Chapter 25) |
+| `ANTHROPIC_API_KEY` | The Claude API key, read by the Agent SDK |
+
+Secrets for tools and channels go in `state/secrets.env`, not in the environment.
+
 ## A Complete Example
 
 ```

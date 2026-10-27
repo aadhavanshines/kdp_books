@@ -43,7 +43,7 @@ Notice what's *not* here: the stranger's message text isn't forwarded to you, an
 You manage guests with `/pair` in any owner chat, or with `python -m sparrow pairing` from the terminal:
 
 ```python
-@include sparrow/gateway.py#L307-L326
+@include sparrow/gateway.py#L308-L327
 ```
 
 `/pair approve K7P2QX` lets someone in, `/pair remove telegram:555` removes them, and `/pair list` (or just `/pair`) shows everyone with their status. Like every owner command, these are handled in code. A guest who types `/pair approve` gets "Only my owner can use that command," and a guest can't ask the model to approve anyone either, because there's no tool for it.

@@ -95,6 +95,9 @@ def load_settings(home: str | Path | None = None) -> Settings:
     values = {}
     for key, value in raw.items():
         if key in SECTIONS:
+            value = value or {}  # "heartbeat:" with nothing under it
+            if not isinstance(value, dict):
+                raise ValueError(f"{key} in {path} must be a section")
             if key == "heartbeat" and "active_hours" in value:
                 value = {
                     **value,

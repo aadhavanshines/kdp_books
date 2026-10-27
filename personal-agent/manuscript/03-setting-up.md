@@ -4,9 +4,9 @@ In this chapter you'll install what Sparrow needs, create the project folder, an
 
 ## What You Need
 
-- **Linux, or WSL2 on Windows.** Sparrow's sandbox uses Linux namespaces. On a Mac, Sparrow runs but refuses to run commands until you put it in a Linux container (Chapter 25).
+- **Linux, macOS, or WSL2 on Windows.** On Linux, Sparrow's sandbox uses bubblewrap; on a Mac it uses the sandbox built into macOS, so there's nothing extra to install.
 - **Python 3.12 or newer.** The code uses a few features from 3.12. It was tested on Python 3.12, 3.13, 3.14 and 3.15.
-- **bubblewrap**, the small sandboxing program behind Sparrow's `run_command` tool. It's the same tool Flatpak uses to isolate desktop apps.
+- **bubblewrap, on Linux only**: the small sandboxing program behind Sparrow's `run_command` tool. It's the same tool Flatpak uses to isolate desktop apps.
 - **A Claude API key** from Anthropic, with a little credit. Sparrow's tests run without one; the real agent needs one.
 
 Check your Python version:
@@ -16,7 +16,9 @@ $ python3 --version
 Python 3.13.5
 ```
 
-Install bubblewrap with your system's package manager. On Debian, Ubuntu and WSL2's default Ubuntu:
+On a Mac, if `python3` is missing or older than 3.12, install a current Python from python.org or with Homebrew (`brew install python@3.13`).
+
+On Linux, install bubblewrap with your system's package manager (on a Mac, skip this: macOS's `sandbox-exec` is already there). On Debian, Ubuntu and WSL2's default Ubuntu:
 
 ```
 $ sudo apt install bubblewrap
@@ -39,7 +41,7 @@ Every file of Sparrow, with its tests, its evaluations and their recorded result
 
 Open that address in a web browser, click the green **Code** button and choose **Download ZIP**, then unzip it wherever you keep your projects. If you use Git, you can clone it instead: type `git clone`, a space, and the address above with `https://` in front, all on one line.
 
-Either way you get a folder called `build-your-own-ai-personal-agent` with the `sparrow` package, the `tests`, `evals` and `deploy` folders, and the `requirements.txt` file from this chapter. Its README repeats the setup steps and says which chapter each folder belongs to. The repository also runs Sparrow's tests automatically on Python 3.12 to 3.15 every time it changes, and shows the results on its **Actions** tab.
+Either way you get a folder called `build-your-own-ai-personal-agent` with the `sparrow` package, the `tests`, `evals` and `deploy` folders, and the `requirements.txt` file from this chapter. Its README repeats the setup steps and says which chapter each folder belongs to. The repository also runs Sparrow's tests automatically on Linux and macOS, with Python 3.12 to 3.15, every time it changes, and shows the results on its **Actions** tab.
 
 You'll learn the most by typing the code as you read and using the repository to check your copy when a test fails. If you'd rather start from the finished Sparrow, use the downloaded folder in place of the one you're about to create, and skip the `mkdir` and `touch` steps below.
 
@@ -88,7 +90,7 @@ The empty `__init__.py` makes `channels` a package. The main package's `sparrow/
 @include sparrow/__init__.py
 ```
 
-Two small settings files help with testing and style. `pytest.ini` tells pytest where the code and the tests are:
+Two small settings files help with testing and style. `pytest.ini` tells pytest where the code and the tests are, and makes a file or database left open count as a failure (Chapter 20 explains why):
 
 ```
 @include pytest.ini
@@ -185,7 +187,7 @@ By Chapter 10 you'll understand every step of that exchange, and by Chapter 22 y
 
 ## Key Takeaways
 
-- Sparrow needs Linux (or WSL2), Python 3.12+, bubblewrap and a Claude API key.
+- Sparrow needs Linux (or WSL2) or macOS, Python 3.12+, a Claude API key, and on Linux, bubblewrap.
 - Pin package versions in `requirements.txt` so your Sparrow behaves like the book's.
 - Keep the API key in an environment variable, never in code.
 - A typical turn costs one or two US cents; a daily limit caps the worst case.

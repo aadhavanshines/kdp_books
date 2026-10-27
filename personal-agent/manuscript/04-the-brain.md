@@ -111,7 +111,7 @@ await gateway.handle(owner_says("Hi"))
 assert telegram.sent == [("100", "Hello, Asha!")]
 ```
 
-That runs in milliseconds, costs nothing, and gives the same result every time, which is what lets 136 tests run in about fifteen seconds.
+That runs in milliseconds, costs nothing, and gives the same result every time, which is what lets 150 tests run in about fifteen seconds.
 
 ## Key Takeaways
 

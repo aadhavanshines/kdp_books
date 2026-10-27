@@ -25,15 +25,15 @@ Both files are ordinary Markdown. You can open `MEMORY.md`, correct a fact that'
 `sparrow/memory.py` starts with a helper and the class's setup:
 
 ```python
-@include sparrow/memory.py#L1-L35
+@include sparrow/memory.py#L1-L38
 ```
 
 `append_line` adds a line to the end of a file. It checks that the file ends with a newline first, because you may have edited `MEMORY.md` by hand and left the last line without one; without the check, Sparrow's next fact would be glued onto yours.
 
-The index is a separate SQLite database in `state/`, so it's Sparrow's own business; the Markdown files stay the source of truth. It has two tables. `chunks` is an **FTS5** table, SQLite's built-in full-text search: it stores text and finds rows by the words in them, ranked by relevance. Each memory line is one chunk, with its file name stored alongside (`UNINDEXED`, because nobody searches by file name). `indexed` records each file's modification time when it was last indexed. `check_same_thread=False` lets the connection be used from the worker threads that some tools run in.
+The index is a separate SQLite database in `state/`, so it's Sparrow's own business; the Markdown files stay the source of truth. It has two tables. `chunks` is an **FTS5** table, SQLite's built-in full-text search: it stores text and finds rows by the words in them, ranked by relevance. Each memory line is one chunk, with its file name stored alongside (`UNINDEXED`, because nobody searches by file name). `indexed` records each file's modification time when it was last indexed. `check_same_thread=False` lets the connection be used from the worker threads that some tools run in. `close` closes the database when Sparrow is done with it; the tests check that nothing is ever left open.
 
 ```python
-@include sparrow/memory.py#L37-L51
+@include sparrow/memory.py#L40-L54
 ```
 
 `remember` joins the fact into one line before saving it. That isn't just tidiness. The fact comes from the model, and the model may have read text from a web page or a file. A fact with a newline in it could add a second line that looks like a separate, older memory, or start a new Markdown heading. One fact, one line, with today's date, no tricks.
@@ -45,13 +45,13 @@ The index is a separate SQLite database in `state/`, so it's Sparrow's own busin
 The index keeps itself up to date:
 
 ```python
-@include sparrow/memory.py#L53-L88
+@include sparrow/memory.py#L56-L91
 ```
 
 `refresh` runs before every search. For each memory file, it compares the file's modification time with the one in `indexed`; if they match, the file hasn't changed and is skipped. Otherwise, it deletes that file's old chunks and inserts one chunk per non-empty line, with leading list dashes, spaces and heading marks stripped. This is why your hand edits show up: you save `MEMORY.md`, its modification time changes, and the next search re-indexes it. With a year of daily notes and ten thousand facts, a full re-index takes about two seconds and a search about 16 milliseconds (Chapter 24 measures both); after the first search, only changed files are read.
 
 ```python
-@include sparrow/memory.py#L90-L101
+@include sparrow/memory.py#L93-L104
 ```
 
 `search` splits the query into words and asks FTS5 for lines that contain *any* of them, best first. FTS5 has its own query language, with operators like `AND`, `NOT` and `*`, and a raw query such as `"what's up?"` or `NOT` would be a syntax error, or worse, a different query than intended. So each word is put in double quotes (with any double quotes inside removed), which makes FTS5 treat it as a plain word, and the words are joined with `OR`. Chapter 20 tests a list of awkward queries, including empty ones, quotes, stars, brackets and the word `NOT`, to make sure none of them can break a search.
