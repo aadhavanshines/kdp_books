@@ -52,7 +52,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 <li>An audit log and a daily spending limit</li>
 </ul>
 
-<p><b>Tested completely.</b> 150 automated tests check every part and the whole gateway. 16 end-to-end scenarios ran three times each against the real model, including six attacks: hidden instructions in web pages and files, strangers, pushy guests, secret theft and sandbox escapes. A system test crashes the agent and checks that nothing is lost. A benchmark measures its speed. The tests even found a real sandbox leak, and the book shows how.</p>
+<p><b>Tested completely.</b> 161 automated tests check every part and the whole gateway. 16 end-to-end scenarios ran three times each against the real model, including six attacks: hidden instructions in web pages and files, strangers, pushy guests, secret theft and sandbox escapes. A system test crashes the agent and checks that nothing is lost. A benchmark measures its speed. The tests even found a real sandbox leak, and the book shows how.</p>
 
 <p><b>Every line of Sparrow's code is printed in the book</b>, taken straight from the tested files, so what you read is what ran.</p>
 
@@ -131,6 +131,6 @@ Answering this accurately is a KDP content-guideline requirement. The disclosure
 - Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf`
 - Suggested list price: **$27.99 USD**. Check the royalty calculator on the pricing page before publishing, since printing costs change.
 
-> The paperback cover is sized for exactly the page count in `dist/build-info.json` (324 pages, spine 0.730 in). KDP's free ISBN barcode is printed automatically in the white box on the back cover. If you edit the manuscript and the page count changes, rebuild so the spine width updates.
+> The paperback cover is sized for exactly the page count in `dist/build-info.json` (332 pages, spine 0.748 in). KDP's free ISBN barcode is printed automatically in the white box on the back cover. If you edit the manuscript and the page count changes, rebuild so the spine width updates.
 
 > The diagrams and screenshots are printed in black and white in the paperback; they use dark navy, orange and light gray, which differ in lightness and stay readable in grayscale.

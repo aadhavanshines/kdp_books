@@ -174,6 +174,25 @@ async def test_deny_and_skill_approval(make_gateway, core):
     assert telegram.texts()[-1] == "No pending request with code NOPE12."
 
 
+async def test_skills_are_short_enough_to_read(make_gateway, core):
+    long_skill = [
+        (
+            "tool",
+            "write_skill",
+            {
+                "name": "long",
+                "description": "d",
+                "instructions": "x" * 3001,
+            },
+        ),
+        ("say", lambda results: results[0]),
+    ]
+    gateway, _, telegram = make_gateway([long_skill])
+    await gateway.handle(owner_says("Make a long skill"))
+    assert "limited to 3000 characters" in telegram.texts()[-1]
+    assert core.approvals.pending(core.now()) == []  # nothing to approve
+
+
 async def test_daily_budget_stops_model_calls(make_gateway, core):
     gateway, brain, telegram = make_gateway([])
     core.ledger.add(core.now(), "claude-sonnet-5-5", "message", 1.00)

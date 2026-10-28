@@ -1,4 +1,4 @@
-test_gateway.py (15 tests)
+test_gateway.py (16 tests)
   test_owner_message_gets_a_reply
   test_tools_run_and_results_flow_back
   test_history_is_kept_across_channels
@@ -9,6 +9,7 @@ test_gateway.py (15 tests)
   test_status_command
   test_web_fetch_approval_flow
   test_deny_and_skill_approval
+  test_skills_are_short_enough_to_read
   test_daily_budget_stops_model_calls
   test_privacy_redacts_what_the_model_sees
   test_privacy_block_mode
@@ -40,16 +41,20 @@ test_parts.py (56 tests)
   test_redact_and_restore_round_trip
   test_block_and_off_modes
 
-test_robustness.py (7 tests)
+test_robustness.py (11 tests)
   test_brain_retries_a_failed_call
   test_brain_never_retries_after_a_tool_ran
   test_brain_gives_up_after_its_retries
+  test_cost_estimates
+  test_a_timed_out_turn_still_costs
+  test_the_ledger_records_a_failed_turns_cost
   test_conversations_run_in_parallel_but_each_in_order
   test_placeholders_are_explained_to_the_model
   test_a_part_that_stops_stops_sparrow_with_an_error
   test_init_doctor_status_and_pairing
+  test_the_model_key_can_live_in_model_env
 
-test_safety.py (50 tests)
+test_safety.py (56 tests)
   test_egress_decisions (x15)
   test_approved_hosts_are_remembered
   test_unknown_can_be_denied
@@ -58,10 +63,14 @@ test_safety.py (50 tests)
   test_names_leading_to_private_addresses_are_denied
   test_unknown_names_are_an_error
   test_big_pages_are_cut
+  test_malformed_addresses_are_an_error (x2)
   test_html_to_text_drops_scripts_and_comments
   test_vault_refuses_a_readable_secrets_file
   test_sandbox_contains_commands (x6)
   test_sandbox_cannot_read_your_home
+  test_sandbox_cannot_read_other_temp_files
+  test_sandbox_ends_background_processes (x2)
+  test_sandbox_memory_limit_on_a_mac
   test_sandbox_linux_extras (x3)
   test_sandbox_hides_the_environment
   test_sandbox_processes_hold_no_secrets

@@ -7,15 +7,23 @@ A personal agent runs for months. In that time the model's service will be busy,
 The brain's retry rule from Chapter 4 is easy to state and easy to get wrong, so `tests/test_robustness.py` tests all three cases:
 
 ```python
-@include tests/test_robustness.py#L1-L77
+@include tests/test_robustness.py#L1-L81
 ```
 
 `monkeypatch` replaces `ClaudeBrain.once`, the method that calls the model, with a stand-in that fails on purpose, and `no_waiting` replaces `asyncio.sleep` so the back-off doesn't slow the tests. A call that fails twice then succeeds is retried and succeeds. A call that fails *after a tool ran* isn't retried at all, so nothing is done twice. And a service that's down for good produces an error after the allowed retries, which the gateway turns into an apology.
 
+## The Cost of Failed Turns
+
+```python
+@include tests/test_robustness.py#L84-L133
+```
+
+The cost tests come next. `test_cost_estimates` checks the arithmetic with round numbers: a million input tokens and a hundred thousand output tokens cost US$3.00 with Sonnet and US$1.50 with Haiku, plus the margin of a quarter; an unknown model is priced at the highest rate; cache reads cost a tenth and cache writes twice the input price; and a partial output count is raised to one token per three characters written. `test_a_timed_out_turn_still_costs` replaces the SDK's `query` with one that sends a model call's usage, split over two messages as the SDK does, and then never finishes. The turn times out twice (the first attempt and one retry), and the reply's cost must be two calls' worth with the margin, US$0.075, not zero. A last test checks that the gateway writes a failed turn's cost to the spending ledger.
+
 ## Concurrency
 
 ```python
-@include tests/test_robustness.py#L80-L126
+@include tests/test_robustness.py#L136-L182
 ```
 
 The concurrency test sends thirteen messages at once: one each from ten paired guests and three from the owner. `SlowBrain` takes 0.2 seconds per answer and records the order it saw messages. Two properties must hold together:
@@ -30,10 +38,10 @@ The third tests `supervise` from Chapter 10, with three small stand-in jobs: one
 ## The Command Line
 
 ```python
-@include tests/test_robustness.py#L151-L170
+@include tests/test_robustness.py#L207-L242
 ```
 
-`init`, `doctor`, `status` and `pairing` are tested as a user would run them, through `main`. The test checks that the secrets file is created with `chmod 600`, that the workspace exists, that `doctor` reports "All good." (with a placeholder API key set, so the test doesn't depend on your environment), and that the other commands print what they should.
+`init`, `doctor`, `status` and `pairing` are tested as a user would run them, through `main`. The test checks that the secrets file is created with `chmod 600`, that the workspace exists, that `doctor` reports "All good." (with a placeholder API key set, so the test doesn't depend on your environment), and that the other commands print what they should. The last test checks the model key's file from Chapter 25: one that others can read is refused with the `chmod 600` hint, the key is read when the environment has none, and a key already set in the environment wins.
 
 ## The System Test
 

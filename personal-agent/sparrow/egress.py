@@ -153,7 +153,13 @@ class Fetcher:
                         data += chunk
                         if len(data) >= MAX_BYTES:
                             break  # stop downloading, not just reading
-            except (httpx.HTTPError, KeyError, OSError) as error:
+            except (
+                httpx.HTTPError,
+                httpx.InvalidURL,
+                KeyError,
+                OSError,
+                ValueError,
+            ) as error:
                 return "error", f"{type(error).__name__}: {error}"
             body = bytes(data[:MAX_BYTES]).decode(
                 response.encoding or "utf-8", errors="replace"

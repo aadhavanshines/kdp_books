@@ -38,7 +38,7 @@
   "back_cover_blurb": [
     "Build a personal AI agent that lives on your own computer: one that chats with you on Telegram, in a web page or in the terminal, remembers what matters, learns new skills, reminds you on time, checks in on its own, and does real work with real tools.",
     "You'll build Sparrow, step by step, in plain Python with Claude as its brain. It follows the design that made OpenClaw the most talked-about open-source agent of 2026: a gateway, channels, Markdown memory, skills and a heartbeat. Then it adds the protections NVIDIA's NemoClaw brought to agents: a sandbox for commands, a deny-by-default network policy, secrets the model never sees, a privacy router that keeps personal data on your machine, approvals for risky actions, and an audit log.",
-    "Every part is tested. 150 automated tests check each piece and the whole gateway, on Linux and Mac. 16 end-to-end scenarios ran three times each against the real model, including six attacks, from hidden instructions in web pages to secret theft and sandbox escapes. A system test crashes the agent and checks it recovers. The tests even found a real sandbox leak, and the book shows how.",
+    "Every part is tested. 161 automated tests check each piece and the whole gateway, on Linux and Mac. 16 end-to-end scenarios ran three times each against the real model, including six attacks, from hidden instructions in web pages to secret theft and sandbox escapes. A system test crashes the agent and checks it recovers. The tests even found a real sandbox leak, and the book shows how.",
     "For developers who know basic Python. Every line of Sparrow's code is in the book, and free to download with its tests."
   ],
   "dedication": [

@@ -77,7 +77,7 @@ Here is the complete output of the final run, with `claude-sonnet-5-5` for conve
 @include evals/results.log
 ```
 
-All 48 runs passed: 10 functional and 6 security scenarios, three times each. The whole evaluation cost US$0.52 for 69 model turns, about three quarters of a US cent per turn. The median turn took 7.5 seconds, and nine in ten took under 14.5 seconds. The longest single turn, 21.8 seconds, was the first turn of the first memory run; the 180-second turn timeout was never close. This run used the final code, after the review fixes listed in Appendix C; an earlier run on the code before those fixes also passed all 48, with similar costs and times.
+All 48 runs passed: 10 functional and 6 security scenarios, three times each. The whole evaluation cost US$0.52 for 69 model turns, about three quarters of a US cent per turn. The median turn took 7.5 seconds, and nine in ten took under 14.5 seconds. The longest single turn, 21.8 seconds, was the first turn of the first memory run; the 180-second turn timeout was never close. This run used the code after the first review's fixes listed in Appendix C; an earlier run on the code before those fixes also passed all 48, with similar costs and times. The second review's fixes came after this run. They change the Mac sandbox, the cost recorded for failed turns, the length of skills and where the key is kept, none of which changes what the model is shown in these scenarios; the brain's new handling of the model's messages was checked on real turns instead (Chapter 4).
 
 | Scenario | Passed | Average cost per run (US$) |
 | --- | --- | --- |

@@ -56,7 +56,7 @@ Run from the project folder with the virtual environment active. Add `--home PAT
 
 | Command | What it runs | Cost |
 | --- | --- | --- |
-| `pytest` | 150 unit, functional, security and robustness tests | Free |
+| `pytest` | 161 unit, functional, security and robustness tests | Free |
 | `python evals/run_evals.py` | 16 scenarios with the real model, three runs each | About US$0.50 |
 | `python evals/run_evals.py --runs 1 --only NAME` | Matching scenarios once | A few cents |
 | `python evals/system_test.py` | The real process from outside, with a crash and restart | A few cents |

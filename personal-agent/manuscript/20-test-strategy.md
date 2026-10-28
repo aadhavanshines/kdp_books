@@ -89,19 +89,19 @@ $ pytest
 @include transcripts/pytest.txt
 ```
 
-All 150 tests passed on Python 3.12, 3.13, 3.14 and 3.15, taking between 16 and 20 seconds, most of it in the sandbox tests, which wait out two five-second time limits on purpose. They need no API key and make no network requests. Run them after every change; if you typed the code from this book, they're the quickest way to find a typo.
+On Linux, 160 of the 161 tests passed on Python 3.12, 3.13, 3.14 and 3.15, and one Mac-only test was skipped, taking about 25 seconds, most of it in the sandbox tests, which wait out three five-second time limits on purpose. They need no API key and make no network requests. Run them after every change; if you typed the code from this book, they're the quickest way to find a typo.
 
-The book's code repository runs the same tests automatically on every change, on GitHub's Linux and Mac machines, with all four Python versions: eight runs in all. On a Mac, 146 pass and 4 are skipped, each with its reason: the checks for `/proc`, for the missing `/etc/passwd` and `/home`, and for the memory limit, which test Linux-only protections. A test that can't apply to a computer is skipped and says why; it never silently passes.
+The book's code repository runs the same tests automatically on every change, on GitHub's Linux and Mac machines, with all four Python versions: eight runs in all. On a Mac, 157 pass and 4 are skipped, each with its reason: the checks for `/proc`, for the missing `/etc/passwd` and `/home`, and for the address-space limit, which test Linux-only protections. On Linux, the test of the Mac's memory watchdog is skipped in the same way. A test that can't apply to a computer is skipped and says why; it never silently passes.
 
 `pytest.ini` also turns two kinds of warning into failures: a file or database left open, and an error that happened somewhere Python could only report as a warning. Leaks like these do no harm in a test, but in an agent that runs for months they add up.
 
 | File | Tests | What it covers |
 | --- | --- | --- |
 | `test_parts.py` | 56 | Settings, workspace, memory, skills, scheduler, to-dos, privacy |
-| `test_gateway.py` | 15 | Messages, roles, commands, approvals, budget, privacy, failures |
+| `test_gateway.py` | 16 | Messages, roles, commands, approvals, budget, privacy, failures |
 | `test_schedule_and_channels.py` | 22 | Reminders, tasks, heartbeat, terminal, web chat, Telegram |
-| `test_safety.py` | 50 | Egress, vault, sandbox, file paths, guests, untrusted content, memory, audit |
-| `test_robustness.py` | 7 | Retries, concurrency, placeholders note, supervision, command line |
+| `test_safety.py` | 56 | Egress, vault, sandbox, file paths, guests, untrusted content, memory, audit |
+| `test_robustness.py` | 11 | Retries, cost of failed turns, concurrency, placeholders note, supervision, command line, the model key |
 
 ## Key Takeaways
 

@@ -11,7 +11,7 @@ The code is published for readers at [github.com/aadhavanshines/build-your-own-a
 | Folder | Contents |
 | --- | --- |
 | `sparrow/` | The agent: gateway, brain, tools, memory, skills, scheduler, channels, safety layer, templates. |
-| `tests/` | 150 unit, functional, security and robustness tests with a scripted brain (no API key needed). |
+| `tests/` | 161 unit, functional, security and robustness tests with a scripted brain (no API key needed). |
 | `evals/` | Real-model evaluations (16 scenarios x 3 runs), the system test, the benchmark, and their recorded results. |
 | `deploy/` | systemd user service, Dockerfile and run script. |
 | `examples/` | The first Agent SDK example from Chapter 4. |
@@ -25,7 +25,7 @@ The code is published for readers at [github.com/aadhavanshines/build-your-own-a
 
 ```
 pip install -r requirements.txt     # in a Python 3.12+ virtual environment
-pytest                              # 150 tests, about 15 seconds
+pytest                              # 161 tests, about 25 seconds
 python evals/run_evals.py           # real model, about US$0.50
 python evals/system_test.py         # real process, crash and restart
 python evals/benchmark.py           # Sparrow's own overhead
@@ -35,6 +35,6 @@ python3 build/build.py              # dist/: EPUB, PDF interior, covers
 python3 build/check_pdf.py          # margins, chapter starts, gaps, glyphs
 ```
 
-Results from the recorded runs: 150/150 tests on Python 3.12 to 3.15; 48/48 real-model runs (US$0.5213); system test 11/11; benchmark about 7 ms per message. The tests also run on macOS in the public repository's CI.
+Results from the recorded runs: 160/161 tests on Python 3.12 to 3.15 (1 Mac-only test skipped on Linux); 48/48 real-model runs (US$0.5213); system test 11/11; benchmark about 7 ms per message. The tests also run on macOS in the public repository's CI.
 
 `build/webchat_shots.py` and `build/transcripts.py` re-record the screenshots and terminal sessions with the real model (a few US cents).

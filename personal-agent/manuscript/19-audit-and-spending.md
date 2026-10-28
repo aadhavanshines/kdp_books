@@ -54,7 +54,7 @@ These are the event types Sparrow writes:
 @include sparrow/audit.py#L42-L67
 ```
 
-Every turn adds a row to the `spending` table: the day, the model, the kind of turn (a message, a heartbeat, a flush before `/new`) and the cost in US dollars that the Agent SDK reported. `spent` totals today's rows, and `over_budget` compares that with the daily limit.
+Every turn adds a row to the `spending` table: the day, the model, the kind of turn (a message, a heartbeat, a flush before `/new`) and the cost in US dollars that the Agent SDK reported, or, for a turn that timed out or failed before the SDK could report it, the brain's estimate from the token counts (Chapter 4). `spent` totals today's rows, and `over_budget` compares that with the daily limit.
 
 One gap is worth knowing about. The SDK reports a turn's cost in its final result. A turn that ends normally, or with an error the SDK itself reports (such as running out of round trips), includes its cost. But a turn cut off by a timeout or a lost connection never gets a final result, so it's recorded as costing nothing, even though some of it may have been billed. Such turns are rare and show up as errors in the audit log, but they're why the provider's own spending limit, below, is worth setting too.
 

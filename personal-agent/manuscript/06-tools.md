@@ -101,19 +101,19 @@ The three tool functions are thin wrappers:
 ## Skill Tools
 
 ```python
-@include sparrow/tools.py#L218-L254
+@include sparrow/tools.py#L218-L260
 ```
 
 `read_skill` returns a skill's instructions. `write_skill` doesn't write anything: it files an approval request with the whole skill as its payload. Only when you approve does the gateway save it (Chapter 15). A skill is instructions that Sparrow will follow in future turns, so letting the model install one without asking would let a single successful prompt injection plant instructions permanently. OpenClaw's malicious-skill crisis is the reason this tool asks.
 
-The notice shows you what you're approving: the description and the instructions themselves, up to 1,500 characters. And if a skill with that name already exists, it says "replace the existing skill" instead of "install the skill". Without that, a page could trick the model into proposing new instructions for your trusted `daily-briefing` skill, and you'd approve what looked like a familiar name. The first version showed only the name; a review caught it.
+The notice shows you what you're approving: the description and all the instructions. A skill can't be longer than 3,000 characters, about a page, so the whole of it always fits in a chat message you can read. (An earlier version showed the first 1,500 characters of a longer skill; a review pointed out that anything hidden after that point would be approved unseen.) And if a skill with that name already exists, it says "replace the existing skill" instead of "install the skill". Without that, a page could trick the model into proposing new instructions for your trusted `daily-briefing` skill, and you'd approve what looked like a familiar name. The first version showed only the name; a review caught it.
 
 ## The Tool List
 
 All fifteen tools, with their descriptions and schemas:
 
 ```python
-@include sparrow/tools.py#L257-L357
+@include sparrow/tools.py#L263-L363
 ```
 
 Read the descriptions as the model would. Each says what the tool does and, where it matters, a limit or a format: the time formats for `schedule`, "needs owner approval" for `write_skill`, "no network" for `run_command`, "some sites need the owner's approval" for `web_fetch`. Telling the model about limits up front saves wasted calls and makes its answers more honest.
@@ -121,7 +121,7 @@ Read the descriptions as the model would. Each says what the tool does and, wher
 ## call_tool: The Choke Point
 
 ```python
-@include sparrow/tools.py#L360-L384
+@include sparrow/tools.py#L366-L390
 ```
 
 `tools_for` gives the owner and the heartbeat every tool, and guests only those marked for guests. `call_tool` then does five things for every call, from either brain:

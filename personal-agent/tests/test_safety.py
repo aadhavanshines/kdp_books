@@ -6,6 +6,8 @@ from __future__ import annotations
 import os
 import re
 import shutil
+import tempfile
+import time
 
 import httpx
 import pytest
@@ -173,6 +175,23 @@ async def test_big_pages_are_cut(core):
     assert status == "ok" and len(text) <= 8_000 + 20
 
 
+@pytest.mark.parametrize(
+    "url",
+    ["https://docs.example.com:abc/", "https://docs.example.com/\x00"],
+)
+async def test_malformed_addresses_are_an_error(core, url):
+    transport, seen = site({})
+    fetcher = Fetcher(
+        core.egress,
+        core.vault,
+        httpx.AsyncClient(transport=transport),
+        public_dns,
+    )
+    status, reason = await fetcher.fetch(url)
+    assert status == "error" and "InvalidURL" in reason
+    assert seen == []
+
+
 def test_html_to_text_drops_scripts_and_comments():
     page = (
         "<html><style>p{}</style><script>steal()</script>"
@@ -204,6 +223,9 @@ needs_sandbox = pytest.mark.skipif(
 )
 linux_only = pytest.mark.skipif(
     SANDBOX != "bwrap", reason="checks a Linux-only protection"
+)
+mac_only = pytest.mark.skipif(
+    SANDBOX != "seatbelt", reason="checks the macOS watchdog"
 )
 
 
@@ -249,6 +271,51 @@ def test_sandbox_contains_commands(box, command, expect_code, expect_text):
 def test_sandbox_cannot_read_your_home(box, tmp_path):
     code, output = box(f"cat {tmp_path / 'home' / 'secret.txt'}")
     assert code != 0 and "my-ssh-key" not in output
+
+
+@needs_sandbox
+def test_sandbox_cannot_read_other_temp_files(box):
+    # On a Mac, the temporary folder is inside /var/folders
+    with tempfile.NamedTemporaryFile("w", suffix=".txt") as other:
+        other.write("another-apps-data")
+        other.flush()
+        code, output = box(f"cat {other.name}")
+    assert code != 0 and "another-apps-data" not in output
+
+
+# Starts a process in a new session, which leaves the process group,
+# then writes to tick.txt every 0.1 seconds forever
+ESCAPE = (
+    'python3 -c "import os, time; os.fork() or (os.setsid(), '
+    "[(open('tick.txt', 'a').write('x'), time.sleep(0.1)) "
+    'for _ in iter(int, 1)])"'
+)
+
+
+@needs_sandbox
+@pytest.mark.parametrize(
+    "command,expect_code",
+    [(f"{ESCAPE}; sleep 1", 0), (f"{ESCAPE}; sleep 30", 124)],
+)
+def test_sandbox_ends_background_processes(
+    box, tmp_path, command, expect_code
+):
+    code, output = box(command)
+    assert code == expect_code, output
+    tick = tmp_path / "files" / "tick.txt"
+    size = tick.stat().st_size
+    assert size > 0  # it did run
+    time.sleep(1)
+    assert tick.stat().st_size == size  # and it has stopped
+
+
+@mac_only
+def test_sandbox_memory_limit_on_a_mac(box):
+    code, output = box(
+        'python3 -c "import os, time; x = os.urandom(600 * 2**20); '
+        'time.sleep(10)"'
+    )
+    assert code == 137 and "used more than 256 MB" in output
 
 
 @linux_only

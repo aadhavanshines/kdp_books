@@ -4,7 +4,7 @@ Start with `python -m sparrow doctor`: most first-run problems show up there as 
 
 ## Doctor Says FIX
 
-**`set ANTHROPIC_API_KEY (see Chapter 3)`.** Neither an API key nor a Claude Code login was found. Run `export ANTHROPIC_API_KEY="sk-ant-..."` in the same terminal, or, for the service, put it in `~/.sparrow/state/model.env` (Chapter 25).
+**`set ANTHROPIC_API_KEY (see Chapter 3)`.** Neither an API key nor a Claude Code login was found. Run `export ANTHROPIC_API_KEY="sk-ant-..."` in the same terminal, or put it in `~/.sparrow/state/model.env` with `chmod 600` (Chapter 25), where `run`, `chat` and `doctor` find it.
 
 **`the sandbox failed: ... No permissions to create new namespace`.** Your system doesn't let normal users create user namespaces. On Debian, check `sysctl kernel.unprivileged_userns_clone`; it should be `1`. On Ubuntu 23.10 and newer, AppArmor restricts unprivileged namespaces: make sure the `bubblewrap` package from Ubuntu is installed (it comes with a profile that allows it), rather than a copy from elsewhere. Inside Docker, see Chapter 25. Until it's fixed, Sparrow works but refuses commands.
 
@@ -38,9 +38,13 @@ Start with `python -m sparrow doctor`: most first-run problems show up there as 
 
 **A skill script can't find Python packages.** The sandbox's `PATH` starts with the Python installation Sparrow runs on, but not its virtual environment. Skill scripts should use only Python's standard library, as `totals.py` does.
 
-**Memory limits don't apply.** macOS doesn't enforce the sandbox's memory limit; the time limit stops runaway commands instead (Chapter 16).
+**A command ends with code 137 and "stopped: used more than 512 MB".** The Mac's watchdog stopped it for using too much memory (Chapter 16). Raise `sandbox.memory_mb` if the command really needs more.
 
-**The launch agent doesn't start.** Run `launchctl print gui/$(id -u)/local.sparrow` and read the last exit status, and check `~/.sparrow/state/sparrow.log`. The usual causes are a `YOU` left in a path, or a key not filled in.
+**A command can't find a file in `/tmp` or the temporary folder.** The sandbox can't read the computer's temporary folders, only its own scratch folder. Put the file in `~/.sparrow/workspace/files`.
+
+**`ps` shows a leftover process after a command.** The watchdog ends every process that carries the command's marker. A process started with an empty environment (`env -i`) loses the marker and can survive; end it in Activity Monitor, and if a skill does this, fix the skill (Chapter 16).
+
+**The launch agent doesn't start.** Run `launchctl print gui/$(id -u)/local.sparrow` and read the last exit status, and check `~/.sparrow/state/sparrow.log`. The usual causes are a `YOU` left in a path, or a missing or readable-by-others `model.env`, which the log names.
 
 ## Sparrow Doesn't Answer
 
@@ -60,13 +64,15 @@ Start with `python -m sparrow doctor`: most first-run problems show up there as 
 
 **It keeps asking to visit a site.** Approve it once, and it's remembered in `state/approved-hosts.txt`; or add it to `egress.allow`.
 
+**A new skill is refused as "limited to 3000 characters".** Skills must be short enough to read in full before you approve them. Ask Sparrow to shorten it, or put long reference text in a file the skill reads.
+
 **It uses a skill wrongly, or not at all.** Make the skill's description say when to use it, and its steps more specific (Chapter 8).
 
 **Replies contain `*` or `#` symbols.** The model sometimes ignores the plain-text house rule. Repeating it in `SOUL.md` helps.
 
 ## Tests Fail
 
-**Sandbox tests are skipped.** On Linux, bubblewrap isn't installed; they run once it is. On a Mac, four Linux-only checks are always skipped; that's expected (Chapter 20).
+**Sandbox tests are skipped.** On Linux, bubblewrap isn't installed; they run once it is. On a Mac, four Linux-only checks are always skipped, and on Linux one Mac-only check; that's expected (Chapter 20).
 
 **Sandbox tests fail with "No permissions to create new namespace".** See the doctor entry above. The same applies to `test_init_doctor_status_and_pairing`, which runs `doctor` and is skipped only when there's no sandbox at all.
 

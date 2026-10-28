@@ -22,6 +22,7 @@ from .config import load_settings
 from .core import Core
 from .sandbox import run_sandboxed
 from .skills import SkillLibrary
+from .vault import Vault
 
 STARTER = """\
 # Sparrow's settings. See Appendix A of the book for every option.
@@ -69,6 +70,16 @@ def init(home: Path) -> None:
         f"{home / 'workspace' / 'USER.md'}, then run: "
         "python -m sparrow doctor"
     )
+
+
+def load_model_key(home: Path) -> None:
+    """Read ANTHROPIC_API_KEY from state/model.env (which must be
+    chmod 600) unless it's set already. Then no service file has to
+    hold the key: a macOS launch agent would keep it in plain text."""
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        model_env = Vault(home / "state" / "model.env")
+        if key := model_env.get("ANTHROPIC_API_KEY"):
+            os.environ["ANTHROPIC_API_KEY"] = key
 
 
 def doctor(home: Path) -> int:
@@ -204,6 +215,8 @@ def main(argv: list[str] | None = None) -> int:
     pairing.add_argument("value", nargs="?")
     args = parser.parse_args(argv)
     home = args.home.expanduser()
+    if args.command in ("doctor", "chat", "run"):
+        load_model_key(home)
 
     if args.command == "init":
         init(home)

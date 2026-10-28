@@ -6,12 +6,12 @@ This is the complete record of how the Sparrow printed in this book was tested, 
 
 | Layer | What was tested | Result |
 | --- | --- | --- |
-| Unit, functional, security and robustness tests | 150 tests with a scripted brain | Linux: 150 passed on Python 3.12, 3.13, 3.14 and 3.15. macOS: 146 passed and 4 Linux-only tests skipped, on the same four versions |
+| Unit, functional, security and robustness tests | 161 tests with a scripted brain | Linux: 160 passed and 1 Mac-only test skipped, on Python 3.12, 3.13, 3.14 and 3.15. macOS: 157 passed and 4 Linux-only tests skipped, on the same four versions |
 | End-to-end evaluations, functional | 10 scenarios with the real model, 3 runs each | 30 of 30 passed |
 | End-to-end evaluations, security (red team) | 6 attack scenarios, 3 runs each | 18 of 18 passed |
 | System test | The real process from outside, killed and restarted | 11 of 11 checks passed |
 | Unprivileged sandbox | The sandbox as a normal user (uid 30033) | All 7 commands behaved as expected (Chapter 16) |
-| Container | The test suite inside Docker as a normal user | All passed with the two options; sandbox tests fail with Docker's defaults, and commands are refused (Chapter 25) |
+| Container | The test suite inside Docker as a normal user | 160 passed and 1 Mac-only test skipped with the two options; sandbox tests fail with Docker's defaults, and commands are refused (Chapter 25) |
 | Performance | Sparrow's own overhead, with an instant brain | About 7 ms per message; 248 messages a second |
 | Service files | `deploy/sparrow.service`; `deploy/local.sparrow.plist` | `systemd-analyze verify`: no problems; `plutil -lint` on macOS: OK |
 
@@ -63,7 +63,7 @@ Totals: 48 runs, 48 passed, 69 model turns, US$0.5213. Median turn 7.5 seconds; 
 
 ## Problems Found and Fixed
 
-Testing found these problems while Sparrow was being built, and a code review of the published repository, run on a Mac, found the later ones. Each was fixed, and each fix has a test.
+Testing found these problems while Sparrow was being built, and two code reviews of the published repository, run on a Mac, found the later ones. Each was fixed, and each fix has a test.
 
 | Problem | Found by | Fix |
 | --- | --- | --- |
@@ -88,3 +88,12 @@ Testing found these problems while Sparrow was being built, and a code review of
 | Empty settings sections, a missing web chat token, non-JSON web chat messages and past dates gave unclear errors or wrong behavior | Code review | Clear errors, defaults, or refusal |
 | `</UNTRUSTED >` wasn't escaped | Code review | Case- and space-insensitive escaping |
 | Sparrow couldn't run commands on a Mac | Reader request | A Seatbelt sandbox for macOS, tested on GitHub's Mac machines |
+| On a Mac, a command could read other apps' files in `/var/folders` | Second code review, run on a Mac | Deny the temporary folders; each command gets its own |
+| On a Mac, a process that left its group (`setsid`) outlived the command and its time limit | Second code review | A per-command marker and a watchdog that ends every marked process |
+| macOS doesn't enforce the memory limit; a command could take 3 GB | Second code review | The watchdog adds up the marked processes' memory and stops them over the limit |
+| A turn that timed out or failed was recorded as costing US$0, so it didn't count toward the budget | Code review (twice) | Estimate the cost from the token counts of each model call |
+| A skill's instructions were shown only up to 1,500 characters | Second code review | Show all of them; refuse skills over 3,000 characters |
+| A malformed address made the fetcher raise `InvalidURL` instead of returning an error | Second code review | Catch it and return an `error` result |
+| The launch agent file held the API key in plain text | Second code review | Sparrow reads the key from `state/model.env` (`chmod 600`) |
+
+The four macOS tests were also run against the previous sandbox code, on GitHub's Mac machines, to see them fail: all four did, on every Python version.

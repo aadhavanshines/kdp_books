@@ -5,14 +5,18 @@ network, no view of your home folder, the system read-only, only the
 files folder writable (as /work) and the skills read-only (as /skills).
 On macOS, the built-in sandbox (sandbox-exec, with a Seatbelt profile)
 applies the same rules in place: no network, nothing from your home
-folder except the files folder (writable) and the skills (read-only).
-Resource limits stop runaway CPU time, file sizes and, on Linux, memory.
+folder or the temporary folders except the files folder (writable),
+the skills (read-only) and a fresh temporary folder for this command.
+Resource limits stop runaway CPU time and file sizes. On Linux, memory
+is limited too, and everything the command started ends with it. macOS
+has no such limits, so a watchdog does both jobs there (see Watchdog).
 """
 
 from __future__ import annotations
 
 import os
 import re
+import secrets
 import resource
 import shutil
 import signal
@@ -20,6 +24,7 @@ import subprocess
 import sys
 import tempfile
 import threading
+import time
 from pathlib import Path
 
 from .config import SandboxSettings
@@ -84,6 +89,7 @@ SEATBELT = """
 (allow signal (target same-sandbox))
 (allow file-read*)
 (deny file-read* (subpath "/Users") (subpath "/Volumes")
+                 (subpath "/private/var/folders") (subpath "/private/tmp")
                  (subpath (param "HOME")))
 (allow file-read-metadata)
 (allow file-read* (subpath (param "FILES")) (subpath (param "SKILLS"))
@@ -135,6 +141,56 @@ def limits(settings: SandboxSettings):
     return apply
 
 
+class Watchdog:
+    """macOS only. Every process the command starts inherits the
+    marker SPARROW_RUN=<token> in its environment, even one that leaves
+    the process group with setsid or nohup. The watchdog finds them with
+    ps, adds up their memory, and kills them all when the memory limit
+    is passed or the command ends. A process that clears its own
+    environment (env -i) loses the marker and escapes the watchdog: a
+    known limit of doing this without the kernel's help."""
+
+    def __init__(self, token: str, memory_mb: int):
+        self.marker = f"SPARROW_RUN={token}"
+        self.memory_kb = memory_mb * 1024
+        self.over = False
+        self.done = threading.Event()
+
+    def processes(self) -> dict[int, int]:
+        """{pid: memory in KB} for every process with the marker."""
+        ps = "ps -E -ww -o pid=,rss=,command= -U".split()
+        out = subprocess.run(
+            ps + [str(os.getuid())],
+            capture_output=True,
+            text=True,
+            errors="replace",
+        ).stdout
+        found = {}
+        for line in out.splitlines():
+            parts = line.split(None, 2)
+            if len(parts) == 3 and self.marker in parts[2]:
+                found[int(parts[0])] = int(parts[1])
+        return found
+
+    def kill_all(self) -> None:
+        for _ in range(5):  # again, in case one forked while dying
+            found = self.processes()
+            if not found:
+                return
+            for pid in found:
+                try:
+                    os.kill(pid, signal.SIGKILL)
+                except OSError:
+                    pass
+            time.sleep(0.1)
+
+    def watch(self) -> None:
+        while not self.done.wait(0.2):
+            if sum(self.processes().values()) > self.memory_kb:
+                self.over = True
+                self.kill_all()
+
+
 def read_limited(stream, keep: int, into: list) -> None:
     """Read a stream to its end, keeping only the first `keep` bytes, so
     a command that prints forever can't fill Sparrow's memory."""
@@ -158,6 +214,7 @@ def run_sandboxed(
             "off), so commands are refused."
         )
     files, skills = files.resolve(), skills.resolve()
+    watchdog = None
     with tempfile.TemporaryDirectory(prefix="sparrow-tmp-") as tmp:
         tmp = Path(tmp).resolve()
         if kind == "bwrap":
@@ -176,7 +233,9 @@ def run_sandboxed(
                 "HOME": str(files),
                 "TMPDIR": str(tmp),
                 "LANG": "C.UTF-8",
+                "SPARROW_RUN": secrets.token_hex(8),
             }
+            watchdog = Watchdog(env["SPARROW_RUN"], settings.memory_mb)
         process = subprocess.Popen(
             args,
             cwd=files,
@@ -195,12 +254,20 @@ def run_sandboxed(
             daemon=True,
         )
         reader.start()
+        if watchdog:
+            threading.Thread(target=watchdog.watch, daemon=True).start()
         try:
             code = process.wait(timeout=settings.timeout_seconds)
         except subprocess.TimeoutExpired:
             os.killpg(process.pid, signal.SIGKILL)
             process.wait()
             code = 124
+        if watchdog:
+            # End anything left running in the background, too
+            watchdog.done.set()
+            watchdog.kill_all()
+            if watchdog.over:
+                code = 137
         # A process that escaped the group could keep the pipe open
         reader.join(timeout=5)
         if not reader.is_alive():
@@ -209,4 +276,6 @@ def run_sandboxed(
     text = kept.decode("utf-8", errors="replace")
     if len(text) > limit or total > len(kept):
         text = text[:limit] + f"\n[... output cut: {total:,} bytes in all]"
+    if watchdog and watchdog.over:
+        text += f"\n[stopped: used more than {settings.memory_mb} MB]"
     return code, text

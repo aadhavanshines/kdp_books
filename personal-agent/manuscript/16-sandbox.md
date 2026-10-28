@@ -23,7 +23,7 @@ The sandbox is built from **Linux namespaces**, the same kernel feature that con
 `sparrow/sandbox.py` starts by choosing the sandbox for this computer, then builds the bubblewrap arguments:
 
 ```python
-@include sparrow/sandbox.py#L1-L76
+@include sparrow/sandbox.py#L1-L81
 ```
 
 `backend` returns `"bwrap"` on Linux when bubblewrap is installed, `"seatbelt"` on macOS (whose sandbox tool is always there), or `None`. Read the bubblewrap arguments as a description of the sandbox's world:
@@ -45,32 +45,48 @@ Notice what isn't mounted: `/home`, `/root`, `/etc`, `/var`. Your SSH keys, your
 macOS has no namespaces and no bubblewrap, but it has its own sandbox, built into the kernel: **Seatbelt**. Every app from the Mac App Store runs inside it. A program called `sandbox-exec` starts a command under a **profile**, a short list of rules in a Lisp-like language, and the kernel checks every file access, network connection and process against those rules. Apple marks `sandbox-exec` as deprecated for app developers, but it ships with every Mac and is what Claude Code uses for its own sandbox on macOS.
 
 ```python
-@include sparrow/sandbox.py#L78-L116
+@include sparrow/sandbox.py#L84-L121
 ```
 
-The profile starts from `(deny default)`: nothing is allowed unless a rule allows it. Then it allows running programs, reading system settings, and signals within the sandbox. Network access is never allowed, so it stays denied. For files, later rules win over earlier ones, which lets the profile say what it means in order: allow reading everything; then deny reading `/Users` (everyone's home folders), `/Volumes` (other disks) and your home folder, wherever it is; then allow reading file names and sizes, so programs can find their way around; then allow reading the files folder, the skills, the scratch folder and the Python installation, even if they're under your home folder. Writing is allowed only in the files folder and the scratch folder.
+The profile starts from `(deny default)`: nothing is allowed unless a rule allows it. Then it allows running programs, reading system settings, and signals within the sandbox. Network access is never allowed, so it stays denied. For files, later rules win over earlier ones, which lets the profile say what it means in order: allow reading everything; then deny reading `/Users` (everyone's home folders), `/Volumes` (other disks), the temporary folders and your home folder, wherever it is; then allow reading file names and sizes, so programs can find their way around; then allow reading the files folder, the skills, the scratch folder and the Python installation, even if they're under your home folder. Writing is allowed only in the files folder and the scratch folder.
+
+The temporary folders need a word. On a Mac, each user's temporary files live in a folder under `/private/var/folders`, outside the home folder, and so does much of what apps cache: open documents being saved, downloads in progress, a browser's working files. The first macOS version of the profile denied only home folders, and a code review found that a sandboxed command could read whatever other apps had left there. Now `/private/var/folders` and `/private/tmp` are denied too, and the command gets its own scratch folder instead (the `TMP` rule that follows wins over the denial, because it comes later). On Linux this was never a problem: bubblewrap gives each command an empty `/tmp` and doesn't mount `/var` at all.
 
 Two differences from Linux follow from how Seatbelt works. It applies rules to real paths rather than showing folders under new names, so there is no `/work` or `/skills`. `seatbelt_command` rewrites those names in a command to the real folders, so a skill that says `python3 /skills/expense-log/totals.py` works on both systems. And the system folders, including `/etc`, are readable, as `/usr` is on Linux; on a Mac they hold no passwords or keys (the system keeps account data elsewhere), but don't put secrets there. The `-D` options pass the folders into the profile as parameters, so no path is ever pasted into the rules as text.
 
 ## Limits
 
 ```python
-@include sparrow/sandbox.py#L118-L135
+@include sparrow/sandbox.py#L124-L141
 ```
 
-Namespaces control what a command can *see*; **resource limits** control how much it can *use*. `limits` returns a function that runs in the child process just before the sandbox starts, setting three limits that the sandbox and the command inherit: address space (512 MB by default), so a runaway allocation fails with a `MemoryError` instead of exhausting your computer; CPU time, so a busy loop is stopped; and file size, 50 MB, so a command can't fill your disk. macOS doesn't enforce the address-space limit, so each limit is set separately and one that the system refuses is skipped rather than stopping the command from starting. On a Mac, the time limit is what stops a runaway command.
+Namespaces control what a command can *see*; **resource limits** control how much it can *use*. `limits` returns a function that runs in the child process just before the sandbox starts, setting three limits that the sandbox and the command inherit: address space (512 MB by default), so a runaway allocation fails with a `MemoryError` instead of exhausting your computer; CPU time, so a busy loop is stopped; and file size, 50 MB, so a command can't fill your disk. macOS doesn't enforce the address-space limit, so each limit is set separately and one that the system refuses is skipped rather than stopping the command from starting. On a Mac, a watchdog does the memory limit's job instead.
+
+## Background Processes and Memory on a Mac
+
+Two protections that Linux gives for free need extra work on a Mac. On Linux, the command runs in its own process namespace, with bubblewrap as its first process; when the command ends, bubblewrap ends, and the kernel kills everything else in the namespace. A command can start a background process, even one that leaves its process group with `setsid` or `nohup`, and it still can't outlive the command. And the address-space limit stops a command that grabs too much memory.
+
+macOS has neither. The first macOS version killed the command's process group at the time limit, and a code review showed what that misses: a process that leaves its group (`setsid`, which takes one line of Python) kept running after the command ended, outside any time limit, and a command could allocate 3 GB with nothing to stop it. So on a Mac, a watchdog takes over both jobs:
+
+```python
+@include sparrow/sandbox.py#L144-L191
+```
+
+The trick is a marker. Every command gets a fresh random token in its environment, `SPARROW_RUN=<token>`, and every process it starts inherits it, whichever group or session it moves to. `ps -E` shows each process's environment, so `processes` can find every process that belongs to this command, with its memory use (`rss`, in kilobytes). While the command runs, `watch` checks five times a second and kills them all if their total memory passes the limit; when the command ends, normally or at the time limit, `kill_all` ends anything still running, checking again in case one started another while it was being killed.
+
+This is weaker than the kernel's protection on Linux, and it's worth being exact about how. A process that deliberately starts a child with an empty environment (`env -i`) removes the marker, so the watchdog can't find that child. Memory is checked every 0.2 seconds, so a command can briefly use more than the limit before it's stopped. And the marker isn't secret from the command itself. None of this lets a command read your files or reach the network, which the kernel's Seatbelt rules still prevent; at worst a determined command keeps using CPU time in the background until you notice it in Activity Monitor. If that matters to you, run Sparrow on Linux or in Docker (Chapter 25).
 
 ## Running It
 
 ```python
-@include sparrow/sandbox.py#L138-L212
+@include sparrow/sandbox.py#L194-L281
 ```
 
 `run_sandboxed` first checks that the sandbox is on and that this computer has one. If either isn't the case, it **refuses** with exit code 126 and a clear message. There is no fallback that runs the command unsandboxed. A missing sandbox should make Sparrow less capable, never less safe.
 
 Each command gets a fresh scratch folder from `TemporaryDirectory`, deleted afterward. On Linux it isn't used, because bubblewrap makes its own `/tmp`; on macOS it becomes the command's `TMPDIR` and the one place outside the files folder it may write. The macOS command gets a short `PATH` that starts with the Python installation Sparrow runs on, then the usual system and Homebrew folders.
 
-The command runs in its own process group (`start_new_session=True`), so on a timeout the whole group can be killed with `SIGKILL`, including anything the command started in the background, and the result is exit code 124, the same code the standard `timeout` command uses.
+The command runs in its own process group (`start_new_session=True`), so on a timeout the whole group can be killed with `SIGKILL`, and the result is exit code 124, the same code the standard `timeout` command uses. On a Mac, the watchdog then ends anything that left the group, and a command stopped for using too much memory ends with code 137, the code a shell reports for a process killed with `SIGKILL`, with a note saying why.
 
 Output needs care. The obvious way to collect it, `communicate()`, keeps everything a command prints in memory until it finishes. A command like `yes`, which prints forever, would produce gigabytes in twenty seconds and could exhaust Sparrow's memory before the time limit stopped it. So `read_limited` reads the output in a separate thread, 64 KB at a time, keeping only the first 16,000 bytes and counting the rest, while the main thread waits for the command with its time limit. The model gets the first 4,000 characters and a note of how much there was in all. The thread waits at most five seconds after the command ends, in case some process escaped the group and still holds the output open; Sparrow never waits forever on a command.
 
@@ -116,12 +132,13 @@ Some systems switch off unprivileged user namespaces, and some container setups 
 
 ## On a Mac
 
-The same sandbox tests run on macOS, on the Macs GitHub provides for testing, with every Python version from 3.12 to 3.15 (Chapter 20). There, writing in the files folder works and skill scripts run through the rewritten `/skills` path. Writing to `/usr` or to the skills is refused with "Operation not permitted", and so is opening a network connection. A secret file in the home folder can't be read, the environment holds no keys, endless output is cut and stopped at the time limit, and `sleep 30` ends with code 124. Four Linux-only checks are skipped: the `/proc` test (macOS has no `/proc`), the missing `/etc/passwd` and `/home`, and the memory limit, which macOS doesn't enforce.
+The same sandbox tests run on macOS, on the Macs GitHub provides for testing, with every Python version from 3.12 to 3.15 (Chapter 20). There, writing in the files folder works and skill scripts run through the rewritten `/skills` path. Writing to `/usr` or to the skills is refused with "Operation not permitted", and so is opening a network connection. A secret file in the home folder can't be read, nor can another app's file in the temporary folder; the environment holds no keys; endless output is cut and stopped at the time limit; `sleep 30` ends with code 124; a background process that left the group is stopped when the command ends; and a command that takes 600 MB is stopped by the watchdog with code 137. Three Linux-only checks are skipped: the `/proc` test (macOS has no `/proc`), the missing `/etc/passwd` and `/home`, and the address-space limit, whose job the watchdog does on a Mac.
 
 ## Key Takeaways
 
 - Run every command the model asks for in a sandbox: read-only system, one writable folder, no network, no home folder, an empty environment, and limits.
 - Linux namespaces make outside resources invisible rather than forbidden; bubblewrap sets them up for one command. On macOS, a Seatbelt profile gives the same rules, checked by the kernel.
+- Make sure nothing a command starts outlives it. On Linux the process namespace does this; on macOS a per-command marker lets a watchdog find and stop every process, and enforce the memory limit.
 - Read a command's output with a cap, so a command that prints forever can't fill memory.
 - If the sandbox isn't available, refuse commands; never fall back to running them unsandboxed.
 - Secrets can leak through paths you didn't think of, such as `/proc/1/environ`; list every way a secret could be read, and test each.

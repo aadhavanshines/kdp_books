@@ -222,8 +222,17 @@ async def read_skill(ctx, args):
     return ctx.core.skills.read(args["name"])
 
 
+MAX_SKILL_CHARS = 3000  # short enough for the owner to read in full
+
+
 async def write_skill(ctx, args):
     name = args["name"]
+    if len(args["instructions"]) > MAX_SKILL_CHARS:
+        return (
+            f"Error: skill instructions are limited to {MAX_SKILL_CHARS} "
+            "characters, so your owner can read all of them. Shorten "
+            "them, or put long reference text in a file."
+        )
     payload = {
         "name": name,
         "description": args["description"],
@@ -238,14 +247,11 @@ async def write_skill(ctx, args):
         ctx.route,
         ctx.core.now(),
     )
-    # The owner sees exactly what they are approving
-    text = args["instructions"]
-    if len(text) > 1500:
-        text = text[:1500] + f"\n[... {len(text) - 1500} more characters]"
+    # The owner sees exactly what they are approving, all of it
     ctx.notices.append(
         f"Approval needed: {verb} {name!r}?\n"
         f"Description: {args['description']}\n"
-        f"Instructions:\n{text}\n"
+        f"Instructions:\n{args['instructions']}\n"
         f"Reply /approve {code} or /deny {code}"
     )
     return (

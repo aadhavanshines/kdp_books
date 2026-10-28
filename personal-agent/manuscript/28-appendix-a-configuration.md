@@ -65,7 +65,7 @@ Sparrow reads its settings from `sparrow.yaml` in its home folder (`~/.sparrow` 
 | --- | --- |
 | `SPARROW_HOME` | Sparrow's home folder, if not `~/.sparrow` (the `--home` option wins) |
 | `SPARROW_WEB_HOST` | Overrides `webchat.host`; the Docker image sets `0.0.0.0` (Chapter 25) |
-| `ANTHROPIC_API_KEY` | The Claude API key, read by the Agent SDK |
+| `ANTHROPIC_API_KEY` | The Claude API key, read by the Agent SDK; if it isn't set, Sparrow reads it from `state/model.env` |
 
 Secrets for tools and channels go in `state/secrets.env`, not in the environment.
 
@@ -116,7 +116,7 @@ secrets_for_hosts:
 | `workspace/skills/` | Skills, one folder each | Yes |
 | `workspace/files/` | Your documents (the sandbox's `/work`) | Yes |
 | `state/secrets.env` | Tokens and keys, `NAME=value` (`chmod 600`) | Yes, to add secrets |
-| `state/model.env` | `ANTHROPIC_API_KEY` for the service (`chmod 600`) | Yes |
+| `state/model.env` | `ANTHROPIC_API_KEY=...`, read when the variable isn't set (`chmod 600`) | Yes |
 | `state/approved-hosts.txt` | Sites you approved, one per line | To remove one |
 | `state/sparrow.db` | Jobs, approvals, guests, spending | No |
 | `state/memory-index.db` | Search index (rebuilt if deleted) | No |

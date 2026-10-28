@@ -73,25 +73,25 @@ In three messages, Sparrow called `remember`, then `schedule` with "2026-11-10 0
 `sparrow/__main__.py` makes `python -m sparrow` work. It starts with the starter settings file that `init` writes:
 
 ```python
-@include sparrow/__main__.py#L1-L47
+@include sparrow/__main__.py#L1-L48
 ```
 
 The starter file has a comment on each line that isn't obvious, and safe defaults: privacy on, egress set to ask, only Wikipedia allowed, Telegram off until you set it up, and an empty owners list. The double braces aren't in the written file; `{name}` and `{zone}` are filled in by `format`.
 
 ```python
-@include sparrow/__main__.py#L50-L71
+@include sparrow/__main__.py#L51-L72
 ```
 
 `init` writes the settings file and the secrets file only if they don't exist, so running it again never overwrites your changes. The secrets file gets a new random web chat token from `secrets.token_urlsafe(24)`, 32 characters, and `chmod 600` so only you can read it. Creating the `Core` creates the workspace from the templates.
 
 ```python
-@include sparrow/__main__.py#L74-L130
+@include sparrow/__main__.py#L85-L141
 ```
 
 `doctor` checks everything a first run needs and prints `ok` or `FIX` with what to do. The order follows the order people get stuck: no model login, a sandbox that can't start, a broken skill, a missing token, an empty owners list. The `nonlocal problems` line lets the inner `check` function update the count. The return code is 1 if anything needs fixing, so you can use `doctor` in scripts and in the Docker health check of Chapter 25. You saw its output in Chapter 3; Appendix D lists each `FIX` line and its solution.
 
 ```python
-@include sparrow/__main__.py#L133-L189
+@include sparrow/__main__.py#L144-L200
 ```
 
 `serve` builds the core and the gateway with the real brain, and collects the jobs to run: always the scheduler, then either the terminal channel (for `chat`) or the web chat and Telegram, as enabled. Channel modules are imported only when used, so a missing optional piece can't break the others. A missing web chat token stops Sparrow straight away with a message saying what to set, instead of a confusing error. The web chat listens on the host from the settings, unless the environment variable `SPARROW_WEB_HOST` says otherwise; the Docker image sets it, for reasons Chapter 25 explains.
@@ -99,7 +99,7 @@ The starter file has a comment on each line that isn't obvious, and safe default
 `supervise` runs every job together until one of them ends. In `chat`, the terminal channel is allowed to end: that's when you press Ctrl+D. Any other job ending is a failure, whether it crashed (the web chat's port already in use, say) or returned when it shouldn't have, so `supervise` raises an exception. Python prints it and exits with an error code, and a service manager such as systemd sees the failure and restarts Sparrow (Chapter 25). The first version simply returned when any job ended, so a crashed Telegram channel made Sparrow exit quietly with a success code, and nothing restarted it; a review caught that, and Chapter 24 tests the fix.
 
 ```python
-@include sparrow/__main__.py#L192-L242
+@include sparrow/__main__.py#L203-L255
 ```
 
 `main` reads the command and the `--home` option, which defaults to the `SPARROW_HOME` environment variable or `~/.sparrow`. `status` and `pairing` work directly on the state, with no model and no running gateway, so you can check spending or approve a guest from another terminal while Sparrow runs.

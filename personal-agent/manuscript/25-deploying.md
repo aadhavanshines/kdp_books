@@ -23,7 +23,13 @@ $ printf 'ANTHROPIC_API_KEY=%s\n' "sk-ant-..." \
 $ chmod 600 ~/.sparrow/state/model.env
 ```
 
-It lives beside `secrets.env`, but separately, because it's read by the service manager to set Sparrow's environment, not by Sparrow's vault.
+It lives beside `secrets.env`, but separately: it holds the key for the Agent SDK, which reads it from the environment, not secrets for the vault to add to web requests. When `ANTHROPIC_API_KEY` isn't already set, `run`, `chat` and `doctor` read it from this file into the environment, and, like the vault, refuse a file that others can read:
+
+```python
+@include sparrow/__main__.py#L75-L82
+```
+
+So none of the service files below needs to contain the key. The first version put it in each service's own settings instead, and a review pointed out that the macOS one, in particular, kept it as plain text in a file that's easy to copy or share by mistake.
 
 ## A systemd Service
 
@@ -37,7 +43,6 @@ It assumes the project folder is `~/sparrow` with its virtual environment in `.v
 
 - `After=network-online.target` waits until the network is up before starting.
 - `ExecStart` runs Sparrow with the virtual environment's Python, so no `activate` is needed.
-- `EnvironmentFile` loads the API key from the file you just made.
 - `Restart=on-failure` with `RestartSec=10` restarts Sparrow ten seconds after a crash. Combined with the system test in Chapter 24, you know a restart loses nothing.
 - `NoNewPrivileges=yes` stops Sparrow, and anything it starts, from ever gaining more privileges, for example through a program with the setuid bit. bubblewrap works without them on systems with unprivileged user namespaces.
 
@@ -69,9 +74,9 @@ macOS starts and supervises programs with **launchd**. A **launch agent** is lau
 @include deploy/local.sparrow.plist
 ```
 
-A launch agent is a **property list**, Apple's XML format for settings. `ProgramArguments` runs Sparrow with the virtual environment's Python, from the project folder. launchd doesn't read environment files, so the API key goes in `EnvironmentVariables`, which is why the installed file must be readable only by you (`chmod 600`). `KeepAlive` with `SuccessfulExit` set to false restarts Sparrow when it exits with an error, as `supervise` makes it do when any part fails (Chapter 10), but not when you stop it on purpose; `ThrottleInterval` waits ten seconds between restarts. Output and errors go to a log file in Sparrow's state folder.
+A launch agent is a **property list**, Apple's XML format for settings. `ProgramArguments` runs Sparrow with the virtual environment's Python, from the project folder. There's no API key in it: Sparrow reads that from `model.env` itself. `KeepAlive` with `SuccessfulExit` set to false restarts Sparrow when it exits with an error, as `supervise` makes it do when any part fails (Chapter 10), but not when you stop it on purpose; `ThrottleInterval` waits ten seconds between restarts. Output and errors go to a log file in Sparrow's state folder.
 
-Replace `YOU` with your user name (run `whoami` to see it) and `sk-ant-...` with your key, then install it with the commands in the comment at the top of the file. Check on it with:
+Replace `YOU` with your user name (run `whoami` to see it), then install it with the commands in the comment at the top of the file. Check on it with:
 
 ```
 $ launchctl print gui/$(id -u)/local.sparrow
@@ -102,7 +107,7 @@ And run it with `deploy/docker-run.sh`:
 @include deploy/docker-run.sh
 ```
 
-`--restart unless-stopped` gives the same automatic restarts as systemd. The volume maps your `~/.sparrow` into the container, the key comes from the same `model.env` file, and the web chat is published on `127.0.0.1` only, so it's no more reachable than when Sparrow runs directly.
+`--restart unless-stopped` gives the same automatic restarts as systemd. The volume maps your `~/.sparrow` into the container, the key comes from the same `model.env` file, read by Sparrow inside the container (not passed with `--env-file`, which would show it to anyone who runs `docker inspect`), and the web chat is published on `127.0.0.1` only, so it's no more reachable than when Sparrow runs directly.
 
 ## The Sandbox Inside Docker
 
@@ -112,7 +117,7 @@ The two `--security-opt` lines need explaining, because they're a real trade-off
 @include evals/docker-test.txt
 ```
 
-With Docker's defaults, every test that needs the sandbox failed, and `doctor` said so: "No permissions to create new namespace." Sparrow then refuses all commands, which is safe, and everything else works. With `seccomp=unconfined` and `systempaths=unconfined`, all 150 tests passed.
+With Docker's defaults, every test that needs the sandbox failed, and `doctor` said so: "No permissions to create new namespace." Sparrow then refuses all commands, which is safe, and everything else works. With `seccomp=unconfined` and `systempaths=unconfined`, 160 tests passed and the one Mac-only test was skipped. `doctor` also shows the key being read from `model.env` in the mounted folder, with nothing passed to Docker.
 
 The same container also confirmed the web chat setting described above: started with the image's `SPARROW_WEB_HOST=0.0.0.0`, the chat page answered through Docker's forwarded port; started listening on `127.0.0.1` inside the container, as the first version did, the connection failed.
 
@@ -133,7 +138,7 @@ Everything Sparrow knows is in `~/.sparrow`. Back it up like any important folde
 ## Key Takeaways
 
 - Sparrow needs no incoming connections, so any always-on Linux machine or Mac can run it.
-- Keep the model's API key in a `chmod 600` file read by the service manager.
+- Keep the model's API key in a `chmod 600` file that Sparrow reads itself, never in a service file.
 - A systemd user service with `Restart=on-failure` and lingering keeps Sparrow running across crashes and reboots; on a Mac, a launch agent with `KeepAlive` does the same.
 - In Docker, run as a normal user with the state on a volume and the web chat on 127.0.0.1 only.
 - Docker's defaults block the sandbox; loosening them is a trade-off, and running directly with systemd avoids it.

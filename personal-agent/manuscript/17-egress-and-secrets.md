@@ -51,7 +51,7 @@ It returns a verdict and a reason, and the reason is written to the audit log, s
 `html_to_text` turns a page into readable text without any HTML library: it removes scripts, styles and comments entirely (so instructions hidden in an HTML comment don't reach the model), turns paragraph and line breaks into newlines, strips the remaining tags, decodes entities such as `&amp;`, and drops blank lines. Pages get much shorter, which saves tokens.
 
 ```python
-@include sparrow/egress.py#L107-L165
+@include sparrow/egress.py#L107-L171
 ```
 
 The `Fetcher` is where the policy is enforced. It takes a `resolve` function, the real DNS by default; the tests give it a pretend one, so they can play both an ordinary site and a name that leads to `127.0.0.1` without any network. Before each request, `private_target` resolves the name and refuses it if any of its addresses is private, unless you listed the host in the settings' allow list yourself (approving a site in chat doesn't count, because a fooled model might ask for exactly that site). A name that doesn't resolve at all becomes an `error`.
