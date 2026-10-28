@@ -131,6 +131,6 @@ Answering this accurately is a KDP content-guideline requirement. The disclosure
 - Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf`
 - Suggested list price: **$27.99 USD**. Check the royalty calculator on the pricing page before publishing, since printing costs change.
 
-> The paperback cover is sized for exactly the page count in `dist/build-info.json` (306 pages, spine 0.689 in). KDP's free ISBN barcode is printed automatically in the white box on the back cover. If you edit the manuscript and the page count changes, rebuild so the spine width updates.
+> The paperback cover is sized for exactly the page count in `dist/build-info.json` (324 pages, spine 0.730 in). KDP's free ISBN barcode is printed automatically in the white box on the back cover. If you edit the manuscript and the page count changes, rebuild so the spine width updates.
 
 > The diagrams and screenshots are printed in black and white in the paperback; they use dark navy, orange and light gray, which differ in lightness and stay readable in grayscale.

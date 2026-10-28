@@ -64,7 +64,7 @@ The crash in step 4 is the important one. The reminder was stored in SQLite and 
 
 ## How Fast Is Sparrow Itself?
 
-Most of a turn's time is the model's: a median of 6.5 seconds in the evaluations. But Sparrow does work on every message too: checking the role, building the prompt, searching memory, redacting, writing the transcript and audit log. If that grew to a second, it would be noticeable. `evals/benchmark.py` measures Sparrow's own time with an instant scripted brain, so the model's time is zero:
+Most of a turn's time is the model's: a median of 7.5 seconds in the evaluations. But Sparrow does work on every message too: checking the role, building the prompt, searching memory, redacting, writing the transcript and audit log. If that grew to a second, it would be noticeable. `evals/benchmark.py` measures Sparrow's own time with an instant scripted brain, so the model's time is zero:
 
 ```python
 @include evals/benchmark.py
@@ -78,18 +78,18 @@ It measures six things: the time to handle an owner's message from start to fini
 
 In plain words:
 
-- **Sparrow adds about 8 milliseconds to a message.** Next to a model turn of several seconds, that's invisible.
-- **It handled 270 messages a second** with 200 guests writing at once, far beyond what one person's assistant will ever see.
-- **Memory stays fast as it grows.** Indexing ten thousand facts and a year of notes took two seconds once; after that, searches took 16 milliseconds at the median and 44 at the 95th percentile.
-- **The sandbox costs 15 milliseconds** per command, the price of creating fresh namespaces.
+- **Sparrow adds about 7 milliseconds to a message.** Next to a model turn of several seconds, that's invisible.
+- **It handled 248 messages a second** with 200 guests writing at once, far beyond what one person's assistant will ever see.
+- **Memory stays fast as it grows.** Indexing ten thousand facts and a year of notes took about two seconds once; after that, searches took 17 milliseconds at the median and 40 at the 95th percentile.
+- **The sandbox costs about 18 milliseconds** per command, the price of creating fresh namespaces.
 - **The privacy router takes under 3 milliseconds** on a 9,480-character message.
-- **The prompt stays bounded.** With 500 facts in memory, the system prompt is 7,535 characters, because only the newest 6,000 characters of memory go in.
-- **Sparrow used 94 MB of memory** during all of this, small enough for a Raspberry Pi or the smallest cloud server.
+- **The prompt stays bounded.** With 500 facts in memory, the system prompt is 7,664 characters, because only the newest 6,000 characters of memory go in.
+- **Sparrow used 93 MB of memory** during all of this, small enough for a Raspberry Pi or the smallest cloud server.
 
 ## Key Takeaways
 
 - Test retries for all three cases: recover, never repeat work after a tool ran, and give up cleanly.
 - Test concurrency for both properties at once: different conversations in parallel, each conversation in order.
 - A system test runs the real process from outside and kills it with `SIGKILL`; Sparrow lost nothing and sent the pending reminder exactly once.
-- Benchmark your own overhead with the model's time removed: Sparrow adds about 8 ms per message.
+- Benchmark your own overhead with the model's time removed: Sparrow adds about 7 ms per message.
 - Memory search, the sandbox and the privacy router each cost milliseconds; the model dominates every turn.

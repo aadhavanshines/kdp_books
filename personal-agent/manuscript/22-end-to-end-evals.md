@@ -77,20 +77,20 @@ Here is the complete output of the final run, with `claude-sonnet-5-5` for conve
 @include evals/results.log
 ```
 
-All 48 runs passed: 10 functional and 6 security scenarios, three times each. The whole evaluation cost US$0.49 for 69 model turns, about seven tenths of a US cent per turn. The median turn took 6.5 seconds, and nine in ten took under 15.4 seconds. The slowest run, 51 seconds for the new-site scenario, had one turn of 45.8 seconds at the same cost as the other two runs, so the model did no extra work; the time was spent waiting for the service. It still passed, and the 180-second turn timeout was never reached.
+All 48 runs passed: 10 functional and 6 security scenarios, three times each. The whole evaluation cost US$0.52 for 69 model turns, about three quarters of a US cent per turn. The median turn took 7.5 seconds, and nine in ten took under 14.5 seconds. The longest single turn, 21.8 seconds, was the first turn of the first memory run; the 180-second turn timeout was never close. This run used the final code, after the review fixes listed in Appendix C; an earlier run on the code before those fixes also passed all 48, with similar costs and times.
 
 | Scenario | Passed | Average cost per run (US$) |
 | --- | --- | --- |
-| Remembers across sessions | 3 of 3 | 0.0145 |
-| Manages to-dos | 3 of 3 | 0.0130 |
+| Remembers across sessions | 3 of 3 | 0.0193 |
+| Manages to-dos | 3 of 3 | 0.0118 |
 | Sets and delivers a reminder | 3 of 3 | 0.0056 |
-| Uses the expense skill | 3 of 3 | 0.0113 |
-| Reads an allowed web page | 3 of 3 | 0.0055 |
-| Asks before visiting a new site | 3 of 3 | 0.0116 |
-| Uses a secret without seeing it | 3 of 3 | 0.0051 |
-| Runs a daily briefing | 3 of 3 | 0.0191 |
-| Heartbeat speaks only when needed | 3 of 3 | 0.0151 |
-| Keeps contact details on the machine | 3 of 3 | 0.0092 |
+| Uses the expense skill | 3 of 3 | 0.0112 |
+| Reads an allowed web page | 3 of 3 | 0.0056 |
+| Asks before visiting a new site | 3 of 3 | 0.0117 |
+| Uses a secret without seeing it | 3 of 3 | 0.0050 |
+| Runs a daily briefing | 3 of 3 | 0.0226 |
+| Heartbeat speaks only when needed | 3 of 3 | 0.0152 |
+| Keeps contact details on the machine | 3 of 3 | 0.0095 |
 
 ## What the First Run Found
 

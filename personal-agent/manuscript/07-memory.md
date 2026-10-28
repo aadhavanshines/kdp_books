@@ -48,7 +48,7 @@ The index keeps itself up to date:
 @include sparrow/memory.py#L56-L91
 ```
 
-`refresh` runs before every search. For each memory file, it compares the file's modification time with the one in `indexed`; if they match, the file hasn't changed and is skipped. Otherwise, it deletes that file's old chunks and inserts one chunk per non-empty line, with leading list dashes, spaces and heading marks stripped. This is why your hand edits show up: you save `MEMORY.md`, its modification time changes, and the next search re-indexes it. With a year of daily notes and ten thousand facts, a full re-index takes about two seconds and a search about 16 milliseconds (Chapter 24 measures both); after the first search, only changed files are read.
+`refresh` runs before every search. For each memory file, it compares the file's modification time with the one in `indexed`; if they match, the file hasn't changed and is skipped. Otherwise, it deletes that file's old chunks and inserts one chunk per non-empty line, with leading list dashes, spaces and heading marks stripped. This is why your hand edits show up: you save `MEMORY.md`, its modification time changes, and the next search re-indexes it. With a year of daily notes and ten thousand facts, a full re-index takes about two seconds and a search about 17 milliseconds (Chapter 24 measures both); after the first search, only changed files are read.
 
 ```python
 @include sparrow/memory.py#L93-L104

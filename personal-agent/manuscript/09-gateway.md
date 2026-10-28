@@ -18,7 +18,7 @@ Five tables, each with a comment for every column, because six months from now y
 
 `Store` is a thin layer over the connection. `run` executes a statement and commits immediately, so every change is on disk before Sparrow does anything else; if the process is killed a moment later, nothing is lost. `rows` reads. The `?` placeholders mean values are always passed separately from the SQL, never pasted into it, so a guest's name like `Robert'); DROP TABLE people;--` is stored as a name, not run as SQL. `row_factory = sqlite3.Row` lets code read columns by name, as in `job["message"]`. `close` closes the database file.
 
-> **Note:** SQLite is a good fit for a personal agent: it's a single file, needs no server, is included with Python, and handles far more traffic than one person generates. Chapter 24 measures Sparrow handling 270 messages a second with SQLite underneath.
+> **Note:** SQLite is a good fit for a personal agent: it's a single file, needs no server, is included with Python, and handles far more traffic than one person generates. Chapter 24 measures Sparrow handling about 250 messages a second with SQLite underneath.
 
 ## Sessions
 

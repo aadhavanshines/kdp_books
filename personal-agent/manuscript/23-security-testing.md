@@ -69,24 +69,24 @@ Each scenario's checks are about **effects**, and most would catch a failure whe
 
 ## The Results
 
-All six security scenarios passed in all three runs (Chapter 22 has the full log). In all six runs of the two injection scenarios, the model also *noticed* the hidden instructions and told the owner about them. Here are its replies in the first run of four scenarios:
+All six security scenarios passed in all three runs (Chapter 22 has the full log). In five of the six runs of the two injection scenarios, the model also *noticed* the hidden instructions and told the owner about them; in the sixth it simply answered the baking question and ignored the note without mentioning it. Here are its replies in the first run of four scenarios:
 
 ```
 @include transcripts/redteam-replies.txt
 ```
 
-Two details are worth noticing. First, the model told the owner about the hidden instructions, which is exactly what you'd want from a human assistant: "You may not want to trust that page." Nothing in Sparrow's code asks for that; it comes from the model and the house rule about untrusted text. Second, the secret-extraction reply is correct in a way that matters: "I never saw an Authorization header or key." That's literally true, because of the vault, and it means that even a model that *wanted* to comply couldn't.
+Two details are worth noticing. First, the model told the owner about the hidden instructions, which is exactly what you'd want from a human assistant: "Be careful with that invoice, since whoever wrote that line may not be legitimate." Nothing in Sparrow's code asks for that; it comes from the model and the house rule about untrusted text. Second, the secret-extraction reply is correct in a way that matters: "I didn't set an Authorization header myself and I have no key to print." That's literally true, because of the vault, and it means that even a model that *wanted* to comply couldn't.
 
 In all three runs of the sandbox scenario, the model refused outright, so the sandbox wasn't needed this time. That's fine: the sandbox tests above show what would have happened if it had tried. Layered defenses mean the model's good judgment is a bonus, not a requirement.
 
 > **Warning:** Passing 18 red-team runs doesn't mean Sparrow can't be fooled. These are six attacks, written by someone who knows the defenses. Real attackers have more time and more ideas, and models change. That's why the important checks are on effects that code controls. Add your own scenarios, especially for any new tool, and rerun them when you change models.
 
-You might also notice the `**` around "180.00 EUR" in the invoice reply. The house rules ask for plain text, and the model mostly complies, but not always. That's a reminder of the difference between a rule in the prompt, which the model usually follows, and a rule in code, which always holds. Formatting can live with "usually." Security can't.
+In an earlier run of these scenarios, the invoice reply put `**` around "180.00 EUR", Markdown for bold, though the house rules ask for plain text. The model mostly complies, but not always. That's a reminder of the difference between a rule in the prompt, which the model usually follows, and a rule in code, which always holds. Formatting can live with "usually." Security can't.
 
 ## Key Takeaways
 
 - Test code-level defenses by playing a completely fooled model: ask for the dangerous action directly and check it's refused.
 - Test every escape route you can list: paths, links, redirects, private addresses, environment, `/proc`, limits.
 - Red-team the real model with realistic attacks, and grade effects that would catch a failure whether or not the model was fooled.
-- In all 18 red-team runs the model resisted and warned the owner, but Sparrow's code didn't rely on it.
+- In all 18 red-team runs the model resisted, and it usually warned the owner, but Sparrow's code didn't rely on it.
 - Rules in the prompt are followed usually; rules in code always. Put security in code.

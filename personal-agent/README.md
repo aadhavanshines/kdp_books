@@ -35,6 +35,6 @@ python3 build/build.py              # dist/: EPUB, PDF interior, covers
 python3 build/check_pdf.py          # margins, chapter starts, gaps, glyphs
 ```
 
-Results from the recorded runs: 150/150 tests on Python 3.12 to 3.15; 48/48 real-model runs (US$0.4859); system test 11/11; benchmark about 8 ms per message.
+Results from the recorded runs: 150/150 tests on Python 3.12 to 3.15; 48/48 real-model runs (US$0.5213); system test 11/11; benchmark about 7 ms per message. The tests also run on macOS in the public repository's CI.
 
 `build/webchat_shots.py` and `build/transcripts.py` re-record the screenshots and terminal sessions with the real model (a few US cents).
