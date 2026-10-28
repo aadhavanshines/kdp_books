@@ -140,7 +140,7 @@ Answering this accurately is a KDP content-guideline requirement. The disclosure
 - ISBN: not required for Kindle
 - KDP Select: optional (90-day exclusivity, Kindle Unlimited royalties)
 - Territories: All territories
-- Royalty: 70% (requires a price from $2.99 to $9.99)
+- Royalty: 70% (requires a price from $2.99 to $12.99 on Amazon.com)
 - Suggested list price: **$9.99 USD**
 
 ## Paperback Settings

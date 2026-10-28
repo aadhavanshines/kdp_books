@@ -118,7 +118,7 @@ Answering this accurately is a KDP content-guideline requirement. The disclosure
 - ISBN: not required for Kindle
 - **KDP Select: enroll.** This puts the book in Kindle Unlimited, so you also earn from pages read (KENP). It requires the eBook to be exclusive to Amazon for each 90-day term; the paperback is not affected.
 - Territories: All territories
-- Royalty: 70%. On Amazon.com the 70% band runs from $2.99 to $12.99 (KDP raised the upper limit from $9.99 on 7 July 2026), so $12.99 qualifies. The 70% option deducts a delivery fee per megabyte; the EPUB is about 2.3 MB, and KDP shows the converted file size and exact fee on the pricing page.
+- Royalty: 70%. On Amazon.com the 70% band runs from $2.99 to $12.99, so $12.99 qualifies. The 70% option deducts a delivery fee per megabyte; the EPUB is about 2.3 MB, and KDP shows the converted file size and exact fee on the pricing page.
 - **List price: $12.99 USD**
 
 ## Paperback Settings
