@@ -1,0 +1,5 @@
+         n  max of each window  monotonic deque
+     1,000             1.39 ms           232 us
+     2,000        5.38 ms x3.9      516 us x2.2
+     4,000        20.1 ms x3.7      905 us x1.8
+     8,000        81.2 ms x4.0     1.85 ms x2.0

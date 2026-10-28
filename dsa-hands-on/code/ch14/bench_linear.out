@@ -1,0 +1,5 @@
+         n   counting_sort      radix_sort        sorted()
+   100,000         3.25 ms         42.3 ms         12.9 ms
+   200,000    6.37 ms x2.0    85.8 ms x2.0    26.3 ms x2.0
+   400,000    12.5 ms x2.0     179 ms x2.1    54.6 ms x2.1
+   800,000    25.1 ms x2.0     357 ms x2.0     113 ms x2.1

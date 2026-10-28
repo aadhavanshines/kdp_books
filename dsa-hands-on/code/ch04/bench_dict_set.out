@@ -1,0 +1,4 @@
+         n        dict get  dict set + del  set add + remove
+    10,000          102 ns          136 ns            128 ns
+   100,000     119 ns x1.2     141 ns x1.0       131 ns x1.0
+ 1,000,000     117 ns x1.0     134 ns x1.0       131 ns x1.0

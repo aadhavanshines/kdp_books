@@ -1,0 +1,5 @@
+         n     good hashes  all hash to 42
+       500         81.3 us         6.53 ms
+     1,000     162 us x2.0    25.7 ms x3.9
+     2,000     344 us x2.1     105 ms x4.1
+     4,000     727 us x2.1     450 ms x4.3

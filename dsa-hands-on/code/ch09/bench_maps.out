@@ -1,0 +1,5 @@
+         n            dict      ChainedMap         OpenMap
+     1,000          108 ns          219 ns          328 ns
+    10,000     107 ns x1.0     240 ns x1.1     339 ns x1.0
+   100,000     108 ns x1.0     248 ns x1.0     333 ns x1.0
+ 1,000,000     114 ns x1.1     266 ns x1.1     362 ns x1.1

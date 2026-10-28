@@ -1,0 +1,5 @@
+           '(a[b]{c})': True
+                '([)]': False
+                  '((': False
+  'f(x) = [1, {2: 3}]': True
+                    '': True

@@ -1,0 +1,10 @@
+        F
+    C
+A
+        E
+    B
+        D
+preorder:  A B D E C F
+inorder:   D B E A C F
+postorder: D E B F C A
+levels:    [['A'], ['B', 'C'], ['D', 'E', 'F']]

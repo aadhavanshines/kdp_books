@@ -1,0 +1,5 @@
+42 True
+-2 -2
+True
+TypeError: unhashable type: 'list'
+P

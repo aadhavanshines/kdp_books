@@ -1,0 +1,7 @@
+Harbor -> Market -> Museum -> Stadium
+Zoo -> Park -> Central -> Museum -> University
+0 away from Central: Central
+1 away from Central: Market, Park, Airport, Museum
+2 away from Central: Harbor, Zoo, Stadium, University
+depth-first from Harbor:
+Harbor, Market, Central, Park, Zoo, Airport, Museum, Stadium, University

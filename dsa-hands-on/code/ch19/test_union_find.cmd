@@ -1,0 +1,1 @@
+-m pytest -q test_union_find.py

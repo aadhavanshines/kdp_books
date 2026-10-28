@@ -1,0 +1,7 @@
+empty list: 56 bytes
+length  1:  88 bytes, room for 4
+length  5: 120 bytes, room for 8
+length  9: 184 bytes, room for 16
+length 17: 248 bytes, room for 24
+length 25: 312 bytes, room for 32
+length 33: 376 bytes, room for 40

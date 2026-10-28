@@ -1,0 +1,5 @@
+         n           naive      compressed
+     1,000         13.6 ms          425 us
+     2,000    58.8 ms x4.3     887 us x2.1
+     4,000     255 ms x4.3    1.75 ms x2.0
+     8,000     1.06 s x4.2    3.28 ms x1.9

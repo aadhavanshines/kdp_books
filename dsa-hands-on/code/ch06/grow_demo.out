@@ -1,0 +1,5 @@
+append # 2: capacity  1 ->  2,  1 items copied so far
+append # 3: capacity  2 ->  4,  3 items copied so far
+append # 5: capacity  4 ->  8,  7 items copied so far
+append # 9: capacity  8 -> 16, 15 items copied so far
+append #17: capacity 16 -> 32, 31 items copied so far

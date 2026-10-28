@@ -1,0 +1,12 @@
+edge list: [('A', 'B'), ('A', 'C'), ('B', 'C'), ('C', 'D')]
+adjacency list:
+  A: ['B', 'C']
+  B: ['A', 'C']
+  C: ['A', 'B', 'D']
+  D: ['C']
+adjacency matrix:
+    A B C D
+  A 0 1 1 0
+  B 1 0 1 0
+  C 1 1 0 1
+  D 0 0 1 0

@@ -1,0 +1,5 @@
+         n     brute force  sort + pointers        hash map
+       500         6.94 ms          59.3 us         37.2 us
+     1,000    26.5 ms x3.8      153 us x2.6    73.9 us x2.0
+     2,000     116 ms x4.4      410 us x2.7     174 us x2.3
+     4,000     476 ms x4.1      908 us x2.2     383 us x2.2

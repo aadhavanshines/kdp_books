@@ -1,0 +1,2 @@
+# Code style for the book's listings: 76 characters fit on a printed line.
+line-length = 76

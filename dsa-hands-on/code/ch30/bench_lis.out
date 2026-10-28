@@ -1,0 +1,5 @@
+         n       n squared         n log n
+       500         6.05 ms         47.9 us
+     1,000    25.2 ms x4.2     115 us x2.4
+     2,000     104 ms x4.1     238 us x2.1
+     4,000     417 ms x4.0     511 us x2.1

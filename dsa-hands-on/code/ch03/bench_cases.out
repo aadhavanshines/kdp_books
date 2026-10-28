@@ -1,0 +1,3 @@
+ best (first item): 38 ns
+       middle item: 417 us
+   worst (missing): 809 us

@@ -1,0 +1,5 @@
+         n           lists            sets          matrix
+       250          177 ns         92.3 ns           96 ns
+       500     179 ns x1.0    92.3 ns x1.0    94.7 ns x1.0
+     1,000     179 ns x1.0    89.2 ns x1.0    96.3 ns x1.0
+     2,000     184 ns x1.0    90.9 ns x1.0    97.2 ns x1.0

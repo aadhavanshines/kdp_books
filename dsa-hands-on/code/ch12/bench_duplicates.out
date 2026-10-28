@@ -1,0 +1,5 @@
+         n       quicksort      quicksort3
+     2,000         5.09 ms          435 us
+     4,000    18.9 ms x3.7     917 us x2.1
+     8,000      72 ms x3.8    1.82 ms x2.0
+    16,000     280 ms x3.9    3.44 ms x1.9

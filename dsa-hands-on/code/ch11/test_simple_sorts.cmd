@@ -1,0 +1,1 @@
+-m pytest -q test_simple_sorts.py

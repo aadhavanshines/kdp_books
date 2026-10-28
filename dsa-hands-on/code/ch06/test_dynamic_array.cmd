@@ -1,0 +1,1 @@
+-m pytest -q test_dynamic_array.py

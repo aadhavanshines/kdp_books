@@ -1,0 +1,4 @@
+                        random  nearly sorted       reversed
+ selection_sort        499,500        499,500        499,500
+ insertion_sort        258,269          1,009        499,500
+    bubble_sort        496,799          2,994        499,500

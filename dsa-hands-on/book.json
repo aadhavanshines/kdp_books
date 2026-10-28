@@ -1,0 +1,97 @@
+{
+  "title": "Data Structures and Algorithms in Python, Hands-On",
+  "subtitle": "Every Structure Built, Tested and Timed, with Interview Patterns, Exercises and Solutions",
+  "cover_title": [
+    [
+      "DATA STRUCTURES",
+      true
+    ],
+    [
+      "& ALGORITHMS",
+      false
+    ],
+    [
+      "IN PYTHON",
+      false
+    ],
+    [
+      "HANDS-ON",
+      false
+    ]
+  ],
+  "short_subtitle": "Built, Tested and Timed",
+  "cover_tagline": "Build Every Structure Yourself, Benchmark It, and Master the Interview Patterns",
+  "cover_prompt": ">>> heapq.heappop(tasks)_",
+  "cover_features": [
+    "BUILT FROM SCRATCH",
+    "REAL BENCHMARKS",
+    "INTERVIEW PATTERNS"
+  ],
+  "slug": "data-structures-and-algorithms-in-python-hands-on",
+  "author": "Aadhavan Muthurengan",
+  "language": "en",
+  "year": 2026,
+  "identifier": "data-structures-and-algorithms-in-python-hands-on-aadhavan-muthurengan-2026",
+  "trim": {
+    "width_in": 6.0,
+    "height_in": 9.0
+  },
+  "paper": "white",
+  "reuse_note": "Readers may freely use and adapt the example programs, tests, benchmarks, exercises and solutions in this book for their own work. All the code is available at github.com/aadhavanshines/data-structures-and-algorithms-in-python-hands-on under the MIT License.",
+  "trademarks": "Python and the Python logos are trademarks or registered trademarks of the Python Software Foundation. Java is a registered trademark of Oracle and/or its affiliates. JavaScript is a trademark of Oracle Corporation in the United States. Chrome and Go are trademarks of Google LLC. Linux is a registered trademark of Linus Torvalds. Git is a trademark of the Software Freedom Conservancy. Redis is a registered trademark of Redis Ltd. PostgreSQL is a trademark of the PostgreSQL Community Association of Canada. Windows is a trademark of Microsoft Corporation. macOS is a trademark of Apple Inc. GitHub is a trademark of GitHub, Inc. Ubuntu is a registered trademark of Canonical Ltd. Intel and Xeon are trademarks of Intel Corporation. SQLite is in the public domain; pytest, matplotlib, uv and V8 are projects whose names belong to their owners. All people, towns, companies and data in the example programs are fictional. Product and company names are used solely for identification. This book is independent and is not affiliated with, sponsored by, or endorsed by the Python Software Foundation or any of these companies or projects.",
+  "back_cover_blurb": [
+    "Don't just read about data structures. Build them, test them and time them. Every structure in this book is a working class you write yourself, checked against Python's built-ins on thousands of random inputs and measured with real benchmarks, so you see Big O happen on your own screen.",
+    "Build arrays, linked lists, hash tables, heaps, search trees, an AVL tree, a trie, union-find and graphs; implement eight sorts, Dijkstra, Kruskal and more. Then master the interview patterns: two pointers, sliding window, prefix sums, BFS and DFS, dynamic programming, greedy and backtracking.",
+    "Every listing was run on Python 3.12 to 3.15. Every chapter has real-world uses and exercises with tested solutions."
+  ],
+  "dedication": [
+    "To my father and my mother,",
+    "for your love, your sacrifices, and every lesson you taught me.",
+    "",
+    "To my wife,",
+    "for your patience, your encouragement, and your belief in me.",
+    "",
+    "And to our three children,",
+    "may you always build the things you dream of.",
+    "",
+    "This book is for you."
+  ],
+  "author_short_bio": "Aadhavan Muthurengan is an automation and AI professional with more than 15 years of experience in the automotive industry, where Aadhavan has built in-house tools that transformed product development and validation.",
+  "levels": {
+    "1": "Beginner",
+    "2": "Beginner",
+    "3": "Beginner",
+    "4": "Beginner",
+    "5": "Beginner",
+    "6": "Beginner",
+    "7": "Beginner",
+    "8": "Beginner",
+    "9": "Intermediate",
+    "10": "Intermediate",
+    "11": "Intermediate",
+    "12": "Intermediate",
+    "13": "Intermediate",
+    "14": "Intermediate",
+    "15": "Intermediate",
+    "16": "Intermediate",
+    "17": "Intermediate",
+    "18": "Intermediate",
+    "19": "Intermediate",
+    "20": "Advanced",
+    "21": "Advanced",
+    "22": "Advanced",
+    "23": "Advanced",
+    "24": "Advanced",
+    "25": "Advanced",
+    "26": "Advanced",
+    "27": "Advanced",
+    "28": "Advanced",
+    "29": "Advanced",
+    "30": "Advanced",
+    "31": "Advanced",
+    "32": "Project",
+    "33": "Advanced",
+    "34": "Intermediate"
+  },
+  "examples_note": "All people, towns, companies and data in the example programs are fictional. Any resemblance to real persons or businesses is coincidental."
+}

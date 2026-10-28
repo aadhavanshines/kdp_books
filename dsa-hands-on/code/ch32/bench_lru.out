@@ -1,0 +1,3 @@
+        LRUCache: 45.9 ms for 100,000 requests
+ OrderedDict LRU: 27.4 ms for 100,000 requests
+      plain dict: 5.08 ms for 100,000 requests

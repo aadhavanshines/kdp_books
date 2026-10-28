@@ -1,0 +1,3 @@
+recursion limit: 1000
+20 x 20: filled 400 cells
+100 x 100: RecursionError

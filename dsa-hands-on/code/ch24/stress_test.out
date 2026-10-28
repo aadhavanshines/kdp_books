@@ -1,0 +1,3 @@
+hash:   passed 5000 random tests
+sorted: passed 5000 random tests
+buggy:  FAILED on try 9: [-1, -1, 2, -3], 4 -> (2, 2)

@@ -1,0 +1,5 @@
+         n  plain recursion        memoized           table
+        20           253 us         11.3 us         4.15 us
+        25     1.17 ms x4.6    14.9 us x1.3    5.45 us x1.3
+        30     5.36 ms x4.6    17.5 us x1.2    6.71 us x1.2
+        35     24.4 ms x4.6      20 us x1.1    7.52 us x1.1

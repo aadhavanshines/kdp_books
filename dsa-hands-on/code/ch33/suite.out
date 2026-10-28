@@ -1,0 +1,9 @@
+Python 3.15.0
+         list append: 3.78 ms
+    dict set and get: 5.35 ms
+  recursion (fib 22): 1.9 ms
+   heap push and pop: 21.2 ms
+       BFS on a grid: 28.9 ms
+         linked list: 8.13 ms
+      insertion sort: 28.3 ms
+    sorted() 100,000: 17.7 ms

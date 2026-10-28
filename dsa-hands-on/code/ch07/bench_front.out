@@ -1,0 +1,6 @@
+         n            list      LinkedList           deque
+    10,000         26.9 us          307 ns          115 ns
+    20,000    53.9 us x2.0     310 ns x1.0     113 ns x1.0
+    40,000     107 us x2.0     306 ns x1.0     114 ns x1.0
+    80,000     219 us x2.0     311 ns x1.0     113 ns x1.0
+   160,000     501 us x2.3     307 ns x1.0     114 ns x1.0

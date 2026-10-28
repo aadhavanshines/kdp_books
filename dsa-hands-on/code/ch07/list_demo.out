@@ -1,0 +1,4 @@
+'a' -> 'b' -> 'c' -> 'd' (length 4)
+'a' -> 'b' -> 'd'
+'d' -> 'b' -> 'a'
+popped d leaving 'b' -> 'a'

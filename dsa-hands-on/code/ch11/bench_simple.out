@@ -1,0 +1,5 @@
+         n          bubble       selection       insertion   nearly sorted
+       250         1.54 ms          702 us          682 us         12.8 us
+       500    6.24 ms x4.1    2.75 ms x3.9    2.71 ms x4.0    25.5 us x2.0
+     1,000    24.9 ms x4.0    10.7 ms x3.9    10.9 ms x4.0    50.9 us x2.0
+     2,000     114 ms x4.6    57.5 ms x5.4    49.8 ms x4.6     118 us x2.3

@@ -1,0 +1,7 @@
+hash(10) % 4 = 2
+hash(7) % 4 = 3
+hash(14) % 4 = 2
+bucket 0 []
+bucket 1 []
+bucket 2 [[10, 'value 10'], [14, 'value 14']]
+bucket 3 [[7, 'value 7']]

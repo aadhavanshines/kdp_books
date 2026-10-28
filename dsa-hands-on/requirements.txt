@@ -1,0 +1,5 @@
+# Packages for the book's listings, at the versions the book was tested with.
+# The data structures themselves use only Python's standard library.
+pytest==9.1.1
+# Charts of the benchmark results
+matplotlib==3.11.2

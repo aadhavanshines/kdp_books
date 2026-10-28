@@ -1,0 +1,2 @@
+Dijkstra:     {'s': 0, 'a': 1, 'b': 5, 't': 3}
+Bellman-Ford: {'s': 0, 'a': 1, 'b': 5, 't': 2}

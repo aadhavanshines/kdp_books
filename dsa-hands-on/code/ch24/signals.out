@@ -1,0 +1,12 @@
+       two pointers: sorted array, pair or triple with a sum
+     sliding window: contiguous subarray or substring, longest or shortest
+           hash map: count subarrays with a sum; seen before; pairs
+        prefix sums: sums of ranges, asked many times
+                BFS: fewest steps, shortest path, levels, unweighted
+                DFS: connected regions, all paths, explore everything
+   topological sort: order with prerequisites
+               heap: k largest, k smallest, k closest, merge k
+      binary search: minimum or maximum value that works, monotone
+dynamic programming: count ways, best total, choices that overlap
+       backtracking: all combinations, permutations, placements
+    monotonic stack: next greater or smaller element

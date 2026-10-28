@@ -1,0 +1,6 @@
+       naive, random input:    24,259 comparisons
+       naive, sorted input: 1,999,000 comparisons
+random pivot, random input:    25,072 comparisons
+random pivot, sorted input:    23,604 comparisons
+n log2 n = 21,932
+n (n - 1) / 2 = 1,999,000

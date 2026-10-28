@@ -1,0 +1,5 @@
+         n     random keys     sorted keys            dict
+       500          386 ns           17 us         92.4 ns
+     1,000     380 ns x1.0    34.5 us x2.0    90.9 ns x1.0
+     2,000     405 ns x1.1    74.7 us x2.2     111 ns x1.2
+     4,000     527 ns x1.3     148 us x2.0     110 ns x1.0

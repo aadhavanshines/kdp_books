@@ -1,0 +1,9 @@
+put a         cache (newest first): ['a']
+put b         cache (newest first): ['b', 'a']
+put c         cache (newest first): ['c', 'b', 'a']
+get a -> A    cache (newest first): ['a', 'c', 'b']
+put d         cache (newest first): ['d', 'a', 'c']
+get b -> None cache (newest first): ['d', 'a', 'c']
+get c -> C    cache (newest first): ['c', 'd', 'a']
+put e         cache (newest first): ['e', 'c', 'd']
+hits 2, misses 1

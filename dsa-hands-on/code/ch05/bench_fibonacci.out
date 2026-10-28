@@ -1,0 +1,6 @@
+         n           naive        memoized
+        16          104 us         4.93 us
+        18     283 us x2.7    5.45 us x1.1
+        20     725 us x2.6    5.89 us x1.1
+        22     1.9 ms x2.6    6.74 us x1.1
+        24    4.97 ms x2.6    7.45 us x1.1

@@ -1,0 +1,2 @@
+DynamicArray([3, 4, 1, 5])
+ValueError: 9 is not in the array

@@ -1,0 +1,4 @@
+first: ratios x4.2, x4.0, x4.0, so O(n^2);
+   at 64,000 about 2.2 seconds
+second: ratios x2.2, x2.1, x2.1, so O(n) or O(n log n);
+   at 64,000 about 0.1 seconds

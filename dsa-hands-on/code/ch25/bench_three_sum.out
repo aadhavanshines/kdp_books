@@ -1,0 +1,5 @@
+         n     all triples    two pointers
+       100         13.1 ms          321 us
+       200     113 ms x8.6    1.25 ms x3.9
+       400     903 ms x8.0    5.39 ms x4.3
+       800     7.54 s x8.4    21.6 ms x4.0
