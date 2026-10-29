@@ -47,12 +47,12 @@ def record(listing):
             env=env,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            text=True,
+            encoding="utf-8",
             timeout=1800,
         )
         if p.returncode:
             raise SystemExit(f"{listing}: failed\n{p.stdout}")
-        listing.with_suffix(".out").write_text(p.stdout)
+        listing.with_suffix(".out").write_text(p.stdout, encoding="utf-8")
         IMAGES.mkdir(parents=True, exist_ok=True)
         charts = sorted(work.glob("*.png"))
         for png in charts:
@@ -78,7 +78,7 @@ def main():
             "import platform; print(platform.python_version())",
         ],
         capture_output=True,
-        text=True,
+        encoding="utf-8",
     ).stdout.strip()
     print(f"Recorded with Python {version}", flush=True)
 

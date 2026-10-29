@@ -278,7 +278,7 @@ def main():
             if listing.with_suffix(".runonly").exists():
                 continue  # benchmarks: tests/record_benchmarks.py
             out, _ = run(PYTHONS[MAIN], listing)
-            expected_file.write_text(out)
+            expected_file.write_text(out, encoding="utf-8")
             print(f"recorded {listing.relative_to(ROOT)}")
             continue
         if not expected_file.exists():

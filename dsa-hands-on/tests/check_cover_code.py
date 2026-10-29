@@ -18,7 +18,7 @@ for version in ("3.15", "3.14", "3.13", "3.12"):
     out = subprocess.run(
         [python, "-c", "\n".join(COVER_CODE)],
         capture_output=True,
-        text=True,
+        encoding="utf-8",
     ).stdout.splitlines()
     same = out == COVER_OUTPUT
     ok &= same

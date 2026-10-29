@@ -138,7 +138,7 @@ def main():
                             tmp.name,
                         ],
                         capture_output=True,
-                        text=True,
+                        encoding="utf-8",
                     )
                     if r.returncode:
                         problems.append(

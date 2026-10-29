@@ -12,7 +12,9 @@ WIDTH = 76
 bad = []
 for path in sorted((ROOT / "code").rglob("*")):
     if path.suffix in (".out", ".txt", ".sql") or path.name.endswith(".py"):
-        for n, line in enumerate(path.read_text().splitlines(), 1):
+        for n, line in enumerate(
+            path.read_text(encoding="utf-8").splitlines(), 1
+        ):
             if len(line.rstrip()) > WIDTH:
                 bad.append(
                     f"{path.relative_to(ROOT)}:{n}: {len(line.rstrip())} characters"

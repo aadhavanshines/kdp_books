@@ -26,7 +26,7 @@ def run_suite(version):
             [PYTHONS[version], "suite.py", "--json"],
             cwd=work,
             capture_output=True,
-            text=True,
+            encoding="utf-8",
             env=env_for(),
             check=True,
         )
@@ -42,4 +42,4 @@ for attempt in range(PASSES):
             best[test] = min(best[test], seconds)
         print(f"pass {attempt + 1}, Python {version}: done", flush=True)
 path = CODE / "ch33" / "versions.json"
-path.write_text(json.dumps(results, indent=2) + "\n")
+path.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
