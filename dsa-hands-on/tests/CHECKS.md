@@ -15,6 +15,8 @@ Final state: 406 pages (6 x 9 in), about 46,900 words including code, 34 chapter
 | Shared files (`tests/sync_common.py --check`) | Every copy of `bench.py` and the shared modules is current |
 | Front cover program (`tests/check_cover_code.py`) | Prints exactly the output shown on the cover, on all 4 versions |
 | Style | `ruff format` (76 columns) and `ruff check`: clean |
+| Jupyter notebooks (`tests/check_notebooks.py`) | 33 chapter notebooks, built by `tests/make_notebooks.py` from the tested listings in book order (137 programs; solutions and pytest files stay as files). Every code cell matches its .py file; every notebook runs top to bottom on Python 3.12, 3.13, 3.14 and 3.15 with Jupyter (notebook 7.6.3); every non-benchmark cell prints exactly the listing's .out file; benchmarks run in quick mode. Saved notebooks show a full-length benchmark run from the build machine |
+| Public code repository | github.com/aadhavanshines/data-structures-and-algorithms-in-python-hands-on: the code, tests, benchmarks, solutions and notebooks by chapter, MIT license. Its GitHub Actions workflow runs every listing and every notebook on Linux, macOS and Windows with Python 3.12, 3.13, 3.14 and 3.15. Run 1 (29 October 2026): all 12 jobs passed |
 
 ## Book
 
@@ -30,4 +32,4 @@ Final state: 406 pages (6 x 9 in), about 46,900 words including code, 34 chapter
 | Trademarks | No other book or series named in the title, subtitle, description or keywords; trademark notice on the copyright page |
 | Copyright | All text and code written for this book; no copied text |
 | Privacy | The author's personal email address appears nowhere in the book or repository (checked before every commit) |
-| Not verified here | Windows and macOS (the code is pure Python with no platform-specific calls); the JIT and free-threaded builds (Chapter 33 uses default builds) |
+| Not verified here | The JIT and free-threaded builds (Chapter 33 uses default builds) |

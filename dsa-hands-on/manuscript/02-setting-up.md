@@ -1,6 +1,6 @@
 # Chapter 2: Setting Up
 
-This chapter gets your computer ready: Python, a virtual environment, the two packages the book uses, and the book's code. Then you'll write your first function and test it the way every structure in this book is tested.
+This chapter gets your computer ready: Python, a virtual environment, the packages the book uses, and the book's code with its Jupyter notebooks. Then you'll write your first function and test it the way every structure in this book is tested.
 
 ## Python 3.12 or Newer
 
@@ -21,7 +21,9 @@ $ git clone https://github.com/aadhavanshines/data-structures-and-algorithms-in-
 $ cd data-structures-and-algorithms-in-python-hands-on
 ```
 
-Inside there's one folder per chapter, `ch01` to `ch33`, each holding that chapter's listings. Every listing has a `.out` file next to it with the output printed in the book, so you can compare.
+Inside, the `code` folder has one folder per chapter, `ch01` to `ch33`, each holding that chapter's listings. Every listing has a `.out` file next to it with the output printed in the book, so you can compare.
+
+Each chapter folder also has a **Jupyter notebook**, such as `ch06/ch06.ipynb`, with all of that chapter's programs in the book's order, one program per cell, saved with their outputs. You can read the notebooks on GitHub without installing anything, or run them yourself: start Jupyter with `jupyter notebook` in the code folder (with the virtual environment below active), open a chapter's notebook, and choose **Run > Run All Cells**. This book uses plain `.py` files and a terminal, because tests and benchmarks are run that way, but the notebooks are a convenient way to experiment: change a cell and run it again.
 
 ## A Virtual Environment
 
@@ -34,7 +36,7 @@ $ source .venv/bin/activate
 
 On Windows, the second command is `.venv\Scripts\activate`. Your prompt now starts with `(.venv)`. Activate it again whenever you open a new terminal to work on the book.
 
-Now install the two packages the book uses: **pytest**, for testing, and **matplotlib**, for drawing benchmark charts. The data structures themselves use only Python's standard library.
+Now install the packages the book uses: **pytest**, for testing, **matplotlib**, for drawing benchmark charts, and **Jupyter**, for the notebooks. The data structures themselves use only Python's standard library.
 
 ```
 $ pip install -r requirements.txt
@@ -104,8 +106,8 @@ Benchmarks also run this way, but take longer: up to a minute or two each, becau
 
 ## Key Takeaways
 
-- The book needs Python 3.12 or newer, a virtual environment, and two packages: pytest and matplotlib.
-- Every listing is in the book's repository, by chapter, with its expected output.
+- The book needs Python 3.12 or newer, a virtual environment, and three packages: pytest, matplotlib and Jupyter (for the notebooks).
+- Every listing is in the book's repository, by chapter, with its expected output, and each chapter's programs are also in a Jupyter notebook.
 - pytest runs every `test_` function and reports failed `assert`s.
 - Test with chosen cases for the edges you know, and with random cases compared against a trusted implementation for the ones you don't.
 - Seed random tests, so a failure can be repeated.

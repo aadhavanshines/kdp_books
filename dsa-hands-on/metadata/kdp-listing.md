@@ -60,7 +60,7 @@ Paste the following into the description box. KDP supports basic HTML such as `<
 
 <p>Every chapter ends with exercises, and every exercise has a tested, worked solution. If you know basic Python, you're ready.</p>
 
-<p><b>All the code is free to download</b> from the book's GitHub repository, arranged by chapter, with tests, benchmarks and the expected output of every program.</p>
+<p><b>All the code is free to download</b> from the book's GitHub repository, arranged by chapter, with tests, benchmarks, the expected output of every program, a ready-to-run Jupyter notebook for every chapter, and an automatic check that runs everything on Python 3.12 to 3.15 on Windows, macOS and Linux.</p>
 
 <p><i>This book is independent and is not affiliated with, sponsored by, or endorsed by the Python Software Foundation or any other company or project named in it. Python is a trademark of the Python Software Foundation.</i></p>
 ```

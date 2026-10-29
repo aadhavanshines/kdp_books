@@ -49,6 +49,6 @@ Every chapter ends with key takeaways and exercises. Appendix A has a tested sol
 
 Type the code. Run it. Then change it and run it again: shrink a test until it fails, swap a data structure, double an input and predict the time before you measure it. Data structures are learned with the hands as much as the eyes.
 
-All the code is free to download, arranged by chapter, from the book's repository at **github.com/aadhavanshines/data-structures-and-algorithms-in-python-hands-on**. Chapter 2 shows how to set it up.
+All the code is free to download, arranged by chapter, from the book's repository at **github.com/aadhavanshines/data-structures-and-algorithms-in-python-hands-on**, with a ready-to-run Jupyter notebook for every chapter. Chapter 2 shows how to set it up.
 
 > **Note:** All the data in the examples, including people, towns and companies, is fictional. Any resemblance to real persons or businesses is coincidental.
