@@ -24,6 +24,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CODE = ROOT / "code"
+# The Python inside a virtual environment: Scripts\python.exe on Windows
+VENV_PYTHON = (
+    Path("Scripts", "python.exe")
+    if os.name == "nt"
+    else Path("bin", "python")
+)
 
 # Copies of another chapter's module, so each folder runs on its own;
 # they are printed (and in the notebook) in their own chapter
@@ -62,9 +68,18 @@ def check_sync():
             if cell.cell_type != "code":
                 continue
             name = cell.metadata.get("listing")
+            if name is None:
+                problems.append(
+                    f"{folder.name}: a code cell names no listing"
+                )
+                continue
             names.append(name)
-            source = (folder / name).read_text(encoding="utf-8")
-            if name is None or cell.source != source.rstrip("\n"):
+            listing = folder / name
+            if not listing.exists():
+                problems.append(f"{folder.name}: no file {name}")
+                continue
+            source = listing.read_text(encoding="utf-8")
+            if cell.source != source.rstrip("\n"):
                 problems.append(
                     f"{folder.name}: cell for {name} differs from the .py file"
                 )
@@ -124,7 +139,9 @@ def check_runs():
                 for o in cell.outputs
                 if o.output_type == "stream"
             )
-            expected = listing.with_suffix(".out").read_text(encoding="utf-8")
+            expected = listing.with_suffix(".out").read_text(
+                encoding="utf-8"
+            )
             if text != expected:
                 problems.append(f"{folder.name}/{name}: output differs")
             # A bare expression on the last line shows its value too
@@ -138,14 +155,16 @@ def check_runs():
 
 def main():
     venvs = {
-        v: ROOT / ".venvs" / f"py{v}" / "bin" / "python"
+        v: ROOT / ".venvs" / f"py{v}" / VENV_PYTHON
         for v in ("3.15", "3.14", "3.13", "3.12")
     }
     venvs = {v: p for v, p in venvs.items() if p.exists()}
     if "--here" not in sys.argv and venvs:
         ok = True
         for python in venvs.values():
-            ok &= subprocess.run([python, __file__, "--here"]).returncode == 0
+            ok &= (
+                subprocess.run([python, __file__, "--here"]).returncode == 0
+            )
         sys.exit(0 if ok else 1)
     version = f"{sys.version_info[0]}.{sys.version_info[1]}"
     problems = check_sync() + check_runs()
