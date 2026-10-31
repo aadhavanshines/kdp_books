@@ -1,0 +1,12 @@
+$ claude mcp add --transport http claude-code-docs https://code.claude.com/docs/mcp
+Added HTTP MCP server claude-code-docs with URL: https://code.claude.com/docs/mcp to local config
+File modified: /root/.claude.json [project: /root/projects/habit-tracker]
+$ claude mcp list
+claude-code-docs: https://code.claude.com/docs/mcp (HTTP) - ✔ Connected
+$
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+
+[38;2;215;119;87m ▐[48;2;0;0;0m▛███▛█[39m[49m   [1mClaude Code[0m [38;2;153;153;153mv2.1.291[39m
+[38;2;215;119;87m▝▜[48;2;0;0;0m█████[49m█▀[39m  [38;2;153;153;153mOpus 5.5 · Claude API[39m
+[38;2;215;119;87m ▝▝   ▝▝ [39m  [38;2;153;153;153m~/projects/tip-calculator[39m
+
+[38;2;215;119;87m▎[39m [1mAuto mode is now Claude Code's default permission mode.[0m
+[38;2;215;119;87m▎[39m [38;2;153;153;153mAuto mode lets Claude handle permission prompts automatically. Claude checks each tool [39m
+[38;2;215;119;87m▎[39m [38;2;153;153;153mcall for risky actions and prompt injection before executing, runs the ones it assesses as
+[38;2;215;119;87m▎[39m [38;2;153;153;153mlower-risk, and blocks the rest.[39m
+[38;2;215;119;87m▎[39m [38;2;153;153;153mhttps://code.claude.com/docs/en/permission-modes[39m
+  [38;2;153;153;153m1 more notice hidden[39m
+
+
+[38;2;177;185;249m▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+[39m   [1m[38;2;177;185;249mSelect model[0m
+   [38;2;153;153;153mSwitch between Claude models. Your pick becomes the default for new sessions. For [39m
+   [38;2;153;153;153mother/previous model names, specify with --model.[39m
+
+   [38;2;177;185;249m❯[39m [38;2;153;153;153m1.  [38;2;78;186;101mDefault (recommended)[39m [38;2;78;186;101m✔[39m  [38;2;215;119;87mOpus 5.5[38;2;153;153;153m · Best for everyday, complex tasks[39m
+     [38;2;153;153;153m2.  [39mOpus 5.5                 [38;2;153;153;153mFor complex work and everyday tasks[39m
+     [38;2;153;153;153m3.  [39mSonnet 5.5               [38;2;153;153;153mMost efficient for simpler tasks[39m
+     [38;2;153;153;153m4.  [39mFable 5.1                [38;2;153;153;153mFor your toughest challenges[39m
+   [38;2;153;153;153m↓[39m [38;2;153;153;153m5.  [39mHaiku 4.5                [38;2;153;153;153mFastest for quick answers[39m
+      [38;2;153;153;153m… +7 models[39m
+
+   [38;2;215;119;87m◐[38;2;153;153;153m Medium effort (default)[38;2;80;80;80m ←/→ to adjust[39m
+
+   [38;2;153;153;153mUse [1m/fast[0m[38;2;153;153;153m to turn on Fast mode (Opus 5.5).[39m
+
+   [38;2;153;153;153mEnter to set as default · s to use this session only · Esc to cancel[39m

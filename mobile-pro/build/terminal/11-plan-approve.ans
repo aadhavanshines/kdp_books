@@ -1,0 +1,40 @@
+
+[38;5;246m  ⎿  /plan to preview[39m
+ [38;5;246mtmux detected · scroll with PgUp/PgDn · or add 'set -g mouse on' to ~/.tmux.conf for whe…[38;5;153m ▔
+
+[39m  [38;5;73m────────────────────────────────────────────────────────────────────────────────────────[39m
+   [1m[38;5;153mReady to code?[0m
+
+   Here is Claude's plan:
+  [38;5;239m╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌[39m
+   [1;3;4mTo-Do List Web App — Plan[0m
+
+   [1mContext[0m
+
+   Build a beginner-friendly to-do list in plain HTML, CSS and JavaScript (no frameworks,
+   no build step) in [38;5;153m/root/projects/todo-app[39m. Code should be simple, with short
+   comments. Features: add (Enter), toggle done, edit (double-click), delete, filter
+   All/Active/Done, "items left" counter, Clear completed, and persistence across
+   refresh.
+
+   [1mFiles (all new)[0m
+
+   - [38;5;153mindex.html[39m — page structure only
+   - [38;5;153mstyle.css[39m — look and feel
+   - [38;5;153mapp.js[39m — all behavior
+
+   [1mindex.html[0m
+
+   - [38;5;153m<input id="new-task">[39m with placeholder "What needs to be done?"
+   - [38;5;153m<ul id="task-list">[39m (items are rendered by JS)
+   - Footer: [38;5;153m<span id="count">[39m, three filter buttons ([38;5;153mdata-filter="all|active|done"[39m),
+     [38;5;153m<button id="clear-completed">[39m                                                        [38;5;246m↓[39m
+  [38;5;73m────────────────────────────────────────────────────────────────────────────────────────[39m
+   [38;5;246mClaude has written up a plan and is ready to execute. Would you like to proceed?[39m
+
+   [38;5;153m❯[39m [38;5;246m1. [38;5;153mYes, and use auto mode[39m
+     [38;5;246m2. [39mYes, manually approve edits
+     [38;5;246m3. Tell Claude what to change[39m
+        [38;5;246mshift+tab to approve with this feedback[39m
+
+   [38;5;246mctrl+g to edit in Vim · ~/.claude/plans/i-want-to-build-cosmic-allen.md[39m
