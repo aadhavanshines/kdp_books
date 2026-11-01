@@ -21,7 +21,7 @@ The type scale is small on purpose: seven sizes from 12 to 34 points and named r
 Each app has its own brand color on a shared neutral base, in light and dark versions. Here is Platter's:
 
 ```ts
-@include code/packages/ui/src/tokens/colors.ts#L168-L193
+@include code/packages/ui/src/tokens/colors.ts#L169-L193
 ```
 
 Every brand defines the same set of roles: `primary` for the main action, `primaryPressed` for its pressed state, `onPrimary` for text on top of it, a soft tint for backgrounds, an accent, and a gradient for banners. Screens ask for roles, not colors: a button uses `colors.primary`, never `#FC5A1E`. That's how the same `Button` is tangerine in Platter, cobalt in Cartly and basil green in Minutely, and how dark mode works with no extra code in any screen.

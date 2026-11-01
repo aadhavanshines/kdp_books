@@ -73,6 +73,8 @@ None of those would have failed a test. All of them would have made the apps loo
 
 ## Review Like a Lead
 
+![The loop behind every app in this book: spec, prompt, build, self-check, your review, then commit or follow up.](images/review-loop.png)
+
 When a session finishes, don't just read "all tests pass" and move on. The review loop used throughout this book:
 
 1. **Read the report,** especially anything Claude says it didn't do or did differently.
