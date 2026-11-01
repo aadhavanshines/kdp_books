@@ -7,7 +7,7 @@ Final state: 272 pages (6 x 9 in, premium color), 30 chapters in seven parts, ap
 | Check | Result |
 | --- | --- |
 | Sessions | 8 recorded Claude Code 2.1.316 sessions (`sessions/`), logged cost $64.06 plus the unrecorded Cartly session |
-| Workspace (`npm run check` in `code/`) | TypeScript strict, ESLint and every test pass: more than 300 Jest tests across the four apps and two packages, plus the server's Vitest suite (last run after session 5) |
+| Workspace (`npm run check` in `code/`) | TypeScript strict, ESLint and every test pass: 310 Jest tests across the four apps and two packages, and 87 Vitest tests in the server; re-run on 1 November 2026 |
 | Reelhouse TV (`tv/`) | Typecheck, lint and 80 Jest tests pass (session 6b) |
 | Flaky test | The Cartly order-details test was fixed at its cause in session 5 and passed four full parallel runs |
 | Screenshots | Every figure is a capture of the real web build in headless Chromium (393 x 852 at 3x for phones, 1920 x 1080 for TV), framed by `build/frames.py`; every figure was viewed and the text checked against it |
