@@ -1,0 +1,28 @@
+turns: 112 cost: $7.57 minutes: 32.4 error: False
+light, blurred light circles, a horizon, sparkles and a vignette), puts a soft shadow under the main illustration, then applies the filter. Photos keep their colors in dark mode.
+  - `composeScene`: arranges picked art into one main illustration plus small accents, varied by the seed.
+  - Seven filters. Mono really turns the photo gray on every platform. Vivid uses a CSS filter, which iOS doesn't support, so on iOS it looks like Normal.
+  - Also `StoryProgress` (the bars at the top of a story), `useDoubleTap`, and photo color tokens.
+- **`@pro/api`**: story order (yours, then new, then seen), story stepping across people, and chat titles. The server and API hooks already covered Lumo, so nothing else was needed there.
+
+**Screens**
+- **Home:** stories row with a gradient ring for new stories and gray for seen ones. Posts have double-tap like with the heart burst, a bouncing like button, comment, share and save. Captions show @mentions and #tags in color and collapse behind "more".
+- **Story viewer:** progress bars, tap left or right, hold to pause, and it moves on to the next person automatically. Profile highlights play in the same viewer.
+- **Comments sheet:** emoji quick replies and comment likes.
+- **Create:** two steps. First pick art (numbered, the first is the main one), a backdrop and a filter, with a shuffle button for the layout. Then caption, location and tagging people.
+- **Explore:** a large tile every six posts, alternating sides, plus people search.
+- **Activity:** grouped into New, Today, This week and Earlier, with Follow back buttons. Notifications are marked read when you leave the tab.
+- **Profile:** your own as a tab and other people's as their own page, with stats, bio, highlights, and grid and tagged tabs.
+- **Messages and chat:** chat bubbles group by sender and show the time when the day changes.
+
+The tab bar shows icons only, with a red dot for new activity and your avatar for Profile.
+
+**Things worth knowing**
+- **Test file split:** the heart burst's animation keeps running after its test and stalled the next tests in the same file. The double-tap test and the story tests are therefore in their own files.
+- **Expo changed config files:** running `expo start` deleted `expo-env.d.ts` and rewrote `tsconfig.json`. I restored both to match Cartly; expect the same after running it.
+- **Fixes I made while checking screens:** a timestamp that wrapped onto two lines in Messages, a hard-edged dark band at the top of stories, and loud pink outline buttons on profiles (now quiet gray).
+- **Story replies:** the reply box doesn't send anything yet. The server has no endpoint for story replies.
+- **Tagging:** you can tag the people in your stories row (people you follow). There's no "following" list endpoint to choose from.
+
+The screenshots are named 01–18 in screen order, from `01-feed.png` to `18-login.png`. The heart burst is `02-feed-heart-burst.png` and the paused story is `05-story-viewer.png`. The plan is in `apps/lumo/PLAN.md`.
+exit 0
