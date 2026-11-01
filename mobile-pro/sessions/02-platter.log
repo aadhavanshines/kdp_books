@@ -1,0 +1,47 @@
+turns: 121 cost: $10.17 minutes: 62.6 error: False
+hes tabs, ADD steppers on dish results, and browse by cuisine or offers when you come from Home links.
+- **Restaurant:** info card, offers strip, Veg/Bestseller filters, menu search, menu by category, a "Menu" button that jumps between categories, and the cart bar.
+  - Customization sheet with required and maximum-choice rules and a live price.
+  - "Replace cart item?" sheet when adding from a different restaurant.
+- **Cart:** line steppers, coupon sheet, tip selector, bill details, address and payment sheets, a sticky "Place order ₹X" bar, and an empty state.
+- **Tracking:** live status over Server-Sent Events, the SVG map with the moving rider, ETA, LIVE indicator, rider card with call/message, status timeline, bill, and cancel-with-confirmation. Once delivered it offers "Rate your order".
+- **Orders, Rate, Profile:** active and past orders with Track/Rate actions; star rating with quick tags and a comment; profile with stats, saved addresses, payments and log-out confirmation.
+
+I also checked dark mode: all colors come from the shared tokens, nothing is hard-coded.
+
+**Added to the shared packages (with tests)**
+- `@pro/ui`: `CartBar`, `BillDetails`, `TipSelector`, `OtpInput`, `OptionRow`, `StarRatingInput`, `Carousel`, `ScreenHeader`, `TextField`.
+- `@pro/api`: `billLines(bill, app)`, which decides which bill rows show (waived fees struck through, discounts, total), and `orderProgress(order)`. Minutely and Cartly can reuse both.
+
+**Tests:** 44 in the app (customization, filters, tracking copy, menu filtering, payment, phone, rating) plus screen tests for login, home, restaurant, cart, tracking, orders, rate and profile. Workspace totals: platter 44, api 39, ui 75, server 87.
+
+**Problems I hit and fixed**
+- Search crashed on the web build when switching between its lists; fixed by giving each list its own key.
+- Tab labels were clipped because the tab bar was too short, and toasts covered the cart and pay bars.
+- Lint caught a state update inside an effect in Search and the API client being used before it was declared.
+- The tracking test was flaky: it passed alone and failed when the whole suite ran.
+- Jest workers hung after the screen tests; the cause was React Query's 5-minute cleanup timers in tests.
+
+**Things to know**
+- The screen tests are in `src/test/screens/`, not next to the screens: Expo Router treats every file under `src/app` as a route.
+- The demo order schedule is about 2 minutes end to end, so the tracking ETA reads "Arriving in 1–2 mins".
+- `docs/PRD.md` has changes I didn't make: the Reelhouse TV section was rewritten, probably by you or another session. I left them as they are. Nothing is committed.
+
+Files are in `apps/platter/screenshots/`:
+- 01-login.png
+- 01b-otp.png
+- 02-home.png
+- 03-search.png
+- 04-restaurant.png
+- 05-customize.png
+- 06-cart.png
+- 06b-cart-bill.png
+- 07-coupons.png
+- 08-payment.png
+- 09-tracking.png
+- 09a-tracking-confirmed.png
+- 09b-tracking-scrolled.png
+- 10-orders.png
+- 11-rate.png
+- 12-profile.png
+exit 0

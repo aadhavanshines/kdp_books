@@ -32,9 +32,60 @@ def _shadow(size, radius, blur, opacity=90, offset=(0, 0)):
     return sh.filter(ImageFilter.GaussianBlur(blur)), pad
 
 
-def phone(screen, body=(22, 24, 29), shadow=True):
-    """Wrap a screenshot (any size, portrait) in a phone frame."""
+def status_bar(screen, time="12:30"):
+    """Add a phone status bar above a web capture (which has none), in the
+    color of the capture's top edge, with dark or light icons to suit it."""
+    from PIL import ImageFont
+
     screen = screen.convert("RGBA")
+    w, h = screen.size
+    unit = w / 393
+    bar_h = round(40 * unit)
+    top = screen.getpixel((w // 2, 2))[:3]
+    if top[0] > 200 and top[1] > 200 and top[2] > 200:
+        top = screen.getpixel((round(8 * unit), 2))[:3]
+    lum = 0.299 * top[0] + 0.587 * top[1] + 0.114 * top[2]
+    ink = (17, 17, 17) if lum > 150 else (255, 255, 255)
+    out = Image.new("RGBA", (w, h + bar_h), top + (255,))
+    out.alpha_composite(screen, (0, bar_h))
+    d = ImageDraw.Draw(out)
+    try:
+        font = ImageFont.truetype(
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+            round(14 * unit))
+    except OSError:
+        font = ImageFont.load_default()
+    cy = bar_h // 2 + round(2 * unit)
+    d.text((round(28 * unit), cy), time, font=font, fill=ink, anchor="lm")
+    # battery
+    bx = w - round(28 * unit)
+    bw_, bh_ = round(22 * unit), round(11 * unit)
+    d.rounded_rectangle([bx - bw_, cy - bh_ // 2, bx, cy + bh_ // 2],
+                        round(3 * unit), outline=ink, width=max(1, round(unit)))
+    d.rectangle([bx - bw_ + round(2 * unit), cy - bh_ // 2 + round(2 * unit),
+                 bx - round(6 * unit), cy + bh_ // 2 - round(2 * unit)],
+                fill=ink)
+    d.rectangle([bx + round(1 * unit), cy - round(2 * unit),
+                 bx + round(2.5 * unit), cy + round(2 * unit)], fill=ink)
+    # wifi (three arcs) and signal (four bars)
+    wx = bx - bw_ - round(16 * unit)
+    for i, r in enumerate((10, 7, 4)):
+        rr = round(r * unit)
+        d.arc([wx - rr, cy - rr + round(3 * unit), wx + rr,
+               cy + rr + round(3 * unit)], 225, 315, fill=ink,
+              width=max(1, round(1.8 * unit)))
+    sx = wx - round(34 * unit)
+    for i in range(4):
+        bh2 = round((4 + 2.5 * i) * unit)
+        x0 = sx + i * round(5 * unit)
+        d.rectangle([x0, cy + round(5 * unit) - bh2, x0 + round(3 * unit),
+                     cy + round(5 * unit)], fill=ink)
+    return out
+
+
+def phone(screen, body=(22, 24, 29), shadow=True, bar=True):
+    """Wrap a screenshot (any size, portrait) in a phone frame."""
+    screen = status_bar(screen) if bar else screen.convert("RGBA")
     w, h = screen.size
     unit = w / 393  # CSS-pixel width of the captures
     bezel = round(12 * unit)
