@@ -1,0 +1,28 @@
+turns: 150 cost: $20.30 minutes: 63.8 error: False
+ps will need (heart burst, veg marker, gradient fill, illustrated scene).
+   - `Art`/`ArtTile` are typed from `art/index.json` through a small codegen script. A test fails if the two drift.
+   - Beyond the Jest tests, I bundled the whole component set for web and rendered it in headless Chromium. That caught two layout bugs tests couldn't (search hint under its icon, chips stretching full width), both now fixed and confirmed by screenshot.
+3. **`server/`.**
+   - Hono on :4000 with SQLite, OTP login (123456, code logged to the console) returning a JWT, CORS for web.
+   - Carts with the bill rules per app, coupons, orders, cancel, rating and Cartly returns.
+   - Order status advances on a timer and streams over SSE (status plus moving rider position along a street route).
+   - Seed data: 24 restaurants with 870 menu items, 60 products with 416 reviews, 20 users with 112 posts, 40 stories and 392 comments, 120 groceries in 12 categories, 12 coupons, and order history for the demo user.
+4. **`packages/api`.** A typed client method for every route, React Query hooks (likes, wishlist and cart update instantly and roll back on failure), an SSE helper for React Native and web, and `useOrderStream` for live tracking. Base URL comes from `EXPO_PUBLIC_API_URL`, defaulting to `http://localhost:4000`.
+   - A contract test runs the real client against the real server, so the two can't drift apart.
+
+## Commands
+- `npm install`, then `npm run server`; the database seeds itself on first start.
+- `npm run seed` to wipe and re-seed.
+- `npm run typecheck`, `npm run lint`, `npm test`, or all three with `npm run check`.
+- Demo login: phone 9876543210, OTP 123456. I added these commands and the env vars to CLAUDE.md.
+
+## Where I differ from the docs
+- **ESLint stays on 9, not 10.** `eslint-config-expo` depends on plugins that don't support ESLint 10 yet.
+- **TypeScript is ~6.0.3.** That's what the SDK 58 template pins; TypeScript 7 is out but Expo doesn't target it.
+- **The server tests use Vitest; the packages use Jest.** Vitest runs the ESM Node server without extra setup.
+- **Order timing is compressed for demos.** A Platter delivery takes about 2 minutes and Minutely about 75 seconds; `SIM_SPEED` changes this. Live ETAs are honest about the compressed time, while the Minutely home screen still promises "Delivery in 9 minutes".
+- **Shadows use iOS shadow props, Android `elevation` and CSS `boxShadow` on web.** react-native-web deprecates the iOS-style props, so web gets `boxShadow`.
+- **On an Android emulator, set `EXPO_PUBLIC_API_URL=http://10.0.2.2:4000`.** `localhost` there points at the emulator itself.
+
+The seed data for the four apps was written by parallel agents against typed input shapes. A test checks the counts, that every art name exists, `.example` domains, and that pure-veg restaurants have no non-veg dishes. I fixed a few bugs the tests surfaced, including phone numbers starting with "91" being mangled and an SSE race that could drop the final status.
+exit 0

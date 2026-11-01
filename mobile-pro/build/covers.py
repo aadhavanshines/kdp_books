@@ -23,7 +23,7 @@ SOFT = (196, 210, 228)
 
 DPI = 300
 # KDP spine width per page for black-and-white interior.
-SPINE_PER_PAGE = {"white": 0.002252, "cream": 0.0025}
+SPINE_PER_PAGE = {"white": 0.002252, "cream": 0.0025, "color": 0.002347}
 BLEED = 0.125
 
 
