@@ -1,0 +1,38 @@
+turns: 124 cost: $10.89 minutes: 48.2 error: False
+ntrols fade out after 5 seconds and the first key press only brings them back; Left/Right on the seek bar skip 10 seconds; audio and subtitles menu; a Next episode card that takes focus and counts down. Live channels show a score overlay.
+- **Live TV guide:** a preview panel, a time ruler with a "now" line, and a channel-by-time grid. Programmes on now open live; later ones set a reminder.
+- **My list and Settings.**
+
+**How focus works**
+- **Focus look:** everything you can land on uses one `Focusable` component: white ring, violet glow and a slight scale-up.
+- **Initial and restored focus:** each screen has one element marked for initial focus. Screens under the top one stay alive, so Back returns focus to exactly the card you left.
+- **On Android TV:** the native focus engine moves focus. Rows are focus groups that remember their last card, the rail always lands on its current section, and a group can block directions (the seek bar keeps Left/Right for skipping; Up from the hero goes nowhere).
+- **On web:** a spatial-navigation layer reproduces the same rules for arrow keys.
+- **Scrolling:** rows, pages and grids scroll themselves to keep the focused item in view.
+- **Back:** closes a menu, then leaves the rail, then goes from the rows to the hero, then pops a screen. On the profile picker it leaves the app.
+
+The screenshot runs found three real focus bugs, all fixed:
+- Group memory overrode the rail's current section.
+- Right on the seek bar jumped to Pause.
+- My list had no initial focus.
+
+**Prebuild**
+`EXPO_TV=1 npx expo prebuild --platform android --clean` succeeded. The generated manifest has:
+- the `LEANBACK_LAUNCHER` category on the main activity;
+- `android.software.leanback` with `required="false"`;
+- touchscreen and faketouch with `required="false"`;
+- `android:banner="@drawable/tv_banner"`, a 320x180 PNG copied into every drawable folder, showing "Reelhouse" in bold type with the clapper art;
+- `app_name` set to Reelhouse.
+
+I then removed `android/`. Prebuild warned about two app.json fields (`edgeToEdgeEnabled` and `userInterfaceStyle`), so I removed them and the re-run was clean. Leanback "not required" means the app also installs on phones; setting `androidTVRequired: true` would make it TV-only.
+
+**Left undone or approximate**
+- The native focus wiring and the scaling (layouts are drawn for 1920x1080 and halved on a typical 1080p TV) are type-checked but never run on a device.
+- I used React Native's built-in animations rather than Reanimated, to keep dependencies small; DESIGN.md mentions Reanimated.
+- The trailer is the mock player. I dropped "Add profile" rather than ship a button that does nothing.
+- The guide covers 8–11 PM with the clock fixed at 8:40 PM, so screenshots are repeatable.
+- tvOS isn't configured (no Apple TV icons).
+- Natively, Up from some top rows (such as the Search keyboard) may still step into the rail.
+
+`tv/README.md` has the commands. The screenshot, local server and banner scripts are in `tv/scripts/`.
+exit 0

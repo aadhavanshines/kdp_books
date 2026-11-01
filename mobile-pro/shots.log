@@ -1,0 +1,57 @@
+[01-profiles] focus: Meera
+  OK                           -> Resume S1:E4
+[02-home-hero] focus: Resume S1:E4
+  D                            -> Starfall Protocol. S1:E4 · 18m left
+[03-home-continue-watching] focus: Starfall Protocol. S1:E4 · 18m left
+  D R*2                        -> Number 3 today: Midnight Signal
+[04-home-top10] focus: Number 3 today: Midnight Signal
+  D R                          -> Live Cricket: Northbay Strikers 184/5, Eastport Kings 176/8, 18.2 ov
+[05-home-live-sports] focus: Live Cricket: Northbay Strikers 184/5, Eastport Kings 176/8, 18.2 ov
+  D*3 R*2                      -> Ghost Lane, series
+[06-home-originals] focus: Ghost Lane, series
+  OK                           -> Resume S2:E6
+[07-details] focus: Resume S2:E6
+  D D R                        -> Episode 3: The Attic, 32 minutes
+[08-details-episodes] focus: Episode 3: The Attic, 32 minutes
+  D                            -> Paws & Claws. 2024 · Animation · Comedy
+[09-details-more-like-this] focus: Paws & Claws. 2024 · Animation · Comedy
+  BACK                         -> Ghost Lane, series
+[10-home-focus-restored] focus: Ghost Lane, series
+  BACK L                       -> Home
+[11-rail-expanded] focus: Home
+  U OK                         -> a
+  D*3 OK                       -> s
+[12-search-keyboard] focus: s
+  R*6                          -> Redline. 2026 · Sports · Drama
+[13-search-results] focus: Redline. 2026 · Sports · Drama
+  BACK                         -> Search
+  (Back in the rail returns to the page)
+  BACK                         -> Resume S1:E4
+  D OK                         -> Pause
+[14-player-controls] focus: Pause
+  U                            -> Seek bar, 29:43 of 47:00
+  R                            -> Seek bar, 29:53 of 47:00
+[15-player-seek] focus: Seek bar, 29:55 of 47:00
+  D R R OK                     -> Audio: English (Original) 5.1
+[16-player-audio-subtitles] focus: Audio: English (Original) 5.1
+  BACK                         -> Audio & subtitles
+[17-player-controls-hidden] focus: Audio & subtitles
+  BACK                         -> Starfall Protocol. S1:E4 · 17m left
+  R OK                         -> Play now
+[18-player-next-episode] focus: Play now
+  BACK                         -> Ghost Lane. S2:E6 · 1m left
+  BACK L D*4 OK                -> Island Time, 7:30 PM to 9:10 PM, on now
+[19-live-tv-guide] focus: Island Time, 7:30 PM to 9:10 PM, on now
+  D*2 R                        -> Valley Hoops: Hawks v Comets, 9:30 PM to 11:00 PM
+[20-live-tv-guide-later] focus: Valley Hoops: Hawks v Comets, 9:30 PM to 11:00 PM
+  L OK                         -> Pause
+[21-live-sports-player] focus: Pause
+  BACK L D OK                  -> Ember Crown. 2025 · Fantasy · Drama
+[22-my-list] focus: Ember Crown. 2025 · Fantasy · Drama
+  L U*4 OK                     -> Play
+[23-movies] focus: Play
+  L D*5 OK                     -> Switch profile: Meera
+[24-settings] focus: Switch profile: Meera
+  L U*8 OK                     -> Meera
+  R*3 OK                       -> Resume S1:E2
+[25-kids-home] focus: Resume S1:E2
