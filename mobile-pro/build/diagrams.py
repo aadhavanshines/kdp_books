@@ -181,13 +181,46 @@ def tv_focus():
     return img
 
 
+def payment_flow():
+    img, d = canvas(1180)
+    cols = [(260, "The app", "platter"), (800, "Your server", "server"),
+            (1340, "Payment provider", "cartly")]
+    for x, name, kind in cols:
+        box(d, (x - 210, 40, x + 210, 150), name, None, kind, size=40)
+        for y in range(170, 1080, 28):
+            d.line([(x, y), (x, y + 14)], fill=LINE, width=4)
+    steps = [
+        (0, 1, "1. Pay for order 123 (no amount sent)"),
+        (1, 2, "2. Create payment for the server's total"),
+        (1, 0, "3. Order ID or client secret (public)"),
+        (0, 2, "4. Native sheet: UPI, card, Apple Pay, Google Pay"),
+        (2, 1, "5. Signed webhook: verify, then mark paid"),
+        (1, 0, "6. Order paid: open live tracking"),
+    ]
+    y = 230
+    for a, b, text in steps:
+        xa, xb = cols[a][0], cols[b][0]
+        color = (60, 72, 96)
+        sgn = 1 if xb > xa else -1
+        arrow(d, (xa + 8 * sgn, y + 44), (xb - 8 * sgn, y + 44), color=color)
+        f = font(REG, 30)
+        bb = d.textbbox(((xa + xb) / 2, y + 10), text, font=f, anchor="mm")
+        d.rectangle([bb[0] - 10, bb[1] - 6, bb[2] + 10, bb[3] + 6], fill=WHITE)
+        label(d, ((xa + xb) / 2, y + 10), text, 30, INK)
+        y += 140
+    label(d, (W / 2, 1130), "The app never decides the price or that an "
+          "order is paid; the server does.", 32, MUTED)
+    return img
+
+
 def build_diagrams(out_dir):
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     for name, fn in [("architecture", architecture),
                      ("review-loop", review_loop),
                      ("release-flow", release_flow),
-                     ("tv-focus", tv_focus)]:
+                     ("tv-focus", tv_focus),
+                     ("payment-flow-mobile", payment_flow)]:
         fn().save(out / f"{name}.png", dpi=(300, 300), optimize=True)
 
 
