@@ -1,0 +1,34 @@
+turns: 5 cost: $9.08 minutes: 7.5 error: False
+t this change.
+- `orders-returns.test.tsx`: the test now waits for "Cancel order" to disappear, which only the shipped state causes.
+
+**Repeated runs:** four full `npm test` runs from the root after the fix all passed, plus the final `npm run check`.
+
+**One more thing found on the way:** Jest sometimes printed "did not exit one second after the test run". This predates my changes. `packages/api/src/hooks.test.tsx` built its own query client, and each mutation left a 5-minute timer running. It now uses `testQueryClient()`, and that file exits in 3 s where it used to hang past 60 s.
+
+## 2. Minutely (`apps/minutely`)
+
+The plan is in `apps/minutely/PLAN.md`. The app uses Expo Router with `@pro/ui` (brand `minutely`) and `@pro/api`, and the server already had everything it needed.
+
+- **Screens:** Login, Home, Search, Category page, Product sheet, Cart, Checkout and payment, Tracking, plus the Home, Categories, Orders and Account tabs.
+  - **Home:** "Delivery in N minutes" header, address picker, search, offer banners, product rails, a 4-column category grid.
+  - **Category page:** left category rail, subcategory chips, sort sheet, product grid.
+  - **Product sheet:** opens over any screen from any product card.
+  - **Cart:** savings banner, free-delivery progress, instant slot, coupons, tip, bill.
+  - **Tracking:** countdown ring, live SVG map, status steps, delivery partner card.
+- **Speed:** ADD steppers and the green cart bar change on the tap itself, before the server answers. Steppers on every screen stay in step, and the server's cart takes over when it replies.
+- **Delivery time:** every screen uses the store's real ETA from the server. My first draft hard-coded "9 minutes" in places while Home showed 6; the screenshots caught it.
+- **Shared pieces added, with tests:**
+  - `CountdownTimer` gets `fillColor`/`trackColor`, because the ring was invisible on the green tracking header.
+  - `CartBar` gets `tone="primary"`, so Minutely's bar can be green instead of the yellow accent.
+- **Tests:** 22 for Minutely (logic, plus Home, Category, product sheet, Cart, Checkout, Tracking with live updates, Search, Orders, Account).
+- **Screenshots:** 17 in `apps/minutely/screenshots/` (`01-login.png` to `11-categories.png`), taken in headless Chromium at 393×852, scale 3. `08-tracking.png` is mid-delivery, with the rider about halfway along the route. Fixes I made from reviewing them:
+  - the header no longer wraps onto three lines
+  - the search hint no longer reads `Search "Search "bread""`
+  - the category grid shows 4 columns instead of 3
+  - prices no longer break across lines on narrow cards
+  - the filter chips are no longer cut off
+  - the Pay button now says "Pay ₹683 with UPI" instead of "Pay ₹683UPI"
+
+The demo server delivers an order in about 75 seconds, so the tracking ring counts down in seconds rather than the minutes a real order would take. Nothing is committed yet. The changes are in the working tree alongside the new `apps/minutely/` folder.
+exit 0
