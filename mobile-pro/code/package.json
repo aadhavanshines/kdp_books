@@ -1,0 +1,28 @@
+{
+  "name": "pro-apps",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Four Expo apps (Platter, Cartly, Lumo, Minutely) sharing one design system, API client and backend.",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "server"
+  ],
+  "scripts": {
+    "server": "npm run dev -w server",
+    "seed": "npm run seed -w server",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint . --max-warnings 0",
+    "test": "npm test --workspaces --if-present",
+    "check": "npm run typecheck && npm run lint && npm test"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.0",
+    "eslint-config-expo": "~58.0.4",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.59.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Lumo",
+    "slug": "lumo",
+    "scheme": "lumo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": { "bundleIdentifier": "app.lumo.example", "supportsTablet": false },
+    "android": { "package": "app.lumo.example", "edgeToEdgeEnabled": true },
+    "web": { "output": "single", "bundler": "metro", "name": "Lumo", "shortName": "Lumo", "themeColor": "#DD2A7B" },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      ["expo-splash-screen", { "backgroundColor": "#FFFFFF" }]
+    ],
+    "experiments": { "typedRoutes": false }
+  }
+}

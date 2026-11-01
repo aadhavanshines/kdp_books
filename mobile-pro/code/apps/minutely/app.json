@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Minutely",
+    "slug": "minutely",
+    "scheme": "minutely",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": { "bundleIdentifier": "app.minutely.example", "supportsTablet": false },
+    "android": { "package": "app.minutely.example", "edgeToEdgeEnabled": true },
+    "web": { "output": "single", "bundler": "metro", "name": "Minutely", "shortName": "Minutely", "themeColor": "#0C831F" },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      ["expo-splash-screen", { "backgroundColor": "#0C831F" }]
+    ],
+    "experiments": { "typedRoutes": false }
+  }
+}

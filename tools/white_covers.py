@@ -23,6 +23,7 @@ ACCENT_ON_WHITE = {
     "system-design": (194, 84, 0),
     "data-analysis": (194, 84, 0),
     "personal-agent": (194, 84, 0),
+    "mobile-pro": (4, 140, 98),
 }
 
 

@@ -1,0 +1,99 @@
+{
+  "title": "Vibe Coding Professional Mobile Apps",
+  "subtitle": "Build Food Delivery, Shopping, Social and 10-Minute Grocery Apps for Android and iOS with AI, from First Prompt to Store Release, Plus a TV Streaming App Bonus",
+  "cover_title": [
+    [
+      "VIBE CODING",
+      false
+    ],
+    [
+      "PROFESSIONAL",
+      true
+    ],
+    [
+      "MOBILE APPS",
+      false
+    ]
+  ],
+  "short_subtitle": "Android · iOS · Android TV",
+  "cover_tagline": "Build four elite apps and a TV streaming app with Claude Code, from the first prompt to the stores",
+  "cover_features": [
+    "4 PRO APPS",
+    "TV BONUS",
+    "STORE READY"
+  ],
+  "slug": "vibe-coding-professional-mobile-apps",
+  "author": "Aadhavan Muthurengan",
+  "language": "en",
+  "year": 2026,
+  "identifier": "vibe-coding-professional-mobile-apps-aadhavan-muthurengan-2026",
+  "trim": {
+    "width_in": 6.0,
+    "height_in": 9.0
+  },
+  "paper": "color",
+  "reuse_note": "Readers may freely use and adapt the example prompts and project code in this book for their own work. All the code is available at github.com/aadhavanshines/vibe-coding-professional-mobile-apps under the MIT License.",
+  "trademarks": "Claude, Claude Code, and Anthropic are trademarks of Anthropic. Apple, iPhone, iPad, iOS, iPadOS, tvOS, Apple TV, App Store, App Store Connect, TestFlight, Xcode, VoiceOver, Apple Pay, Keychain and Sign in with Apple are trademarks of Apple Inc. Google, Android, Android TV, Google Play, Google Pay, Android Studio, Chrome, Firebase, TalkBack and Crashlytics are trademarks of Google LLC. Expo and EAS are trademarks of 650 Industries, Inc. React and React Native are trademarks of Meta Platforms, Inc. Microsoft and Fluent are trademarks of Microsoft Corporation. Razorpay is a trademark of Razorpay Software Private Limited. Stripe is a trademark of Stripe, Inc. UPI is a trademark of National Payments Corporation of India. Maestro is a trademark of mobile.dev, Inc. Sentry, Bugsnag, Amplitude, Mixpanel, PostHog, LaunchDarkly, Statsig, GitHub, Node.js, SQLite, Hono, Zod, TanStack, Jest, Vitest, Playwright and all other product names are trademarks of their respective owners. Swiggy, Zomato, Amazon, Flipkart, Instagram, Netflix and other company names are mentioned only as familiar examples of app quality; this book's apps are original, with their own names, designs and fictional data, and are not copies of any company's app. Product names are used solely for identification and educational discussion. This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic or any of these companies.",
+  "back_cover_blurb": [
+    "Build apps that look and feel world-class.",
+    "This book shows you how to direct an AI coding assistant to build professional mobile apps for Android and iOS: the kind with instant steppers, live order tracking, story viewers and spotless checkout flows that users expect from the best apps in the world.",
+    "You will build four complete apps from one design system and one backend, a food delivery app, an online store, a social photo app and a 10-minute grocery app, plus a bonus streaming app for Android TV. Every app was built by real, recorded Claude Code sessions, and every screen in this full-color book is a real capture.",
+    "Inside you will learn:",
+    "- Directing Claude Code like a tech lead",
+    "- Expo, React Native and a shared design system",
+    "- Live tracking, carts, payments and returns",
+    "- Feeds, stories, likes and chat",
+    "- Performance, accessibility and testing",
+    "- Real payments: Razorpay, Stripe, UPI",
+    "- Push, deep links, security and privacy",
+    "- Shipping to Google Play and the App Store",
+    "- Bonus: Android TV, focus and the D-pad"
+  ],
+  "dedication": [
+    "To my father and my mother,",
+    "for your love, your sacrifices, and every lesson you taught me.",
+    "",
+    "To my wife,",
+    "for your patience, your encouragement, and your belief in me.",
+    "",
+    "And to our three children,",
+    "may you always build the things you dream of.",
+    "",
+    "This book is for you."
+  ],
+  "author_short_bio": "Aadhavan Muthurengan is an automation and AI professional with more than 15 years of experience in the automotive industry, where Aadhavan has built in-house tools that transformed product development and validation.",
+  "levels": {
+    "1": "Foundations",
+    "2": "Foundations",
+    "3": "Foundations",
+    "4": "Foundations",
+    "5": "Foundations",
+    "6": "Foundations",
+    "7": "Food Delivery",
+    "8": "Food Delivery",
+    "9": "Food Delivery",
+    "10": "Food Delivery",
+    "11": "E-Commerce",
+    "12": "E-Commerce",
+    "13": "E-Commerce",
+    "14": "E-Commerce",
+    "15": "Social",
+    "16": "Social",
+    "17": "Social",
+    "18": "Quick Commerce",
+    "19": "Quick Commerce",
+    "20": "Production",
+    "21": "Production",
+    "22": "Production",
+    "23": "Production",
+    "24": "Production",
+    "25": "Production",
+    "26": "Production",
+    "27": "Production",
+    "28": "Production",
+    "29": "Production",
+    "30": "Bonus"
+  },
+  "examples_note": "All people, restaurants, shops, products, titles and data in the example apps are fictional. Any resemblance to real persons or businesses is coincidental.",
+  "cover_band": "ANDROID · iOS · ANDROID TV"
+}

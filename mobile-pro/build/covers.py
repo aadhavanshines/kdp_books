@@ -1,6 +1,7 @@
 """Generate the Kindle eBook cover (JPG) and the paperback full-wrap cover (PDF)."""
 import os
 import random
+from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 from reportlab.lib.units import inch
@@ -158,17 +159,58 @@ def code_scene(img, box, seed=3):
     img.alpha_composite(layer)
 
 
+SHOTS = Path(__file__).resolve().parent.parent / "code"
+
+
+def app_scene(img, box):
+    """The book's real apps: a TV with Reelhouse behind four phones (Platter,
+    Cartly, Lumo, Minutely), captured from the apps' web builds."""
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from frames import phone, tv
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    s = w / 1600
+    # Soft brand-colored glows behind the devices.
+    glow = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    gd = ImageDraw.Draw(glow)
+    for (cx, cy, r, col) in [(0.22, 0.62, 330, (252, 90, 30)), (0.5, 0.35, 420, (124, 92, 255)),
+                             (0.78, 0.62, 330, (12, 131, 31)), (0.5, 0.75, 300, (36, 83, 255))]:
+        gd.ellipse([x0 + cx * w - r * s, y0 + cy * h - r * s, x0 + cx * w + r * s, y0 + cy * h + r * s],
+                   fill=col + (110,))
+    img.alpha_composite(glow.filter(ImageFilter.GaussianBlur(140 * s)))
+    # The TV, centered behind.
+    t = tv(Image.open(SHOTS / "tv/screenshots/02-home-hero.png").convert("RGB"))
+    tw = int(1250 * s)
+    t = t.resize((tw, int(t.height * tw / t.width)), Image.LANCZOS)
+    img.alpha_composite(t, (int(x0 + w / 2 - tw / 2), int(y0 + 40 * s)))
+    # Four phones in front, the middle two a little larger and higher.
+    shots = ["apps/platter/screenshots/02-home.png", "apps/cartly/screenshots/01-home.png",
+             "apps/lumo/screenshots/01-feed.png", "apps/minutely/screenshots/02-home.png"]
+    sizes = [330, 370, 370, 330]
+    centers = [0.17, 0.39, 0.61, 0.83]
+    tops = [0.40, 0.33, 0.33, 0.40]
+    order = [0, 3, 1, 2]
+    for i in order:
+        p = phone(Image.open(SHOTS / shots[i]).convert("RGB"))
+        pw = int(sizes[i] * s)
+        p = p.resize((pw, int(p.height * pw / p.width)), Image.LANCZOS)
+        px = int(x0 + centers[i] * w - pw / 2)
+        py = int(y0 + tops[i] * h)
+        img.alpha_composite(p, (px, py))
+
+
 def draw_front(img, box, meta):
     """Draw the front cover into box=(x0, y0, x1, y1) of an RGBA image."""
     x0, y0, x1, y1 = box
     w, h = x1 - x0, y1 - y0
     s = min(w / 1600, h / 2560)  # design units are based on a 1600 x 2560 px cover
     gradient(img, box)
-    code_scene(img, (x0, y0 + int(0.025 * h), x1, y0 + int(0.39 * h)))
+    app_scene(img, (x0, y0 + int(0.02 * h), x1, y0 + int(0.50 * h)))
     margin = int(130 * w / 1600)
     text_w = w - 2 * margin
     author_y = y1 - int(0.075 * h)
-    limit = author_y - int(150 * s)
+    limit = author_y - int((380 if meta.get("cover_features") else 150) * s)
     # Shrink the stacked title block until it clears the author line.
     k = 1.0
     while k > 0.6:
@@ -202,14 +244,14 @@ def draw_front(img, box, meta):
 def _front_text(img, x0, y0, w, h, s, margin, text_w, meta):
     """Draw bubble, title, band and tagline; return the y coordinate of the bottom of the block."""
     d = ImageDraw.Draw(img)
-    ty = y0 + int(0.445 * h)
+    ty = y0 + int(0.515 * h)
     for i, (text, accent) in enumerate(meta["cover_title"]):
         size = 250 * s if i == 0 else 190 * s
         ft = fit_font(d, text, SANS_BOLD, text_w * (1.0 if i == 0 else 0.92), size)
         d.text((x0 + w / 2, ty), text, font=ft, fill=AMBER if accent else WHITE, anchor="mt")
         ty += int(ft.size * (1.02 if i == 0 else 1.18))
 
-    band = meta["short_subtitle"].upper()
+    band = meta.get("cover_band", meta["short_subtitle"].upper())
     fb = font(SANS_BOLD, 54 * s)
     bw = d.textlength(band, font=fb) + 80 * s
     d.rectangle([x0 + w / 2 - bw / 2, ty, x0 + w / 2 + bw / 2, ty + 92 * s], fill=AMBER)

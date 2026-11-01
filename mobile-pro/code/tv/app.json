@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "Reelhouse",
+    "slug": "reelhouse-tv",
+    "version": "1.0.0",
+    "orientation": "landscape",
+    "backgroundColor": "#0A0A10",
+    "icon": "./assets/icon.png",
+    "android": {
+      "package": "app.reelhouse.example"
+    },
+    "ios": { "bundleIdentifier": "app.reelhouse.example" },
+    "web": {
+      "output": "single",
+      "bundler": "metro",
+      "name": "Reelhouse",
+      "shortName": "Reelhouse",
+      "themeColor": "#7C5CFF",
+      "backgroundColor": "#0A0A10"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "@react-native-tvos/config-tv",
+        {
+          "androidTVBanner": "./assets/tv_banner.png",
+          "androidTVIcon": "./assets/icon.png"
+        }
+      ]
+    ]
+  }
+}

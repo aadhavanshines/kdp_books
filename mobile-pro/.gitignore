@@ -1,1 +1,5 @@
-code/
+export.log
+lint-root.log
+prebuild.log
+shots.log
+tvinstall.log

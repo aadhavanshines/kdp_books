@@ -15,5 +15,6 @@ Book projects for Amazon Kindle Direct Publishing by **Aadhavan Muthurengan**.
 | Data Analysis with Python, Hands-On: Clean, Explore, Visualize and Report on Real Data, from Spreadsheets to SQL, with Six Projects, Exercises and Every Example Tested | Ready to upload (eBook and paperback) | [`data-analysis/`](data-analysis/) |
 | Build Your Own AI Personal Agent: An Always-On Assistant That Chats Where You Do, Remembers, Learns Skills, Works on a Schedule and Runs Safely in a Sandbox, Built and Tested End to End in Python | Ready to upload (eBook and paperback) | [`personal-agent/`](personal-agent/) |
 | Data Structures and Algorithms in Python, Hands-On: Every Structure Built, Tested and Timed, with Interview Patterns, Exercises and Solutions | Ready to upload (eBook and paperback) | [`dsa-hands-on/`](dsa-hands-on/) |
+| Vibe Coding Professional Mobile Apps: Build Food Delivery, Shopping, Social and 10-Minute Grocery Apps for Android and iOS with AI, from First Prompt to Store Release, Plus a TV Streaming App Bonus | Ready to upload (eBook and color paperback) | [`mobile-pro/`](mobile-pro/) |
 
 Each book folder contains the Markdown manuscript, a build script, the KDP listing metadata, and the upload-ready files in `dist/`.

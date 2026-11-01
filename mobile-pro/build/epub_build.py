@@ -28,6 +28,9 @@ div.response p.resplabel { background: #EAF0F7; color: #1F3A5F; font-family: san
 div.response pre { background: #fff; border: none; margin: 0; }
 figure { margin: 1em 0; text-align: center; }
 figure img { max-width: 100%; height: auto; }
+div.book { margin: 0 0 1.2em; overflow: hidden; }
+div.book img { float: left; width: 25%; height: auto; margin: 0 1em 0.5em 0; }
+div.book p { margin: 0; }
 figcaption { font-size: 0.85em; font-style: italic; color: #555; margin-top: 0.3em; }
 .center { text-align: center; }
 .title { font-family: sans-serif; color: #1F3A5F; font-size: 2.2em; text-align: center; margin-top: 25%; }
@@ -80,6 +83,9 @@ def blocks_to_html(blocks):
         elif kind in ("ul", "ol"):
             items = "".join(f"<li>{inline(i)}</li>" for i in b[1])
             out.append(f"<{kind}>{items}</{kind}>")
+        elif kind == "book":
+            out.append(f'<div class="book"><img src="{html.escape(b[1])}" alt="Book cover"/>'
+                       f"<p>{inline(b[2])}</p></div>")
         elif kind == "image":
             cap = html.escape(b[2])
             out.append(f'<figure><img src="{html.escape(b[1])}" alt="{cap}"/>'
@@ -115,6 +121,21 @@ def split_parts(manuscript):
     return sections
 
 
+def _ebook_image(path):
+    """Photos and screenshots at 1200 px wide: sharp on any Kindle, and a
+    smaller file keeps the Kindle delivery fee low. PNG diagrams stay as is."""
+    import io
+    from PIL import Image
+    if path.suffix != ".jpg":
+        return path.read_bytes()
+    im = Image.open(path).convert("RGB")
+    if im.width > 1200:
+        im = im.resize((1200, round(im.height * 1200 / im.width)), Image.LANCZOS)
+    buf = io.BytesIO()
+    im.save(buf, "JPEG", quality=80, optimize=True, progressive=True)
+    return buf.getvalue()
+
+
 def build_epub(meta, manuscript, cover_jpg, out_path, image_root):
     LEVELS.update(meta.get("levels", {}))
     book = epub.EpubBook()
@@ -128,10 +149,10 @@ def build_epub(meta, manuscript, cover_jpg, out_path, image_root):
 
     for _, blocks in manuscript:
         for b in blocks:
-            if b[0] == "image":
+            if b[0] in ("image", "book"):
                 book.add_item(epub.EpubImage(uid=b[1].replace("/", "-").replace(".", "-"),
-                                             file_name=b[1], media_type="image/png",
-                                             content=(image_root / b[1]).read_bytes()))
+                                             file_name=b[1], media_type="image/jpeg" if b[1].endswith(".jpg") else "image/png",
+                                             content=_ebook_image(image_root / b[1])))
 
     style = epub.EpubItem(uid="style", file_name="style/book.css", media_type="text/css",
                           content=CSS.encode())

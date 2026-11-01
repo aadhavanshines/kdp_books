@@ -95,7 +95,7 @@ The player is mocked (no real video), but its behavior is the real thing: contro
 
 ![The live TV guide: a preview panel, a time ruler with a "now" line, and channels by time.](images/tv-guide.jpg)
 
-The **guide** shows a preview of the focused programme at the top, a time ruler with a cyan "now" line, and a grid of channels by time. Programmes on now open live; later ones set a reminder.
+The **guide** shows a preview of the focused program at the top, a time ruler with a cyan "now" line, and a grid of channels by time. Programs on now open live; later ones set a reminder.
 
 ## Focus, Step by Step
 
@@ -149,7 +149,7 @@ Looking through the 25 screenshots found two problems the session hadn't noticed
 @include sessions/06b-reelhouse-fixes.prompt.md
 ```
 
-Session 6b ran for under eight minutes and cost $1.83. It made the rail opaque with a short fade, clipped rows at the rail's edge with a tested helper, wrote a one-line synopsis for every programme, made a missing synopsis a type error, and added a test that rejects placeholder text and overlong lines. It also caught its own regression: its first, wider fade dimmed the first letter of "Island Time", which it saw in the re-captured screenshot and fixed. The TV app finished with 80 tests passing.
+Session 6b ran for under eight minutes and cost $1.83. It made the rail opaque with a short fade, clipped rows at the rail's edge with a tested helper, wrote a one-line synopsis for every program, made a missing synopsis a type error, and added a test that rejects placeholder text and overlong lines. It also caught its own regression: its first, wider fade dimmed the first letter of "Island Time", which it saw in the re-captured screenshot and fixed. The TV app finished with 80 tests passing.
 
 The screenshot session itself had found three more focus bugs while capturing: the rail's group memory overrode its current section, right on the seek bar jumped to Pause, and My list had no initial focus.
 

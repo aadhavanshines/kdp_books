@@ -389,6 +389,24 @@ class FloatMarker(Flowable):
         doc._floats.append(self.figure)
 
 
+def book_block(path, text, styles):
+    """A book's cover thumbnail with its title and blurb beside it."""
+    w = 1.0 * inch
+    cover = RLImage(str(path), width=w, height=w * 1.6)
+    blurb = ParagraphStyle("book", parent=styles["body"], alignment=TA_LEFT)
+    t = Table([[cover, Paragraph(inline(text), blurb)]],
+              colWidths=[w + 14, TEXT_W - w - 14])
+    t.setStyle(TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ("RIGHTPADDING", (0, 0), (0, 0), 14),
+        ("RIGHTPADDING", (1, 0), (1, 0), 0),
+        ("TOPPADDING", (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+    ]))
+    return [KeepTogether([Spacer(1, 6), t, Spacer(1, 10)])]
+
+
 def image_block(path, caption, styles):
     # Terminal screenshots may be taller, so they keep the full text width and readable text.
     max_h = 4.8 * inch if os.path.basename(str(path)).startswith("term-") else 3.4 * inch
@@ -626,6 +644,8 @@ def build_story(meta, manuscript, styles, image_root):
                 for n, item in enumerate(block[1], 1):
                     story.append(Paragraph(inline(item), styles["bullet"], bulletText=f"{n}."))
                 story.append(Spacer(1, 4))
+            elif kind == "book":
+                story += book_block(image_root / block[1], block[2], styles)
             elif kind == "image":
                 story += image_block(image_root / block[1], block[2], styles)
             elif kind == "code":
