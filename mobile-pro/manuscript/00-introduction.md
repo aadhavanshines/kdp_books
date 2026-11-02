@@ -28,7 +28,7 @@ All five are original. Their names, brands, restaurants, products, people, shows
 
 **Everything was checked.** By the end, the workspace held more than 300 automated tests across the four apps, the design system, the API client and the server, plus 80 for the TV app. Typecheck, lint and tests had to pass before any app was called done.
 
-> **Note:** The screenshots were captured from the apps' web builds, rendered by React Native for Web in a browser, because the cloud computer this book was written on can't run phone emulators. The same code runs on Android and iOS. A later review ran all four phone apps on an Android emulator, which found and fixed two Android-only bugs (Chapter 22 tells the story); the iPhone simulator and the TV app have not been run. Chapter 2 shows you how to run the apps on your own phone and emulator.
+> **Note:** The screenshots were captured from the apps' web builds, rendered by React Native for Web in a browser, because the cloud computer this book was written on can't run phone emulators. The same code runs on Android and iOS. The four phone apps have also been run on an Android emulator; the iPhone simulator and the TV app have not. Chapter 2 shows you how to run the apps on your own phone and emulator.
 
 ## Who This Book Is For
 

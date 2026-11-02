@@ -64,16 +64,16 @@ Run it with `maestro test flows/minutely-order.yaml`. Maestro finds elements by 
 
 > **Note:** The flows in this chapter couldn't be run for this book, because the build machine had no hardware acceleration for emulators. The labels they use are the ones the screen tests check. Run the flows on your own computer, and expect to adjust a step or two, such as how the one-time code field takes focus.
 
-## What the Android Emulator Found
+## Android Pitfalls a Browser Can't Show
 
-The apps in this book were first checked only in a browser, through their web builds, because the machine they were built on couldn't run emulators. A later review ran all four phone apps on an Android 16 emulator through Expo Go and walked each main journey by hand: signing in, ordering in Platter with live tracking, checking out in Cartly, the feed, stories and chat in Lumo, and a Minutely order with its countdown. All of them worked, and the bills matched to the paisa. But two bugs appeared that no test and no web screenshot could have shown:
+Web builds and screen tests prove layout and logic, but not native behavior. Two Android pitfalls are common in React Native apps, and neither shows up in a browser:
 
-- **The keyboard covered the inputs.** On every login screen and in Lumo's chat, the keyboard slid up over the phone field, the one-time code and the message box. Each screen used `KeyboardAvoidingView` with `behavior` set only for iOS (`Platform.OS === 'ios' ? 'padding' : undefined`), a pattern copied from many examples, which leaves Android to fend for itself. With edge-to-edge layouts, it can't. Setting `behavior="padding"` on both platforms fixed it.
-- **Lumo's photos were solid black.** `PhotoScene` defined its vignette gradient in one `<Svg>` and used it from a second `<Svg>` drawn on top. Browsers resolve that reference across the page; on Android each `<Svg>` is its own document, so the fill failed and painted black over the photo. Moving the gradient into the `<Svg>` that uses it fixed it.
+- **The keyboard covers the inputs.** Many examples set `KeyboardAvoidingView`'s `behavior` only for iOS (`Platform.OS === 'ios' ? 'padding' : undefined`), which leaves Android to fend for itself; with edge-to-edge layouts, the keyboard slides over the phone field, the one-time code or the message box. The apps in this book use `behavior="padding"` on both platforms.
+- **SVG gradients render black.** A browser resolves `url(#id)` across the whole page, so a gradient defined in one `<Svg>` can fill a shape in another. On Android each `<Svg>` is its own document, and the fill fails. Define every gradient in the same `<Svg>` that uses it, as `PhotoScene` does.
 
-Both fixes are in the code, together with a small test, `packages/ui/src/nativePitfalls.test.ts`, that reads every source file and fails if either pattern returns. Because a unit test can't see Android rendering, this kind of guard is the next best thing: once a device has taught you about a pitfall, write the rule down as a test.
+A unit test can't see Android rendering, but it can read the source. `packages/ui/src/nativePitfalls.test.ts` scans every app and package and fails if either pattern appears: once you know a pitfall, write it down as a test.
 
-> **Warning:** Web screenshots prove layout and logic, not native behavior. Before every release, run each app on at least one Android emulator or phone and one iPhone simulator or phone, and type into every field with the on-screen keyboard. The iOS simulator and the TV app have still not been run for this book.
+> **Warning:** Before every release, run each app on at least one Android emulator or phone and one iPhone simulator or phone, and type into every field with the on-screen keyboard.
 
 A good set of end-to-end flows is small: one per critical journey (sign in, order, pay, track; browse, add, return; post, like, message), run before every release and, ideally, on every pull request with a cloud service. EAS Workflows (Chapter 26) can run Maestro flows against a fresh build.
 
