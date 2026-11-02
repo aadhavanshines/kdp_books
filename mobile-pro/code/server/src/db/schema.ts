@@ -64,7 +64,8 @@ CREATE TABLE IF NOT EXISTS coupons (
   max_discount REAL,
   min_order REAL NOT NULL,
   restaurant_id TEXT,
-  expires_at INTEGER NOT NULL
+  expires_at INTEGER NOT NULL,
+  first_order_only INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS notifications (
@@ -376,6 +377,7 @@ CREATE TABLE IF NOT EXISTS carts (
   coupon_code TEXT,
   tip REAL NOT NULL DEFAULT 0,
   restaurant_id TEXT,
+  address_id TEXT,
   updated_at INTEGER NOT NULL,
   PRIMARY KEY (user_id, app)
 );

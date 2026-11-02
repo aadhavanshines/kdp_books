@@ -7,7 +7,7 @@ This chapter sets up everything you need: Node.js, Claude Code, the book's code,
 | Tool | Why | Notes |
 | --- | --- | --- |
 | A computer | Everything | macOS, Windows or Linux. Building for iPhone locally needs a Mac; Chapter 26 shows how to build in the cloud without one |
-| Node.js LTS | Runs Expo, the tooling and the server | The workspace requires Node 20.19 or newer |
+| Node.js LTS | Runs Expo, the tooling and the server | Node 22.13 or newer (Expo SDK 58 and React Native 0.88 need it); Node 24 works too |
 | Git | Version control, downloading the code | |
 | Claude Code | Your AI engineer | A Claude subscription or an Anthropic API account |
 | A code editor | Reading what Claude writes | Any editor; VS Code is a popular choice |

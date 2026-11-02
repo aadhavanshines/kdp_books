@@ -70,9 +70,24 @@ describe('returns', () => {
     isVeg: null,
   });
 
+  const order = (items: OrderLine[], couponDiscount = 0, refunded: number[] = []) => {
+    const itemTotal = items.reduce((s, l) => s + l.lineTotal, 0);
+    return {
+      items,
+      bill: { itemTotal, couponDiscount, total: itemTotal - couponDiscount },
+      returns: refunded.map((refundAmount) => ({ refundAmount })),
+    } as unknown as Parameters<typeof refundTotal>[0];
+  };
+
   it('sums the refund for the chosen lines', () => {
-    expect(refundTotal({ items: [line('l1', 999), line('l2', 1499)] }, ['l2'])).toBe(1499);
-    expect(refundTotal({ items: [line('l1', 999)] }, [])).toBe(0);
+    expect(refundTotal(order([line('l1', 999), line('l2', 1499)]), ['l2'])).toBe(1499);
+    expect(refundTotal(order([line('l1', 999)]), [])).toBe(0);
+  });
+
+  it('takes off the coupon share and never refunds more than was paid', () => {
+    expect(refundTotal(order([line('l1', 34999)], 200), ['l1'])).toBe(34799);
+    expect(refundTotal(order([line('l1', 1000), line('l2', 1000)], 200), ['l2'])).toBe(900);
+    expect(refundTotal(order([line('l1', 1000), line('l2', 1000)], 200, [1700]), ['l2'])).toBe(100);
   });
 
   it('needs at least one item and a reason', () => {

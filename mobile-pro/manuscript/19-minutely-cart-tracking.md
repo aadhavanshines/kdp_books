@@ -37,7 +37,7 @@ The **Categories** tab lists every category as a card with its subcategories und
 The same product can appear in three places at once: a home rail, a category grid and the product sheet. When the user taps "+" in one, all three, and the cart bar, should change at once, before the server replies. Minutely does this with a small shop context that wraps the app:
 
 ```tsx
-@include code/apps/minutely/src/components/ShopProvider.tsx#L36-L66
+@include code/apps/minutely/src/components/ShopProvider.tsx#L36-L80
 ```
 
 Each tap records a **pending** quantity for that product and sends the request. Every stepper asks `quantityOf(id)`, which returns the pending quantity if there is one and the server's otherwise, so every copy of the product shows the same number. When the request settles, the pending entry is cleared, and the server's cart, now updated, takes over. If the request fails, a toast explains why ("You can add up to 5 of …") and the stepper falls back to the server's number.

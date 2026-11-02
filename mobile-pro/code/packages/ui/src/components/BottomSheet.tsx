@@ -3,7 +3,6 @@ import {
   KeyboardAvoidingView,
   Modal,
   PanResponder,
-  Platform,
   Pressable,
   StyleSheet,
   useWindowDimensions,
@@ -115,7 +114,7 @@ export function BottomSheet({
       onRequestClose={dismissible ? onClose : () => undefined}
       testID={testID}
     >
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.fill}>
+      <KeyboardAvoidingView behavior="padding" style={styles.fill}>
         <Animated.View style={[StyleSheet.absoluteFill, { backgroundColor: colors.overlay }, backdropStyle]}>
           <Pressable
             style={styles.fill}

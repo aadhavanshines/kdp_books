@@ -12,8 +12,22 @@ export function openDb(path: string): DB {
   db.pragma('journal_mode = WAL');
   db.pragma('foreign_keys = ON');
   db.exec(schema);
+  migrate(db);
   db.prepare('INSERT OR IGNORE INTO meta (key, value) VALUES (?, ?)').run('schema_version', String(SCHEMA_VERSION));
   return db;
+}
+
+/** Columns added after the first release; older databases get them here. */
+const ADDED_COLUMNS: [table: string, column: string, definition: string][] = [
+  ['carts', 'address_id', 'TEXT'],
+  ['coupons', 'first_order_only', 'INTEGER NOT NULL DEFAULT 0'],
+];
+
+function migrate(db: DB): void {
+  for (const [table, column, definition] of ADDED_COLUMNS) {
+    const cols = db.prepare(`PRAGMA table_info(${table})`).all() as { name: string }[];
+    if (!cols.some((c) => c.name === column)) db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
+  }
 }
 
 export function getMeta(db: DB, key: string): string | null {

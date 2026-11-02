@@ -8,10 +8,18 @@ export const RETURN_REASONS = [
   'No longer needed',
 ] as const;
 
-/** Refund for the chosen lines (the full line totals). */
-export function refundTotal(order: Pick<Order, 'items'>, lineIds: readonly string[]): number {
+/**
+ * Refund for the chosen lines: their share of what was paid for items after
+ * the coupon, never more than is left of the order total (the server's rule).
+ */
+export function refundTotal(order: Pick<Order, 'items' | 'bill' | 'returns'>, lineIds: readonly string[]): number {
   const ids = new Set(lineIds);
-  return order.items.filter((l) => ids.has(l.id)).reduce((s, l) => s + l.lineTotal, 0);
+  const chosen = order.items.filter((l) => ids.has(l.id)).reduce((s, l) => s + l.lineTotal, 0);
+  const { itemTotal, couponDiscount, total } = order.bill;
+  if (itemTotal <= 0 || chosen <= 0) return 0;
+  const share = (chosen * Math.max(0, itemTotal - couponDiscount)) / itemTotal;
+  const left = total - order.returns.reduce((s, r) => s + r.refundAmount, 0);
+  return Math.round(Math.max(0, Math.min(share, left)) * 100) / 100;
 }
 
 export function canSubmitReturn(lineIds: readonly string[], reason: string | null): boolean {

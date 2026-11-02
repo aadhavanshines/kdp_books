@@ -113,6 +113,31 @@ describe('cart', () => {
     expect(cart.bill.total).toBe(0);
   });
 
+  it('moves a saved line back into an identical cart line instead of duplicating it', async () => {
+    const list = await h.json<ProductListResponse>('GET', '/cartly/products?category=mobiles');
+    const phone = list.items[0]!;
+    let cart = await h.json<Cart>('PUT', '/cart/cartly/items', { token, body: { productId: phone.id, quantity: 1 } });
+    cart = await h.json<Cart>('PATCH', `/cart/cartly/lines/${cart.items[0]!.id}`, { token, body: { savedForLater: true } });
+    cart = await h.json<Cart>('PUT', '/cart/cartly/items', { token, body: { productId: phone.id, quantity: 1 } });
+    expect(cart.items).toHaveLength(1);
+    cart = await h.json<Cart>('PATCH', `/cart/cartly/lines/${cart.savedForLater[0]!.id}`, { token, body: { savedForLater: false } });
+    expect(cart.items).toHaveLength(1);
+    expect(cart.items[0]!.quantity).toBe(2);
+    expect(cart.savedForLater).toHaveLength(0);
+  });
+
+  it('prices the Platter delivery fee for the chosen address', async () => {
+    const [item] = await firstItems('r-04');
+    const home = await h.json<Cart>('PUT', '/cart/platter/items', { token, body: { productId: item!.id, quantity: 2 } });
+    const away = await h.json<Cart>('PUT', '/cart/platter/address', { token, body: { addressId: 'addr_parents' } });
+    expect(away.bill.deliveryFee).not.toBe(home.bill.deliveryFee);
+    await h.json('PUT', '/cart/platter/address', { token, body: { addressId: 'addr_nope' }, status: 404 });
+    // Placing the order prices it for the order's address, whatever the cart showed before.
+    await h.json('PUT', '/cart/platter/address', { token, body: { addressId: 'addr_home' } });
+    const order = await h.json<Order>('POST', '/orders', { token, body: { app: 'platter', addressId: 'addr_parents', payment: { kind: 'upi' } }, status: 201 });
+    expect(order.bill.deliveryFee).toBe(away.bill.deliveryFee);
+  });
+
   it('keeps carts separate per app and per user', async () => {
     const [item] = await firstItems('r-01');
     await h.json('PUT', '/cart/platter/items', { token, body: { productId: item!.id, quantity: 2 } });
@@ -193,6 +218,31 @@ describe('orders', () => {
     const returned = await h.json<Order>('POST', `/orders/${order.id}/returns`, { token, body: { lineIds: ['l1'], reason: 'Size too small' }, status: 201 });
     expect(returned.returns[0]).toMatchObject({ status: 'pickup_scheduled', refundAmount: order.bill.itemTotal });
     expect(returned.canReturn).toBe(false);
+  });
+
+  it('refunds what was paid, once per item, after a coupon', async () => {
+    const list = await h.json<ProductListResponse>('GET', '/cartly/products?category=mobiles');
+    const phone = list.items.find((p) => p.price >= 1499)!;
+    const other = await h.login('9988776655');
+    await h.json('PUT', '/cart/cartly/items', { token: other, body: { productId: phone.id, quantity: 1 } });
+    const withCoupon = await h.json<Cart>('POST', '/cart/cartly/coupon', { token: other, body: { code: 'FIRSTBUY' } });
+    expect(withCoupon.bill.couponDiscount).toBe(200);
+    const address = await h.json<{ id: string }>('POST', '/me/addresses', {
+      token: other,
+      body: { label: 'Home', line1: '3 Pier Street', locality: 'Harbour Side', pincode: '560102', isDefault: true },
+      status: 201,
+    });
+    const order = await h.json<Order>('POST', '/orders', { token: other, body: { app: 'cartly', addressId: address.id, payment: { kind: 'upi' } }, status: 201 });
+    h.advance(5 * 60_000);
+    const dup = await h.json<ApiErrorBody>('POST', `/orders/${order.id}/returns`, { token: other, body: { lineIds: ['l1', 'l1', 'l1'], reason: 'Not needed' }, status: 400 });
+    expect(dup.error.message).toBe('Each item can be listed only once');
+    const returned = await h.json<Order>('POST', `/orders/${order.id}/returns`, { token: other, body: { lineIds: ['l1'], reason: 'Not needed' }, status: 201 });
+    expect(returned.returns[0]!.refundAmount).toBe(order.bill.itemTotal - 200);
+    expect(returned.returns[0]!.refundAmount).toBeLessThanOrEqual(order.bill.total);
+    // FIRSTBUY was for the first order only.
+    await h.json('PUT', '/cart/cartly/items', { token: other, body: { productId: phone.id, quantity: 1 } });
+    const again = await h.json<ApiErrorBody>('POST', '/cart/cartly/coupon', { token: other, body: { code: 'FIRSTBUY' }, status: 400 });
+    expect(again.error.message).toBe('Valid on your first order only');
   });
 
   it('keeps orders private to their owner', async () => {

@@ -96,6 +96,8 @@ export interface Coupon {
   /** Platter only: limit to one restaurant. */
   restaurantId: string | null;
   expiresAt: string;
+  /** Valid only on the customer's first order in this app. */
+  firstOrderOnly?: boolean;
 }
 
 /** A coupon as listed for a cart, with whether it can be applied right now. */

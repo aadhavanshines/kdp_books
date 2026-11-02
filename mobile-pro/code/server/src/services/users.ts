@@ -93,6 +93,12 @@ export function getAddress(db: DB, userId: string, id: string): Address {
   return toAddress(row);
 }
 
+/** The user's address with this id, or null if there is none. */
+export function findAddress(db: DB, userId: string, id: string): Address | null {
+  const row = db.prepare('SELECT * FROM addresses WHERE id = ? AND user_id = ?').get(id, userId) as AddressRow | undefined;
+  return row ? toAddress(row) : null;
+}
+
 export function defaultAddress(db: DB, userId: string | null): Address | null {
   if (!userId) return null;
   return listAddresses(db, userId)[0] ?? null;

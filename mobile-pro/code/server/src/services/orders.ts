@@ -27,7 +27,7 @@ import { pointAlong, streetRoute } from '../lib/geo';
 import { hashString } from '../lib/rng';
 import { newId, orderNumber } from '../lib/ids';
 import { parseJson } from '../lib/json';
-import { round2 } from '../lib/pricing';
+import { refundFor } from '../lib/pricing';
 import { DAY, iso, isoOrNull, MINUTE } from '../lib/time';
 import { riders } from '../seed/common';
 import { MOVING_STATUS, progressAt, scheduleFor, statusAt, stepCopy, type ScheduledStep } from '../sim/schedule';
@@ -262,10 +262,11 @@ export function listOrders(deps: Deps, userId: string, app: CommerceApp | undefi
 export function placeOrder(deps: Deps, userId: string, input: PlaceOrderInput): Order {
   const { db, clock, config } = deps;
   const now = clock();
-  const cart = getCart(db, userId, input.app, now);
+  // Check the address first, then price the cart for it: Platter's delivery fee depends on distance.
+  const address = getAddress(db, userId, input.addressId);
+  const cart = getCart(db, userId, input.app, now, address.id);
   const active = cart.items.filter((l) => l.inStock);
   if (active.length === 0) throw badRequest('Your cart is empty');
-  const address = getAddress(db, userId, input.addressId);
   const user = db.prepare('SELECT name FROM users WHERE id = ?').get(userId) as { name: string };
 
   let origin: Origin;
@@ -365,6 +366,7 @@ export function rateOrder(deps: Deps, userId: string, id: string, input: RateOrd
 export function requestReturn(deps: Deps, userId: string, id: string, input: ReturnInput): Order {
   const order = getOrder(deps, userId, id);
   if (!order.canReturn) throw conflict('CANNOT_RETURN', 'This order is not eligible for a return');
+  if (new Set(input.lineIds).size !== input.lineIds.length) throw badRequest('Each item can be listed only once');
   const already = new Set(order.returns.flatMap((r) => r.lineIds));
   const lines = input.lineIds.map((lineId) => {
     const line = order.items.find((i) => i.id === lineId);
@@ -373,12 +375,14 @@ export function requestReturn(deps: Deps, userId: string, id: string, input: Ret
     return line;
   });
   const now = deps.clock();
+  const refunded = order.returns.reduce((s, r) => s + r.refundAmount, 0);
+  const refund = refundFor(order.bill, lines.reduce((s, l) => s + l.lineTotal, 0), refunded);
   deps.db
     .prepare(
       `INSERT INTO returns (id, order_id, line_ids_json, reason, comment, status, refund_amount, pickup_date, created_at)
        VALUES (?, ?, ?, ?, ?, 'pickup_scheduled', ?, ?, ?)`,
     )
-    .run(newId('ret'), id, JSON.stringify(input.lineIds), input.reason, input.comment?.trim() || null, round2(lines.reduce((s, l) => s + l.lineTotal, 0)), now + DAY, now);
+    .run(newId('ret'), id, JSON.stringify(input.lineIds), input.reason, input.comment?.trim() || null, refund, now + DAY, now);
   return getOrder(deps, userId, id);
 }
 

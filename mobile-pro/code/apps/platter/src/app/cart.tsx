@@ -11,6 +11,7 @@ import {
   usePlaceOrder,
   useRemoveCartLine,
   useRemoveCoupon,
+  useSetCartAddress,
   useSetTip,
   useUpdateCartLine,
 } from '@pro/api';
@@ -98,6 +99,7 @@ export default function CartScreen() {
   const applyCoupon = useApplyCoupon('platter');
   const removeCoupon = useRemoveCoupon('platter');
   const setTip = useSetTip('platter');
+  const setCartAddress = useSetCartAddress('platter');
   const placeOrder = usePlaceOrder();
   const [addressId, setAddressId] = useState<string>();
   const [paymentId, setPaymentId] = useState('upi');
@@ -341,6 +343,8 @@ export default function CartScreen() {
         selectedId={address?.id}
         onSelect={(a) => {
           setAddressId(a.id);
+          // The delivery fee depends on the distance, so re-price the bill for this address.
+          setCartAddress.mutate(a.id);
           setSheet(null);
         }}
       />

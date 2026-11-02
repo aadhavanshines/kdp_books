@@ -24,7 +24,7 @@ import { iso } from '../lib/time';
 import { getProductRow, type ProductRow } from './cartly';
 import { getGroceryRow } from './minutely';
 import { DEFAULT_ORIGIN, getMenuItemRow, getRestaurantRow, toRestaurantSummary } from './platter';
-import { defaultAddress } from './users';
+import { defaultAddress, findAddress } from './users';
 
 /** Everything the cart needs to know about a product, whatever the app. */
 export interface ResolvedProduct {
@@ -160,6 +160,7 @@ interface CartRow {
   coupon_code: string | null;
   tip: number;
   restaurant_id: string | null;
+  address_id: string | null;
 }
 
 function ensureCart(db: DB, userId: string, app: CommerceApp, now: number): CartRow {
@@ -168,7 +169,7 @@ function ensureCart(db: DB, userId: string, app: CommerceApp, now: number): Cart
     app,
     now,
   );
-  return db.prepare('SELECT coupon_code, tip, restaurant_id FROM carts WHERE user_id = ? AND app = ?').get(userId, app) as CartRow;
+  return db.prepare('SELECT coupon_code, tip, restaurant_id, address_id FROM carts WHERE user_id = ? AND app = ?').get(userId, app) as CartRow;
 }
 
 interface CouponRow {
@@ -182,6 +183,7 @@ interface CouponRow {
   min_order: number;
   restaurant_id: string | null;
   expires_at: number;
+  first_order_only: number;
 }
 
 export const toCoupon = (c: CouponRow): Coupon => ({
@@ -195,6 +197,7 @@ export const toCoupon = (c: CouponRow): Coupon => ({
   minOrder: c.min_order,
   restaurantId: c.restaurant_id,
   expiresAt: iso(c.expires_at),
+  firstOrderOnly: c.first_order_only === 1,
 });
 
 export function findCoupon(db: DB, code: string): Coupon | null {
@@ -202,7 +205,17 @@ export function findCoupon(db: DB, code: string): Coupon | null {
   return row ? toCoupon(row) : null;
 }
 
-export function getCart(db: DB, userId: string, app: CommerceApp, now: number): Cart {
+/** Whether the user has placed an order in this app that wasn't cancelled. */
+export function hasOrdered(db: DB, userId: string, app: CommerceApp): boolean {
+  return !!db.prepare("SELECT 1 FROM orders WHERE user_id = ? AND app = ? AND status != 'cancelled' LIMIT 1").get(userId, app);
+}
+
+/**
+ * The cart with its bill. The bill is priced for the address the order will
+ * go to: `addressId` if given (placing an order), else the address chosen for
+ * the cart, else the user's default address.
+ */
+export function getCart(db: DB, userId: string, app: CommerceApp, now: number, addressId?: string): Cart {
   const cart = ensureCart(db, userId, app, now);
   const rows = db.prepare('SELECT * FROM cart_lines WHERE user_id = ? AND app = ? ORDER BY added_at, id').all(userId, app) as LineRow[];
   const lines: CartLine[] = [];
@@ -238,7 +251,10 @@ export function getCart(db: DB, userId: string, app: CommerceApp, now: number): 
     });
   }
   const items = lines.filter((l) => !l.savedForLater && l.inStock);
-  const address = defaultAddress(db, userId);
+  const address =
+    (addressId ? findAddress(db, userId, addressId) : null) ??
+    (cart.address_id ? findAddress(db, userId, cart.address_id) : null) ??
+    defaultAddress(db, userId);
   const from = address?.location ?? DEFAULT_ORIGIN;
   const restaurantRow = app === 'platter' && cart.restaurant_id && items.length ? getRestaurantRow(db, cart.restaurant_id) : null;
   const coupon = cart.coupon_code ? findCoupon(db, cart.coupon_code) : null;
@@ -249,6 +265,7 @@ export function getCart(db: DB, userId: string, app: CommerceApp, now: number): 
       coupon,
       tip: cart.tip,
       distanceKm: restaurantRow ? distanceKm({ x: restaurantRow.x, y: restaurantRow.y }, from) : undefined,
+      hasOrdered: hasOrdered(db, userId, app),
     },
     now,
     cart.restaurant_id,
@@ -327,6 +344,22 @@ export function updateLine(db: DB, userId: string, app: CommerceApp, lineId: str
   db.transaction(() => {
     if (input.savedForLater != null) {
       if (app !== 'cartly' && input.savedForLater) throw badRequest('Save for later is only available on Cartly');
+      // Moving back to the cart: if the same product and options are already
+      // there, add to that line instead of making a second identical one.
+      const twin = input.savedForLater
+        ? undefined
+        : (db
+            .prepare(
+              'SELECT id, quantity FROM cart_lines WHERE user_id = ? AND app = ? AND product_id = ? AND options_key = ? AND saved_for_later = 0 AND id != ?',
+            )
+            .get(userId, app, row.product_id, row.options_key, lineId) as { id: string; quantity: number } | undefined);
+      if (twin) {
+        const merged = Math.min(product.maxQuantity, twin.quantity + row.quantity);
+        db.prepare('UPDATE cart_lines SET quantity = ? WHERE id = ?').run(merged, twin.id);
+        db.prepare('DELETE FROM cart_lines WHERE id = ?').run(lineId);
+        touch(db, userId, app, now);
+        return;
+      }
       db.prepare('UPDATE cart_lines SET saved_for_later = ? WHERE id = ?').run(input.savedForLater ? 1 : 0, lineId);
     }
     if (input.quantity != null) {
@@ -360,7 +393,12 @@ export function applyCoupon(db: DB, userId: string, app: CommerceApp, code: stri
   const coupon = findCoupon(db, code);
   if (!coupon || coupon.app !== app) throw badRequest(`"${code.toUpperCase()}" is not a valid coupon`);
   const cart = getCart(db, userId, app, now);
-  const check = evaluateCoupon(coupon, cart.bill.itemTotal, { app, restaurantId: cart.restaurant?.id ?? null, now });
+  const check = evaluateCoupon(coupon, cart.bill.itemTotal, {
+    app,
+    restaurantId: cart.restaurant?.id ?? null,
+    now,
+    hasOrdered: hasOrdered(db, userId, app),
+  });
   if (!check.ok) throw new HttpError(400, 'COUPON_NOT_APPLICABLE', check.reason ?? 'This coupon cannot be applied');
   db.prepare('UPDATE carts SET coupon_code = ? WHERE user_id = ? AND app = ?').run(coupon.code, userId, app);
   return getCart(db, userId, app, now);
@@ -379,13 +417,26 @@ export function setTip(db: DB, userId: string, app: CommerceApp, amount: number,
   return getCart(db, userId, app, now);
 }
 
+/** Choose the delivery address the cart is priced for (Platter's fee depends on distance). */
+export function setCartAddress(db: DB, userId: string, app: CommerceApp, addressId: string, now: number): Cart {
+  if (!findAddress(db, userId, addressId)) throw notFound('Address');
+  ensureCart(db, userId, app, now);
+  db.prepare('UPDATE carts SET address_id = ? WHERE user_id = ? AND app = ?').run(addressId, userId, app);
+  return getCart(db, userId, app, now);
+}
+
 /** Coupons for an app, with whether each applies to the current cart. */
 export function couponOffers(db: DB, userId: string | null, app: CommerceApp, now: number): CouponOffer[] {
   const rows = db.prepare('SELECT * FROM coupons WHERE app = ? AND expires_at > ? ORDER BY min_order').all(app, now) as CouponRow[];
   const cart = userId ? getCart(db, userId, app, now) : null;
   return rows.map((r) => {
     const coupon = toCoupon(r);
-    const check = evaluateCoupon(coupon, cart?.bill.itemTotal ?? 0, { app, restaurantId: cart?.restaurant?.id ?? null, now });
+    const check = evaluateCoupon(coupon, cart?.bill.itemTotal ?? 0, {
+      app,
+      restaurantId: cart?.restaurant?.id ?? null,
+      now,
+      hasOrdered: userId ? hasOrdered(db, userId, app) : false,
+    });
     const deliverySaving = coupon.kind === 'free_delivery' ? (cart?.bill.deliveryFee ?? 0) : 0;
     return { ...coupon, applicable: check.ok, reason: check.reason, estimatedSavings: check.ok ? check.discount + deliverySaving : 0 };
   });

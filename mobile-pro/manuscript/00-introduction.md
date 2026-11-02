@@ -22,13 +22,13 @@ All five are original. Their names, brands, restaurants, products, people, shows
 
 ## How This Book Was Made
 
-**Every app was built by Claude Code, for real.** The prompts printed in the project chapters were run in Claude Code while this book was written, one recorded session per milestone. Each chapter tells you how long the session ran, what it cost, what Claude reported, and what went wrong. Two sessions were cut off, one by a time limit and one by a usage limit, and you'll see how they were finished.
+**Every app was built by Claude Code, for real.** The prompts printed in the project chapters were run in Claude Code while this book was written, one session per milestone, with its prompt and Claude's report kept in the repository. Each chapter tells you how long the session ran, what it cost, what Claude reported, and what went wrong. Two sessions were cut off, one by a time limit and one by a usage limit, and you'll see how they were finished.
 
 **Every screen is a real capture.** The phone images are screenshots of the apps running on a 393-by-852-point phone screen at three times the pixel density, and the TV images are full 1920-by-1080 captures with the remote's focus visible. The phones and TVs around them are drawn frames.
 
 **Everything was checked.** By the end, the workspace held more than 300 automated tests across the four apps, the design system, the API client and the server, plus 80 for the TV app. Typecheck, lint and tests had to pass before any app was called done.
 
-> **Note:** The screenshots were captured from the apps' web builds, rendered by React Native for Web in a browser, because the cloud computer this book was written on can't run phone emulators. The same code runs on Android and iOS; Chapter 2 shows you how to run it on your own phone and emulator, and Chapter 22 how to test it there.
+> **Note:** The screenshots were captured from the apps' web builds, rendered by React Native for Web in a browser, because the cloud computer this book was written on can't run phone emulators. The same code runs on Android and iOS. A later review ran all four phone apps on an Android emulator, which found and fixed two Android-only bugs (Chapter 22 tells the story); the iPhone simulator and the TV app have not been run. Chapter 2 shows you how to run the apps on your own phone and emulator.
 
 ## Who This Book Is For
 

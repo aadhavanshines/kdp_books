@@ -45,7 +45,7 @@ The theme is selected once, at the top of each app, with `<ThemeProvider brand="
 Shadows are a classic cross-platform trap: iOS, Android and the web each do them differently. Session 1 solved it once, in a token function every card and sheet uses:
 
 ```ts
-@include code/packages/ui/src/tokens/scale.ts#L82-L101
+@include code/packages/ui/src/tokens/scale.ts#L82-L102
 ```
 
 The shadows are soft and low in opacity, between 6% and 12%, which is a big part of why the apps look calm rather than heavy.

@@ -21,8 +21,23 @@ def expand_include(code, root):
         return code
     lines = (Path(root) / m.group(1)).read_text(encoding="utf-8").rstrip("\n").split("\n")
     if m.group(2):
-        lines = lines[int(m.group(2)) - 1:int(m.group(3))]
+        start, end = int(m.group(2)), int(m.group(3))
+        rest = lines[end:]
+        lines = lines[start - 1:end]
+        # A range that stops inside an open block gets a visible marker, so a
+        # reader never mistakes an excerpt for a complete function.
+        if _open_brackets("\n".join(lines)) > 0 and rest:
+            following = next((r for r in rest if r.strip()), "")
+            indent = following[: len(following) - len(following.lstrip())]
+            lines.append(f"{indent}// ...")
     return "\n".join(lines)
+
+
+def _open_brackets(code):
+    """How many more (, [ and { open than close, ignoring strings and comments."""
+    code = re.sub(r"//.*", "", code)
+    code = re.sub(r"'[^'\n]*'|\"[^\"\n]*\"|`[^`]*`", '""', code)
+    return sum(code.count(c) for c in "([{") - sum(code.count(c) for c in ")]}")
 
 
 def parse_blocks(text, root=None):

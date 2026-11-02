@@ -55,6 +55,9 @@ export function cartRoutes(deps: Deps) {
   app.put('/:app/tip', validate('json', z.object({ amount: z.number().min(0).max(500) })), (c) =>
     c.json(cart.setTip(db, currentUser(c), appParam(c.req.param('app')), c.req.valid('json').amount, deps.clock())),
   );
+  app.put('/:app/address', validate('json', z.object({ addressId: z.string().min(1) })), (c) =>
+    c.json(cart.setCartAddress(db, currentUser(c), appParam(c.req.param('app')), c.req.valid('json').addressId, deps.clock())),
+  );
   return app;
 }
 

@@ -2,7 +2,7 @@ import { useOrder, useRateOrder } from '@pro/api';
 import { ArtTile, BottomBar, Button, Chip, ErrorState, ScreenHeader, Skeleton, StarRatingInput, Text, TextField, useTheme, useToast } from '@pro/ui';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from 'react-native';
 
 import { ratingTags } from '../../lib/rating';
 
@@ -32,7 +32,7 @@ export default function RateScreen() {
     );
 
   return (
-    <KeyboardAvoidingView style={[styles.fill, { backgroundColor: colors.surface }]} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+    <KeyboardAvoidingView style={[styles.fill, { backgroundColor: colors.surface }]} behavior="padding">
       <ScreenHeader title="Rate your order" onBack={close} backLabel="Close" />
       {order.isError ? (
         <ErrorState art="cooking" error={order.error} onRetry={() => void order.refetch()} />

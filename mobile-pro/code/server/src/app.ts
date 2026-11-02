@@ -6,6 +6,7 @@ import type { ApiErrorBody, HealthResponse } from '@pro/api/types';
 import type { Deps } from './deps';
 import { optionalAuth, type AppEnv } from './lib/auth';
 import { HttpError } from './lib/errors';
+import { redactTokens } from './lib/redact';
 import { iso } from './lib/time';
 import { cartlyRoutes } from './routes/cartly';
 import { authRoutes, couponRoutes, meRoutes, notificationRoutes } from './routes/common';
@@ -17,7 +18,7 @@ import { platterRoutes } from './routes/platter';
 export function createApp(deps: Deps) {
   const app = new Hono<AppEnv>();
 
-  if (deps.config.logRequests) app.use('*', logger());
+  if (deps.config.logRequests) app.use('*', logger((line, ...rest) => console.log(redactTokens(line), ...rest)));
   // The apps run on other origins in the browser (Expo web), so allow any.
   app.use('*', cors({ origin: '*', allowHeaders: ['Authorization', 'Content-Type', 'Last-Event-ID'], maxAge: 600 }));
   app.use('*', optionalAuth(deps.config.jwtSecret));

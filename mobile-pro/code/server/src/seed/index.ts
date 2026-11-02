@@ -139,12 +139,12 @@ function seedCommon(db: DB, now: number) {
   banners.forEach((b, i) => insertBanner.run({ ...b, sort: i }));
 
   const insertCoupon = db.prepare(
-    `INSERT INTO coupons (code, app, title, description, kind, value, max_discount, min_order, restaurant_id, expires_at)
-     VALUES (@code, @app, @title, @description, @kind, @value, @maxDiscount, @minOrder, @restaurantId, @expiresAt)`,
+    `INSERT INTO coupons (code, app, title, description, kind, value, max_discount, min_order, restaurant_id, expires_at, first_order_only)
+     VALUES (@code, @app, @title, @description, @kind, @value, @maxDiscount, @minOrder, @restaurantId, @expiresAt, @firstOrderOnly)`,
   );
   for (const c of coupons) {
-    const { validDays, ...rest } = c;
-    insertCoupon.run({ ...rest, expiresAt: now + validDays * DAY });
+    const { validDays, firstOrderOnly, ...rest } = c;
+    insertCoupon.run({ ...rest, expiresAt: now + validDays * DAY, firstOrderOnly: firstOrderOnly ? 1 : 0 });
   }
 
   const insertStore = db.prepare('INSERT INTO stores (id, name, locality, x, y) VALUES (?, ?, ?, ?, ?)');

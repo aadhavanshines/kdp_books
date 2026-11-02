@@ -13,7 +13,7 @@ import {
   type ArtToneName,
 } from '@pro/ui';
 import { useEffect, useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Wordmark } from '../components/Wordmark';
@@ -63,7 +63,7 @@ export default function LoginScreen() {
   const verify = (value: string) => verifyOtp.mutate({ phone, code: value });
 
   return (
-    <KeyboardAvoidingView style={[styles.fill, { backgroundColor: colors.surface }]} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+    <KeyboardAvoidingView style={[styles.fill, { backgroundColor: colors.surface }]} behavior="padding">
       <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled" bounces={false}>
         <View style={[styles.hero, { paddingTop: insets.top }]}>
           <View style={styles.fan} importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>

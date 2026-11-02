@@ -79,10 +79,6 @@ export function PhotoScene({ scene, seed, filter = 'normal', aspectRatio = 1, ra
                 <Stop offset="0" stopColor={photoColors.shade} stopOpacity={0.28} />
                 <Stop offset="1" stopColor={photoColors.shade} stopOpacity={0} />
               </RadialGradient>
-              <RadialGradient id={`${uid}vig`} cx="50%" cy="48%" r="72%">
-                <Stop offset="0.6" stopColor={photoColors.shade} stopOpacity={0} />
-                <Stop offset="1" stopColor={photoColors.shade} stopOpacity={backdrop.vignette} />
-              </RadialGradient>
             </Defs>
             <Rect x={0} y={0} width={W} height={H} fill={`url(#${uid}base)`} />
             <Ellipse
@@ -134,7 +130,15 @@ export function PhotoScene({ scene, seed, filter = 'normal', aspectRatio = 1, ra
               </View>
             );
           })}
+          {/* Each <Svg> is its own document on native: a gradient must be
+              defined in the same <Svg> that uses it (web is more forgiving). */}
           <Svg width={W} height={H} style={StyleSheet.absoluteFill} pointerEvents="none">
+            <Defs>
+              <RadialGradient id={`${uid}vig`} cx="50%" cy="48%" r="72%">
+                <Stop offset="0.6" stopColor={photoColors.shade} stopOpacity={0} />
+                <Stop offset="1" stopColor={photoColors.shade} stopOpacity={backdrop.vignette} />
+              </RadialGradient>
+            </Defs>
             <Rect x={0} y={0} width={W} height={H} fill={`url(#${uid}vig)`} />
           </Svg>
           {spec.wash && washColors ? (

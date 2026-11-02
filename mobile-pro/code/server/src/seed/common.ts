@@ -99,6 +99,8 @@ export interface SeedCoupon {
   restaurantId: string | null;
   /** Days from seeding until expiry. */
   validDays: number;
+  /** Only for a customer's first order in this app. */
+  firstOrderOnly?: boolean;
 }
 
 export const coupons: SeedCoupon[] = [
@@ -108,7 +110,7 @@ export const coupons: SeedCoupon[] = [
   { code: 'TRYNEW', app: 'platter', title: '20% OFF up to ₹80', description: 'Try something new: orders above ₹249.', kind: 'percent', value: 20, maxDiscount: 80, minOrder: 249, restaurantId: null, validDays: 10 },
   { code: 'FEAST60', app: 'platter', title: 'Flat ₹60 OFF at Saffron Courtyard', description: 'Partner offer on orders above ₹349.', kind: 'flat', value: 60, maxDiscount: null, minOrder: 349, restaurantId: 'r-01', validDays: 30 },
   { code: 'CARTLY10', app: 'cartly', title: '10% OFF up to ₹500', description: 'On orders above ₹999.', kind: 'percent', value: 10, maxDiscount: 500, minOrder: 999, restaurantId: null, validDays: 30 },
-  { code: 'FIRSTBUY', app: 'cartly', title: 'Flat ₹200 OFF', description: 'On your first order above ₹1,499.', kind: 'flat', value: 200, maxDiscount: null, minOrder: 1499, restaurantId: null, validDays: 45 },
+  { code: 'FIRSTBUY', app: 'cartly', title: 'Flat ₹200 OFF', description: 'On your first order above ₹1,499.', kind: 'flat', value: 200, maxDiscount: null, minOrder: 1499, restaurantId: null, validDays: 45, firstOrderOnly: true },
   { code: 'STYLE25', app: 'cartly', title: '25% OFF up to ₹400', description: 'Fashion and footwear above ₹1,199.', kind: 'percent', value: 25, maxDiscount: 400, minOrder: 1199, restaurantId: null, validDays: 14 },
   { code: 'SHIPFREE', app: 'cartly', title: 'Free delivery', description: 'Free delivery on any order above ₹199.', kind: 'free_delivery', value: 0, maxDiscount: null, minOrder: 199, restaurantId: null, validDays: 30 },
   { code: 'FRESH50', app: 'minutely', title: 'Flat ₹50 OFF', description: 'On orders above ₹299.', kind: 'flat', value: 50, maxDiscount: null, minOrder: 299, restaurantId: null, validDays: 30 },

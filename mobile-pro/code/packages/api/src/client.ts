@@ -265,6 +265,7 @@ export function createApiClient(options: ApiClientOptions = {}) {
       applyCoupon: (app: CommerceApp, code: string) => request<Cart>('POST', `/cart/${app}/coupon`, { code }),
       removeCoupon: (app: CommerceApp) => request<Cart>('DELETE', `/cart/${app}/coupon`),
       setTip: (app: CommerceApp, amount: number) => request<Cart>('PUT', `/cart/${app}/tip`, { amount }),
+      setAddress: (app: CommerceApp, addressId: string) => request<Cart>('PUT', `/cart/${app}/address`, { addressId }),
     },
 
     orders: {

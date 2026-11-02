@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Coupon } from '@pro/api/types';
 
-import { amountToFreeDelivery, computeBill, evaluateCoupon } from './pricing';
+import { amountToFreeDelivery, computeBill, evaluateCoupon, refundFor } from './pricing';
 
 const NOW = Date.parse('2026-10-31T08:00:00Z');
 const coupon = (over: Partial<Coupon>): Coupon => ({
@@ -83,5 +83,31 @@ describe('computeBill', () => {
     expect(amountToFreeDelivery('minutely', 250)).toBeNull();
     expect(amountToFreeDelivery('cartly', 400)).toBe(99);
     expect(amountToFreeDelivery('platter', 100)).toBeNull();
+  });
+});
+
+describe('first-order coupons', () => {
+  it('apply only before the first order', () => {
+    const first = coupon({ firstOrderOnly: true });
+    expect(evaluateCoupon(first, 600, { app: 'platter', now: NOW, hasOrdered: false }).ok).toBe(true);
+    const again = evaluateCoupon(first, 600, { app: 'platter', now: NOW, hasOrdered: true });
+    expect(again).toMatchObject({ ok: false, reason: 'Valid on your first order only', discount: 0 });
+    expect(evaluateCoupon(coupon({}), 600, { app: 'platter', now: NOW, hasOrdered: true }).ok).toBe(true);
+  });
+});
+
+describe('refundFor', () => {
+  const bill = { itemTotal: 1000, couponDiscount: 200, total: 830 };
+  it('refunds the returned share of what was paid for items, after the coupon', () => {
+    expect(refundFor(bill, 500, 0)).toBe(400);
+    expect(refundFor({ itemTotal: 1000, couponDiscount: 0, total: 1000 }, 250, 0)).toBe(250);
+  });
+  it('never refunds more than is left of the order total', () => {
+    expect(refundFor(bill, 1000, 700)).toBe(130);
+    expect(refundFor(bill, 1000, 830)).toBe(0);
+  });
+  it('refunds nothing for nothing', () => {
+    expect(refundFor(bill, 0, 0)).toBe(0);
+    expect(refundFor({ itemTotal: 0, couponDiscount: 0, total: 0 }, 100, 0)).toBe(0);
   });
 });

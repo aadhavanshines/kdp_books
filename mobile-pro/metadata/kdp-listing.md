@@ -14,7 +14,7 @@ Vibe Coding Professional Mobile Apps
 
 Build Food Delivery, Shopping, Social and 10-Minute Grocery Apps for Android and iOS with AI, from First Prompt to Store Release, Plus a TV Streaming App Bonus
 
-> **Trademark note.** The title and subtitle name no company or app. "Android" and "iOS" describe the platforms the book targets, which is permitted, and the copyright page carries a "not affiliated" notice. Swiggy, Zomato, Amazon, Flipkart, Instagram and Netflix appear only in the body text, as familiar examples of quality, and must not be used in the title, subtitle or keywords. The book's apps are original, with their own names, designs and fictional data.
+> **Trademark note.** The title, subtitle and keywords name no company or app, and the keywords use no platform trademarks. "Android" and "iOS" describe the platforms the book targets, which is permitted, and the copyright page carries a "not affiliated" notice. Swiggy, Zomato, Amazon, Flipkart, Instagram and Netflix appear only in the body text, as familiar examples of quality, and must not be used in the title, subtitle or keywords. The book's apps are original, with their own names, designs and fictional data.
 
 ## Series
 
@@ -49,20 +49,20 @@ None
 <li><b>Bonus: Reelhouse</b>, a streaming app for Android TV with a hero billboard, rows, a Top 10, live sports, a player and a TV guide, all driven by the remote</li>
 </ul>
 
-<p><b>Real sessions, real screens.</b> Every app was built by recorded Claude Code sessions, and every prompt is printed in the book. All four phone apps share one design system and one backend, with more than 300 tests. Every screen in this full-color book is a real capture of the apps you build.</p>
+<p><b>Real sessions, real screens.</b> Every app was built by real Claude Code sessions, and every prompt is printed in the book. All four phone apps share one design system and one backend, with more than 300 tests. Every screen in this full-color book is a real capture of the apps you build.</p>
 
-<p><b>End to end, all the way to the stores:</b></p>
+<p><b>End to end, with a step-by-step guide to the stores:</b></p>
 <ul>
 <li>Directing Claude Code: plans, project rules, screenshot reviews and checks</li>
 <li>Expo, React Native, Expo Router and a professional design system</li>
 <li>Performance, accessibility, localization and testing, including end-to-end tests</li>
-<li>Real payments with Razorpay, Stripe, UPI, Apple Pay and Google Pay</li>
+<li>How to integrate payments with Razorpay, Stripe, UPI, Apple Pay and Google Pay</li>
 <li>Push notifications, deep links, analytics, security and privacy</li>
-<li>EAS builds and over-the-air updates, Google Play and App Store submission, and life after launch</li>
+<li>EAS builds and over-the-air updates, preparing a store submission, and life after launch</li>
 <li>Android TV: the 10-foot interface, focus and the D-pad</li>
 </ul>
 
-<p>All the code is free to download from the book's GitHub repository.</p>
+<p>All the code is free to download from the book's GitHub repository. The apps run against a local demo server with demo payments; the production chapters show, step by step, what to add and check before you take real payments and submit to the stores.</p>
 
 <p><i>This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic, Google, Apple, Expo, Meta or any other company named in it. The apps in this book are original works with fictional data.</i></p>
 ```
@@ -94,11 +94,11 @@ Amazon.com
 
 1. vibe coding mobile apps with ai
 2. react native app development book
-3. build android and ios apps from scratch
+3. cross platform mobile app development for beginners
 4. food delivery app development tutorial
 5. ecommerce shopping app design and development
-6. publish app to google play and app store
-7. android tv app development
+6. how to launch and publish a mobile app
+7. tv streaming app development
 
 ## AI-Generated Content Disclosure (required)
 
@@ -129,6 +129,6 @@ The manuscript text, code, screenshots and cover were produced with AI assistanc
   - Paperback cover finish: Glossy (suits the dark cover and the screenshots)
 - Manuscript: upload `dist/paperback-interior-6x9.pdf`
 - Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf` (dark) or `dist/paperback-cover-white.pdf` (white). Use the same style as the Kindle cover you choose.
-- **List price: $49.99 USD.** Premium color printing is expensive: at 272 pages, KDP's US printing cost is roughly $1.00 plus $0.07 per page, about $20. That leaves a royalty of roughly $10 per copy (60% of the list price minus printing). Check the royalty calculator on the pricing page before publishing, since printing costs change.
+- **List price: $49.99 USD.** Premium color printing is expensive: at 274 pages, KDP's US printing cost is roughly $1.00 plus $0.07 per page, about $20. That leaves a royalty of roughly $10 per copy (60% of the list price minus printing). Check the royalty calculator on the pricing page before publishing, since printing costs change.
 
-> The paperback cover is sized for exactly the page count in `dist/build-info.json` (272 pages) on color paper (0.002347 in per page, a 0.638 in spine). KDP's free ISBN barcode is printed automatically in the white box on the back cover. If the page count changes, rebuild so the spine width updates.
+> The paperback cover is sized for exactly the page count in `dist/build-info.json` (274 pages) on color paper (0.002347 in per page, a 0.643 in spine). KDP's free ISBN barcode is printed automatically in the white box on the back cover. If the page count changes, rebuild so the spine width updates.

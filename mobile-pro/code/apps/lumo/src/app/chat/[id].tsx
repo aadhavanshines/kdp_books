@@ -2,7 +2,7 @@ import { conversationTitle, useConversation, useMessages, useSendMessage } from 
 import { Avatar, IconButton, PressableScale, Skeleton, Text, useTheme } from '@pro/ui';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useMemo } from 'react';
-import { FlatList, KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native';
+import { FlatList, KeyboardAvoidingView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Composer } from '../../components/Composer';
@@ -24,7 +24,7 @@ export default function ChatScreen() {
   const title = convo.data ? conversationTitle(convo.data) : '';
 
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={[styles.fill, { backgroundColor: colors.surface }]}>
+    <KeyboardAvoidingView behavior="padding" style={[styles.fill, { backgroundColor: colors.surface }]}>
       <View style={[styles.bar, { paddingTop: insets.top, borderBottomColor: colors.divider }]}>
         <IconButton name="chevron-back" label="Back" iconSize={28} onPress={() => router.back()} />
         {other ? (

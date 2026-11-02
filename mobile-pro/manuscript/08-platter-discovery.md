@@ -61,7 +61,7 @@ Here is that logic, again as pure functions:
 And part of its test:
 
 ```ts
-@include code/apps/platter/src/lib/customize.test.ts#L18-L40
+@include code/apps/platter/src/lib/customize.test.ts#L18-L45
 ```
 
 `optionKey` sorts the chosen options before joining them, so the same selection made in a different order still matches the same cart line. That's the kind of detail an AI gets right when the tests describe the behavior, and gets subtly wrong when nobody checks.

@@ -16,11 +16,11 @@
     ]
   ],
   "short_subtitle": "Android · iOS · Android TV",
-  "cover_tagline": "Build four elite apps and a TV streaming app with Claude Code, from the first prompt to the stores",
+  "cover_tagline": "Build four elite apps and a TV streaming app with Claude Code, from the first prompt to launch",
   "cover_features": [
     "4 PRO APPS",
     "TV BONUS",
-    "STORE READY"
+    "LAUNCH GUIDE"
   ],
   "slug": "vibe-coding-professional-mobile-apps",
   "author": "Aadhavan Muthurengan",
@@ -37,16 +37,16 @@
   "back_cover_blurb": [
     "Build apps that look and feel world-class.",
     "This book shows you how to direct an AI coding assistant to build professional mobile apps for Android and iOS: the kind with instant steppers, live order tracking, story viewers and spotless checkout flows that users expect from the best apps in the world.",
-    "You will build four complete apps from one design system and one backend, a food delivery app, an online store, a social photo app and a 10-minute grocery app, plus a bonus streaming app for Android TV. Every app was built by real, recorded Claude Code sessions, and every screen in this full-color book is a real capture.",
+    "You will build four complete apps from one design system and one backend, a food delivery app, an online store, a social photo app and a 10-minute grocery app, plus a bonus streaming app for Android TV. Every app was built by real Claude Code sessions, and every screen in this full-color book is a real capture.",
     "Inside you will learn:",
     "- Directing Claude Code like a tech lead",
     "- Expo, React Native and a shared design system",
     "- Live tracking, carts, payments and returns",
     "- Feeds, stories, likes and chat",
     "- Performance, accessibility and testing",
-    "- Real payments: Razorpay, Stripe, UPI",
+    "- Payment integration: Razorpay, Stripe, UPI",
     "- Push, deep links, security and privacy",
-    "- Shipping to Google Play and the App Store",
+    "- A step-by-step guide to the app stores",
     "- Bonus: Android TV, focus and the D-pad"
   ],
   "dedication": [

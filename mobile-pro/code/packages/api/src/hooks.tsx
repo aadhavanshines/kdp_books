@@ -728,6 +728,12 @@ export function useSetTip(app: CommerceApp) {
   return useCartMutation(app, (amount: number) => api.cart.setTip(app, amount));
 }
 
+/** Choose the address the cart is priced for (Platter's delivery fee depends on distance). */
+export function useSetCartAddress(app: CommerceApp) {
+  const api = useApi();
+  return useCartMutation(app, (addressId: string) => api.cart.setAddress(app, addressId));
+}
+
 // ---------------------------------------------------------------- orders
 
 export function usePlaceOrder() {
