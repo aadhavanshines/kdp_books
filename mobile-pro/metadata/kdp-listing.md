@@ -128,7 +128,7 @@ The manuscript text, code, screenshots and cover were produced with AI assistanc
   - Bleed settings: **No bleed**
   - Paperback cover finish: Glossy (suits the dark cover and the screenshots)
 - Manuscript: upload `dist/paperback-interior-6x9.pdf`
-- Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf`
+- Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf` (dark) or `dist/paperback-cover-white.pdf` (white). Use the same style as the Kindle cover you choose.
 - **List price: $49.99 USD.** Premium color printing is expensive: at 272 pages, KDP's US printing cost is roughly $1.00 plus $0.07 per page, about $20. That leaves a royalty of roughly $10 per copy (60% of the list price minus printing). Check the royalty calculator on the pricing page before publishing, since printing costs change.
 
 > The paperback cover is sized for exactly the page count in `dist/build-info.json` (272 pages) on color paper (0.002347 in per page, a 0.638 in spine). KDP's free ISBN barcode is printed automatically in the white box on the back cover. If the page count changes, rebuild so the spine width updates.

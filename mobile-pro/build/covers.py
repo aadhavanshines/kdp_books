@@ -324,7 +324,7 @@ def build_paperback_cover(meta, page_count, out_pdf, out_png=None):
     bc_w, bc_h = round(2.0 * DPI), round(1.2 * DPI)
     bc_x1 = back_x1 - round(0.25 * DPI)
     bc_y1 = H - round((BLEED + 0.25) * DPI)
-    d.rectangle([bc_x1 - bc_w, bc_y1 - bc_h, bc_x1, bc_y1], fill=WHITE)
+    d.rectangle([bc_x1 - bc_w, bc_y1 - bc_h, bc_x1, bc_y1], fill=(255, 255, 255))  # KDP prints the barcode here
     if by > bc_y1 - bc_h - 0.1 * DPI:
         raise RuntimeError("Back cover text overlaps barcode area; shorten the blurb.")
 

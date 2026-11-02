@@ -26,7 +26,7 @@ No app was run on a physical phone, an emulator or a TV (no hardware acceleratio
 | Interior PDF (`build/check_pdf.py`) | All fonts embedded; no missing glyphs; smallest inside margin 0.772 in; smallest outside margin 0.579 in; every chapter and appendix starts on a right-hand page; no large gaps |
 | Includes | Every `@include` resolves (the build fails otherwise) |
 | Visual proof | Covers, sample chapter, appendix and More Books pages inspected |
-| Paperback cover | 12.888 x 9.250 in, 0.638 in spine (272 x 0.002347, color paper); barcode area clear |
+| Paperback covers | Dark and white, 12.888 x 9.250 in, 0.638 in spine (272 x 0.002347, color paper); barcode area clear |
 | eBook covers | Dark and white, 1600 x 2560 px, real app screenshots, no logos |
 | eBook size | 4.4 MB (screenshots reduced to 1200 px wide for Kindle) |
 | Spelling | codespell clean; US English |
