@@ -105,7 +105,9 @@ export default function CartScreen() {
   const [paymentId, setPaymentId] = useState('upi');
   const [instructions, setInstructions] = useState('');
   const [sheet, setSheet] = useState<'coupon' | 'address' | 'payment' | null>(null);
-  const address = addresses.data?.find((a) => a.id === addressId) ?? defaultAddress(addresses.data);
+  // Show the address the server priced the bill for, so the fee on screen is the fee charged.
+  const pricedFor = addressId ?? cart?.addressId ?? undefined;
+  const address = addresses.data?.find((a) => a.id === pricedFor) ?? defaultAddress(addresses.data);
   const payment = paymentOption(paymentId);
   const goBack = () => (router.canGoBack() ? router.back() : router.replace('/'));
 
@@ -157,6 +159,11 @@ export default function CartScreen() {
   const order = () => {
     if (!address) {
       setSheet('address');
+      return;
+    }
+    // Never charge a total the button didn't show: re-price first if the address changed.
+    if (cart.addressId !== address.id) {
+      setCartAddress.mutate(address.id);
       return;
     }
     placeOrder.mutate(
@@ -307,7 +314,7 @@ export default function CartScreen() {
           size="lg"
           variant="accent"
           style={styles.place}
-          loading={placeOrder.isPending}
+          loading={placeOrder.isPending || setCartAddress.isPending}
           onPress={order}
           testID="place-order"
         />
@@ -344,7 +351,7 @@ export default function CartScreen() {
         onSelect={(a) => {
           setAddressId(a.id);
           // The delivery fee depends on the distance, so re-price the bill for this address.
-          setCartAddress.mutate(a.id);
+          setCartAddress.mutate(a.id, { onError: () => setAddressId(undefined) });
           setSheet(null);
         }}
       />

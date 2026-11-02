@@ -11,12 +11,15 @@ from covers import build_ebook_cover, build_paperback_cover
 from epub_build import build_epub
 from interior_pdf import build_interior
 from mdparse import load_manuscript
+import check_includes
 
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
 
 
 def main():
+    if check_includes.main() != 0:
+        raise SystemExit("Printed code excerpts no longer match the code; see above.")
     meta = json.loads((ROOT / "book.json").read_text())
     build_diagrams(ROOT / "manuscript" / "images")
     manuscript = load_manuscript(ROOT / "manuscript")

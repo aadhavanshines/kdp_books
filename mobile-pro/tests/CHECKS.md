@@ -7,7 +7,7 @@ Final state: 274 pages (6 x 9 in, premium color), 30 chapters in seven parts, ap
 | Check | Result |
 | --- | --- |
 | Sessions | 8 Claude Code 2.1.316 sessions (`sessions/`): prompts for all 8, full results for 7. Session 3 (Cartly) hit a 2-hour limit and has no result file; 3b finished it. Logged cost $64.06 plus the unlogged session 3 |
-| Workspace (`npm run check` in `code/`) | TypeScript strict, ESLint and every test pass: 314 Jest tests across the four apps and two packages, and 96 Vitest tests in the server; re-run on 2 November 2026 after the review fixes |
+| Workspace (`npm run check` in `code/`) | TypeScript strict, ESLint and every test pass: 316 Jest tests across the four apps and two packages, and 97 Vitest tests in the server; re-run on 2 November 2026 after the second review's fixes |
 | Reelhouse TV (`tv/`) | Typecheck, lint and 80 Jest tests pass (session 6b) |
 | Flaky test | The Cartly order-details test was fixed at its cause in session 5 and passed four full parallel runs |
 | Screenshots | Every figure is a capture of the real web build in headless Chromium (393 x 852 at 3x for phones, 1920 x 1080 for TV), framed by `build/frames.py`; every figure was viewed and the text checked against it |
@@ -25,13 +25,15 @@ A separate review on a Mac ran the four phone apps on an Android 16 emulator thr
 | Repeated return lines refunded 3x (₹1,04,997 on ₹34,799) | Duplicates rejected | `commerce.test.ts` |
 | Refund ignored the coupon | `refundFor`: coupon share off, capped at the order total; Cartly preview uses the same rule | `pricing.test.ts`, `commerce.test.ts`, Cartly `logic.test.ts` |
 | FIRSTBUY reusable | `first_order_only` coupons (with a migration for older databases) | `pricing.test.ts`, `commerce.test.ts` |
-| Platter delivery fee priced for the default address | Cart priced for the chosen address (`PUT /cart/:app/address`); orders priced for their address | `commerce.test.ts` |
+| Platter delivery fee priced for the default address | Cart priced for the chosen address (`PUT /cart/:app/address`); the cart reports `addressId` and the screen shows that address; the pay button waits for re-pricing; the address resets after each order | `commerce.test.ts` (button total = amount charged), Platter `cart.test.tsx` |
 | Saved item moved back made a duplicate line | Merged into the existing line | `commerce.test.ts` |
 | Login token in request logs (`?token=`) | Redacted in the logger | `redact.test.ts` |
+| WELCOME50 banner said "your first order" but the coupon is reusable | Banner reads "50% OFF your order"; home screenshot recaptured | Seed |
+| Chapter 6 excerpts shifted after code changes | Ranges fixed; the build now stops if any excerpt's first or last line changes (`tests/includes.lock`) | `build/check_includes.py` |
 | Node 20.19 stated; Expo 58 needs 22.13+ | `engines`, `.nvmrc`, Chapter 2, README | (engines read from the installed packages) |
 | 9 printed excerpts ended mid-block silently | Short ranges extended; the build now adds `// ...` to any excerpt that ends inside a block | Bracket-balance scan of every `@include` range |
 
-The two Android fixes were confirmed on the emulator in a temporary copy (Lumo feed and chat); the login screens with the final fix have not been rechecked on the emulator.
+A second emulator pass confirmed the Lumo photo fix and the keyboard fix on all four logins and Lumo chat (the bottom sheet and Platter rating screen were not exercised). The TV app's web build was driven at 1920 x 1080 with remote keys: profiles, hero, rows, player, Back and the Kids filter work. In this container, a Playwright run of the same build at 1920 x 1080 confirmed the side menu by remote: Left from the first card focuses Home, Down moves to Movies, Enter opens it. Native focus on Android TV is still unrun.
 
 ## Not verified
 

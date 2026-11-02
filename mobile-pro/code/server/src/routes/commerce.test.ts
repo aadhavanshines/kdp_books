@@ -136,6 +136,17 @@ describe('cart', () => {
     await h.json('PUT', '/cart/platter/address', { token, body: { addressId: 'addr_home' } });
     const order = await h.json<Order>('POST', '/orders', { token, body: { app: 'platter', addressId: 'addr_parents', payment: { kind: 'upi' } }, status: 201 });
     expect(order.bill.deliveryFee).toBe(away.bill.deliveryFee);
+    expect(away.addressId).toBe('addr_parents');
+    // The next cart starts from the default address again.
+    expect((await h.json<Cart>('GET', '/cart/platter', { token })).addressId).toBe('addr_home');
+  });
+
+  it('charges exactly the total the cart showed for the same address', async () => {
+    const [item] = await firstItems('r-04');
+    await h.json('PUT', '/cart/platter/items', { token, body: { productId: item!.id, quantity: 2 } });
+    const shown = await h.json<Cart>('PUT', '/cart/platter/address', { token, body: { addressId: 'addr_parents' } });
+    const order = await h.json<Order>('POST', '/orders', { token, body: { app: 'platter', addressId: shown.addressId, payment: { kind: 'upi' } }, status: 201 });
+    expect(order.bill.total).toBe(shown.bill.total);
   });
 
   it('keeps carts separate per app and per user', async () => {

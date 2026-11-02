@@ -1,0 +1,130 @@
+{
+ "05-design-system.md: code/packages/ui/src/tokens/scale.ts#L1-L59": {
+  "first": "import { Platform, type ViewStyle } from 'react-native';",
+  "last": "export type TextVariant = keyof typeof typography;"
+ },
+ "05-design-system.md: code/packages/ui/src/tokens/colors.ts#L169-L193": {
+  "first": "export const brands: Record<BrandName, Record<ColorScheme, BrandColors>> = {",
+  "last": "},"
+ },
+ "05-design-system.md: code/packages/ui/src/tokens/scale.ts#L82-L102": {
+  "first": "/**",
+  "last": "}"
+ },
+ "05-design-system.md: code/packages/ui/src/tokens/scale.ts#L104-L116": {
+  "first": "/** Motion constants. Reanimated animations respect the system reduce-motion setting. */",
+  "last": "export const MIN_TOUCH = 44;"
+ },
+ "06-one-backend.md: code/packages/api/src/bill.ts#L33-L75": {
+  "first": "/**",
+  "last": "}"
+ },
+ "06-one-backend.md: code/server/src/sim/schedule.ts#L14-L39": {
+  "first": "/**",
+  "last": "};"
+ },
+ "06-one-backend.md: code/server/src/sim/simulator.ts#L8-L52": {
+  "first": "/**",
+  "last": "}"
+ },
+ "06-one-backend.md: code/server/src/routes/commerce.ts#L104-L146": {
+  "first": "/**",
+  "last": "});"
+ },
+ "06-one-backend.md: code/packages/api/src/hooks.tsx#L798-L842": {
+  "first": "/**",
+  "last": "}"
+ },
+ "08-platter-discovery.md: code/apps/platter/src/lib/filters.ts#L1-L44": {
+  "first": "import type { RestaurantQuery, RestaurantSort } from '@pro/api';",
+  "last": "}"
+ },
+ "08-platter-discovery.md: code/apps/platter/src/lib/filters.ts#L52-L71": {
+  "first": "/**",
+  "last": "}"
+ },
+ "08-platter-discovery.md: code/apps/platter/src/lib/customize.ts#L21-L72": {
+  "first": "/**",
+  "last": "}"
+ },
+ "08-platter-discovery.md: code/apps/platter/src/lib/customize.test.ts#L18-L45": {
+  "first": "describe('customization', () => {",
+  "last": "});"
+ },
+ "09-platter-checkout.md: code/apps/platter/src/lib/payment.ts#L8-L31": {
+  "first": "/** Demo payment methods (no real payment is taken). */",
+  "last": "];"
+ },
+ "10-platter-tracking.md: code/apps/platter/src/lib/tracking.ts#L16-L48": {
+  "first": "export interface TrackingCopy {",
+  "last": "}"
+ },
+ "10-platter-tracking.md: code/packages/ui/src/components/MapView.tsx#L121-L170": {
+  "first": "/**",
+  "last": "accessibilityLabel ?? (pct != null ? `Delivery map. Rider is ${pct}% of the way to you.` : 'Delivery map');"
+ },
+ "12-cartly-discovery.md: code/apps/cartly/src/lib/search.ts#L9-L40": {
+  "first": "/** Adds a search to the front of the recent list (deduplicated, capped). */",
+  "last": "}"
+ },
+ "12-cartly-discovery.md: code/apps/cartly/src/lib/variants.ts#L6-L47": {
+  "first": "/** The first available option of every group. */",
+  "last": "}"
+ },
+ "12-cartly-discovery.md: code/packages/ui/src/components/Price.tsx#L30-L66": {
+  "first": "/** \"₹249  ₹̶2̶9̶9̶  17% off\", with tabular figures and one spoken label. */",
+  "last": "}"
+ },
+ "15-lumo-plan.md: code/packages/ui/src/components/PhotoScene.tsx#L11-L44": {
+  "first": "export interface PhotoSceneProps {",
+  "last": "const label = accessibilityLabel ?? `Photo: ${scene.layers.map((l) => humanize(l.art)).join(', ')}`;"
+ },
+ "16-lumo-feed-stories.md: code/packages/ui/src/components/HeartBurst.tsx#L43-L77": {
+  "first": "/**",
+  "last": "}"
+ },
+ "19-minutely-cart-tracking.md: code/apps/minutely/src/lib/delivery.ts#L4-L8": {
+  "first": "/** \"Delivery in 9 minutes\" (never \"0 minutes\", never \"1 minutes\"). */",
+  "last": "}"
+ },
+ "19-minutely-cart-tracking.md: code/apps/minutely/src/components/ShopProvider.tsx#L36-L80": {
+  "first": "export function ShopProvider({ children }: { children: ReactNode }) {",
+  "last": "}"
+ },
+ "19-minutely-cart-tracking.md: code/apps/minutely/src/lib/tracking.ts#L1-L15": {
+  "first": "import { orderProgress, type Order } from '@pro/api';",
+  "last": "}"
+ },
+ "21-accessibility-localization.md: code/apps/minutely/src/test/screens/home-category.test.tsx#L31-L47": {
+  "first": "it('adds to the cart at once and the cart bar follows every tap', async () => {",
+  "last": "});"
+ },
+ "21-accessibility-localization.md: code/packages/ui/src/components/Text.tsx#L25-L39": {
+  "first": "/**",
+  "last": "...rest"
+ },
+ "22-testing.md: code/apps/minutely/src/test/screens/home-category.test.tsx#L31-L47": {
+  "first": "it('adds to the cart at once and the cart bar follows every tap', async () => {",
+  "last": "});"
+ },
+ "25-security-privacy.md: code/packages/api/src/session.tsx#L7-L12": {
+  "first": "/** The subset of AsyncStorage (or localStorage) the session needs. */",
+  "last": "}"
+ },
+ "30-reelhouse-tv.md: code/tv/src/screens/playerLogic.ts#L1-L26": {
+  "first": "/** Pure player rules, kept apart from the screen so they are unit tested. */",
+  "last": "}"
+ },
+ "30-reelhouse-tv.md: code/tv/src/components/Focusable.tsx#L84-L111": {
+  "first": "const [focused, setFocused] = useState(false);",
+  "last": "}, [focused, focusScale, reduceMotion, scale]);"
+ },
+ "30-reelhouse-tv.md: code/tv/src/focus/FocusGroup.tsx#L22-L45": {
+  "first": "export function FocusGroup({ style, children, entry, trap = [] }: FocusGroupProps) {",
+  "last": "}"
+ },
+ "30-reelhouse-tv.md: code/tv/src/focus/scroll.ts#L27-L35": {
+  "first": "/** Horizontal scroll offset that shows card `index` at the row's focus line. */",
+  "last": "}"
+ }
+}

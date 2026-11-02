@@ -136,7 +136,7 @@ Remote buttons arrive as TV events on Android TV and as keyboard events on the w
 TV rows move under a fixed **focus line**: the focused card stays near the left edge while the row slides, until the row runs out of content and the last cards scroll in. That's a calculation, and it's tested:
 
 ```ts
-@include code/tv/src/focus/scroll.ts#L26-L35
+@include code/tv/src/focus/scroll.ts#L27-L35
 ```
 
 On the web, a small spatial-navigation layer reproduces the same rules for arrow keys, which is what made the screenshots possible.

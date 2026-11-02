@@ -73,7 +73,7 @@ export interface SeedBanner {
 }
 
 export const banners: SeedBanner[] = [
-  { id: 'b-plt-1', app: 'platter', title: '50% OFF your first order', subtitle: 'Up to ₹100 with WELCOME50', cta: 'Order now', art: 'curry-and-rice', tone: 'ember', link: '/offers' },
+  { id: 'b-plt-1', app: 'platter', title: '50% OFF your order', subtitle: 'Up to ₹100 with WELCOME50', cta: 'Order now', art: 'curry-and-rice', tone: 'ember', link: '/offers' },
   { id: 'b-plt-2', app: 'platter', title: 'Biryani weekend', subtitle: 'Slow-cooked dum biryanis from ₹249', cta: 'Explore', art: 'pot-of-food', tone: 'sunset', link: '/cuisine/biryani' },
   { id: 'b-plt-3', app: 'platter', title: 'Free delivery all day', subtitle: 'On orders above ₹199 with FREEDEL', cta: 'Grab it', art: 'motor-scooter', tone: 'aurora', link: '/offers' },
   { id: 'b-plt-4', app: 'platter', title: 'Late-night cravings', subtitle: 'Kitchens open till 3 am near you', cta: 'See all', art: 'hamburger', tone: 'night', link: '/collection/late-night' },

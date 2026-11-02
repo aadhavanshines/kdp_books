@@ -325,7 +325,7 @@ export function placeOrder(deps: Deps, userId: string, input: PlaceOrderInput): 
     });
     db.prepare("INSERT INTO order_events (order_id, status, at) VALUES (?, 'confirmed', ?)").run(id, now);
     db.prepare('DELETE FROM cart_lines WHERE user_id = ? AND app = ? AND saved_for_later = 0').run(userId, input.app);
-    db.prepare('UPDATE carts SET coupon_code = NULL, tip = 0, restaurant_id = NULL, updated_at = ? WHERE user_id = ? AND app = ?').run(
+    db.prepare('UPDATE carts SET coupon_code = NULL, tip = 0, restaurant_id = NULL, address_id = NULL, updated_at = ? WHERE user_id = ? AND app = ?').run(
       now,
       userId,
       input.app,

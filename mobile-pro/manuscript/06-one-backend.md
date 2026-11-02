@@ -75,7 +75,7 @@ How does the app hear about those events? Three options are common:
 Here is the server side:
 
 ```ts
-@include code/server/src/routes/commerce.ts#L101-L143
+@include code/server/src/routes/commerce.ts#L104-L146
 ```
 
 It sends a `snapshot` of the order first, then `status` and `location` events as the simulator publishes them, and closes after delivery. It subscribes before sending the snapshot, so no change can slip through the gap. It sends a comment every 15 seconds so proxies don't close an idle connection. And it chains its writes so events always arrive in order. Claude found and fixed a race in session 1 where the final status could be dropped; the chained queue is the fix.
@@ -83,7 +83,7 @@ It sends a `snapshot` of the order first, then `status` and `location` events as
 React Native doesn't ship a browser `EventSource`, so `packages/api/src/sse.ts` includes a small SSE parser that works on Android, iOS and the web, and a hook wraps it for screens:
 
 ```tsx
-@include code/packages/api/src/hooks.tsx#L792-L835
+@include code/packages/api/src/hooks.tsx#L798-L842
 ```
 
 `useOrderStream` writes every event into the React Query cache, so any screen showing that order updates by itself: the tracking screen, the orders list, the active order card on the home screen. Location events update only the rider's position and the estimated arrival time, which is what the map animates.

@@ -713,6 +713,8 @@ export interface Cart {
   restaurant: RestaurantSummary | null;
   /** Spend this much more for free delivery; null when already free or not applicable. */
   amountToFreeDelivery: number | null;
+  /** The delivery address the bill is priced for (Platter's fee depends on it). */
+  addressId?: string | null;
 }
 
 export interface SetCartItemInput {

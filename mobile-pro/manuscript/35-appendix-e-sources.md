@@ -26,6 +26,6 @@ Facts in this book about versions, store requirements and platform rules were ch
 
 ## What Was Verified, and What Wasn't
 
-**Verified for this book:** every app and the TV app were built by Claude Code sessions whose prompts are in Appendix A; `npm run check` (typecheck, lint, 314 Jest tests and 96 server Vitest tests) and the TV app's checks (80 tests) pass on a clean install, also in GitHub Actions; every screenshot is a capture of the real web build in headless Chromium; the Android TV manifest was checked after `EXPO_TV=1 npx expo prebuild`. All four phone apps were also run on an Android 16 emulator through Expo Go, completing each main journey.
+**Verified for this book:** every app and the TV app were built by Claude Code sessions whose prompts are in Appendix A; `npm run check` (typecheck, lint, 316 Jest tests and 97 server Vitest tests) and the TV app's checks (80 tests) pass on a clean install, also in GitHub Actions; every screenshot is a capture of the real web build in headless Chromium; the Android TV manifest was checked after `EXPO_TV=1 npx expo prebuild`. All four phone apps were also run on an Android 16 emulator through Expo Go, completing each main journey.
 
 **Not verified here:** the apps were not run on an iPhone simulator, a physical phone or a TV, or as store builds; no store submission was made; no payment provider, push service or analytics service was called; the Maestro flows were not run. The production chapters describe what to do and what to check on your own devices and accounts.

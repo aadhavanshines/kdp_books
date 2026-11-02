@@ -1,4 +1,4 @@
-import type { CouponOffer } from '@pro/api';
+import type { Cart, CouponOffer } from '@pro/api';
 import { screen, userEvent, waitFor, within } from '@testing-library/react-native';
 
 import CartScreen from '../../app/cart';
@@ -24,8 +24,8 @@ const welcome: CouponOffer = {
   estimatedSavings: 100,
 };
 
-function setup(items = [line({ quantity: 2, lineTotal: 640 })]) {
-  let current = cart(items);
+function setup(items = [line({ quantity: 2, lineTotal: 640 })], overrides: Partial<Cart> = {}) {
+  let current = cart(items, overrides);
   return fakeClient((method, path, body) => {
     if (path === '/cart/platter' && method === 'GET') return { body: current };
     if (path === '/me/addresses') return { body: [home, work] };
@@ -37,6 +37,13 @@ function setup(items = [line({ quantity: 2, lineTotal: 640 })]) {
     if (path === '/cart/platter/tip') {
       const amount = (body as { amount: number }).amount;
       current = { ...current, tip: amount, bill: { ...current.bill, tip: amount, total: current.bill.total + amount } };
+      return { body: current };
+    }
+    if (path === '/cart/platter/address') {
+      // Work is further away: the server re-prices the delivery fee.
+      const addressId = (body as { addressId: string }).addressId;
+      const fee = addressId === 'addr_work' ? 48 : 33;
+      current = { ...current, addressId, bill: { ...current.bill, deliveryFee: fee, total: current.bill.total - current.bill.deliveryFee + fee } };
       return { body: current };
     }
     if (path === '/orders' && method === 'POST') return { body: order('confirmed', { id: 'ord_new' }) };
@@ -86,6 +93,26 @@ describe('Cart screen', () => {
     await user.press(screen.getByTestId('place-order'));
     await waitFor(() => expect(router.replace).toHaveBeenCalledWith('/order/ord_new'));
     expect(calls.find((c) => c.path === '/orders')?.body).toEqual({ app: 'platter', addressId: 'addr_work', payment: { kind: 'cash' } });
+  });
+
+  it('re-prices for a new address so the button shows what will be charged', async () => {
+    const user = userEvent.setup();
+    const { client, calls } = setup();
+    await renderScreen(<CartScreen />, client);
+    await screen.findByText('Dal makhani');
+    expect(screen.getByLabelText('To pay, ₹711')).toBeOnTheScreen();
+
+    await user.press(screen.getByRole('button', { name: /Delivering to Home/ }));
+    await user.press(within(await screen.findByTestId('address-sheet')).getByRole('radio', { name: /^Work/ }));
+    await waitFor(() => expect(screen.getByLabelText('To pay, ₹726')).toBeOnTheScreen());
+    expect(calls.find((c) => c.path === '/cart/platter/address')?.body).toEqual({ addressId: 'addr_work' });
+    expect(screen.getByTestId('place-order')).toHaveTextContent(/₹726/);
+  });
+
+  it('shows the address the cart is priced for when it opens', async () => {
+    const { client } = setup(undefined, { addressId: 'addr_work' });
+    await renderScreen(<CartScreen />, client);
+    expect(await screen.findByText('Delivering to Work')).toBeOnTheScreen();
   });
 
   it('shows an empty state with no items', async () => {

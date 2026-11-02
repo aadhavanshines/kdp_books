@@ -120,6 +120,7 @@ export function cart(items: CartLine[] = [], overrides: Partial<Cart> = {}): Car
     },
     restaurant: empty ? null : restaurant,
     amountToFreeDelivery: null,
+    addressId: 'addr_home',
     ...overrides,
   };
 }

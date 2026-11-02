@@ -271,6 +271,7 @@ export function getCart(db: DB, userId: string, app: CommerceApp, now: number, a
     cart.restaurant_id,
   );
   return {
+    addressId: address?.id ?? null,
     app,
     items: lines.filter((l) => !l.savedForLater),
     savedForLater: lines.filter((l) => l.savedForLater),

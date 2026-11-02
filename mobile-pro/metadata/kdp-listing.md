@@ -93,7 +93,7 @@ Amazon.com
 ## Keywords (7 boxes)
 
 1. vibe coding mobile apps with ai
-2. react native app development book
+2. build professional apps with an ai coding assistant
 3. cross platform mobile app development for beginners
 4. food delivery app development tutorial
 5. ecommerce shopping app design and development
