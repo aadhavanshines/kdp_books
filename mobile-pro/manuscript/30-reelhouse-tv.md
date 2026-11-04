@@ -1,6 +1,6 @@
 # Part VII: Bonus
 
-# Chapter 30: Reelhouse: Building for Android TV (and Apple TV)
+# Chapter 30: Reelhouse: Building for Android TV, With a Look at Apple TV
 
 Phones are held a few inches from the face and touched. Televisions sit three meters away and are driven by a remote with four arrows, a select button and Back. Everything about the interface changes: text sizes, layout, navigation, and above all **focus**, the highlight that shows what the select button will do. This bonus chapter builds Reelhouse, a streaming app for Android TV in the style of the big streaming services, with an original brand and fictional catalog, from the same Expo and React Native skills as the rest of the book.
 

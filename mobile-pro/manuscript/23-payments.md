@@ -61,12 +61,14 @@ async function pay(orderId: string) {
   // 1. Your server creates the PaymentIntent and returns its client secret.
   const { clientSecret } = await api.createStripePayment(orderId);
   // 2. Configure and present Stripe's native sheet.
-  await initPaymentSheet({
+  const init = await initPaymentSheet({
     merchantDisplayName: 'Platter',
     paymentIntentClientSecret: clientSecret,
+    // Your merchant account's country, not the customer's.
     applePay: { merchantCountryCode: 'US' },
     googlePay: { merchantCountryCode: 'US', testEnv: true },
   });
+  if (init.error) return showError(init.error.message);
   const { error } = await presentPaymentSheet();
   if (error) return showError(error.message);
   // 3. Wait for the server: the webhook marks the order paid.
@@ -74,7 +76,7 @@ async function pay(orderId: string) {
 }
 ```
 
-The code is an outline, not a drop-in: check names and options against the SDK's current documentation. Apple Pay also needs a merchant ID and a payment processing certificate set up in your Apple Developer account and in Stripe, and the SDK's config plugin to add the entitlement; Google Pay needs the Google Pay API enabled for production. Neither wallet works in Expo Go.
+The code is an outline, not a drop-in: check names and options against the SDK's current documentation. `US` stands for a merchant registered in the United States; use the country of the business that actually takes the payment, because wallet availability, currency and eligibility all depend on it. Apple Pay also needs a merchant ID and a payment processing certificate set up in your Apple Developer account and in Stripe, and the SDK's config plugin to add the entitlement; Google Pay needs the Google Pay API enabled for production. Neither wallet works in Expo Go.
 
 On the server, the `payment_intent.succeeded` webhook, with Stripe's signature header verified over the raw request body, is what marks the order paid.
 

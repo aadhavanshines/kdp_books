@@ -88,6 +88,10 @@ React Native doesn't ship a browser `EventSource`, so `packages/api/src/sse.ts` 
 @include code/packages/api/src/hooks.tsx#L798-L842
 ```
 
+If the connection drops, the client reconnects by itself, waiting a little longer after each failure, and the server starts every connection with a fresh snapshot, so nothing missed while offline is lost.
+
+> **Warning:** A browser's `EventSource` can't send an `Authorization` header, so the demo passes the login token as `?token=` in the stream's address. Addresses end up in server logs, proxy logs and monitoring tools; the demo server hides the token in its own log, but that isn't enough for production. In a real app, give the stream a short-lived token that only allows reading that one order, or use a stream client that can send headers (the native client here could), and never put a long-lived token in a URL.
+
 `useOrderStream` writes every event into the React Query cache, so any screen showing that order updates by itself: the tracking screen, the orders list, the active order card on the home screen. Location events update only the rider's position and the estimated arrival time, which is what the map animates.
 
 ![One event stream drives three different tracking screens: Platter's rider on the map, Cartly's shipment steps and Minutely's countdown.](images/fig-live-orders.jpg)

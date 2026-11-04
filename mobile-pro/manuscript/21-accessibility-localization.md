@@ -30,7 +30,7 @@ Test with the real thing. Turn on TalkBack or VoiceOver and complete your app's 
 
 ## Text Size
 
-Many people set their phone's text larger. The design system's `Text` component scales with the system setting but caps the scale at 1.8 times, so dense rows such as a bill stay usable:
+Many people set their phone's text larger. The design system's `Text` component scales with the system setting but caps the scale at 1.8 times, so dense rows such as a bill stay usable. A cap is a trade-off, not a rule: it protects layouts, but it also stops text growing for people who need it larger. Keep it as high as your layouts allow, never cap body text you could wrap instead, and test at the largest setting:
 
 ```tsx
 @include code/packages/ui/src/components/Text.tsx#L25-L39

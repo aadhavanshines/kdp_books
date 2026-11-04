@@ -13,7 +13,7 @@ You don't have to write the apps in this book by hand, but you do have to review
 | **TypeScript** | JavaScript with types, so mistakes show up before you run the app | 6.0 |
 | **React Native for Web** | Renders the same components in a browser | 0.21 |
 
-Expo SDK 58, released on 29 September 2026, pairs with React Native 0.88.1 and React 19.3.0. Each Expo SDK version is tied to one React Native version, so upgrading Expo upgrades React Native with it, and `npx expo install` picks the library versions that match your SDK.
+Expo SDK 58, released in October 2026, pairs with React Native 0.88.1 and React 19.3.0. Each Expo SDK version is tied to one React Native version, so upgrading Expo upgrades React Native with it, and `npx expo install` picks the library versions that match your SDK.
 
 ## Components and Styles
 

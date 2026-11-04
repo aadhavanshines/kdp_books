@@ -1,4 +1,6 @@
-import { CHANNELS, GUIDE_HOURS, GUIDE_START, programmesInWindow } from '../data/catalog';
+import { railItemsFor } from '../components/Rail';
+import { CHANNELS, GUIDE_HOURS, GUIDE_START, PROFILES, programmesInWindow, visibleTitles, type Section } from '../data/catalog';
+import { heroPool } from './browseLogic';
 import { cellFrame, timeX, type GuideGeometry } from './guideLayout';
 import { applyKey, LETTER_ROWS, MAX_QUERY } from './keyboard';
 import { controlsShouldHide, seekBy } from './playerLogic';
@@ -67,5 +69,25 @@ describe('guide layout', () => {
       expect(cells[0]!.visibleStart).toBe(g.start);
       expect(cells[cells.length - 1]!.visibleEnd).toBe(g.start + g.span);
     });
+  });
+});
+
+describe('browse sections for every profile', () => {
+  const sections: Section[] = ['home', 'movies', 'series', 'sports', 'mylist'];
+  it('always has a billboard title the profile may watch', () => {
+    for (const profile of PROFILES) {
+      const allowed = new Set(visibleTitles(profile).map((t) => t.id));
+      for (const section of sections) {
+        const pool = heroPool(section, !!profile.kids);
+        expect(pool.length).toBeGreaterThan(0);
+        for (const t of pool) expect(allowed.has(t.id)).toBe(true);
+      }
+    }
+  });
+
+  it('shows Sports in the menu only to profiles that have sports', () => {
+    const kids = PROFILES.find((p) => p.kids)!;
+    expect(railItemsFor(kids).map((i) => i.id)).not.toContain('sports');
+    expect(railItemsFor(PROFILES.find((p) => !p.kids)).map((i) => i.id)).toContain('sports');
   });
 });

@@ -435,9 +435,19 @@ def table_block(rows, styles):
     for c in range(ncols):
         longest = max(len(r[c]) for r in rows)
         weights.append(min(max(longest, 8), 60))
-        word = max((w for r in rows for w in re.sub(r"[*`]", "", r[c]).split()), key=len, default="")
-        font = "Sans-Bold" if any(word in w for w in rows[0][c].split()) else "Serif"
-        mins.append(pdfmetrics.stringWidth(word, font, 8.8) + 10)
+        # The widest unbreakable word decides the column's minimum width.
+        # Code (`...`) is printed in the wider monospaced font, so measure it in that.
+        def widths_of(cell, header):
+            out = []
+            for part in re.split(r"(`[^`]*`)", cell):
+                if part.startswith("`"):
+                    out += [pdfmetrics.stringWidth(w, "Mono", 8.6) for w in part.strip("`").split()]
+                else:
+                    font = "Sans-Bold" if header else "Serif"
+                    out += [pdfmetrics.stringWidth(w, font, 8.8) for w in part.replace("*", "").split()]
+            return out
+        widest = max((w for ri, r in enumerate(rows) for w in widths_of(r[c], ri == 0)), default=0)
+        mins.append(widest + 10)
     total = sum(weights)
     widths = [max(TEXT_W * w / total, m) for w, m in zip(weights, mins)]
     excess = sum(widths) - TEXT_W

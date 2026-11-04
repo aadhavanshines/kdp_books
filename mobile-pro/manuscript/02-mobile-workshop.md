@@ -37,6 +37,8 @@ $ cd vibe-coding-professional-mobile-apps
 $ npm install
 ```
 
+The address in the first command is a single line; it wraps here only to fit the page.
+
 The repository is a **monorepo**: one repository holding several projects that share code. Its layout is the one Claude was given in `CLAUDE.md`:
 
 | Folder | What's in it |

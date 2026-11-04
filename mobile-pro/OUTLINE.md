@@ -55,7 +55,7 @@ result and every screen is real.
 29. After Launch: crashes, reviews, updates, experiments
 
 ## Part VII: Bonus
-30. Reelhouse: Building for Android TV (and Apple TV)
+30. Reelhouse: Building for Android TV, With a Look at Apple TV
 
 ## Appendices
 A. The Prompt Library (every prompt from the book)

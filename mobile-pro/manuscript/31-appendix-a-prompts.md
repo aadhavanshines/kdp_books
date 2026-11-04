@@ -210,7 +210,7 @@ handle and how. Then rebuild the web exports, retake the screenshots,
 and compare them with the old ones; list every visual difference.
 ```
 
-### Chapter 30: Reelhouse: Building for Android TV (and Apple TV)
+### Chapter 30: Reelhouse: Building for Android TV, With a Look at Apple TV
 
 ```text
 Add real video playback to Reelhouse's player with expo-video, if it

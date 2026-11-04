@@ -1,6 +1,6 @@
 # Chapter 22: Testing: Unit, Component, API and End to End
 
-When Claude writes most of the code, tests are how you know it works, and how Claude knows it hasn't broken something three screens away. The apps in this book were built with tests from the first session: more than 300 Jest tests across the apps and packages, the server's own Vitest suite, and 82 more in the TV app. This chapter explains the four layers they use, adds the fifth, end-to-end tests on a device with Maestro, and shows how to make Claude a disciplined tester.
+When Claude writes most of the code, tests are how you know it works, and how Claude knows it hasn't broken something three screens away. The apps in this book were built with tests from the first session: more than 300 Jest tests across the apps and packages, the server's own Vitest suite, and 84 more in the TV app. This chapter explains the four layers they use, adds the fifth, end-to-end tests on a device with Maestro, and shows how to make Claude a disciplined tester.
 
 ## The Testing Pyramid for a Mobile App
 

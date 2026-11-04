@@ -33,6 +33,11 @@ export const RAIL_ITEMS: readonly { id: TopLevel; label: string; icon: IconName;
   { id: 'settings', label: 'Settings', icon: 'settings-outline', iconActive: 'settings' },
 ];
 
+/** The menu for a profile: Kids profiles have no sports, so no Sports entry. */
+export function railItemsFor(profile: { kids?: boolean } | null | undefined) {
+  return profile?.kids ? RAIL_ITEMS.filter((i) => i.id !== 'sports') : RAIL_ITEMS;
+}
+
 export function Rail({ active, onExpandedChange }: { active: TopLevel; onExpandedChange?: (expanded: boolean) => void }) {
   const { navigate, profile } = useApp();
   const [expanded, setExpanded] = useState(false);
@@ -121,7 +126,7 @@ export function Rail({ active, onExpandedChange }: { active: TopLevel; onExpande
             )}
           </Focusable>
         ) : null}
-        {RAIL_ITEMS.map((item) => {
+        {railItemsFor(profile).map((item) => {
           const isActive = item.id === active;
           return (
             <Focusable

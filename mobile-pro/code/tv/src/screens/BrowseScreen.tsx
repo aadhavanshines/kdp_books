@@ -20,13 +20,11 @@ import { Text } from '../components/Text';
 import { TitleLogo } from '../components/TitleLogo';
 import { TitleMeta } from '../components/TitleMeta';
 import {
-  featuredTitles,
   getMatch,
   getTitle,
   progressFor,
   resumePoint,
   rowsFor,
-  visibleTitles,
   type HomeRow,
   type Section,
   type Title,
@@ -37,6 +35,7 @@ import { useScreenFocus } from '../focus/ScreenFocus';
 import { useReduceMotion } from '../hooks/useReduceMotion';
 import { useBack } from '../nav/useBack';
 import { useApp } from '../state/AppState';
+import { heroPool } from './browseLogic';
 import { playLabelFor, playRouteFor } from '../state/playback';
 import { CANVAS_HEIGHT, s } from '../theme/scale';
 import { colors, radii } from '../theme/tokens';
@@ -63,19 +62,6 @@ const ROW_WIDTH: Record<HomeRow['kind'], number> = {
   genres: GENRE.width,
 };
 
-function heroPool(section: Section, kids: boolean): Title[] {
-  const profile = { kids };
-  if (section === 'home') return featuredTitles(profile);
-  const pool = visibleTitles(profile);
-  const pick =
-    section === 'movies'
-      ? pool.filter((t) => t.kind === 'movie')
-      : section === 'series'
-        ? pool.filter((t) => t.kind === 'series')
-        : pool.filter((t) => t.genres.some((g) => g === 'Sports' || g === 'Adventure'));
-  return [...pick].sort((a, b) => Number(b.featured) - Number(a.featured) || b.match - a.match).slice(0, 4);
-}
-
 export function BrowseScreen({ section }: { section: Section }) {
   const { profile, progress, navigate, myList, toggleMyList } = useApp();
   const screen = useScreenFocus();
@@ -87,7 +73,7 @@ export function BrowseScreen({ section }: { section: Section }) {
   const [heroIndex, setHeroIndex] = useState(0);
   const [followId, setFollowId] = useState<string | null>(null);
   const [inRows, setInRows] = useState(false);
-  const hero = followId ? getTitle(followId) : featured[heroIndex % Math.max(1, featured.length)]!;
+  const hero = followId ? getTitle(followId) : featured[heroIndex % featured.length]!;
 
   // Rotate the billboard while the hero buttons have focus.
   useEffect(() => {

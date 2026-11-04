@@ -38,6 +38,7 @@ The demo logs in with a fixed one-time code (123456), which is obviously only fo
 - **Codes from an SMS provider**, random, six digits, valid for a few minutes, usable once.
 - **Rate limits** on sending codes (per phone number and per device) and on guessing them, with a lockout after a few wrong tries. Without limits, attackers can run up your SMS bill or guess codes.
 - **Short-lived access tokens** (minutes to an hour) with longer-lived refresh tokens that can be revoked, so a stolen phone or a leaked token can be cut off from the server.
+- **Refresh-token rotation**: issue a new refresh token each time one is used, and if an old one is ever used again, treat it as stolen and end that session.
 - **Sign out everywhere** in the account screen.
 
 Apple also requires that if your app offers third-party or social sign-in, it offers an equivalent privacy-focused option such as Sign in with Apple, with some exceptions; check the current App Review Guidelines.
@@ -46,6 +47,7 @@ Apple also requires that if your app offers third-party or social sign-in, it of
 
 - **HTTPS only.** Both platforms block plain HTTP by default in release builds; don't turn that protection off. The demo uses `http://localhost` only in development.
 - **Validate everything on the server.** The demo server validates request bodies with Zod schemas, so a malformed request is refused before it reaches any logic; make sure every route in your own server does the same.
+- **Check access to every object.** Signing in proves who the user is, not what they may see: every request for an order, a message or an address must check that it belongs to that user. The demo server does this for orders and messages; it is the check most often forgotten.
 - **Lock down CORS and add rate limits on the server.** The demo server allows requests from any origin, for development convenience; a production API should allow only its own web origins and limit requests per user and per IP address.
 - **Certificate pinning** (accepting only your server's certificate) adds protection against interception on compromised networks, but it can lock users out if certificates change unexpectedly. Use it only with a plan for rotation.
 

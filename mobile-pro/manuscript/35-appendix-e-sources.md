@@ -4,7 +4,7 @@ Facts in this book about versions, store requirements and platform rules were ch
 
 | Topic | Fact | Source |
 | --- | --- | --- |
-| Expo | Expo SDK 58 is current: `expo` 58.0.0 published 29 September 2026, 58.0.22 the latest patch at the time of writing | npm registry publish times for `expo` |
+| Expo | Expo SDK 58 is current: the stable release was announced on 15 October 2026 (after a beta from 15 September); 58.0.22 was the latest patch at the time of writing | expo.dev/changelog/sdk-58; npm registry versions of `expo` |
 | Expo | SDK 58 pairs with React Native 0.88.1, React 19.3.0, react-native-web ~0.21.4, Expo Router ~58.0.29, Reanimated 4.7.1, Worklets 0.13.0, Gesture Handler ~3.3.0, Screens ~4.30.1 and FlashList 2.3.2 | `bundledNativeModules.json` in the `expo` 58.0.22 package |
 | Expo | From SDK 53, Expo Go doesn't support remote push notifications; use a development build. Android needs Firebase Cloud Messaging credentials | Expo documentation: Notifications reference and push notifications FAQ |
 | TV | The TV fork matching SDK 58 is `react-native-tvos` 0.88.0-0 | npm registry |
@@ -26,6 +26,6 @@ Facts in this book about versions, store requirements and platform rules were ch
 
 ## What Was Verified, and What Wasn't
 
-**Verified for this book:** every app and the TV app were built by Claude Code sessions whose prompts are in Appendix A; `npm run check` (typecheck, lint, 316 Jest tests and 97 server Vitest tests) and the TV app's checks (82 tests) pass on a clean install, also in GitHub Actions; every screenshot is a capture of the real web build in headless Chromium; the Android TV manifest was checked after `EXPO_TV=1 npx expo prebuild`. All four phone apps were also run on an Android 16 emulator through Expo Go, completing each main journey, and Reelhouse was built natively and run on an Android 16 TV emulator with D-pad input.
+**Verified for this book:** every app and the TV app were built by Claude Code sessions whose prompts are in Appendix A; `npm run check` (typecheck, lint, 316 Jest tests and 97 server Vitest tests) and the TV app's checks (84 tests) pass on a clean install, also in GitHub Actions; every screenshot is a capture of the real web build in headless Chromium; the Android TV manifest was checked after `EXPO_TV=1 npx expo prebuild`. All four phone apps were also run on an Android 16 emulator through Expo Go, completing each main journey, and Reelhouse was built natively and run on an Android 16 TV emulator with D-pad input.
 
 **Not verified here:** the apps were not run on an iPhone simulator, a physical phone or a real TV, or as store builds; no store submission was made; no payment provider, push service or analytics service was called; the Maestro flows were not run. The production chapters describe what to do and what to check on your own devices and accounts.

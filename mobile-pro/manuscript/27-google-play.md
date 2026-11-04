@@ -88,7 +88,7 @@ about for me to check.
 
 ## Key Takeaways
 
-- In 2026, Play requires a $25 account, target API 36 (API 34 for TV), signed App Bundles and, for new personal accounts, a 12-tester, 14-day closed test.
+- In 2026, Play requires a one-time $25 registration fee, target API 36 (API 34 for TV), signed App Bundles and, for new personal accounts, a 12-tester, 14-day closed test.
 - Complete every App content declaration carefully; give reviewers working access.
 - Test on the internal track first, use the closed test for real feedback, then release to production with a staged rollout.
 - Most rejections come from access, data safety, metadata, permissions or payments; fix exactly what the reviewer reports.

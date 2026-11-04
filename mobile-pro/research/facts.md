@@ -2,7 +2,7 @@
 
 | # | Fact | Source (how checked) |
 | --- | --- | --- |
-| 1 | Expo SDK 58 is the current release: `expo` 58.0.0 was published on 29 September 2026; 58.0.22 is the latest patch (31 October 2026). SDK 57 was 30 June 2026, SDK 56 20 May 2026, SDK 55 25 February 2026 | npm registry publish times (`npm view expo time`) |
+| 1 | Expo SDK 58 is the current release: stable release announced 15 October 2026 (expo.dev/changelog/sdk-58; beta from 15 September; `expo` 58.0.0 reached npm on 29 September 2026); 58.0.22 is the latest patch (31 October 2026). SDK 57 was 30 June 2026, SDK 56 20 May 2026, SDK 55 25 February 2026 | npm registry publish times (`npm view expo time`) |
 | 2 | Expo SDK 58 pairs with React Native 0.88.1, React 19.3.0, react-native-web ~0.21.4, Expo Router ~58.0.29, Reanimated 4.7.1, Worklets 0.13.0, Gesture Handler ~3.3.0, Screens ~4.30.1, FlashList 2.3.2 | `bundledNativeModules.json` in the expo 58.0.22 package (read) |
 | 3 | React Native TV fork matching SDK 58: `react-native-tvos` 0.88.0-0 | npm registry |
 | 4 | Expo builds for Android TV and Apple TV by using `react-native-tvos` as the `react-native` dependency, plus the `@react-native-tvos/config-tv` config plugin, applied when `EXPO_TV=1` at prebuild; the TV version must match the SDK's React Native version; not every Expo library works on TV (list in the guide) | Expo docs `guides/building-for-tv.mdx`, expo/expo repository on GitHub (read) |

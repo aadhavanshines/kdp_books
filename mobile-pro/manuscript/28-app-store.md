@@ -50,7 +50,7 @@ This is where many first submissions fail. Provide:
 
 ## Step 6: Submit for Review
 
-Choose the build, answer the export compliance question (most apps using only standard HTTPS encryption qualify for an exemption; you can declare this once in `app.json` with `ios.config.usesNonExemptEncryption: false`), choose manual or automatic release, and submit. Many reviews finish within a day or two. When approved, release the app manually, automatically, or as a **phased release** over seven days, which is Apple's version of a staged rollout.
+Choose the build, answer the export compliance question (apps that use encryption only for standard HTTPS connections usually qualify for an exemption, but check your app's actual use of encryption first; you can declare this once in `app.json` with `ios.config.usesNonExemptEncryption: false`), choose manual or automatic release, and submit. Many reviews finish within a day or two. When approved, release the app manually, automatically, or as a **phased release** over seven days, which is Apple's version of a staged rollout.
 
 ## What App Review Checks
 
@@ -82,10 +82,13 @@ None of these exist in the demo. Ask Claude to add them before you ever submit a
 ```text
 Prepare Lumo for App Review guideline 1.2 (user-generated content).
 Add Report to every post, comment, story and message (with reasons),
-Block and Unblock on profiles (hiding blocked users everywhere), a
-server route to record reports with a simple admin list, and terms
-acceptance at sign-up. Add server and screen tests, and list anything
-the guideline asks for that this doesn't yet cover.
+Block and Unblock on profiles (hiding blocked users everywhere,
+including screens already open), a moderation queue where an admin can
+review, hide content or suspend accounts, and resolve each report, a
+notice to the reporter when their report is resolved, a limit on how
+many reports one account can file, a way to escalate urgent safety
+reports, and terms acceptance at sign-up. Add server and screen tests,
+and list anything the guideline asks for that this doesn't yet cover.
 ```
 
 ## Key Takeaways
