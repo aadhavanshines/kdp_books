@@ -1,6 +1,6 @@
 # Pre-Publication Check Report
 
-Final state: 276 pages (6 x 9 in, premium color), 30 chapters in seven parts, appendices A to E, About the Author and More Books. Checked on 1 November 2026.
+Final state: 268 pages (6 x 9 in, premium color), 30 chapters in seven parts, appendices A to E, About the Author and More Books. Checked on 1 November 2026.
 
 ## Code
 
@@ -47,7 +47,7 @@ No app was run on an iPhone simulator, a physical phone or a real TV, or as a st
 | Interior PDF (`build/check_pdf.py`) | All fonts embedded; no missing glyphs; smallest inside margin 0.772 in; smallest outside margin 0.579 in; every chapter and appendix starts on a right-hand page; no large gaps |
 | Includes | Every `@include` resolves (the build fails otherwise) |
 | Visual proof | Covers, sample chapter, appendix and More Books pages inspected |
-| Paperback covers | Dark and white, 12.898 x 9.250 in, 0.648 in spine (276 x 0.002347, color paper); barcode area clear |
+| Paperback covers | Dark and white, 12.879 x 9.250 in, 0.629 in spine (268 x 0.002347, color paper); barcode area clear |
 | eBook covers | Dark and white, 1600 x 2560 px, real app screenshots, no logos |
 | eBook size | 6.2 MB (screenshots reduced to 1200 px wide for Kindle) |
 | Spelling | codespell clean; US English |

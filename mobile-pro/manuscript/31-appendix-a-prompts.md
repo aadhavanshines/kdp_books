@@ -178,10 +178,13 @@ about for me to check.
 ```text
 Prepare Lumo for App Review guideline 1.2 (user-generated content).
 Add Report to every post, comment, story and message (with reasons),
-Block and Unblock on profiles (hiding blocked users everywhere), a
-server route to record reports with a simple admin list, and terms
-acceptance at sign-up. Add server and screen tests, and list anything
-the guideline asks for that this doesn't yet cover.
+Block and Unblock on profiles (hiding blocked users everywhere,
+including screens already open), a moderation queue where an admin can
+review, hide content or suspend accounts, and resolve each report, a
+notice to the reporter when their report is resolved, a limit on how
+many reports one account can file, a way to escalate urgent safety
+reports, and terms acceptance at sign-up. Add server and screen tests,
+and list anything the guideline asks for that this doesn't yet cover.
 ```
 
 ### Chapter 29: After Launch: Crashes, Reviews, Updates and Experiments

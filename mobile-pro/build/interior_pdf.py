@@ -285,7 +285,12 @@ def wrap_code(code, size=CODE_SIZE, marker=""):
 
 
 def code_block(code, styles, source=False):
-    size = SRC_SIZE if source else CODE_SIZE
+    # A typed block whose longest line would wrap at the normal size, but fits
+    # at the smaller listing size, is set smaller: commands must not wrap.
+    avail = TEXT_W - 2 * CODE_PAD
+    widest = max((pdfmetrics.stringWidth(l, "Mono", CODE_SIZE) for l in code.split("\n")), default=0)
+    small = widest > avail and all(pdfmetrics.stringWidth(l, "Mono", SRC_SIZE) <= avail for l in code.split("\n"))
+    size = SRC_SIZE if (source or small) else CODE_SIZE
     # Wrapped source lines start with an arrow so readers know not to break them.
     lines = wrap_code(code, size, "\u21aa " if source else "").split("\n")
     # Sample responses ("Example output ...:") get a distinct look from prompts.
@@ -297,7 +302,7 @@ def code_block(code, styles, source=False):
     for line in lines:
         if line.strip():
             esc = line.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            rows.append([XPreformatted(esc, styles["codesrc" if source else "code"])])
+            rows.append([XPreformatted(esc, styles["codesrc" if (source or small) else "code"])])
         else:
             rows.append([Spacer(1, row_h)])  # keep blank lines
     style = [

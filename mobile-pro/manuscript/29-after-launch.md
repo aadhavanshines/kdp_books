@@ -8,7 +8,7 @@ The first thing to set up, before launch, is crash and error reporting. A servic
 
 - **Upload source maps** with every build and update, so stack traces point to your TypeScript, not minified code. The services' Expo integrations do this during EAS builds.
 - **Watch the store dashboards too.** The Play Console's Android vitals report crashes and **ANRs** ("App Not Responding", when the app freezes for several seconds). Google uses these rates in ranking and may warn users about apps above its thresholds. App Store Connect and Xcode show crashes and hangs for iOS.
-- **Track the crash-free rate per release.** Professional apps aim for well above 99 percent of users without a crash. A new release that drops the rate gets its staged rollout halted.
+- **Track the crash-free rate per release.** A common target is well above 99 percent of users without a crash; set yours from your own baseline. A new release that drops the rate gets its staged rollout halted.
 - **Add context, not personal data.** Attach the screen name and the user's ID, never their phone number or address.
 
 A prompt that turns a crash into a fix:

@@ -56,6 +56,8 @@ Stripe's React Native SDK (`@stripe/stripe-react-native`) offers a ready-made **
 
 ```tsx
 const { initPaymentSheet, presentPaymentSheet } = useStripe();
+// The country where your merchant account is registered (example only).
+const merchantCountryCode = 'IN';
 
 async function pay(orderId: string) {
   // 1. Your server creates the PaymentIntent and returns its client secret.
@@ -64,9 +66,8 @@ async function pay(orderId: string) {
   const init = await initPaymentSheet({
     merchantDisplayName: 'Platter',
     paymentIntentClientSecret: clientSecret,
-    // Your merchant account's country, not the customer's.
-    applePay: { merchantCountryCode: 'US' },
-    googlePay: { merchantCountryCode: 'US', testEnv: true },
+    applePay: { merchantCountryCode },
+    googlePay: { merchantCountryCode, testEnv: true },
   });
   if (init.error) return showError(init.error.message);
   const { error } = await presentPaymentSheet();
@@ -76,7 +77,7 @@ async function pay(orderId: string) {
 }
 ```
 
-The code is an outline, not a drop-in: check names and options against the SDK's current documentation. `US` stands for a merchant registered in the United States; use the country of the business that actually takes the payment, because wallet availability, currency and eligibility all depend on it. Apple Pay also needs a merchant ID and a payment processing certificate set up in your Apple Developer account and in Stripe, and the SDK's config plugin to add the entitlement; Google Pay needs the Google Pay API enabled for production. Neither wallet works in Expo Go.
+The code is an outline, not a drop-in: check names and options against the SDK's current documentation. `merchantCountryCode` must be the country where the business taking the payment is registered (`IN` is only an example), not the customer's country, because wallet availability, currency and eligibility all depend on it. Apple Pay also needs a merchant ID and a payment processing certificate set up in your Apple Developer account and in Stripe, and the SDK's config plugin to add the entitlement; Google Pay needs the Google Pay API enabled for production. Neither wallet works in Expo Go.
 
 On the server, the `payment_intent.succeeded` webhook, with Stripe's signature header verified over the raw request body, is what marks the order paid.
 

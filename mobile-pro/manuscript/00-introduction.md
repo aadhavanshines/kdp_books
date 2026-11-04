@@ -26,7 +26,7 @@ All five are original. Their names, brands, restaurants, products, people, shows
 
 **Every screen is a real capture.** The phone images are screenshots of the apps running on a 393-by-852-point phone screen at three times the pixel density, and the TV images are full 1920-by-1080 captures with the remote's focus visible. The phones and TVs around them are drawn frames.
 
-**Everything was checked.** By the end, the workspace held more than 300 automated tests across the four apps, the design system, the API client and the server, plus 80 for the TV app. Typecheck, lint and tests had to pass before any app was called done.
+**Everything was checked.** By the end, the workspace held more than 300 automated tests across the four apps, the design system, the API client and the server, plus more than 80 for the TV app. Typecheck, lint and tests had to pass before any app was called done.
 
 
 ## Who This Book Is For

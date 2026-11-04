@@ -48,7 +48,7 @@ Upload the first `.aab` by hand to the **internal testing** track and add up to 
 
 ## Step 5: Closed Testing (12 Testers for 14 Days)
 
-For a new personal account, create a **closed testing** track, add at least 12 testers (an email list or a Google Group), and send them the opt-in link. They must stay opted in for 14 consecutive days. Use the time well:
+For a personal developer account created after 13 November 2023, create a **closed testing** track, add at least 12 testers (an email list or a Google Group), and send them the opt-in link. They must stay opted in for 14 consecutive days. Use the time well:
 
 - Ask testers to use the app for real tasks and send feedback, with a simple form or an email address.
 - Watch the Play Console's crash and ANR reports (Chapter 29).
@@ -88,7 +88,7 @@ about for me to check.
 
 ## Key Takeaways
 
-- In 2026, Play requires a one-time $25 registration fee, target API 36 (API 34 for TV), signed App Bundles and, for new personal accounts, a 12-tester, 14-day closed test.
+- In 2026, Play requires a one-time $25 registration fee, target API 36 (API 34 for TV), signed App Bundles and, for personal accounts created after 13 November 2023, a 12-tester, 14-day closed test.
 - Complete every App content declaration carefully; give reviewers working access.
 - Test on the internal track first, use the closed test for real feedback, then release to production with a staged rollout.
 - Most rejections come from access, data safety, metadata, permissions or payments; fix exactly what the reviewer reports.

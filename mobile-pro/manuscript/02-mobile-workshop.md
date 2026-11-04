@@ -32,12 +32,13 @@ The first run walks you through signing in with your Claude account or an API ke
 ## Get the Book's Code
 
 ```
-$ git clone https://github.com/aadhavanshines/vibe-coding-professional-mobile-apps
+$ git clone \
+    https://github.com/aadhavanshines/vibe-coding-professional-mobile-apps
 $ cd vibe-coding-professional-mobile-apps
 $ npm install
 ```
 
-The address in the first command is a single line; it wraps here only to fit the page.
+The backslash continues the first command on the next line, which works in macOS and Linux terminals and in Git Bash. In Windows PowerShell, type it as one line without the backslash.
 
 The repository is a **monorepo**: one repository holding several projects that share code. Its layout is the one Claude was given in `CLAUDE.md`:
 
