@@ -72,6 +72,8 @@ How does the app hear about those events? Three options are common:
 - **WebSockets:** a two-way connection. Powerful, but more machinery than tracking needs.
 - **Server-Sent Events (SSE):** a one-way stream of events from server to app over an ordinary HTTP response. Exactly right for "tell me when my order changes".
 
+![How an order moves on screen: the simulator advances the order, the server streams each change, and the app's hook updates the screen.](images/live-stream.png)
+
 Here is the server side:
 
 ```ts
@@ -87,6 +89,8 @@ React Native doesn't ship a browser `EventSource`, so `packages/api/src/sse.ts` 
 ```
 
 `useOrderStream` writes every event into the React Query cache, so any screen showing that order updates by itself: the tracking screen, the orders list, the active order card on the home screen. Location events update only the rider's position and the estimated arrival time, which is what the map animates.
+
+![One event stream drives three different tracking screens: Platter's rider on the map, Cartly's shipment steps and Minutely's countdown.](images/fig-live-orders.jpg)
 
 ## The Typed Client and React Query
 

@@ -4,7 +4,7 @@ Every prompt in this book, in one place. The session prompts are the exact text 
 
 ## The Session Prompts
 
-These eight prompts built everything in this book, in order. Each ran in a fresh session with the repository's `CLAUDE.md` loaded.
+These prompts built everything in this book, in order. Each ran in a fresh session with the repository's `CLAUDE.md` loaded.
 
 ### Session 1: The Foundation
 
@@ -22,12 +22,6 @@ These eight prompts built everything in this book, in order. Each ran in a fresh
 
 ```text
 @include sessions/03-cartly.prompt.md
-```
-
-### Session 3b: Finishing Cartly
-
-```text
-@include sessions/03b-cartly-finish.prompt.md
 ```
 
 ### Session 4: Lumo

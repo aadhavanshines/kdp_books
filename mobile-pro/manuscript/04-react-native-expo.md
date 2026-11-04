@@ -65,6 +65,8 @@ In Expo Router, the files under `src/app` are the app's screens, and the folders
 
 A folder name in parentheses, like `(tabs)`, groups screens without adding to the address. Square brackets mark a parameter, so `/restaurant/r-12` opens the restaurant page with `id` set to `r-12`.
 
+![Platter's routes as files: each file in src/app is a screen, folders group screens, and [id] files take a parameter from the URL.](images/router-tree.png)
+
 The root layout wires everything together:
 
 ```tsx
@@ -80,6 +82,8 @@ And the tab bar:
 ```
 
 Notice that every color comes from `useTheme()`, the icon changes between outline and filled when the tab is active, and the tab bar's height adds the bottom safe-area inset so it clears the home indicator on modern phones. Session 2's screenshots caught an earlier version of this tab bar clipping its labels; the fixed height is the result.
+
+![The three kinds of navigation in one journey: a tab (Home), a screen pushed on the stack (the restaurant), and a sheet that slides over it (customizing a dish).](images/fig-navigation.jpg)
 
 ## Platform Differences
 

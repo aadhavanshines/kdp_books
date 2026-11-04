@@ -62,6 +62,8 @@ All four phone apps talk to one local server. Start it in its own terminal and l
 $ npm run server
 ```
 
+![How the pieces connect while you develop: Metro serves the app's code to the browser, emulator, simulator or phone, and the API server provides its data.](images/dev-setup.png)
+
 The first start creates a SQLite database file and fills it with the fictional city of Northbay: 24 restaurants with 870 menu items, 60 products with 416 reviews, 20 people with 112 posts and 40 stories, and 120 grocery items. To sign in to any app, use the demo phone number 9876543210 and the one-time code 123456; the server prints codes to its terminal instead of sending text messages.
 
 ## See an App in Your Browser
@@ -71,6 +73,8 @@ The quickest way to see an app is the browser:
 ```
 $ npm run web -w apps/platter
 ```
+
+![The first screen of each app: Platter, Cartly, Lumo and Minutely, each asking for a mobile number. Sign in with 9876543210 and the code 123456.](images/fig-first-run.jpg)
 
 Expo starts a development server and opens the app in a browser tab. Use the browser's device toolbar (in Chrome, press F12 and choose a phone size) so the app gets a phone-shaped screen. Replace `platter` with `cartly`, `lumo` or `minutely` for the other apps.
 

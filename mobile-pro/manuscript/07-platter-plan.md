@@ -51,7 +51,7 @@ The prompt doesn't repeat the PRD; it points to it. What it adds is the standard
 
 ## What the Session Did
 
-The session ran for 63 minutes over 121 turns and cost $10.17. Claude started, as asked, by writing a plan to `apps/platter/PLAN.md`: the routes, the components and data each screen needed, and what was missing from the shared packages. Then it built screen by screen.
+Claude started, as asked, by writing a plan to `apps/platter/PLAN.md`: the routes, the components and data each screen needed, and what was missing from the shared packages. Then it built screen by screen.
 
 Its report summarized the result in its own words: "Every screenshot comes from a Playwright run that drives the real UI against the live server: log in with OTP, search, add dishes, apply a coupon, tip, place the order, then watch tracking." Playwright is a browser automation tool; Claude wrote a script that used the app like a real user and photographed each screen along the way.
 

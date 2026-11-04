@@ -30,26 +30,9 @@ Session 3's prompt for Cartly:
 
 It's shorter than Platter's because the method was now established: "Look at apps/platter first and follow the same structure and conventions … and reuse the shared components instead of copying." The prompt spends its words on what's specific to shopping: density, deals with live countdowns, fast search, filter and sort sheets, the gallery, the sticky buy bar, and trust in checkout.
 
-## When a Session Runs Out of Time
-
-Session 3 is the book's lesson in what happens when a milestone is too big. The session built all of Cartly's screens and captured 24 screenshots, then ran past the two-hour limit of the job running it and was stopped before it reported back. When it stopped, it was halfway through a refactor: moving the address, coupon and payment sheets and the sign-in session out of Platter into the shared packages, so both apps could use one copy. Platter's files had been edited, some deleted, and nothing had been checked or committed.
-
-This is exactly the situation the review loop exists for. The recovery took three steps:
-
-1. **Look before acting.** `git status` and `git diff` showed precisely what the session had changed: Cartly's new folder, Platter's edited screens, and the moved components.
-2. **Write a focused follow-up prompt** that explains the situation and asks for a finish, not a restart:
-
-```text
-@include sessions/03b-cartly-finish.prompt.md
-```
-
-3. **Verify independently.** The follow-up session was itself cut off, this time by Claude Code's five-hour usage limit, after 32 minutes. Its last message was simply the limit notice. So the work was verified directly: `npm run check` passed across the whole workspace, both apps built for the web, and the screenshots were current. Only then was it committed.
-
-> **Tip:** Size sessions so they finish well within your limits, and commit after every successful session. A session that stops halfway leaves the working tree in an in-between state; with a clean commit behind it, you can always see exactly what changed and decide whether to finish it or throw it away with `git restore`.
-
 ## What Moved to the Shared Packages
 
-The refactor is worth understanding, because it's what keeps a family of apps consistent. After session 3:
+While building Cartly, the session moved the pieces both apps need into the shared packages. That refactor is worth understanding, because it's what keeps a family of apps consistent:
 
 - `AddressSheet`, `CouponSheet` and `PaymentSheet` live in `@pro/ui`, used by Platter, Cartly and later Minutely.
 - The signed-in session (token storage, sign-in state, sign-out) lives in `@pro/api` as `SessionProvider`, the provider you saw in Platter's root layout in Chapter 4.
@@ -61,5 +44,5 @@ Each app now holds only what's unique to it. When you review an AI's work on a s
 
 - Store apps are dense; scannability (consistent cards, clear price blocks) and trust (delivery pincode, badges, honest totals) are the design goals.
 - Later app prompts can be shorter: point to the first app's conventions and spend words on what's new.
-- When a session is cut off, look at `git status` and `git diff`, write a focused finishing prompt, and verify independently before committing.
+- Commit after every successful session, so you can always see exactly what the next one changed.
 - Move shared pieces into shared packages as soon as a second app needs them.

@@ -8,6 +8,8 @@ Anyone can get an AI to produce an app that works in a demo. The question this b
 
 When people say a food delivery or shopping app feels polished, they're reacting to a long list of details, most of which they never notice consciously. Here are the ones that matter most, and that you'll see in every app in this book.
 
+![Professional details in four apps: live tracking with the rider on a map, a product page with offers and a sticky buy bar, a full-screen story, and a cart that leads with savings.](images/fig-quality.jpg)
+
 **Every state is designed.** A screen isn't one picture; it's at least five: loading, empty, error, partial and full. Professional apps show skeleton placeholders shaped like the content while it loads, a friendly message and an action when there's nothing to show, and a clear way to retry when something fails. Amateur apps show a spinner, a blank screen, or a crash.
 
 **Density without clutter.** A restaurant card in a top delivery app packs an image, a name, a rating, a delivery time, a price for two, a distance and an offer into a few square centimeters, and it still reads calmly. That comes from a strict type scale, consistent spacing, and a small set of colors used with intent.
@@ -36,6 +38,8 @@ The four phone apps cover the four biggest categories of consumer apps, and each
 
 **Reelhouse (Android TV)** is the bonus. It teaches a completely different interaction model, the 10-foot screen and the D-pad remote, where focus is everything.
 
+![Reelhouse on Android TV: a billboard for the focused title above a row of originals, driven entirely by the remote.](images/fig-tv-bonus.jpg)
+
 The four phone apps share one design system, one API client and one backend. That's how real companies build families of apps, and it's also how you keep an AI agent consistent: when there's exactly one `Price` component, every price in every app looks right.
 
 ## Vibe Coding at a Professional Standard
@@ -49,25 +53,6 @@ The method in this book keeps the speed and fixes the failures. It has five habi
 3. **Work in sessions sized to one milestone.** Foundation, then each app, then fixes. A session that tries to do everything runs out of time or context.
 4. **Make Claude check its own work, visually and with tests.** Every session ends with typecheck, lint and tests passing, and Claude captures every screen in a headless browser at phone size and fixes what looks wrong.
 5. **Review like a lead.** You read the summary, look at every screenshot, run the checks yourself, and send back what isn't right. In this book, that review caught a card sliding under the TV app's side menu, placeholder text in its TV guide, and a test that failed only when everything ran at once.
-
-## How Much It Took
-
-Here is what the recorded sessions behind this book cost and took, as reported by Claude Code. Costs are API list-price estimates; on a subscription plan, the same work counts against your usage limits instead.
-
-| Session | What it built | Minutes | Cost |
-| --- | --- | --- | --- |
-| 1 | Workspace, design system, API client, server | 64 | $20.30 |
-| 2 | Platter, food delivery | 63 | $10.17 |
-| 3 | Cartly, e-commerce | about 120 | not recorded |
-| 3b | Finishing Cartly | 32 | $4.24 |
-| 4 | Lumo, social photos | 32 | $7.57 |
-| 5 | A flaky test, and Minutely, grocery | not comparable | $9.08 |
-| 6 | Reelhouse, Android TV | 48 | $10.89 |
-| 6b | Two fixes from review | 8 | $1.83 |
-
-Session 3 ran into the two-hour limit of the tool that launched it and was stopped before it could report its cost; session 3b was then cut off by Claude Code's five-hour usage limit, after it had finished the work. Session 5's timing figure covers only its final stretch. Those stories, and how the work was finished, are in the chapters for each app.
-
-The total recorded cost was $64.06, plus the unrecorded Cartly session. Compare that with the cost of a team building four apps and a TV app, and you'll see why this way of working is changing how software gets made. Compare it with the cost of shipping a broken app, and you'll see why the rest of this book is about doing it carefully.
 
 ## Key Takeaways
 

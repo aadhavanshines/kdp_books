@@ -116,7 +116,7 @@ The manuscript text, code, screenshots and cover were produced with AI assistanc
 - ISBN: not required for Kindle
 - **KDP Select: enroll** (Kindle Unlimited). The eBook must be exclusive to Amazon for each 90-day term; the paperback is not affected.
 - Territories: All territories
-- Royalty: 70%. On Amazon.com the 70% band runs from $2.99 to $12.99, so $12.99 qualifies. The 70% option deducts a delivery fee per megabyte. The EPUB is about 4.4 MB because the book is full of screenshots (already reduced to 1200 px wide for Kindle); at the US rate of $0.15 per MB that is roughly $0.66 per sale. KDP shows the exact converted size and fee on the pricing page.
+- Royalty: 70%. On Amazon.com the 70% band runs from $2.99 to $12.99, so $12.99 qualifies. The 70% option deducts a delivery fee per megabyte. The EPUB is about 6.2 MB because the book is full of screenshots and diagrams (screenshots already reduced to 1200 px wide for Kindle); at the US rate of $0.15 per MB that is roughly $0.94 per sale. KDP shows the exact converted size and fee on the pricing page.
 - **List price: $12.99 USD**
 
 ## Paperback Settings
@@ -129,6 +129,6 @@ The manuscript text, code, screenshots and cover were produced with AI assistanc
   - Paperback cover finish: Glossy (suits the dark cover and the screenshots)
 - Manuscript: upload `dist/paperback-interior-6x9.pdf`
 - Cover: choose "Upload a cover you already have" and upload `dist/paperback-cover.pdf` (dark) or `dist/paperback-cover-white.pdf` (white). Use the same style as the Kindle cover you choose.
-- **List price: $49.99 USD.** Premium color printing is expensive: at 274 pages, KDP's US printing cost is roughly $1.00 plus $0.07 per page, about $20. That leaves a royalty of roughly $10 per copy (60% of the list price minus printing). Check the royalty calculator on the pricing page before publishing, since printing costs change.
+- **List price: $49.99 USD.** Premium color printing is expensive: at 272 pages, KDP's US printing cost is roughly $1.00 plus $0.07 per page, about $20. That leaves a royalty of roughly $10 per copy (60% of the list price minus printing). Check the royalty calculator on the pricing page before publishing, since printing costs change.
 
-> The paperback cover is sized for exactly the page count in `dist/build-info.json` (274 pages) on color paper (0.002347 in per page, a 0.643 in spine). KDP's free ISBN barcode is printed automatically in the white box on the back cover. If the page count changes, rebuild so the spine width updates.
+> The paperback cover is sized for exactly the page count in `dist/build-info.json` (272 pages) on color paper (0.002347 in per page, a 0.638 in spine). KDP's free ISBN barcode is printed automatically in the white box on the back cover. If the page count changes, rebuild so the spine width updates.

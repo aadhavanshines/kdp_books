@@ -43,7 +43,7 @@ Three choices in this prompt made the session work:
 
 ## What the Session Built
 
-Session 6 ran for 48 minutes over 124 turns and cost $10.89. It reported 76 tests passing and 25 screenshots, every one taken by driving the app with arrow keys, Enter and Escape only.
+Session 6 reported 76 tests passing and 25 screenshots, every one taken by driving the app with arrow keys, Enter and Escape only.
 
 ### Profiles and Home
 
@@ -149,7 +149,7 @@ Looking through the 25 screenshots found two problems the session hadn't noticed
 @include sessions/06b-reelhouse-fixes.prompt.md
 ```
 
-Session 6b ran for under eight minutes and cost $1.83. It made the rail opaque with a short fade, clipped rows at the rail's edge with a tested helper, wrote a one-line synopsis for every program, made a missing synopsis a type error, and added a test that rejects placeholder text and overlong lines. It also caught its own regression: its first, wider fade dimmed the first letter of "Island Time", which it saw in the re-captured screenshot and fixed. The TV app finished with 80 tests passing.
+Session 6b made the rail opaque with a short fade, clipped rows at the rail's edge with a tested helper, wrote a one-line synopsis for every program, made a missing synopsis a type error, and added a test that rejects placeholder text and overlong lines. It also caught its own regression: its first, wider fade dimmed the first letter of "Island Time", which it saw in the re-captured screenshot and fixed. The TV app finished with 80 tests passing.
 
 The screenshot session itself had found three more focus bugs while capturing: the rail's group memory overrode its current section, right on the seek bar jumped to Pause, and My list had no initial focus.
 

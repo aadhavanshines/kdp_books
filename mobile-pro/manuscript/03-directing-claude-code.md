@@ -29,7 +29,7 @@ The work was split into milestones, each a single Claude Code session:
 3. The TV app.
 4. Short follow-up sessions for fixes found in review.
 
-Why not one giant prompt? Because a session has a budget of time and context. Session 3, which built Cartly, ran for two hours and was stopped by the job runner before it finished; the next session had to complete its work. A milestone per session means each one ends with something whole, checked and committed.
+Why not one giant prompt? Because a session has a limited amount of context, and a smaller task gets more careful attention. A milestone per session means each one ends with something whole, checked and committed.
 
 ## Running a Recorded Session
 
@@ -39,7 +39,7 @@ You'll normally use Claude Code interactively: type a prompt, watch it work, ans
 @include sessions/run.sh
 ```
 
-`claude -p` runs one prompt and exits. `--permission-mode auto` lets Claude work without stopping for approval at each step, while still blocking risky actions; use it only in a project folder you've backed up with Git, and review the results. `--output-format json` returns the final reply along with the number of turns, the duration and the cost, which is where every cost figure in this book comes from.
+`claude -p` runs one prompt and exits. `--permission-mode auto` lets Claude work without stopping for approval at each step, while still blocking risky actions; use it only in a project folder you've backed up with Git, and review the results. `--output-format json` returns the final reply in a form the script can save, so every session's report is kept with its prompt.
 
 ## Anatomy of a Good Session Prompt
 
@@ -48,6 +48,8 @@ Here is the prompt for session 1, which built the foundation for all four apps:
 ```text
 @include sessions/01-foundation.prompt.md
 ```
+
+![The five parts of every session prompt in this book: context, the task, the quality bar, verification and the report.](images/session-anatomy.png)
 
 It follows a pattern you'll see in every prompt in this book:
 

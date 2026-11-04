@@ -41,11 +41,11 @@ The same post always looks the same, every post looks different, and the scenes 
 @include sessions/04-lumo.prompt.md
 ```
 
-Two lines are new compared with the earlier app prompts. "With the story viewer captured mid-story and a heart burst captured on a post if you can" asks for screenshots of motion, which is hard to capture and easy to skip. And "keep the work focused so it fits in one session of about an hour" came straight from the lesson of Cartly's overlong session.
+Two lines are worth noticing. "With the story viewer captured mid-story and a heart burst captured on a post if you can" asks for screenshots of motion, which is hard to capture and easy to skip. And "keep the work focused so it fits in one session of about an hour" keeps the milestone small enough to finish and check properly.
 
 ## What the Session Did
 
-Session 4 ran for 32 minutes over 112 turns and cost $7.57, the shortest of the four app sessions, helped by everything the earlier sessions had put into the shared packages. It added `PhotoScene`, seven photo filters, `StoryProgress`, `HeartBurst` and a `useDoubleTap` hook to the design system, and story ordering, story stepping and chat titles to the API package. The server already had the routes Lumo needed.
+Session 4 was helped by everything the earlier sessions had put into the shared packages. It added `PhotoScene`, seven photo filters, `StoryProgress`, `HeartBurst` and a `useDoubleTap` hook to the design system, and story ordering, story stepping and chat titles to the API package. The server already had the routes Lumo needed.
 
 Its report included three fixes it made while checking screenshots (a timestamp wrapping in Messages, a hard-edged dark band at the top of stories, and loud pink outline buttons on profiles, which it made quiet gray) and two honest gaps: story replies don't send anything yet, because the server has no endpoint for them, and tagging offers only the people in your stories row, because there's no "following" list endpoint. It also warned that running `expo start` had rewritten two configuration files, which it restored.
 

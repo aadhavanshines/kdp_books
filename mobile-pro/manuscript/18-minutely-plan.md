@@ -50,7 +50,7 @@ Session 5 found it. React Query hands cache updates to components with a zero-de
 
 ## What the Session Did
 
-Session 5 ran for about 53 minutes and cost $9.08. It wrote a plan to `apps/minutely/PLAN.md`, built the app on the shared packages, and found that the server already had everything Minutely needed. It added two things to the design system, each with a test: `CountdownTimer` gained fill and track colors, because the white ring was invisible on the green tracking header, and `CartBar` gained `tone="primary"`, so Minutely's bar could be green instead of the accent yellow.
+Session 5 wrote a plan to `apps/minutely/PLAN.md`, built the app on the shared packages, and found that the server already had everything Minutely needed. It added two things to the design system, each with a test: `CountdownTimer` gained fill and track colors, because the white ring was invisible on the green tracking header, and `CartBar` gained `tone="primary"`, so Minutely's bar could be green instead of the accent yellow.
 
 Its screenshot review fixed six problems before it finished: the header wrapping onto three lines, a search hint that read `Search "Search "bread""`, a category grid with three columns instead of four, prices breaking across lines on narrow cards, filter chips cut off at the edge, and a pay button that read "Pay ₹683UPI".
 

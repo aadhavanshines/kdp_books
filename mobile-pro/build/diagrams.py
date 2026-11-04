@@ -213,6 +213,119 @@ def payment_flow():
     return img
 
 
+def dev_setup():
+    img, d = canvas(1000)
+    # where the app runs
+    box(d, (60, 70, 520, 220), "Browser", "npm run web", "cartly", size=38)
+    box(d, (60, 290, 520, 440), "Android emulator", "API at 10.0.2.2:4000", "minutely", size=38)
+    box(d, (60, 510, 520, 660), "iPhone simulator", "Mac with Xcode", "lumo", size=38)
+    box(d, (60, 730, 520, 880), "Your phone", "Expo Go or a dev build", "platter", size=38)
+    # Metro
+    box(d, (640, 330, 1000, 620), "Metro", "Expo's dev server\nbundles your code\nand reloads it", "shared", size=40)
+    # server
+    box(d, (1110, 330, 1540, 620), "API server", "npm run server\nlocalhost:4000\nSQLite + live events", "server", size=40)
+    for y in (145, 365, 585, 805):
+        arrow(d, (525, y), (635, 475), both=True)
+    arrow(d, (1005, 475), (1105, 475), both=True)
+    label(d, (W / 2, 950), "The app's code comes from Metro; its data comes from the API server.", 30, MUTED)
+    return img
+
+
+def session_anatomy():
+    img, d = canvas(1060)
+    parts = [
+        ("1. Context", "Read CLAUDE.md, docs/PRD.md and docs/DESIGN.md", "shared"),
+        ("2. The task", "One milestone: the app, its screens, its tabs", "platter"),
+        ("3. The quality bar", "Patterns users expect, named one by one", "cartly"),
+        ("4. Verification", "Screenshots at phone size, then typecheck, lint, tests", "minutely"),
+        ("5. The report", "What was built, what was fixed, what is still missing", "lumo"),
+    ]
+    y = 60
+    for i, (t, sub_, kind) in enumerate(parts):
+        box(d, (200, y, 1400, y + 150), t, sub_, kind, size=40)
+        if i < len(parts) - 1:
+            arrow(d, (800, y + 152), (800, y + 192))
+        y += 195
+    label(d, (W / 2, 1030), "Every session prompt in this book follows these five parts.", 30, MUTED)
+    return img
+
+
+def router_tree():
+    img, d = canvas(1080)
+    mono = font("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", 34)
+    rows = [
+        ("src/app/", None, 0),
+        ("_layout.tsx", "Stack: the whole app", 1),
+        ("login.tsx", "/login", 1),
+        ("(tabs)/", None, 1),
+        ("_layout.tsx", "Tab bar", 2),
+        ("index.tsx", "/  (Home tab)", 2),
+        ("search.tsx", "/search", 2),
+        ("orders.tsx", "/orders", 2),
+        ("profile.tsx", "/profile", 2),
+        ("restaurant/[id].tsx", "/restaurant/r-04", 1),
+        ("order/[id].tsx", "/order/ord_123", 1),
+        ("cart.tsx", "/cart", 1),
+    ]
+    y = 60
+    for name, route, depth in rows:
+        x = 90 + depth * 60
+        d.text((x, y), name, font=mono, fill=INK if route else BRAND["platter"][1])
+        if route:
+            d.line([(700, y + 20), (900, y + 20)], fill=LINE, width=3)
+            d.text((930, y), route, font=font(REG, 34), fill=BRAND["shared"][1])
+        y += 78
+    label(d, (W / 2, 1030), "Expo Router: every file is a screen, and its path is its URL.", 30, MUTED)
+    return img
+
+
+def brand_palette():
+    img, d = canvas(980)
+    brands = [
+        ("Platter", "food delivery", "#FC5A1E", "#1BA672"),
+        ("Cartly", "shopping", "#2453FF", "#FFC21A"),
+        ("Lumo", "social photos", "#DD2A7B", "#0095F6"),
+        ("Minutely", "10-minute grocery", "#0C831F", "#F8CB46"),
+        ("Reelhouse", "Android TV", "#7C5CFF", "#22D3EE"),
+    ]
+    hexrgb = lambda h: tuple(int(h[i:i + 2], 16) for i in (1, 3, 5))
+    y = 60
+    for name, what, primary, accent in brands:
+        d.text((70, y + 30), name, font=font(BOLD, 44), fill=INK)
+        d.text((70, y + 88), what, font=font(REG, 30), fill=MUTED)
+        d.rounded_rectangle([520, y, 1000, y + 140], 24, fill=hexrgb(primary))
+        d.text((760, y + 70), "primary  " + primary, font=font(BOLD, 32), fill=WHITE, anchor="mm")
+        d.rounded_rectangle([1040, y, 1520, y + 140], 24, fill=hexrgb(accent))
+        dark = sum(hexrgb(accent)) > 450
+        d.text((1280, y + 70), "accent  " + accent, font=font(BOLD, 32), fill=INK if dark else WHITE, anchor="mm")
+        y += 170
+    label(d, (W / 2, 940), "One design system, five brands: screens ask for roles, never for colors.", 30, MUTED)
+    return img
+
+
+def live_stream():
+    img, d = canvas(1000)
+    steps = [
+        ("Order simulator", "moves the order:\nconfirmed, preparing,\nout for delivery", "server"),
+        ("Event bus", "publishes status\nand rider location", "server"),
+        ("SSE stream", "GET /orders/:id/events\nsnapshot, then events", "shared"),
+        ("useOrderStream", "updates the order\nin the React Query cache", "cartly"),
+        ("Tracking screen", "map, timeline and\nETA re-render", "platter"),
+    ]
+    xs = [60, 640, 1120]
+    pos = [(60, 80), (640, 80), (1120, 80), (640, 560), (1120, 560)]
+    for (t, s_, k), (x, y) in zip(steps, pos):
+        box(d, (x, y, x + 420, y + 300), t, s_, k, size=38)
+    arrow(d, (485, 230), (635, 230))
+    arrow(d, (1065, 230), (1115, 230))
+    arrow(d, (1330, 385), (1060, 560))
+    arrow(d, (1065, 710), (1115, 710))
+    d.text((80, 600), "One stream, three apps:", font=font(BOLD, 34), fill=INK)
+    for i, t in enumerate(["Platter: the rider on the map", "Cartly: shipment steps", "Minutely: the countdown ring"]):
+        d.text((80, 660 + i * 56), "\u2022 " + t, font=font(REG, 32), fill=MUTED)
+    return img
+
+
 def build_diagrams(out_dir):
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -220,7 +333,12 @@ def build_diagrams(out_dir):
                      ("review-loop", review_loop),
                      ("release-flow", release_flow),
                      ("tv-focus", tv_focus),
-                     ("payment-flow-mobile", payment_flow)]:
+                     ("payment-flow-mobile", payment_flow),
+                     ("dev-setup", dev_setup),
+                     ("session-anatomy", session_anatomy),
+                     ("router-tree", router_tree),
+                     ("brand-palette", brand_palette),
+                     ("live-stream", live_stream)]:
         fn().save(out / f"{name}.png", dpi=(300, 300), optimize=True)
 
 

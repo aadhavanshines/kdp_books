@@ -34,6 +34,8 @@ Every brand defines the same set of roles: `primary` for the main action, `prima
 | Minutely | Basil green `#0C831F` | Butter `#F8CB46` |
 | Reelhouse TV | Violet `#7C5CFF` | Cyan `#22D3EE` |
 
+![The five brands of the design system. Every component asks for a role such as primary or accent, so the same button takes each app's color.](images/brand-palette.png)
+
 The theme is selected once, at the top of each app, with `<ThemeProvider brand="platter">`, and any component reads it with `useTheme()`:
 
 ```tsx
@@ -85,6 +87,8 @@ By the end of the book, `packages/ui` held about fifty components. The ones you'
 | `Art`, `ArtTile` | The 3D illustrations, by name, on soft gradients |
 | `PhotoScene` | Lumo's illustrated "photos", composed from a post's seed |
 | `HeartBurst`, `StoryProgress` | Lumo's like animation and story progress bars |
+
+![The same shared components in three brands: Platter's bill, Cartly's cart and Minutely's bill and tips, each built from one design system.](images/fig-shared-ui.jpg)
 
 Several of these were added by the app sessions rather than the foundation session, because the app prompts said: "add missing pieces to the shared packages (with tests) rather than inside the app." Platter's session added `CartBar`, `BillDetails`, `TipSelector`, `OtpInput` and others; when Cartly needed the same address, coupon and payment sheets, its session moved them out of Platter into the shared package so both apps use one copy.
 

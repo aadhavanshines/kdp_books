@@ -40,6 +40,17 @@ PHONES = {
     # chapter 1: the four apps at a glance
     "fig-suite": ("mix", [("platter", "02-home"), ("cartly", "01-home"),
                           ("lumo", "01-feed"), ("minutely", "02-home")]),
+    # chapters 1 to 6
+    "fig-quality": ("mix", [("platter", "09-tracking"), ("cartly", "07-product"),
+                            ("lumo", "05-story-viewer"), ("minutely", "06-cart")]),
+    "fig-first-run": ("mix", [("platter", "01-login"), ("cartly", "24-login"),
+                              ("lumo", "18-login"), ("minutely", "01-login")]),
+    "fig-navigation": ("platter", ["02-home", "04-restaurant", "05-customize"]),
+    "fig-shared-ui": ("mix", [("platter", "06b-cart-bill"), ("cartly", "10-cart"),
+                              ("minutely", "06b-cart-bill")]),
+    "fig-live-orders": ("mix", [("platter", "09-tracking"),
+                                ("cartly", "16-order-details"),
+                                ("minutely", "08-tracking")]),
     # Platter
     "platter-opener": ("platter", ["02-home", "04-restaurant", "09-tracking"]),
     "platter-login": ("platter", ["01-login", "01b-otp"]),
@@ -99,6 +110,7 @@ TVS = {
     "tv-next": "18-player-next-episode",
     "tv-guide": "19-live-tv-guide",
     "tv-kids": "25-kids-home",
+    "fig-tv-bonus": "06-home-originals",
 }
 
 
