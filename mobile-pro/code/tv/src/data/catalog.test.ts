@@ -24,6 +24,7 @@ import {
   resumePoint,
   rowsFor,
   searchTitles,
+  trendingSearches,
   TITLES,
   top10,
   timeSlots,
@@ -167,6 +168,20 @@ describe('browsing', () => {
     expect(similar).toHaveLength(5);
     expect(similar.map((t) => t.id)).not.toContain('starfall');
     expect(similar[0]!.genres.some((g) => starfall.genres.includes(g))).toBe(true);
+  });
+});
+
+describe('trending searches', () => {
+  it('shows a Kids profile only searches that find titles it may watch', () => {
+    const chips = trendingSearches(kids);
+    expect(chips.length).toBeGreaterThan(2);
+    for (const chip of chips) expect(searchTitles(chip, kids).length).toBeGreaterThan(0);
+    expect(chips).not.toContain('Ember Crown');
+    expect(chips).not.toContain('Thriller');
+  });
+
+  it('shows everyone else the full list', () => {
+    expect(trendingSearches(PROFILES.find((p) => !p.kids))).toContain('Ember Crown');
   });
 });
 

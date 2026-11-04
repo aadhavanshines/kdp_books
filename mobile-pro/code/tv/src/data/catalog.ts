@@ -1026,3 +1026,16 @@ export function isOnNow(p: Pick<Programme, 'start' | 'minutes'>, now: number = G
 export function timeSlots(start: number = GUIDE_START, hours: number = GUIDE_HOURS): number[] {
   return Array.from({ length: hours * 2 }, (_, i) => start + i * 30);
 }
+
+/**
+ * Trending chips for a profile. A Kids profile sees only searches that find
+ * titles it may watch, topped up with its own popular titles.
+ */
+export function trendingSearches(profile?: Pick<Profile, 'kids'> | null): string[] {
+  if (!profile?.kids) return [...TRENDING_SEARCHES];
+  const safe = TRENDING_SEARCHES.filter((t) => searchTitles(t, profile).length > 0);
+  const extra = top10(profile)
+    .map((t) => t.name)
+    .filter((n) => !safe.includes(n));
+  return [...safe, ...extra].slice(0, TRENDING_SEARCHES.length);
+}

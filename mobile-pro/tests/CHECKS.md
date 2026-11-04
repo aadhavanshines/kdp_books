@@ -8,7 +8,7 @@ Final state: 274 pages (6 x 9 in, premium color), 30 chapters in seven parts, ap
 | --- | --- |
 | Sessions | 8 Claude Code 2.1.316 sessions (`sessions/`): prompts for all 8, full results for 7. Session 3 (Cartly) hit a 2-hour limit and has no result file; 3b finished it. Logged cost $64.06 plus the unlogged session 3 |
 | Workspace (`npm run check` in `code/`) | TypeScript strict, ESLint and every test pass: 316 Jest tests across the four apps and two packages, and 97 Vitest tests in the server; re-run on 2 November 2026 after the second review's fixes |
-| Reelhouse TV (`tv/`) | Typecheck, lint and 80 Jest tests pass (session 6b) |
+| Reelhouse TV (`tv/`) | Typecheck, lint and 82 Jest tests pass |
 | Flaky test | The Cartly order-details test was fixed at its cause in session 5 and passed four full parallel runs |
 | Screenshots | Every figure is a capture of the real web build in headless Chromium (393 x 852 at 3x for phones, 1920 x 1080 for TV), framed by `build/frames.py`; every figure was viewed and the text checked against it |
 | Android TV prebuild | `EXPO_TV=1 npx expo prebuild --platform android --clean`: LEANBACK_LAUNCHER, leanback not required, touchscreen not required, 320 x 180 banner, app name |
@@ -33,11 +33,11 @@ A separate review on a Mac ran the four phone apps on an Android 16 emulator thr
 | Node 20.19 stated; Expo 58 needs 22.13+ | `engines`, `.nvmrc`, Chapter 2, README | (engines read from the installed packages) |
 | 9 printed excerpts ended mid-block silently | Short ranges extended; the build now adds `// ...` to any excerpt that ends inside a block | Bracket-balance scan of every `@include` range |
 
-A second emulator pass confirmed the Lumo photo fix and the keyboard fix on all four logins and Lumo chat (the bottom sheet and Platter rating screen were not exercised). The TV app's web build was driven at 1920 x 1080 with remote keys: profiles, hero, rows, player, Back and the Kids filter work. In this container, a Playwright run of the same build at 1920 x 1080 confirmed the side menu by remote: Left from the first card focuses Home, Down moves to Movies, Enter opens it. Native focus on Android TV is still unrun.
+A second emulator pass confirmed the Lumo photo fix and the keyboard fix on all four logins and Lumo chat (the bottom sheet and Platter rating screen were not exercised). The TV app's web build was driven at 1920 x 1080 with remote keys: profiles, hero, rows, player, Back and the Kids filter work. In this container, a Playwright run of the same build at 1920 x 1080 confirmed the side menu by remote: Left from the first card focuses Home, Down moves to Movies, Enter opens it. A third review built Reelhouse natively and ran it on an Android 16 TV emulator with D-pad input: launch, focus across profiles, rows and the side menu, Live TV guide, Search keyboard, player and Back, My list, the Kids profile, and exit to the TV home screen all worked with no crashes. It found Kids trending chips naming non-Kids titles; `trendingSearches` now filters them by profile (`catalog.test.ts`). The same review confirmed the Platter re-pricing on the phone emulator: the button showed ₹506.75 and the order charged ₹506.75, and the next cart started from Home.
 
 ## Not verified
 
-No app was run on an iPhone simulator, a physical phone or a TV, or as a store build. No store submission, payment provider, push service or analytics service was used. Maestro flows in Chapter 22 and the production prompts in Part VI were not run.
+No app was run on an iPhone simulator, a physical phone or a real TV, or as a store build. No store submission, payment provider, push service or analytics service was used. Maestro flows in Chapter 22 and the production prompts in Part VI were not run.
 
 ## Book
 

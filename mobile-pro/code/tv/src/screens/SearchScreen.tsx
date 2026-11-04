@@ -12,7 +12,7 @@ import { CONTENT_LEFT } from '../components/layout';
 import { Rail } from '../components/Rail';
 import { Text } from '../components/Text';
 import { TitleGrid } from '../components/TitleGrid';
-import { searchTitles, top10, TRENDING_SEARCHES } from '../data/catalog';
+import { searchTitles, top10, trendingSearches } from '../data/catalog';
 import { FocusGroup } from '../focus/FocusGroup';
 import { useApp } from '../state/AppState';
 import { s } from '../theme/scale';
@@ -113,7 +113,7 @@ export function SearchScreen({ initialQuery = '' }: { initialQuery?: string }) {
               Trending searches
             </Text>
             <FocusGroup id="trending" style={styles.chips}>
-              {TRENDING_SEARCHES.map((t) => (
+              {trendingSearches(profile).map((t) => (
                 <Focusable
                   key={t}
                   accessibilityLabel={`Search for ${t}`}

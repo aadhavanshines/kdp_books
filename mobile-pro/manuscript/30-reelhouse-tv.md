@@ -175,7 +175,7 @@ From Google's documentation in October 2026:
 
 ### Testing on an Emulator or a TV
 
-The build machine for this book had no emulator support, so Reelhouse was checked on the web and through prebuild only; its native focus wiring has been type-checked but never run on a device. On your computer, create an Android TV emulator in Android Studio (an Android TV system image, API 31 or later), then:
+Reelhouse has been built natively and run on an Android 16 TV emulator, driven with the D-pad, but not on a real TV. On your computer, create an Android TV emulator in Android Studio (an Android TV system image, API 31 or later), then:
 
 ```text
 cd tv
