@@ -1,0 +1,34 @@
+{
+  "name": "saas-suite",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint . --max-warnings=0",
+    "test": "npm run test --workspaces --if-present",
+    "check": "npm run typecheck && npm run lint && npm run test",
+    "db:generate": "npm run db:generate -w @saas/core",
+    "db:migrate": "npm run db:migrate -w @saas/core",
+    "db:seed": "npm run db:seed -w @saas/core",
+    "dev:billora": "npm run dev -w @saas/billora",
+    "screenshots:billora": "npm run screenshots -w @saas/billora"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "26.6.6",
+    "eslint": "10.14.0",
+    "eslint-config-next": "16.4.5",
+    "globals": "16.4.0",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.1",
+    "vitest": "5.1.0"
+  }
+}

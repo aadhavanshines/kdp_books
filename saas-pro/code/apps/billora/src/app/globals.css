@@ -1,0 +1,14 @@
+@import "@saas/ui/styles.css";
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  :focus-visible {
+    outline-color: var(--ring);
+  }
+}

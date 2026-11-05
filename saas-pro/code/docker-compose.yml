@@ -1,0 +1,24 @@
+# Local PostgreSQL 16 for the SaaS suite.
+#   docker compose up -d
+# The `saas` role is allowed to create databases so the test harness can
+# create (and drop) a fresh database for every test run.
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: saas
+      POSTGRES_PASSWORD: saas
+      POSTGRES_DB: saas_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - saas-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U saas -d saas_dev"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  saas-pg:
