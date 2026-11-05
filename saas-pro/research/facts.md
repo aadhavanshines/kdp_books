@@ -1,0 +1,14 @@
+# Facts and Their Sources (checked 5 November 2026)
+
+| # | Fact | Source (how checked) |
+| --- | --- | --- |
+| 1 | Current npm versions: next 16.4.5 (3 Nov 2026), react 19.3.1, typescript 7.0.2, drizzle-orm 0.45.4, drizzle-kit 0.31.11, better-auth 1.7.18, stripe 23.1.0, razorpay 2.9.8, resend 6.37.0, zod 4.6.7, tailwindcss 4.3.4, @anthropic-ai/sdk 1.5.0, vitest 5.1.0, @playwright/test 1.64.1, pg 8.23.1 | `npm view <pkg> version` |
+| 2 | Next.js 16: Turbopack is the default bundler; `middleware.ts` is renamed `proxy.ts` (exported function `proxy`, Node.js runtime); Cache Components are opt-in via config; async `params`/`searchParams` required; minimum Node.js 20.9 | nextjs.org/blog/next-16 (search results quoting it) |
+| 3 | Auth.js (formerly NextAuth.js) is maintained by the Better Auth team since 22 September 2025; existing users keep receiving security fixes. Better Auth announced joining Vercel on 7 July 2026 | better-auth.com/blog/authjs-joins-better-auth; better-auth.com/blog/better-auth-joins-vercel |
+| 4 | Stripe in India: new Indian businesses can't sign up on the website; accounts are by invitation, for registered businesses, focused on international payments (since May 2024; no change found in 2026) | support.stripe.com/questions/india-faq; docs.stripe.com/india-exports |
+| 5 | Razorpay Subscriptions: create a plan (`POST /v1/plans`), create a subscription per customer, Razorpay charges automatically; pause/resume/cancel endpoints; webhook events include subscription.authenticated, .activated, .charged, .pending, .halted, .cancelled, .completed, .updated, .paused, .resumed | razorpay.com/docs/payments/subscriptions; razorpay.com/docs/webhooks/subscriptions |
+| 6 | GST tax invoice contents are set by Rule 46 of the CGST Rules, 2017 (invoice number and date, supplier and recipient GSTIN, HSN/SAC, taxable value, tax rate and amounts, place of supply with state name and code for inter-state supplies, and more). Same-state supply: CGST + SGST; inter-state: IGST | CGST Rules 2017, Rule 46 (via Tally, Taxmann summaries) |
+| 7 | GST e-invoicing applies to taxpayers whose aggregate turnover exceeded ₹5 crore in any financial year from 2017-18, from 1 August 2023 (Notification No. 10/2023-Central Tax, 10 May 2023) | EY, Taxmann, Taxscan summaries of the notification |
+| 8 | India's Digital Personal Data Protection Rules, 2025 were notified in November 2025 and phase in over about 18 months: Consent Manager registration from about November 2026, most obligations from about May 2027 | Hogan Lovells, Mondaq, AZB analyses |
+| 9 | Claude Code CLI used: 2.1.318; latest Claude models: Opus 5.5 (`claude-opus-5-5`), Sonnet 5.5 (`claude-sonnet-5-5`), Haiku 5.5 (`claude-haiku-5-5`) | `claude --version`; Anthropic model list |
+| 10 | Local build machine: Node.js 22.23, PostgreSQL 16, Chromium for screenshots | `node -v`, `psql --version` |
