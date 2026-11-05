@@ -57,3 +57,4 @@ Also provide a `docker-compose.yml` with PostgreSQL for readers.
   Database tests run against a real PostgreSQL created per test run.
 - Before saying a task is done: run typecheck, lint and tests for the
   whole workspace and fix everything they report.
+- Don't commit or push; leave your changes in the working tree for review.
