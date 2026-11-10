@@ -1,6 +1,6 @@
 from draw import *
 
-CATEGORY = "Dinosaurs"
+CATEGORY = "Dinosaurs and Prehistoric Creatures"
 
 TREX_BODY = p("M88 78 C60 96 62 150 100 158 Q140 166 184 168 Q150 140 136 112 Q124 86 112 78 Z", fill="white")
 TREX_LEGS = behind(r(78, 146, 18, 30, 8, fill="white"), r(110, 150, 18, 26, 8, fill="white"), z=-2)

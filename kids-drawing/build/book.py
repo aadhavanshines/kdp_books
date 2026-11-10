@@ -36,6 +36,20 @@ TIPS = [
 ]
 
 
+_FONTS = {}
+
+
+def width(s: str, size: float, weight: int = 400) -> float:
+    """Text width in points, measured from the Fredoka font files."""
+    from fontTools.ttLib import TTFont
+    w = 700 if weight >= 700 else 600 if weight >= 600 else 400
+    if w not in _FONTS:
+        f = TTFont(ROOT / "fonts" / f"Fredoka-{w}.ttf")
+        _FONTS[w] = (f.getBestCmap(), f["hmtx"], f["head"].unitsPerEm)
+    cmap, hmtx, upm = _FONTS[w]
+    return sum(hmtx[cmap.get(ord(ch), cmap[ord("?")])][0] for ch in s) * size / upm
+
+
 def esc(t: str) -> str:
     return t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
@@ -193,7 +207,7 @@ def how_page(num, by):
         ("2", "Look for the black lines.", "In each step, the black lines are the new ones to draw. "
                                           "Gray lines are the ones you drew before."),
         ("3", "Draw in the “Your turn!” box.", "Copy one step at a time. Use a pencil and draw lightly."),
-        ("4", "Finish it your way.", "Go over your lines with a marker, erase the extras, then color it in."),
+        ("4", "Finish it your way.", "Go over your final lines with a dark pencil or crayon. Erase the extra pencil marks, then color your picture."),
     ]
     y = 270
     for n, head, body in tips:
@@ -255,10 +269,12 @@ def contents_page(num, cats):
     out = [text(W / 2, 90, "What's Inside", 32, 700, "middle")]
     y = 150
     for cat, first, count in cats:
-        out.append(text(110, y, cat, 18, 600))
-        out.append(text(110, y + 20, f"{count} drawings", 12, 400, "start", SOFT))
-        out.append(f'<line x1="330" y1="{y - 5}" x2="470" y2="{y - 5}" stroke="{LINE}" stroke-width="1.4" stroke-dasharray="2 5"/>')
-        out.append(text(500, y, f"page {first}", 16, 600, "end"))
+        out.append(text(96, y, cat, 18, 600))
+        out.append(text(96, y + 20, f"{count} drawings", 12, 400, "start", SOFT))
+        x_dots = 96 + width(cat, 18, 600) + 12
+        x_num = 516 - width(f"page {first}", 16, 600) - 12
+        out.append(f'<line x1="{x_dots:.1f}" y1="{y - 5}" x2="{x_num:.1f}" y2="{y - 5}" stroke="{LINE}" stroke-width="1.4" stroke-dasharray="2 5"/>')
+        out.append(text(516, y, f"page {first}", 16, 600, "end"))
         y += 50
     out.append(folio(num))
     return page("".join(out))
@@ -267,7 +283,7 @@ def contents_page(num, cats):
 def divider_page(num, cat, subjects, part):
     out = [f'<rect x="76" y="110" width="460" height="120" rx="60" fill="{INK}"/>',
            text(W / 2, 160, f"Part {part}", 18, 600, "middle", "#ffffff"),
-           text(W / 2, 205, cat, 34, 700, "middle", "#ffffff")]
+           text(W / 2, 205, cat, min(34, 34 * 410 / width(cat, 34, 700)), 700, "middle", "#ffffff")]
     pick = subjects[:4]
     for k, s in enumerate(pick):
         x = 110 + (k % 2) * 220

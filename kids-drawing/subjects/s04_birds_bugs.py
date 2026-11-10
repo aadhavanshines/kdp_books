@@ -1,6 +1,6 @@
 from draw import *
 
-CATEGORY = "Birds and Bugs"
+CATEGORY = "Birds and Little Creatures"
 
 SUBJECTS = [
     dict(name="Owl", steps=[
