@@ -31,7 +31,7 @@ Draw Step by Step
 <p><b>Inside you will find:</b></p>
 <ul>
 <li>100 original drawings in 11 fun themes: pets and farm friends, wild animals, under the sea, birds and little creatures, dinosaurs and prehistoric creatures, magic and monsters, outer space, things that go, yummy food, nature and weather, and things around us</li>
-<li>4 to 6 easy steps for each picture, plus a finished drawing to color</li>
+<li>4 or 5 easy steps for each picture, plus a finished &ldquo;Done!&rdquo; drawing</li>
 <li>Warm-up tracing pages to build pencil control: lines, waves, zigzags, circles and spirals</li>
 <li>Large 8.5 x 11 inch pages, one drawing per page</li>
 <li>A &ldquo;This book belongs to&rdquo; page, a free drawing page and a certificate to celebrate at the end</li>

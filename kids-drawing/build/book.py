@@ -80,6 +80,15 @@ def folio(num: int) -> str:
 
 
 # --------------------------------------------------------------- subjects
+def page_steps(subj: dict) -> list:
+    """At most five steps, so every page has room for the "Done!" box: a six-step
+    subject has its last two (small detail) steps drawn together as step 5."""
+    steps = subj["steps"]
+    if len(steps) > 5:
+        steps = steps[:4] + [[s for st in steps[4:] for s in st]]
+    return steps
+
+
 def subject_page(num: int, idx: int, subj: dict, cat: str) -> str:
     x0, x1 = frame(num)
     wid = x1 - x0
@@ -90,17 +99,17 @@ def subject_page(num: int, idx: int, subj: dict, cat: str) -> str:
     out.append(text(x0 + 72, TOP + 27, subj["name"], 30, 700))
     out.append(text(x1, TOP + 24, cat, 11, 400, "end", SOFT))
     # step grid
-    steps = subj["steps"]
+    steps = page_steps(subj)
     n = len(steps)
     gap = 10
     bw = (wid - 2 * gap) / 3
     bh = 150
     gy = TOP + 50
+    # steps first, a tip if there is room, and "Done!" always in the last (bottom-right) box
     cells = [("step", i) for i in range(n)]
-    if n < 6:
-        cells.append(("done", None))
-    while len(cells) < 6:
+    while len(cells) < 5:
         cells.append(("tip", None))
+    cells.append(("done", None))
     for k, (kind, i) in enumerate(cells):
         cx = x0 + (k % 3) * (bw + gap)
         cy = gy + (k // 3) * (bh + gap)
@@ -203,7 +212,7 @@ def how_page(num, by):
         out.append(f'<circle cx="{x + 14}" cy="124" r="10" fill="{INK}"/>')
         out.append(text(x + 14, 128.5, str(i + 1), 12, 700, "middle", "#ffffff"))
     tips = [
-        ("1", "Pick a picture you like.", "Every page shows a picture in small steps."),
+        ("1", "Pick a picture you like.", "Every page shows a picture in 4 or 5 small steps, and the \u201cDone!\u201d box shows the finished drawing."),
         ("2", "Look for the black lines.", "In each step, the black lines are the new ones to draw. "
                                           "Gray lines are the ones you drew before."),
         ("3", "Draw in the “Your turn!” box.", "Copy one step at a time. Use a pencil and draw lightly."),
