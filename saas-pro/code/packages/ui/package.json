@@ -7,7 +7,8 @@
     ".": "./src/index.ts",
     "./shell": "./src/shell/index.ts",
     "./format": "./src/format.ts",
-    "./styles.css": "./src/styles.css"
+    "./styles.css": "./src/styles.css",
+    "./table-params": "./src/table-params.ts"
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",
@@ -19,7 +20,8 @@
     "lucide-react": "1.69.0",
     "radix-ui": "1.8.1",
     "sonner": "2.0.8",
-    "tailwind-merge": "3.7.0"
+    "tailwind-merge": "3.7.0",
+    "zod": "4.6.7"
   },
   "peerDependencies": {
     "react": "^19.2.0",

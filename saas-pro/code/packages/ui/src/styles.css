@@ -3,10 +3,14 @@
  * <html data-brand="billora|slotra|wordloom|formora">. Components only use
  * roles (primary, accent, surface, muted, border, success, warning, danger),
  * so every brand and both colour schemes come from the variables below.
- * Dark mode follows the system unless <html data-theme="light|dark"> is set.
+ * Dark mode follows the system unless <html data-theme="light|dark"> is set
+ * (the ThemeToggle writes it, and a `theme` cookie so the server renders it).
  */
 @import "tailwindcss";
 @source "./";
+
+/* `dark:` utilities follow the same rule as the palette. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -179,4 +183,52 @@
     --accent: #a3e635; --accent-foreground: #1a2e05; --accent-soft: #1b2a0a; --accent-soft-foreground: #d9f99d;
     --ring: #60a5fa;
   }
+}
+
+/* Explicit choice from the theme toggle (same palette as the media query above). */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #0b1113;
+  --foreground: #e6ecee;
+  --surface: #121a1d;
+  --muted: #1a2427;
+  --muted-foreground: #9aa9ae;
+  --border: #243135;
+  --input: #34454a;
+  --success: #4ade80;
+  --success-soft: #0f2a1a;
+  --success-soft-foreground: #86efac;
+  --warning: #fbbf24;
+  --warning-soft: #2e2208;
+  --warning-soft-foreground: #fcd34d;
+  --danger: #f87171;
+  --danger-hover: #fca5a5;
+  --danger-foreground: #2a0606;
+  --danger-soft: #331012;
+  --danger-soft-foreground: #fca5a5;
+}
+:root[data-theme="dark"][data-brand="billora"],
+:root[data-theme="dark"]:not([data-brand]) {
+  --primary: #2dd4bf; --primary-hover: #5eead4; --primary-foreground: #042f2b;
+  --primary-soft: #0d2b29; --primary-soft-foreground: #99f6e4;
+  --accent: #fbbf24; --accent-foreground: #241500; --accent-soft: #2e2208; --accent-soft-foreground: #fcd34d;
+  --ring: #2dd4bf;
+}
+:root[data-theme="dark"][data-brand="slotra"] {
+  --primary: #a78bfa; --primary-hover: #c4b5fd; --primary-foreground: #1e0b4a;
+  --primary-soft: #221a3d; --primary-soft-foreground: #ddd6fe;
+  --accent: #fb7185; --accent-foreground: #3b0712; --accent-soft: #3b1219; --accent-soft-foreground: #fecdd3;
+  --ring: #a78bfa; --background: #0e0c14; --surface: #16131f; --muted: #1f1b2b; --border: #2c2640;
+}
+:root[data-theme="dark"][data-brand="wordloom"] {
+  --primary: #fdba74; --primary-hover: #fed7aa; --primary-foreground: #2a1203;
+  --primary-soft: #2e1a0c; --primary-soft-foreground: #fed7aa;
+  --accent: #fb923c; --accent-foreground: #2a1203; --accent-soft: #2e1a0c; --accent-soft-foreground: #fed7aa;
+  --ring: #fb923c; --background: #100d0a; --surface: #1a1612; --muted: #241e18; --border: #352c22;
+}
+:root[data-theme="dark"][data-brand="formora"] {
+  --primary: #60a5fa; --primary-hover: #93c5fd; --primary-foreground: #071a3d;
+  --primary-soft: #0f1f3d; --primary-soft-foreground: #bfdbfe;
+  --accent: #a3e635; --accent-foreground: #1a2e05; --accent-soft: #1b2a0a; --accent-soft-foreground: #d9f99d;
+  --ring: #60a5fa;
 }

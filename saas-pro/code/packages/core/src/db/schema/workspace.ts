@@ -107,7 +107,7 @@ export const auditLog = pgTable(
 
 export const emailStatusEnum = pgEnum("email_status", ["pending", "sent", "failed"]);
 
-/** Every email is written here first. A sender (next session) delivers it. */
+/** Every email is written here first. The sender (email/sender.ts) delivers it. */
 export const emailOutbox = pgTable(
   "email_outbox",
   {
@@ -121,8 +121,14 @@ export const emailOutbox = pgTable(
     workspaceId: uuid("workspace_id").references(() => workspaces.id, { onDelete: "set null" }),
     status: emailStatusEnum("status").notNull().default("pending"),
     attempts: integer("attempts").notNull().default(0),
+    /** When the sender may next try (backoff after a failure). */
+    nextAttemptAt: timestamp("next_attempt_at", { withTimezone: true }).notNull().defaultNow(),
+    /** A sender claimed the row until then, so two instances never send it twice. */
+    lockedUntil: timestamp("locked_until", { withTimezone: true }),
+    lastError: text("last_error"),
+    providerMessageId: text("provider_message_id"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     sentAt: timestamp("sent_at", { withTimezone: true }),
   },
-  (t) => [index("email_outbox_status_created_idx").on(t.status, t.createdAt)],
+  (t) => [index("email_outbox_status_created_idx").on(t.status, t.createdAt), index("email_outbox_due_idx").on(t.status, t.nextAttemptAt)],
 );

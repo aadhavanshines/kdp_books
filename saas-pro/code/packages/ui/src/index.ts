@@ -15,3 +15,4 @@ export * from "./components/page-header";
 export * from "./components/skeleton";
 export * from "./components/spinner";
 export * from "./components/toast";
+export * from "./table-params";

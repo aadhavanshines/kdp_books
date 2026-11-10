@@ -47,7 +47,7 @@ export function createAuth(config: AuthConfig) {
       minPasswordLength: 10,
       revokeSessionsOnPasswordReset: true,
       sendResetPassword: async ({ user, url }) => {
-        await enqueueEmail(db, { to: user.email, kind: "auth.reset_password", ...resetPasswordTemplate({ product, name: user.name, url }) });
+        await enqueueEmail(db, { to: user.email, kind: "auth.reset_password", ...(await resetPasswordTemplate({ product, name: user.name, url })) });
       },
     },
     emailVerification: {
@@ -55,7 +55,7 @@ export function createAuth(config: AuthConfig) {
       sendOnSignIn: true,
       autoSignInAfterVerification: true,
       sendVerificationEmail: async ({ user, url }) => {
-        await enqueueEmail(db, { to: user.email, kind: "auth.verify", ...verifyEmailTemplate({ product, name: user.name, url }) });
+        await enqueueEmail(db, { to: user.email, kind: "auth.verify", ...(await verifyEmailTemplate({ product, name: user.name, url })) });
       },
     },
     socialProviders: google,
@@ -86,7 +86,7 @@ export function createAuth(config: AuthConfig) {
       magicLink({
         expiresIn: 300,
         sendMagicLink: async ({ email, url }) => {
-          await enqueueEmail(db, { to: email, kind: "auth.magic_link", ...magicLinkTemplate({ product, url }) });
+          await enqueueEmail(db, { to: email, kind: "auth.magic_link", ...(await magicLinkTemplate({ product, url })) });
         },
       }),
       // Must stay last: lets Server Actions set auth cookies.
