@@ -67,7 +67,7 @@ I own the copyright and I hold the necessary publishing rights.
 
 ## AI-Generated Content
 
-KDP asks whether a book contains AI-generated text, images or translations. The drawings were drawn by an AI (Claude, writing the vector artwork as code), and the short texts were written with it. Answer **Yes** for images and text and describe it, for example: "Illustrations were created with Claude (AI) as vector drawings, then reviewed and edited by the author."
+KDP asks whether a book contains AI-generated text, images or translations. The drawings were drawn by an AI (Claude, writing the vector artwork as code), and the short texts were written with it. The painted front-cover scene was made with an AI image model (GPT Image 2.6 on Higgsfield), using a reference sheet of the book's own characters. Answer **Yes** for images and text and describe it, for example: "Interior illustrations were created with Claude (AI) as vector drawings; the cover scene was generated with an AI image model. All were reviewed and edited by the author."
 
 ## Paperback Settings
 

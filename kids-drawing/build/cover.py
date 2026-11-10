@@ -87,6 +87,35 @@ def sparkles(pts):
     return "".join(out)
 
 
+ART = ROOT / "art" / "cover-front.jpg"   # painted cover art (Higgsfield), if present
+
+
+def painted_front(ox, h):
+    """The painted scene filling the front panel and its bleed, plus title, badge and author."""
+    import base64
+    from PIL import Image
+    im = Image.open(ART)
+    pw, ph = TW + BLEED, h                   # front panel plus outer bleed
+    # scale to cover, crop evenly top and bottom
+    sc = max(pw / im.width, ph / im.height)
+    iw, ih = im.width * sc, im.height * sc
+    data = base64.b64encode(ART.read_bytes()).decode()
+    cx = ox + TW / 2
+    o = [f'<image x="{ox + (pw - iw) / 2:.2f}" y="{(ph - ih) / 2:.2f}" width="{iw:.2f}" height="{ih:.2f}" '
+         f'preserveAspectRatio="none" href="data:image/jpeg;base64,{data}"/>']
+    o.append(f'<rect x="{ox + 34}" y="{BLEED + 34}" width="{TW - 68}" height="200" rx="34" fill="#ffffff" fill-opacity="0.93"/>')
+    o.append(text(cx, BLEED + 108, BOOK["title_line1"], 64, 700, "middle", NAVY))
+    o.append(f'<rect x="{cx - 196}" y="{BLEED + 128}" width="392" height="74" rx="37" fill="{CORAL}"/>')
+    o.append(text(cx, BLEED + 180, "100 Easy Drawings", 44, 700, "middle", "#ffffff"))
+    o.append(text(cx, BLEED + 224, "for Kids", 22, 600, "middle", NAVY))
+    o.append(f'<circle cx="{ox + TW - 66}" cy="{BLEED + 238}" r="44" fill="{SUN}" stroke="#ffffff" stroke-width="5"/>')
+    o.append(text(ox + TW - 66, BLEED + 233, "Ages", 15, 700))
+    o.append(text(ox + TW - 66, BLEED + 255, "4 to 8", 19, 700))
+    o.append(f'<rect x="{cx - 130}" y="{BLEED + TH - 54}" width="260" height="36" rx="18" fill="#ffffff"/>')
+    o.append(text(cx, BLEED + TH - 30, BOOK["author"], 18, 600, "middle", NAVY))
+    return "".join(o)
+
+
 def front(by, ox):
     """Front cover; ox is the x of its left trim edge."""
     cx = ox + TW / 2
@@ -174,18 +203,20 @@ def build(pages: int):
     w = 2 * BLEED + 2 * TW + spine
     h = 2 * BLEED + TH
     by = subjects()
+    fr = painted_front(BLEED + TW + pages * PER_PAGE * 72, 2 * BLEED + TH) if ART.exists() else None
     back_x, spine_x, front_x = BLEED, BLEED + TW, BLEED + TW + spine
+    fr = fr or front(by, front_x)
     sp = (f'<rect x="{spine_x}" y="0" width="{spine}" height="{h}" fill="{NAVY}"/>'
           f'<g transform="translate({spine_x + spine / 2 + 3.2} {h / 2}) rotate(90)">'
           + text(0, 0, f"Draw Step by Step  •  100 Easy Drawings  •  {BOOK['author']}", 9, 700, "middle", "#ffffff")
           + "</g>")
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w:.2f}pt" height="{h}pt" viewBox="0 0 {w:.2f} {h}">'
-           + background(w, h) + back(by, back_x) + sp + front(by, front_x) + "</svg>")
+           + background(w, h) + back(by, back_x) + sp + fr + "</svg>")
     dist = ROOT / "dist"
     (dist / "cover.pdf").write_bytes(cairosvg.svg2pdf(bytestring=svg.encode()))
     # front cover alone, for the eBook listing image and previews
     fsvg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{TW}" height="{TH}" '
-            f'viewBox="{front_x} {BLEED} {TW} {TH}">' + background(w, h) + front(by, front_x) + "</svg>")
+            f'viewBox="{front_x} {BLEED} {TW} {TH}">' + background(w, h) + fr + "</svg>")
     cairosvg.svg2png(bytestring=fsvg.encode(), write_to=str(dist / "front-cover.png"), output_width=1650)
     return w / 72, h / 72, spine / 72
 

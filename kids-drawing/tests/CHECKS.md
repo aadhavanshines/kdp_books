@@ -18,7 +18,7 @@ OK
 
 - Every one of the 100 subject pages was rendered and inspected: each step shows only new lines in black, drawings stay inside their boxes, and every page has a "Your turn!" area.
 - Front matter, warm-up pages, contents (page numbers match the dividers), 11 part dividers, certificate and free drawing page.
-- Cover: title and author legible, barcode area on the back is clear, spine text centered.
+- Cover: title and author legible, barcode area on the back is clear, spine text centered. The painted front art is 3072 x 4096 px, about 356 dpi across the 8.625 in front panel with bleed, and was inspected at 300 dpi.
 
 ## Not checked here
 
