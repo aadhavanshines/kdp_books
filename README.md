@@ -16,5 +16,6 @@ Book projects for Amazon Kindle Direct Publishing by **Aadhavan Muthurengan**.
 | Build Your Own AI Personal Agent: An Always-On Assistant That Chats Where You Do, Remembers, Learns Skills, Works on a Schedule and Runs Safely in a Sandbox, Built and Tested End to End in Python | Ready to upload (eBook and paperback) | [`personal-agent/`](personal-agent/) |
 | Data Structures and Algorithms in Python, Hands-On: Every Structure Built, Tested and Timed, with Interview Patterns, Exercises and Solutions | Ready to upload (eBook and paperback) | [`dsa-hands-on/`](dsa-hands-on/) |
 | Vibe Coding Professional Mobile Apps: Build Food Delivery, Shopping, Social and 10-Minute Grocery Apps for Android and iOS with AI, from First Prompt to Store Release, Plus a TV Streaming App Bonus | Ready to upload (eBook and color paperback) | [`mobile-pro/`](mobile-pro/) |
+| Draw Step by Step: 100 Easy Drawings for Kids: A Fun How-to-Draw Activity Book for Ages 4 to 8 with Cute Animals, Dinosaurs, Vehicles, Food, Space and More | Ready to upload (paperback) | [`kids-drawing/`](kids-drawing/) |
 
 Each book folder contains the Markdown manuscript, a build script, the KDP listing metadata, and the upload-ready files in `dist/`.
