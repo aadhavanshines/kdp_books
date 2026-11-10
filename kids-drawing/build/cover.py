@@ -107,7 +107,7 @@ def painted_front(ox, h):
     o.append(text(cx, BLEED + 108, BOOK["title_line1"], 64, 700, "middle", NAVY))
     o.append(f'<rect x="{cx - 196}" y="{BLEED + 128}" width="392" height="74" rx="37" fill="{CORAL}"/>')
     o.append(text(cx, BLEED + 180, "100 Easy Drawings", 44, 700, "middle", "#ffffff"))
-    o.append(text(cx, BLEED + 224, "for Kids", 22, 600, "middle", NAVY))
+    o.append(text(cx, BLEED + 224, "A Fun How-to-Draw Book for Kids", 22, 600, "middle", NAVY))
     o.append(f'<circle cx="{ox + TW - 66}" cy="{BLEED + 238}" r="44" fill="{SUN}" stroke="#ffffff" stroke-width="5"/>')
     o.append(text(ox + TW - 66, BLEED + 233, "Ages", 15, 700))
     o.append(text(ox + TW - 66, BLEED + 255, "4 to 8", 19, 700))
@@ -124,7 +124,7 @@ def front(by, ox):
     o.append(text(cx, BLEED + 118, BOOK["title_line1"], 64, 700, "middle", NAVY))
     o.append(f'<rect x="{cx - 196}" y="{BLEED + 140}" width="392" height="74" rx="37" fill="{CORAL}"/>')
     o.append(text(cx, BLEED + 192, "100 Easy Drawings", 44, 700, "middle", "#ffffff"))
-    o.append(text(cx, BLEED + 236, "for Kids", 22, 600, "middle", NAVY))
+    o.append(text(cx, BLEED + 236, "A Fun How-to-Draw Book for Kids", 22, 600, "middle", NAVY))
     # age badge
     o.append(f'<circle cx="{ox + TW - 70}" cy="{BLEED + 292}" r="46" fill="{SUN}" stroke="#ffffff" stroke-width="5"/>')
     o.append(text(ox + TW - 70, BLEED + 287, "Ages", 15, 700))
