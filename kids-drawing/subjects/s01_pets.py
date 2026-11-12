@@ -29,11 +29,10 @@ SUBJECTS = [
         [c(100, 96, 36, fill="white")],
         behind(*sym(e(84, 34, 11, 28, -8, fill="white"))) + sym(e(84, 38, 5, 17, -8)),
         sym(eye(87, 92)) + [p("M96 104 L104 104 L100 109 Z", fill="ink"),
-                            p("M100 109 L100 113 M92 113 Q96 118 100 113 Q104 118 108 113")],
-        behind(e(100, 156, 30, 26, fill="white")),
-        behind(*sym(e(80, 180, 13, 6, fill="white")), z=-0.5) +
-        sym(e(86, 140, 7, 9, fill="white")),
-        behind(c(132, 168, 9, fill="white"), z=-2) + sym(l(72, 102, 58, 98), l(72, 108, 58, 110)),
+                            p("M100 109 L100 113 M92 113 Q96 118 100 113 Q104 118 108 113")] +
+        sym(l(72, 102, 58, 98), l(72, 108, 58, 110)),
+        behind(e(100, 156, 30, 26, fill="white")) + sym(e(86, 140, 7, 9, fill="white")),
+        behind(*sym(e(80, 180, 13, 6, fill="white")), z=-0.5) + behind(c(132, 168, 9, fill="white"), z=-2),
     ]),
     dict(name="Mouse", steps=[
         [c(100, 102, 32, fill="white")],

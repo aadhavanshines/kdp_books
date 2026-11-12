@@ -85,15 +85,16 @@ def shape_svg(s: dict, color: str, width: float) -> str:
             f'stroke-width="{sw:.2f}" stroke-linecap="round" stroke-linejoin="round"/>')
 
 
-def step_svg(steps: list, upto: int, final: bool = False) -> str:
-    """SVG group (200 x 200 units) showing steps[0..upto], the last one new."""
+def step_svg(steps: list, upto: int, final: bool = False, wmul: float = 1.0) -> str:
+    """SVG group (200 x 200 units) showing steps[0..upto], the last one new.
+    ``wmul`` scales line widths (to keep them even when a drawing is enlarged)."""
     out = []
     n = 0
     for i, step in enumerate(steps[: upto + 1]):
         new = final or i == upto
         col, wid = (NEW, W_NEW) if new else (OLD, W_OLD)
         for s in step:
-            out.append((s.get("z", 0), n, shape_svg(s, col, wid)))
+            out.append((s.get("z", 0), n, shape_svg(s, col, wid * wmul)))
             n += 1
     out.sort()
     return "".join(t[2] for t in out)

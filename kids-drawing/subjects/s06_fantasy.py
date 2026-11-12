@@ -15,13 +15,15 @@ SUBJECTS = [
         behind(*sym(e(88, 168, 13, 6, fill="white"), ax=104), z=-0.5),
     ]),
     dict(name="Unicorn", steps=[
-        [e(100, 98, 30, 46, fill="white")],
-        behind(*sym(p("M78 66 L70 38 L92 56 Z", fill="white"))),
-        behind(p("M92 56 L100 12 L108 56 Z", fill="white"), z=-0.5) +
-        [l(94, 46, 106, 42), l(96, 34, 104, 31)],
-        sym(eye(87, 92)) + sym(p("M91 128 Q94 133 97 128")) + [p("M93 138 Q100 142 107 138")],
-        behind(cloud(72, 100, 16, 36, 7, 0.18, fill="white"), z=-1.5),
-        behind(r(78, 128, 44, 50, 12, fill="white"), z=-2),
+        [c(92, 72, 28, fill="white")] + [front(e(62, 92, 22, 16, -10, fill="white"))[0]],
+        behind(p("M100 48 L108 24 L116 52 Z", fill="white"), p("M86 46 L76 12 L96 42 Z", fill="white")) +
+        [l(82, 33, 90, 30), l(79, 23, 85, 21)],
+        front(eye(88, 66, 5), dot(48, 90, 2.2), p("M46 100 Q54 105 62 100"), z=2) +
+        behind(*[c(118 + 7 * k, 68 + 15 * k, 10, fill="white") for k in range(5)], z=-1.6),
+        behind(e(130, 144, 42, 26, fill="white"), z=-2) +
+        behind(p("M106 142 Q94 122 86 94 L116 74 Q126 104 146 136", fill="white"), z=-1.5),
+        behind(r(100, 156, 12, 26, 5, fill="white"), r(146, 156, 12, 26, 5, fill="white"), z=-2.5) +
+        behind(p("M168 134 Q194 142 186 172 Q176 152 164 148 Z", fill="white"), z=-2.5),
     ]),
     dict(name="Ghost", steps=[
         [p("M56 168 L56 90 Q56 40 100 40 Q144 40 144 90 L144 168 Q133 156 122 168 Q111 156 100 168 Q89 156 78 168 Q67 156 56 168 Z", fill="white")],

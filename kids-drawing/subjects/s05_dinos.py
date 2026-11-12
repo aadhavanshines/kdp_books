@@ -37,13 +37,13 @@ SUBJECTS = [
         [c(116, 124, 6), c(136, 134, 5), c(100, 140, 4)],
     ]),
     dict(name="Triceratops", steps=[
-        [e(122, 128, 46, 30, fill="white")],
-        behind(cloud(74, 102, 30, 30, 9, 0.12, fill="white"), z=-0.5),
-        front(e(58, 116, 26, 20, fill="white")),
-        front(p("M50 100 L38 72 L62 98 Z", fill="white"), p("M36 112 L20 104 L32 122 Z", fill="white"), z=2),
-        front(eye(58, 110, 4.5), p("M34 126 Q44 132 54 128"), z=3) + [c(70, 80, 3), c(90, 86, 3), c(98, 104, 3)],
-        behind(r(94, 138, 18, 30, 8, fill="white"), r(142, 138, 18, 30, 8, fill="white"), z=-2) +
-        behind(p("M164 120 Q188 126 196 146 Q178 140 162 140 Z", fill="white")),
+        [e(124, 128, 44, 30, fill="white")],
+        behind(c(86, 100, 32, fill="white"), z=-0.5) + behind(c(76, 76, 3), c(98, 74, 3), c(112, 92, 3), z=-0.4),
+        front(e(62, 118, 30, 22, fill="white")),
+        front(p("M60 100 L46 62 L72 98 Z", fill="white"), p("M36 112 L22 98 L40 106 Z", fill="white"), z=0.5),
+        front(eye(62, 112, 5), p("M36 128 Q46 134 56 130"), z=2) +
+        behind(r(96, 140, 18, 30, 8, fill="white"), r(142, 140, 18, 30, 8, fill="white"), z=-2) +
+        behind(p("M164 122 Q188 128 196 148 Q178 142 162 142 Z", fill="white")),
     ]),
     dict(name="Pterodactyl", steps=[
         front(e(100, 110, 16, 26, fill="white")),
@@ -72,8 +72,8 @@ SUBJECTS = [
     dict(name="Spinosaurus", steps=[
         [r(40, 44, 84, 32, 16, fill="white")],
         behind(TREX_BODY),
-        behind(p("M104 80 Q112 22 166 54 Q170 96 142 116 Z", fill="white"), z=-1.5) +
-        behind(l(116, 84, 124, 44), l(128, 94, 142, 50), l(138, 106, 158, 66), z=-1.2),
+        behind(p("M104 82 C108 28 172 28 166 84 Q158 102 142 116 Z", fill="white"), z=-1.5) +
+        behind(l(118, 84, 122, 44), l(132, 92, 142, 42), l(144, 104, 160, 56), z=-1.2),
         [eye(82, 56), dot(46, 54, 2.2), p("M44 68 Q70 74 100 70")],
         [p("M68 110 Q58 112 58 122")] + TREX_LEGS,
     ]),

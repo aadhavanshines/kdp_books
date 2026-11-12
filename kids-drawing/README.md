@@ -2,7 +2,7 @@
 
 *A Fun How-to-Draw Activity Book for Ages 4 to 8*, by Aadhavan Muthurengan. Black-and-white 8.5 x 11 in paperback, 120 pages, $7.99.
 
-100 original pictures in 11 themes. Each picture comes in 4 or 5 steps (six-step subjects show their last two detail steps together), with the new lines in black and the earlier lines in gray, a "Done!" picture to color, and a big "Your turn!" practice area. Front matter: title, copyright, "This book belongs to", how to use the book, two warm-up tracing pages and contents. At the end: a certificate and free drawing pages.
+100 original pictures in 11 themes. Each picture comes in 4 or 5 steps (six-step subjects show their last two detail steps together), with the new lines in black and the earlier lines in gray, a "Done!" picture to color, and a big "Your turn!" practice area with a light dot grid. Each drawing is scaled to fill its box. Front matter: title, copyright, "This book belongs to", how to use the book, two warm-up tracing pages and contents. At the end: a certificate and free drawing pages.
 
 ## Folders
 

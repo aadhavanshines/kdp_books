@@ -20,6 +20,13 @@ OK
 - Front matter, warm-up pages, contents (page numbers match the dividers), 11 part dividers, certificate and free drawing page.
 - Cover: title and author legible, barcode area on the back is clear, spine text centered. The painted front art is 3072 x 4096 px, about 356 dpi across the 8.625 in front panel with bleed, and was inspected at 300 dpi.
 
+## Second review changes
+
+- Every drawing is scaled to fill its box (up to 1.5x, centered, line thickness unchanged), so wide subjects such as the satellite, car, bus and airplane are no longer small. Drawings sit below the step badges.
+- Redrawn: Unicorn (side view), Seal, Triceratops; smoother Spinosaurus sail, Flamingo neck and Snail head.
+- Bunny, Train and Caterpillar now have five even steps instead of a crowded combined step 5.
+- The "Your turn!" area has a light dot grid to help place the first shape.
+
 ## Review corrections applied
 
 - Page 4 no longer suggests markers, which can bleed through a double-sided page; it says to go over final lines with a dark pencil or crayon.

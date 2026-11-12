@@ -59,9 +59,35 @@ def text(x, y, s, size=12, weight=400, anchor="start", color=INK, extra=""):
             f'fill="{color}" text-anchor="{anchor}" {extra}>{esc(s)}</text>')
 
 
-def drawing(steps, upto, x, y, size, final=False):
-    sc = size / 200
-    return f'<g transform="translate({x:.1f} {y:.1f}) scale({sc:.4f})">{step_svg(steps, upto, final)}</g>'
+_FIT = {}
+MAX_ZOOM = 1.5  # never enlarge a drawing more than this
+
+
+def bbox(steps) -> tuple:
+    """Bounding box (in canvas units) of a subject's finished drawing, lines included."""
+    key = repr(steps[0])[:300] + repr(steps[-1])[:300] + str(len(steps))
+    if key not in _FIT:
+        from PIL import Image, ImageOps
+        import io
+        svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 200 200">'
+               f'<rect width="200" height="200" fill="#fff"/>{step_svg(steps, len(steps) - 1, True)}</svg>')
+        im = Image.open(io.BytesIO(cairosvg.svg2png(bytestring=svg.encode()))).convert("L")
+        x0, y0, x1, y1 = ImageOps.invert(im).getbbox()
+        _FIT[key] = (x0 / 2, y0 / 2, x1 / 2, y1 / 2)
+    return _FIT[key]
+
+
+def drawing(steps, upto, x, y, w, h=None, final=False, natural=None):
+    """Draw a subject so its finished picture fills the w x h area (points), centered.
+    Lines keep the thickness they have at the natural size (min(w, h) / 200 points per unit)."""
+    h = w if h is None else h
+    x0, y0, x1, y1 = bbox(steps)
+    natural = natural or min(w, h) / 200
+    k = min(w / (x1 - x0), h / (y1 - y0), natural * MAX_ZOOM)
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    body = step_svg(steps, upto, final, wmul=natural / k)
+    return (f'<g transform="translate({x + w / 2:.1f} {y + h / 2:.1f}) scale({k:.4f}) '
+            f'translate({-cx:.2f} {-cy:.2f})">{body}</g>')
 
 
 def page(body: str) -> str:
@@ -115,13 +141,13 @@ def subject_page(num: int, idx: int, subj: dict, cat: str) -> str:
         cy = gy + (k // 3) * (bh + gap)
         out.append(f'<rect x="{cx:.1f}" y="{cy:.1f}" width="{bw:.1f}" height="{bh}" rx="12" '
                    f'fill="none" stroke="{LINE}" stroke-width="1.3"/>')
-        ds = bh - 8
+        ax, ay, aw, ah = cx + 8, cy + 32, bw - 16, bh - 38   # drawing area, below the badge row
         if kind == "step":
-            out.append(drawing(steps, i, cx + (bw - ds) / 2, cy + 6, ds))
+            out.append(drawing(steps, i, ax, ay, aw, ah, natural=0.71))
             out.append(f'<circle cx="{cx + 17:.1f}" cy="{cy + 17:.1f}" r="12" fill="{INK}"/>')
             out.append(text(cx + 17, cy + 22.5, str(i + 1), 14, 700, "middle", "#ffffff"))
         elif kind == "done":
-            out.append(drawing(steps, n - 1, cx + (bw - ds) / 2, cy + 6, ds, final=True))
+            out.append(drawing(steps, n - 1, ax, ay, aw, ah, final=True, natural=0.71))
             out.append(f'<rect x="{cx + 6:.1f}" y="{cy + 6:.1f}" width="54" height="22" rx="11" fill="{INK}"/>')
             out.append(text(cx + 33, cy + 21.5, "Done!", 12, 700, "middle", "#ffffff"))
         else:
@@ -142,6 +168,12 @@ def subject_page(num: int, idx: int, subj: dict, cat: str) -> str:
     ph = H - 44 - py
     out.append(f'<rect x="{x0}" y="{py}" width="{wid}" height="{ph}" rx="16" fill="none" '
                f'stroke="{INK}" stroke-width="1.6" stroke-dasharray="7 6"/>')
+    step_ = 24
+    dots = []
+    for gy_ in range(int(py + 24), int(py + ph - 12), step_):
+        for gx_ in range(int(x0 + 24), int(x0 + wid - 12), step_):
+            dots.append(f'<circle cx="{gx_}" cy="{gy_}" r="0.9"/>')
+    out.append(f'<g fill="#bdbdbd">{"".join(dots)}</g>')
     out.append(f'<rect x="{x0 + 16}" y="{py - 13}" width="104" height="26" rx="13" fill="#ffffff" '
                f'stroke="{INK}" stroke-width="1.6"/>')
     out.append(text(x0 + 68, py + 5.5, "Your turn!", 14, 700, "middle"))
@@ -151,7 +183,7 @@ def subject_page(num: int, idx: int, subj: dict, cat: str) -> str:
 
 # --------------------------------------------------------------- front matter
 def finished(subj, x, y, size):
-    return drawing(subj["steps"], len(subj["steps"]) - 1, x, y, size, final=True)
+    return drawing(subj["steps"], len(subj["steps"]) - 1, x, y, size, size, final=True)
 
 
 def title_page(all_subjects):
