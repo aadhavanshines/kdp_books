@@ -10,7 +10,7 @@
 | --- | --- |
 | `subjects/` | The 100 drawings, one file per theme. Each subject is a list of steps; each step is a list of shapes on a 200 x 200 canvas. |
 | `build/` | `draw.py` (the drawing language), `book.py` (interior PDF), `cover.py` (wrap cover and front PNG), `preview.py` (step sheets for checking art), `check.py` (KDP checks). |
-| `art/` | `cover-front.jpg`: the painted front-cover scene (made with an AI image model on Higgsfield from a reference sheet of the book's own characters, upscaled to 3072 x 4096). `cover.py` lays the title, age badge and author over it. |
+| `art/` | `cover-front.jpg` and `cover-back.jpg`: the painted front- and back-cover scenes; the front (made with an AI image model on Higgsfield from a reference sheet of the book's own characters, upscaled to 3072 x 4096). `cover.py` lays the title, age badge and author over it. |
 | `fonts/` | Fredoka (SIL Open Font License 1.1). |
 | `metadata/` | KDP listing details. |
 | `tests/` | `CHECKS.md`. |

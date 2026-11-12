@@ -289,7 +289,9 @@ def warmup_pages(start):
         ("Triangles and squares", "".join(f'<path d="M{80 + i * 120} 450 l40 -70 l40 70 z" {dash}/>' for i in range(2)) +
          "".join(f'<rect x="{320 + i * 110}" y="380" width="74" height="70" rx="6" {dash}/>' for i in range(2))),
         ("Spirals", "".join(
-            f'<path d="M{150 + i * 150} 580 m0 0 c0 -8 12 -8 12 0 c0 14 -24 14 -24 0 c0 -22 36 -22 36 0 c0 30 -48 30 -48 0 c0 -38 60 -38 60 0" {dash}/>'
+            f'<path transform="translate({130 + i * 170} 590) scale(1.9)" d="M0 0 c0 -8 12 -8 12 0 c0 14 -24 14 -24 0 '
+            f'c0 -22 36 -22 36 0 c0 30 -48 30 -48 0 c0 -38 60 -38 60 0" fill="none" stroke="{SOFT}" '
+            f'stroke-width="1.4" stroke-dasharray="1.1 3.7" stroke-linecap="round"/>'
             for i in range(3))),
     ]
     for k, rows in enumerate([rows1, rows2]):

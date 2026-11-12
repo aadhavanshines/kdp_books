@@ -20,6 +20,12 @@ OK
 - Front matter, warm-up pages, contents (page numbers match the dividers), 11 part dividers, certificate and free drawing page.
 - Cover: title and author legible, barcode area on the back is clear, spine text centered. The painted front art is 3072 x 4096 px, about 356 dpi across the 8.625 in front panel with bleed, and was inspected at 300 dpi.
 
+## Third review changes
+
+- Banana: the inner line no longer crosses the face. Pig: rounded ears. Dragon: redrawn with horns, cheek fins, a snout, two wings and a belly.
+- Warm-up spirals are larger.
+- Back cover: painted scene in the same style as the front (3072 x 4096 px), with the text panel and a clear barcode area. The flat-colored drawings, including an owl with mismatched eye colors, are no longer used on it.
+
 ## Second review changes
 
 - Every drawing is scaled to fill its box (up to 1.5x, centered, line thickness unchanged), so wide subjects such as the satellite, car, bus and airplane are no longer small. Drawings sit below the step badges.

@@ -38,7 +38,7 @@ PALETTE = {
     "Car": ("#4FA3F7", {2: "#555A66", 3: "#555A66"}),
     "Butterfly": ("#FF9F43", {0: "#6C5CE7", 5: "#6C5CE7"}),
     "Whale": ("#5DADE2", {}),
-    "Owl": ("#B98559", {1: "#FFFFFF", 2: "#FFFFFF", 3: "#FFB830", 4: "#7A5230"}),
+    "Owl": ("#B98559", {3: "#FFFFFF", 4: "#FFFFFF", 5: "#FFB830", 6: "#7A5230"}),
     "Ladybug": ("#FF5A4E", {}),
     "Puppy": ("#E6B98A", {1: "#FFF3E2", 3: "#E6B98A"}),
     "Frog": ("#7DD56F", {}),
@@ -156,9 +156,25 @@ def front(by, ox):
     return "".join(o)
 
 
+BACK_ART = ROOT / "art" / "cover-back.jpg"   # painted back-cover scene, if present
+
+
 def back(by, ox):
     cx = ox + TW / 2
-    o = [f'<rect x="{ox + 44}" y="{BLEED + 48}" width="{TW - 88}" height="330" rx="30" fill="#ffffff"/>',
+    painted = BACK_ART.exists()
+    o = []
+    if painted:
+        import base64
+        from PIL import Image
+        im = Image.open(BACK_ART)
+        pw, ph = TW + BLEED, TH + 2 * BLEED          # back panel plus outer bleed, from the sheet's left edge
+        sc = max(pw / im.width, ph / im.height)
+        iw, ih = im.width * sc, im.height * sc
+        data = base64.b64encode(BACK_ART.read_bytes()).decode()
+        o.append(f'<svg x="0" y="0" width="{pw}" height="{ph}" viewBox="0 0 {pw} {ph}">'
+                 f'<image x="{(pw - iw) / 2:.2f}" y="{(ph - ih) / 2:.2f}" width="{iw:.2f}" height="{ih:.2f}" '
+                 f'preserveAspectRatio="none" href="data:image/jpeg;base64,{data}"/></svg>')
+    o += [f'<rect x="{ox + 44}" y="{BLEED + 48}" width="{TW - 88}" height="330" rx="30" fill="#ffffff" fill-opacity="{0.94 if painted else 1}"/>',
          text(cx, BLEED + 100, "Anyone can draw,", 30, 700),
          text(cx, BLEED + 136, "one easy step at a time!", 30, 700, "middle", CORAL)]
     lines = [
@@ -175,14 +191,15 @@ def back(by, ox):
     for i, ln in enumerate(lines):
         anchor, x = ("middle", cx) if i < 3 else ("start", ox + 120)
         o.append(text(x, BLEED + 176 + i * 21, ln, 14.5, 400 if i < 3 else 600, anchor, "#2a2f45"))
-    names = ["Owl", "Whale", "Butterfly", "Frog", "Dragon", "Hot Air Balloon"]
+    names = [] if painted else ["Owl", "Whale", "Butterfly", "Frog", "Dragon", "Hot Air Balloon"]
     for k, nm in enumerate(names):
         x = ox + 64 + (k % 3) * 170
         y = BLEED + 392 + (k // 3) * 136
         o.append(art(by, nm, x, y, 132))
     # barcode area (KDP prints the barcode here)
     o.append(f'<rect x="{ox + TW - 44 - 144}" y="{BLEED + TH - 44 - 86}" width="144" height="86" fill="#ffffff"/>')
-    o.append(sparkles([(ox + 30, BLEED + 30, 8), (ox + 580, BLEED + 410, 8), (ox + 60, BLEED + 720, 9)]))
+    if not painted:
+        o.append(sparkles([(ox + 30, BLEED + 30, 8), (ox + 580, BLEED + 410, 8), (ox + 60, BLEED + 720, 9)]))
     return "".join(o)
 
 

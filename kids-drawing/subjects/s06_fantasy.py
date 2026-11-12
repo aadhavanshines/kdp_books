@@ -4,15 +4,17 @@ CATEGORY = "Magic and Monsters"
 
 SUBJECTS = [
     dict(name="Dragon", steps=[
-        [c(90, 70, 30, fill="white")],
-        behind(e(104, 134, 34, 34, fill="white")),
-        behind(*sym(p("M76 48 L66 24 L88 40 Z", fill="white"), ax=90), z=-0.5) +
-        sym(eye(80, 64), ax=90) + [dot(85, 76, 1.8), dot(95, 76, 1.8), p("M76 84 Q90 96 104 84"), p("M82 87 L84 93 L87 88")] +
-        behind(p("M84 42 L90 30 L96 42 Z", fill="white"), z=-0.4),
-        behind(p("M130 112 L174 78 L166 102 L186 104 L166 122 L138 128 Z", fill="white"), z=-2),
-        [p("M88 118 Q104 122 120 118"), p("M86 132 Q104 136 122 132"), p("M88 146 Q104 150 120 146")],
-        behind(p("M128 158 Q160 170 168 146"), p("M160 148 L172 128 L182 148 L170 144 Z", fill="white"), z=-2) +
-        behind(*sym(e(88, 168, 13, 6, fill="white"), ax=104), z=-0.5),
+        [e(100, 66, 34, 28, fill="white")],
+        behind(*sym(p("M82 44 Q70 26 84 18 Q88 32 94 40 Z", fill="white"),
+                    p("M68 58 L48 50 L60 66 L46 74 L68 78 Z", fill="white"))),
+        front(e(100, 82, 21, 12, fill="white")) +
+        front(dot(93, 78, 2), dot(107, 78, 2), p("M90 86 Q100 92 110 86"), p("M94 88 L96 93 L99 89"), z=2) +
+        sym(eye(86, 60)),
+        behind(p("M78 90 Q58 150 78 172 L122 172 Q142 150 122 90 Z", fill="white"), z=-2) +
+        behind(e(100, 138, 15, 24), l(87, 128, 113, 128), l(85, 140, 115, 140), l(88, 152, 112, 152), z=-1.8),
+        behind(*sym(p("M72 112 L32 82 L40 108 L20 114 L42 128 L68 134 Z", fill="white")), z=-3) +
+        behind(*sym(e(84, 174, 13, 6, fill="white")), z=-1.5) +
+        behind(p("M126 162 Q162 172 166 148"), p("M158 150 L170 130 L180 150 L168 146 Z", fill="white"), z=-3),
     ]),
     dict(name="Unicorn", steps=[
         [c(92, 72, 28, fill="white")] + [front(e(62, 92, 22, 16, -10, fill="white"))[0]],

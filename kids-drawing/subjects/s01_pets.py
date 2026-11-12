@@ -64,11 +64,11 @@ SUBJECTS = [
     ]),
     dict(name="Pig", steps=[
         [c(100, 96, 44, fill="white")],
-        behind(*sym(p("M64 72 Q50 40 64 38 Q80 42 92 56 Z", fill="white"))),
+        behind(*sym(e(64, 60, 15, 21, -35, fill="white"))) + behind(*sym(e(65, 62, 7, 11, -35)), z=-0.5),
         [e(100, 108, 20, 14, fill="white")] + sym(e(93, 108, 3, 5, fill="ink")),
         sym(eye(82, 86)) + [p("M88 128 Q100 136 112 128")] + sym(e(68, 110, 7, 4)),
         behind(e(100, 160, 40, 24, fill="white")) +
-        behind(*sym(r(70, 170, 14, 14, 4, fill="white")), z=-2),
+        behind(*sym(r(70, 170, 14, 14, 4, fill="white")), z=-2) +
         behind(p("M138 156 Q156 150 152 140 Q146 132 144 144 Q144 156 160 154"), z=-2),
     ]),
     dict(name="Chick", steps=[
