@@ -103,8 +103,15 @@ def build_paperback_cover(meta, pages, out_pdf, preview_png):
     fx = BLEED + tw + spine
     sp = [f'<rect x="{BLEED + tw:.2f}" y="0" width="{spine:.2f}" height="{H}" fill="{NAVY}"/>']
     if pages >= 79:
-        sp.append(f'<g transform="translate({BLEED + tw + spine / 2 + 5:.2f} {H / 2}) rotate(90)">'
-                  + text(0, 0, f"AI Made Easy for Seniors    •    {meta['author']}", 13, 700, "middle", "#FFFFFF")
+        # The text reads top to bottom, with the tops of the letters toward the front cover.
+        # Atkinson Hyperlegible Bold reaches 0.728 em above the baseline and 0.161 em below it.
+        # KDP wants 0.0625 in (4.5 pt) clear on each side of spine text, so size the text to
+        # fit and centre its ink (not its baseline) on the spine.
+        size = min(13, (spine - 2 * 5.5) / (0.728 + 0.161))
+        baseline = BLEED + tw + spine / 2 - size * (0.728 - 0.161) / 2
+        sp.append(f'<g transform="translate({baseline:.2f} {H / 2}) rotate(90)">'
+                  + text(0, 0, f"AI Made Easy for Seniors    •    {meta['author']}", round(size, 2), 700,
+                         "middle", "#FFFFFF")
                   + "</g>")
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W:.2f}pt" height="{H}pt" viewBox="0 0 {W:.2f} {H}">'
            + back(BLEED, BLEED, tw, th) + "".join(sp)

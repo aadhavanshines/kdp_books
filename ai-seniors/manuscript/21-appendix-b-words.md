@@ -4,15 +4,11 @@
 
 **AI assistant (or chatbot).** An app or website where you can have a written or spoken conversation with an AI.
 
-**App.** A program on a phone or tablet. You get apps from your device's official app store.
-
-**App store.** The official place to get apps: the App Store on iPhones and iPads, and Google Play (the Play Store) on Android devices.
+**App.** A program on a phone or tablet. You get apps from your device's official app store: the App Store on iPhones and iPads, and Google Play (the Play Store) on Android devices.
 
 **Browser.** The program you use to visit websites on a computer, phone or tablet.
 
-**Chat (or conversation).** One back-and-forth exchange with an AI assistant on one topic. You can start a new chat at any time.
-
-**Chat history.** The list of your past chats, which most assistants keep so you can return to them.
+**Chat (or conversation).** One back-and-forth exchange with an AI assistant on one topic. You can start a new chat at any time. Most assistants keep a list of your past chats, called your **chat history**, so you can return to them.
 
 **Cloud.** Computers owned by a company, reached over the internet, where your information can be stored or processed.
 
@@ -24,8 +20,6 @@
 
 **Link.** Words or a button you tap or click to go to a web page. Never tap links in suspicious messages.
 
-**Microphone icon.** A small picture of a microphone. Tap it to speak instead of typing.
-
 **Prompt.** The message or question you send to an AI assistant. In this book, prompts are shown in shaded boxes.
 
 **Scam.** A trick to steal money or information. Warning signs: pressure, secrecy, strange payment methods and unexpected contact.
@@ -34,7 +28,7 @@
 
 **Source.** Where information comes from. Some AI assistants show links to their sources under an answer.
 
-**Two-step sign-in (two-factor authentication).** Extra protection for an account: after your password, you also enter a code sent to your phone or email.
+**Two-step sign-in (two-factor authentication).** Extra protection: after your password, you enter a code sent to your phone or email.
 
 **Voice cloning.** Using AI to copy someone's voice from a recording. Scammers use it to pretend to be family members.
 

@@ -100,10 +100,10 @@ Answer **Yes** for text and images. Suggested wording: "Text was drafted with Cl
 | Bleed | No bleed |
 | **Large print** | **Tick the "Large print" box** (body text is 16 pt) |
 | Cover finish | Glossy |
-| Interior file | `dist/paperback-interior-8.5x11.pdf` (145 pages) |
-| Cover file | `dist/paperback-cover.pdf` (17.577 x 11.250 in, spine 0.327 in) |
+| Interior file | `dist/paperback-interior-8.5x11.pdf` (127 pages) |
+| Cover file | `dist/paperback-cover.pdf` (17.536 x 11.250 in, spine 0.286 in) |
 | Price | $14.99 |
 
-**Royalty check.** With 145 pages at 8.5 x 11 in, the printing cost is a little higher than for 120 pages, so the paperback royalty at $14.99 may come out nearer $6.25 than $6.50. KDP's pricing page shows the exact amount.
+**Royalty check (estimate).** A 127-page black-and-white book at 8.5 x 11 in should cost about $3.16 to print, so the royalty at $14.99 (60%) should be about $5.80. KDP's pricing page shows the exact amount.
 
 **Timing.** Gift buying peaks from late November to mid-December, and new paperbacks can take up to 72 hours to go live. Publish the eBook and paperback as soon as you can.
