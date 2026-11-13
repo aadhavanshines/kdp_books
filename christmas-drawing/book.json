@@ -1,0 +1,64 @@
+{
+  "title_line1": "Draw Christmas Step by Step",
+  "title_line2": "50 Easy Holiday Drawings",
+  "tagline": "For kids ages 4 to 8: Santa, reindeer, snowmen, trees and more",
+  "full_title": "Draw Christmas Step by Step: 50 Easy Holiday Drawings for Kids",
+  "subtitle": "A Fun How-to-Draw Christmas Activity Book for Ages 4 to 8 with Santa, Reindeer, Snowmen, Elves, Gingerbread, Trees and Presents",
+  "author": "Aadhavan Muthurengan",
+  "year": 2026,
+  "count": 50,
+  "modules": [
+    "x01_friends",
+    "x02_tree",
+    "x03_toys",
+    "x04_winter",
+    "x05_treats",
+    "x06_eve"
+  ],
+  "title_page_pictures": [
+    "Santa Face",
+    "Reindeer",
+    "Snowman",
+    "Elf",
+    "Christmas Tree",
+    "Gingerbread Man",
+    "Stack of Presents",
+    "Candy Cane",
+    "Penguin"
+  ],
+  "belongs_page_pictures": [
+    "Ornament",
+    "Santa Hat",
+    "Christmas Bow"
+  ],
+  "how_to_picture": "Snowman",
+  "certificate_title": "Holiday Drawing Star!",
+  "certificate_pictures": [
+    "Christmas Star",
+    "Christmas Tree",
+    "Stack of Presents"
+  ],
+  "badge": "50 Easy Holiday Drawings",
+  "cover_subtitle": "A Fun How-to-Draw Christmas Book for Kids",
+  "accent": "#D7263D",
+  "spine_text": "Draw Christmas Step by Step",
+  "back_headline": [
+    "Draw a merry Christmas,",
+    "one easy step at a time!"
+  ],
+  "back_lines": [
+    "Each holiday picture is broken into small, simple steps. The new",
+    "lines are black and the lines you already drew are gray, so young",
+    "artists always know exactly what to draw next.",
+    "",
+    "• 50 cute, original Christmas pictures in 6 themes",
+    "• Santa, reindeer, elves, snowmen, trees, toys and treats",
+    "• A big “Your turn!” space on every page",
+    "• Warm-up tracing pages and a certificate at the end",
+    "• Large 8.5 x 11 in pages: a perfect stocking stuffer"
+  ],
+  "cover_title_lines": [
+    "Draw Christmas",
+    "Step by Step"
+  ]
+}
