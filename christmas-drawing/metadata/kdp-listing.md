@@ -91,6 +91,6 @@ Answer **Yes**, using the same answers as the other books:
 | Cover file | `dist/cover.pdf` (17.399 x 11.250 in, spine 0.149 in, no spine text: KDP allows spine text only from 79 pages) |
 | Price | $7.99 (US) |
 
-**Price check.** At $6.99 a 66-page 8.5 x 11 in black-and-white book leaves only about $1.30 per sale, so the list price is $7.99: still a stocking-stuffer price and below book 1's $9.99. KDP's pricing page shows the exact printing cost and royalty.
+**Price check (from KDP's pricing page, Nov 13 2026).** Printing cost is $2.84. KDP pays 60% only on paperbacks listed at $9.99 or more and 50% below that, so the royalty is $0.65 at $6.99, $1.16 at $7.99 and $3.15 at $9.99. The draft is saved at $7.99; $9.99 (the same as book 1) earns about 2.7 times as much per sale.
 
 **Timing.** Christmas activity books sell mostly from mid-November to mid-December, and new paperbacks can take up to 72 hours to go live. Publish as soon as you can.
