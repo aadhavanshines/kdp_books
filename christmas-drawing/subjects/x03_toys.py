@@ -23,10 +23,11 @@ SUBJECTS = [
     dict(name="Rocking Horse", steps=[
         [e(112, 104, 40, 20, fill="white")],
         [c(76, 52, 18, fill="white"), front(e(56, 62, 14, 10, -10, fill="white"))[0]] +
-        behind(p("M82 66 L94 104 L120 96 L92 46 Z", fill="white"), p("M80 36 L84 22 L92 38 Z", fill="white"), z=-0.5),
-        behind(l(88, 118, 76, 156), l(100, 122, 96, 158), l(126, 122, 130, 158), l(140, 116, 152, 154), z=-1),
+        behind(p("M82 66 L94 104 L120 96 L92 46 Z", fill="white"), z=-0.5),
+        behind(p("M88 114 L56 164 L68 164 L100 114 Z", fill="white"), p("M126 114 L152 158 L164 158 L138 114 Z", fill="white"), z=-1),
         [front(p("M34 150 Q100 192 172 150 L172 160 Q100 202 34 160 Z", fill="white"))[0]],
         behind(*[c(98 + 6 * k, 46 + 13 * k, 8, fill="white") for k in range(4)], z=-0.8) +
+        behind(p("M80 36 L84 22 L92 38 Z", fill="white"), z=-0.5) +
         [eye(78, 48, 3.5), dot(50, 62, 1.8), p("M100 86 Q114 78 128 86"),
          behind(p("M150 100 Q178 98 174 132 Q162 118 152 114 Z", fill="white"), z=-1)[0]],
     ]),

@@ -32,7 +32,7 @@ SUBJECTS = [
     ]),
     dict(name="Reindeer", steps=[
         [e(100, 100, 30, 36, fill="white")],
-        [front(e(100, 128, 20, 14, fill="white"))[0], front(c(100, 122, 7, fill="ink"), z=2)[0]],
+        [front(e(100, 130, 22, 15, fill="white"))[0], front(e(100, 117, 11, 7.5, fill="ink"), z=2)[0]],
         behind(*sym(e(64, 86, 14, 7, -25, fill="white"))),
         behind(*sym(p("M86 68 L74 38 M79 52 L62 46 M76 44 L80 28", w=1.3))),
         sym(eye(88, 96)) + front(p("M94 134 Q100 138 106 134"), z=2),

@@ -18,7 +18,7 @@ Draw Christmas Step by Step
 
 ## Series
 
-Optional: "Draw Step by Step" (book 2). Book 1 is *Draw Step by Step: 100 Easy Drawings for Kids*.
+"Draw Step by Step", book 2. Book 1 is *Draw Step by Step: 100 Easy Drawings for Kids* (ASIN B0HRFRTWGZ). Adding both books to one series links them on Amazon so each one sells the other.
 
 ## Author
 
@@ -67,12 +67,16 @@ I own the copyright and I hold the necessary publishing rights.
 3. holiday activity book stocking stuffer
 4. learn to draw santa reindeer and snowman
 5. kids christmas gift drawing workbook
-6. easy winter drawing practice for children
+6. stocking stuffers for kids ages 4-8
 7. preschool christmas art activities
 
 ## AI-Generated Content
 
-Answer **Yes** for images and text. Suggested wording: "Interior illustrations were created with Claude (AI) as vector drawings; the cover scenes were generated with an AI image model (GPT Image 2.6 on Higgsfield). All were reviewed and edited by the author."
+Answer **Yes**, using the same answers as the other books:
+
+- Texts: "Some sections, with minimal or no editing" (tool: Anthropic / Claude).
+- Images: "Many AI-generated images, with minimal or no editing" (tools: Anthropic / Claude for the interior vector drawings; GPT Image 2.6 on Higgsfield for the painted cover scenes).
+- Translations: None.
 
 ## Paperback Settings
 
@@ -85,8 +89,8 @@ Answer **Yes** for images and text. Suggested wording: "Interior illustrations w
 | Cover finish | Glossy |
 | Interior file | `dist/interior.pdf` (66 pages) |
 | Cover file | `dist/cover.pdf` (17.399 x 11.250 in, spine 0.149 in, no spine text: KDP allows spine text only from 79 pages) |
-| Price | $6.99 (US) |
+| Price | $7.99 (US) |
 
-**Price check.** Enter $6.99 in KDP's pricing page and read the printing cost and royalty it shows for 66 black-and-white pages at 8.5 x 11 in. If the royalty looks too small, $7.99 is still a normal stocking-stuffer price.
+**Price check.** At $6.99 a 66-page 8.5 x 11 in black-and-white book leaves only about $1.30 per sale, so the list price is $7.99: still a stocking-stuffer price and below book 1's $9.99. KDP's pricing page shows the exact printing cost and royalty.
 
 **Timing.** Christmas activity books sell mostly from mid-November to mid-December, and new paperbacks can take up to 72 hours to go live. Publish as soon as you can.
