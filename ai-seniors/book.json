@@ -1,0 +1,28 @@
+{
+  "title": "AI Made Easy for Seniors",
+  "subtitle": "A Large-Print, Step-by-Step Guide to Asking an AI Assistant Anything — Write Emails, Plan Trips, Check Health Questions, Learn New Hobbies and Spot Scams, on Your Phone or Computer",
+  "slug": "ai-made-easy-for-seniors",
+  "author": "Aadhavan Muthurengan",
+  "language": "en",
+  "year": 2026,
+  "identifier": "ai-made-easy-for-seniors-aadhavan-muthurengan-2026",
+  "trim": {
+    "width_in": 8.5,
+    "height_in": 11.0
+  },
+  "paper": "white",
+  "reuse_note": "You are welcome to copy the example requests in this book and use them with any AI assistant.",
+  "trademarks": "ChatGPT is a trademark of OpenAI. Gemini, Android and Google are trademarks of Google LLC. Claude is a trademark of Anthropic. Microsoft and Copilot are trademarks of Microsoft Corporation. Meta AI is a trademark of Meta Platforms, Inc. Apple, iPhone, iPad, Siri and App Store are trademarks of Apple Inc. Google Play is a trademark of Google LLC. All other product names are trademarks of their respective owners and are used only to identify them. This book is independent and is not affiliated with, sponsored by, or endorsed by any of these companies.",
+  "dedication": [
+    "To my father and my mother,",
+    "for your love, your sacrifices, and every lesson you taught me.",
+    "",
+    "To my wife,",
+    "for your patience, your encouragement, and your belief in me.",
+    "",
+    "And to our three children,",
+    "may you always build the things you dream of.",
+    "",
+    "This book is for you."
+  ]
+}
