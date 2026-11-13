@@ -1,6 +1,6 @@
 # Draw Christmas Step by Step: 50 Easy Holiday Drawings for Kids
 
-*A Fun How-to-Draw Christmas Activity Book for Ages 4 to 8*, by Aadhavan Muthurengan. Black-and-white 8.5 x 11 in paperback, 66 pages, $7.99. Book 2 in the format of [`kids-drawing/`](../kids-drawing/).
+*A Fun How-to-Draw Christmas Activity Book for Ages 4 to 8*, by Aadhavan Muthurengan. Black-and-white 8.5 x 11 in paperback, 66 pages, $9.99. Book 2 in the format of [`kids-drawing/`](../kids-drawing/).
 
 50 original holiday pictures in 6 themes (Santa and Friends, Tree and Decorations, Presents and Toys, Winter Fun, Holiday Treats, Christmas Eve). Each picture has 4 or 5 steps, with the new lines in black and the earlier lines in gray, a "Done!" picture, and a "Your turn!" practice area with a light dot grid. Front pages: title, copyright, "This book belongs to", how to use the book, two warm-up tracing pages, contents. At the end: a holiday certificate and free drawing pages.
 
