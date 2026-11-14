@@ -22,7 +22,7 @@ Who Killed the Lighthouse Keeper?
 ```html
 <b>Sixty murders. One killer every time. Can you name them all?</b>
 
-<p>Each case gives you a victim, a list of suspects and a set of clues. Cross off everyone who doesn't fit until one name is left. Sixty cases run from 10-minute warm-ups to full-evening mysteries, with every solution explained.</p>
+<p>Each case gives you a victim, a list of suspects and a set of clues. Cross off everyone who doesn't fit until one name is left. Sixty cases run from 5-minute warm-ups to tough five-suspect cases, with every solution explained.</p>
 
 <p><b>Four kinds of case, getting harder as you go:</b></p>
 <ul>
@@ -34,7 +34,7 @@ Who Killed the Lighthouse Keeper?
 
 <p><b>Fair play, guaranteed.</b> Every puzzle was checked by computer to have exactly one solution, and every case can be solved by pure reasoning, with no guessing.</p>
 
-<p><b>Inside:</b> a clear briefing on how to solve each kind of case, a ready-to-use grid for every grid case, and step-by-step solutions with the full grid and the motive.</p>
+<p><b>Inside:</b> a clear briefing on how to solve each kind of case, a ready-to-use grid for every grid case, and numbered step-by-step solutions that name the clue to use and say why, with the full grid and the motive.</p>
 
 <p>From a poisoned espresso in a café to a snowed-in inn, a night train, an airship and a storm-lashed lighthouse, these cozy, bloodless mysteries make a perfect gift for mystery lovers, puzzle fans and armchair detectives.</p>
 ```
@@ -76,8 +76,10 @@ Answer **Yes** for text. Suggested wording: "The puzzles were generated and veri
 | Trim size | 6 x 9 in |
 | Bleed | No bleed |
 | Cover finish | Matte (suits the dark cover) |
-| Interior file | `dist/paperback-interior-6x9.pdf` (136 pages) |
-| Cover file | `dist/paperback-cover.pdf` (12.556 x 9.250 in, spine 0.306 in) |
-| Price | $8.99 to $9.99 |
+| Interior file | `dist/paperback-interior-6x9.pdf` (154 pages) |
+| Cover file | `dist/paperback-cover.pdf` (12.597 x 9.250 in, spine 0.347 in) |
+| Price | $9.99 |
 
-**Price check.** Enter the price on KDP's pricing page and read the royalty it shows for 136 black-and-white pages at 6 x 9 in before you choose.
+**Price check.** Use $9.99 rather than $8.99: KDP's royalty rate is reported to be lower for paperbacks priced under $9.99. Confirm the royalty KDP shows for 154 black-and-white pages at 6 x 9 in on the pricing page.
+
+**Description note.** The opening lines differ slightly from the first draft: "10-minute warm-ups to full-evening mysteries" became "5-minute warm-ups to tough five-suspect cases", because nobody has timed the cases.

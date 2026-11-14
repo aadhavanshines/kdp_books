@@ -39,7 +39,34 @@ for c in cases:
     if not ok:
         bad += 1
         print("FAIL case", c["num"], c["title"])
-names = [s["name"] for c in cases for s in c["suspects"]]
+# ---- story and wording checks
+from collections import Counter
+from gen import story_clash
+from settings import FEMALE, MALE, role_gender
+for c in cases:
+    probs = []
+    for s in c["suspects"]:
+        g = role_gender(s["role"])
+        if (g == "F" and s["first"] not in FEMALE) or (g == "M" and s["first"] not in MALE):
+            probs.append(f"{s['name']} cannot be the {s['role']}")
+    firsts = [s["first"] for s in c["suspects"]]
+    if len(set(firsts)) != len(firsts) or any(f in c["victim"].split() for f in firsts):
+        probs.append("first names clash")
+    if c["level"] == "A" and story_clash(c["clues"]):
+        probs.append("evidence contradicts itself (a shut room is also named as a way in)")
+    text = " ".join(c["steps"])
+    if "and more" in text or not c["steps"]:
+        probs.append("solution steps are vague or missing")
+    for pr in probs:
+        bad += 1
+        print("FAIL case", c["num"], pr)
+full = [s["name"] for c in cases for s in c["suspects"]]
+if len(set(full)) != len(full):
+    bad += 1
+    print("FAIL: a suspect name is used twice")
+top = Counter(t for c in cases for t in c["clue_text"]).most_common(1)[0]
+print("most repeated clue sentence appears", top[1], "time(s)")
+names = full
 print(f"{len(cases)} cases checked, {bad} failed; levels:",
       {l: sum(1 for c in cases if c["level"] == l) for l in "ABCD"})
 sys.exit(1 if bad else 0)

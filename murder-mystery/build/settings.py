@@ -78,7 +78,7 @@ MOTIVES = ["an unpaid debt", "a secret about to be revealed", "years of jealousy
            "a promise broken long ago", "blackmail", "a ruined reputation", "a job that was about to be lost",
            "a forged signature", "revenge for an old insult", "a hidden theft", "a partnership gone sour",
            "an inheritance", "a love affair kept quiet", "a gambling loss", "a lie on a contract",
-           "fear of being found out", "a bitter rivalry", "a valuable secret recipe or formula"]
+           "fear of being found out", "a bitter rivalry", "a secret sold to a rival"]
 
 
 def load():
@@ -91,3 +91,23 @@ def load():
     for c in cases:
         assert len(c["roles"]) == 6 and len(c["rooms"]) == 5 and len(c["weapons"]) == 5, c["title"]
     return cases
+
+
+import re
+
+FEMALE = set("Ada Agnes Alma Bea Clara Cora Daisy Edna Elsie Enid Esme Fern Flora Greta Hazel Hester Hilda Ida Ina "
+             "Iris Ivy June Lena Lottie Mabel Mavis Myra Nell Nora Olive Opal Pearl Polly Rhoda Rosa Ruby Sadie "
+             "Selma Sybil Tess Una Vera Wilma Winnie".split())
+MALE = set(FIRST) - FEMALE
+_F = re.compile(r"\b(actress|wife|heiress|hostess|daughter|niece|bride|countess|maid|barmaid|dairymaid|girl|lady|"
+                r"lady's|widow|soprano)\b")
+_M = re.compile(r"\b(nephew|brother|son|groom|best man|count|boy|tenor|butler|landlord|\w*man)\b")
+
+
+def role_gender(role):
+    """'F', 'M' or None when a role fits anyone."""
+    if _F.search(role):
+        return "F"
+    if _M.search(role):
+        return "M"
+    return None

@@ -32,7 +32,8 @@ BODY = P("body", fontName="Body", fontSize=10.6, leading=14.2, spaceAfter=6)
 SCENE = P("scene", fontName="Body-I", fontSize=10.6, leading=14.2)
 CLUE = P("clue", fontName="Body", fontSize=11, leading=14.2, leftIndent=18, firstLineIndent=-18)
 SMALL = P("small", fontName="Body", fontSize=9.8, leading=12.6)
-SOL = P("sol", fontName="Body", fontSize=9, leading=11.6)
+SOL = P("sol", fontName="Body", fontSize=10, leading=13)
+STEP = P("step", fontName="Body", fontSize=10, leading=13, leftIndent=16, firstLineIndent=-16)
 H1 = P("h1", fontName="Title", fontSize=22, leading=27)
 H2 = P("h2", fontName="Title", fontSize=14, leading=18)
 CENTER = P("center", fontName="Body", fontSize=10.6, leading=15, alignment=TA_CENTER)
@@ -87,7 +88,7 @@ class Book:
         c.line(W / 2 - 60, H - 325, W / 2 + 60, H - 325)
         c.setFont("Body-I", 13)
         c.drawCentredString(W / 2, H - 352, "Suspects, Clues and One Killer Every Time")
-        lighthouse(c, W / 2, 150, 0.9)
+        lighthouse(c, W / 2, 138, 0.68)
         c.setFont("Title", 13)
         c.drawCentredString(W / 2, 92, META["author"])
         self.new_page(number=False)
@@ -267,8 +268,10 @@ class Book:
             c.setFont("Body-B", 11)
             c.drawString(x + 10, y - 34, case["fact"]["text"])
             y -= 60
-        y = draw_grid(self.c, self.left, y, TW, S, case["rooms"], case["weapons"])
-        self.verdict(BOTTOM + 86, ["The killer is", "In the", "With the"])
+        top_of_verdict = BOTTOM + 88
+        y = draw_grid(self.c, self.left, y, TW, S, case["rooms"], case["weapons"], max_h=y - top_of_verdict - 8)
+        assert y >= top_of_verdict, f"case {case['num']}: the grid runs into the verdict box"
+        self.verdict(top_of_verdict, ["The killer is", "In the", "With the"])
         self.new_page()
 
     # ------------------------------------------------------------ solutions
@@ -286,17 +289,19 @@ class Book:
                 lines[0] += f" In the {R[case['lp'][case['killer']]]}, with the {Wp[case['wp'][case['killer']]]}."
                 lines.append("<i>Full grid:</i> " + "; ".join(
                     f"{s['first']}: {R[case['lp'][i]]}, {Wp[case['wp'][i]]}" for i, s in enumerate(case["suspects"])) + ".")
-            lines.append(" ".join(case["steps"]))
-            if case.get("statements"):
-                lines.append(f"{k['first']}'s statement is the only false one.")
-            lines.append(f"<i>Motive:</i> {case['motive']}.")
-            block = [head] + lines
-            need = sum(self.height(t, SOL) + 2 for t in block) + 10
+            blocks = [(head, SOL)] + [(t, SOL) for t in lines]
+            blocks += [(f"{n}.&nbsp;&nbsp;{t}", STEP) for n, t in enumerate(case["steps"], 1)]
+            blocks.append((f"<i>Motive:</i> {case['motive']}.", SOL))
+            # keep the heading with at least the first two steps; long solutions may run over a page
+            need = sum(self.height(t, st) + 2 for t, st in blocks[:len(lines) + 3])
             if y - need < BOTTOM:
                 self.new_page()
                 y = H - TOP - 6
-            for t in block:
-                y = self.para(t, SOL, y) - 2
+            for t, st in blocks:
+                if y - self.height(t, st) < BOTTOM:
+                    self.new_page()
+                    y = H - TOP - 6
+                y = self.para(t, st, y) - 2
             y -= 10
         self.new_page()
 
@@ -329,11 +334,15 @@ def lighthouse(c, cx, base, s=1.0, fill=0):
     c.restoreState()
 
 
-def draw_grid(c, x, y, tw, S, R, Wp):
+def draw_grid(c, x, y, tw, S, R, Wp, max_h=1000):
     """The classic logic grid: suspects against rooms and objects, objects against rooms."""
     n = len(S)
     lab_w, lab_h = 100, 100
     cell = min(29.5, (tw - lab_w) / (2 * n))
+    if lab_h + 2 * n * cell + 14 > max_h:          # short of room: tighter labels, then smaller squares
+        lab_h = 84
+        cell = min(cell, (max_h - lab_h - 14) / (2 * n))
+    assert cell >= 19, "grid squares would be too small to write in"
     gx, gy = x + lab_w, y - lab_h
     c.setFont("Body", 8.2)
 
@@ -401,7 +410,7 @@ HOW = [
     "A good way in: pick a statement and ask, what if this is the lie? Then every other statement must be "
     "true. If that leads to a contradiction, that speaker is innocent and the statement is true.",
     "## Solutions",
-    "Every solution is at the back of the book, with the reasoning step by step, the full grid, and the motive. "
+    "Every solution is at the back of the book, with numbered steps that say which clue to use and why, the full grid, and the motive. "
     "If you are stuck, read only the first step of the solution, then come back and carry on.",
     "## A Detective's Tips",
     "Use a pencil. Go through the clues more than once: a clue that told you nothing at first often opens up "

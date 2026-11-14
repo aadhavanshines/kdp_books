@@ -43,7 +43,8 @@ POSITIVE = {"s_is_r", "s_is_w", "w_in_r"}
 
 
 def clue_text(c, S, R, W):
-    """English for a clue. S, R, W are lists of first names, rooms and objects."""
+    """English for a clue. S, R, W are lists of first names, rooms and objects.
+    c["p"] picks one of several wordings that all mean exactly the same thing."""
     t = c["t"]
     s = S[c["s"]] if "s" in c else None
     s2 = S[c["s2"]] if "s2" in c else None
@@ -51,20 +52,34 @@ def clue_text(c, S, R, W):
     r2 = R[c["r2"]] if "r2" in c else None
     w = W[c["w"]] if "w" in c else None
     w2 = W[c["w2"]] if "w2" in c else None
-    return {
-        "s_is_r": f"{s} was in the {r}.",
-        "s_not_r": f"{s} was not in the {r}.",
-        "s_is_w": f"{s} was carrying the {w}.",
-        "s_not_w": f"{s} was not carrying the {w}.",
-        "w_in_r": f"Whoever carried the {w} was in the {r}.",
-        "w_not_r": f"The {w} was not in the {r}.",
-        "or_s_r": f"Either {s} or {s2} was in the {r}.",
-        "or_s_w": f"Either {s} or {s2} was carrying the {w}.",
-        "s_or_r": f"{s} was in either the {r} or the {r2}.",
-        "s_or_w": f"{s} was carrying either the {w} or the {w2}.",
-        "split": f"Of {s} and the person in the {r}, one carried the {w} and the other carried the {w2}.",
-        "nor": f"The person carrying the {w} was not {s}, and was not in the {r}.",
+    forms = {
+        "s_is_r": [f"{s} was in the {r}.", f"Two witnesses place {s} in the {r}."],
+        "s_not_r": [f"{s} was not in the {r}.", f"{s} never set foot in the {r}.",
+                    f"Wherever {s} was, it was not the {r}."],
+        "s_is_w": [f"{s} was carrying the {w}.", f"{s} was seen holding the {w}."],
+        "s_not_w": [f"{s} was not carrying the {w}.", f"{s} never handled the {w}.",
+                    f"Whatever {s} carried, it was not the {w}."],
+        "w_in_r": [f"Whoever carried the {w} was in the {r}.", f"The {w} was in the {r} at the time."],
+        "w_not_r": [f"The {w} was not in the {r}.", f"The {w} never entered the {r}.",
+                    f"Whoever carried the {w} stayed out of the {r}."],
+        "or_s_r": [f"Either {s} or {s2} was in the {r}.", f"The person in the {r} was {s} or {s2}.",
+                   f"Only {s} or {s2} could have been in the {r}."],
+        "or_s_w": [f"Either {s} or {s2} was carrying the {w}.", f"The {w} was carried by {s} or by {s2}.",
+                   f"Only {s} or {s2} could have had the {w}."],
+        "s_or_r": [f"{s} was in either the {r} or the {r2}.",
+                   f"{s} was in the {r} or the {r2}; the witness cannot say which.",
+                   f"There are only two rooms {s} could have been in: the {r} and the {r2}."],
+        "s_or_w": [f"{s} was carrying either the {w} or the {w2}.",
+                   f"{s} had the {w} or the {w2}; nobody is sure which.",
+                   f"There are only two things {s} could have carried: the {w} and the {w2}."],
+        "split": [f"Of {s} and the person in the {r}, one carried the {w} and the other carried the {w2}.",
+                  f"{s} was not in the {r}. Between them, {s} and the person who was there carried the {w} and the {w2}.",
+                  f"The {w} and the {w2} were carried by two people: {s}, and whoever was in the {r} (someone else)."],
+        "nor": [f"The person carrying the {w} was not {s}, and was not in the {r}.",
+                f"{s} did not carry the {w}, and the {w} was not in the {r}.",
+                f"The {w} was not with {s} and was not in the {r}."],
     }[t]
+    return forms[c.get("p", 0) % len(forms)]
 
 
 def statement_text(c, speaker, S, R, W):
@@ -121,19 +136,36 @@ def a_text(c, suspects, rooms):
     t = c["t"]
     v, v2 = c.get("v"), c.get("v2")
     name = suspects[c["s"]]["first"] if "s" in c else None
-    room = lambda i: rooms[i]
-    return {
-        "hand": lambda: f"The angle of the blow shows that the killer is {v}-handed.",
-        "taller": lambda: f"A witness saw a figure hurry away. It was someone taller than {name}.",
-        "shorter": lambda: f"The killer slipped through a gap that only someone shorter than {name} could use.",
-        "not_room": lambda: f"The {room(v)} was locked from the outside all evening. Nobody in there could have done it.",
-        "room_in": lambda: f"Fresh footprints lead to the scene from only two places: the {room(v)} and the {room(v2)}.",
-        "hair_not": lambda: f"A hair was found on the victim's sleeve. It was not {v}.",
-        "hair_in": lambda: f"A witness glimpsed the killer's hair. It was either {v} or {v2}.",
-        "hand_or_room": lambda: f"Either the killer is {v}-handed, or the killer came from the {room(v2)} (or both).",
-        "hair_or_room": lambda: f"Either the killer has {v} hair, or the killer came from the {room(v2)} (or both).",
-        "middle": lambda: "The killer is neither the tallest nor the shortest of the suspects.",
-    }[t]()
+    rm = lambda i: rooms[i] if isinstance(i, int) else i
+    forms = {
+        "hand": [f"The angle of the blow shows that the killer is {v}-handed.",
+                 f"The knot in the cord was tied by a {v}-handed person. The killer is {v}-handed.",
+                 f"Smudged prints on the door show that the killer is {v}-handed."],
+        "taller": [f"A witness saw a figure hurry away. It was someone taller than {name}.",
+                   f"The killer took something from a shelf that {name} cannot reach. The killer is taller than {name}.",
+                   f"Seen through the window, the killer stood clearly taller than {name}."],
+        "shorter": [f"The killer slipped through a gap that only someone shorter than {name} could use.",
+                    f"A coat left at the scene would be far too short for {name}. The killer is shorter than {name}.",
+                    f"One witness is sure of a single thing: the killer was shorter than {name}."],
+        "not_room": [f"The {rm(v)} was locked from the outside all evening. Nobody in there could have done it.",
+                     f"Everyone in the {rm(v)} was in plain view the whole time. The killer was not in there.",
+                     f"The only door of the {rm(v)} had wet paint on it, and the paint is unmarked. The killer did not come from there."],
+        "room_in": [f"Fresh footprints lead to the scene from only two places: the {rm(v)} and the {rm(v2)}.",
+                    f"A trail of dust shows that the killer came from either the {rm(v)} or the {rm(v2)}.",
+                    f"The killer came from the {rm(v)} or the {rm(v2)}. No other way to the scene was open."],
+        "hair_not": [f"A hair was found on the victim's sleeve, left by the killer. It was not {v}.",
+                     f"A witness saw the killer from behind and is certain the hair was not {v}.",
+                     f"Hairs caught in the window latch rule out anyone with {v} hair."],
+        "hair_in": [f"A witness glimpsed the killer's hair. It was either {v} or {v2}.",
+                    f"In the poor light the killer's hair looked {v} or {v2}, and nothing else."],
+        "hand_or_room": [f"Either the killer is {v}-handed, or the killer came from the {rm(v2)} (or both).",
+                         f"If the killer is not {v}-handed, then the killer came from the {rm(v2)}."],
+        "hair_or_room": [f"Either the killer has {v} hair, or the killer came from the {rm(v2)} (or both).",
+                         f"If the killer does not have {v} hair, then the killer came from the {rm(v2)}."],
+        "middle": ["The killer is neither the tallest nor the shortest of the suspects.",
+                   "At least one suspect is taller than the killer, and at least one is shorter."],
+    }[t]
+    return forms[c.get("p", 0) % len(forms)]
 
 
 def feet(inches):

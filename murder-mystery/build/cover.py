@@ -79,8 +79,8 @@ def back(ox, oy):
             "and a set of clues. Cross off everyone who",
             "doesn't fit until one name is left.",
             "",
-            "Sixty cases run from 10-minute warm-ups to",
-            "full-evening mysteries, with every solution explained."]
+            "Sixty cases run from 5-minute warm-ups to tough",
+            "five-suspect cases, with every solution explained."]
     for i, ln in enumerate(para):
         o.append(t(cx, oy + 196 + i * 20, ln, 13.5, "Liberation Serif", 400))
     bullets = ["18 cross-off cases to warm up",
