@@ -1,0 +1,7857 @@
+[
+ {
+  "num": 1,
+  "level": "A",
+  "title": "The Cold Cup at the Copper Kettle",
+  "victim": "Hugo Marsh, owner of the Copper Kettle Café",
+  "scene": "He was found slumped over table nine after closing, a bitter-smelling espresso at his elbow.",
+  "motive": "a hidden theft",
+  "suspects": [
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 63,
+    "hair": "gray",
+    "first": "Hector",
+    "last": "Hobbs",
+    "name": "Hector Hobbs",
+    "role": "barista"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 65,
+    "hair": "black",
+    "first": "Winnie",
+    "last": "Rowan",
+    "name": "Winnie Rowan",
+    "role": "pastry chef"
+   },
+   {
+    "room": 3,
+    "hand": "right",
+    "height": 74,
+    "hair": "brown",
+    "first": "Cecil",
+    "last": "Alder",
+    "name": "Cecil Alder",
+    "role": "landlord"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 67,
+    "hair": "blond",
+    "first": "Bert",
+    "last": "Birch",
+    "name": "Bert Birch",
+    "role": "dishwasher"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 61,
+    "hair": "brown",
+    "first": "Ivy",
+    "last": "Garland",
+    "name": "Ivy Garland",
+    "role": "coffee supplier"
+   },
+   {
+    "room": 0,
+    "hand": "left",
+    "height": 71,
+    "hair": "blond",
+    "first": "Edna",
+    "last": "Dalby",
+    "name": "Edna Dalby",
+    "role": "night cleaner"
+   }
+  ],
+  "rooms": [
+   "kitchen",
+   "storeroom",
+   "pantry",
+   "back office",
+   "courtyard"
+  ],
+  "clues": [
+   {
+    "t": "shorter",
+    "s": 3
+   },
+   {
+    "t": "room_in",
+    "v": 2,
+    "v2": 1
+   },
+   {
+    "t": "hair_not",
+    "v": "brown"
+   }
+  ],
+  "clue_text": [
+   "The killer slipped through a gap that only someone shorter than Bert could use.",
+   "Fresh footprints lead to the scene from only two places: the pantry and the storeroom.",
+   "A hair was found on the victim's sleeve. It was not brown."
+  ],
+  "killer": 1,
+  "steps": [
+   "Clue 1 clears Cecil, Bert and Edna.",
+   "Clue 2 clears Hector.",
+   "Clue 3 clears Ivy."
+  ]
+ },
+ {
+  "num": 2,
+  "level": "A",
+  "title": "Death at the Dahlia Show",
+  "victim": "Prudence Vale, chief judge of the village flower show",
+  "scene": "She was discovered behind the prize table, minutes before the winners were due to be announced.",
+  "motive": "a partnership gone sour",
+  "suspects": [
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 65,
+    "hair": "brown",
+    "first": "Hector",
+    "last": "Wren",
+    "name": "Hector Wren",
+    "role": "head gardener"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 68,
+    "hair": "gray",
+    "first": "Bea",
+    "last": "Gantry",
+    "name": "Bea Gantry",
+    "role": "caterer"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 61,
+    "hair": "black",
+    "first": "June",
+    "last": "Flint",
+    "name": "June Flint",
+    "role": "ticket seller"
+   },
+   {
+    "room": 0,
+    "hand": "left",
+    "height": 73,
+    "hair": "black",
+    "first": "Ivor",
+    "last": "Lovell",
+    "name": "Ivor Lovell",
+    "role": "show secretary"
+   },
+   {
+    "room": 3,
+    "hand": "right",
+    "height": 64,
+    "hair": "gray",
+    "first": "Nell",
+    "last": "Crowe",
+    "name": "Nell Crowe",
+    "role": "florist"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 66,
+    "hair": "blond",
+    "first": "Rufus",
+    "last": "Locke",
+    "name": "Rufus Locke",
+    "role": "rival grower"
+   }
+  ],
+  "rooms": [
+   "marquee",
+   "potting shed",
+   "tea tent",
+   "rose garden",
+   "car park"
+  ],
+  "clues": [
+   {
+    "t": "hair_not",
+    "v": "gray"
+   },
+   {
+    "t": "hand",
+    "v": "right"
+   },
+   {
+    "t": "taller",
+    "s": 0
+   }
+  ],
+  "clue_text": [
+   "A hair was found on the victim's sleeve. It was not gray.",
+   "The angle of the blow shows that the killer is right-handed.",
+   "A witness saw a figure hurry away. It was someone taller than Hector."
+  ],
+  "killer": 5,
+  "steps": [
+   "Clue 1 clears Bea and Nell.",
+   "Clue 2 clears Ivor.",
+   "Clue 3 clears Hector and June."
+  ]
+ },
+ {
+  "num": 3,
+  "level": "A",
+  "title": "The Last Page",
+  "victim": "Ambrose Quill, owner of Quill and Sons Bookshop",
+  "scene": "He lay between the tall shelves of the history section, a first edition still in his hand.",
+  "motive": "a gambling loss",
+  "suspects": [
+   {
+    "room": 2,
+    "hand": "left",
+    "height": 66,
+    "hair": "gray",
+    "first": "Sadie",
+    "last": "Wren",
+    "name": "Sadie Wren",
+    "role": "bookbinder"
+   },
+   {
+    "room": 2,
+    "hand": "left",
+    "height": 71,
+    "hair": "red",
+    "first": "Opal",
+    "last": "Tully",
+    "name": "Opal Tully",
+    "role": "shop assistant"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 67,
+    "hair": "red",
+    "first": "Basil",
+    "last": "Fairfax",
+    "name": "Basil Fairfax",
+    "role": "accountant"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 70,
+    "hair": "red",
+    "first": "Rosa",
+    "last": "Harlow",
+    "name": "Rosa Harlow",
+    "role": "delivery driver"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 61,
+    "hair": "brown",
+    "first": "Vince",
+    "last": "Kettle",
+    "name": "Vince Kettle",
+    "role": "poet"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 63,
+    "hair": "gray",
+    "first": "Ivy",
+    "last": "Yarrow",
+    "name": "Ivy Yarrow",
+    "role": "rare book dealer"
+   }
+  ],
+  "rooms": [
+   "reading room",
+   "stockroom",
+   "attic",
+   "cellar",
+   "front window"
+  ],
+  "clues": [
+   {
+    "t": "hair_not",
+    "v": "brown"
+   },
+   {
+    "t": "not_room",
+    "v": 2
+   },
+   {
+    "t": "room_in",
+    "v": 2,
+    "v2": 4
+   },
+   {
+    "t": "shorter",
+    "s": 3
+   }
+  ],
+  "clue_text": [
+   "A hair was found on the victim's sleeve. It was not brown.",
+   "The attic was locked from the outside all evening. Nobody in there could have done it.",
+   "Fresh footprints lead to the scene from only two places: the attic and the front window.",
+   "The killer slipped through a gap that only someone shorter than Rosa could use."
+  ],
+  "killer": 2,
+  "steps": [
+   "Clue 1 clears Vince.",
+   "Clue 2 clears Sadie and Opal.",
+   "Clue 3 clears Ivy.",
+   "Clue 4 clears Rosa."
+  ]
+ },
+ {
+  "num": 4,
+  "level": "A",
+  "title": "Curtain Call",
+  "victim": "Lionel Garrick, leading man of the Regent Theater",
+  "scene": "He never took his final bow: the stage crew found him in the wings as the audience applauded.",
+  "motive": "a love affair kept quiet",
+  "suspects": [
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 70,
+    "hair": "red",
+    "first": "Wade",
+    "last": "Kemp",
+    "name": "Wade Kemp",
+    "role": "stage manager"
+   },
+   {
+    "room": 3,
+    "hand": "right",
+    "height": 74,
+    "hair": "brown",
+    "first": "Alma",
+    "last": "Ashdown",
+    "name": "Alma Ashdown",
+    "role": "director"
+   },
+   {
+    "room": 0,
+    "hand": "left",
+    "height": 67,
+    "hair": "blond",
+    "first": "Sadie",
+    "last": "Pike",
+    "name": "Sadie Pike",
+    "role": "critic"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 61,
+    "hair": "red",
+    "first": "Sybil",
+    "last": "Gantry",
+    "name": "Sybil Gantry",
+    "role": "lighting technician"
+   },
+   {
+    "room": 3,
+    "hand": "left",
+    "height": 62,
+    "hair": "red",
+    "first": "Rhoda",
+    "last": "Sharpe",
+    "name": "Rhoda Sharpe",
+    "role": "understudy"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 75,
+    "hair": "blond",
+    "first": "Jem",
+    "last": "Finch",
+    "name": "Jem Finch",
+    "role": "costume designer"
+   }
+  ],
+  "rooms": [
+   "dressing room",
+   "prop room",
+   "orchestra pit",
+   "balcony",
+   "green room"
+  ],
+  "clues": [
+   {
+    "t": "room_in",
+    "v": 0,
+    "v2": 2
+   },
+   {
+    "t": "taller",
+    "s": 3
+   },
+   {
+    "t": "shorter",
+    "s": 1
+   },
+   {
+    "t": "not_room",
+    "v": 2
+   }
+  ],
+  "clue_text": [
+   "Fresh footprints lead to the scene from only two places: the dressing room and the orchestra pit.",
+   "A witness saw a figure hurry away. It was someone taller than Sybil.",
+   "The killer slipped through a gap that only someone shorter than Alma could use.",
+   "The orchestra pit was locked from the outside all evening. Nobody in there could have done it."
+  ],
+  "killer": 2,
+  "steps": [
+   "Clue 1 clears Alma and Rhoda.",
+   "Clue 2 clears Sybil.",
+   "Clue 3 clears Jem.",
+   "Clue 4 clears Wade."
+  ]
+ },
+ {
+  "num": 5,
+  "level": "A",
+  "title": "The Silent Bell",
+  "victim": "Tobias Wren, keeper of the Market Square clock tower",
+  "scene": "For the first time in sixty years the noon bell did not ring. He was found at the foot of the tower stairs.",
+  "motive": "revenge for an old insult",
+  "suspects": [
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 67,
+    "hair": "black",
+    "first": "Myra",
+    "last": "Sharpe",
+    "name": "Myra Sharpe",
+    "role": "bell ringer"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 74,
+    "hair": "red",
+    "first": "Tess",
+    "last": "Hollis",
+    "name": "Tess Hollis",
+    "role": "stonemason"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 75,
+    "hair": "brown",
+    "first": "Saul",
+    "last": "Nash",
+    "name": "Saul Nash",
+    "role": "apprentice"
+   },
+   {
+    "room": 2,
+    "hand": "left",
+    "height": 62,
+    "hair": "red",
+    "first": "Daisy",
+    "last": "Lovell",
+    "name": "Daisy Lovell",
+    "role": "antique dealer"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 65,
+    "hair": "red",
+    "first": "Felix",
+    "last": "Cobb",
+    "name": "Felix Cobb",
+    "role": "mayor"
+   },
+   {
+    "room": 1,
+    "hand": "left",
+    "height": 73,
+    "hair": "gray",
+    "first": "Oscar",
+    "last": "Winter",
+    "name": "Oscar Winter",
+    "role": "town clerk"
+   }
+  ],
+  "rooms": [
+   "belfry",
+   "clock room",
+   "stairwell",
+   "workshop",
+   "archive"
+  ],
+  "clues": [
+   {
+    "t": "shorter",
+    "s": 1
+   },
+   {
+    "t": "room_in",
+    "v": 2,
+    "v2": 4
+   },
+   {
+    "t": "hand",
+    "v": "right"
+   }
+  ],
+  "clue_text": [
+   "The killer slipped through a gap that only someone shorter than Tess could use.",
+   "Fresh footprints lead to the scene from only two places: the stairwell and the archive.",
+   "The angle of the blow shows that the killer is right-handed."
+  ],
+  "killer": 4,
+  "steps": [
+   "Clue 1 clears Tess and Saul.",
+   "Clue 2 clears Myra and Oscar.",
+   "Clue 3 clears Daisy."
+  ]
+ },
+ {
+  "num": 6,
+  "level": "A",
+  "title": "A Bitter Vintage",
+  "victim": "Celeste Marchetti, owner of the Marchetti Vineyard",
+  "scene": "She was found among the oak barrels on the last night of the harvest.",
+  "motive": "a lie on a contract",
+  "suspects": [
+   {
+    "room": 3,
+    "hand": "left",
+    "height": 70,
+    "hair": "blond",
+    "first": "Milo",
+    "last": "Gantry",
+    "name": "Milo Gantry",
+    "role": "cellar hand"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 73,
+    "hair": "black",
+    "first": "Vince",
+    "last": "Foxley",
+    "name": "Vince Foxley",
+    "role": "wine critic"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 72,
+    "hair": "brown",
+    "first": "Rosa",
+    "last": "Moss",
+    "name": "Rosa Moss",
+    "role": "business partner"
+   },
+   {
+    "room": 1,
+    "hand": "left",
+    "height": 69,
+    "hair": "black",
+    "first": "Ruby",
+    "last": "Garland",
+    "name": "Ruby Garland",
+    "role": "tour guide"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 63,
+    "hair": "black",
+    "first": "Rufus",
+    "last": "Voss",
+    "name": "Rufus Voss",
+    "role": "winemaker"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 71,
+    "hair": "red",
+    "first": "Reuben",
+    "last": "Harlow",
+    "name": "Reuben Harlow",
+    "role": "grape picker"
+   }
+  ],
+  "rooms": [
+   "barrel cellar",
+   "tasting room",
+   "press house",
+   "bottling room",
+   "vine nursery"
+  ],
+  "clues": [
+   {
+    "t": "shorter",
+    "s": 5
+   },
+   {
+    "t": "hair_in",
+    "v": "gray",
+    "v2": "black"
+   },
+   {
+    "t": "not_room",
+    "v": 1
+   }
+  ],
+  "clue_text": [
+   "The killer slipped through a gap that only someone shorter than Reuben could use.",
+   "A witness glimpsed the killer's hair. It was either gray or black.",
+   "The tasting room was locked from the outside all evening. Nobody in there could have done it."
+  ],
+  "killer": 4,
+  "steps": [
+   "Clue 1 clears Vince, Rosa and Reuben.",
+   "Clue 2 clears Milo.",
+   "Clue 3 clears Ruby."
+  ]
+ },
+ {
+  "num": 7,
+  "level": "A",
+  "title": "The Frozen Lift",
+  "victim": "Magnus Holt, manager of the Pine Ridge Ski Lodge",
+  "scene": "He was found in the lift machine room at dawn, with fresh snow covering every track outside.",
+  "motive": "revenge for an old insult",
+  "suspects": [
+   {
+    "room": 0,
+    "hand": "left",
+    "height": 65,
+    "hair": "blond",
+    "first": "Reuben",
+    "last": "Hollis",
+    "name": "Reuben Hollis",
+    "role": "ski patroller"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 74,
+    "hair": "black",
+    "first": "Myra",
+    "last": "Hart",
+    "name": "Myra Hart",
+    "role": "rental clerk"
+   },
+   {
+    "room": 4,
+    "hand": "left",
+    "height": 61,
+    "hair": "blond",
+    "first": "Otis",
+    "last": "Calloway",
+    "name": "Otis Calloway",
+    "role": "chef"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 67,
+    "hair": "gray",
+    "first": "Cora",
+    "last": "Ashdown",
+    "name": "Cora Ashdown",
+    "role": "lift operator"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 75,
+    "hair": "red",
+    "first": "June",
+    "last": "Darrow",
+    "name": "June Darrow",
+    "role": "guest"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 68,
+    "hair": "gray",
+    "first": "Milo",
+    "last": "Marsh",
+    "name": "Milo Marsh",
+    "role": "ski instructor"
+   }
+  ],
+  "rooms": [
+   "boot room",
+   "sauna",
+   "lounge",
+   "machine room",
+   "wax room"
+  ],
+  "clues": [
+   {
+    "t": "shorter",
+    "s": 1
+   },
+   {
+    "t": "room_in",
+    "v": 3,
+    "v2": 0
+   },
+   {
+    "t": "hair_in",
+    "v": "red",
+    "v2": "blond"
+   }
+  ],
+  "clue_text": [
+   "The killer slipped through a gap that only someone shorter than Myra could use.",
+   "Fresh footprints lead to the scene from only two places: the machine room and the boot room.",
+   "A witness glimpsed the killer's hair. It was either red or blond."
+  ],
+  "killer": 0,
+  "steps": [
+   "Clue 1 clears Myra and June.",
+   "Clue 2 clears Otis and Milo.",
+   "Clue 3 clears Cora."
+  ]
+ },
+ {
+  "num": 8,
+  "level": "A",
+  "title": "Check-Out Time",
+  "victim": "Beatrix Lowe, owner of the Seaview Grand Hotel",
+  "scene": "The night porter found her in the lobby at midnight, the guest book open on the desk.",
+  "motive": "a love affair kept quiet",
+  "suspects": [
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 73,
+    "hair": "brown",
+    "first": "Felix",
+    "last": "Bramble",
+    "name": "Felix Bramble",
+    "role": "pianist"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 67,
+    "hair": "gray",
+    "first": "Lottie",
+    "last": "Hobbs",
+    "name": "Lottie Hobbs",
+    "role": "concierge"
+   },
+   {
+    "room": 4,
+    "hand": "left",
+    "height": 71,
+    "hair": "brown",
+    "first": "Nora",
+    "last": "Drake",
+    "name": "Nora Drake",
+    "role": "night porter"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 65,
+    "hair": "blond",
+    "first": "Ina",
+    "last": "Calloway",
+    "name": "Ina Calloway",
+    "role": "housekeeper"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 61,
+    "hair": "red",
+    "first": "Rufus",
+    "last": "Hollis",
+    "name": "Rufus Hollis",
+    "role": "head chef"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 66,
+    "hair": "brown",
+    "first": "Clara",
+    "last": "Barlow",
+    "name": "Clara Barlow",
+    "role": "long-stay guest"
+   }
+  ],
+  "rooms": [
+   "ballroom",
+   "laundry",
+   "wine cellar",
+   "lobby",
+   "roof garden"
+  ],
+  "clues": [
+   {
+    "t": "shorter",
+    "s": 0
+   },
+   {
+    "t": "hand",
+    "v": "right"
+   },
+   {
+    "t": "hair_in",
+    "v": "black",
+    "v2": "brown"
+   }
+  ],
+  "clue_text": [
+   "The killer slipped through a gap that only someone shorter than Felix could use.",
+   "The angle of the blow shows that the killer is right-handed.",
+   "A witness glimpsed the killer's hair. It was either black or brown."
+  ],
+  "killer": 5,
+  "steps": [
+   "Clue 1 clears Felix.",
+   "Clue 2 clears Nora.",
+   "Clue 3 clears Lottie, Ina and Rufus."
+  ]
+ },
+ {
+  "num": 9,
+  "level": "A",
+  "title": "The Deep End",
+  "victim": "Coach Rufus Dane, head coach of the Otter Swimming Club",
+  "scene": "He was found beside the pool before morning practice, his stopwatch still running.",
+  "motive": "years of jealousy",
+  "suspects": [
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 62,
+    "hair": "black",
+    "first": "Mavis",
+    "last": "Carver",
+    "name": "Mavis Carver",
+    "role": "swimmer's parent"
+   },
+   {
+    "room": 0,
+    "hand": "left",
+    "height": 75,
+    "hair": "red",
+    "first": "Lottie",
+    "last": "Pell",
+    "name": "Lottie Pell",
+    "role": "assistant coach"
+   },
+   {
+    "room": 3,
+    "hand": "right",
+    "height": 70,
+    "hair": "brown",
+    "first": "Bea",
+    "last": "Voss",
+    "name": "Bea Voss",
+    "role": "caretaker"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 63,
+    "hair": "blond",
+    "first": "Theo",
+    "last": "Hale",
+    "name": "Theo Hale",
+    "role": "star swimmer"
+   },
+   {
+    "room": 4,
+    "hand": "left",
+    "height": 74,
+    "hair": "brown",
+    "first": "Vince",
+    "last": "Drake",
+    "name": "Vince Drake",
+    "role": "pool manager"
+   },
+   {
+    "room": 3,
+    "hand": "left",
+    "height": 68,
+    "hair": "blond",
+    "first": "Ada",
+    "last": "Locke",
+    "name": "Ada Locke",
+    "role": "lifeguard"
+   }
+  ],
+  "rooms": [
+   "changing room",
+   "pump room",
+   "first aid room",
+   "spectator gallery",
+   "equipment store"
+  ],
+  "clues": [
+   {
+    "t": "not_room",
+    "v": 3
+   },
+   {
+    "t": "hand_or_room",
+    "v": "right",
+    "v2": 0
+   },
+   {
+    "t": "taller",
+    "s": 0
+   },
+   {
+    "t": "hair_not",
+    "v": "red"
+   }
+  ],
+  "clue_text": [
+   "The spectator gallery was locked from the outside all evening. Nobody in there could have done it.",
+   "Either the killer is right-handed, or the killer came from the changing room (or both).",
+   "A witness saw a figure hurry away. It was someone taller than Mavis.",
+   "A hair was found on the victim's sleeve. It was not red."
+  ],
+  "killer": 3,
+  "steps": [
+   "Clue 1 clears Bea and Ada.",
+   "Clue 2 clears Vince.",
+   "Clue 3 clears Mavis.",
+   "Clue 4 clears Lottie."
+  ]
+ },
+ {
+  "num": 10,
+  "level": "A",
+  "title": "Sour Notes",
+  "victim": "Maestro Ignatius Bell, conductor of the Harbor City Orchestra",
+  "scene": "He was found on the podium an hour before the gala concert, his baton snapped in two.",
+  "motive": "a changed will",
+  "suspects": [
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 75,
+    "hair": "red",
+    "first": "Nell",
+    "last": "Penrose",
+    "name": "Nell Penrose",
+    "role": "orchestra manager"
+   },
+   {
+    "room": 0,
+    "hand": "left",
+    "height": 73,
+    "hair": "black",
+    "first": "Fern",
+    "last": "Vane",
+    "name": "Fern Vane",
+    "role": "first violinist"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 61,
+    "hair": "blond",
+    "first": "Gus",
+    "last": "Rook",
+    "name": "Gus Rook",
+    "role": "composer"
+   },
+   {
+    "room": 3,
+    "hand": "left",
+    "height": 66,
+    "hair": "black",
+    "first": "Rex",
+    "last": "Barlow",
+    "name": "Rex Barlow",
+    "role": "cellist"
+   },
+   {
+    "room": 0,
+    "hand": "left",
+    "height": 68,
+    "hair": "red",
+    "first": "Lena",
+    "last": "Fenwick",
+    "name": "Lena Fenwick",
+    "role": "pianist"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 74,
+    "hair": "blond",
+    "first": "Vera",
+    "last": "Oakley",
+    "name": "Vera Oakley",
+    "role": "stagehand"
+   }
+  ],
+  "rooms": [
+   "rehearsal room",
+   "instrument store",
+   "concert hall",
+   "cloakroom",
+   "sound booth"
+  ],
+  "clues": [
+   {
+    "t": "shorter",
+    "s": 5
+   },
+   {
+    "t": "middle"
+   },
+   {
+    "t": "hair_not",
+    "v": "red"
+   },
+   {
+    "t": "hand_or_room",
+    "v": "right",
+    "v2": 0
+   }
+  ],
+  "clue_text": [
+   "The killer slipped through a gap that only someone shorter than Vera could use.",
+   "The killer is neither the tallest nor the shortest of the suspects.",
+   "A hair was found on the victim's sleeve. It was not red.",
+   "Either the killer is right-handed, or the killer came from the rehearsal room (or both)."
+  ],
+  "killer": 1,
+  "steps": [
+   "Clue 1 clears Nell and Vera.",
+   "Clue 2 clears Gus.",
+   "Clue 3 clears Lena.",
+   "Clue 4 clears Rex."
+  ]
+ },
+ {
+  "num": 11,
+  "level": "A",
+  "title": "The Stopped Clock",
+  "victim": "Horace Finlay, master clockmaker",
+  "scene": "Every clock in his shop had stopped at 9:15, and he lay on the workshop floor beneath them.",
+  "motive": "a stolen idea",
+  "suspects": [
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 69,
+    "hair": "red",
+    "first": "Winnie",
+    "last": "Drake",
+    "name": "Winnie Drake",
+    "role": "shop neighbor"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 64,
+    "hair": "gray",
+    "first": "Daisy",
+    "last": "Winter",
+    "name": "Daisy Winter",
+    "role": "locksmith"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 73,
+    "hair": "gray",
+    "first": "Rhoda",
+    "last": "Darrow",
+    "name": "Rhoda Darrow",
+    "role": "watch collector"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 75,
+    "hair": "gray",
+    "first": "Opal",
+    "last": "Rowan",
+    "name": "Opal Rowan",
+    "role": "jeweler"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 65,
+    "hair": "gray",
+    "first": "Edgar",
+    "last": "Thorne",
+    "name": "Edgar Thorne",
+    "role": "apprentice"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 67,
+    "hair": "gray",
+    "first": "Alma",
+    "last": "Dalby",
+    "name": "Alma Dalby",
+    "role": "nephew"
+   }
+  ],
+  "rooms": [
+   "workshop",
+   "showroom",
+   "back room",
+   "loft",
+   "yard"
+  ],
+  "clues": [
+   {
+    "t": "hair_in",
+    "v": "gray",
+    "v2": "brown"
+   },
+   {
+    "t": "shorter",
+    "s": 2
+   },
+   {
+    "t": "not_room",
+    "v": 1
+   },
+   {
+    "t": "middle"
+   }
+  ],
+  "clue_text": [
+   "A witness glimpsed the killer's hair. It was either gray or brown.",
+   "The killer slipped through a gap that only someone shorter than Rhoda could use.",
+   "The showroom was locked from the outside all evening. Nobody in there could have done it.",
+   "The killer is neither the tallest nor the shortest of the suspects."
+  ],
+  "killer": 4,
+  "steps": [
+   "Clue 1 clears Winnie.",
+   "Clue 2 clears Rhoda and Opal.",
+   "Clue 3 clears Alma.",
+   "Clue 4 clears Daisy."
+  ]
+ },
+ {
+  "num": 12,
+  "level": "A",
+  "title": "Dead Heat",
+  "victim": "Fergus Tate, owner of Tate Racing Stables",
+  "scene": "He was found in the yard on the morning of the big race, his best horse missing from its stall.",
+  "motive": "fear of being found out",
+  "suspects": [
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 74,
+    "hair": "red",
+    "first": "Wilma",
+    "last": "Stone",
+    "name": "Wilma Stone",
+    "role": "stable hand"
+   },
+   {
+    "room": 4,
+    "hand": "left",
+    "height": 71,
+    "hair": "red",
+    "first": "Myra",
+    "last": "Voss",
+    "name": "Myra Voss",
+    "role": "veterinarian"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 61,
+    "hair": "blond",
+    "first": "Vince",
+    "last": "Tully",
+    "name": "Vince Tully",
+    "role": "bookmaker"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 66,
+    "hair": "black",
+    "first": "Sadie",
+    "last": "Yarrow",
+    "name": "Sadie Yarrow",
+    "role": "rival owner"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 63,
+    "hair": "brown",
+    "first": "Mabel",
+    "last": "Kettle",
+    "name": "Mabel Kettle",
+    "role": "trainer"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 72,
+    "hair": "black",
+    "first": "Basil",
+    "last": "Drake",
+    "name": "Basil Drake",
+    "role": "jockey"
+   }
+  ],
+  "rooms": [
+   "tack room",
+   "hayloft",
+   "feed store",
+   "stable office",
+   "horse box"
+  ],
+  "clues": [
+   {
+    "t": "middle"
+   },
+   {
+    "t": "hand_or_room",
+    "v": "right",
+    "v2": 0
+   },
+   {
+    "t": "room_in",
+    "v": 4,
+    "v2": 1
+   },
+   {
+    "t": "shorter",
+    "s": 5
+   }
+  ],
+  "clue_text": [
+   "The killer is neither the tallest nor the shortest of the suspects.",
+   "Either the killer is right-handed, or the killer came from the tack room (or both).",
+   "Fresh footprints lead to the scene from only two places: the horse box and the hayloft.",
+   "The killer slipped through a gap that only someone shorter than Basil could use."
+  ],
+  "killer": 4,
+  "steps": [
+   "Clue 1 clears Wilma and Vince.",
+   "Clue 2 clears Myra.",
+   "Clue 3 clears Sadie.",
+   "Clue 4 clears Basil."
+  ]
+ },
+ {
+  "num": 13,
+  "level": "A",
+  "title": "The Burnt Loaf",
+  "victim": "Gwen Abbott, owner of Abbott's Bakery",
+  "scene": "The ovens were still hot and the bread was burning when the first customer found her.",
+  "motive": "revenge for an old insult",
+  "suspects": [
+   {
+    "room": 1,
+    "hand": "left",
+    "height": 62,
+    "hair": "red",
+    "first": "Polly",
+    "last": "Harlow",
+    "name": "Polly Harlow",
+    "role": "cake decorator"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 67,
+    "hair": "black",
+    "first": "Sybil",
+    "last": "Cobb",
+    "name": "Sybil Cobb",
+    "role": "flour merchant"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 61,
+    "hair": "brown",
+    "first": "Alma",
+    "last": "Pell",
+    "name": "Alma Pell",
+    "role": "shop girl"
+   },
+   {
+    "room": 2,
+    "hand": "left",
+    "height": 63,
+    "hair": "black",
+    "first": "Hilda",
+    "last": "Sable",
+    "name": "Hilda Sable",
+    "role": "baker"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 65,
+    "hair": "brown",
+    "first": "Quentin",
+    "last": "Fenwick",
+    "name": "Quentin Fenwick",
+    "role": "delivery boy"
+   },
+   {
+    "room": 0,
+    "hand": "left",
+    "height": 64,
+    "hair": "gray",
+    "first": "Felix",
+    "last": "Hobbs",
+    "name": "Felix Hobbs",
+    "role": "rival baker"
+   }
+  ],
+  "rooms": [
+   "bakehouse",
+   "flour store",
+   "cold room",
+   "shop front",
+   "alley"
+  ],
+  "clues": [
+   {
+    "t": "not_room",
+    "v": 2
+   },
+   {
+    "t": "shorter",
+    "s": 1
+   },
+   {
+    "t": "hair_not",
+    "v": "gray"
+   },
+   {
+    "t": "hand_or_room",
+    "v": "right",
+    "v2": 0
+   }
+  ],
+  "clue_text": [
+   "The cold room was locked from the outside all evening. Nobody in there could have done it.",
+   "The killer slipped through a gap that only someone shorter than Sybil could use.",
+   "A hair was found on the victim's sleeve. It was not gray.",
+   "Either the killer is right-handed, or the killer came from the bakehouse (or both)."
+  ],
+  "killer": 2,
+  "steps": [
+   "Clue 1 clears Hilda and Quentin.",
+   "Clue 2 clears Sybil.",
+   "Clue 3 clears Felix.",
+   "Clue 4 clears Polly."
+  ]
+ },
+ {
+  "num": 14,
+  "level": "A",
+  "title": "Lights Out at the Lumière",
+  "victim": "Dorian Pryce, owner of the Lumière Cinema",
+  "scene": "When the lights came up after the late show, he was still in his seat in the back row.",
+  "motive": "years of jealousy",
+  "suspects": [
+   {
+    "room": 2,
+    "hand": "left",
+    "height": 64,
+    "hair": "red",
+    "first": "Hazel",
+    "last": "Stone",
+    "name": "Hazel Stone",
+    "role": "ticket seller"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 73,
+    "hair": "gray",
+    "first": "Olive",
+    "last": "Moss",
+    "name": "Olive Moss",
+    "role": "usher"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 69,
+    "hair": "brown",
+    "first": "Sybil",
+    "last": "Harlow",
+    "name": "Sybil Harlow",
+    "role": "popcorn seller"
+   },
+   {
+    "room": 0,
+    "hand": "left",
+    "height": 66,
+    "hair": "black",
+    "first": "Ezra",
+    "last": "Wren",
+    "name": "Ezra Wren",
+    "role": "organist"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 71,
+    "hair": "red",
+    "first": "Rex",
+    "last": "Kemp",
+    "name": "Rex Kemp",
+    "role": "projectionist"
+   },
+   {
+    "room": 0,
+    "hand": "left",
+    "height": 61,
+    "hair": "brown",
+    "first": "Greta",
+    "last": "Kettle",
+    "name": "Greta Kettle",
+    "role": "film critic"
+   }
+  ],
+  "rooms": [
+   "projection booth",
+   "foyer",
+   "balcony",
+   "film vault",
+   "box office"
+  ],
+  "clues": [
+   {
+    "t": "taller",
+    "s": 5
+   },
+   {
+    "t": "hair_not",
+    "v": "black"
+   },
+   {
+    "t": "room_in",
+    "v": 0,
+    "v2": 2
+   },
+   {
+    "t": "hand_or_room",
+    "v": "left",
+    "v2": 1
+   }
+  ],
+  "clue_text": [
+   "A witness saw a figure hurry away. It was someone taller than Greta.",
+   "A hair was found on the victim's sleeve. It was not black.",
+   "Fresh footprints lead to the scene from only two places: the projection booth and the balcony.",
+   "Either the killer is left-handed, or the killer came from the foyer (or both)."
+  ],
+  "killer": 0,
+  "steps": [
+   "Clue 1 clears Greta.",
+   "Clue 2 clears Ezra.",
+   "Clue 3 clears Olive and Sybil.",
+   "Clue 4 clears Rex."
+  ]
+ },
+ {
+  "num": 15,
+  "level": "A",
+  "title": "The Poisoned Pen",
+  "victim": "Edith Crane, editor of the Daily Lantern",
+  "scene": "She was found at her desk long after the presses had started, tomorrow's front page blank in front of her.",
+  "motive": "fear of being found out",
+  "suspects": [
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 63,
+    "hair": "brown",
+    "first": "Mavis",
+    "last": "Nash",
+    "name": "Mavis Nash",
+    "role": "gossip columnist"
+   },
+   {
+    "room": 3,
+    "hand": "left",
+    "height": 64,
+    "hair": "black",
+    "first": "Amos",
+    "last": "Moss",
+    "name": "Amos Moss",
+    "role": "photographer"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 68,
+    "hair": "gray",
+    "first": "Reuben",
+    "last": "Stone",
+    "name": "Reuben Stone",
+    "role": "newspaper owner"
+   },
+   {
+    "room": 3,
+    "hand": "right",
+    "height": 62,
+    "hair": "black",
+    "first": "Theo",
+    "last": "Sharpe",
+    "name": "Theo Sharpe",
+    "role": "printer"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 70,
+    "hair": "red",
+    "first": "Hazel",
+    "last": "Fenwick",
+    "name": "Hazel Fenwick",
+    "role": "copy boy"
+   },
+   {
+    "room": 1,
+    "hand": "left",
+    "height": 66,
+    "hair": "red",
+    "first": "Winnie",
+    "last": "Yarrow",
+    "name": "Winnie Yarrow",
+    "role": "crime reporter"
+   }
+  ],
+  "rooms": [
+   "newsroom",
+   "darkroom",
+   "print room",
+   "archive",
+   "editor's office"
+  ],
+  "clues": [
+   {
+    "t": "hand_or_room",
+    "v": "right",
+    "v2": 3
+   },
+   {
+    "t": "hair_not",
+    "v": "brown"
+   },
+   {
+    "t": "middle"
+   },
+   {
+    "t": "not_room",
+    "v": 0
+   }
+  ],
+  "clue_text": [
+   "Either the killer is right-handed, or the killer came from the archive (or both).",
+   "A hair was found on the victim's sleeve. It was not brown.",
+   "The killer is neither the tallest nor the shortest of the suspects.",
+   "The newsroom was locked from the outside all evening. Nobody in there could have done it."
+  ],
+  "killer": 1,
+  "steps": [
+   "Clue 1 clears Winnie.",
+   "Clue 2 clears Mavis.",
+   "Clue 3 clears Theo and Hazel.",
+   "Clue 4 clears Reuben."
+  ]
+ },
+ {
+  "num": 16,
+  "level": "A",
+  "title": "Trouble at Tumbledown Farm",
+  "victim": "Silas Oakes, owner of Tumbledown Farm",
+  "scene": "He was found in the barn at milking time, and nobody had heard a thing over the storm.",
+  "motive": "a hidden theft",
+  "suspects": [
+   {
+    "room": 3,
+    "hand": "right",
+    "height": 68,
+    "hair": "brown",
+    "first": "Gil",
+    "last": "Slade",
+    "name": "Gil Slade",
+    "role": "cattle dealer"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 63,
+    "hair": "black",
+    "first": "Hazel",
+    "last": "Alder",
+    "name": "Hazel Alder",
+    "role": "neighbor"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 75,
+    "hair": "blond",
+    "first": "Saul",
+    "last": "Foxley",
+    "name": "Saul Foxley",
+    "role": "shepherd"
+   },
+   {
+    "room": 4,
+    "hand": "right",
+    "height": 72,
+    "hair": "black",
+    "first": "Edna",
+    "last": "Fairfax",
+    "name": "Edna Fairfax",
+    "role": "farmhand"
+   },
+   {
+    "room": 0,
+    "hand": "left",
+    "height": 74,
+    "hair": "gray",
+    "first": "Sybil",
+    "last": "Oakley",
+    "name": "Sybil Oakley",
+    "role": "dairymaid"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 67,
+    "hair": "black",
+    "first": "Wade",
+    "last": "Finch",
+    "name": "Wade Finch",
+    "role": "tractor mechanic"
+   }
+  ],
+  "rooms": [
+   "barn",
+   "dairy",
+   "hen house",
+   "orchard",
+   "tool shed"
+  ],
+  "clues": [
+   {
+    "t": "hair_not",
+    "v": "gray"
+   },
+   {
+    "t": "middle"
+   },
+   {
+    "t": "taller",
+    "s": 5
+   },
+   {
+    "t": "not_room",
+    "v": 4
+   }
+  ],
+  "clue_text": [
+   "A hair was found on the victim's sleeve. It was not gray.",
+   "The killer is neither the tallest nor the shortest of the suspects.",
+   "A witness saw a figure hurry away. It was someone taller than Wade.",
+   "The tool shed was locked from the outside all evening. Nobody in there could have done it."
+  ],
+  "killer": 0,
+  "steps": [
+   "Clue 1 clears Sybil.",
+   "Clue 2 clears Hazel and Saul.",
+   "Clue 3 clears Wade.",
+   "Clue 4 clears Edna."
+  ]
+ },
+ {
+  "num": 17,
+  "level": "A",
+  "title": "The Marble Fall",
+  "victim": "Octavia Rhodes, curator of the Rhodes Sculpture Gallery",
+  "scene": "A marble bust had fallen from the upper gallery, and it was no accident.",
+  "motive": "a valuable secret recipe or formula",
+  "suspects": [
+   {
+    "room": 4,
+    "hand": "left",
+    "height": 66,
+    "hair": "red",
+    "first": "Nell",
+    "last": "Easton",
+    "name": "Nell Easton",
+    "role": "wealthy patron"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 70,
+    "hair": "blond",
+    "first": "Sadie",
+    "last": "Lark",
+    "name": "Sadie Lark",
+    "role": "tour guide"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 71,
+    "hair": "gray",
+    "first": "Elsie",
+    "last": "Harlow",
+    "name": "Elsie Harlow",
+    "role": "art student"
+   },
+   {
+    "room": 3,
+    "hand": "left",
+    "height": 67,
+    "hair": "blond",
+    "first": "Hilda",
+    "last": "Winter",
+    "name": "Hilda Winter",
+    "role": "sculptor"
+   },
+   {
+    "room": 2,
+    "hand": "right",
+    "height": 68,
+    "hair": "gray",
+    "first": "Una",
+    "last": "Tanner",
+    "name": "Una Tanner",
+    "role": "art restorer"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 69,
+    "hair": "black",
+    "first": "Clara",
+    "last": "Penrose",
+    "name": "Clara Penrose",
+    "role": "night guard"
+   }
+  ],
+  "rooms": [
+   "upper gallery",
+   "restoration room",
+   "loading bay",
+   "sculpture hall",
+   "cloakroom"
+  ],
+  "clues": [
+   {
+    "t": "room_in",
+    "v": 0,
+    "v2": 4
+   },
+   {
+    "t": "hair_not",
+    "v": "black"
+   },
+   {
+    "t": "shorter",
+    "s": 2
+   },
+   {
+    "t": "hand_or_room",
+    "v": "right",
+    "v2": 2
+   }
+  ],
+  "clue_text": [
+   "Fresh footprints lead to the scene from only two places: the upper gallery and the cloakroom.",
+   "A hair was found on the victim's sleeve. It was not black.",
+   "The killer slipped through a gap that only someone shorter than Elsie could use.",
+   "Either the killer is right-handed, or the killer came from the loading bay (or both)."
+  ],
+  "killer": 1,
+  "steps": [
+   "Clue 1 clears Hilda and Una.",
+   "Clue 2 clears Clara.",
+   "Clue 3 clears Elsie.",
+   "Clue 4 clears Nell."
+  ]
+ },
+ {
+  "num": 18,
+  "level": "A",
+  "title": "The Ninth Hole",
+  "victim": "Colonel Basil Thorpe, president of the Heather Glen Golf Club",
+  "scene": "He was found in the bunker beside the ninth green at sunrise.",
+  "motive": "an unpaid debt",
+  "suspects": [
+   {
+    "room": 3,
+    "hand": "right",
+    "height": 74,
+    "hair": "gray",
+    "first": "Kit",
+    "last": "Tanner",
+    "name": "Kit Tanner",
+    "role": "barman"
+   },
+   {
+    "room": 0,
+    "hand": "right",
+    "height": 66,
+    "hair": "gray",
+    "first": "Opal",
+    "last": "Kettle",
+    "name": "Opal Kettle",
+    "role": "greenkeeper"
+   },
+   {
+    "room": 2,
+    "hand": "left",
+    "height": 72,
+    "hair": "black",
+    "first": "Polly",
+    "last": "Briggs",
+    "name": "Polly Briggs",
+    "role": "lady captain"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 69,
+    "hair": "brown",
+    "first": "Pearl",
+    "last": "Vane",
+    "name": "Pearl Vane",
+    "role": "caddie"
+   },
+   {
+    "room": 1,
+    "hand": "right",
+    "height": 64,
+    "hair": "gray",
+    "first": "Vince",
+    "last": "Kemp",
+    "name": "Vince Kemp",
+    "role": "club treasurer"
+   },
+   {
+    "room": 1,
+    "hand": "left",
+    "height": 70,
+    "hair": "black",
+    "first": "Mabel",
+    "last": "Sharpe",
+    "name": "Mabel Sharpe",
+    "role": "club professional"
+   }
+  ],
+  "rooms": [
+   "clubhouse",
+   "locker room",
+   "pro shop",
+   "cart shed",
+   "trophy room"
+  ],
+  "clues": [
+   {
+    "t": "hand_or_room",
+    "v": "right",
+    "v2": 0
+   },
+   {
+    "t": "room_in",
+    "v": 1,
+    "v2": 0
+   },
+   {
+    "t": "hair_in",
+    "v": "gray",
+    "v2": "black"
+   },
+   {
+    "t": "not_room",
+    "v": 0
+   }
+  ],
+  "clue_text": [
+   "Either the killer is right-handed, or the killer came from the clubhouse (or both).",
+   "Fresh footprints lead to the scene from only two places: the locker room and the clubhouse.",
+   "A witness glimpsed the killer's hair. It was either gray or black.",
+   "The clubhouse was locked from the outside all evening. Nobody in there could have done it."
+  ],
+  "killer": 4,
+  "steps": [
+   "Clue 1 clears Polly and Mabel.",
+   "Clue 2 clears Kit.",
+   "Clue 3 clears Pearl.",
+   "Clue 4 clears Opal."
+  ]
+ },
+ {
+  "num": 19,
+  "level": "B",
+  "title": "Murder on the Night Sleeper",
+  "victim": "Viktor Lazlo, a diamond courier",
+  "scene": "He boarded the Night Sleeper with a locked case. By morning the case was open and Viktor was dead.",
+  "motive": "revenge for an old insult",
+  "suspects": [
+   {
+    "first": "Gus",
+    "last": "Voss",
+    "name": "Gus Voss",
+    "role": "actress"
+   },
+   {
+    "first": "Otis",
+    "last": "Gantry",
+    "name": "Otis Gantry",
+    "role": "salesman"
+   },
+   {
+    "first": "Wade",
+    "last": "Marsh",
+    "name": "Wade Marsh",
+    "role": "engineer"
+   },
+   {
+    "first": "Edgar",
+    "last": "Yarrow",
+    "name": "Edgar Yarrow",
+    "role": "conductor"
+   }
+  ],
+  "rooms": [
+   "dining car",
+   "sleeping car",
+   "baggage car",
+   "engine cab"
+  ],
+  "weapons": [
+   "steak knife",
+   "coal shovel",
+   "signal lamp",
+   "luggage strap"
+  ],
+  "clues": [
+   {
+    "t": "split",
+    "s": 3,
+    "r": 2,
+    "w": 1,
+    "w2": 2
+   },
+   {
+    "t": "s_or_w",
+    "s": 0,
+    "w": 2,
+    "w2": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 2,
+    "r": 3
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 1,
+    "r": 2
+   },
+   {
+    "t": "split",
+    "s": 2,
+    "r": 1,
+    "w": 3,
+    "w2": 0
+   },
+   {
+    "t": "s_or_w",
+    "s": 2,
+    "w": 1,
+    "w2": 0
+   }
+  ],
+  "clue_text": [
+   "Of Edgar and the person in the baggage car, one carried the coal shovel and the other carried the signal lamp.",
+   "Gus was carrying either the signal lamp or the coal shovel.",
+   "Either Otis or Wade was in the engine cab.",
+   "The person carrying the coal shovel was not Otis, and was not in the baggage car.",
+   "Of Wade and the person in the sleeping car, one carried the luggage strap and the other carried the steak knife.",
+   "Wade was carrying either the coal shovel or the steak knife."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the sleeping car."
+  },
+  "killer": 1,
+  "lp": [
+   2,
+   1,
+   3,
+   0
+  ],
+  "wp": [
+   2,
+   3,
+   0,
+   1
+  ],
+  "steps": [
+   "Clue 1 shows: Edgar was not in the baggage car; Edgar did not carry the steak knife; Edgar did not carry the luggage strap, and more.",
+   "Clue 2: Gus was in the baggage car.",
+   "Clue 3 shows: Edgar was not in the engine cab; the coal shovel was not in the engine cab; the signal lamp was not in the engine cab.",
+   "Clue 4: Gus carried the signal lamp; Edgar carried the coal shovel; the signal lamp was in the baggage car.",
+   "Clue 5: Otis was in the sleeping car; Wade was in the engine cab; Edgar was in the dining car; the coal shovel was in the dining car.",
+   "Clue 6: Otis carried the luggage strap; Wade carried the steak knife; the steak knife was in the engine cab; the luggage strap was in the sleeping car."
+  ]
+ },
+ {
+  "num": 20,
+  "level": "B",
+  "title": "The Greenhouse Affair",
+  "victim": "Dr. Flora Penhallow, director of the Botanical Gardens",
+  "scene": "She was found among the orchids in the Tropical House, the heating turned up as high as it would go.",
+  "motive": "a hidden theft",
+  "suspects": [
+   {
+    "first": "Hilda",
+    "last": "Lark",
+    "name": "Hilda Lark",
+    "role": "head gardener"
+   },
+   {
+    "first": "Ina",
+    "last": "Blackwood",
+    "name": "Ina Blackwood",
+    "role": "garden volunteer"
+   },
+   {
+    "first": "Hester",
+    "last": "Calloway",
+    "name": "Hester Calloway",
+    "role": "botanist"
+   },
+   {
+    "first": "Agnes",
+    "last": "Flint",
+    "name": "Agnes Flint",
+    "role": "café manager"
+   }
+  ],
+  "rooms": [
+   "seed bank",
+   "potting shed",
+   "fern house",
+   "tropical house"
+  ],
+  "weapons": [
+   "terracotta pot",
+   "coil of hose",
+   "plant mister",
+   "garden fork"
+  ],
+  "clues": [
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 3,
+    "r": 3
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 2,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 2,
+    "r": 1
+   },
+   {
+    "t": "s_or_r",
+    "s": 2,
+    "r": 3,
+    "r2": 2
+   },
+   {
+    "t": "w_in_r",
+    "w": 1,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 0,
+    "r": 1
+   },
+   {
+    "t": "s_or_r",
+    "s": 1,
+    "r": 0,
+    "r2": 3
+   }
+  ],
+  "clue_text": [
+   "Either Hilda or Agnes was in the tropical house.",
+   "The person carrying the plant mister was not Agnes, and was not in the seed bank.",
+   "The person carrying the plant mister was not Hester, and was not in the potting shed.",
+   "Hester was in either the tropical house or the fern house.",
+   "Whoever carried the coil of hose was in the seed bank.",
+   "The person carrying the terracotta pot was not Ina, and was not in the potting shed.",
+   "Ina was in either the seed bank or the tropical house."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the plant mister."
+  },
+  "killer": 0,
+  "lp": [
+   3,
+   0,
+   2,
+   1
+  ],
+  "wp": [
+   2,
+   1,
+   0,
+   3
+  ],
+  "steps": [
+   "Mark the plain facts from clue 5 on the grid. That gives: the coil of hose was in the seed bank.",
+   "Clue 1 shows: Ina was not in the tropical house; Hester was not in the tropical house.",
+   "Clue 2 shows: Agnes did not carry the plant mister.",
+   "Clue 3 shows: Hester did not carry the plant mister; the plant mister was not in the potting shed.",
+   "Clue 4: Hilda was in the tropical house; Hester was in the fern house; Hilda carried the plant mister; the plant mister was in the tropical house.",
+   "Clue 6: Hester carried the terracotta pot; the terracotta pot was in the fern house; the garden fork was in the potting shed.",
+   "Clue 7: Ina was in the seed bank; Agnes was in the potting shed; Ina carried the coil of hose; Agnes carried the garden fork."
+  ]
+ },
+ {
+  "num": 21,
+  "level": "B",
+  "title": "Death by Chocolate",
+  "victim": "Bruno Castellane, owner of the Castellane Chocolate Factory",
+  "scene": "He was found beside the great mixing vat, the factory whistle still blowing.",
+  "motive": "a changed will",
+  "suspects": [
+   {
+    "first": "Nell",
+    "last": "Tully",
+    "name": "Nell Tully",
+    "role": "factory foreman"
+   },
+   {
+    "first": "Lena",
+    "last": "Greer",
+    "name": "Lena Greer",
+    "role": "packer"
+   },
+   {
+    "first": "Polly",
+    "last": "Sparrow",
+    "name": "Polly Sparrow",
+    "role": "taster"
+   },
+   {
+    "first": "Bert",
+    "last": "Wren",
+    "name": "Bert Wren",
+    "role": "machine operator"
+   }
+  ],
+  "rooms": [
+   "boiler room",
+   "wrapping room",
+   "mixing room",
+   "cooling tunnel"
+  ],
+  "weapons": [
+   "chocolate mold",
+   "sugar hammer",
+   "steam valve wheel",
+   "cocoa sack"
+  ],
+  "clues": [
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 2,
+    "r": 3
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 1,
+    "r": 0
+   },
+   {
+    "t": "split",
+    "s": 1,
+    "r": 0,
+    "w": 1,
+    "w2": 3
+   },
+   {
+    "t": "s_not_r",
+    "s": 1,
+    "r": 2
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 3,
+    "r": 3
+   }
+  ],
+  "clue_text": [
+   "The person carrying the steam valve wheel was not Polly, and was not in the cooling tunnel.",
+   "Either Nell or Lena was in the boiler room.",
+   "Of Lena and the person in the boiler room, one carried the sugar hammer and the other carried the cocoa sack.",
+   "Lena was not in the mixing room.",
+   "The person carrying the cocoa sack was not Nell, and was not in the cooling tunnel."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the wrapping room."
+  },
+  "killer": 1,
+  "lp": [
+   0,
+   1,
+   3,
+   2
+  ],
+  "wp": [
+   1,
+   3,
+   0,
+   2
+  ],
+  "steps": [
+   "Mark the plain facts from clue 4 on the grid.",
+   "Clue 1 shows: Polly did not carry the steam valve wheel; the steam valve wheel was not in the cooling tunnel.",
+   "Clue 2 shows: Polly was not in the boiler room; Bert was not in the boiler room.",
+   "Clue 3: Nell was in the boiler room; Polly carried the chocolate mold; Bert carried the steam valve wheel.",
+   "Clue 5: Lena was in the wrapping room; Polly was in the cooling tunnel; Bert was in the mixing room; Nell carried the sugar hammer; Lena carried the cocoa sack; the chocolate mold was in the cooling tunnel; the sugar hammer was in the boiler room; the steam valve wheel was in the mixing room; the cocoa sack was in the wrapping room."
+  ]
+ },
+ {
+  "num": 22,
+  "level": "B",
+  "title": "The Vanishing Act",
+  "victim": "The Great Zoltan, stage magician",
+  "scene": "His final trick went wrong in a way no magician plans. He was found inside his own locked cabinet.",
+  "motive": "a gambling loss",
+  "suspects": [
+   {
+    "first": "Saul",
+    "last": "Hale",
+    "name": "Saul Hale",
+    "role": "escape artist"
+   },
+   {
+    "first": "Rufus",
+    "last": "Nash",
+    "name": "Rufus Nash",
+    "role": "magician's assistant"
+   },
+   {
+    "first": "Jem",
+    "last": "Crowe",
+    "name": "Jem Crowe",
+    "role": "stagehand"
+   },
+   {
+    "first": "Hazel",
+    "last": "Marsh",
+    "name": "Hazel Marsh",
+    "role": "rival magician"
+   }
+  ],
+  "rooms": [
+   "stage wings",
+   "dressing room",
+   "trap room",
+   "costume store"
+  ],
+  "weapons": [
+   "silk rope",
+   "trick cabinet key",
+   "length of chain",
+   "weighted cane"
+  ],
+  "clues": [
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 2,
+    "r": 1
+   },
+   {
+    "t": "s_is_r",
+    "s": 2,
+    "r": 1
+   },
+   {
+    "t": "split",
+    "s": 1,
+    "r": 1,
+    "w": 1,
+    "w2": 3
+   },
+   {
+    "t": "s_not_r",
+    "s": 1,
+    "r": 0
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 2,
+    "r": 2
+   },
+   {
+    "t": "w_not_r",
+    "w": 1,
+    "r": 1
+   }
+  ],
+  "clue_text": [
+   "The person carrying the length of chain was not Saul, and was not in the dressing room.",
+   "Jem was in the dressing room.",
+   "Of Rufus and the person in the dressing room, one carried the trick cabinet key and the other carried the weighted cane.",
+   "Rufus was not in the stage wings.",
+   "Either Saul or Jem was in the trap room.",
+   "The trick cabinet key was not in the dressing room."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the silk rope."
+  },
+  "killer": 0,
+  "lp": [
+   2,
+   3,
+   1,
+   0
+  ],
+  "wp": [
+   0,
+   1,
+   3,
+   2
+  ],
+  "steps": [
+   "Mark the plain facts from clues 2, 4 and 6 on the grid. That gives: Jem was in the dressing room.",
+   "Clue 1 shows: Saul did not carry the length of chain; Jem did not carry the length of chain; the length of chain was not in the dressing room.",
+   "Clue 3: Saul carried the silk rope; Rufus carried the trick cabinet key; Jem carried the weighted cane; Hazel carried the length of chain; the weighted cane was in the dressing room.",
+   "Clue 5: Saul was in the trap room; Rufus was in the costume store; Hazel was in the stage wings; the silk rope was in the trap room; the trick cabinet key was in the costume store; the length of chain was in the stage wings."
+  ]
+ },
+ {
+  "num": 23,
+  "level": "B",
+  "title": "Going, Going, Gone",
+  "victim": "Lady Honoria Blythe, owner of Blythe's Auction House",
+  "scene": "She was found in the sale room before the day's first lot, her gavel missing.",
+  "motive": "a partnership gone sour",
+  "suspects": [
+   {
+    "first": "Ivy",
+    "last": "Sharpe",
+    "name": "Ivy Sharpe",
+    "role": "antique restorer"
+   },
+   {
+    "first": "Enid",
+    "last": "Bramble",
+    "name": "Enid Bramble",
+    "role": "telephone bidder"
+   },
+   {
+    "first": "Bea",
+    "last": "Garland",
+    "name": "Bea Garland",
+    "role": "art valuer"
+   },
+   {
+    "first": "Ina",
+    "last": "Finch",
+    "name": "Ina Finch",
+    "role": "auctioneer"
+   }
+  ],
+  "rooms": [
+   "sale room",
+   "strong room",
+   "records office",
+   "viewing gallery"
+  ],
+  "weapons": [
+   "bronze statuette",
+   "crystal decanter",
+   "picture wire",
+   "silver candlestick"
+  ],
+  "clues": [
+   {
+    "t": "or_s_w",
+    "s": 2,
+    "s2": 3,
+    "w": 0
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 1,
+    "r": 2
+   },
+   {
+    "t": "split",
+    "s": 1,
+    "r": 3,
+    "w": 2,
+    "w2": 1
+   },
+   {
+    "t": "split",
+    "s": 2,
+    "r": 0,
+    "w": 1,
+    "w2": 2
+   },
+   {
+    "t": "s_not_w",
+    "s": 2,
+    "w": 1
+   }
+  ],
+  "clue_text": [
+   "Either Bea or Ina was carrying the bronze statuette.",
+   "Either Ivy or Enid was in the records office.",
+   "Of Enid and the person in the viewing gallery, one carried the picture wire and the other carried the crystal decanter.",
+   "Of Bea and the person in the sale room, one carried the crystal decanter and the other carried the picture wire.",
+   "Bea was not carrying the crystal decanter."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the sale room."
+  },
+  "killer": 1,
+  "lp": [
+   2,
+   0,
+   3,
+   1
+  ],
+  "wp": [
+   3,
+   1,
+   2,
+   0
+  ],
+  "steps": [
+   "Mark the plain facts from clue 5 on the grid.",
+   "Clue 1 shows: Ivy did not carry the bronze statuette; Enid did not carry the bronze statuette.",
+   "Clue 2 shows: Bea was not in the records office; Ina was not in the records office; the bronze statuette was not in the records office.",
+   "Clue 3 shows: Enid was not in the viewing gallery; Enid did not carry the silver candlestick; the bronze statuette was not in the viewing gallery, and more.",
+   "Clue 4: Ivy was in the records office; Enid was in the sale room; Bea was in the viewing gallery; Ina was in the strong room; Ivy carried the silver candlestick; Enid carried the crystal decanter; Bea carried the picture wire; Ina carried the bronze statuette; the bronze statuette was in the strong room; the crystal decanter was in the sale room; the picture wire was in the viewing gallery; the silver candlestick was in the records office."
+  ]
+ },
+ {
+  "num": 24,
+  "level": "B",
+  "title": "Cold Case at the Ice Palace",
+  "victim": "Katya Morrow, champion figure skater",
+  "scene": "She was found at center ice before the morning session, one skate missing.",
+  "motive": "a ruined reputation",
+  "suspects": [
+   {
+    "first": "Ivor",
+    "last": "Hobbs",
+    "name": "Ivor Hobbs",
+    "role": "ice technician"
+   },
+   {
+    "first": "Myra",
+    "last": "Sparrow",
+    "name": "Myra Sparrow",
+    "role": "skating coach"
+   },
+   {
+    "first": "Opal",
+    "last": "Moss",
+    "name": "Opal Moss",
+    "role": "rival skater"
+   },
+   {
+    "first": "Bert",
+    "last": "Greer",
+    "name": "Bert Greer",
+    "role": "costume maker"
+   }
+  ],
+  "rooms": [
+   "skate shop",
+   "warm-up room",
+   "plant room",
+   "judges' box"
+  ],
+  "weapons": [
+   "skate lace",
+   "hockey stick",
+   "ice scraper",
+   "skate blade"
+  ],
+  "clues": [
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 2,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 2,
+    "r": 2
+   },
+   {
+    "t": "s_or_r",
+    "s": 3,
+    "r": 2,
+    "r2": 0
+   },
+   {
+    "t": "or_s_w",
+    "s": 2,
+    "s2": 3,
+    "w": 3
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 1,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 1,
+    "r": 0
+   },
+   {
+    "t": "or_s_w",
+    "s": 0,
+    "s2": 3,
+    "w": 3
+   }
+  ],
+  "clue_text": [
+   "Opal was not in the warm-up room.",
+   "Either Ivor or Opal was in the skate shop.",
+   "The person carrying the ice scraper was not Myra, and was not in the plant room.",
+   "Bert was in either the plant room or the skate shop.",
+   "Either Opal or Bert was carrying the skate blade.",
+   "The person carrying the hockey stick was not Ivor, and was not in the skate shop.",
+   "The person carrying the hockey stick was not Myra, and was not in the skate shop.",
+   "Either Ivor or Bert was carrying the skate blade."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the skate lace."
+  },
+  "killer": 1,
+  "lp": [
+   0,
+   1,
+   3,
+   2
+  ],
+  "wp": [
+   2,
+   0,
+   1,
+   3
+  ],
+  "steps": [
+   "Mark the plain facts from clue 1 on the grid.",
+   "Clue 2 shows: Myra was not in the skate shop; Bert was not in the skate shop.",
+   "Clue 3 shows: Myra did not carry the ice scraper; the ice scraper was not in the plant room.",
+   "Clue 4: Bert was in the plant room.",
+   "Clue 5 shows: Ivor did not carry the skate blade; Myra did not carry the skate blade; the skate blade was not in the warm-up room.",
+   "Clue 6 shows: Ivor did not carry the hockey stick; the hockey stick was not in the skate shop.",
+   "Clue 7: Ivor carried the ice scraper; Myra carried the skate lace.",
+   "Clue 8: Ivor was in the skate shop; Myra was in the warm-up room; Opal was in the judges' box; Opal carried the hockey stick; Bert carried the skate blade; the skate lace was in the warm-up room; the hockey stick was in the judges' box; the ice scraper was in the skate shop; the skate blade was in the plant room."
+  ]
+ },
+ {
+  "num": 25,
+  "level": "B",
+  "title": "The Captain's Table",
+  "victim": "Captain Edmund Harrow, master of the liner Ocean Pearl",
+  "scene": "He did not arrive for dinner at his own table. A steward found him an hour later.",
+  "motive": "a gambling loss",
+  "suspects": [
+   {
+    "first": "Vera",
+    "last": "Birch",
+    "name": "Vera Birch",
+    "role": "purser"
+   },
+   {
+    "first": "Selma",
+    "last": "Sable",
+    "name": "Selma Sable",
+    "role": "ship's doctor"
+   },
+   {
+    "first": "Mabel",
+    "last": "Crowe",
+    "name": "Mabel Crowe",
+    "role": "chief engineer"
+   },
+   {
+    "first": "Rex",
+    "last": "Kettle",
+    "name": "Rex Kettle",
+    "role": "cruise singer"
+   }
+  ],
+  "rooms": [
+   "chart room",
+   "card room",
+   "wheelhouse",
+   "engine room"
+  ],
+  "weapons": [
+   "deck quoit",
+   "signal flare",
+   "ship's bell rope",
+   "anchor chain link"
+  ],
+  "clues": [
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 2
+   },
+   {
+    "t": "split",
+    "s": 0,
+    "r": 1,
+    "w": 3,
+    "w2": 2
+   },
+   {
+    "t": "s_not_w",
+    "s": 0,
+    "w": 3
+   },
+   {
+    "t": "or_s_w",
+    "s": 0,
+    "s2": 3,
+    "w": 0
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 2,
+    "r": 2
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 2,
+    "r": 3
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 0,
+    "r": 2
+   }
+  ],
+  "clue_text": [
+   "Mabel was not in the wheelhouse.",
+   "Of Vera and the person in the card room, one carried the anchor chain link and the other carried the ship's bell rope.",
+   "Vera was not carrying the anchor chain link.",
+   "Either Vera or Rex was carrying the deck quoit.",
+   "The person carrying the ship's bell rope was not Rex, and was not in the wheelhouse.",
+   "The person carrying the ship's bell rope was not Mabel, and was not in the engine room.",
+   "The person carrying the deck quoit was not Mabel, and was not in the wheelhouse."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the chart room."
+  },
+  "killer": 0,
+  "lp": [
+   0,
+   2,
+   1,
+   3
+  ],
+  "wp": [
+   2,
+   1,
+   3,
+   0
+  ],
+  "steps": [
+   "Mark the plain facts from clues 1 and 3 on the grid.",
+   "Clue 2: Vera carried the ship's bell rope; the anchor chain link was in the card room.",
+   "Clue 4: Rex carried the deck quoit.",
+   "Clue 5 shows: Vera was not in the wheelhouse; the ship's bell rope was not in the wheelhouse.",
+   "Clue 6: Vera was in the chart room; the ship's bell rope was in the chart room.",
+   "Clue 7: Selma was in the wheelhouse; Mabel was in the card room; Rex was in the engine room; Selma carried the signal flare; Mabel carried the anchor chain link; the deck quoit was in the engine room; the signal flare was in the wheelhouse."
+  ]
+ },
+ {
+  "num": 26,
+  "level": "B",
+  "title": "The Locked Library",
+  "victim": "Sir Reginald Ashby, master of Ashby Manor",
+  "scene": "The library door was locked from the inside, and Sir Reginald lay beside the fireplace.",
+  "motive": "a gambling loss",
+  "suspects": [
+   {
+    "first": "Ruby",
+    "last": "Flint",
+    "name": "Ruby Flint",
+    "role": "butler"
+   },
+   {
+    "first": "Esme",
+    "last": "Drake",
+    "name": "Esme Drake",
+    "role": "chauffeur"
+   },
+   {
+    "first": "Iris",
+    "last": "Rook",
+    "name": "Iris Rook",
+    "role": "gardener"
+   },
+   {
+    "first": "Enid",
+    "last": "Hale",
+    "name": "Enid Hale",
+    "role": "cook"
+   }
+  ],
+  "rooms": [
+   "wine cellar",
+   "conservatory",
+   "gun room",
+   "billiard room"
+  ],
+  "weapons": [
+   "fire poker",
+   "paper knife",
+   "billiard cue",
+   "candlestick"
+  ],
+  "clues": [
+   {
+    "t": "split",
+    "s": 1,
+    "r": 0,
+    "w": 0,
+    "w2": 2
+   },
+   {
+    "t": "split",
+    "s": 3,
+    "r": 0,
+    "w": 2,
+    "w2": 3
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 1,
+    "r": 3
+   },
+   {
+    "t": "w_not_r",
+    "w": 1,
+    "r": 2
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 3,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 0,
+    "r": 3
+   }
+  ],
+  "clue_text": [
+   "Of Esme and the person in the wine cellar, one carried the fire poker and the other carried the billiard cue.",
+   "Of Enid and the person in the wine cellar, one carried the billiard cue and the other carried the candlestick.",
+   "The person carrying the paper knife was not Esme, and was not in the billiard room.",
+   "The paper knife was not in the gun room.",
+   "Either Ruby or Enid was in the wine cellar.",
+   "The person carrying the fire poker was not Ruby, and was not in the billiard room."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the candlestick."
+  },
+  "killer": 3,
+  "lp": [
+   0,
+   2,
+   1,
+   3
+  ],
+  "wp": [
+   2,
+   0,
+   1,
+   3
+  ],
+  "steps": [
+   "Mark the plain facts from clue 4 on the grid.",
+   "Clue 1 shows: Esme was not in the wine cellar; Esme did not carry the paper knife; Esme did not carry the candlestick, and more.",
+   "Clue 2: Esme carried the fire poker; Enid carried the candlestick; the billiard cue was in the wine cellar.",
+   "Clue 3: the paper knife was in the conservatory.",
+   "Clue 5: Ruby was in the wine cellar; Iris was in the conservatory; Ruby carried the billiard cue; Iris carried the paper knife.",
+   "Clue 6: Esme was in the gun room; Enid was in the billiard room; the fire poker was in the gun room; the candlestick was in the billiard room."
+  ]
+ },
+ {
+  "num": 27,
+  "level": "B",
+  "title": "Stage Fright at the Opera",
+  "victim": "Signora Lucia Fontana, star soprano of the Aurelia Opera",
+  "scene": "Her voice filled the house in act one. She did not return for act two.",
+  "motive": "an unpaid debt",
+  "suspects": [
+   {
+    "first": "June",
+    "last": "Ashdown",
+    "name": "June Ashdown",
+    "role": "wig maker"
+   },
+   {
+    "first": "Pearl",
+    "last": "Moss",
+    "name": "Pearl Moss",
+    "role": "opera director"
+   },
+   {
+    "first": "Bea",
+    "last": "Tanner",
+    "name": "Bea Tanner",
+    "role": "conductor"
+   },
+   {
+    "first": "Flora",
+    "last": "Alder",
+    "name": "Flora Alder",
+    "role": "prompter"
+   }
+  ],
+  "rooms": [
+   "royal box",
+   "star dressing room",
+   "scenery loft",
+   "wig room"
+  ],
+  "weapons": [
+   "hat pin",
+   "opera glasses",
+   "curtain weight",
+   "stage dagger"
+  ],
+  "clues": [
+   {
+    "t": "split",
+    "s": 0,
+    "r": 1,
+    "w": 0,
+    "w2": 1
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 3,
+    "r": 3
+   },
+   {
+    "t": "s_or_r",
+    "s": 2,
+    "r": 2,
+    "r2": 0
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 2,
+    "r": 2
+   },
+   {
+    "t": "split",
+    "s": 3,
+    "r": 3,
+    "w": 1,
+    "w2": 3
+   }
+  ],
+  "clue_text": [
+   "Of June and the person in the star dressing room, one carried the hat pin and the other carried the opera glasses.",
+   "The person carrying the stage dagger was not Pearl, and was not in the wig room.",
+   "Bea was in either the scenery loft or the royal box.",
+   "The person carrying the curtain weight was not Flora, and was not in the scenery loft.",
+   "Of Flora and the person in the wig room, one carried the opera glasses and the other carried the stage dagger."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the star dressing room."
+  },
+  "killer": 1,
+  "lp": [
+   3,
+   1,
+   0,
+   2
+  ],
+  "wp": [
+   1,
+   0,
+   2,
+   3
+  ],
+  "steps": [
+   "Clue 1 shows: June was not in the star dressing room; June did not carry the curtain weight; June did not carry the stage dagger, and more.",
+   "Clue 2 shows: Pearl did not carry the stage dagger; the stage dagger was not in the wig room.",
+   "Clue 3 shows: Bea was not in the star dressing room; Bea was not in the wig room; Bea did not carry the hat pin, and more.",
+   "Clue 4 shows: Pearl was not in the scenery loft; Flora was not in the royal box; Flora was not in the wig room, and more.",
+   "Clue 5: June was in the wig room; Pearl was in the star dressing room; Bea was in the royal box; Flora was in the scenery loft; June carried the opera glasses; Pearl carried the hat pin; Bea carried the curtain weight; Flora carried the stage dagger; the hat pin was in the star dressing room; the opera glasses was in the wig room; the curtain weight was in the royal box; the stage dagger was in the scenery loft."
+  ]
+ },
+ {
+  "num": 28,
+  "level": "B",
+  "title": "The Beekeeper's Sting",
+  "victim": "Old Barnaby Hale, master beekeeper of Honeycomb Hill",
+  "scene": "He was found among his hives at dusk, and it was not the bees that killed him.",
+  "motive": "a partnership gone sour",
+  "suspects": [
+   {
+    "first": "Hazel",
+    "last": "Bramble",
+    "name": "Hazel Bramble",
+    "role": "apprentice beekeeper"
+   },
+   {
+    "first": "Cora",
+    "last": "Moss",
+    "name": "Cora Moss",
+    "role": "candle maker"
+   },
+   {
+    "first": "Reuben",
+    "last": "Flint",
+    "name": "Reuben Flint",
+    "role": "daughter"
+   },
+   {
+    "first": "Ernest",
+    "last": "Vane",
+    "name": "Ernest Vane",
+    "role": "honey buyer"
+   }
+  ],
+  "rooms": [
+   "wax room",
+   "jar store",
+   "hive yard",
+   "smokehouse"
+  ],
+  "weapons": [
+   "bee smoker",
+   "hive tool",
+   "honey jar",
+   "wax block"
+  ],
+  "clues": [
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 3,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 2,
+    "r": 2
+   },
+   {
+    "t": "s_or_r",
+    "s": 0,
+    "r": 3,
+    "r2": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 2,
+    "r": 1
+   },
+   {
+    "t": "or_s_w",
+    "s": 0,
+    "s2": 2,
+    "w": 0
+   },
+   {
+    "t": "or_s_w",
+    "s": 1,
+    "s2": 2,
+    "w": 2
+   },
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 1
+   },
+   {
+    "t": "or_s_w",
+    "s": 0,
+    "s2": 1,
+    "w": 1
+   }
+  ],
+  "clue_text": [
+   "Either Hazel or Ernest was in the wax room.",
+   "The person carrying the honey jar was not Ernest, and was not in the hive yard.",
+   "Hazel was in either the smokehouse or the jar store.",
+   "Either Cora or Reuben was in the jar store.",
+   "Either Hazel or Reuben was carrying the bee smoker.",
+   "Either Cora or Reuben was carrying the honey jar.",
+   "Reuben was not in the jar store.",
+   "Either Hazel or Cora was carrying the hive tool."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the honey jar."
+  },
+  "killer": 1,
+  "lp": [
+   3,
+   1,
+   2,
+   0
+  ],
+  "wp": [
+   1,
+   2,
+   0,
+   3
+  ],
+  "steps": [
+   "Mark the plain facts from clue 7 on the grid.",
+   "Clue 1 shows: Cora was not in the wax room; Reuben was not in the wax room.",
+   "Clue 2 shows: Ernest did not carry the honey jar; the honey jar was not in the hive yard.",
+   "Clue 3: Ernest was in the wax room.",
+   "Clue 4: Hazel was in the smokehouse; Cora was in the jar store; Reuben was in the hive yard.",
+   "Clue 5 shows: Cora did not carry the bee smoker; Ernest did not carry the bee smoker; the bee smoker was not in the wax room, and more.",
+   "Clue 6: Cora carried the honey jar; the honey jar was in the jar store.",
+   "Clue 8: Hazel carried the hive tool; Reuben carried the bee smoker; Ernest carried the wax block; the bee smoker was in the hive yard; the hive tool was in the smokehouse; the wax block was in the wax room."
+  ]
+ },
+ {
+  "num": 29,
+  "level": "B",
+  "title": "Final Score",
+  "victim": "Dexter Boyd, chairman of Ironbridge United",
+  "scene": "He was found in the trophy room an hour after his team lost the cup final.",
+  "motive": "a valuable secret recipe or formula",
+  "suspects": [
+   {
+    "first": "Theo",
+    "last": "Oakley",
+    "name": "Theo Oakley",
+    "role": "kit man"
+   },
+   {
+    "first": "Olive",
+    "last": "Winter",
+    "name": "Olive Winter",
+    "role": "team captain"
+   },
+   {
+    "first": "Nell",
+    "last": "Carver",
+    "name": "Nell Carver",
+    "role": "club manager"
+   },
+   {
+    "first": "Ruby",
+    "last": "Wilder",
+    "name": "Ruby Wilder",
+    "role": "groundskeeper"
+   }
+  ],
+  "rooms": [
+   "trophy room",
+   "boardroom",
+   "press box",
+   "boot room"
+  ],
+  "weapons": [
+   "training weight",
+   "boot bag strap",
+   "silver cup",
+   "corner flag"
+  ],
+  "clues": [
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 1,
+    "r": 2
+   },
+   {
+    "t": "or_s_w",
+    "s": 1,
+    "s2": 3,
+    "w": 3
+   },
+   {
+    "t": "split",
+    "s": 0,
+    "r": 1,
+    "w": 2,
+    "w2": 0
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 3,
+    "r": 1
+   },
+   {
+    "t": "split",
+    "s": 0,
+    "r": 0,
+    "w": 0,
+    "w2": 1
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 1,
+    "r": 2
+   }
+  ],
+  "clue_text": [
+   "Either Theo or Olive was in the press box.",
+   "Either Olive or Ruby was carrying the corner flag.",
+   "Of Theo and the person in the boardroom, one carried the silver cup and the other carried the training weight.",
+   "The person carrying the corner flag was not Olive, and was not in the boardroom.",
+   "Of Theo and the person in the trophy room, one carried the training weight and the other carried the boot bag strap.",
+   "The person carrying the boot bag strap was not Olive, and was not in the press box."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the boardroom."
+  },
+  "killer": 1,
+  "lp": [
+   2,
+   1,
+   0,
+   3
+  ],
+  "wp": [
+   0,
+   2,
+   1,
+   3
+  ],
+  "steps": [
+   "Clue 1 shows: Nell was not in the press box; Ruby was not in the press box.",
+   "Clue 2 shows: Theo did not carry the corner flag; Nell did not carry the corner flag.",
+   "Clue 3 shows: Theo was not in the boardroom; Theo did not carry the boot bag strap; the boot bag strap was not in the boardroom, and more.",
+   "Clue 4: Ruby carried the corner flag.",
+   "Clue 5: Theo was in the press box; Ruby was in the boot room; Theo carried the training weight; the training weight was in the press box; the boot bag strap was in the trophy room; the silver cup was in the boardroom; the corner flag was in the boot room.",
+   "Clue 6: Olive was in the boardroom; Nell was in the trophy room; Olive carried the silver cup; Nell carried the boot bag strap."
+  ]
+ },
+ {
+  "num": 30,
+  "level": "B",
+  "title": "The Glassblower's Last Breath",
+  "victim": "Marco Venturi, master glassblower",
+  "scene": "The furnace was roaring when his apprentices found him on the studio floor among broken glass.",
+  "motive": "a changed will",
+  "suspects": [
+   {
+    "first": "Theo",
+    "last": "Blackwood",
+    "name": "Theo Blackwood",
+    "role": "gallery owner"
+   },
+   {
+    "first": "Tess",
+    "last": "Sable",
+    "name": "Tess Sable",
+    "role": "furnace keeper"
+   },
+   {
+    "first": "Esme",
+    "last": "Vane",
+    "name": "Esme Vane",
+    "role": "glass cutter"
+   },
+   {
+    "first": "Ira",
+    "last": "Rook",
+    "name": "Ira Rook",
+    "role": "apprentice"
+   }
+  ],
+  "rooms": [
+   "packing room",
+   "showroom",
+   "sand store",
+   "cold shop"
+  ],
+  "weapons": [
+   "blowpipe",
+   "crystal vase",
+   "iron tongs",
+   "glass shard"
+  ],
+  "clues": [
+   {
+    "t": "or_s_w",
+    "s": 1,
+    "s2": 2,
+    "w": 1
+   },
+   {
+    "t": "s_or_r",
+    "s": 1,
+    "r": 0,
+    "r2": 1
+   },
+   {
+    "t": "s_or_w",
+    "s": 3,
+    "w": 0,
+    "w2": 3
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 0,
+    "r": 1
+   },
+   {
+    "t": "w_not_r",
+    "w": 1,
+    "r": 2
+   },
+   {
+    "t": "split",
+    "s": 1,
+    "r": 1,
+    "w": 3,
+    "w2": 0
+   }
+  ],
+  "clue_text": [
+   "Either Tess or Esme was carrying the crystal vase.",
+   "Tess was in either the packing room or the showroom.",
+   "Ira was carrying either the blowpipe or the glass shard.",
+   "The person carrying the blowpipe was not Ira, and was not in the showroom.",
+   "The crystal vase was not in the sand store.",
+   "Of Tess and the person in the showroom, one carried the glass shard and the other carried the blowpipe."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the crystal vase."
+  },
+  "killer": 2,
+  "lp": [
+   2,
+   0,
+   3,
+   1
+  ],
+  "wp": [
+   2,
+   0,
+   1,
+   3
+  ],
+  "steps": [
+   "Mark the plain facts from clue 5 on the grid.",
+   "Clue 1 shows: Theo did not carry the crystal vase; Ira did not carry the crystal vase.",
+   "Clue 2 shows: Tess was not in the sand store; Tess was not in the cold shop.",
+   "Clue 3 shows: Ira did not carry the iron tongs.",
+   "Clue 4: Ira carried the glass shard.",
+   "Clue 6: Theo was in the sand store; Tess was in the packing room; Esme was in the cold shop; Ira was in the showroom; Theo carried the iron tongs; Tess carried the blowpipe; Esme carried the crystal vase; the blowpipe was in the packing room; the crystal vase was in the cold shop; the iron tongs was in the sand store; the glass shard was in the showroom."
+  ]
+ },
+ {
+  "num": 31,
+  "level": "B",
+  "title": "A Toast to Death",
+  "victim": "Baron Leopold von Stern, host of the wedding at Castle Stern",
+  "scene": "He raised his glass to the happy couple, and was found an hour later far from the party.",
+  "motive": "revenge for an old insult",
+  "suspects": [
+   {
+    "first": "Saul",
+    "last": "Ashdown",
+    "name": "Saul Ashdown",
+    "role": "violinist"
+   },
+   {
+    "first": "Percy",
+    "last": "Tully",
+    "name": "Percy Tully",
+    "role": "castle steward"
+   },
+   {
+    "first": "Edgar",
+    "last": "Bramble",
+    "name": "Edgar Bramble",
+    "role": "groom"
+   },
+   {
+    "first": "Agnes",
+    "last": "Thorne",
+    "name": "Agnes Thorne",
+    "role": "bride"
+   }
+  ],
+  "rooms": [
+   "armory",
+   "tower room",
+   "chapel",
+   "wine vault"
+  ],
+  "weapons": [
+   "silver goblet",
+   "bell pull",
+   "iron candelabra",
+   "antique sword"
+  ],
+  "clues": [
+   {
+    "t": "s_is_r",
+    "s": 1,
+    "r": 3
+   },
+   {
+    "t": "or_s_w",
+    "s": 0,
+    "s2": 3,
+    "w": 3
+   },
+   {
+    "t": "s_or_w",
+    "s": 1,
+    "w": 3,
+    "w2": 0
+   },
+   {
+    "t": "s_or_w",
+    "s": 3,
+    "w": 1,
+    "w2": 0
+   },
+   {
+    "t": "s_not_r",
+    "s": 3,
+    "r": 1
+   },
+   {
+    "t": "split",
+    "s": 2,
+    "r": 0,
+    "w": 2,
+    "w2": 3
+   }
+  ],
+  "clue_text": [
+   "Percy was in the wine vault.",
+   "Either Saul or Agnes was carrying the antique sword.",
+   "Percy was carrying either the antique sword or the silver goblet.",
+   "Agnes was carrying either the bell pull or the silver goblet.",
+   "Agnes was not in the tower room.",
+   "Of Edgar and the person in the armory, one carried the iron candelabra and the other carried the antique sword."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the tower room."
+  },
+  "killer": 2,
+  "lp": [
+   0,
+   3,
+   1,
+   2
+  ],
+  "wp": [
+   3,
+   0,
+   2,
+   1
+  ],
+  "steps": [
+   "Mark the plain facts from clues 1 and 5 on the grid. That gives: Percy was in the wine vault.",
+   "Clue 2 shows: Percy did not carry the antique sword; Edgar did not carry the antique sword; the antique sword was not in the wine vault.",
+   "Clue 3: Percy carried the silver goblet; the silver goblet was in the wine vault.",
+   "Clue 4: Saul carried the antique sword; Edgar carried the iron candelabra; Agnes carried the bell pull.",
+   "Clue 6: Saul was in the armory; Edgar was in the tower room; Agnes was in the chapel; the bell pull was in the chapel; the iron candelabra was in the tower room; the antique sword was in the armory."
+  ]
+ },
+ {
+  "num": 32,
+  "level": "B",
+  "title": "The Observatory Eclipse",
+  "victim": "Professor Stella Oduya, astronomer at Black Peak Observatory",
+  "scene": "During the three dark minutes of the eclipse, someone found their moment.",
+  "motive": "a changed will",
+  "suspects": [
+   {
+    "first": "Pearl",
+    "last": "Gantry",
+    "name": "Pearl Gantry",
+    "role": "telescope engineer"
+   },
+   {
+    "first": "Hazel",
+    "last": "Finch",
+    "name": "Hazel Finch",
+    "role": "night caretaker"
+   },
+   {
+    "first": "Rex",
+    "last": "Rook",
+    "name": "Rex Rook",
+    "role": "student"
+   },
+   {
+    "first": "Felix",
+    "last": "Mercer",
+    "name": "Felix Mercer",
+    "role": "science journalist"
+   }
+  ],
+  "rooms": [
+   "workshop",
+   "kitchen",
+   "dome",
+   "computer room"
+  ],
+  "weapons": [
+   "iron crank",
+   "telescope counterweight",
+   "tripod leg",
+   "heavy lens"
+  ],
+  "clues": [
+   {
+    "t": "w_in_r",
+    "w": 3,
+    "r": 2
+   },
+   {
+    "t": "s_or_r",
+    "s": 2,
+    "r": 0,
+    "r2": 3
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 1,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 3,
+    "r": 1
+   },
+   {
+    "t": "or_s_w",
+    "s": 1,
+    "s2": 2,
+    "w": 1
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 0,
+    "r": 2
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 0,
+    "r": 3
+   }
+  ],
+  "clue_text": [
+   "Whoever carried the heavy lens was in the dome.",
+   "Rex was in either the workshop or the computer room.",
+   "Either Pearl or Hazel was in the workshop.",
+   "The person carrying the heavy lens was not Felix, and was not in the kitchen.",
+   "Either Hazel or Rex was carrying the telescope counterweight.",
+   "The person carrying the iron crank was not Felix, and was not in the dome.",
+   "The person carrying the iron crank was not Hazel, and was not in the computer room."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the tripod leg."
+  },
+  "killer": 3,
+  "lp": [
+   0,
+   2,
+   3,
+   1
+  ],
+  "wp": [
+   0,
+   3,
+   1,
+   2
+  ],
+  "steps": [
+   "Mark the plain facts from clue 1 on the grid. That gives: the heavy lens was in the dome.",
+   "Clue 2 shows: Rex was not in the kitchen; Rex was not in the dome; Rex did not carry the heavy lens.",
+   "Clue 3: Rex was in the computer room.",
+   "Clue 4: Felix was in the kitchen.",
+   "Clue 5 shows: Pearl did not carry the telescope counterweight; Felix did not carry the telescope counterweight; the telescope counterweight was not in the kitchen.",
+   "Clue 6: Felix carried the tripod leg; the tripod leg was in the kitchen.",
+   "Clue 7: Pearl was in the workshop; Hazel was in the dome; Pearl carried the iron crank; Hazel carried the heavy lens; Rex carried the telescope counterweight; the iron crank was in the workshop; the telescope counterweight was in the computer room."
+  ]
+ },
+ {
+  "num": 33,
+  "level": "B",
+  "title": "The Perfumer's Secret",
+  "victim": "Madame Odette Lavigne, creator of the perfume Midnight Jasmine",
+  "scene": "She was found in her laboratory, the secret formula gone from the safe.",
+  "motive": "a promise broken long ago",
+  "suspects": [
+   {
+    "first": "Hester",
+    "last": "Sparrow",
+    "name": "Hester Sparrow",
+    "role": "nephew"
+   },
+   {
+    "first": "Alma",
+    "last": "Thorne",
+    "name": "Alma Thorne",
+    "role": "flower grower"
+   },
+   {
+    "first": "Nell",
+    "last": "Bramble",
+    "name": "Nell Bramble",
+    "role": "chemist"
+   },
+   {
+    "first": "Bert",
+    "last": "Stone",
+    "name": "Bert Stone",
+    "role": "rival perfumer"
+   }
+  ],
+  "rooms": [
+   "boutique",
+   "laboratory",
+   "scent library",
+   "distilling room"
+  ],
+  "weapons": [
+   "glass flask",
+   "copper still pipe",
+   "atomizer cord",
+   "crystal stopper"
+  ],
+  "clues": [
+   {
+    "t": "split",
+    "s": 0,
+    "r": 1,
+    "w": 3,
+    "w2": 1
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 0,
+    "r": 2
+   },
+   {
+    "t": "s_or_w",
+    "s": 0,
+    "w": 3,
+    "w2": 0
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 2,
+    "r": 1
+   },
+   {
+    "t": "s_not_r",
+    "s": 3,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 3,
+    "r": 2
+   },
+   {
+    "t": "s_not_r",
+    "s": 3,
+    "r": 2
+   }
+  ],
+  "clue_text": [
+   "Of Hester and the person in the laboratory, one carried the crystal stopper and the other carried the copper still pipe.",
+   "The person carrying the glass flask was not Alma, and was not in the scent library.",
+   "Hester was carrying either the crystal stopper or the glass flask.",
+   "The person carrying the atomizer cord was not Alma, and was not in the laboratory.",
+   "Bert was not in the boutique.",
+   "The person carrying the crystal stopper was not Bert, and was not in the scent library.",
+   "Bert was not in the scent library."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the scent library."
+  },
+  "killer": 2,
+  "lp": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "wp": [
+   3,
+   1,
+   2,
+   0
+  ],
+  "steps": [
+   "Mark the plain facts from clues 5 and 7 on the grid.",
+   "Clue 1 shows: Hester was not in the laboratory; Hester did not carry the glass flask; Hester did not carry the atomizer cord, and more.",
+   "Clue 2 shows: Alma did not carry the glass flask; the glass flask was not in the scent library.",
+   "Clue 3: Hester carried the crystal stopper; the copper still pipe was in the laboratory.",
+   "Clue 4: Alma was in the laboratory; Bert was in the distilling room; Alma carried the copper still pipe.",
+   "Clue 6: Hester was in the boutique; Nell was in the scent library; Nell carried the atomizer cord; Bert carried the glass flask; the glass flask was in the distilling room; the atomizer cord was in the scent library; the crystal stopper was in the boutique."
+  ]
+ },
+ {
+  "num": 34,
+  "level": "B",
+  "title": "Midnight at the Toy Museum",
+  "victim": "Jasper Tinkham, founder of the Tinkham Toy Museum",
+  "scene": "The mechanical toys were all wound up and marching when the morning guard found him.",
+  "motive": "a ruined reputation",
+  "suspects": [
+   {
+    "first": "Ezra",
+    "last": "Briggs",
+    "name": "Ezra Briggs",
+    "role": "model railway keeper"
+   },
+   {
+    "first": "Ida",
+    "last": "Wren",
+    "name": "Ida Wren",
+    "role": "toy collector"
+   },
+   {
+    "first": "Cecil",
+    "last": "Garland",
+    "name": "Cecil Garland",
+    "role": "ticket clerk"
+   },
+   {
+    "first": "Pearl",
+    "last": "Thorne",
+    "name": "Pearl Thorne",
+    "role": "doll restorer"
+   }
+  ],
+  "rooms": [
+   "workshop",
+   "puppet gallery",
+   "dolls' hall",
+   "train room"
+  ],
+  "weapons": [
+   "rocking horse rocker",
+   "toy cannon",
+   "marble bag",
+   "jump rope"
+  ],
+  "clues": [
+   {
+    "t": "split",
+    "s": 2,
+    "r": 0,
+    "w": 2,
+    "w2": 0
+   },
+   {
+    "t": "w_not_r",
+    "w": 3,
+    "r": 2
+   },
+   {
+    "t": "split",
+    "s": 0,
+    "r": 0,
+    "w": 1,
+    "w2": 2
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 0,
+    "r": 3
+   },
+   {
+    "t": "or_s_w",
+    "s": 0,
+    "s2": 1,
+    "w": 2
+   },
+   {
+    "t": "s_not_r",
+    "s": 3,
+    "r": 3
+   }
+  ],
+  "clue_text": [
+   "Of Cecil and the person in the workshop, one carried the marble bag and the other carried the rocking horse rocker.",
+   "The jump rope was not in the dolls' hall.",
+   "Of Ezra and the person in the workshop, one carried the toy cannon and the other carried the marble bag.",
+   "The person carrying the rocking horse rocker was not Ezra, and was not in the train room.",
+   "Either Ezra or Ida was carrying the marble bag.",
+   "Pearl was not in the train room."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the jump rope."
+  },
+  "killer": 3,
+  "lp": [
+   3,
+   0,
+   2,
+   1
+  ],
+  "wp": [
+   1,
+   2,
+   0,
+   3
+  ],
+  "steps": [
+   "Mark the plain facts from clues 2 and 6 on the grid.",
+   "Clue 1 shows: Cecil was not in the workshop; Cecil did not carry the toy cannon; Cecil did not carry the jump rope, and more.",
+   "Clue 3: Ezra carried the toy cannon; Cecil carried the rocking horse rocker; the marble bag was in the workshop.",
+   "Clue 4 shows: Cecil was not in the train room; the rocking horse rocker was not in the train room.",
+   "Clue 5: Ezra was in the train room; Ida was in the workshop; Cecil was in the dolls' hall; Pearl was in the puppet gallery; Ida carried the marble bag; Pearl carried the jump rope; the rocking horse rocker was in the dolls' hall; the toy cannon was in the train room; the jump rope was in the puppet gallery."
+  ]
+ },
+ {
+  "num": 35,
+  "level": "B",
+  "title": "The Fisherman's Net",
+  "victim": "Old Seamus Rourke, harbor master of Gull Point",
+  "scene": "He was found tangled in a net on the fish market floor before the morning auction.",
+  "motive": "an inheritance",
+  "suspects": [
+   {
+    "first": "Hector",
+    "last": "Quince",
+    "name": "Hector Quince",
+    "role": "fishmonger"
+   },
+   {
+    "first": "Ned",
+    "last": "Ashdown",
+    "name": "Ned Ashdown",
+    "role": "customs officer"
+   },
+   {
+    "first": "Iris",
+    "last": "Rowan",
+    "name": "Iris Rowan",
+    "role": "deckhand"
+   },
+   {
+    "first": "Una",
+    "last": "Wren",
+    "name": "Una Wren",
+    "role": "ice seller"
+   }
+  ],
+  "rooms": [
+   "auction hall",
+   "ice house",
+   "boat shed",
+   "smokehouse"
+  ],
+  "weapons": [
+   "gutting knife",
+   "boat hook",
+   "fish crate",
+   "net weight"
+  ],
+  "clues": [
+   {
+    "t": "w_not_r",
+    "w": 0,
+    "r": 1
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 0,
+    "r": 3
+   },
+   {
+    "t": "s_not_w",
+    "s": 2,
+    "w": 3
+   },
+   {
+    "t": "split",
+    "s": 0,
+    "r": 0,
+    "w": 0,
+    "w2": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 3,
+    "r": 1
+   },
+   {
+    "t": "s_not_w",
+    "s": 1,
+    "w": 3
+   },
+   {
+    "t": "s_not_w",
+    "s": 1,
+    "w": 2
+   },
+   {
+    "t": "or_s_w",
+    "s": 1,
+    "s2": 2,
+    "w": 1
+   }
+  ],
+  "clue_text": [
+   "The gutting knife was not in the ice house.",
+   "The person carrying the gutting knife was not Iris, and was not in the smokehouse.",
+   "Iris was not carrying the net weight.",
+   "Of Hector and the person in the auction hall, one carried the gutting knife and the other carried the boat hook.",
+   "Either Hector or Una was in the ice house.",
+   "Ned was not carrying the net weight.",
+   "Ned was not carrying the fish crate.",
+   "Either Ned or Iris was carrying the boat hook."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the smokehouse."
+  },
+  "killer": 2,
+  "lp": [
+   2,
+   0,
+   3,
+   1
+  ],
+  "wp": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "steps": [
+   "Mark the plain facts from clues 1, 3, 6 and 7 on the grid.",
+   "Clue 2 shows: Iris did not carry the gutting knife; the gutting knife was not in the smokehouse.",
+   "Clue 4: Ned was in the auction hall; Iris carried the fish crate; Una carried the net weight.",
+   "Clue 5 shows: Iris was not in the ice house; the fish crate was not in the ice house.",
+   "Clue 8: Hector was in the boat shed; Iris was in the smokehouse; Una was in the ice house; Hector carried the gutting knife; Ned carried the boat hook; the gutting knife was in the boat shed; the boat hook was in the auction hall; the fish crate was in the smokehouse; the net weight was in the ice house."
+  ]
+ },
+ {
+  "num": 36,
+  "level": "B",
+  "title": "The Chess Master's Endgame",
+  "victim": "Grandmaster Anatoly Voss, world chess champion",
+  "scene": "His clock ran out for the first time in his career. He was found at the board, the game unfinished.",
+  "motive": "a forged signature",
+  "suspects": [
+   {
+    "first": "Enid",
+    "last": "Lark",
+    "name": "Enid Lark",
+    "role": "hotel manager"
+   },
+   {
+    "first": "Vera",
+    "last": "Lovell",
+    "name": "Vera Lovell",
+    "role": "sponsor"
+   },
+   {
+    "first": "Ned",
+    "last": "Crowe",
+    "name": "Ned Crowe",
+    "role": "journalist"
+   },
+   {
+    "first": "Fern",
+    "last": "Penrose",
+    "name": "Fern Penrose",
+    "role": "arbiter"
+   }
+  ],
+  "rooms": [
+   "hotel suite",
+   "press room",
+   "playing hall",
+   "players' lounge"
+  ],
+  "weapons": [
+   "water carafe",
+   "curtain cord",
+   "chess clock",
+   "bronze king"
+  ],
+  "clues": [
+   {
+    "t": "split",
+    "s": 1,
+    "r": 1,
+    "w": 3,
+    "w2": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 2,
+    "r": 0
+   },
+   {
+    "t": "split",
+    "s": 3,
+    "r": 1,
+    "w": 2,
+    "w2": 1
+   },
+   {
+    "t": "s_not_r",
+    "s": 0,
+    "r": 3
+   },
+   {
+    "t": "split",
+    "s": 1,
+    "r": 3,
+    "w": 0,
+    "w2": 3
+   }
+  ],
+  "clue_text": [
+   "Of Vera and the person in the press room, one carried the bronze king and the other carried the curtain cord.",
+   "Either Vera or Ned was in the hotel suite.",
+   "Of Fern and the person in the press room, one carried the chess clock and the other carried the curtain cord.",
+   "Enid was not in the players' lounge.",
+   "Of Vera and the person in the players' lounge, one carried the water carafe and the other carried the bronze king."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the chess clock."
+  },
+  "killer": 3,
+  "lp": [
+   1,
+   0,
+   3,
+   2
+  ],
+  "wp": [
+   1,
+   3,
+   0,
+   2
+  ],
+  "steps": [
+   "Mark the plain facts from clue 4 on the grid.",
+   "Clue 1 shows: Vera was not in the press room; Vera did not carry the water carafe; Vera did not carry the chess clock, and more.",
+   "Clue 2 shows: Enid was not in the hotel suite; Fern was not in the hotel suite.",
+   "Clue 3: Vera carried the bronze king; Fern carried the chess clock; the curtain cord was in the press room.",
+   "Clue 5: Enid was in the press room; Vera was in the hotel suite; Ned was in the players' lounge; Fern was in the playing hall; Enid carried the curtain cord; Ned carried the water carafe; the water carafe was in the players' lounge; the chess clock was in the playing hall; the bronze king was in the hotel suite."
+  ]
+ },
+ {
+  "num": 37,
+  "level": "C",
+  "title": "The Mill Pond Mystery",
+  "victim": "Jonas Wheelwright, miller of the Old Watermill",
+  "scene": "The great wheel had been stopped by hand, and Jonas was found beside the pond.",
+  "motive": "years of jealousy",
+  "suspects": [
+   {
+    "first": "Alma",
+    "last": "Lark",
+    "name": "Alma Lark",
+    "role": "baker"
+   },
+   {
+    "first": "Clara",
+    "last": "Garland",
+    "name": "Clara Garland",
+    "role": "mill hand"
+   },
+   {
+    "first": "Otis",
+    "last": "Briggs",
+    "name": "Otis Briggs",
+    "role": "eel fisher"
+   },
+   {
+    "first": "Iris",
+    "last": "Foxley",
+    "name": "Iris Foxley",
+    "role": "carter"
+   },
+   {
+    "first": "Ivor",
+    "last": "Oakley",
+    "name": "Ivor Oakley",
+    "role": "miller's wife"
+   }
+  ],
+  "rooms": [
+   "sluice room",
+   "wheel house",
+   "flour room",
+   "cart shed",
+   "grain loft"
+  ],
+  "weapons": [
+   "sluice chain",
+   "iron lever",
+   "flour sack hook",
+   "grain shovel",
+   "millstone pick"
+  ],
+  "clues": [
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 3,
+    "r": 0
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 3,
+    "r": 2
+   },
+   {
+    "t": "s_or_w",
+    "s": 1,
+    "w": 4,
+    "w2": 0
+   },
+   {
+    "t": "s_or_r",
+    "s": 0,
+    "r": 1,
+    "r2": 0
+   },
+   {
+    "t": "split",
+    "s": 2,
+    "r": 0,
+    "w": 2,
+    "w2": 0
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 2,
+    "r": 2
+   },
+   {
+    "t": "or_s_w",
+    "s": 0,
+    "s2": 2,
+    "w": 3
+   },
+   {
+    "t": "w_not_r",
+    "w": 1,
+    "r": 4
+   }
+  ],
+  "clue_text": [
+   "Either Alma or Iris was in the sluice room.",
+   "Either Clara or Iris was in the flour room.",
+   "Clara was carrying either the millstone pick or the sluice chain.",
+   "Alma was in either the wheel house or the sluice room.",
+   "Of Otis and the person in the sluice room, one carried the flour sack hook and the other carried the sluice chain.",
+   "The person carrying the flour sack hook was not Otis, and was not in the flour room.",
+   "Either Alma or Otis was carrying the grain shovel.",
+   "The iron lever was not in the grain loft."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the wheel house."
+  },
+  "killer": 0,
+  "lp": [
+   1,
+   2,
+   4,
+   0,
+   3
+  ],
+  "wp": [
+   3,
+   4,
+   0,
+   2,
+   1
+  ],
+  "steps": [
+   "Mark the plain facts from clue 8 on the grid.",
+   "Clue 1 shows: Clara was not in the sluice room; Otis was not in the sluice room; Ivor was not in the sluice room.",
+   "Clue 2 shows: Alma was not in the flour room; Otis was not in the flour room; Ivor was not in the flour room.",
+   "Clue 3 shows: Clara did not carry the iron lever; Clara did not carry the flour sack hook; Clara did not carry the grain shovel.",
+   "Clue 4 shows: Alma was not in the cart shed; Alma was not in the grain loft.",
+   "Clue 5: Clara carried the millstone pick.",
+   "Clue 6: Otis carried the sluice chain; the flour sack hook was in the sluice room.",
+   "Clue 7: Alma was in the wheel house; Clara was in the flour room; Otis was in the grain loft; Iris was in the sluice room; Ivor was in the cart shed; Alma carried the grain shovel; Iris carried the flour sack hook; Ivor carried the iron lever; the sluice chain was in the grain loft; the iron lever was in the cart shed; the grain shovel was in the wheel house; the millstone pick was in the flour room."
+  ]
+ },
+ {
+  "num": 38,
+  "level": "C",
+  "title": "Death at the Dig",
+  "victim": "Dr. Cornelius Starkey, leader of the Sandstone Ridge excavation",
+  "scene": "He had just announced a great discovery. By morning, he and the discovery were both gone, and only he was found.",
+  "motive": "a partnership gone sour",
+  "suspects": [
+   {
+    "first": "Wilma",
+    "last": "Mercer",
+    "name": "Wilma Mercer",
+    "role": "student digger"
+   },
+   {
+    "first": "Esme",
+    "last": "Barlow",
+    "name": "Esme Barlow",
+    "role": "site supervisor"
+   },
+   {
+    "first": "Greta",
+    "last": "Foxley",
+    "name": "Greta Foxley",
+    "role": "camp cook"
+   },
+   {
+    "first": "Clara",
+    "last": "Calloway",
+    "name": "Clara Calloway",
+    "role": "photographer"
+   },
+   {
+    "first": "Bea",
+    "last": "Oakley",
+    "name": "Bea Oakley",
+    "role": "museum agent"
+   }
+  ],
+  "rooms": [
+   "finds tent",
+   "supply tent",
+   "burial chamber",
+   "map tent",
+   "dig trench"
+  ],
+  "weapons": [
+   "tent mallet",
+   "trowel",
+   "surveyor's pole",
+   "pickaxe",
+   "stone idol"
+  ],
+  "clues": [
+   {
+    "t": "s_or_w",
+    "s": 4,
+    "w": 3,
+    "w2": 2
+   },
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 1
+   },
+   {
+    "t": "nor",
+    "s": 4,
+    "w": 3,
+    "r": 4
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 4,
+    "r": 4
+   },
+   {
+    "t": "s_or_r",
+    "s": 3,
+    "r": 4,
+    "r2": 3
+   },
+   {
+    "t": "split",
+    "s": 0,
+    "r": 2,
+    "w": 0,
+    "w2": 3
+   },
+   {
+    "t": "s_not_r",
+    "s": 0,
+    "r": 1
+   },
+   {
+    "t": "s_not_w",
+    "s": 3,
+    "w": 4
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 3,
+    "r": 3
+   }
+  ],
+  "clue_text": [
+   "Bea was carrying either the pickaxe or the surveyor's pole.",
+   "Greta was not in the supply tent.",
+   "The person carrying the pickaxe was not Bea, and was not in the dig trench.",
+   "The person carrying the stone idol was not Esme, and was not in the dig trench.",
+   "Clara was in either the dig trench or the map tent.",
+   "Of Wilma and the person in the burial chamber, one carried the tent mallet and the other carried the pickaxe.",
+   "Wilma was not in the supply tent.",
+   "Clara was not carrying the stone idol.",
+   "The person carrying the pickaxe was not Esme, and was not in the map tent."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the pickaxe."
+  },
+  "killer": 0,
+  "lp": [
+   0,
+   2,
+   3,
+   4,
+   1
+  ],
+  "wp": [
+   3,
+   0,
+   4,
+   1,
+   2
+  ],
+  "steps": [
+   "Mark the plain facts from clues 2, 7 and 8 on the grid.",
+   "Clue 1 shows: Bea did not carry the tent mallet; Bea did not carry the trowel; Bea did not carry the stone idol.",
+   "Clue 3: Bea carried the surveyor's pole.",
+   "Clue 4 shows: Esme did not carry the stone idol; the stone idol was not in the supply tent; the stone idol was not in the dig trench.",
+   "Clue 5 shows: Clara was not in the finds tent; Clara was not in the supply tent; Clara was not in the burial chamber.",
+   "Clue 6: Esme was in the burial chamber; Bea was in the supply tent; Greta carried the stone idol; Clara carried the trowel; the surveyor's pole was in the supply tent.",
+   "Clue 9: Wilma was in the finds tent; Greta was in the map tent; Clara was in the dig trench; Wilma carried the pickaxe; Esme carried the tent mallet; the tent mallet was in the burial chamber; the trowel was in the dig trench; the pickaxe was in the finds tent; the stone idol was in the map tent."
+  ]
+ },
+ {
+  "num": 39,
+  "level": "C",
+  "title": "The Jazz Club Blues",
+  "victim": "Duke Sterling, owner of the Blue Canary Jazz Club",
+  "scene": "The band played on until two. Nobody noticed Duke was missing until the last set ended.",
+  "motive": "revenge for an old insult",
+  "suspects": [
+   {
+    "first": "Leo",
+    "last": "Moss",
+    "name": "Leo Moss",
+    "role": "record producer"
+   },
+   {
+    "first": "Hester",
+    "last": "Pell",
+    "name": "Hester Pell",
+    "role": "club pianist"
+   },
+   {
+    "first": "Wilma",
+    "last": "Dalby",
+    "name": "Wilma Dalby",
+    "role": "trumpet player"
+   },
+   {
+    "first": "Felix",
+    "last": "Garland",
+    "name": "Felix Garland",
+    "role": "singer"
+   },
+   {
+    "first": "Greta",
+    "last": "Yarrow",
+    "name": "Greta Yarrow",
+    "role": "bartender"
+   }
+  ],
+  "rooms": [
+   "office",
+   "band room",
+   "stage wings",
+   "cloakroom",
+   "liquor store"
+  ],
+  "weapons": [
+   "ice pick",
+   "microphone stand",
+   "piano lid prop",
+   "whiskey bottle",
+   "trumpet"
+  ],
+  "clues": [
+   {
+    "t": "w_not_r",
+    "w": 2,
+    "r": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 2,
+    "r": 3
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 4,
+    "r": 3
+   },
+   {
+    "t": "split",
+    "s": 2,
+    "r": 4,
+    "w": 4,
+    "w2": 0
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 2,
+    "r": 3
+   },
+   {
+    "t": "or_s_w",
+    "s": 0,
+    "s2": 3,
+    "w": 2
+   },
+   {
+    "t": "w_not_r",
+    "w": 0,
+    "r": 0
+   },
+   {
+    "t": "w_not_r",
+    "w": 2,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 3,
+    "r": 3
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 0,
+    "r": 4
+   }
+  ],
+  "clue_text": [
+   "The piano lid prop was not in the band room.",
+   "Either Hester or Wilma was in the cloakroom.",
+   "Either Hester or Greta was in the cloakroom.",
+   "Of Wilma and the person in the liquor store, one carried the trumpet and the other carried the ice pick.",
+   "The person carrying the piano lid prop was not Felix, and was not in the cloakroom.",
+   "Either Leo or Felix was carrying the piano lid prop.",
+   "The ice pick was not in the office.",
+   "The piano lid prop was not in the office.",
+   "The person carrying the whiskey bottle was not Felix, and was not in the cloakroom.",
+   "The person carrying the ice pick was not Felix, and was not in the liquor store."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the liquor store."
+  },
+  "killer": 3,
+  "lp": [
+   2,
+   3,
+   1,
+   4,
+   0
+  ],
+  "wp": [
+   2,
+   1,
+   0,
+   4,
+   3
+  ],
+  "steps": [
+   "Mark the plain facts from clues 1, 7 and 8 on the grid.",
+   "Clue 2 shows: Leo was not in the cloakroom; Felix was not in the cloakroom; Greta was not in the cloakroom.",
+   "Clue 3: Hester was in the cloakroom.",
+   "Clue 4 shows: Wilma was not in the liquor store; Hester did not carry the ice pick; Hester did not carry the trumpet, and more.",
+   "Clue 5: the piano lid prop was in the stage wings.",
+   "Clue 6: Leo was in the stage wings; Leo carried the piano lid prop.",
+   "Clue 9: Felix was in the liquor store; Hester carried the microphone stand; Greta carried the whiskey bottle; the microphone stand was in the cloakroom.",
+   "Clue 10: Wilma was in the band room; Greta was in the office; Wilma carried the ice pick; Felix carried the trumpet; the ice pick was in the band room; the whiskey bottle was in the office; the trumpet was in the liquor store."
+  ]
+ },
+ {
+  "num": 40,
+  "level": "C",
+  "title": "The Clockwork Carnival",
+  "victim": "Barnaby Flint, owner of Flint's Traveling Carnival",
+  "scene": "He was found on the carousel at dawn, the music still playing.",
+  "motive": "a stolen idea",
+  "suspects": [
+   {
+    "first": "Lottie",
+    "last": "Ashdown",
+    "name": "Lottie Ashdown",
+    "role": "strongman"
+   },
+   {
+    "first": "Cecil",
+    "last": "Tully",
+    "name": "Cecil Tully",
+    "role": "ride mechanic"
+   },
+   {
+    "first": "Tess",
+    "last": "Wilder",
+    "name": "Tess Wilder",
+    "role": "ticket taker"
+   },
+   {
+    "first": "Nora",
+    "last": "Locke",
+    "name": "Nora Locke",
+    "role": "candy seller"
+   },
+   {
+    "first": "Pearl",
+    "last": "Easton",
+    "name": "Pearl Easton",
+    "role": "fortune teller"
+   }
+  ],
+  "rooms": [
+   "hall of mirrors",
+   "carousel shed",
+   "caravan",
+   "ghost train",
+   "big tent"
+  ],
+  "weapons": [
+   "coconut",
+   "carousel pole",
+   "test-your-strength mallet",
+   "juggling club",
+   "tent peg"
+  ],
+  "clues": [
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 0,
+    "r": 2
+   },
+   {
+    "t": "s_or_r",
+    "s": 1,
+    "r": 1,
+    "r2": 0
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 2,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 4,
+    "w": 0,
+    "r": 0
+   },
+   {
+    "t": "s_or_w",
+    "s": 2,
+    "w": 3,
+    "w2": 4
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 3,
+    "r": 0
+   },
+   {
+    "t": "split",
+    "s": 1,
+    "r": 4,
+    "w": 4,
+    "w2": 2
+   },
+   {
+    "t": "s_or_w",
+    "s": 3,
+    "w": 4,
+    "w2": 3
+   }
+  ],
+  "clue_text": [
+   "The person carrying the coconut was not Cecil, and was not in the caravan.",
+   "Cecil was in either the carousel shed or the hall of mirrors.",
+   "The person carrying the test-your-strength mallet was not Lottie, and was not in the hall of mirrors.",
+   "The person carrying the coconut was not Pearl, and was not in the hall of mirrors.",
+   "Tess was carrying either the juggling club or the tent peg.",
+   "Either Cecil or Nora was in the hall of mirrors.",
+   "Of Cecil and the person in the big tent, one carried the tent peg and the other carried the test-your-strength mallet.",
+   "Nora was carrying either the tent peg or the juggling club."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the juggling club."
+  },
+  "killer": 3,
+  "lp": [
+   3,
+   1,
+   4,
+   0,
+   2
+  ],
+  "wp": [
+   0,
+   2,
+   4,
+   3,
+   1
+  ],
+  "steps": [
+   "Clue 1 shows: Cecil did not carry the coconut; the coconut was not in the caravan.",
+   "Clue 2 shows: Cecil was not in the caravan; Cecil was not in the ghost train; Cecil was not in the big tent.",
+   "Clue 3 shows: Lottie did not carry the test-your-strength mallet; the test-your-strength mallet was not in the hall of mirrors.",
+   "Clue 4 shows: Pearl did not carry the coconut; the coconut was not in the hall of mirrors.",
+   "Clue 5 shows: Tess did not carry the coconut; Tess did not carry the carousel pole; Tess did not carry the test-your-strength mallet.",
+   "Clue 6 shows: Lottie was not in the hall of mirrors; Tess was not in the hall of mirrors; Pearl was not in the hall of mirrors.",
+   "Clue 7 shows: Lottie was not in the big tent; Lottie did not carry the juggling club; Lottie did not carry the tent peg, and more.",
+   "Clue 8: Lottie was in the ghost train; Cecil was in the carousel shed; Tess was in the big tent; Nora was in the hall of mirrors; Pearl was in the caravan; Lottie carried the coconut; Cecil carried the test-your-strength mallet; Tess carried the tent peg; Nora carried the juggling club; Pearl carried the carousel pole; the coconut was in the ghost train; the carousel pole was in the caravan; the test-your-strength mallet was in the carousel shed; the juggling club was in the hall of mirrors; the tent peg was in the big tent."
+  ]
+ },
+ {
+  "num": 41,
+  "level": "C",
+  "title": "The Tea Planter's Will",
+  "victim": "Sir Alistair Kendrick, owner of the Emerald Hills Tea Estate",
+  "scene": "He had called his family together to read a new will. He never got the chance.",
+  "motive": "a partnership gone sour",
+  "suspects": [
+   {
+    "first": "June",
+    "last": "Greer",
+    "name": "June Greer",
+    "role": "tea taster"
+   },
+   {
+    "first": "Ned",
+    "last": "Dalby",
+    "name": "Ned Dalby",
+    "role": "family doctor"
+   },
+   {
+    "first": "Sadie",
+    "last": "Easton",
+    "name": "Sadie Easton",
+    "role": "estate manager"
+   },
+   {
+    "first": "Una",
+    "last": "Crowe",
+    "name": "Una Crowe",
+    "role": "daughter-in-law"
+   },
+   {
+    "first": "Flora",
+    "last": "Thorne",
+    "name": "Flora Thorne",
+    "role": "son"
+   }
+  ],
+  "rooms": [
+   "sunroom",
+   "packing hall",
+   "drying room",
+   "study",
+   "tasting room"
+  ],
+  "weapons": [
+   "brass scale weight",
+   "walking stick",
+   "tea chest hook",
+   "pruning knife",
+   "silver teapot"
+  ],
+  "clues": [
+   {
+    "t": "split",
+    "s": 3,
+    "r": 4,
+    "w": 3,
+    "w2": 2
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 2,
+    "r": 2
+   },
+   {
+    "t": "or_s_w",
+    "s": 1,
+    "s2": 3,
+    "w": 4
+   },
+   {
+    "t": "or_s_r",
+    "s": 2,
+    "s2": 4,
+    "r": 3
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 4,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 2,
+    "r": 1
+   },
+   {
+    "t": "s_not_w",
+    "s": 4,
+    "w": 1
+   },
+   {
+    "t": "s_or_w",
+    "s": 2,
+    "w": 3,
+    "w2": 2
+   }
+  ],
+  "clue_text": [
+   "Of Una and the person in the tasting room, one carried the pruning knife and the other carried the tea chest hook.",
+   "Either June or Sadie was in the drying room.",
+   "Either Ned or Una was carrying the silver teapot.",
+   "Either Sadie or Flora was in the study.",
+   "Either Ned or Flora was in the sunroom.",
+   "The person carrying the tea chest hook was not Ned, and was not in the packing hall.",
+   "Flora was not carrying the walking stick.",
+   "Sadie was carrying either the pruning knife or the tea chest hook."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the tasting room."
+  },
+  "killer": 2,
+  "lp": [
+   2,
+   0,
+   4,
+   1,
+   3
+  ],
+  "wp": [
+   1,
+   4,
+   2,
+   3,
+   0
+  ],
+  "steps": [
+   "Mark the plain facts from clue 7 on the grid.",
+   "Clue 1 shows: Una was not in the tasting room; Una did not carry the brass scale weight; Una did not carry the walking stick, and more.",
+   "Clue 2 shows: Ned was not in the drying room; Una was not in the drying room; Flora was not in the drying room, and more.",
+   "Clue 3: Ned carried the silver teapot.",
+   "Clue 4 shows: June was not in the sunroom; June was not in the packing hall; June was not in the study, and more.",
+   "Clue 5: Ned was in the sunroom; Una was in the packing hall; the silver teapot was in the sunroom.",
+   "Clue 6: Una carried the pruning knife; the tea chest hook was in the tasting room; the pruning knife was in the packing hall.",
+   "Clue 8: June was in the drying room; Sadie was in the tasting room; Flora was in the study; June carried the walking stick; Sadie carried the tea chest hook; Flora carried the brass scale weight; the brass scale weight was in the study; the walking stick was in the drying room."
+  ]
+ },
+ {
+  "num": 42,
+  "level": "C",
+  "title": "Avalanche at Chalet Blanc",
+  "victim": "Countess Irina Volkova, a wealthy guest at Chalet Blanc",
+  "scene": "An avalanche cut off the road at six. At eight, the Countess was found dead in a locked chalet.",
+  "motive": "revenge for an old insult",
+  "suspects": [
+   {
+    "first": "Sadie",
+    "last": "Calloway",
+    "name": "Sadie Calloway",
+    "role": "skiing champion"
+   },
+   {
+    "first": "Vera",
+    "last": "Rowan",
+    "name": "Vera Rowan",
+    "role": "mountain guide"
+   },
+   {
+    "first": "Lena",
+    "last": "Cobb",
+    "name": "Lena Cobb",
+    "role": "count"
+   },
+   {
+    "first": "Selma",
+    "last": "Tanner",
+    "name": "Selma Tanner",
+    "role": "maid"
+   },
+   {
+    "first": "Polly",
+    "last": "Barlow",
+    "name": "Polly Barlow",
+    "role": "hotel doctor"
+   }
+  ],
+  "rooms": [
+   "drawing room",
+   "sun lounge",
+   "kitchen",
+   "ski room",
+   "cellar"
+  ],
+  "weapons": [
+   "ski pole",
+   "fondue fork",
+   "ice pick",
+   "silver hairbrush",
+   "fire iron"
+  ],
+  "clues": [
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 2,
+    "r": 4
+   },
+   {
+    "t": "w_not_r",
+    "w": 2,
+    "r": 2
+   },
+   {
+    "t": "split",
+    "s": 0,
+    "r": 4,
+    "w": 0,
+    "w2": 4
+   },
+   {
+    "t": "or_s_w",
+    "s": 2,
+    "s2": 3,
+    "w": 3
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 4,
+    "r": 4
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 4,
+    "r": 0
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 2,
+    "r": 3
+   },
+   {
+    "t": "split",
+    "s": 1,
+    "r": 2,
+    "w": 1,
+    "w2": 2
+   }
+  ],
+  "clue_text": [
+   "Either Vera or Lena was in the cellar.",
+   "The ice pick was not in the kitchen.",
+   "Of Sadie and the person in the cellar, one carried the ski pole and the other carried the fire iron.",
+   "Either Lena or Selma was carrying the silver hairbrush.",
+   "The person carrying the fire iron was not Selma, and was not in the cellar.",
+   "Either Sadie or Polly was in the drawing room.",
+   "Either Vera or Lena was in the ski room.",
+   "Of Vera and the person in the kitchen, one carried the fondue fork and the other carried the ice pick."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the silver hairbrush."
+  },
+  "killer": 3,
+  "lp": [
+   0,
+   3,
+   4,
+   1,
+   2
+  ],
+  "wp": [
+   4,
+   2,
+   0,
+   3,
+   1
+  ],
+  "steps": [
+   "Mark the plain facts from clue 2 on the grid.",
+   "Clue 1 shows: Sadie was not in the cellar; Selma was not in the cellar; Polly was not in the cellar.",
+   "Clue 3 shows: Sadie did not carry the fondue fork; Sadie did not carry the ice pick; Sadie did not carry the silver hairbrush, and more.",
+   "Clue 4 shows: Vera did not carry the silver hairbrush; Polly did not carry the silver hairbrush.",
+   "Clue 5: Sadie carried the fire iron; the ski pole was in the cellar.",
+   "Clue 6 shows: Vera was not in the drawing room; Lena was not in the drawing room; Selma was not in the drawing room, and more.",
+   "Clue 7 shows: Sadie was not in the ski room; Vera was not in the sun lounge; Vera was not in the kitchen, and more.",
+   "Clue 8: Sadie was in the drawing room; Vera was in the ski room; Lena was in the cellar; Selma was in the sun lounge; Polly was in the kitchen; Vera carried the ice pick; Lena carried the ski pole; Selma carried the silver hairbrush; Polly carried the fondue fork; the fondue fork was in the kitchen; the ice pick was in the ski room; the silver hairbrush was in the sun lounge; the fire iron was in the drawing room."
+  ]
+ },
+ {
+  "num": 43,
+  "level": "C",
+  "title": "The Silent Archive",
+  "victim": "Brother Anselm Grey, keeper of the Whitmoor Archive",
+  "scene": "He was found among the oldest manuscripts, a single page torn from a priceless book.",
+  "motive": "a gambling loss",
+  "suspects": [
+   {
+    "first": "Una",
+    "last": "Easton",
+    "name": "Una Easton",
+    "role": "visiting collector"
+   },
+   {
+    "first": "Ivy",
+    "last": "Penrose",
+    "name": "Ivy Penrose",
+    "role": "bookbinder"
+   },
+   {
+    "first": "Amos",
+    "last": "Cobb",
+    "name": "Amos Cobb",
+    "role": "night watchman"
+   },
+   {
+    "first": "Selma",
+    "last": "Alder",
+    "name": "Selma Alder",
+    "role": "gardener"
+   },
+   {
+    "first": "Iris",
+    "last": "Voss",
+    "name": "Iris Voss",
+    "role": "librarian"
+   }
+  ],
+  "rooms": [
+   "crypt",
+   "reading gallery",
+   "map room",
+   "scriptorium",
+   "bindery"
+  ],
+  "weapons": [
+   "bronze seal",
+   "brass candlestick",
+   "book press",
+   "leather strap",
+   "stone inkwell"
+  ],
+  "clues": [
+   {
+    "t": "s_or_w",
+    "s": 4,
+    "w": 2,
+    "w2": 3
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 2,
+    "r": 2
+   },
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 3
+   },
+   {
+    "t": "s_or_r",
+    "s": 3,
+    "r": 0,
+    "r2": 2
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 0,
+    "r": 0
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 3,
+    "r": 1
+   },
+   {
+    "t": "s_or_w",
+    "s": 3,
+    "w": 1,
+    "w2": 2
+   },
+   {
+    "t": "w_in_r",
+    "w": 2,
+    "r": 2
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 3,
+    "r": 3
+   }
+  ],
+  "clue_text": [
+   "Iris was carrying either the book press or the leather strap.",
+   "Either Ivy or Amos was in the map room.",
+   "Amos was not in the scriptorium.",
+   "Selma was in either the crypt or the map room.",
+   "The person carrying the bronze seal was not Ivy, and was not in the crypt.",
+   "Either Una or Selma was in the reading gallery.",
+   "Selma was carrying either the brass candlestick or the book press.",
+   "Whoever carried the book press was in the map room.",
+   "The person carrying the leather strap was not Amos, and was not in the scriptorium."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the map room."
+  },
+  "killer": 2,
+  "lp": [
+   1,
+   3,
+   2,
+   0,
+   4
+  ],
+  "wp": [
+   0,
+   4,
+   2,
+   1,
+   3
+  ],
+  "steps": [
+   "Mark the plain facts from clues 3 and 8 on the grid. That gives: the book press was in the map room.",
+   "Clue 1 shows: Iris did not carry the bronze seal; Iris did not carry the brass candlestick; Iris did not carry the stone inkwell.",
+   "Clue 2: Iris carried the leather strap.",
+   "Clue 4: Selma was in the crypt.",
+   "Clue 5 shows: Ivy did not carry the bronze seal; Selma did not carry the bronze seal; the bronze seal was not in the crypt.",
+   "Clue 6: Una was in the reading gallery.",
+   "Clue 7: Selma carried the brass candlestick; the brass candlestick was in the crypt.",
+   "Clue 9: Ivy was in the scriptorium; Amos was in the map room; Iris was in the bindery; Una carried the bronze seal; Ivy carried the stone inkwell; Amos carried the book press; the bronze seal was in the reading gallery; the leather strap was in the bindery; the stone inkwell was in the scriptorium."
+  ]
+ },
+ {
+  "num": 44,
+  "level": "C",
+  "title": "The Racing Yacht",
+  "victim": "Commodore Giles Atherton, owner of the racing yacht Silver Gull",
+  "scene": "He was found below deck the night before the Regatta Cup.",
+  "motive": "a forged signature",
+  "suspects": [
+   {
+    "first": "Flora",
+    "last": "Flint",
+    "name": "Flora Flint",
+    "role": "rival owner"
+   },
+   {
+    "first": "Floyd",
+    "last": "Barlow",
+    "name": "Floyd Barlow",
+    "role": "sailmaker"
+   },
+   {
+    "first": "Una",
+    "last": "Gantry",
+    "name": "Una Gantry",
+    "role": "ship's cook"
+   },
+   {
+    "first": "Basil",
+    "last": "Wren",
+    "name": "Basil Wren",
+    "role": "deckhand"
+   },
+   {
+    "first": "Cecil",
+    "last": "Blackwood",
+    "name": "Cecil Blackwood",
+    "role": "navigator"
+   }
+  ],
+  "rooms": [
+   "galley",
+   "sail locker",
+   "chart room",
+   "owner's cabin",
+   "engine room"
+  ],
+  "weapons": [
+   "boat hook",
+   "spare tiller",
+   "winch handle",
+   "marlin spike",
+   "anchor shackle"
+  ],
+  "clues": [
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 2,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 3,
+    "r": 1
+   },
+   {
+    "t": "s_or_r",
+    "s": 4,
+    "r": 0,
+    "r2": 3
+   },
+   {
+    "t": "split",
+    "s": 2,
+    "r": 1,
+    "w": 2,
+    "w2": 3
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 0,
+    "r": 3
+   },
+   {
+    "t": "s_or_r",
+    "s": 0,
+    "r": 2,
+    "r2": 3
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 2,
+    "r": 4
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 1,
+    "r": 3
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 1,
+    "r": 2
+   }
+  ],
+  "clue_text": [
+   "The person carrying the winch handle was not Basil, and was not in the galley.",
+   "The person carrying the marlin spike was not Flora, and was not in the sail locker.",
+   "Cecil was in either the galley or the owner's cabin.",
+   "Of Una and the person in the sail locker, one carried the winch handle and the other carried the marlin spike.",
+   "The person carrying the boat hook was not Basil, and was not in the owner's cabin.",
+   "Flora was in either the chart room or the owner's cabin.",
+   "Either Floyd or Una was in the engine room.",
+   "The person carrying the spare tiller was not Basil, and was not in the owner's cabin.",
+   "The person carrying the spare tiller was not Basil, and was not in the chart room."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the boat hook."
+  },
+  "killer": 0,
+  "lp": [
+   2,
+   1,
+   4,
+   3,
+   0
+  ],
+  "wp": [
+   0,
+   2,
+   3,
+   4,
+   1
+  ],
+  "steps": [
+   "Clue 1 shows: Basil did not carry the winch handle; the winch handle was not in the galley.",
+   "Clue 2 shows: Flora did not carry the marlin spike; the marlin spike was not in the sail locker.",
+   "Clue 3 shows: Cecil was not in the sail locker; Cecil was not in the chart room; Cecil was not in the engine room.",
+   "Clue 4: Una carried the marlin spike; the winch handle was in the sail locker.",
+   "Clue 5 shows: Basil did not carry the boat hook; the boat hook was not in the owner's cabin.",
+   "Clue 6: Floyd was in the sail locker; Floyd carried the winch handle.",
+   "Clue 7: Una was in the engine room; the marlin spike was in the engine room.",
+   "Clue 8: Flora was in the chart room; Basil was in the owner's cabin; Cecil was in the galley; Basil carried the anchor shackle; the anchor shackle was in the owner's cabin.",
+   "Clue 9: Flora carried the boat hook; Cecil carried the spare tiller; the boat hook was in the chart room; the spare tiller was in the galley."
+  ]
+ },
+ {
+  "num": 45,
+  "level": "C",
+  "title": "A Cask of Trouble",
+  "victim": "Angus MacRae, master distiller of Glen Corrie",
+  "scene": "He was found in the oldest warehouse, beside a cask worth more than the distillery itself.",
+  "motive": "a promise broken long ago",
+  "suspects": [
+   {
+    "first": "Clara",
+    "last": "Sable",
+    "name": "Clara Sable",
+    "role": "whisky buyer"
+   },
+   {
+    "first": "Zeke",
+    "last": "Rowan",
+    "name": "Zeke Rowan",
+    "role": "warehouse keeper"
+   },
+   {
+    "first": "Polly",
+    "last": "Easton",
+    "name": "Polly Easton",
+    "role": "tax inspector"
+   },
+   {
+    "first": "Basil",
+    "last": "Pell",
+    "name": "Basil Pell",
+    "role": "stillman"
+   },
+   {
+    "first": "Daisy",
+    "last": "Cobb",
+    "name": "Daisy Cobb",
+    "role": "cooper"
+   }
+  ],
+  "rooms": [
+   "tasting room",
+   "cooperage",
+   "malt barn",
+   "still room",
+   "warehouse"
+  ],
+  "weapons": [
+   "copper dipper",
+   "barrel hoop",
+   "malt shovel",
+   "sample bottle",
+   "cask hammer"
+  ],
+  "clues": [
+   {
+    "t": "s_or_r",
+    "s": 2,
+    "r": 2,
+    "r2": 0
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 2,
+    "r": 4
+   },
+   {
+    "t": "split",
+    "s": 1,
+    "r": 0,
+    "w": 0,
+    "w2": 4
+   },
+   {
+    "t": "split",
+    "s": 0,
+    "r": 3,
+    "w": 1,
+    "w2": 0
+   },
+   {
+    "t": "s_or_w",
+    "s": 2,
+    "w": 0,
+    "w2": 3
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 0,
+    "r": 0
+   },
+   {
+    "t": "or_s_w",
+    "s": 1,
+    "s2": 3,
+    "w": 4
+   }
+  ],
+  "clue_text": [
+   "Polly was in either the malt barn or the tasting room.",
+   "The person carrying the malt shovel was not Clara, and was not in the warehouse.",
+   "Of Zeke and the person in the tasting room, one carried the copper dipper and the other carried the cask hammer.",
+   "Of Clara and the person in the still room, one carried the barrel hoop and the other carried the copper dipper.",
+   "Polly was carrying either the copper dipper or the sample bottle.",
+   "The person carrying the copper dipper was not Polly, and was not in the tasting room.",
+   "Either Zeke or Basil was carrying the cask hammer."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the cooperage."
+  },
+  "killer": 4,
+  "lp": [
+   4,
+   3,
+   2,
+   0,
+   1
+  ],
+  "wp": [
+   1,
+   0,
+   3,
+   4,
+   2
+  ],
+  "steps": [
+   "Clue 1 shows: Polly was not in the cooperage; Polly was not in the still room; Polly was not in the warehouse.",
+   "Clue 2 shows: Clara did not carry the malt shovel; the malt shovel was not in the warehouse.",
+   "Clue 3 shows: Zeke was not in the tasting room; Zeke did not carry the barrel hoop; Zeke did not carry the malt shovel, and more.",
+   "Clue 4 shows: Clara was not in the still room; Zeke was not in the malt barn; Clara did not carry the sample bottle, and more.",
+   "Clue 5: Polly was in the malt barn; Polly carried the sample bottle; the malt shovel was in the cooperage; the sample bottle was in the malt barn.",
+   "Clue 6: Clara was in the warehouse; Zeke was in the still room; Clara carried the barrel hoop; Zeke carried the copper dipper; the copper dipper was in the still room; the barrel hoop was in the warehouse; the cask hammer was in the tasting room.",
+   "Clue 7: Basil was in the tasting room; Daisy was in the cooperage; Basil carried the cask hammer; Daisy carried the malt shovel."
+  ]
+ },
+ {
+  "num": 46,
+  "level": "C",
+  "title": "The Puppet Master",
+  "victim": "Giuseppe Rinaldi, master puppeteer",
+  "scene": "He was found backstage, tangled in the strings of his most famous puppet.",
+  "motive": "a stolen idea",
+  "suspects": [
+   {
+    "first": "Saul",
+    "last": "Wren",
+    "name": "Saul Wren",
+    "role": "musician"
+   },
+   {
+    "first": "Clara",
+    "last": "Dalby",
+    "name": "Clara Dalby",
+    "role": "young apprentice"
+   },
+   {
+    "first": "Gil",
+    "last": "Birch",
+    "name": "Gil Birch",
+    "role": "puppeteer"
+   },
+   {
+    "first": "Theo",
+    "last": "Crowe",
+    "name": "Theo Crowe",
+    "role": "puppet carver"
+   },
+   {
+    "first": "Leo",
+    "last": "Pell",
+    "name": "Leo Pell",
+    "role": "theater owner"
+   }
+  ],
+  "rooms": [
+   "ticket booth",
+   "costume room",
+   "fly gallery",
+   "backstage corridor",
+   "puppet workshop"
+  ],
+  "weapons": [
+   "wooden mallet",
+   "puppet strings",
+   "stage weight",
+   "carving chisel",
+   "paint pot"
+  ],
+  "clues": [
+   {
+    "t": "split",
+    "s": 4,
+    "r": 2,
+    "w": 4,
+    "w2": 2
+   },
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 4
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 1,
+    "r": 2
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 2,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 0,
+    "r": 4
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 3,
+    "r": 2
+   },
+   {
+    "t": "split",
+    "s": 2,
+    "r": 3,
+    "w": 3,
+    "w2": 2
+   },
+   {
+    "t": "s_or_w",
+    "s": 3,
+    "w": 0,
+    "w2": 4
+   }
+  ],
+  "clue_text": [
+   "Of Leo and the person in the fly gallery, one carried the paint pot and the other carried the stage weight.",
+   "Gil was not in the puppet workshop.",
+   "Either Saul or Clara was in the fly gallery.",
+   "Either Saul or Gil was in the ticket booth.",
+   "The person carrying the wooden mallet was not Gil, and was not in the puppet workshop.",
+   "Either Clara or Theo was in the fly gallery.",
+   "Of Gil and the person in the backstage corridor, one carried the carving chisel and the other carried the stage weight.",
+   "Theo was carrying either the wooden mallet or the paint pot."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the stage weight."
+  },
+  "killer": 4,
+  "lp": [
+   4,
+   2,
+   0,
+   1,
+   3
+  ],
+  "wp": [
+   1,
+   4,
+   3,
+   0,
+   2
+  ],
+  "steps": [
+   "Mark the plain facts from clue 2 on the grid.",
+   "Clue 1 shows: Leo was not in the fly gallery; Leo did not carry the wooden mallet; Leo did not carry the puppet strings, and more.",
+   "Clue 3 shows: Gil was not in the fly gallery; Theo was not in the fly gallery; Gil did not carry the stage weight, and more.",
+   "Clue 4 shows: Clara was not in the ticket booth; Theo was not in the ticket booth; Leo was not in the ticket booth, and more.",
+   "Clue 5 shows: Gil did not carry the wooden mallet; the wooden mallet was not in the puppet workshop.",
+   "Clue 6: Clara was in the fly gallery.",
+   "Clue 7: Leo was in the backstage corridor; Clara carried the paint pot; Gil carried the carving chisel; Leo carried the stage weight; the puppet strings was in the puppet workshop; the stage weight was in the backstage corridor; the paint pot was in the fly gallery.",
+   "Clue 8: Saul was in the puppet workshop; Gil was in the ticket booth; Theo was in the costume room; Saul carried the puppet strings; Theo carried the wooden mallet; the wooden mallet was in the costume room; the carving chisel was in the ticket booth."
+  ]
+ },
+ {
+  "num": 47,
+  "level": "C",
+  "title": "The Airship Aurora",
+  "victim": "Baron Maximilian Krause, owner of the airship Aurora",
+  "scene": "Two miles above the sea, with nowhere to run, someone on board is a murderer.",
+  "motive": "a ruined reputation",
+  "suspects": [
+   {
+    "first": "Basil",
+    "last": "Voss",
+    "name": "Basil Voss",
+    "role": "inventor"
+   },
+   {
+    "first": "Una",
+    "last": "Quince",
+    "name": "Una Quince",
+    "role": "radio operator"
+   },
+   {
+    "first": "Wade",
+    "last": "Dalby",
+    "name": "Wade Dalby",
+    "role": "airship captain"
+   },
+   {
+    "first": "Edgar",
+    "last": "Hollis",
+    "name": "Edgar Hollis",
+    "role": "heiress"
+   },
+   {
+    "first": "Esme",
+    "last": "Ashdown",
+    "name": "Esme Ashdown",
+    "role": "navigator"
+   }
+  ],
+  "rooms": [
+   "passenger lounge",
+   "cargo hold",
+   "control car",
+   "engine gondola",
+   "radio room"
+  ],
+  "weapons": [
+   "brass sextant",
+   "ballast weight",
+   "mooring rope",
+   "signal pistol",
+   "heavy spanner"
+  ],
+  "clues": [
+   {
+    "t": "or_s_w",
+    "s": 2,
+    "s2": 3,
+    "w": 4
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 3,
+    "r": 2
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 4,
+    "r": 1
+   },
+   {
+    "t": "s_or_w",
+    "s": 1,
+    "w": 3,
+    "w2": 2
+   },
+   {
+    "t": "s_or_r",
+    "s": 1,
+    "r": 4,
+    "r2": 3
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 4,
+    "r": 4
+   },
+   {
+    "t": "s_not_w",
+    "s": 0,
+    "w": 2
+   },
+   {
+    "t": "split",
+    "s": 2,
+    "r": 2,
+    "w": 2,
+    "w2": 0
+   }
+  ],
+  "clue_text": [
+   "Either Wade or Edgar was carrying the heavy spanner.",
+   "Either Basil or Edgar was in the control car.",
+   "The person carrying the heavy spanner was not Basil, and was not in the cargo hold.",
+   "Una was carrying either the signal pistol or the mooring rope.",
+   "Una was in either the radio room or the engine gondola.",
+   "Either Basil or Esme was in the radio room.",
+   "Basil was not carrying the mooring rope.",
+   "Of Wade and the person in the control car, one carried the mooring rope and the other carried the brass sextant."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the cargo hold."
+  },
+  "killer": 2,
+  "lp": [
+   2,
+   3,
+   1,
+   0,
+   4
+  ],
+  "wp": [
+   0,
+   3,
+   2,
+   4,
+   1
+  ],
+  "steps": [
+   "Mark the plain facts from clue 7 on the grid.",
+   "Clue 1 shows: Basil did not carry the heavy spanner; Una did not carry the heavy spanner; Esme did not carry the heavy spanner.",
+   "Clue 2 shows: Una was not in the control car; Wade was not in the control car; Esme was not in the control car.",
+   "Clue 3 shows: the heavy spanner was not in the cargo hold.",
+   "Clue 4 shows: Una did not carry the brass sextant; Una did not carry the ballast weight.",
+   "Clue 5 shows: Una was not in the passenger lounge; Una was not in the cargo hold.",
+   "Clue 6: Una was in the engine gondola.",
+   "Clue 8: Basil was in the control car; Wade was in the cargo hold; Edgar was in the passenger lounge; Esme was in the radio room; Basil carried the brass sextant; Una carried the signal pistol; Wade carried the mooring rope; Edgar carried the heavy spanner; Esme carried the ballast weight; the brass sextant was in the control car; the ballast weight was in the radio room; the mooring rope was in the cargo hold; the signal pistol was in the engine gondola; the heavy spanner was in the passenger lounge."
+  ]
+ },
+ {
+  "num": 48,
+  "level": "C",
+  "title": "The Lost Manuscript",
+  "victim": "Marguerite Dufresne, bestselling mystery novelist",
+  "scene": "She had invited five people to hear the last chapter of her new novel. Someone made sure it was never read.",
+  "motive": "a valuable secret recipe or formula",
+  "suspects": [
+   {
+    "first": "Quentin",
+    "last": "Drake",
+    "name": "Quentin Drake",
+    "role": "rival novelist"
+   },
+   {
+    "first": "Amos",
+    "last": "Calloway",
+    "name": "Amos Calloway",
+    "role": "publisher"
+   },
+   {
+    "first": "Sybil",
+    "last": "Penrose",
+    "name": "Sybil Penrose",
+    "role": "biographer"
+   },
+   {
+    "first": "Leo",
+    "last": "Yarrow",
+    "name": "Leo Yarrow",
+    "role": "secretary"
+   },
+   {
+    "first": "Sadie",
+    "last": "Flint",
+    "name": "Sadie Flint",
+    "role": "editor"
+   }
+  ],
+  "rooms": [
+   "attic",
+   "summerhouse",
+   "boathouse",
+   "writing room",
+   "dining room"
+  ],
+  "weapons": [
+   "glass paperweight",
+   "typewriter",
+   "fountain pen",
+   "letter knife",
+   "bronze bookend"
+  ],
+  "clues": [
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 1,
+    "r": 1
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 3,
+    "r": 3
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 2,
+    "r": 2
+   },
+   {
+    "t": "s_or_w",
+    "s": 1,
+    "w": 0,
+    "w2": 4
+   },
+   {
+    "t": "or_s_w",
+    "s": 2,
+    "s2": 4,
+    "w": 0
+   },
+   {
+    "t": "split",
+    "s": 3,
+    "r": 4,
+    "w": 3,
+    "w2": 1
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 0,
+    "r": 3
+   },
+   {
+    "t": "s_not_w",
+    "s": 2,
+    "w": 1
+   },
+   {
+    "t": "s_or_r",
+    "s": 4,
+    "r": 1,
+    "r2": 3
+   }
+  ],
+  "clue_text": [
+   "The person carrying the typewriter was not Leo, and was not in the summerhouse.",
+   "The person carrying the letter knife was not Sybil, and was not in the writing room.",
+   "Either Quentin or Sybil was in the boathouse.",
+   "Amos was carrying either the glass paperweight or the bronze bookend.",
+   "Either Sybil or Sadie was carrying the glass paperweight.",
+   "Of Leo and the person in the dining room, one carried the letter knife and the other carried the typewriter.",
+   "The person carrying the glass paperweight was not Sybil, and was not in the writing room.",
+   "Sybil was not carrying the typewriter.",
+   "Sadie was in either the summerhouse or the writing room."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the bronze bookend."
+  },
+  "killer": 1,
+  "lp": [
+   4,
+   3,
+   2,
+   0,
+   1
+  ],
+  "wp": [
+   1,
+   4,
+   2,
+   3,
+   0
+  ],
+  "steps": [
+   "Mark the plain facts from clue 8 on the grid.",
+   "Clue 1 shows: Leo did not carry the typewriter; the typewriter was not in the summerhouse.",
+   "Clue 2 shows: Sybil did not carry the letter knife; the letter knife was not in the writing room.",
+   "Clue 3 shows: Amos was not in the boathouse; Leo was not in the boathouse; Sadie was not in the boathouse.",
+   "Clue 4 shows: Amos did not carry the typewriter; Amos did not carry the fountain pen; Amos did not carry the letter knife.",
+   "Clue 5: Amos carried the bronze bookend.",
+   "Clue 6: Leo carried the letter knife; the typewriter was in the dining room.",
+   "Clue 7: Quentin was in the dining room; Amos was in the writing room; Sybil was in the boathouse; Quentin carried the typewriter; Sybil carried the fountain pen; Sadie carried the glass paperweight; the fountain pen was in the boathouse; the bronze bookend was in the writing room.",
+   "Clue 9: Leo was in the attic; Sadie was in the summerhouse; the glass paperweight was in the summerhouse; the letter knife was in the attic."
+  ]
+ },
+ {
+  "num": 49,
+  "level": "C",
+  "title": "The Orchid Thief",
+  "victim": "Lord Percival Eames, grower of the rare Ghost Orchid",
+  "scene": "The orchid was gone from its glass case, and Lord Percival lay beneath it.",
+  "motive": "an unpaid debt",
+  "suspects": [
+   {
+    "first": "Daisy",
+    "last": "Greer",
+    "name": "Daisy Greer",
+    "role": "show judge"
+   },
+   {
+    "first": "Gil",
+    "last": "Flint",
+    "name": "Gil Flint",
+    "role": "collector"
+   },
+   {
+    "first": "Oscar",
+    "last": "Wren",
+    "name": "Oscar Wren",
+    "role": "orchid breeder"
+   },
+   {
+    "first": "Basil",
+    "last": "Alder",
+    "name": "Basil Alder",
+    "role": "plant hunter"
+   },
+   {
+    "first": "Myra",
+    "last": "Wilder",
+    "name": "Myra Wilder",
+    "role": "greenhouse boy"
+   }
+  ],
+  "rooms": [
+   "packing shed",
+   "show tent",
+   "orchid house",
+   "boiler room",
+   "plant library"
+  ],
+  "weapons": [
+   "glass cloche",
+   "brass plant label spike",
+   "heating pipe",
+   "clay pot",
+   "pruning shears"
+  ],
+  "clues": [
+   {
+    "t": "split",
+    "s": 0,
+    "r": 4,
+    "w": 1,
+    "w2": 0
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 4,
+    "r": 2
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 4,
+    "r": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 4,
+    "r": 1
+   },
+   {
+    "t": "split",
+    "s": 0,
+    "r": 3,
+    "w": 0,
+    "w2": 3
+   },
+   {
+    "t": "split",
+    "s": 3,
+    "r": 4,
+    "w": 1,
+    "w2": 2
+   },
+   {
+    "t": "s_or_r",
+    "s": 2,
+    "r": 1,
+    "r2": 4
+   }
+  ],
+  "clue_text": [
+   "Of Daisy and the person in the plant library, one carried the brass plant label spike and the other carried the glass cloche.",
+   "Either Gil or Myra was in the orchid house.",
+   "The person carrying the pruning shears was not Gil, and was not in the show tent.",
+   "Either Daisy or Myra was in the show tent.",
+   "Of Daisy and the person in the boiler room, one carried the glass cloche and the other carried the clay pot.",
+   "Of Basil and the person in the plant library, one carried the brass plant label spike and the other carried the heating pipe.",
+   "Oscar was in either the show tent or the plant library."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "room",
+   "text": "The victim was killed in the packing shed."
+  },
+  "killer": 3,
+  "lp": [
+   1,
+   3,
+   4,
+   0,
+   2
+  ],
+  "wp": [
+   0,
+   3,
+   1,
+   2,
+   4
+  ],
+  "steps": [
+   "Clue 1 shows: Daisy was not in the plant library; Daisy did not carry the heating pipe; Daisy did not carry the clay pot, and more.",
+   "Clue 2 shows: Daisy was not in the orchid house; Oscar was not in the orchid house; Basil was not in the orchid house, and more.",
+   "Clue 3 shows: Gil did not carry the pruning shears; the pruning shears was not in the show tent.",
+   "Clue 4 shows: Gil was not in the show tent; Oscar was not in the show tent; Basil was not in the show tent.",
+   "Clue 5: Daisy was in the show tent; Daisy carried the glass cloche; the glass cloche was in the show tent; the brass plant label spike was in the plant library; the clay pot was in the boiler room.",
+   "Clue 6: Basil was in the packing shed; Myra was in the orchid house; Basil carried the heating pipe; Myra carried the pruning shears; the heating pipe was in the packing shed; the pruning shears was in the orchid house.",
+   "Clue 7: Gil was in the boiler room; Oscar was in the plant library; Gil carried the clay pot; Oscar carried the brass plant label spike."
+  ]
+ },
+ {
+  "num": 50,
+  "level": "C",
+  "title": "The Old Mine",
+  "victim": "Jeremiah Slate, owner of the Deep Hollow Silver Mine",
+  "scene": "He went down to inspect a new seam and did not come back up.",
+  "motive": "a lie on a contract",
+  "suspects": [
+   {
+    "first": "Hazel",
+    "last": "Thorne",
+    "name": "Hazel Thorne",
+    "role": "mule driver"
+   },
+   {
+    "first": "Wade",
+    "last": "Fairfax",
+    "name": "Wade Fairfax",
+    "role": "mine foreman"
+   },
+   {
+    "first": "Esme",
+    "last": "Kettle",
+    "name": "Esme Kettle",
+    "role": "assayer"
+   },
+   {
+    "first": "Ernest",
+    "last": "Mercer",
+    "name": "Ernest Mercer",
+    "role": "engineer"
+   },
+   {
+    "first": "Ada",
+    "last": "Nash",
+    "name": "Ada Nash",
+    "role": "claim lawyer"
+   }
+  ],
+  "rooms": [
+   "assay office",
+   "lower gallery",
+   "lamp room",
+   "powder store",
+   "winding house"
+  ],
+  "weapons": [
+   "pickaxe",
+   "drill rod",
+   "timber wedge",
+   "miner's lamp",
+   "ore hammer"
+  ],
+  "clues": [
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 2,
+    "r": 2
+   },
+   {
+    "t": "s_not_r",
+    "s": 1,
+    "r": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 3,
+    "r": 0
+   },
+   {
+    "t": "split",
+    "s": 4,
+    "r": 4,
+    "w": 1,
+    "w2": 3
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 3,
+    "r": 2
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 3,
+    "r": 4
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 2,
+    "r": 1
+   },
+   {
+    "t": "s_or_w",
+    "s": 1,
+    "w": 4,
+    "w2": 1
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 1,
+    "r": 0
+   }
+  ],
+  "clue_text": [
+   "The person carrying the timber wedge was not Esme, and was not in the lamp room.",
+   "Wade was not in the lower gallery.",
+   "Either Wade or Ernest was in the assay office.",
+   "Of Ada and the person in the winding house, one carried the drill rod and the other carried the miner's lamp.",
+   "The person carrying the miner's lamp was not Esme, and was not in the lamp room.",
+   "The person carrying the miner's lamp was not Esme, and was not in the winding house.",
+   "Either Wade or Esme was in the lower gallery.",
+   "Wade was carrying either the ore hammer or the drill rod.",
+   "The person carrying the drill rod was not Wade, and was not in the assay office."
+  ],
+  "statements": null,
+  "statement_text": null,
+  "fact": {
+   "kind": "weapon",
+   "text": "The murder weapon was the timber wedge."
+  },
+  "killer": 3,
+  "lp": [
+   4,
+   2,
+   1,
+   0,
+   3
+  ],
+  "wp": [
+   1,
+   4,
+   0,
+   2,
+   3
+  ],
+  "steps": [
+   "Mark the plain facts from clue 2 on the grid.",
+   "Clue 1 shows: Esme did not carry the timber wedge; the timber wedge was not in the lamp room.",
+   "Clue 3 shows: Hazel was not in the assay office; Esme was not in the assay office; Ada was not in the assay office.",
+   "Clue 4 shows: Ada was not in the winding house; Ada did not carry the pickaxe; Ada did not carry the timber wedge, and more.",
+   "Clue 5 shows: Esme did not carry the miner's lamp; the miner's lamp was not in the lamp room.",
+   "Clue 6: Ada carried the miner's lamp; the drill rod was in the winding house.",
+   "Clue 7: Esme was in the lower gallery; Ada was in the powder store; the timber wedge was in the assay office; the miner's lamp was in the powder store.",
+   "Clue 8: Ernest was in the assay office; Ernest carried the timber wedge.",
+   "Clue 9: Hazel was in the winding house; Wade was in the lamp room; Hazel carried the drill rod; Wade carried the ore hammer; Esme carried the pickaxe; the pickaxe was in the lower gallery; the ore hammer was in the lamp room."
+  ]
+ },
+ {
+  "num": 51,
+  "level": "D",
+  "title": "The Séance at Ravenhall",
+  "victim": "Madame Zenobia Hart, a famous medium",
+  "scene": "The lights went out for one minute during the séance. When they came on, the medium would never speak again.",
+  "motive": "a gambling loss",
+  "suspects": [
+   {
+    "first": "Rhoda",
+    "last": "Sparrow",
+    "name": "Rhoda Sparrow",
+    "role": "newspaper man"
+   },
+   {
+    "first": "Selma",
+    "last": "Locke",
+    "name": "Selma Locke",
+    "role": "young widow"
+   },
+   {
+    "first": "Gil",
+    "last": "Finch",
+    "name": "Gil Finch",
+    "role": "butler"
+   },
+   {
+    "first": "Cora",
+    "last": "Pike",
+    "name": "Cora Pike",
+    "role": "skeptical professor"
+   },
+   {
+    "first": "Luke",
+    "last": "Gantry",
+    "name": "Luke Gantry",
+    "role": "hostess"
+   }
+  ],
+  "rooms": [
+   "music room",
+   "séance room",
+   "hallway",
+   "winter garden",
+   "pantry"
+  ],
+  "weapons": [
+   "curtain cord",
+   "brass bell",
+   "heavy candlestick",
+   "crystal ball",
+   "spirit trumpet"
+  ],
+  "clues": [
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 2,
+    "r": 0
+   },
+   {
+    "t": "s_or_r",
+    "s": 4,
+    "r": 4,
+    "r2": 0
+   },
+   {
+    "t": "s_not_r",
+    "s": 3,
+    "r": 2
+   },
+   {
+    "t": "s_or_r",
+    "s": 2,
+    "r": 1,
+    "r2": 4
+   },
+   {
+    "t": "or_s_w",
+    "s": 1,
+    "s2": 2,
+    "w": 1
+   },
+   {
+    "t": "or_s_w",
+    "s": 0,
+    "s2": 2,
+    "w": 4
+   }
+  ],
+  "clue_text": [
+   "The person carrying the heavy candlestick was not Cora, and was not in the music room.",
+   "Luke was in either the pantry or the music room.",
+   "Cora was not in the hallway.",
+   "Gil was in either the séance room or the pantry.",
+   "Either Selma or Gil was carrying the brass bell.",
+   "Either Rhoda or Gil was carrying the spirit trumpet."
+  ],
+  "statements": [
+   {
+    "t": "s_is_r",
+    "s": 0,
+    "r": 0
+   },
+   {
+    "t": "s_not_w",
+    "s": 1,
+    "w": 1
+   },
+   {
+    "t": "s_is_w",
+    "s": 2,
+    "w": 3
+   },
+   {
+    "t": "s_not_r",
+    "s": 3,
+    "r": 4
+   },
+   {
+    "t": "w_in_r",
+    "w": 0,
+    "r": 2
+   }
+  ],
+  "statement_text": [
+   "I was in the music room.",
+   "I never touched the brass bell.",
+   "I was carrying the crystal ball.",
+   "I was nowhere near the pantry.",
+   "Whoever carried the curtain cord was in the hallway."
+  ],
+  "fact": null,
+  "killer": 2,
+  "lp": [
+   0,
+   2,
+   1,
+   3,
+   4
+  ],
+  "wp": [
+   4,
+   0,
+   1,
+   3,
+   2
+  ],
+  "steps": [
+   "Mark the plain facts from clue 3 on the grid.",
+   "Clue 1 shows: Cora did not carry the heavy candlestick; the heavy candlestick was not in the music room.",
+   "Only one statement can be false. So: Selma did not carry the brass bell.",
+   "Clue 2 shows: Luke was not in the séance room; Luke was not in the hallway; Luke was not in the winter garden.",
+   "Only one statement can be false. So: Cora was not in the pantry; the brass bell was not in the hallway.",
+   "Clue 4 shows: Gil was not in the music room; Gil was not in the hallway; Gil was not in the winter garden.",
+   "Only one statement can be false. So: Selma did not carry the crystal ball; Gil did not carry the curtain cord; the curtain cord was not in the séance room, and more.",
+   "Clue 5: Gil carried the brass bell.",
+   "Only one statement can be false. That means: Rhoda was in the music room; Selma was in the hallway; Gil was in the séance room; Cora was in the winter garden; Luke was in the pantry; Selma carried the curtain cord; Luke carried the heavy candlestick; the curtain cord was in the hallway; the brass bell was in the séance room; the heavy candlestick was in the pantry.",
+   "Clue 6: Rhoda carried the spirit trumpet; Cora carried the crystal ball; the crystal ball was in the winter garden; the spirit trumpet was in the music room."
+  ]
+ },
+ {
+  "num": 52,
+  "level": "D",
+  "title": "The Masked Ball",
+  "victim": "Count Raffaele Orsini, host of the Midwinter Masked Ball",
+  "scene": "At midnight the masks came off, and the Count was found alone on the terrace.",
+  "motive": "a hidden theft",
+  "suspects": [
+   {
+    "first": "Cecil",
+    "last": "Winter",
+    "name": "Cecil Winter",
+    "role": "foreign ambassador"
+   },
+   {
+    "first": "Fern",
+    "last": "Birch",
+    "name": "Fern Birch",
+    "role": "opera singer"
+   },
+   {
+    "first": "Flora",
+    "last": "Penrose",
+    "name": "Flora Penrose",
+    "role": "jeweler"
+   },
+   {
+    "first": "Rex",
+    "last": "Foxley",
+    "name": "Rex Foxley",
+    "role": "footman"
+   },
+   {
+    "first": "Ina",
+    "last": "Rowan",
+    "name": "Ina Rowan",
+    "role": "fencing master"
+   }
+  ],
+  "rooms": [
+   "orangery",
+   "portrait gallery",
+   "card room",
+   "ballroom",
+   "garden room"
+  ],
+  "weapons": [
+   "marble cupid",
+   "velvet sash",
+   "fencing foil",
+   "champagne bottle",
+   "silver mask"
+  ],
+  "clues": [
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 0,
+    "r": 4
+   },
+   {
+    "t": "s_or_w",
+    "s": 0,
+    "w": 2,
+    "w2": 1
+   },
+   {
+    "t": "w_not_r",
+    "w": 1,
+    "r": 4
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 1,
+    "r": 0
+   },
+   {
+    "t": "split",
+    "s": 4,
+    "r": 0,
+    "w": 3,
+    "w2": 2
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 0,
+    "r": 3
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 1,
+    "r": 1
+   },
+   {
+    "t": "nor",
+    "s": 2,
+    "w": 4,
+    "r": 1
+   }
+  ],
+  "clue_text": [
+   "The person carrying the marble cupid was not Rex, and was not in the garden room.",
+   "Cecil was carrying either the fencing foil or the velvet sash.",
+   "The velvet sash was not in the garden room.",
+   "The person carrying the velvet sash was not Rex, and was not in the orangery.",
+   "Of Ina and the person in the orangery, one carried the champagne bottle and the other carried the fencing foil.",
+   "The person carrying the marble cupid was not Fern, and was not in the ballroom.",
+   "The person carrying the velvet sash was not Cecil, and was not in the portrait gallery.",
+   "The person carrying the silver mask was not Flora, and was not in the portrait gallery."
+  ],
+  "statements": [
+   {
+    "t": "s_is_w",
+    "s": 4,
+    "w": 3
+   },
+   {
+    "t": "s_not_r",
+    "s": 1,
+    "r": 1
+   },
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 1
+   },
+   {
+    "t": "s_not_w",
+    "s": 3,
+    "w": 2
+   },
+   {
+    "t": "s_is_w",
+    "s": 4,
+    "w": 4
+   }
+  ],
+  "statement_text": [
+   "Ina was carrying the champagne bottle.",
+   "I was nowhere near the portrait gallery.",
+   "I was nowhere near the portrait gallery.",
+   "I never touched the fencing foil.",
+   "I was carrying the silver mask."
+  ],
+  "fact": null,
+  "killer": 4,
+  "lp": [
+   0,
+   3,
+   2,
+   4,
+   1
+  ],
+  "wp": [
+   2,
+   1,
+   0,
+   4,
+   3
+  ],
+  "steps": [
+   "Mark the plain facts from clue 3 on the grid.",
+   "Only one statement can be false. So: Fern was not in the portrait gallery; Flora was not in the portrait gallery; Rex did not carry the fencing foil, and more.",
+   "Clue 1 shows: Rex did not carry the marble cupid; the marble cupid was not in the garden room.",
+   "Clue 2 shows: Cecil did not carry the marble cupid; Cecil did not carry the champagne bottle; Cecil did not carry the silver mask, and more.",
+   "Clue 4 shows: Fern did not carry the champagne bottle; Fern did not carry the silver mask; Flora did not carry the champagne bottle, and more.",
+   "Clue 5: Rex carried the silver mask; Ina carried the champagne bottle; the fencing foil was in the orangery.",
+   "Clue 6: Flora was in the card room; Flora carried the marble cupid; the marble cupid was in the card room.",
+   "Clue 7: Cecil was in the orangery; Fern was in the ballroom; Cecil carried the fencing foil; Fern carried the velvet sash; the velvet sash was in the ballroom.",
+   "Clue 8: Rex was in the garden room; Ina was in the portrait gallery; the champagne bottle was in the portrait gallery; the silver mask was in the garden room."
+  ]
+ },
+ {
+  "num": 53,
+  "level": "D",
+  "title": "The Cartographer's Map",
+  "victim": "Elias Thorne, maker of maps and globes",
+  "scene": "He had finished a map that showed where a lost fortune lay. By morning the map had been cut from its frame.",
+  "motive": "a valuable secret recipe or formula",
+  "suspects": [
+   {
+    "first": "Ezra",
+    "last": "Moss",
+    "name": "Ezra Moss",
+    "role": "shop assistant"
+   },
+   {
+    "first": "Nell",
+    "last": "Pell",
+    "name": "Nell Pell",
+    "role": "explorer"
+   },
+   {
+    "first": "Amos",
+    "last": "Flint",
+    "name": "Amos Flint",
+    "role": "treasure hunter"
+   },
+   {
+    "first": "Jem",
+    "last": "Garland",
+    "name": "Jem Garland",
+    "role": "paper merchant"
+   },
+   {
+    "first": "Rosa",
+    "last": "Drake",
+    "name": "Rosa Drake",
+    "role": "engraver"
+   }
+  ],
+  "rooms": [
+   "engraving room",
+   "print cellar",
+   "counting room",
+   "map room",
+   "globe gallery"
+  ],
+  "weapons": [
+   "engraving tool",
+   "globe stand",
+   "map weight",
+   "rolled chart case",
+   "brass dividers"
+  ],
+  "clues": [
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 0,
+    "r": 3
+   },
+   {
+    "t": "or_s_w",
+    "s": 3,
+    "s2": 4,
+    "w": 3
+   },
+   {
+    "t": "s_or_r",
+    "s": 2,
+    "r": 1,
+    "r2": 4
+   },
+   {
+    "t": "or_s_w",
+    "s": 2,
+    "s2": 3,
+    "w": 2
+   },
+   {
+    "t": "or_s_r",
+    "s": 2,
+    "s2": 4,
+    "r": 0
+   },
+   {
+    "t": "split",
+    "s": 1,
+    "r": 1,
+    "w": 3,
+    "w2": 0
+   }
+  ],
+  "clue_text": [
+   "The person carrying the engraving tool was not Ezra, and was not in the map room.",
+   "Either Jem or Rosa was carrying the rolled chart case.",
+   "Amos was in either the print cellar or the globe gallery.",
+   "Either Amos or Jem was carrying the map weight.",
+   "Either Amos or Rosa was in the engraving room.",
+   "Of Nell and the person in the print cellar, one carried the rolled chart case and the other carried the engraving tool."
+  ],
+  "statements": [
+   {
+    "t": "s_is_r",
+    "s": 3,
+    "r": 3
+   },
+   {
+    "t": "w_not_r",
+    "w": 3,
+    "r": 2
+   },
+   {
+    "t": "s_is_w",
+    "s": 0,
+    "w": 1
+   },
+   {
+    "t": "s_not_r",
+    "s": 3,
+    "r": 4
+   },
+   {
+    "t": "s_is_w",
+    "s": 0,
+    "w": 1
+   }
+  ],
+  "statement_text": [
+   "Jem was in the map room.",
+   "The rolled chart case was not in the counting room.",
+   "Ezra was carrying the globe stand.",
+   "I was nowhere near the globe gallery.",
+   "Ezra was carrying the globe stand."
+  ],
+  "fact": null,
+  "killer": 0,
+  "lp": [
+   3,
+   2,
+   4,
+   1,
+   0
+  ],
+  "wp": [
+   1,
+   0,
+   2,
+   3,
+   4
+  ],
+  "steps": [
+   "Only one statement can be false. That means: Ezra carried the globe stand.",
+   "Clue 1 shows: the engraving tool was not in the map room.",
+   "Clue 2 shows: Nell did not carry the rolled chart case; Amos did not carry the rolled chart case.",
+   "Clue 3 shows: Amos was not in the engraving room; Amos was not in the counting room; Amos was not in the map room.",
+   "Clue 4 shows: Nell did not carry the map weight; Rosa did not carry the map weight.",
+   "Clue 5: Rosa was in the engraving room.",
+   "Only one statement can be false. So: Jem was not in the map room; the map weight was not in the map room; the rolled chart case was not in the counting room, and more.",
+   "Clue 6: Ezra was in the map room; Nell was in the counting room; Amos was in the globe gallery; Jem was in the print cellar; Nell carried the engraving tool; Amos carried the map weight; Jem carried the rolled chart case; Rosa carried the brass dividers; the engraving tool was in the counting room; the globe stand was in the map room; the map weight was in the globe gallery; the rolled chart case was in the print cellar; the brass dividers was in the engraving room."
+  ]
+ },
+ {
+  "num": 54,
+  "level": "D",
+  "title": "The Winter Circus",
+  "victim": "Madame Rosalind Duval, owner of the Duval Winter Circus",
+  "scene": "The big tent was dark between shows when the ringmaster's whistle was found on the sawdust, and its owner nearby.",
+  "motive": "a stolen idea",
+  "suspects": [
+   {
+    "first": "Cora",
+    "last": "Sparrow",
+    "name": "Cora Sparrow",
+    "role": "clown"
+   },
+   {
+    "first": "Floyd",
+    "last": "Pell",
+    "name": "Floyd Pell",
+    "role": "lion tamer"
+   },
+   {
+    "first": "Oscar",
+    "last": "Birch",
+    "name": "Oscar Birch",
+    "role": "ringmaster"
+   },
+   {
+    "first": "Leo",
+    "last": "Penrose",
+    "name": "Leo Penrose",
+    "role": "trapeze artist"
+   },
+   {
+    "first": "Otis",
+    "last": "Hobbs",
+    "name": "Otis Hobbs",
+    "role": "bandleader"
+   }
+  ],
+  "rooms": [
+   "costume wagon",
+   "animal wagon",
+   "band wagon",
+   "ring",
+   "rigging loft"
+  ],
+  "weapons": [
+   "brass whistle chain",
+   "juggling pin",
+   "tent stake",
+   "throwing knife",
+   "trapeze bar"
+  ],
+  "clues": [
+   {
+    "t": "s_or_r",
+    "s": 0,
+    "r": 0,
+    "r2": 1
+   },
+   {
+    "t": "s_or_w",
+    "s": 1,
+    "w": 2,
+    "w2": 3
+   },
+   {
+    "t": "s_or_r",
+    "s": 0,
+    "r": 4,
+    "r2": 0
+   },
+   {
+    "t": "s_not_r",
+    "s": 3,
+    "r": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 1,
+    "r": 2
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 1,
+    "r": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 2,
+    "r": 4
+   },
+   {
+    "t": "or_s_w",
+    "s": 0,
+    "s2": 2,
+    "w": 3
+   }
+  ],
+  "clue_text": [
+   "Cora was in either the costume wagon or the animal wagon.",
+   "Floyd was carrying either the tent stake or the throwing knife.",
+   "Cora was in either the rigging loft or the costume wagon.",
+   "Leo was not in the animal wagon.",
+   "Either Cora or Floyd was in the band wagon.",
+   "The person carrying the juggling pin was not Floyd, and was not in the animal wagon.",
+   "Either Cora or Oscar was in the rigging loft.",
+   "Either Cora or Oscar was carrying the throwing knife."
+  ],
+  "statements": [
+   {
+    "t": "w_not_r",
+    "w": 3,
+    "r": 0
+   },
+   {
+    "t": "s_not_r",
+    "s": 1,
+    "r": 4
+   },
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 1
+   },
+   {
+    "t": "s_is_w",
+    "s": 3,
+    "w": 0
+   },
+   {
+    "t": "s_is_r",
+    "s": 1,
+    "r": 3
+   }
+  ],
+  "statement_text": [
+   "The throwing knife was not in the costume wagon.",
+   "I was nowhere near the rigging loft.",
+   "I was nowhere near the animal wagon.",
+   "I was carrying the brass whistle chain.",
+   "Floyd was in the ring."
+  ],
+  "fact": null,
+  "killer": 4,
+  "lp": [
+   0,
+   2,
+   4,
+   3,
+   1
+  ],
+  "wp": [
+   1,
+   2,
+   3,
+   0,
+   4
+  ],
+  "steps": [
+   "Mark the plain facts from clue 4 on the grid.",
+   "Only one statement can be false. So: Floyd was not in the rigging loft.",
+   "Clue 1 shows: Cora was not in the band wagon; Cora was not in the ring; Cora was not in the rigging loft.",
+   "Clue 2 shows: Floyd did not carry the brass whistle chain; Floyd did not carry the juggling pin; Floyd did not carry the trapeze bar.",
+   "Clue 3: Cora was in the costume wagon.",
+   "Clue 5: Floyd was in the band wagon.",
+   "Only one statement can be false. That means: Otis was in the animal wagon; Leo carried the brass whistle chain.",
+   "Clue 6 shows: Otis did not carry the juggling pin; the juggling pin was not in the animal wagon.",
+   "Clue 7: Oscar was in the rigging loft; Leo was in the ring; the brass whistle chain was in the ring.",
+   "Clue 8: Cora carried the juggling pin; Floyd carried the tent stake; Oscar carried the throwing knife; Otis carried the trapeze bar; the juggling pin was in the costume wagon; the tent stake was in the band wagon; the throwing knife was in the rigging loft; the trapeze bar was in the animal wagon."
+  ]
+ },
+ {
+  "num": 55,
+  "level": "D",
+  "title": "The Polar Station",
+  "victim": "Dr. Henrik Solberg, leader of Polar Station Borealis",
+  "scene": "Four months of darkness, six people, one radio. Then there were five people.",
+  "motive": "a forged signature",
+  "suspects": [
+   {
+    "first": "Enid",
+    "last": "Winter",
+    "name": "Enid Winter",
+    "role": "radio operator"
+   },
+   {
+    "first": "Agnes",
+    "last": "Hobbs",
+    "name": "Agnes Hobbs",
+    "role": "meteorologist"
+   },
+   {
+    "first": "Olive",
+    "last": "Alder",
+    "name": "Olive Alder",
+    "role": "cook"
+   },
+   {
+    "first": "Wade",
+    "last": "Wren",
+    "name": "Wade Wren",
+    "role": "mechanic"
+   },
+   {
+    "first": "Ivy",
+    "last": "Slade",
+    "name": "Ivy Slade",
+    "role": "glaciologist"
+   }
+  ],
+  "rooms": [
+   "radio hut",
+   "generator shed",
+   "sleeping quarters",
+   "laboratory",
+   "supply store"
+  ],
+  "weapons": [
+   "signal lamp",
+   "fuel can",
+   "ice core drill",
+   "iron ration tin",
+   "snow anchor"
+  ],
+  "clues": [
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 0,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 0,
+    "r": 4
+   },
+   {
+    "t": "s_or_w",
+    "s": 3,
+    "w": 2,
+    "w2": 4
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 4,
+    "r": 3
+   },
+   {
+    "t": "w_not_r",
+    "w": 1,
+    "r": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 3,
+    "r": 1
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 4,
+    "r": 2
+   },
+   {
+    "t": "s_or_w",
+    "s": 2,
+    "w": 3,
+    "w2": 0
+   }
+  ],
+  "clue_text": [
+   "The person carrying the signal lamp was not Agnes, and was not in the radio hut.",
+   "The person carrying the signal lamp was not Enid, and was not in the supply store.",
+   "Wade was carrying either the ice core drill or the snow anchor.",
+   "The person carrying the snow anchor was not Enid, and was not in the laboratory.",
+   "The fuel can was not in the generator shed.",
+   "Either Enid or Wade was in the generator shed.",
+   "The person carrying the snow anchor was not Wade, and was not in the sleeping quarters.",
+   "Olive was carrying either the iron ration tin or the signal lamp."
+  ],
+  "statements": [
+   {
+    "t": "s_not_w",
+    "s": 0,
+    "w": 3
+   },
+   {
+    "t": "s_is_r",
+    "s": 2,
+    "r": 4
+   },
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 0
+   },
+   {
+    "t": "s_is_w",
+    "s": 3,
+    "w": 3
+   },
+   {
+    "t": "s_not_r",
+    "s": 4,
+    "r": 3
+   }
+  ],
+  "statement_text": [
+   "I never touched the iron ration tin.",
+   "Olive was in the supply store.",
+   "I was nowhere near the radio hut.",
+   "I was carrying the iron ration tin.",
+   "I was nowhere near the laboratory."
+  ],
+  "fact": null,
+  "killer": 3,
+  "lp": [
+   3,
+   0,
+   4,
+   1,
+   2
+  ],
+  "wp": [
+   1,
+   4,
+   3,
+   2,
+   0
+  ],
+  "steps": [
+   "Mark the plain facts from clue 5 on the grid.",
+   "Only one statement can be false. So: Olive was not in the radio hut; Enid did not carry the iron ration tin.",
+   "Clue 1 shows: Agnes did not carry the signal lamp; the signal lamp was not in the radio hut.",
+   "Clue 2 shows: Enid did not carry the signal lamp; the signal lamp was not in the supply store.",
+   "Clue 3 shows: Wade did not carry the signal lamp; Wade did not carry the fuel can; Wade did not carry the iron ration tin.",
+   "Only one statement can be false. That means: Olive was in the supply store; Ivy carried the signal lamp.",
+   "Clue 4 shows: Enid did not carry the snow anchor; the snow anchor was not in the laboratory.",
+   "Clue 6: Ivy was in the sleeping quarters; the signal lamp was in the sleeping quarters.",
+   "Clue 7: Wade was in the generator shed; Enid carried the fuel can; Wade carried the ice core drill; the ice core drill was in the generator shed.",
+   "Clue 8: Enid was in the laboratory; Agnes was in the radio hut; Agnes carried the snow anchor; Olive carried the iron ration tin; the fuel can was in the laboratory; the iron ration tin was in the supply store; the snow anchor was in the radio hut."
+  ]
+ },
+ {
+  "num": 56,
+  "level": "D",
+  "title": "The Jeweler's Vault",
+  "victim": "Solomon Varga, owner of Varga and Company Jewelers",
+  "scene": "The vault was open, the Midnight Star diamond was gone, and Solomon lay on the showroom floor.",
+  "motive": "a job that was about to be lost",
+  "suspects": [
+   {
+    "first": "Oscar",
+    "last": "Cobb",
+    "name": "Oscar Cobb",
+    "role": "security guard"
+   },
+   {
+    "first": "Iris",
+    "last": "Ashdown",
+    "name": "Iris Ashdown",
+    "role": "sales clerk"
+   },
+   {
+    "first": "Olive",
+    "last": "Fenwick",
+    "name": "Olive Fenwick",
+    "role": "insurance assessor"
+   },
+   {
+    "first": "Otis",
+    "last": "Marsh",
+    "name": "Otis Marsh",
+    "role": "diamond dealer"
+   },
+   {
+    "first": "Ivy",
+    "last": "Wren",
+    "name": "Ivy Wren",
+    "role": "gem cutter"
+   }
+  ],
+  "rooms": [
+   "cutting room",
+   "basement",
+   "back office",
+   "showroom",
+   "vault"
+  ],
+  "weapons": [
+   "display bust",
+   "steel loupe chain",
+   "vault lever",
+   "gold ingot",
+   "diamond scale"
+  ],
+  "clues": [
+   {
+    "t": "split",
+    "s": 2,
+    "r": 4,
+    "w": 0,
+    "w2": 4
+   },
+   {
+    "t": "s_or_r",
+    "s": 3,
+    "r": 3,
+    "r2": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 2,
+    "r": 3
+   },
+   {
+    "t": "or_s_r",
+    "s": 2,
+    "s2": 4,
+    "r": 3
+   },
+   {
+    "t": "w_not_r",
+    "w": 0,
+    "r": 3
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 3,
+    "r": 1
+   },
+   {
+    "t": "s_or_r",
+    "s": 0,
+    "r": 3,
+    "r2": 0
+   }
+  ],
+  "clue_text": [
+   "Of Olive and the person in the vault, one carried the display bust and the other carried the diamond scale.",
+   "Otis was in either the showroom or the basement.",
+   "Either Oscar or Olive was in the showroom.",
+   "Either Olive or Ivy was in the showroom.",
+   "The display bust was not in the showroom.",
+   "The person carrying the gold ingot was not Otis, and was not in the basement.",
+   "Oscar was in either the showroom or the cutting room."
+  ],
+  "statements": [
+   {
+    "t": "s_is_r",
+    "s": 0,
+    "r": 1
+   },
+   {
+    "t": "s_not_r",
+    "s": 1,
+    "r": 3
+   },
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 4
+   },
+   {
+    "t": "w_not_r",
+    "w": 2,
+    "r": 4
+   },
+   {
+    "t": "s_is_w",
+    "s": 4,
+    "w": 1
+   }
+  ],
+  "statement_text": [
+   "I was in the basement.",
+   "I was nowhere near the showroom.",
+   "I was nowhere near the vault.",
+   "The vault lever was not in the vault.",
+   "I was carrying the steel loupe chain."
+  ],
+  "fact": null,
+  "killer": 0,
+  "lp": [
+   0,
+   4,
+   3,
+   1,
+   2
+  ],
+  "wp": [
+   3,
+   0,
+   4,
+   2,
+   1
+  ],
+  "steps": [
+   "Mark the plain facts from clue 5 on the grid.",
+   "Clue 1 shows: Olive was not in the vault; Olive did not carry the steel loupe chain; Olive did not carry the vault lever, and more.",
+   "Clue 2 shows: Otis was not in the cutting room; Otis was not in the back office; Otis was not in the vault, and more.",
+   "Only one statement can be false. So: Iris was not in the showroom.",
+   "Clue 3: Otis was in the basement.",
+   "Only one statement can be false. That means: Ivy carried the steel loupe chain.",
+   "Clue 4: Olive was in the showroom; Olive carried the diamond scale; the display bust was in the vault; the diamond scale was in the showroom.",
+   "Clue 6: Otis carried the vault lever; the vault lever was in the basement.",
+   "Clue 7: Oscar was in the cutting room; Iris was in the vault; Ivy was in the back office; Oscar carried the gold ingot; Iris carried the display bust; the steel loupe chain was in the back office; the gold ingot was in the cutting room."
+  ]
+ },
+ {
+  "num": 57,
+  "level": "D",
+  "title": "The Painted Lie",
+  "victim": "Vincent Marlowe, a celebrated portrait painter",
+  "scene": "His last portrait was slashed from corner to corner, and the painter lay beneath the easel.",
+  "motive": "years of jealousy",
+  "suspects": [
+   {
+    "first": "Ernest",
+    "last": "Briggs",
+    "name": "Ernest Briggs",
+    "role": "frame maker"
+   },
+   {
+    "first": "Reuben",
+    "last": "Sparrow",
+    "name": "Reuben Sparrow",
+    "role": "art dealer"
+   },
+   {
+    "first": "Lottie",
+    "last": "Cobb",
+    "name": "Lottie Cobb",
+    "role": "model"
+   },
+   {
+    "first": "Gil",
+    "last": "Vane",
+    "name": "Gil Vane",
+    "role": "art forger"
+   },
+   {
+    "first": "Selma",
+    "last": "Kettle",
+    "name": "Selma Kettle",
+    "role": "wealthy client"
+   }
+  ],
+  "rooms": [
+   "frame room",
+   "gallery",
+   "turpentine store",
+   "roof garden",
+   "studio"
+  ],
+  "weapons": [
+   "palette knife",
+   "easel leg",
+   "turpentine jar",
+   "bronze bust",
+   "canvas stretcher bar"
+  ],
+  "clues": [
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 0,
+    "r": 3
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 2,
+    "r": 2
+   },
+   {
+    "t": "s_or_r",
+    "s": 2,
+    "r": 2,
+    "r2": 1
+   },
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 2
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 4,
+    "r": 4
+   },
+   {
+    "t": "s_or_w",
+    "s": 1,
+    "w": 3,
+    "w2": 1
+   },
+   {
+    "t": "w_in_r",
+    "w": 1,
+    "r": 1
+   }
+  ],
+  "clue_text": [
+   "The person carrying the palette knife was not Ernest, and was not in the roof garden.",
+   "Either Ernest or Lottie was in the turpentine store.",
+   "Lottie was in either the turpentine store or the gallery.",
+   "Lottie was not in the turpentine store.",
+   "Either Reuben or Selma was in the studio.",
+   "Reuben was carrying either the bronze bust or the easel leg.",
+   "Whoever carried the easel leg was in the gallery."
+  ],
+  "statements": [
+   {
+    "t": "s_not_w",
+    "s": 0,
+    "w": 2
+   },
+   {
+    "t": "s_not_r",
+    "s": 1,
+    "r": 3
+   },
+   {
+    "t": "s_not_r",
+    "s": 2,
+    "r": 0
+   },
+   {
+    "t": "s_is_w",
+    "s": 4,
+    "w": 2
+   },
+   {
+    "t": "s_is_r",
+    "s": 0,
+    "r": 4
+   }
+  ],
+  "statement_text": [
+   "I never touched the turpentine jar.",
+   "I was nowhere near the roof garden.",
+   "I was nowhere near the frame room.",
+   "Selma was carrying the turpentine jar.",
+   "Ernest was in the studio."
+  ],
+  "fact": null,
+  "killer": 4,
+  "lp": [
+   2,
+   4,
+   1,
+   0,
+   3
+  ],
+  "wp": [
+   4,
+   3,
+   1,
+   0,
+   2
+  ],
+  "steps": [
+   "Mark the plain facts from clues 4 and 7 on the grid. That gives: the easel leg was in the gallery.",
+   "Only one statement can be false. So: Ernest did not carry the turpentine jar.",
+   "Clue 1 shows: Ernest did not carry the palette knife; the palette knife was not in the roof garden.",
+   "Clue 2: Ernest was in the turpentine store.",
+   "Only one statement can be false. That means: Selma carried the turpentine jar.",
+   "Clue 3: Lottie was in the gallery; Lottie carried the easel leg.",
+   "Clue 5 shows: Gil was not in the studio.",
+   "Clue 6: Reuben was in the studio; Gil was in the frame room; Selma was in the roof garden; Ernest carried the canvas stretcher bar; Reuben carried the bronze bust; Gil carried the palette knife; the palette knife was in the frame room; the turpentine jar was in the roof garden; the bronze bust was in the studio; the canvas stretcher bar was in the turpentine store."
+  ]
+ },
+ {
+  "num": 58,
+  "level": "D",
+  "title": "Snowed In at the Stag Inn",
+  "victim": "Josiah Pike, landlord of the Stag Inn",
+  "scene": "The snow reached the windowsills. Nobody could get in or out, and the landlord was dead in the cellar.",
+  "motive": "revenge for an old insult",
+  "suspects": [
+   {
+    "first": "Mabel",
+    "last": "Mercer",
+    "name": "Mabel Mercer",
+    "role": "traveling salesman"
+   },
+   {
+    "first": "Esme",
+    "last": "Hart",
+    "name": "Esme Hart",
+    "role": "barmaid"
+   },
+   {
+    "first": "Bea",
+    "last": "Bramble",
+    "name": "Bea Bramble",
+    "role": "retired major"
+   },
+   {
+    "first": "Ruby",
+    "last": "Wren",
+    "name": "Ruby Wren",
+    "role": "lady's companion"
+   },
+   {
+    "first": "Theo",
+    "last": "Kemp",
+    "name": "Theo Kemp",
+    "role": "village doctor"
+   }
+  ],
+  "rooms": [
+   "stable",
+   "snug",
+   "kitchen",
+   "taproom",
+   "cellar"
+  ],
+  "weapons": [
+   "carving fork",
+   "ale mallet",
+   "fire poker",
+   "pewter tankard",
+   "horse brass strap"
+  ],
+  "clues": [
+   {
+    "t": "or_s_r",
+    "s": 2,
+    "s2": 3,
+    "r": 1
+   },
+   {
+    "t": "s_is_w",
+    "s": 2,
+    "w": 1
+   },
+   {
+    "t": "or_s_r",
+    "s": 0,
+    "s2": 3,
+    "r": 2
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 3,
+    "r": 3
+   },
+   {
+    "t": "or_s_w",
+    "s": 3,
+    "s2": 4,
+    "w": 0
+   },
+   {
+    "t": "s_or_r",
+    "s": 2,
+    "r": 2,
+    "r2": 3
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 2,
+    "r": 4
+   }
+  ],
+  "clue_text": [
+   "Either Bea or Ruby was in the snug.",
+   "Bea was carrying the ale mallet.",
+   "Either Mabel or Ruby was in the kitchen.",
+   "The person carrying the pewter tankard was not Esme, and was not in the taproom.",
+   "Either Ruby or Theo was carrying the carving fork.",
+   "Bea was in either the kitchen or the taproom.",
+   "The person carrying the fire poker was not Esme, and was not in the cellar."
+  ],
+  "statements": [
+   {
+    "t": "w_in_r",
+    "w": 1,
+    "r": 0
+   },
+   {
+    "t": "w_not_r",
+    "w": 2,
+    "r": 2
+   },
+   {
+    "t": "s_not_w",
+    "s": 2,
+    "w": 4
+   },
+   {
+    "t": "s_not_w",
+    "s": 3,
+    "w": 2
+   },
+   {
+    "t": "s_is_w",
+    "s": 4,
+    "w": 2
+   }
+  ],
+  "statement_text": [
+   "Whoever carried the ale mallet was in the stable.",
+   "The fire poker was not in the kitchen.",
+   "I never touched the horse brass strap.",
+   "I never touched the fire poker.",
+   "I was carrying the fire poker."
+  ],
+  "fact": null,
+  "killer": 0,
+  "lp": [
+   2,
+   4,
+   3,
+   1,
+   0
+  ],
+  "wp": [
+   3,
+   4,
+   1,
+   0,
+   2
+  ],
+  "steps": [
+   "Mark the plain facts from clue 2 on the grid. That gives: Bea carried the ale mallet.",
+   "Only one statement can be false. So: Ruby did not carry the fire poker.",
+   "Clue 1 shows: Mabel was not in the snug; Esme was not in the snug; Theo was not in the snug, and more.",
+   "Clue 3 shows: Esme was not in the kitchen; Bea was not in the kitchen; Theo was not in the kitchen, and more.",
+   "Only one statement can be false. So: Mabel did not carry the fire poker; the fire poker was not in the kitchen.",
+   "Clue 4 shows: Esme did not carry the pewter tankard; the pewter tankard was not in the taproom.",
+   "Clue 5 shows: Mabel did not carry the carving fork; Esme did not carry the carving fork.",
+   "Only one statement can be false. So: Mabel was not in the taproom.",
+   "Clue 6: Mabel was in the kitchen; Bea was in the taproom; Ruby was in the snug; the ale mallet was in the taproom.",
+   "Only one statement can be false. That means: Mabel carried the pewter tankard; Esme carried the horse brass strap; Ruby carried the carving fork; Theo carried the fire poker; the carving fork was in the snug; the pewter tankard was in the kitchen.",
+   "Clue 7: Esme was in the cellar; Theo was in the stable; the fire poker was in the stable; the horse brass strap was in the cellar."
+  ]
+ },
+ {
+  "num": 59,
+  "level": "D",
+  "title": "The Ferry in the Fog",
+  "victim": "Captain Ned Gallagher, master of the ferry Morning Star",
+  "scene": "The fog was so thick the ferry dropped anchor in mid-channel. When it lifted, the captain was dead at the wheel.",
+  "motive": "a secret about to be revealed",
+  "suspects": [
+   {
+    "first": "June",
+    "last": "Fenwick",
+    "name": "June Fenwick",
+    "role": "ticket collector"
+   },
+   {
+    "first": "Fern",
+    "last": "Hart",
+    "name": "Fern Hart",
+    "role": "first mate"
+   },
+   {
+    "first": "Ada",
+    "last": "Easton",
+    "name": "Ada Easton",
+    "role": "cargo clerk"
+   },
+   {
+    "first": "Theo",
+    "last": "Briggs",
+    "name": "Theo Briggs",
+    "role": "ship's engineer"
+   },
+   {
+    "first": "Esme",
+    "last": "Pike",
+    "name": "Esme Pike",
+    "role": "fog-bound doctor"
+   }
+  ],
+  "rooms": [
+   "cargo hold",
+   "engine room",
+   "wheelhouse",
+   "passenger saloon",
+   "purser's office"
+  ],
+  "weapons": [
+   "brass compass",
+   "engine spanner",
+   "boat hook",
+   "fog bell clapper",
+   "life jacket strap"
+  ],
+  "clues": [
+   {
+    "t": "or_s_r",
+    "s": 2,
+    "s2": 4,
+    "r": 2
+   },
+   {
+    "t": "s_not_r",
+    "s": 4,
+    "r": 2
+   },
+   {
+    "t": "split",
+    "s": 3,
+    "r": 2,
+    "w": 1,
+    "w2": 3
+   },
+   {
+    "t": "s_or_r",
+    "s": 4,
+    "r": 0,
+    "r2": 2
+   },
+   {
+    "t": "s_or_w",
+    "s": 2,
+    "w": 1,
+    "w2": 2
+   },
+   {
+    "t": "or_s_r",
+    "s": 1,
+    "s2": 2,
+    "r": 4
+   },
+   {
+    "t": "s_not_r",
+    "s": 3,
+    "r": 3
+   }
+  ],
+  "clue_text": [
+   "Either Ada or Esme was in the wheelhouse.",
+   "Esme was not in the wheelhouse.",
+   "Of Theo and the person in the wheelhouse, one carried the engine spanner and the other carried the fog bell clapper.",
+   "Esme was in either the cargo hold or the wheelhouse.",
+   "Ada was carrying either the engine spanner or the boat hook.",
+   "Either Fern or Ada was in the purser's office.",
+   "Theo was not in the passenger saloon."
+  ],
+  "statements": [
+   {
+    "t": "s_not_w",
+    "s": 0,
+    "w": 4
+   },
+   {
+    "t": "s_is_w",
+    "s": 1,
+    "w": 0
+   },
+   {
+    "t": "s_not_w",
+    "s": 2,
+    "w": 1
+   },
+   {
+    "t": "w_not_r",
+    "w": 0,
+    "r": 1
+   },
+   {
+    "t": "w_not_r",
+    "w": 1,
+    "r": 1
+   }
+  ],
+  "statement_text": [
+   "I never touched the life jacket strap.",
+   "I was carrying the brass compass.",
+   "I never touched the engine spanner.",
+   "The brass compass was not in the engine room.",
+   "The engine spanner was not in the engine room."
+  ],
+  "fact": null,
+  "killer": 2,
+  "lp": [
+   3,
+   4,
+   2,
+   1,
+   0
+  ],
+  "wp": [
+   2,
+   0,
+   1,
+   3,
+   4
+  ],
+  "steps": [
+   "Mark the plain facts from clues 2 and 7 on the grid.",
+   "Clue 1: Ada was in the wheelhouse.",
+   "Clue 3 shows: June did not carry the engine spanner; June did not carry the fog bell clapper; Fern did not carry the engine spanner, and more.",
+   "Clue 4: Esme was in the cargo hold.",
+   "Only one statement can be false. So: the life jacket strap was not in the purser's office.",
+   "Clue 5: Ada carried the engine spanner; Theo carried the fog bell clapper; the engine spanner was in the wheelhouse.",
+   "Only one statement can be false. That means: June carried the boat hook; Fern carried the brass compass; Esme carried the life jacket strap; the life jacket strap was in the cargo hold.",
+   "Clue 6: June was in the passenger saloon; Fern was in the purser's office; Theo was in the engine room; the brass compass was in the purser's office; the boat hook was in the passenger saloon; the fog bell clapper was in the engine room."
+  ]
+ },
+ {
+  "num": 60,
+  "level": "D",
+  "title": "Who Killed the Lighthouse Keeper?",
+  "victim": "Abel Corwin, keeper of the Stormcrag Lighthouse",
+  "scene": "For forty years the Stormcrag light never failed. Last night it went dark, and at dawn Abel was found at the top of the tower.",
+  "motive": "a changed will",
+  "suspects": [
+   {
+    "first": "Gus",
+    "last": "Briggs",
+    "name": "Gus Briggs",
+    "role": "coastguard officer"
+   },
+   {
+    "first": "Rhoda",
+    "last": "Kettle",
+    "name": "Rhoda Kettle",
+    "role": "supply boat captain"
+   },
+   {
+    "first": "Iris",
+    "last": "Slade",
+    "name": "Iris Slade",
+    "role": "keeper's daughter"
+   },
+   {
+    "first": "Nora",
+    "last": "Fairfax",
+    "name": "Nora Fairfax",
+    "role": "assistant keeper"
+   },
+   {
+    "first": "Alma",
+    "last": "Lovell",
+    "name": "Alma Lovell",
+    "role": "shipwreck salvager"
+   }
+  ],
+  "rooms": [
+   "oil store",
+   "keeper's cottage",
+   "boathouse",
+   "watch room",
+   "lantern room"
+  ],
+  "weapons": [
+   "iron wrench",
+   "brass telescope",
+   "oil lamp",
+   "signal flag pole",
+   "boat hook"
+  ],
+  "clues": [
+   {
+    "t": "s_or_w",
+    "s": 2,
+    "w": 4,
+    "w2": 0
+   },
+   {
+    "t": "nor",
+    "s": 1,
+    "w": 1,
+    "r": 0
+   },
+   {
+    "t": "nor",
+    "s": 3,
+    "w": 2,
+    "r": 4
+   },
+   {
+    "t": "nor",
+    "s": 0,
+    "w": 2,
+    "r": 3
+   },
+   {
+    "t": "s_or_r",
+    "s": 4,
+    "r": 2,
+    "r2": 0
+   },
+   {
+    "t": "split",
+    "s": 3,
+    "r": 0,
+    "w": 4,
+    "w2": 0
+   },
+   {
+    "t": "s_or_w",
+    "s": 0,
+    "w": 3,
+    "w2": 2
+   }
+  ],
+  "clue_text": [
+   "Iris was carrying either the boat hook or the iron wrench.",
+   "The person carrying the brass telescope was not Rhoda, and was not in the oil store.",
+   "The person carrying the oil lamp was not Nora, and was not in the lantern room.",
+   "The person carrying the oil lamp was not Gus, and was not in the watch room.",
+   "Alma was in either the boathouse or the oil store.",
+   "Of Nora and the person in the oil store, one carried the boat hook and the other carried the iron wrench.",
+   "Gus was carrying either the signal flag pole or the oil lamp."
+  ],
+  "statements": [
+   {
+    "t": "s_is_w",
+    "s": 0,
+    "w": 3
+   },
+   {
+    "t": "s_is_w",
+    "s": 4,
+    "w": 3
+   },
+   {
+    "t": "s_not_w",
+    "s": 2,
+    "w": 4
+   },
+   {
+    "t": "w_not_r",
+    "w": 3,
+    "r": 3
+   },
+   {
+    "t": "s_not_w",
+    "s": 4,
+    "w": 0
+   }
+  ],
+  "statement_text": [
+   "I was carrying the signal flag pole.",
+   "Alma was carrying the signal flag pole.",
+   "I never touched the boat hook.",
+   "The signal flag pole was not in the watch room.",
+   "I never touched the iron wrench."
+  ],
+  "fact": null,
+  "killer": 1,
+  "lp": [
+   4,
+   1,
+   0,
+   3,
+   2
+  ],
+  "wp": [
+   3,
+   2,
+   0,
+   4,
+   1
+  ],
+  "steps": [
+   "Only one statement can be false. So: Rhoda did not carry the signal flag pole; Iris did not carry the signal flag pole; Iris did not carry the boat hook, and more.",
+   "Clue 1: Iris carried the iron wrench.",
+   "Clue 2 shows: Rhoda did not carry the brass telescope; the brass telescope was not in the oil store.",
+   "Clue 3 shows: Nora did not carry the oil lamp; the oil lamp was not in the lantern room.",
+   "Clue 4 shows: Gus did not carry the oil lamp; the oil lamp was not in the watch room.",
+   "Clue 5 shows: Alma was not in the keeper's cottage; Alma was not in the watch room; Alma was not in the lantern room.",
+   "Clue 6: Rhoda was in the keeper's cottage; Iris was in the oil store; Alma was in the boathouse; Rhoda carried the oil lamp; Nora carried the boat hook; the iron wrench was in the oil store; the oil lamp was in the keeper's cottage.",
+   "Clue 7: Gus was in the lantern room; Nora was in the watch room; Gus carried the signal flag pole; Alma carried the brass telescope; the brass telescope was in the boathouse; the signal flag pole was in the lantern room; the boat hook was in the watch room."
+  ]
+ }
+]

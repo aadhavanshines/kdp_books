@@ -19,5 +19,6 @@ Book projects for Amazon Kindle Direct Publishing by **Aadhavan Muthurengan**.
 | Draw Step by Step: 100 Easy Drawings for Kids: A Fun How-to-Draw Activity Book for Ages 4 to 8 with Cute Animals, Dinosaurs, Vehicles, Food, Space and More | Ready to upload (paperback) | [`kids-drawing/`](kids-drawing/) |
 | Draw Christmas Step by Step: 50 Easy Holiday Drawings for Kids: A Fun How-to-Draw Christmas Activity Book for Ages 4 to 8 with Santa, Reindeer, Snowmen, Elves, Gingerbread, Trees and Presents | Ready to upload (paperback) | [`christmas-drawing/`](christmas-drawing/) |
 | AI Made Easy for Seniors: A Large-Print, Step-by-Step Guide to Asking an AI Assistant Anything — Write Emails, Plan Trips, Check Health Questions, Learn New Hobbies and Spot Scams, on Your Phone or Computer | Ready to upload (eBook and large-print paperback) | [`ai-seniors/`](ai-seniors/) |
+| Who Killed the Lighthouse Keeper? 60 Murder Mystery Logic Puzzles: Suspects, Clues and One Killer Every Time | Ready to upload (paperback) | [`murder-mystery/`](murder-mystery/) |
 
 Each book folder contains the Markdown manuscript, a build script, the KDP listing metadata, and the upload-ready files in `dist/`.
