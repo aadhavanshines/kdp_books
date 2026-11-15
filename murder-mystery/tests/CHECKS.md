@@ -21,7 +21,9 @@ It also checks the story side:
 - every suspect's first name suits a role that implies a man or a woman (actress, nephew, miller's wife and so on);
 - no two suspects in a case share a first name, none shares one with the victim, and all 300 full names differ;
 - no cross-off case has evidence that contradicts itself (a room that is shut off is never also named as a way in);
-- no solution step is vague or missing.
+- no solution step is vague or missing;
+- no two clues in a grid case open with the same six words;
+- in every one-liar case, the clues alone (one clue or several together) never rule out the killer's statement, so the reader has to weigh the statements against each other to find the liar.
 
 Last run: `60 cases checked, 0 failed; levels: {'A': 18, 'B': 18, 'C': 14, 'D': 10}`.
 
@@ -31,7 +33,7 @@ The generator only accepts a grid case if its own solver finishes it using a sho
 
 ## Print files
 
-Last run of `check.py`: `154 pages, 6 x 9 in. Smallest gutter 0.799 in (KDP minimum 0.5); smallest outer margin 0.387 in (minimum 0.25). OK`. All fonts embedded. `book.py` stops the build if a grid would run into the verdict box or its squares would be smaller than 19 pt.
+Last run of `check.py`: `154 pages, 6 x 9 in. Smallest gutter 0.799 in (KDP minimum 0.5); smallest outer margin 0.387 in (minimum 0.25). OK`. All fonts embedded. `book.py` stops the build if a grid would run into the verdict box or its squares would be smaller than 19 pt. In one-liar cases the statements print on the left-hand page with the clues, so every grid in the book prints at the same full size (squares of about 1/3 in).
 
 Cover: 12.597 x 9.250 in for a 0.347 in spine (154 pages, white paper); barcode area clear on the back.
 

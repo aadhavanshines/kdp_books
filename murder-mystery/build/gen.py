@@ -421,9 +421,17 @@ def make_grid_case(rng, n, liar, lo, hi, S, R, W):
         if not lo <= len(clues) <= hi:
             continue
         if liar:
-            # the statements must matter: the clues alone must not settle the grid
+            # the statements must matter: the clues alone must not settle the grid...
             if Solver(n, clues, None, S, R, W).run():
                 continue
+            # ...and must not expose the liar: with the clues alone, the killer's statement could still be true
+            m = sp.mask(statements[killer])
+            for c in clues:
+                m &= sp.mask(c)
+            if not m:
+                continue
+        if look_alike([clue_text(dict(c, p=0), S, R, W) for c in clues]):
+            continue
         rng.shuffle(clues)
         solver = Solver(n, clues, statements, S, R, W)
         assert solver.run()
@@ -431,6 +439,12 @@ def make_grid_case(rng, n, liar, lo, hi, S, R, W):
             assert solver.liar == killer
         assert all(("SR", s, lp[s]) in solver.sure and ("SW", s, wp[s]) in solver.sure for s in range(n))
         return dict(lp=lp, wp=wp, killer=killer, clues=clues, statements=statements, steps=solver.steps)
+
+
+def look_alike(texts):
+    """True if two clues in one case open with the same six words."""
+    heads = [" ".join(t.split()[:6]) for t in texts]
+    return len(set(heads)) != len(heads)
 
 
 # ------------------------------------------------- level A (cross-off cases)
@@ -535,6 +549,8 @@ def build():
     cases = []
     for num, st in enumerate(load(), 1):
         level = "A" if num <= 18 else "B" if num <= 36 else "C" if num <= 50 else "D"
+        if level != "A":
+            rng = random.Random(f"lighthouse-case-{num}")
         case = dict(num=num, level=level, title=st["title"], victim=st["victim"], scene=st["scene"],
                     motive=rng.choice(MOTIVES))
         if level == "A":
@@ -569,6 +585,11 @@ def build():
             for c in g["clues"]:
                 c["p"] = wording[c["t"]]
                 wording[c["t"]] += 1
+            for _ in range(20):
+                if not look_alike([clue_text(c, S, R, W) for c in g["clues"]]):
+                    break
+                for c in g["clues"]:
+                    c["p"] += 1
             k = g["killer"]
             fact = None
             if level != "D":

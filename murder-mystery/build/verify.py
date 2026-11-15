@@ -54,6 +54,18 @@ for c in cases:
         probs.append("first names clash")
     if c["level"] == "A" and story_clash(c["clues"]):
         probs.append("evidence contradicts itself (a shut room is also named as a way in)")
+    if c["level"] != "A":
+        heads = [" ".join(t.split()[:6]) for t in c["clue_text"]]
+        if len(set(heads)) != len(heads):
+            probs.append("two clues open with the same six words")
+    if c.get("statements"):
+        # the clues alone must not expose the liar: some arrangement that fits every clue
+        # must also make the killer's statement true
+        n = len(c["suspects"])
+        lie = c["statements"][c["killer"]]
+        if not any(holds(lie, lp, wp) and all(holds(cl, lp, wp) for cl in c["clues"])
+                   for lp in itertools.permutations(range(n)) for wp in itertools.permutations(range(n))):
+            probs.append("the clues alone expose the liar")
     text = " ".join(c["steps"])
     if "and more" in text or not c["steps"]:
         probs.append("solution steps are vague or missing")

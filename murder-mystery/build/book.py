@@ -243,22 +243,38 @@ class Book:
         y = self.para("At the moment of the murder, each suspect was in a different room, and each was "
                       "carrying a different object.", SMALL, y) - 8
         y = self.label("THE SUSPECTS", y)
-        for s in case["suspects"]:
-            y = self.para(f"<b>{s['name']}</b>, the {s['role']}", SMALL, y) - 1
+        if liar:                         # one compact paragraph, to leave room for the statements
+            y = self.para("; ".join(f"<b>{s['name']}</b>, the {s['role']}" for s in case["suspects"]) + ".", SMALL, y) - 1
+        else:
+            for s in case["suspects"]:
+                y = self.para(f"<b>{s['name']}</b>, the {s['role']}", SMALL, y) - 1
         y -= 8
         y = self.label("THE CLUES", y)
         for i, t in enumerate(case["clue_text"], 1):
             y = self.para(f"<b>{i}.</b>&nbsp;&nbsp;{t}", CLUE, y) - 4
-        assert y > BOTTOM - 4, f"case {case['num']} overflows its first page"
-        self.new_page()
-        # right-hand page: statements or crime-scene report, then the grid
-        y = H - TOP - 6
+        statements_here = False
         if liar:
+            need = 8 + 20 + self.height("<b>The killer's statement is a lie. Everyone else told the truth.</b>", SMALL) + 4 + 6 + sum(self.height(f"<b>{sn}:</b> \u201c{t}\u201d", CLUE) + 3
+                            for sn, t in zip(S, case["statement_text"]))
+            statements_here = y - need > BOTTOM - 8      # still well inside the 0.25 in safe margin
+            if statements_here:          # keep the statements with the clues, so the grid gets the whole facing page
+                y -= 8
+                y = self.label("THE STATEMENTS", y)
+                y = self.para("<b>The killer's statement is a lie. Everyone else told the truth.</b>", SMALL, y) - 4
+                for sn, t in zip(S, case["statement_text"]):
+                    y = self.para(f"<b>{sn}:</b> \u201c{t}\u201d", CLUE, y) - 3
+        assert y > BOTTOM - 10, f"case {case['num']} overflows its first page"
+        self.new_page()
+        # right-hand page: statements (if they did not fit) or crime-scene report, then the grid
+        y = H - TOP - 6
+        if liar and not statements_here:
             y = self.label("THE STATEMENTS", y)
             y = self.para("<b>The killer's statement is a lie. Everyone else told the truth.</b>", SMALL, y) - 4
-            for s, t in zip(case["suspects"], case["statement_text"]):
-                y = self.para(f"<b>{s['first']}:</b> “{t}”", CLUE, y) - 3
+            for sn, t in zip(S, case["statement_text"]):
+                y = self.para(f"<b>{sn}:</b> \u201c{t}\u201d", CLUE, y) - 3
             y -= 8
+        elif liar:
+            y -= 40
         else:
             c, x = self.c, self.left
             c.setLineWidth(1.2)
