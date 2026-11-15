@@ -288,12 +288,22 @@ class Solver:
         return None
 
     def clash(self, a, b):
-        """A short reason why two plain facts cannot both hold, or None."""
+        """A short, specific reason why two plain facts cannot both hold, or None."""
         (pa, ya), (pb, yb) = pair_of(a), pair_of(b)
+        S, R, W = self.S, self.R, self.W
         if pa == pb and ya != yb:
             return "one says yes and the other says no"
-        if ya and yb and pa[0] == pb[0] and pa != pb and (pa[1] == pb[1] or pa[2] == pb[2]):
-            return "they put two things in one place" if pa[2] == pb[2] else "they give one thing two places"
+        if not (ya and yb and pa[0] == pb[0] and pa != pb):
+            return None
+        k = pa[0]
+        if pa[1] == pb[1]:                 # one person (or object) given two different things
+            return {"SR": f"they put {S[pa[1]]} in two different rooms",
+                    "SW": f"they give {S[pa[1]]} two different objects",
+                    "WR": f"they put the {W[pa[1]]} in two different rooms"}[k]
+        if pa[2] == pb[2]:                 # two people (or objects) given the same thing
+            return {"SR": f"they put two people in the {R[pa[2]]}",
+                    "SW": f"they give the {W[pa[2]]} to two different people",
+                    "WR": f"they put two objects in the {R[pa[2]]}"}[k]
         return None
 
     def run(self):
