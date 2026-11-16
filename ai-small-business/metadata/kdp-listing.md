@@ -118,5 +118,5 @@ Answer **Yes** for text. Suggested wording: "Text was drafted with Claude (AI) a
 
 ## Before You Publish
 
-- **Bonus download link.** Appendix A prints `github.com/aadhavanshines/small-business-ai-workflows`. Create that repository (public) and add the files from `bonus/` before the book goes on sale.
+- **Bonus download link.** Appendix A prints `github.com/aadhavanshines/small-business-ai-workflows`, which holds the files from `bonus/`. If you change the prompts, rebuild and copy `bonus/` there again.
 - Order one paper proof and check the cover colors and the worksheet pages.
