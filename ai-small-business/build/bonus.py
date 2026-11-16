@@ -212,11 +212,16 @@ def build_bonus():
         (OUT / "templates" / name).write_text(body)
     (OUT / "README.md").write_text(
         "# Bonus Files: Claude AI for Small Business\n\n"
+        "Free downloads for readers of *Claude AI for Small Business: 100 Ready-to-Use Workflows to Automate "
+        "Emails, Marketing, Admin and Customer Service, No Coding Needed* by Aadhavan Muthurengan.\n\n"
+        "To save everything at once, click the green **Code** button and choose **Download ZIP**.\n\n"
         "- `Prompt-Library.md` / `.txt`: all 100 prompts, ready to copy.\n"
         "- `Workflow-Index.csv`: open in any spreadsheet to sort and filter the workflows.\n"
         "- `templates/`: business profile, brand voice guide, FAQ sheet, reply rules, weekly planner, "
         "AI use policy, monthly review and interview scorecard.\n\n"
-        "You may use and adapt these files in your own business.\n")
+        "You may use and adapt these files in your own business. Please don't republish or sell them.\n\n"
+        "This book and these files are independent and are not affiliated with or endorsed by Anthropic. "
+        "Claude is a trademark of Anthropic, PBC.\n")
     write_index_appendix(ws)
     print(f"bonus: {len(ws)} workflows, {len(TEMPLATES)} templates")
     return ws

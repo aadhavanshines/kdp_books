@@ -20,6 +20,6 @@ Book projects for Amazon Kindle Direct Publishing by **Aadhavan Muthurengan**.
 | Draw Christmas Step by Step: 50 Easy Holiday Drawings for Kids: A Fun How-to-Draw Christmas Activity Book for Ages 4 to 8 with Santa, Reindeer, Snowmen, Elves, Gingerbread, Trees and Presents | Ready to upload (paperback) | [`christmas-drawing/`](christmas-drawing/) |
 | AI Made Easy for Seniors: A Large-Print, Step-by-Step Guide to Asking an AI Assistant Anything — Write Emails, Plan Trips, Check Health Questions, Learn New Hobbies and Spot Scams, on Your Phone or Computer | Ready to upload (eBook and large-print paperback) | [`ai-seniors/`](ai-seniors/) |
 | Who Killed the Lighthouse Keeper? 60 Murder Mystery Logic Puzzles: Suspects, Clues and One Killer Every Time | Ready to upload (paperback) | [`murder-mystery/`](murder-mystery/) |
-| Claude AI for Small Business: 100 Ready-to-Use Workflows to Automate Emails, Marketing, Admin and Customer Service, No Coding Needed | Ready to upload once the bonus link is set (eBook and paperback) | [`ai-small-business/`](ai-small-business/) |
+| Claude AI for Small Business: 100 Ready-to-Use Workflows to Automate Emails, Marketing, Admin and Customer Service, No Coding Needed | Ready to upload once the bonus repo is created (eBook and paperback) | [`ai-small-business/`](ai-small-business/) |
 
 Each book folder contains the Markdown manuscript, a build script, the KDP listing metadata, and the upload-ready files in `dist/`.

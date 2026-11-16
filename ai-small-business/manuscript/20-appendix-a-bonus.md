@@ -8,7 +8,7 @@ Go to this address in any web browser:
 
 **{{BONUS_URL}}**
 
-There is nothing to sign up for. Download the files to your computer, or open them on your phone.
+There is nothing to sign up for. Click any file to read it or copy a prompt, or click the green **Code** button and choose **Download ZIP** to save everything to your computer at once.
 
 ## What's Included
 

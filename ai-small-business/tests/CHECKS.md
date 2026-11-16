@@ -20,4 +20,4 @@ Run `python3 build/build.py`, then `python3 build/check_pdf.py`.
 | Keywords | 7, all 50 characters or fewer, no trademarks |
 | Example data | Fictional businesses and people, .example email domains |
 | Language | US English |
-| Bonus URL | Placeholder until the hosting address is decided |
+| Bonus URL | github.com/aadhavanshines/small-business-ai-workflows (printed in Appendix A) |

@@ -118,5 +118,5 @@ Answer **Yes** for text. Suggested wording: "Text was drafted with Claude (AI) a
 
 ## Before You Publish
 
-- **Bonus download link.** Appendix A prints the address from `book.json` (`bonus_url`). Set it to the real address, rebuild with `python3 build/build.py`, and re-upload both files.
+- **Bonus download link.** Appendix A prints `github.com/aadhavanshines/small-business-ai-workflows`. Create that repository (public) and add the files from `bonus/` before the book goes on sale.
 - Order one paper proof and check the cover colors and the worksheet pages.
