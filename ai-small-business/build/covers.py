@@ -98,8 +98,8 @@ def back(ox, oy, w, h):
     para = [
         "You already know an AI assistant can write. This book shows",
         "you exactly what to ask it for the jobs that eat your week:",
-        "the emails, the posts, the quotes, the rota, the receipts and",
-        "the reply to the customer who is not happy.",
+        "the emails, the posts, the quotes, the schedule, the receipts,",
+        "and the reply to the customer who is not happy.",
     ]
     for i, ln in enumerate(para):
         o.append(text(cx, oy + 98 + i * 19, ln, 13, 400, color=MUTED))
@@ -129,8 +129,8 @@ def back(ox, oy, w, h):
     o.append(text(left, oy + 560, "No coding. No jargon.", 14, 700, "start"))
     o.append(text(left, oy + 580, "Claude drafts. You decide.", 14, 700, "start", ORANGE))
     o.append(text(left, oy + 610, "BUSINESS / SMALL BUSINESS", 9, 700, "start", MUTED, extra='letter-spacing="1.4"'))
-    # barcode area: KDP prints the barcode here, bottom right of the back cover
-    o.append(f'<rect x="{ox + w - 44 - 144}" y="{oy + h - 44 - 86}" width="144" height="86" fill="#FFFFFF"/>')
+    # barcode area: KDP prints a 2 x 1.2 in barcode 0.25 in from the spine-side and bottom trim edges
+    o.append(f'<rect x="{ox + w - 18 - 144}" y="{oy + h - 18 - 86.4}" width="144" height="86.4" fill="#FFFFFF"/>')
     return "".join(o)
 
 
@@ -143,7 +143,7 @@ def build_paperback_cover(meta, pages, out_pdf, preview_png):
     sp = [f'<rect x="{sx:.2f}" y="0" width="{spine:.2f}" height="{H}" fill="{INK}"/>']
     if pages >= 79:
         mid = sx + spine / 2
-        sp.append(f'<g transform="translate({mid + 4.5:.2f} {H / 2}) rotate(90)">'
+        sp.append(f'<g transform="translate({mid - 4.5:.2f} {H / 2}) rotate(90)">'
                   + text(-150, 0, "Claude AI", 13, 900, "end", CREAM, SERIF)
                   + text(-145, 0, "for Small Business", 13, 700, "start", ORANGE, SERIF)
                   + text(60, -0.5, "AADHAVAN MUTHURENGAN", 9.5, 700, "start", CREAM, extra='letter-spacing="1.2"')

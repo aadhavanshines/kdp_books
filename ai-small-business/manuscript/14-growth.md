@@ -55,7 +55,7 @@ group that could make them buy more often.
 GROUP 1: WEEKDAY REGULARS (about 50% of sales)
 Who: local workers and retirees; visit 2-4 times a week
 Want: speed, consistency, a friendly hello
-Worry: queues at 8 a.m.
+Worry: lines at 8 a.m.
 One change: a "pre-order by text" option for the morning rush
 GROUP 2: CELEBRATION CUSTOMERS...
 ```

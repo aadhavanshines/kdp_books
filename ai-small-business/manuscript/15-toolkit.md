@@ -9,7 +9,7 @@ A hundred workflows are only useful if you can find the right one in ten seconds
 Nobody uses a hundred workflows. Most businesses find that five to ten do most of the work. Go back through Part II and mark the workflows that match jobs you do every week. A typical first set looks something like this:
 
 - **A retail shop or café:** Workflow 3 (plan a month of marketing), 12 (captions from a photo), 31 (answer a customer email), 33 (reply to reviews) and 81 (plan your day).
-- **A trade or service business:** Workflow 23 (quote cover email), 26 (chase a late payment), 44 (staff rota), 72 (detailed quote) and 84 (meeting follow-up).
+- **A trade or service business:** Workflow 23 (quote cover email), 26 (chase a late payment), 44 (staff schedule), 72 (detailed quote) and 84 (meeting follow-up).
 - **A consultant or freelancer:** Workflow 21 (cold email), 22 (follow-ups), 71 (proposal), 84 (meeting follow-up) and 90 (monthly review).
 
 Chapter 18 has a longer list for each type of business. Use those five for two weeks before adding more. Habits beat collections.
@@ -22,7 +22,7 @@ In Chapter 2 you created a Project with your business profile. That Project is y
 | Marketing and social | Business profile, Brand Voice Guide, recent posts that did well |
 | Customer service | Customer FAQ Sheet, Reply Rules, your returns policy |
 | Money and admin | Your expense categories, price list, supplier list (no account numbers) |
-| Team | Staff handbook sections, rota rules, onboarding plan |
+| Team | Staff handbook sections, scheduling rules, onboarding plan |
 | Planning | Quarterly goals, monthly reviews, annual plan |
 
 Keep each Project focused. A customer service Project that only knows your FAQ and reply rules gives more reliable answers than one stuffed with every document you own.
@@ -82,7 +82,6 @@ A toolkit decays when the business changes and the files don't. Set a reminder f
 
 - Are prices, hours and policies in every Project still correct?
 - Did any reply go out with a mistake? If so, what instruction would have prevented it? Add that instruction.
-- Which prompts did you use most? Move them to the top of your library.
-- Which did you never use? Delete them. A short toolkit is a fast toolkit.
+- Which prompts did you use most? Move them to the top, and delete the ones you never use. A short toolkit is a fast toolkit.
 
-> **Remember:** The toolkit is not the goal. The goal is getting your evenings back. If a workflow doesn't save you time, drop it without guilt.
+> **Remember:** If a workflow doesn't save you time, drop it.

@@ -18,7 +18,7 @@ Most small business owners do three jobs at once: the work itself, selling the w
 
 ## Where It Will Not Help (Much)
 
-- **It does not know your numbers.** Claude cannot see your bank account, your till or your stock unless you paste the figures in or connect a tool. It can organize and explain numbers; it cannot make them up correctly.
+- **It does not know your numbers.** Claude cannot see your bank account, your register or your stock unless you paste the figures in or connect a tool. It can organize and explain numbers; it cannot make them up correctly.
 - **It is not a professional adviser.** It can explain what a tax term means and prepare your questions for an accountant. It should not be the final word on tax, law or employment.
 - **It does not replace your judgment about people.** It can draft an interview scorecard. It should not decide who you hire.
 - **It can be wrong.** It sometimes invents facts, prices, laws or statistics. Every workflow in this book is designed so you check the parts that matter.

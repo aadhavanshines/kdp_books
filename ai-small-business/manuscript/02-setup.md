@@ -4,12 +4,12 @@ Twenty minutes of setup will make every workflow in this book better. The goal i
 
 ## Step 1: Choose a Plan
 
-Claude has a **free plan** and several **paid plans**. At the time of writing, the free plan lets you try every workflow in this book, but with daily usage limits. The individual paid plan (around $20 a month at the time of writing) raises those limits and adds features that matter for business use, such as **Projects** and connections to other apps. Team plans add shared workspaces and admin controls for businesses with several people.
+Claude has a **free plan** and several **paid plans**. At the time of writing, the free plan lets you try every workflow in this book, but with daily usage limits. The free plan also includes a small number of **Projects** (Step 3), enough for the setup in this chapter. The individual paid plan (around $20 a month at the time of writing) raises the usage limits, removes the cap on Projects and adds more features for business use. Team plans add shared workspaces and admin controls for businesses with several people.
 
 A sensible path:
 
 1. Start on the free plan and try five workflows from the chapter that matters most to you.
-2. If you hit the daily limit, or want Projects (Step 3), upgrade to the individual paid plan.
+2. If you hit the daily limit often, or need more Projects than the free plan allows, upgrade to the individual paid plan.
 3. Consider a team plan only when two or more people in the business use Claude every day.
 
 > **Note:** Plan names, prices and limits change often. Check the current details at claude.ai (or in the app's settings) before you buy.
@@ -35,7 +35,7 @@ A **Project** is a workspace inside Claude with its own instructions and files. 
 
 From now on, start your business chats inside this Project. When a workflow in this book says "Claude already knows your business", this is what makes that true.
 
-> **Tip:** If your plan does not include Projects, keep your business profile in a note and paste it at the top of a new chat whenever you start a workflow. It works almost as well.
+> **Tip:** Plans and their limits change. Check the current details on the Claude website before you pay. If you ever run out of Projects, keep your business profile in a note and paste it at the top of a new chat whenever you start a workflow. It works almost as well.
 
 ## Step 4: Write Your Business Profile
 
@@ -99,7 +99,7 @@ Look in **Settings** for:
 
 ## Key Points
 
-- Start free; upgrade when you hit limits or want Projects.
+- Start free (the free plan includes a few Projects); upgrade when you keep hitting the limits.
 - Create a Project for your business with a profile and your key documents.
 - Teach Claude your voice from your best existing writing.
 - Check the privacy settings before you add customer information.

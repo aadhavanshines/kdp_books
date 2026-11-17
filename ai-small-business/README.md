@@ -10,8 +10,8 @@ by Aadhavan Muthurengan
 | --- | --- |
 | `claude-ai-for-small-business.epub` | Kindle eBook manuscript |
 | `ebook-cover.jpg` | Kindle cover (1708 x 2562 px) |
-| `paperback-interior-6x9.pdf` | Paperback interior (219 pages, black and white) |
-| `paperback-cover.pdf` | Paperback wrap cover (12.743 x 9.250 in, spine 0.493 in) |
+| `paperback-interior-6x9.pdf` | Paperback interior (217 pages, black and white) |
+| `paperback-cover.pdf` | Paperback wrap cover (12.739 x 9.250 in, spine 0.489 in) |
 | `paperback-cover-preview.png` | Preview only, not for upload |
 
 Listing details (title, description, categories, keywords, prices) are in `metadata/kdp-listing.md`. Checks are in `tests/CHECKS.md`.

@@ -212,7 +212,7 @@ hotel pastry chef...
 
 ## Workflow 77: Write a Company Profile or Capability Statement
 
-**Use it when:** a bigger customer, council or corporate buyer asks for "a short overview of your company".
+**Use it when:** a bigger customer, local government office or corporate buyer asks for "a short overview of your company".
 
 > **Time Saved:** About 1.5 hours (from 2 hours down to 30 minutes).
 
@@ -264,7 +264,7 @@ WHAT YOU NEED TO DO:
 - Train staff on the new rules and keep a record (section 5.1).
 TERMS EXPLAINED:
 "Prepacked for direct sale": food packed on the premises before a
-customer orders it, like your sandwiches in the chiller.
+customer orders it, like your sandwiches in the cooler.
 ```
 
 > **Check First:** For regulations, check the summary against the official source. Rules change, and details matter.
@@ -296,7 +296,7 @@ NORTHBROOK BAKERY - UPDATE FOR [BANK], JANUARY TO JUNE
 HEADLINES: sales up 14% to $128,000; wholesale now 35% of
 revenue...
 CHALLENGES: ingredient costs rose 11%. We raised loaf prices by
-50 cents in April and are trialling a new flour supplier...
+50 cents in April and are trialing a new flour supplier...
 OUR REQUEST: we'd like to discuss extending the overdraft by $5,000
 to cover the December peak.
 ```

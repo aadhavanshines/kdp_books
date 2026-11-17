@@ -2,7 +2,7 @@
 
 Reading about workflows is easy. Changing how you work is harder. This plan spreads the change over four weeks, about 20 to 30 minutes a day, so the habit builds without disrupting the business. By day 30 you'll have a working toolkit, a few hours back each week, and a clear idea of what to do next.
 
-Tick off each day as you go. If you miss a day, just carry on; this isn't a test.
+Check off each day as you go. If you miss a day, just carry on; this isn't a test.
 
 ## Week 1: Set Up and Start Small
 

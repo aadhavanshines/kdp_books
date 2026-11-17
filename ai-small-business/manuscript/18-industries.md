@@ -8,7 +8,7 @@ Every business is different, but businesses of the same type tend to have the sa
 
 Shops juggle stock, staff, social media and a steady stream of customer questions.
 
-- **Start with:** 12 (captions from a photo), 5 (product descriptions), 31 (answer a customer email), 44 (staff rota), 42 (opening and closing checklists).
+- **Start with:** 12 (captions from a photo), 5 (product descriptions), 31 (answer a customer email), 44 (staff schedule), 42 (opening and closing checklists).
 - **Then add:** 6 (promotions), 33 (review replies), 47 (organize a messy stock list), 58 (compare supplier quotes), 20 (posts for a slow day).
 - **Adapt it:** give Claude your product list with prices in a Project file, so product descriptions and replies are always accurate.
 
@@ -16,7 +16,7 @@ Shops juggle stock, staff, social media and a steady stream of customer question
 
 Food businesses work long hours with thin margins, so time and costs both matter.
 
-- **Start with:** 11 (a month of posts), 33 (review replies), 44 (staff rota), 42 (checklists), 57 (price a product).
+- **Start with:** 11 (a month of posts), 33 (review replies), 44 (staff schedule), 42 (checklists), 57 (price a product).
 - **Then add:** 45 (customer instructions, such as reheating or storage), 48 (plan an event), 70 (team training on allergens or service), 78 (summarize new regulations), 54 (cash flow forecast).
 - **Adapt it:** never let Claude answer allergy or dietary questions from memory. Keep a checked allergen list in your Project, and put "say [CHECK] for any allergy question" in your Reply Rules.
 
@@ -33,7 +33,7 @@ Plumbers, electricians, builders, cleaners and gardeners spend their evenings on
 Appointment businesses live on rebookings, reviews and a full diary.
 
 - **Start with:** 12 (captions from a photo), 38 (ask for reviews), 24 (win back past customers), 37 (calm an angry message), 35 (cancellation policy).
-- **Then add:** 15 (short video scripts), 28 (thank a new customer), 45 (aftercare instructions), 44 (staff rota), 39 (feedback survey).
+- **Then add:** 15 (short video scripts), 28 (thank a new customer), 45 (aftercare instructions), 44 (staff schedule), 39 (feedback survey).
 - **Adapt it:** write your cancellation and no-show policy once (Workflow 35's service-business variation) and add it to your Reply Rules, so every reply quotes it the same way.
 
 ## Consultants, Coaches and Freelancers
@@ -78,7 +78,7 @@ Photographers, designers, makers and studios need to market their work while pro
 
 ## Property and Hospitality
 
-Holiday lets, guesthouses, small hotels and property managers answer guest questions around the clock.
+Vacation rentals, guesthouses, small hotels and property managers answer guest questions around the clock.
 
 - **Start with:** 36 (saved replies), 45 (guest instructions), 33 (review replies), 42 (changeover checklist), 31 (answer a guest message).
 - **Then add:** 9 (website home page), 50 (contingency plan), 43 (email a supplier or contractor), 58 (compare quotes), 99 (online presence review).

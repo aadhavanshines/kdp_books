@@ -120,7 +120,7 @@ Please review the marketing text below as a sharp, friendly editor. Check: spell
 Plan a month of social media posts for [business] on [platforms]. I can post [number] times a week. Mix: 40% behind the scenes, 30% products or services, 20% customers and community, 10% offers. Include dates that matter for my business in [month]. Give me a table: date, platform, post idea, what photo or video I need, and a one-line hook. Keep every idea doable with a phone in 10 minutes.
 ```
 
-*Make it better:* ask Claude to turn the plan into a checklist you can tick off, with the photo list grouped so you can shoot a week's photos in one go.
+*Make it better:* ask Claude to turn the plan into a checklist you can check off, with the photo list grouped so you can shoot a week's photos in one go.
 
 ### Workflow 12: Write Captions From a Photo
 
@@ -441,7 +441,7 @@ Below are the subject lines and first lines of my unread emails. Sort them into:
 *Use it when:* a job is done differently every time, or only you know how to do it.
 
 ```
-Turn my rough description of how we [do the task] into a clear standard operating procedure. Include: purpose, who does it, when, what you need, numbered steps (one action each), common mistakes, and how to check it was done right. Simple words a new starter would understand. Here's how I do it:
+Turn my rough description of how we [do the task] into a clear standard operating procedure. Include: purpose, who does it, when, what you need, numbered steps (one action each), common mistakes, and how to check it was done right. Simple words a new hire would understand. Here's how I do it:
 
 [describe it, or paste a voice-note transcript]
 ```
@@ -453,7 +453,7 @@ Turn my rough description of how we [do the task] into a clear standard operatin
 *Use it when:* small things get forgotten at the start or end of the day.
 
 ```
-Write opening and closing checklists for [business]. Things that must happen: [list everything you can think of, in any order]. Group them by area, put them in a sensible order, and add anything a business like mine commonly forgets (safety, security, cash, equipment). Each list must fit on one printed page with tick boxes.
+Write opening and closing checklists for [business]. Things that must happen: [list everything you can think of, in any order]. Group them by area, put them in a sensible order, and add anything a business like mine commonly forgets (safety, security, cash, equipment). Each list must fit on one printed page with check boxes.
 ```
 
 *Make it better:* after a month, ask Claude to add anything that went wrong because it wasn't on the list.
@@ -468,12 +468,12 @@ Write an email to my supplier [name] about [order / problem / price]. Facts: [or
 
 *Make it better:* keep a short note of each supplier's quirks in your Project ("Paula prefers phone calls for urgent issues").
 
-### Workflow 44: Plan a Staff Rota or Schedule
+### Workflow 44: Plan a Staff Schedule
 
 *Use it when:* building the weekly schedule takes an hour of juggling.
 
 ```
-Help me build next week's staff rota. Opening hours: [hours]. Staff, their contracted hours and availability: [list]. Rules: [minimum staff per shift, breaks, who can open or close, max hours]. Busy times: [when]. Give me a table by day and shift, the hours each person gets, and any rule you couldn't meet.
+Help me build next week's staff schedule. Opening hours: [hours]. Staff, their contracted hours and availability: [list]. Rules: [minimum staff per shift, breaks, who can open or close, max hours]. Busy times: [when]. Give me a table by day and shift, the hours each person gets, and any rule you couldn't meet.
 ```
 
 *Make it better:* keep each person's availability in a spreadsheet and attach it each week, instead of retyping it.
@@ -671,7 +671,7 @@ Write a job description for a [role] at [business]. Hours: [hours]. Pay: [pay]. 
 *Use it when:* you have a job description and need a short ad for a job site, social media or a sign in the window.
 
 ```
-Turn this job description into three job ads: 1) a job-site ad under 200 words; 2) a social media post under 80 words; 3) a window or noticeboard sign under 40 words. Lead with what makes the job attractive, include pay and hours, and say exactly how to apply.
+Turn this job description into three job ads: 1) a job-site ad under 200 words; 2) a social media post under 80 words; 3) a window or bulletin board sign under 40 words. Lead with what makes the job attractive, include pay and hours, and say exactly how to apply.
 
 [paste the job description]
 ```
@@ -708,7 +708,7 @@ Draft an offer letter for [role], starting [date], [hours], [pay], reporting to 
 
 *Make it better:* ask Claude for a list of everything to prepare before day one (keys, uniform, accounts, paperwork).
 
-### Workflow 66: Plan a New Starter's First Two Weeks
+### Workflow 66: Plan a New Hire's First Two Weeks
 
 *Use it when:* new people are thrown in at the deep end and you'd like them to settle faster.
 
@@ -723,10 +723,10 @@ Create a two-week onboarding plan for a new [role]. What they need to learn: [ta
 *Use it when:* your rules live in your head, and staff keep asking.
 
 ```
-Draft a staff handbook section on [topic, for example holidays and time off, sick days, uniform, phone use, breaks]. Our rules: [your rules]. Write it in plain English, friendly and clear, with headings, under 400 words. List anything I should check against employment law where we operate.
+Draft a staff handbook section on [topic, for example vacation and time off, sick days, uniform, phone use, breaks]. Our rules: [your rules]. Write it in plain English, friendly and clear, with headings, under 400 words. List anything I should check against employment law where we operate.
 ```
 
-*Make it better:* ask for a one-page summary of the most important rules for the staff room wall.
+*Make it better:* ask for a one-page summary of the most important rules for the break room wall.
 
 ### Workflow 68: Prepare for a Performance Conversation
 
@@ -824,7 +824,7 @@ Write an About page for [business]. The story: [how it started, why, key moments
 
 ### Workflow 77: Write a Company Profile or Capability Statement
 
-*Use it when:* a bigger customer, council or corporate buyer asks for "a short overview of your company".
+*Use it when:* a bigger customer, local government office or corporate buyer asks for "a short overview of your company".
 
 ```
 Write a two-page capability statement for [business]. Use my business profile. Include: who we are, what we do (services), who we've worked for (with permission), what makes us different, our certifications and insurance, our capacity (team size, area, volumes), and contact details. Professional and confident. Then write a one-paragraph version for supplier forms.
@@ -954,7 +954,7 @@ Here are [number] articles and newsletters I haven't had time to read. For each,
 
 ### Workflow 89: Create a Simple Project Plan
 
-*Use it when:* you have a bigger project, such as a refit, a new product or a website, with many moving parts.
+*Use it when:* you have a bigger project, such as a remodel, a new product or a website, with many moving parts.
 
 ```
 Help me plan [project]. Goal: [what done looks like]. Deadline: [date]. Budget: [amount]. People involved: [names, roles]. Give me: the main stages, the tasks in each stage with owners and dates, the order things must happen in, the three biggest risks with a plan for each, and a weekly checklist I can use to track progress.

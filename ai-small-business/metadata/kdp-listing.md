@@ -26,7 +26,7 @@ Claude AI for Small Business
 ```html
 <b>You already know AI can write. This book shows you exactly what to ask it for the jobs that eat your week.</b>
 
-<p>Emails to answer. Posts to write. Quotes to send. Invoices to chase. A rota to build, receipts to sort, a job ad to write, and that one reply to an unhappy customer you keep putting off. <i>Claude AI for Small Business</i> turns each of these jobs into a ready-made workflow you can copy, paste and use today. No coding, no jargon, no technical setup.</p>
+<p>Emails to answer. Posts to write. Quotes to send. Invoices to chase. A staff schedule to build, receipts to sort, a job ad to write, and that one reply to an unhappy customer you keep putting off. <i>Claude AI for Small Business</i> turns each of these jobs into a ready-made workflow you can copy, paste and use today. No coding, no jargon, no technical setup.</p>
 
 <p><b>100 workflows, grouped by the job you need done:</b></p>
 <ul>
@@ -34,7 +34,7 @@ Claude AI for Small Business
 <li><b>Social media:</b> a month of posts, captions from a photo, video scripts, replies to comments</li>
 <li><b>Sales emails:</b> cold emails, follow-ups, quotes, win-backs, referrals, price increases, late payments</li>
 <li><b>Customer service:</b> email replies, complaints, review replies, FAQ pages, saved replies, refund policies</li>
-<li><b>Admin:</b> procedures, checklists, supplier emails, staff rotas, forms, contingency plans</li>
+<li><b>Admin:</b> procedures, checklists, supplier emails, staff schedules, forms, contingency plans</li>
 <li><b>Bookkeeping prep:</b> expense categories, receipts to tables, cash flow forecasts, pricing, spreadsheet formulas</li>
 <li><b>Hiring and your team:</b> job ads, interview questions, scorecards, onboarding, difficult conversations</li>
 <li><b>Proposals and documents:</b> proposals, detailed quotes, case studies, contracts explained in plain English</li>
@@ -89,7 +89,7 @@ KDP's category picker names change from time to time; pick the closest match to 
 
 ## AI-Generated Content
 
-Answer **Yes** for text. Suggested wording: "Text was drafted with Claude (AI) and reviewed and edited by the author." Images: **No** (the cover and icons were drawn in code).
+Answer **Yes** for text. Suggested wording: "Text was drafted with Claude (AI) and reviewed and edited by the author." For images, the cover and its icons were drawn in code written with Claude (AI), so answer **Yes** there too (the same answer as the Lighthouse puzzle book). Suggested wording: "The cover is vector artwork drawn in code written with AI assistance."
 
 ## Kindle eBook
 
@@ -110,11 +110,11 @@ Answer **Yes** for text. Suggested wording: "Text was drafted with Claude (AI) a
 | Trim size | 6 x 9 in |
 | Bleed | No bleed |
 | Cover finish | Matte (suits the cream design) or glossy |
-| Interior file | `dist/paperback-interior-6x9.pdf` (219 pages) |
-| Cover file | `dist/paperback-cover.pdf` (12.743 x 9.250 in, spine 0.493 in) |
+| Interior file | `dist/paperback-interior-6x9.pdf` (217 pages) |
+| Cover file | `dist/paperback-cover.pdf` (12.739 x 9.250 in, spine 0.489 in) |
 | Price | $19.99 |
 
-**Royalty check.** Printing 219 black-and-white pages at 6 x 9 in costs about $1.00 + 219 x $0.012 = $3.63, so the royalty at $19.99 is about 60% x $19.99 - $3.63 = **$8.36** per copy. KDP's pricing page shows the exact amount.
+**Royalty check.** Printing 217 black-and-white pages at 6 x 9 in costs about $1.00 + 217 x $0.012 = $3.60, so the royalty at $19.99 is about 60% x $19.99 - $3.60 = **$8.39** per copy. KDP's pricing page shows the exact amount.
 
 ## Before You Publish
 

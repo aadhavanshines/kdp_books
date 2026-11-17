@@ -48,8 +48,6 @@ Plain-English meanings of the AI and business terms used in this book.
 
 **Read-only access.** Permission to look at information without changing, sending or deleting anything. The safest way to start with connectors.
 
-**Rota.** A staff schedule showing who works when. Also called a roster or schedule.
-
 **Saved reply.** A ready-written answer to a common question, with spaces for the details. Also called a canned response or template.
 
 **SOP (standard operating procedure).** Step-by-step written instructions for how a job is done in your business.

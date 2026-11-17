@@ -12,7 +12,7 @@ Admin is the invisible work that keeps a business running: checklists, procedure
 Turn my rough description of how we [do the task] into a clear
 standard operating procedure. Include: purpose, who does it, when,
 what you need, numbered steps (one action each), common mistakes,
-and how to check it was done right. Simple words a new starter
+and how to check it was done right. Simple words a new hire
 would understand. Here's how I do it:
 
 [describe it, or paste a voice-note transcript]
@@ -34,8 +34,8 @@ Check: the closing checklist is signed and on the clipboard.
 
 **Variations:**
 
-- **Checklist version:** ask for the same procedure as a one-page tick list to pin on the wall.
-- **Training quiz:** ask for five questions to check a new starter understands it.
+- **Checklist version:** ask for the same procedure as a one-page checklist to pin on the wall.
+- **Training quiz:** ask for five questions to check a new hire understands it.
 
 ## Workflow 42: Make an Opening and Closing Checklist
 
@@ -48,14 +48,14 @@ Write opening and closing checklists for [business]. Things that
 must happen: [list everything you can think of, in any order].
 Group them by area, put them in a sensible order, and add anything
 a business like mine commonly forgets (safety, security, cash,
-equipment). Each list must fit on one printed page with tick boxes.
+equipment). Each list must fit on one printed page with check boxes.
 ```
 
 ```result
 OPENING (6:30 a.m.)
 FRONT OF HOUSE
 [ ] Lights on, heating to 20°C
-[ ] Float in till: $150, counted and signed
+[ ] Cash in register: $150, counted and signed
 [ ] Card reader on and tested
 SAFETY
 [ ] Fire exit clear and unlocked
@@ -67,7 +67,7 @@ SAFETY
 **Variations:**
 
 - **Mobile business:** ask for a "before the first job" van checklist.
-- **Office or studio:** ask for a Friday shutdown checklist (backups, bins, alarms).
+- **Office or studio:** ask for a Friday shutdown checklist (backups, trash, alarms).
 
 ## Workflow 43: Email a Supplier
 
@@ -104,14 +104,14 @@ Sam
 - **Negotiating price:** ask for an email that asks for a volume discount and mentions your order history.
 - **Finding a new supplier:** ask for an inquiry email listing your volumes, delivery needs and questions.
 
-## Workflow 44: Plan a Staff Rota or Schedule
+## Workflow 44: Plan a Staff Schedule
 
 **Use it when:** building the weekly schedule takes an hour of juggling.
 
 > **Time Saved:** About 45 minutes a week (from 1 hour down to 15).
 
 ```
-Help me build next week's staff rota. Opening hours: [hours]. Staff,
+Help me build next week's staff schedule. Opening hours: [hours]. Staff,
 their contracted hours and availability: [list]. Rules: [minimum
 staff per shift, breaks, who can open or close, max hours]. Busy
 times: [when]. Give me a table by day and shift, the hours each
@@ -128,14 +128,14 @@ Couldn't meet: Saturday needs 3 staff in the morning but only Sam
 and Leah are available. Consider asking Tom to swap Thursday.
 ```
 
-> **Check First:** Check the rota against employment rules where you work (breaks, rest periods, minors' hours) and each person's contract.
+> **Check First:** Check the schedule against employment rules where you work (breaks, rest periods, minors' hours) and each person's contract.
 
 **Make it better:** keep each person's availability in a spreadsheet and attach it each week, instead of retyping it.
 
 **Variations:**
 
 - **Appointment business:** ask Claude to match staff skills to booked appointments.
-- **Holiday cover:** ask for a plan that covers a staff member's two-week holiday fairly.
+- **Vacation cover:** ask for a plan that covers a staff member's two-week vacation fairly.
 
 ## Workflow 45: Write Clear Instructions for Customers
 

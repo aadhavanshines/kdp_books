@@ -261,7 +261,7 @@ IDEAS TO USE:
 
 ## Workflow 89: Create a Simple Project Plan
 
-**Use it when:** you have a bigger project, such as a refit, a new product or a website, with many moving parts.
+**Use it when:** you have a bigger project, such as a remodel, a new product or a website, with many moving parts.
 
 > **Time Saved:** About 1.5 hours (from 2 hours down to 30 minutes).
 

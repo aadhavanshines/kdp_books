@@ -23,7 +23,7 @@ Finish with three marketing messages that would speak to each one.
 ```result
 1. "WEEKDAY WENDY" - office worker, 30s, buys breakfast on the way
 to work.
-Wants: something fresh and quick, no queue.
+Wants: something fresh and quick, no line.
 Worries: being late; paying too much for a coffee and pastry.
 Where: Instagram on her commute; the station; the gym.
 Her words: "I just need something decent before my 9 o'clock."
@@ -228,7 +228,7 @@ any review.
 ```result
 Most praised: friendliness of staff (14 of 40), the sourdough (11),
 the smell when you walk in (6)...
-Complaints: weekend queues (7), parking (3).
+Complaints: weekend lines (7), parking (3).
 Customer phrases: "like walking into a warm hug", "the best
 cinnamon bun I've had outside Sweden"...
 Message idea: "Like walking into a warm hug - and that's just the

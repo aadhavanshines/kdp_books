@@ -88,13 +88,13 @@ step obvious.
 ```
 
 ```result
-Subject: Your quote for the bathroom refit - $6,800
+Subject: Your quote for the bathroom remodel - $6,800
 
 Hi Lena,
 
 Thanks for showing me round on Tuesday. Your quote is attached.
 
-In short: $6,800 for the full refit, including the new shower,
+In short: $6,800 for the full remodel, including the new shower,
 tiling, and removal of the old suite. Paint and the mirror aren't
 included.
 
@@ -275,7 +275,7 @@ Subject: Thanks for your first order!
 Hi [first name],
 
 Thanks for ordering from Northbrook Bakery. A quick tip: keep your
-sourdough in a tea towel, not plastic. It stays crusty for three
+sourdough in a dish towel, not plastic. It stays crusty for three
 days.
 
 Your loyalty card is on the app - every sixth loaf is on us.

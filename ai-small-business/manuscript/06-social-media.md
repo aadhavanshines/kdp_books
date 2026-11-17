@@ -24,7 +24,7 @@ one-line hook. Keep every idea doable with a phone in 10 minutes.
 | Sat 5 | Instagram | Customer's wedding cake | Their photo (with permission) | "Two years of planning. One cake." |
 ```
 
-**Make it better:** ask Claude to turn the plan into a checklist you can tick off, with the photo list grouped so you can shoot a week's photos in one go.
+**Make it better:** ask Claude to turn the plan into a checklist you can check off, with the photo list grouped so you can shoot a week's photos in one go.
 
 **Variations:**
 
@@ -83,7 +83,7 @@ aren't in the original.
 Cover: "3 things we wish customers knew about sourdough"
 Slide 1: "It's not sour by accident. The tang comes from 18 hours
 of slow rising."
-Slide 2: "It keeps better than you think: wrap it in a tea towel,
+Slide 2: "It keeps better than you think: wrap it in a dish towel,
 not plastic."
 Slide 3: "Stale? Slice, toast, and it's back to its best."
 ```

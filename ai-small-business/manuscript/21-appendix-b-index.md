@@ -65,7 +65,7 @@ All 100 workflows at a glance, grouped by chapter. The same list is in the bonus
 | 41 | Write a Standard Operating Procedure | A job is done differently every time, or only you know how to do it |
 | 42 | Make an Opening and Closing Checklist | Small things get forgotten at the start or end of the day |
 | 43 | Email a Supplier | You need to order, query a delivery, ask for a better price or raise a problem with a supplier |
-| 44 | Plan a Staff Rota or Schedule | Building the weekly schedule takes an hour of juggling |
+| 44 | Plan a Staff Schedule | Building the weekly schedule takes an hour of juggling |
 | 45 | Write Clear Instructions for Customers | Customers need to follow steps: aftercare, setup, preparation for an appointment, how to use a product |
 | 46 | Fill In and Understand Forms | A long form, application or official letter needs filling in and you don't know what half the questions mean |
 | 47 | Organize a Messy List | You have a jumble of notes, tasks, ideas or contacts and need order |
@@ -95,7 +95,7 @@ All 100 workflows at a glance, grouped by chapter. The same list is in the bonus
 | 63 | Prepare Interview Questions | You have interviews coming up and want fair, useful questions |
 | 64 | Create an Interview Scorecard | You want to compare candidates fairly instead of going with your gut |
 | 65 | Write an Offer Letter and Welcome Email | You have chosen someone and want to welcome them properly |
-| 66 | Plan a New Starter's First Two Weeks | New people are thrown in at the deep end and you'd like them to settle faster |
+| 66 | Plan a New Hire's First Two Weeks | New people are thrown in at the deep end and you'd like them to settle faster |
 | 67 | Write a Staff Handbook Section | Your rules live in your head, and staff keep asking |
 | 68 | Prepare for a Performance Conversation | You need to talk with a team member about their work, good or bad |
 | 69 | Write a Difficult Message to the Team | You have news the team won't like: changes to hours, a closure, a new rule |
@@ -110,7 +110,7 @@ All 100 workflows at a glance, grouped by chapter. The same list is in the bonus
 | 74 | Draft Simple Terms and Conditions | You have no written terms, and misunderstandings keep costing you |
 | 75 | Understand a Contract Before You Sign | Someone has sent you a contract, lease or agreement and it's long, dense and important |
 | 76 | Write Your About Page and Bios | You need a business story, an owner bio or team bios for a website, award entry or local paper |
-| 77 | Write a Company Profile or Capability Statement | A bigger customer, council or corporate buyer asks for "a short overview of your company" |
+| 77 | Write a Company Profile or Capability Statement | A bigger customer, local government office or corporate buyer asks for "a short overview of your company" |
 | 78 | Turn a Document Into a Summary | You have a long report, guide or regulation and need the key points fast |
 | 79 | Write a Report for a Bank, Landlord or Partner | Someone outside the business needs an update on how you're doing |
 | 80 | Proofread and Improve Any Document | A document matters and you want it clear, correct and professional before it goes out |
@@ -126,7 +126,7 @@ All 100 workflows at a glance, grouped by chapter. The same list is in the bonus
 | 86 | Set Goals for the Next Quarter | You want to make the next three months count instead of just getting through them |
 | 87 | Delegate a Task Clearly | You want to hand something over, but you end up doing it yourself because explaining takes too long |
 | 88 | Get Through Your Reading Pile | Industry newsletters, reports and articles pile up unread |
-| 89 | Create a Simple Project Plan | You have a bigger project, such as a refit, a new product or a website, with many moving parts |
+| 89 | Create a Simple Project Plan | You have a bigger project, such as a remodel, a new product or a website, with many moving parts |
 | 90 | Do a Monthly Business Review | The first of the month comes around, and you want to learn from last month rather than just survive the next |
 
 ## Research, Strategy and Growth

@@ -47,7 +47,7 @@ the rest.
 ```
 Turn this job description into three job ads: 1) a job-site ad under
 200 words; 2) a social media post under 80 words; 3) a window or
-noticeboard sign under 40 words. Lead with what makes the job
+bulletin board sign under 40 words. Lead with what makes the job
 attractive, include pay and hours, and say exactly how to apply.
 
 [paste the job description]
@@ -163,7 +163,7 @@ toes; we'll give you an apron and a hat...
 - **Unsuccessful candidates:** ask for a kind, short "thanks but no" email that thanks them for their time.
 - **Contractor:** ask for a welcome pack instead of an offer letter.
 
-## Workflow 66: Plan a New Starter's First Two Weeks
+## Workflow 66: Plan a New Hire's First Two Weeks
 
 **Use it when:** new people are thrown in at the deep end and you'd like them to settle faster.
 
@@ -202,7 +202,7 @@ Can he shape rolls to size?
 > **Time Saved:** About 1.5 hours per section (from 2 hours down to 30 minutes), before your professional check.
 
 ```
-Draft a staff handbook section on [topic, for example holidays and
+Draft a staff handbook section on [topic, for example vacation and
 time off, sick days, uniform, phone use, breaks]. Our rules: [your
 rules]. Write it in plain English, friendly and clear, with
 headings, under 400 words. List anything I should check against
@@ -210,18 +210,18 @@ employment law where we operate.
 ```
 
 ```result
-HOLIDAYS AND TIME OFF
+VACATION AND TIME OFF
 How much: full-time staff get [number] days a year plus public
 holidays...
-How to ask: put your request in the holiday book at least four
+How to ask: put your request in the vacation book at least four
 weeks ahead...
-TO CHECK: minimum paid holiday where you are; how holiday builds up
+TO CHECK: minimum paid vacation where you are; how vacation builds up
 for part-time staff...
 ```
 
 > **Check First:** Have the finished handbook checked by an HR professional before you rely on it.
 
-**Make it better:** ask for a one-page summary of the most important rules for the staff room wall.
+**Make it better:** ask for a one-page summary of the most important rules for the break room wall.
 
 **Variations:**
 

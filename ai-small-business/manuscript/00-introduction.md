@@ -4,7 +4,7 @@ If you run a small business, you already know where the time goes. It isn't the 
 
 This book is about handing that work to an AI assistant called Claude, carefully and in your own voice, so you get hours back every week.
 
-It is not a beginner's guide to AI. You will not find a history of artificial intelligence here, or a chapter on how language models work. If you have used Claude, or any AI chat assistant, a few times and thought "this could save me time, if only I knew exactly what to ask," this book is the next step. It gives you **100 workflows**: tested, copy-paste prompts for the jobs small businesses actually do, each with an example of what you get back and an honest estimate of the time it saves.
+It is not a beginner's guide to AI. You will not find a history of artificial intelligence here, or a chapter on how language models work. If you have used Claude, or any AI chat assistant, a few times and thought "this could save me time, if only I knew exactly what to ask," this book is the next step. It gives you **100 workflows**: ready-made, copy-paste prompts for the jobs small businesses actually do, each with an example of what you get back and an honest estimate of the time it saves.
 
 ## What a Workflow Is
 

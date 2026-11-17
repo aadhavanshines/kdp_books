@@ -100,7 +100,7 @@ about the customer.
 5 stars, "Best croissant in the county": "Thank you, Lucy! Our
 croissants take three days from start to finish, so this made the
 whole team smile. See you soon."
-2 stars, "Long queue, rude staff": "Thanks for the honest feedback,
+2 stars, "Long line, rude staff": "Thanks for the honest feedback,
 Raj, and I'm sorry your visit felt rushed. That's not how we want
 anyone to feel. Could you email sam@northbrook.example? I'd like to
 hear more and put it right."

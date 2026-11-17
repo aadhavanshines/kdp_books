@@ -316,6 +316,17 @@ def mini_table(data, styles):
     longest = [max(len(r[i]) for r in data) + 3 for i in range(n)]
     total = sum(longest)
     widths = [inner * l / total for l in longest]
+    # No column may be narrower than its widest single word, so words never split.
+    unesc = lambda x: x.replace("&amp;", "&").replace("&lt;", "<").replace("&gt;", ">")
+    mins = [max(pdfmetrics.stringWidth(w, "Sans-Bold" if ri == 0 else "Sans", 8.4)
+                for ri, r in enumerate(data) for w in unesc(r[i]).split() or [""]) + 8 for i in range(n)]
+    widths = [max(wd, m) for wd, m in zip(widths, mins)]
+    excess = sum(widths) - inner
+    if excess > 0:
+        flex = [i for i in range(n) if widths[i] > mins[i]]
+        room = sum(widths[i] - mins[i] for i in flex)
+        for i in flex:
+            widths[i] -= excess * (widths[i] - mins[i]) / room
     cell = styles["resultcell"]
     head = styles["resultcellhead"]
     t = Table([[Paragraph(c, head if ri == 0 else cell) for c in r] for ri, r in enumerate(data)],
@@ -366,7 +377,7 @@ def code_block(code, styles, source=""):
         look += [("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#EDEDED")),
                  ("LINEBEFORE", (0, 0), (0, -1), 4, colors.HexColor("#222222"))]
     t.setStyle(TableStyle(look))
-    short = len(paras) <= 3
+    short = len(paras) <= 3 or sum(len(p) for p in paras) <= 14   # short boxes never split
     return [KeepTogether([Spacer(1, 3), t, Spacer(1, 11)])] if short else [Spacer(1, 3), t, Spacer(1, 11)]
 
 

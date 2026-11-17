@@ -223,7 +223,7 @@ then suggest a price and two alternatives with their pros and cons.
 3. Total cost: $52.20
 4. With a 30% margin: $52.20 / 0.70 = $74.57
 Suggested price: $75. Alternatives: $69 (closer to competitors,
-22% margin) or $85 (premium, needs a stronger story).
+24% margin) or $85 (premium, needs a stronger story).
 ```
 
 **Make it better:** check the arithmetic yourself or in a spreadsheet before changing your prices.
