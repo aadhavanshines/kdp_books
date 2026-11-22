@@ -11,7 +11,7 @@ from PIL import Image
 
 PER_PAGE = 0.002252          # inches per page, white paper, black ink
 BLEED = 9                    # points (0.125 in)
-SERIF, SANS = "Playfair Display", "Liberation Sans"
+SERIF, SANS = "Playfair Display", "Arial"
 INK, ORANGE, CREAM, PAPER, MUTED = "#1F1B16", "#D2581E", "#F6EFE2", "#FFFDF8", "#4A4239"
 
 
@@ -55,36 +55,13 @@ def front(ox, oy, w, h):
     o.append(f'<rect x="{cx - 60}" y="{oy + 200}" width="120" height="3.5" fill="{INK}"/>')
     o.append(text(cx, oy + 232, "100 Ready-to-Use Workflows to Automate", 16.5, 700))
     o.append(text(cx, oy + 254, "Emails, Marketing, Admin and Customer Service", 16.5, 700))
-    # four tiles
-    tiles = [("email", "Emails"), ("marketing", "Marketing"), ("admin", "Admin"), ("service", "Customer Service")]
-    tw_, th_, gap = 84, 92, 12
-    x0 = cx - (4 * tw_ + 3 * gap) / 2
-    ty = oy + 284
-    for i, (k, label) in enumerate(tiles):
-        x = x0 + i * (tw_ + gap)
-        o.append(f'<rect x="{x:.1f}" y="{ty}" width="{tw_}" height="{th_}" rx="12" fill="{PAPER}" stroke="#E2D6C2" stroke-width="1.2"/>')
-        o.append(icon(k, x + tw_ / 2, ty + 38, 1.0))
-        if label == "Customer Service":
-            o.append(text(x + tw_ / 2, ty + 72, "Customer", 11.5, 700))
-            o.append(text(x + tw_ / 2, ty + 85, "Service", 11.5, 700))
-        else:
-            o.append(text(x + tw_ / 2, ty + 78, label, 11.5, 700))
-    # big badge
-    by = oy + 470
-    o.append(f'<circle cx="{cx}" cy="{by}" r="62" fill="{ORANGE}"/>')
-    o.append(f'<circle cx="{cx}" cy="{by}" r="55" fill="none" stroke="{CREAM}" stroke-width="1.4" stroke-dasharray="3 4"/>')
-    o.append(text(cx, by + 6, "100", 50, 900, color=CREAM, family=SERIF))
-    o.append(text(cx, by + 28, "WORKFLOWS", 10.5, 700, color=CREAM, extra='letter-spacing="1.6"'))
-    # side notes beside the badge
-    o.append(text(cx - 82, by - 12, "Copy-paste", 13.5, 700, "end"))
-    o.append(text(cx - 82, by + 6, "prompts", 13.5, 700, "end"))
-    o.append(text(cx - 82, by + 24, "+ examples", 13.5, 400, "end", MUTED))
-    o.append(text(cx + 82, by - 12, "Time-saved", 13.5, 700, "start"))
-    o.append(text(cx + 82, by + 6, "notes", 13.5, 700, "start"))
-    o.append(text(cx + 82, by + 24, "+ templates", 13.5, 400, "start", MUTED))
-    # pill
-    o.append(f'<rect x="{cx - 92}" y="{oy + 552}" width="184" height="30" rx="15" fill="{INK}"/>')
-    o.append(text(cx, oy + 572, "NO CODING NEEDED", 13, 700, color=CREAM, extra='letter-spacing="2"'))
+    # one large seal, nothing else competing with the title
+    by = oy + 420
+    o.append(f'<circle cx="{cx}" cy="{by}" r="92" fill="{ORANGE}"/>')
+    o.append(f'<circle cx="{cx}" cy="{by}" r="82" fill="none" stroke="{CREAM}" stroke-width="1.6" stroke-dasharray="3 4"/>')
+    o.append(text(cx, by + 12, "100", 76, 900, color=CREAM, family=SERIF))
+    o.append(text(cx, by + 44, "WORKFLOWS", 14, 700, color=CREAM, extra='letter-spacing="2.2"'))
+    o.append(text(cx, oy + 556, "NO CODING NEEDED", 13, 700, color=MUTED, extra='letter-spacing="3"'))
     o.append(text(cx, oy + h - 30, "AADHAVAN MUTHURENGAN", 15, 700, extra='letter-spacing="2.4"'))
     return "".join(o)
 

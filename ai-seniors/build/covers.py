@@ -43,16 +43,14 @@ def front(ox, oy, w, h, art_w, art_h):
     """Front cover content; (ox, oy) is the trim corner, the art fills art_w x art_h from (ox, oy - bleed)."""
     cx = ox + w / 2
     o = [image(ART, ox, oy - BLEED, art_w, art_h, max_px=3072)]
-    o.append(f'<rect x="{ox + 26}" y="{oy + 24}" width="{w - 52}" height="352" rx="26" fill="{CREAM}" fill-opacity="0.9"/>')
+    o.append(f'<rect x="{ox + 26}" y="{oy + 24}" width="{w - 52}" height="306" rx="26" fill="{CREAM}" fill-opacity="0.92"/>')
     o.append(f'<rect x="{cx - 104}" y="{oy + 42}" width="208" height="36" rx="18" fill="{NAVY}"/>')
     o.append(text(cx, oy + 67, "LARGE PRINT", 20, 700, "middle", "#FFFFFF", 'letter-spacing="3"'))
-    o.append(text(cx, oy + 152, "AI Made Easy", 74, 700))
-    o.append(text(cx, oy + 222, "for Seniors", 62, 700, "middle", ACCENT))
-    o.append(f'<rect x="{cx - 150}" y="{oy + 242}" width="300" height="3" fill="{NAVY}"/>')
-    o.append(text(cx, oy + 276, "A Step-by-Step Guide to Asking an", 21, 700))
-    o.append(text(cx, oy + 302, "AI Assistant Anything", 21, 700))
-    o.append(text(cx, oy + 334, "Write Emails  \u2022  Plan Trips  \u2022  Health Questions", 16, 400, "middle", "#26324A"))
-    o.append(text(cx, oy + 357, "New Hobbies  \u2022  Spot Scams  \u2022  Phone or Computer", 16, 400, "middle", "#26324A"))
+    o.append(text(cx, oy + 156, "AI Made Easy", 80, 700))
+    o.append(text(cx, oy + 226, "for Seniors", 66, 700, "middle", ACCENT))
+    o.append(f'<rect x="{cx - 150}" y="{oy + 246}" width="300" height="3" fill="{NAVY}"/>')
+    o.append(text(cx, oy + 282, "A Step-by-Step Guide to Asking an", 22, 700))
+    o.append(text(cx, oy + 309, "AI Assistant Anything", 22, 700))
     o.append(f'<rect x="{cx - 150}" y="{oy + h - 62}" width="300" height="40" rx="20" fill="#FFFFFF" fill-opacity="0.95"/>')
     o.append(text(cx, oy + h - 35, "Aadhavan Muthurengan", 20, 700))
     return "".join(o)

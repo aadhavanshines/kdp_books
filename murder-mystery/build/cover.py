@@ -29,8 +29,8 @@ def stars(x0, y0, w, h, n, seed):
 
 def front(ox, oy):
     cx = ox + TW / 2
-    lx, base = ox + 300, oy + 560               # lighthouse center and foot
-    lamp_y = base - 232
+    lx, base = ox + 150, oy + 592               # lighthouse center and foot
+    lamp_y = base - 292
     o = [stars(ox, oy, TW + BLEED, 330, 90, 3)]
     # beams from the lamp
     o.append(f'<polygon points="{lx},{lamp_y} {ox - 20},{lamp_y - 40} {ox - 20},{lamp_y + 75}" fill="{YELLOW}" opacity="0.34"/>')
@@ -51,16 +51,16 @@ def front(ox, oy):
     o.append(f'<line x1="{lx}" y1="{lamp_y - 12}" x2="{lx}" y2="{lamp_y + 16}" stroke="{DEEP}" stroke-width="2.5"/>')
     o.append(f'<polygon points="{lx - 19},{lamp_y - 12} {lx},{lamp_y - 36} {lx + 19},{lamp_y - 12}" fill="{DEEP}"/>')
     for k in range(3):
-        o.append(f'<rect x="{lx - 4}" y="{lamp_y + 60 + k * 44}" width="8" height="13" fill="{YELLOW}" opacity="0.85"/>')
+        o.append(f'<rect x="{lx - 4}" y="{lamp_y + 62 + k * 62}" width="8" height="13" fill="{YELLOW}" opacity="0.85"/>')
     # title block
     o.append(t(cx, oy + 52, "60 MURDER MYSTERY LOGIC PUZZLES", 14.5, "Special Elite", 400, YELLOW, extra='letter-spacing="1.5"'))
     for i, line in enumerate(["WHO KILLED", "THE LIGHTHOUSE", "KEEPER?"]):
         o.append(t(cx, oy + 112 + i * 52, line, 46 if i != 1 else 41, weight=900))
     o.append(f'<rect x="{cx - 70}" y="{oy + 236}" width="140" height="2" fill="{YELLOW}"/>')
-    o.append(t(cx, oy + 262, "Suspects, clues and one killer every time", 15.5, weight=400, extra='font-style="italic"'))
+    o.append(t(cx, oy + 262, "Suspects, clues and one killer every time", 18, weight=400, extra='font-style="italic"'))
     # red stamp
-    sx, sy = ox + 118, oy + 452
-    o.append(f'<g transform="rotate(-11 {sx} {sy})" opacity="0.93">'
+    sx, sy = ox + TW - 118, oy + 462
+    o.append(f'<g transform="rotate(-9 {sx} {sy})" opacity="0.93">'
              f'<rect x="{sx - 84}" y="{sy - 30}" width="168" height="60" rx="5" fill="none" stroke="{RED}" stroke-width="4.5"/>'
              f'<rect x="{sx - 77}" y="{sy - 23}" width="154" height="46" rx="3" fill="none" stroke="{RED}" stroke-width="1.5"/>'
              + t(sx, sy + 10, "CASE FILE", 25, "Special Elite", 400, RED, extra='letter-spacing="1.5"') + "</g>")
