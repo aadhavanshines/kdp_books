@@ -180,7 +180,7 @@ def back(by, ox):
         o.append(f'<svg x="0" y="0" width="{pw}" height="{ph}" viewBox="0 0 {pw} {ph}">'
                  f'<image x="{(pw - iw) / 2:.2f}" y="{(ph - ih) / 2:.2f}" width="{iw:.2f}" height="{ih:.2f}" '
                  f'preserveAspectRatio="none" href="data:image/jpeg;base64,{data}"/></svg>')
-    o += [f'<rect x="{ox + 44}" y="{BLEED + 48}" width="{TW - 88}" height="330" rx="30" fill="#ffffff" fill-opacity="{0.94 if painted else 1}"/>',
+    o += [f'<rect x="{ox + 44}" y="{BLEED + 48}" width="{TW - 88}" height="330" rx="30" fill="#ffffff" fill-opacity="1"/>',
          text(cx, BLEED + 100, BOOK["back_headline"][0], 30, 700),
          text(cx, BLEED + 136, BOOK["back_headline"][1], 30, 700, "middle", CORAL)]
     lines = BOOK["back_lines"]
@@ -219,7 +219,7 @@ def build(pages: int):
     fr = painted_front(BLEED + TW + pages * PER_PAGE * 72, 2 * BLEED + TH) if ART.exists() else None
     back_x, spine_x, front_x = BLEED, BLEED + TW, BLEED + TW + spine
     fr = fr or front(by, front_x)
-    sp = (f'<rect x="{spine_x}" y="0" width="{spine}" height="{h}" fill="{NAVY}"/>'
+    sp = (f'<rect x="{spine_x}" y="0" width="{spine}" height="{h}" fill="#A6071B"/>'
           f'<g transform="translate({spine_x + spine / 2 + 3.2} {h / 2}) rotate(90)">'
           + (text(0, 0, f"{BOOK['spine_text']}  •  {BOOK['author']}", 9, 700, "middle", "#ffffff") if pages >= 79 else "")
           + "</g>")
