@@ -11,16 +11,18 @@ ROOT = Path(__file__).resolve().parent.parent
 META = json.loads((ROOT / "book.json").read_text())
 PER_PAGE, BLEED = 0.002252, 9
 TW, TH = 432, 648
-NAVY, DEEP, CREAM, YELLOW, RED = "#0F1B33", "#070D1A", "#F3E9D2", "#F6C945", "#C2202B"
+NAVY, DEEP, CREAM, YELLOW, RED = "#0F1B33", "#0F1B33", "#F3E9D2", "#E8A317", "#B3141F"
+INK = "#14213D"
 
 
-def t(x, y, s, size, font="Playfair Display", weight=700, fill=CREAM, anchor="middle", extra=""):
+def t(x, y, s, size, font="Playfair Display", weight=700, fill=INK, anchor="middle", extra=""):
     s = s.replace("&", "&amp;")
     return (f'<text x="{x:.1f}" y="{y:.1f}" font-family="{font}" font-weight="{weight}" font-size="{size}" '
             f'fill="{fill}" text-anchor="{anchor}" {extra}>{s}</text>')
 
 
 def stars(x0, y0, w, h, n, seed):
+    return ""
     rnd = random.Random(seed)
     return "".join(f'<circle cx="{x0 + rnd.uniform(0, w):.1f}" cy="{y0 + rnd.uniform(0, h):.1f}" '
                    f'r="{rnd.uniform(0.4, 1.1):.2f}" fill="{CREAM}" opacity="{rnd.uniform(0.3, 0.8):.2f}"/>'
@@ -33,8 +35,8 @@ def front(ox, oy):
     lamp_y = base - 292
     o = [stars(ox, oy, TW + BLEED, 330, 90, 3)]
     # beams from the lamp
-    o.append(f'<polygon points="{lx},{lamp_y} {ox - 20},{lamp_y - 40} {ox - 20},{lamp_y + 75}" fill="{YELLOW}" opacity="0.34"/>')
-    o.append(f'<polygon points="{lx},{lamp_y} {ox + TW + 20},{lamp_y - 34} {ox + TW + 20},{lamp_y + 22}" fill="{YELLOW}" opacity="0.34"/>')
+    o.append(f'<polygon points="{lx},{lamp_y} {ox},{lamp_y - 28} {ox},{lamp_y + 52}" fill="{YELLOW}" opacity="0.5"/>')
+    o.append(f'<polygon points="{lx},{lamp_y} {ox + TW + 20},{lamp_y - 34} {ox + TW + 20},{lamp_y + 22}" fill="{YELLOW}" opacity="0.5"/>')
     # sea and rock
     o.append(f'<rect x="{ox - BLEED}" y="{base - 6}" width="{TW + 2 * BLEED}" height="{TH - (base - oy) + 6 + BLEED}" fill="{DEEP}"/>')
     o.append(f'<path d="M{lx - 150} {base} Q{lx - 90} {base - 46} {lx - 30} {base - 40} L{lx + 34} {base - 40} '
@@ -53,10 +55,10 @@ def front(ox, oy):
     for k in range(3):
         o.append(f'<rect x="{lx - 4}" y="{lamp_y + 62 + k * 62}" width="8" height="13" fill="{YELLOW}" opacity="0.85"/>')
     # title block
-    o.append(t(cx, oy + 52, "60 MURDER MYSTERY LOGIC PUZZLES", 14.5, "Special Elite", 400, YELLOW, extra='letter-spacing="1.5"'))
+    o.append(t(cx, oy + 52, "60 MURDER MYSTERY LOGIC PUZZLES", 14.5, "Special Elite", 400, RED, extra='letter-spacing="1.5"'))
     for i, line in enumerate(["WHO KILLED", "THE LIGHTHOUSE", "KEEPER?"]):
         o.append(t(cx, oy + 112 + i * 52, line, 46 if i != 1 else 41, weight=900))
-    o.append(f'<rect x="{cx - 70}" y="{oy + 236}" width="140" height="2" fill="{YELLOW}"/>')
+    o.append(f'<rect x="{cx - 70}" y="{oy + 236}" width="140" height="2" fill="{RED}"/>')
     o.append(t(cx, oy + 262, "Suspects, clues and one killer every time", 18, weight=400, extra='font-style="italic"'))
     # red stamp
     sx, sy = ox + TW - 118, oy + 462
@@ -71,10 +73,10 @@ def front(ox, oy):
 def back(ox, oy):
     cx = ox + TW / 2
     o = [stars(0, 0, ox + TW, TH + 2 * BLEED, 110, 9)]
-    o.append(t(cx, oy + 70, "CASE FILE", 13, "Special Elite", 400, YELLOW, extra='letter-spacing="3"'))
+    o.append(t(cx, oy + 70, "CASE FILE", 13, "Special Elite", 400, RED, extra='letter-spacing="3"'))
     o.append(t(cx, oy + 108, "Sixty murders.", 27, weight=900))
     o.append(t(cx, oy + 142, "One killer every time.", 27, weight=900))
-    o.append(f'<rect x="{cx - 50}" y="{oy + 160}" width="100" height="2" fill="{YELLOW}"/>')
+    o.append(f'<rect x="{cx - 50}" y="{oy + 160}" width="100" height="2" fill="{RED}"/>')
     para = ["Each case gives you a victim, a list of suspects",
             "and a set of clues. Cross off everyone who",
             "doesn't fit until one name is left.",
@@ -82,7 +84,7 @@ def back(ox, oy):
             "Sixty cases run from 5-minute warm-ups to tough",
             "five-suspect cases, with every solution explained."]
     for i, ln in enumerate(para):
-        o.append(t(cx, oy + 196 + i * 20, ln, 13.5, "Liberation Serif", 400))
+        o.append(t(cx, oy + 196 + i * 20, ln, 13.5, "Georgia", 400))
     bullets = ["18 cross-off cases to warm up",
                "32 logic grid cases: who, where and with what",
                "10 one-liar cases: five statements, one lie",
@@ -90,8 +92,8 @@ def back(ox, oy):
                "Step-by-step solutions, grids and motives"]
     for i, b in enumerate(bullets):
         y = oy + 350 + i * 25
-        o.append(f'<rect x="{ox + 62}" y="{y - 9}" width="8" height="8" fill="{YELLOW}"/>')
-        o.append(t(ox + 80, y, b, 12.5, "Special Elite", 400, CREAM, "start"))
+        o.append(f'<rect x="{ox + 62}" y="{y - 9}" width="8" height="8" fill="{RED}"/>')
+        o.append(t(ox + 80, y, b, 12.5, "Special Elite", 400, INK, "start"))
     o.append(t(cx, oy + 508, "For mystery lovers, puzzle fans and armchair detectives.", 12.5, weight=400, extra='font-style="italic"'))
     o.append(f'<rect x="{ox + TW - 36 - 144}" y="{oy + TH - 36 - 86}" width="144" height="86" fill="#FFFFFF"/>')
     return "".join(o)
@@ -102,15 +104,16 @@ def build():
     spine = pages * PER_PAGE * 72
     W, H = 2 * BLEED + 2 * TW + spine, 2 * BLEED + TH
     fx = BLEED + TW + spine
-    bg = (f'<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0A1326"/>'
-          f'<stop offset="1" stop-color="#16294A"/></linearGradient></defs><rect width="{W:.2f}" height="{H}" fill="url(#g)"/>')
-    sp = (f'<rect x="{BLEED + TW:.2f}" y="0" width="{spine:.2f}" height="{H}" fill="{DEEP}"/>'
+    bg = (f'<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF5E8"/>'
+          f'<stop offset="1" stop-color="#EEDFBD"/></linearGradient></defs><rect width="{W:.2f}" height="{H}" fill="url(#g)"/>')
+    sp = (f'<rect x="{BLEED + TW:.2f}" y="0" width="{spine:.2f}" height="{H}" fill="none"/>'
           f'<g transform="translate({BLEED + TW + spine / 2 - 3.6:.2f} {H / 2}) rotate(90)">'
-          + t(0, 0, "WHO KILLED THE LIGHTHOUSE KEEPER?", 10.5, weight=700, extra='dominant-baseline="auto"')
+          + t(0, 0, "WHO KILLED THE LIGHTHOUSE KEEPER?", 10.5, weight=700, fill=INK, extra='dominant-baseline="auto"')
           + "</g>" if pages >= 79 else "")
     sp = sp.replace('rotate(90)">', 'rotate(90)">', 1)
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W:.2f}pt" height="{H}pt" viewBox="0 0 {W:.2f} {H}">'
-           + bg + back(BLEED, BLEED) + front(fx, BLEED) + sp + "</svg>")
+           + bg + f'<rect x="0" y="{BLEED + 586}" width="{W:.2f}" height="{H - BLEED - 586}" fill="{DEEP}"/>'
+           + back(BLEED, BLEED) + front(fx, BLEED) + sp + "</svg>")
     dist = ROOT / "dist"
     (dist / "paperback-cover.pdf").write_bytes(cairosvg.svg2pdf(bytestring=svg.encode()))
     cairosvg.svg2png(bytestring=svg.encode(), write_to=str(dist / "paperback-cover-preview.png"), output_width=1800)
