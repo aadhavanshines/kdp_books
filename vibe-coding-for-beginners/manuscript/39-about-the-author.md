@@ -8,4 +8,6 @@ That experience shapes this book. In engineering, a tool is only as good as the 
 
 Aadhavan is also the author of *Prompt Engineering Mastery*, a beginner-to-advanced guide to getting better results from AI chatbots, coding assistants, image generators, and agents.
 
+**One small request.** If this book helped you, I would be grateful if you left a short review on Amazon. A sentence or two about what you built or learned is enough. Reviews help other readers decide whether the book is right for them, and they tell me what to improve in the next edition.
+
 Thank you for reading *Vibe Coding for Beginners*. I hope it helps you turn your ideas into software that works, and that you enjoy building it as much as I enjoyed writing this book.

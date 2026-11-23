@@ -1,8 +1,9 @@
 """Check the paperback interior PDF before upload.
 
 Measures, on every page: the inside (gutter) and outside margins of the
-text and images, whether every chapter, part and appendix starts on a
-right-hand page, large unplanned gaps at the bottom of pages, and
+text and images, whether every part opener and the tear-out quick reference
+start on a right-hand page (chapters start on the next page, left or right),
+blank pages after the front matter, large unplanned gaps at the bottom of pages, and
 characters the fonts can't draw (they extract as NUL or U+FFFD).
 Usage:  python3 build/check_pdf.py [dist/paperback-interior-8.5x11.pdf]
 """
@@ -37,15 +38,25 @@ for i, page in enumerate(doc):
     next_starts = (n + 1) in starts or (n + 2) in starts
     if gap > 2.5 and n not in starts and not next_starts and 10 < n < doc.page_count:
         gaps.append((round(gap, 2), n))
-even_starts = sorted(pg for pg in starts if pg % 2 == 0)
+recto_only = [pg for _, title, pg in doc.get_toc()
+              if title.startswith("Part ") or title.startswith("Appendix C")]
+even_starts = sorted(pg for pg in recto_only if pg % 2 == 0)
+blank = [i + 1 for i, page in enumerate(doc)
+         if i >= 8 and not page.get_text("blocks") and not page.get_image_info()]
+thin = [i + 1 for i, page in enumerate(doc)
+        if i >= 8 and (i + 1) not in starts and not page.get_image_info()
+        and 0 < sum(len(b.get("lines", [])) for b in page.get_text("dict")["blocks"]) <= 5]
 print(f"pages: {doc.page_count}")
 print(f"smallest inside margin: {min(inside)[0]} in (page {min(inside)[1]}), "
       f"KDP minimum {GUTTER_MIN} in")
 print(f"smallest outside margin: {min(outside)[0]} in (page {min(outside)[1]}), "
       "KDP minimum 0.25 in")
-print(f"TOC entries: {len(starts)}; starting on a left-hand page: {even_starts or 'none'}")
+print(f"TOC entries: {len(starts)}; parts or quick reference starting on a left-hand page: "
+      f"{even_starts or 'none'}")
+print(f"blank pages after the front matter: {blank or 'none'}")
+print(f"pages with only a few lines (header and page number included): {thin or 'none'}")
 print(f"gaps over 2.5 in before the end of a chapter: {sorted(gaps, reverse=True)[:8] or 'none'}")
 print(f"pages with characters the fonts can't draw: {missing or 'none'}")
 ok = (min(inside)[0] >= GUTTER_MIN and min(outside)[0] >= 0.25 and not even_starts
-      and not missing)
+      and not missing and not blank and not thin)
 sys.exit(0 if ok else 1)

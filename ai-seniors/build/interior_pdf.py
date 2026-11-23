@@ -118,6 +118,9 @@ def make_styles():
                                   textColor=GREY, alignment=TA_LEFT, spaceAfter=12)
     s["chaptitle"] = ParagraphStyle("chaptitle", fontName="Sans-Bold", fontSize=36, leading=42,
                                     textColor=ACCENT, alignment=TA_LEFT, spaceAfter=14)
+    # A tear-out sheet's title sits on one line, to leave room for the sheet's content.
+    s["sheettitle"] = ParagraphStyle("sheettitle", parent=s["chaptitle"], fontSize=30, leading=36,
+                                     spaceAfter=10)
     s["partnum"] = ParagraphStyle("partnum", fontName="Sans-Bold", fontSize=20, leading=26,
                                   textColor=GREY, alignment=TA_CENTER, spaceAfter=18)
     s["parttitle"] = ParagraphStyle("parttitle", fontName="Sans-Bold", fontSize=40, leading=48,
@@ -229,6 +232,7 @@ class BookDoc(BaseDocTemplate):
         # Pick the template from the real page number. Alternating automatically drifts out of
         # step after inserted blank pages, which put the narrow margin on the spine side.
         self.pageTemplate = self.pageTemplates[0 if (self.page + 1) % 2 == 1 else 1]
+        self._page_dirty = False
         super().handle_pageBegin()
 
     def handle_frameBegin(self, *args, **kw):
@@ -248,7 +252,17 @@ class BookDoc(BaseDocTemplate):
                 break
             used += h
 
+    def handle_flowable(self, flowables):
+        if flowables and isinstance(flowables[0], ChapterBreak):
+            del flowables[0]
+            if getattr(self, "_page_dirty", False):
+                self.handle_pageBreak()
+            return
+        super().handle_flowable(flowables)
+
     def afterFlowable(self, flowable):
+        if isinstance(flowable, (Paragraph, Table, Figure, HRule, RLImage, TableOfContents)):
+            self._page_dirty = True
         toc = getattr(flowable, "_toc", None)
         if toc:
             level, text = toc
@@ -259,10 +273,25 @@ class BookDoc(BaseDocTemplate):
             self.notify("TOCEntry", (level, text, self.page, key))
 
 
+class ChapterBreak(Flowable):
+    """Start a new page, unless nothing has been drawn on the current one yet
+    (a trailing spacer can spill onto a fresh page, which would then be left blank).
+    BookDoc.handle_flowable acts on it directly, so it never has to fit in a frame."""
+
+    def wrap(self, aw, ah):
+        return 0, 0
+
+    def draw(self):
+        pass
+
+
+def page_break():
+    return [ChapterBreak()]
+
+
 def recto_break():
     """Start the next flowable on a right-hand (odd) page, inserting a blank page if needed."""
-    return [
-        PageBreak(),
+    return page_break() + [
         DocIf("doc.page % 2 == 0", [Marker(plain=True, number=False), Spacer(1, 1), PageBreak()]),
     ]
 
@@ -499,13 +528,16 @@ class KeepWithNext(CondPageBreak):
     """Start a new page unless the heading(s) that follow fit together with at
     least the first lines of the content after them. Prevents stranded headings."""
 
-    def __init__(self, following):
+    def __init__(self, following, depth=0):
         super().__init__(0)
         self.following = following
+        self.depth = depth
 
     def _needed(self, aw, ah):
         need = 0
         for f in self.following:
+            if isinstance(f, (ChapterBreak, DocIf)):
+                return need  # the chapter ends here
             if isinstance(f, Marker) or isinstance(f, KeepWithNext):
                 continue
             if isinstance(f, CondPageBreak):
@@ -550,6 +582,10 @@ class KeepWithNext(CondPageBreak):
                 if f:
                     from reportlab.platypus.doctemplate import FrameBreak
                     f.add_generated_content(FrameBreak)
+                    # A figure floated to the top of the next page takes room there,
+                    # so check again once it has been placed.
+                    if self.depth < 2 and self._doctemplateAttr("_floats"):
+                        f.add_generated_content(KeepWithNext(self.following, self.depth + 1))
         return 0, 0
 
 
@@ -567,8 +603,21 @@ def build_story(meta, manuscript, styles, image_root):
     story = front_matter(meta, styles)
     pending_chapter_prefix = None
     for fname, blocks in manuscript:
+        skip = False
         for bi, block in enumerate(blocks):
             kind = block[0]
+            if skip:
+                skip = False
+                continue
+            # The closing "Key Points" list stays in one piece.
+            if (kind == "h2" and block[1] == "Key Points" and bi + 1 < len(blocks)
+                    and blocks[bi + 1][0] == "ul"):
+                group = [Paragraph(inline(block[1]), styles["h2"])]
+                group += [Paragraph(inline(item), styles["bullet"], bulletText="\u2022")
+                          for item in blocks[bi + 1][1]]
+                story.append(KeepTogether(group))
+                skip = True
+                continue
             if kind == "part":
                 num, title = block[1].split(":", 1)
                 story += recto_break()
@@ -581,9 +630,12 @@ def build_story(meta, manuscript, styles, image_root):
             elif kind == "chapter":
                 title = block[1]
                 m = re.match(r"^Chapter (\d+): (.*)$", title)
-                story += recto_break()
+                # Chapters start on the next page. A tear-out sheet starts on a right-hand
+                # page with a short drop, so it fits on the front and back of one leaf.
+                one_sheet = title in meta.get("one_sheet", [])
+                story += recto_break() if one_sheet else page_break()
                 story.append(Marker(plain="opener", front=False, chapter=(m.group(2) if m else title)))
-                story.append(Spacer(1, 1.6 * inch))
+                story.append(Spacer(1, (0.05 if one_sheet else 1.6) * inch))
                 if m:
                     level = meta.get("levels", {}).get(m.group(1))
                     label = f"CHAPTER {m.group(1)}" + (f"&nbsp;&nbsp;&middot;&nbsp;&nbsp;{level.upper()}" if level else "")
@@ -591,10 +643,10 @@ def build_story(meta, manuscript, styles, image_root):
                     head = Paragraph(m.group(2), styles["chaptitle"])
                     head._toc = (1, f"{m.group(1)}. {m.group(2)}")
                 else:
-                    head = Paragraph(title, styles["chaptitle"])
+                    head = Paragraph(title, styles["sheettitle" if one_sheet else "chaptitle"])
                     head._toc = (0 if title.startswith("Appendix") or title in (
                         "Introduction", "About the Author") else 1, title)
-                story += [head, HRule(TEXT_W), Spacer(1, 22)]
+                story += [head, HRule(TEXT_W), Spacer(1, 8 if one_sheet else 22)]
             elif kind in ("h2", "h3"):
                 h = Paragraph(inline(block[1]), styles[kind])
                 h._guarded = True

@@ -8,4 +8,6 @@ That experience shaped this book. Engineers learn to ask how things really work,
 
 Aadhavan is also the author of *Prompt Engineering Mastery*, a beginner-to-advanced guide to getting better results from AI; *Vibe Coding for Beginners*, a guide to building real software with AI coding tools; *Building AI Agents with Claude*, a guide to agents that use tools, remember, and get real work done; and *Python Programming Hands-On*, a practical, tested introduction to programming.
 
+**One small request.** If this book helped you, I would be grateful if you left a short review on Amazon. A sentence or two about what you built or learned is enough. Reviews help other readers decide whether the book is right for them, and they tell me what to improve in the next edition.
+
 Thank you for reading *How Large Language Models Are Made*. I hope it helps you see the machinery behind the magic, and use it wisely.
