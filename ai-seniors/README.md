@@ -1,6 +1,6 @@
 # AI Made Easy for Seniors
 
-*A Large-Print, Step-by-Step Guide to Asking an AI Assistant Anything — Write Emails, Plan Trips, Check Health Questions, Learn New Hobbies and Spot Scams, on Your Phone or Computer*, by Aadhavan Muthurengan. Large-print 8.5 x 11 in paperback (145 pages, $14.99) and Kindle eBook ($6.99).
+*A Large-Print, Step-by-Step Guide to Asking an AI Assistant Anything — Write Emails, Plan Trips, Check Health Questions, Learn New Hobbies and Spot Scams, on Your Phone or Computer*, by Aadhavan Muthurengan. Large-print 8.5 x 11 in paperback (127 pages, $14.99) and Kindle eBook ($6.99).
 
 Sixteen short chapters in four parts (Getting Started, Everyday Help, Staying Safe, Going Further), plus 100 ready-to-use questions, a plain-English word list and a quick reference page.
 
