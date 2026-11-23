@@ -131,4 +131,10 @@ def build_ebook_cover(meta, out_jpg):
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{tw}" height="{th}" viewBox="0 0 {tw} {th}">'
            + front(0, 0, tw, th) + "</svg>")
     png = cairosvg.svg2png(bytestring=svg.encode(), output_width=1708)   # 1708 x 2562 px (2:3, 6x9)
-    Image.open(io.BytesIO(png)).convert("RGB").save(out_jpg, "JPEG", quality=92)
+    im = Image.open(io.BytesIO(png)).convert("RGB")
+    im.save(out_jpg, "JPEG", quality=92)
+    # Bordered version for the Kindle upload: a 4 px slate edge (same as the other 2026
+    # covers) keeps the white cover from melting into Amazon's white page.
+    from PIL import ImageDraw
+    ImageDraw.Draw(im).rectangle([0, 0, im.width - 1, im.height - 1], outline=(156, 162, 174), width=4)
+    im.save(Path(out_jpg).with_name("ebook-cover-bordered.jpg"), "JPEG", quality=92)
