@@ -28,7 +28,7 @@ Northfield's portfolio at the end of year one:
 
 | Use case | Status | Result to date |
 | --- | --- | --- |
-| Customer email drafting | Production | On track with business case (Chapter 17) |
+| Customer email drafting | Production | Close to the business case; year one slightly below (Chapter 17) |
 | Catalog descriptions | Complete; maintained monthly | 6,400 descriptions; branch stock calls down |
 | Collections drafting | Production (assistant-based) | DSO down 2 days |
 | HR policy assistant | Production | Routine HR emails down about a third |

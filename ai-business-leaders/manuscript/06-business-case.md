@@ -99,7 +99,7 @@ Northfield tested three:
 | Base case | As above | $200,880 |
 | Half the adoption | Agents use the drafts on only half the routine emails, so benefits halve | About -$2,600 (break-even) |
 | Integration costs double | $90,000 instead of $45,000 | $155,880 |
-| Volume grows 15 percent instead of 8 | Four hires were planned, three avoided | About $371,000 |
+| Volume grows 10 percent instead of 8 | Four hires were planned, three avoided | About $371,000 |
 
 The result was striking: **the case depends far more on adoption than on cost.** Doubling the integration cost still left a strong return. Halving adoption wiped out the return entirely.
 

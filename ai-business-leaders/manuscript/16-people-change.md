@@ -82,7 +82,7 @@ Northfield's pilot (Chapter 17 has the full results) taught the company several 
 
 **Make feedback visible.** Agents could flag bad drafts with one click. The product owner fixed the most common problems each week and told the team what had changed. Agents saw that their feedback mattered.
 
-**Watch adoption by person and by site.** In week two, adoption was strong in four branches and weak in two. In both weak branches, the team leader was skeptical and had told agents to "use it if you want." A conversation with each team leader, and a day of a champion's time on site, closed most of the gap within a week.
+**Watch adoption by person and by site.** In week four, the first full week with the whole team, adoption was strong in four branches and weak in two. In both weak branches, the team leader was skeptical and had told agents to "use it if you want." A conversation with each team leader, and a day of a champion's time on site, closed most of the gap within a week.
 
 **Celebrate the people, not the tool.** Weekly updates highlighted agents who had found good ways to use the drafts, not just the system's numbers.
 

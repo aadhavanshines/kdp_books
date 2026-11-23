@@ -31,7 +31,7 @@ This book tries to fix each of those problems:
 - **Real numbers.** Chapter 6 builds a full three-year business case, line by line, with the costs most people forget. You can copy the structure for your own projects.
 - **Decisions, not descriptions.** Every chapter ends with the questions your leadership team should discuss and the decisions you need to make.
 - **Every function.** Part III goes through sales, marketing, customer service, finance, operations, HR, legal and IT, with the use cases that tend to pay back, the metrics to track and the traps to avoid.
-- **Templates you can use tomorrow.** Appendix A contains a use-case canvas, a business case template, a vendor scorecard, a pilot charter, a one-page AI use policy and a board update. Appendix B adds 30 ready-to-use prompts for leaders, and the paperback also has fill-in worksheets.
+- **Templates you can use tomorrow.** Appendix A contains eight templates, including a use-case canvas, a business case, a vendor scorecard, a pilot charter, a one-page AI use policy and a board update. Appendix B adds 30 ready-to-use prompts for leaders, and the paperback also has fill-in worksheets.
 - **Vendor-neutral.** I mention well-known products only as examples. Nothing in this book depends on which AI vendor you choose, and nothing in it is for sale.
 - **Built to last.** AI products change every few months. The way to choose, fund, govern and measure them does not. Where a fact might change, I tell you how to check it.
 

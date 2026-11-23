@@ -31,12 +31,12 @@ The aim of this phase is to choose your first use cases, approve the business ca
 
 - Score the candidates (Chapter 5) and choose a portfolio: a flagship, a quick win and a foundation.
 - Start the quick win immediately if it needs only the approved assistant.
-- For the flagship, start vendor research or confirm the route (Chapter 7).
+- For the flagship, confirm the route (Chapter 7). If you are buying, start the vendor test on your own data now, so you can choose in week 5.
 - Publish the AI use policy and run the first everyone-level training sessions.
 
 **Week 4**
 
-- Collect the baseline data for the flagship (Chapter 6): at least two weeks, measured the same way the pilot will be.
+- Finish the baseline for the flagship (Chapter 6): at least two weeks of data, measured the same way the pilot will be. Historical data from your systems counts; if you must time work by hand, start in week 2.
 - Build the flagship business case and pilot targets.
 - Complete the Tier 2 checklist for the flagship.
 - Leadership approves the flagship business case and pilot charter.
@@ -49,7 +49,7 @@ The aim of this phase is to run the flagship pilot with real users and real work
 
 **Week 5**
 
-- Run a fair vendor test on your own data if you are buying (Chapter 7). Choose.
+- Finish the vendor test and choose (Chapter 7).
 - Set up the tool for the pilot: connections, instructions, feedback buttons, quality sampling.
 - Train the pilot users (half-day session plus floor support).
 
@@ -70,6 +70,8 @@ The aim of this phase is to run the flagship pilot with real users and real work
 - Mid-pilot review with the sponsor: metrics against targets, issues, any change of course.
 - Start the foundation project if it needs a longer run (data cleanup, permissions).
 - Broad assistant rollout continues: training sessions, champions active.
+
+> **Note:** This timing assumes the pilot can start with a light connection, or with agents copying information in by hand. If your flagship needs a full integration with core systems, as Northfield's did, allow four to eight extra weeks before the pilot starts, and use them for training and process design.
 
 **End of Phase 2 deliverables:** a flagship pilot running with weekly metrics; a completed quick win with results shared; champions network in place.
 

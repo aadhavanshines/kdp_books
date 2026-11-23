@@ -103,7 +103,7 @@ Appendix A includes this as the Pilot Charter template.
 
 ## Key Points
 
-- Most AI pilots fail for management reasons: no baseline, no owner, no process change, unready data, no decision rule, and risk found too late.
+- Most AI pilots fail for management reasons: no baseline, no real problem to solve, licenses without process change, neglect of the people side, unready data, no decision rule, and risk found too late.
 - Start from a business problem with an owner and a number, not from a technology looking for a use.
 - General licenses build skills and ideas. Measurable returns come from redesigned processes.
 - Budget at least as much for people and process as for technology.

@@ -77,7 +77,7 @@ Northfield's working group scored all twelve candidates in a two-hour meeting. E
 
 The discussion mattered more than the numbers. Three moments stood out.
 
-**Customer email replies scored highest**, but only after a debate about safety. Priya wanted to send AI replies automatically for simple order-status questions. The group agreed to start with every reply checked by an agent, which raised the safety score from 3 to 4, and to revisit automatic sending after the pilot.
+**Customer email replies scored highest.** Its hard savings sat in the $100,000 to $250,000 band, but the group gave it a 5 because faster replies to contractor customers were a top goal for Dana's team. It was also the subject of a debate about safety. Priya wanted to send AI replies automatically for simple order-status questions. The group agreed to start with every reply checked by an agent, which raised the safety score from 3 to 4, and to revisit automatic sending after the pilot.
 
 **Quote drafting had the highest value** alongside email. Faster quotes win more business, and the sales director had numbers to prove it. But it needed connections to the product catalog, the pricing system and the customer's account terms. The group kept it as the second bet and started the data work early.
 

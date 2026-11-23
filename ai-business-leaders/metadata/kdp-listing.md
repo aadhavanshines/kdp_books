@@ -90,7 +90,7 @@ Texts: "Some sections, with minimal or no editing" (tool: Anthropic / Claude). I
 
 | Setting | Value |
 | --- | --- |
-| Manuscript | `dist/proof-before-scale.epub` (37 XHTML/OPF files, all well-formed; no worksheets, which are print-only) |
+| Manuscript | `dist/proof-before-scale.epub` (EPUBCheck: 0 errors, 0 warnings; no worksheets, which are print-only) |
 | Cover | `dist/ebook-cover.jpg` (1708 x 2562 px) |
 | Price | $9.99, 70% royalty |
 | KDP Select | Yes (enroll) |

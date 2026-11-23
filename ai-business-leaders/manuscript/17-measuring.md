@@ -65,7 +65,7 @@ At the twelve-month review, Northfield compared actual results with the business
 | Total cost | $106,040 | About $112,000 |
 | Net | $4,960 | About -$4,000 |
 
-Year one came in slightly below break-even, mostly because the integration took longer than planned and the extra checking time in the early weeks. Year two was on track to match the business case. Marcus's comment at the board meeting: "It came in close to what we said it would. That is why I'm willing to fund the next three."
+Year one came in slightly below break-even, mostly because the integration took longer than planned and because of the extra checking time in the early weeks. Year two was on track to match the business case. Marcus's comment at the board meeting: "It came in close to what we said it would. That is why I'm willing to fund the next three."
 
 There were also benefits outside the business case. Customer satisfaction scores for email rose by about six points. Two experienced agents moved into a new role handling key-account service, which the sales director credited with winning back a large contractor. None of this was in the hard numbers. All of it mattered.
 
