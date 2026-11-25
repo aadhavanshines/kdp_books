@@ -1,0 +1,25 @@
+{
+  "title": "Claude AI Step by Step",
+  "subtitle": "The Visual Beginner's Guide to Getting Finished Work from Claude, with 50 Real Workflows, Step-by-Step Illustrations and No Coding",
+  "slug": "claude-ai-step-by-step",
+  "author": "Aadhavan Muthurengan",
+  "language": "en",
+  "year": 2026,
+  "identifier": "claude-ai-step-by-step-aadhavan-muthurengan-2026",
+  "trim": {"width_in": 6.0, "height_in": 9.0},
+  "paper": "white",
+  "reuse_note": "You are welcome to copy the requests, templates and checklists in this book and use them in your own work.",
+  "trademarks": "Claude, Claude Code and Claude Cowork are trademarks of Anthropic, PBC. ChatGPT is a trademark of OpenAI. Gemini, Gmail, Google Drive, Google Calendar, Google Meet and Chrome are trademarks of Google LLC. Microsoft, Microsoft 365, Excel, Word, PowerPoint, Outlook, OneDrive and SharePoint are trademarks of Microsoft Corporation. Slack is a trademark of Slack Technologies, LLC. Apple, Mac, iPhone and iOS are trademarks of Apple Inc. Android is a trademark of Google LLC. All other product names are trademarks of their respective owners and are used only to identify them. This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic or any of these companies.",
+  "dedication": [
+    "To my father and my mother,",
+    "for your love, your sacrifices, and every lesson you taught me.",
+    "",
+    "To my wife,",
+    "for your patience, your encouragement, and your belief in me.",
+    "",
+    "And to our three children,",
+    "may you always build the things you dream of.",
+    "",
+    "This book is for you."
+  ]
+}
