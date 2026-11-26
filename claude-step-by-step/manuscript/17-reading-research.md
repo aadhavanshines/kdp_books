@@ -97,7 +97,7 @@ PTA Meeting Minutes, 25 November 2026
 Attendees: Lisa (Chair), Omar, Grace, Ben, Mrs Kaur (Principal)
 
 Decisions made
-- Winter Fair confirmed for Saturday 13 December, 10:00 am-2:00 pm, in the gym.
+- Winter Fair confirmed for Saturday 13 December, 10:00 am-2:00 pm, in the gym. [AUTHOR'S CORRECTION: 13 December 2026 is a Sunday. Claude added "Saturday"; see below.]
 - Library budget approved: $400 for new library books.
 - Next meeting set for 13 January.
 

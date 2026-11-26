@@ -124,7 +124,7 @@ A few choices you might want to change:
 [...]
 ```
 
-That last point is the kind of judgment you'd expect from a careful colleague: a chart that starts at 70% makes a 4-point drop look dramatic, and Claude made sure you'd say so. **Next:** "Give me the three questions the board is most likely to ask, with short answers." **Make it repeatable:** A design system (Chapter 13) so every deck matches your company look.
+That last point deserves care. A chart that starts at 70% makes a 4-point drop look dramatic, and Claude did flag it in the notes, but a note isn't enough for a board that only glances at the slide. **Fix it:** ask for "a chart with the scale starting at zero, plus a small close-up labeled 'Detail: 70-90%'" so nobody is misled. **Next:** "Give me the three questions the board is most likely to ask, with short answers." **Make it repeatable:** A design system (Chapter 13) so every deck matches your company look.
 
 ## Workflow 21: Plan a Project Week by Week
 

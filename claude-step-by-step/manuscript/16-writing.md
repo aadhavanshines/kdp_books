@@ -2,7 +2,7 @@
 
 # Chapter 16: Writing and Email
 
-Every workflow in Part III follows the same pattern: what it's for, the exact request I sent, Claude's real answer, what to do next, and how to make it repeatable. All 50 were run in the Claude app on Sonnet 5.5 at Medium effort in November 2026, in incognito chats. The answers are copied exactly; "[...]" marks where I cut something for space. Where a workflow needs something to work on, such as an email or a spreadsheet, the request includes the fictional example I used, so you can see exactly what Claude saw.
+Every workflow in Part III follows the same pattern: what it's for, the exact request I sent, Claude's real answer, what to do next, and how to make it repeatable. All 50 were run in the Claude app on Sonnet 5.5 at Medium effort in November 2026. Most ran in incognito chats; the ones that create a file, a Claude Doc or an artifact ran in normal chats, because incognito chats can't save those (Chapter 10). The four routines in Chapter 22 were tested by hand with pasted sample data, exactly as you should test one before scheduling it. The answers are copied exactly; "[...]" marks where I cut something for space. Where a workflow needs something to work on, such as an email or a spreadsheet, the request includes the fictional example I used, so you can see exactly what Claude saw.
 
 Change the details to fit your own situation. The structure is what does the work.
 

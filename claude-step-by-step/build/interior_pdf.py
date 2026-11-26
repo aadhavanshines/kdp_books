@@ -393,6 +393,25 @@ def code_block(code, styles, source=""):
     return [KeepTogether([Spacer(1, 3), t, Spacer(1, 11)])] if short else [Spacer(1, 3), t, Spacer(1, 11)]
 
 
+def _print_jpeg(path):
+    """Embed images as high-quality JPEGs no larger than 300 dpi at the full text
+    width, so the interior PDF stays small enough to upload."""
+    from PIL import Image as PILImage
+    from pathlib import Path as _P
+    path = _P(path)
+    cache = _P(__file__).resolve().parent / ".imgcache"
+    cache.mkdir(exist_ok=True)
+    out = cache / (path.stem + ".jpg")
+    if out.exists() and out.stat().st_mtime >= path.stat().st_mtime:
+        return str(out)
+    im = PILImage.open(path).convert("RGB")
+    max_w = int(TEXT_W / 72 * 300)
+    if im.width > max_w:
+        im = im.resize((max_w, round(im.height * max_w / im.width)), PILImage.LANCZOS)
+    im.save(out, "JPEG", quality=90, optimize=True, dpi=(300, 300))
+    return str(out)
+
+
 class Figure(Flowable):
     """Image plus centered caption that shrinks (down to 65%) to fit the space left on a page."""
 
@@ -400,7 +419,7 @@ class Figure(Flowable):
         super().__init__()
         from PIL import Image as PILImage
         w_px, h_px = PILImage.open(path).size
-        self.path = str(path)
+        self.path = _print_jpeg(path)
         self.ratio = h_px / w_px
         self.full_w = min(TEXT_W, max_h / self.ratio)
         self.caption = Paragraph(inline(caption), style)

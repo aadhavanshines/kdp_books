@@ -149,7 +149,14 @@ def _ebook_image(path):
     import io
     from PIL import Image
     if path.suffix != ".jpg":
-        return path.read_bytes()
+        im = Image.open(path)
+        if im.width <= 1200:
+            return path.read_bytes()
+        im = im.convert("RGB").resize((1200, round(im.height * 1200 / im.width)), Image.LANCZOS)
+        im = im.quantize(colors=256, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG)
+        buf = io.BytesIO()
+        im.save(buf, "PNG", optimize=True)
+        return buf.getvalue()
     im = Image.open(path).convert("RGB")
     if im.width > 1200:
         im = im.resize((1200, round(im.height * 1200 / im.width)), Image.LANCZOS)
