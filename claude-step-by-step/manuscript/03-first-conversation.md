@@ -28,7 +28,7 @@ Notice four things.
 
 **2. The answer came as a ready-to-use email.** For emails, Claude often shows a special draft card with a subject line, the message, and buttons. This time it offered two versions, **Standard** and **Extra brief**, as tabs.
 
-**3. Buttons under the draft.** **Copy** copies the email so you can paste it anywhere. **Send via Gmail** opens it in Gmail if you have connected your Gmail account (Chapter 13).
+**3. Buttons under the draft.** **Copy** copies the email so you can paste it anywhere. **Send via Gmail** opens it in Gmail if you have connected your Gmail account (Chapter 12).
 
 **4. A helpful note.** Below the draft, Claude added:
 

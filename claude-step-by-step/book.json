@@ -6,7 +6,10 @@
   "language": "en",
   "year": 2026,
   "identifier": "claude-ai-step-by-step-aadhavan-muthurengan-2026",
-  "trim": {"width_in": 6.0, "height_in": 9.0},
+  "trim": {
+    "width_in": 6.0,
+    "height_in": 9.0
+  },
   "paper": "white",
   "reuse_note": "You are welcome to copy the requests, templates and checklists in this book and use them in your own work.",
   "trademarks": "Claude, Claude Code and Claude Cowork are trademarks of Anthropic, PBC. ChatGPT is a trademark of OpenAI. Gemini, Gmail, Google Drive, Google Calendar, Google Meet and Chrome are trademarks of Google LLC. Microsoft, Microsoft 365, Excel, Word, PowerPoint, Outlook, OneDrive and SharePoint are trademarks of Microsoft Corporation. Slack is a trademark of Slack Technologies, LLC. Apple, Mac, iPhone and iOS are trademarks of Apple Inc. Android is a trademark of Google LLC. All other product names are trademarks of their respective owners and are used only to identify them. This book is independent and is not affiliated with, sponsored by, or endorsed by Anthropic or any of these companies.",
@@ -21,5 +24,16 @@
     "may you always build the things you dream of.",
     "",
     "This book is for you."
-  ]
+  ],
+  "back_cover_blurb": [
+    "Stop fixing AI drafts. Start getting finished work.",
+    "You've tried Claude. The answers are impressive, but you still end up rewriting them. This book shows you, step by step and screen by screen, how to get work you can actually use.",
+    "- The four-part Finished-Work Formula that turns generic answers into finished ones",
+    "- Real screenshots of every feature: files, Projects, memory, Research, connectors, skills and scheduled tasks",
+    "- 50 worked workflows with Claude's real answers: email, reading, office work, learning, home and money",
+    "- Build calculators, trackers and small apps with no code at all",
+    "- Privacy settings and a five-minute routine for checking Claude's work",
+    "Updated for Claude in late 2026. No technical background needed."
+  ],
+  "author_short_bio": "Aadhavan Muthurengan writes clear, practical guides to AI for everyday readers and working professionals, including the AI Skillup series."
 }

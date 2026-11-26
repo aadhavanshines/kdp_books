@@ -40,15 +40,13 @@ Priya runs the parents' association at her daughter's school. She needs to ask p
 Write a message asking parents to volunteer for the school fair.
 ```
 
-The answer was fine but generic: no date, no specific jobs, placeholder brackets everywhere.
+The answer was fine but generic: no date, no specific jobs, and placeholder brackets everywhere, such as [Date] and [Location]. She would have had to fill in every one of them herself, which is exactly the editing work she was hoping to avoid.
 
 **With the formula:**
 
 ```prompt
 Write a short message for our school parents' WhatsApp group (Result) asking for volunteers for the spring fair. The parents are busy and skim, so it must be readable in 20 seconds (Reader). Details: Saturday 14 March, 10am to 2pm, Oakfield Primary playground. We need 4 people for the bake stall, 3 for games, 2 for setup at 9am and 2 for cleanup at 2pm. Shifts are 1 hour. Sign-up sheet: link in my next message (Raw material). Friendly and upbeat, no emoji, no guilt-tripping, end with a clear call to action (Rules).
 ```
-
-**Claude's answer:**
 
 ```result
 Hi everyone!

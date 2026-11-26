@@ -34,9 +34,9 @@ That last point is the key to this whole book. When Claude gives you a generic a
 
 ## What Claude Is Not
 
-**It is not always right.** Claude can make mistakes, including stating something false with complete confidence. This is often called a "hallucination." It happens less than it used to, but it still happens, especially with exact numbers, quotes, dates, legal details and very recent events. Chapter 24 shows you how to check work quickly.
+**It is not always right.** Claude can make mistakes, including stating something false with complete confidence. This is often called a "hallucination." It happens less than it used to, but it still happens, especially with exact numbers, quotes, dates, legal details and very recent events. Chapter 23 shows you how to check work quickly.
 
-**It is not a search engine.** Unless web search is turned on, Claude answers from what it learned during training, which stops at a certain date. For current news, prices, opening hours or anything that changes, turn on web search (Chapter 11).
+**It is not a search engine.** Claude answers mostly from what it learned during training, which stops at a certain date. It searches the web by itself when a question clearly needs current facts, but for news, prices, opening hours or anything that changes, it's worth asking it to check online and show its sources (Chapter 11).
 
 **It is not a person who knows you.** Claude does not see your screen, your files or your email unless you share them or connect an app. With memory turned on, it can remember things from past chats, but you control what it keeps (Chapter 10).
 
@@ -49,26 +49,26 @@ You will hear several names. Here is what they mean.
 | Name | What it is | Covered in |
 | --- | --- | --- |
 | Claude | The app you chat with on the web, desktop and phone | This whole book |
-| Claude models (Opus, Sonnet, Haiku) | The different "brains" you can choose inside the app | Chapter 2 |
+| Claude models (Fable, Opus, Sonnet, Haiku) | The different "brains" you can choose inside the app | Chapter 2 |
 | Artifacts, Docs, Slides, Design | The documents, decks, designs and tools Claude makes | Chapters 7 and 8 |
-| Cowork | Claude working through multi-step tasks for you, including on a schedule | Chapter 15 |
-| Claude in Chrome | Claude working inside your Chrome web browser | Chapter 16 |
-| Claude for Excel and PowerPoint | Claude inside Microsoft's office apps | Chapter 16 |
-| Claude Code | A tool for building software by describing it | Chapter 26 |
-| The API | How programmers build Claude into their own products | Chapter 26 |
+| Cowork | Claude working through multi-step tasks for you, including on a schedule | Chapter 14 |
+| Claude in Chrome | Claude working inside your Chrome web browser | Chapter 15 |
+| Claude for Excel and PowerPoint | Claude inside Microsoft's office apps | Chapter 15 |
+| Claude Code | A tool for building software by describing it | Chapter 25 |
+| The API | How programmers build Claude into their own products | Chapter 25 |
 
 You can do everything in this book with the main Claude app. The other tools are bonuses you can add when you are ready.
 
 ## A Quick Word on Safety and Privacy
 
-Anthropic publishes clear rules on how it handles your conversations, and you can change several privacy settings yourself, including whether your chats may be used to improve future models. Chapter 24 walks you through them. For now, one simple rule will keep you safe while you learn:
+Anthropic publishes clear rules on how it handles your conversations, and you can change several privacy settings yourself, including whether your chats may be used to improve future models. Chapter 23 walks you through them. For now, one simple rule will keep you safe while you learn:
 
-> **Remember:** Don't paste anything into Claude that you would not be comfortable emailing to a trusted colleague outside your company, until you have read Chapter 24 and checked your settings. That means no passwords, no bank card numbers, and no other people's private information.
+> **Remember:** Don't paste anything into Claude that you would not be comfortable emailing to a trusted colleague outside your company, until you have read Chapter 23 and checked your settings. That means no passwords, no bank card numbers, and no other people's private information.
 
 ## Key Points
 
 - Claude is a fast, well-read assistant that knows nothing about you until you tell it.
 - Generic answers usually mean missing information, not missing ability.
 - Claude can be wrong. Check facts, numbers and anything important.
-- For anything current, turn on web search.
+- For anything current, ask Claude to search the web and show its sources.
 - You can do everything in this book in the main Claude app, with no code.

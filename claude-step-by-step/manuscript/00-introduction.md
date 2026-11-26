@@ -28,11 +28,11 @@ Many guides give you a list of prompts and leave you to work out the rest. This 
 
 **Part I: Getting Started** (Chapters 1 to 5) explains what Claude is, sets you up on the web, desktop and phone, walks you through your first conversation, and teaches the one habit that makes the biggest difference: describing the finished result you want, using a simple four-part formula.
 
-**Part II: The Features, Step by Step** (Chapters 6 to 16) takes each feature in turn: files and photos, documents and spreadsheets, Artifacts, Projects, memory, web search and Research, styles, connectors, Skills and plugins, Cowork and scheduled tasks, and Claude on your phone and in your office apps. Each chapter ends with a short exercise.
+**Part II: The Features, Step by Step** (Chapters 6 to 15) takes each feature in turn: files and photos, documents and spreadsheets, Artifacts, Projects, memory and incognito, web search and Research, connectors, skills and plugins, tasks and scheduled work, and Claude on your phone, in Chrome and in your office apps. Each chapter ends with a short exercise.
 
-**Part III: 50 Real Workflows** (Chapters 17 to 23) is the heart of the book: worked examples for writing, reading and research, office work, learning, home and money, building small tools without code, and weekly routines that run themselves.
+**Part III: 50 Real Workflows** (Chapters 16 to 22) is the heart of the book: worked examples for writing, reading and research, office work, learning, home and money, building small tools without code, and weekly routines that run themselves.
 
-**Part IV: Safe and Smart** (Chapters 24 to 26) covers privacy, checking Claude's work, fixing common problems, and where to go next.
+**Part IV: Safe and Smart** (Chapters 23 to 25) covers privacy, checking Claude's work, fixing common problems, and where to go next.
 
 The appendices give you a request library to copy from, a plain-English glossary, and a one-page settings checklist.
 
@@ -42,7 +42,7 @@ You do not need to read the book in order. If you are brand new, read Part I fir
 
 Claude changes quickly. In 2026 alone Anthropic released new models, merged Cowork into everyday chat, added editable memory topics, and brought documents, slide decks and designs to every plan. This book describes Claude as it was in **November 2026**.
 
-When a button moves or a menu is renamed, the ideas in this book still apply. Chapter 25 includes a short guide called "If your screen looks different," which shows you how to find any feature in a few seconds. I also avoid relying on exact button colors and positions; instead I tell you what each control does, so you can recognize it even after a redesign.
+When a button moves or a menu is renamed, the ideas in this book still apply. Chapter 24 includes a short guide called "If your screen looks different," which shows you how to find any feature in a few seconds. I also avoid relying on exact button colors and positions; instead I tell you what each control does, so you can recognize it even after a redesign.
 
 > **Note:** Some features depend on your plan, your country and your device. Where that matters, the book says so. For current prices and limits, check claude.com/pricing.
 

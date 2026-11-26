@@ -43,13 +43,17 @@ Claude has a free plan and several paid plans. Here is what matters when you cho
 
 ### What "usage limits" means
 
-Every plan has a limit on how much you can use Claude in a few hours and in a week. Long conversations, big files and the most powerful model use your allowance faster. When you get close, Claude shows a message. You can start a fresh chat, switch to a lighter model, or wait for the reset. Chapter 25 has tips for making your allowance last.
+Every plan has a limit on how much you can use Claude in a few hours and in a week. Long conversations, big files and the most powerful model use your allowance faster. When you get close, Claude shows a message. You can start a fresh chat, switch to a lighter model, or wait for the reset. Chapter 24 has tips for making your allowance last.
 
 ## Step 4: Learn the Main Screen
 
 Open Claude on a computer. This is the real home screen of the Claude app in late 2026. (In all the screenshots in this book, personal details such as names and the list of past chats are blurred.)
 
-![The Claude home screen. Each number is explained in the table below.](images/shot-home.png)
+The two pictures below show the left side of the screen, called the **sidebar** (parts 1 to 7), and the **message box** in the middle, where you type (parts 8 to 12).
+
+![The sidebar, parts 1 to 7.](images/shot-home-sidebar.png)
+
+![The message box, parts 8 to 12. Your name and plan (part 13) are at the bottom of the sidebar.](images/shot-home-box.png)
 
 | # | Part | What it does |
 | --- | --- | --- |
@@ -57,14 +61,14 @@ Open Claude on a computer. This is the real home screen of the Claude app in lat
 | 2 | Search | Finds any past conversation by a word in it |
 | 3 | Projects | Your workspaces for ongoing topics (Chapter 9) |
 | 4 | Artifacts | Every document, deck and tool Claude has made for you (Chapter 8) |
-| 5 | Scheduled | Tasks Claude runs for you on a timetable (Chapter 15) |
-| 6 | Plugins | Ready-made bundles of skills and connections (Chapter 14) |
+| 5 | Scheduled | Tasks Claude runs for you on a timetable (Chapter 14) |
+| 6 | Plugins | Ready-made bundles of skills and connections (Chapter 13) |
 | 7 | Recents | Your latest chats. Hover over one to rename, star or delete it |
 | 8 | The + button | Adds files and photos, Google Drive, Research, memory and more |
 | 9 | Microphone and voice | Dictate your request, or talk with Claude out loud |
 | 10 | Project picker | Starts this chat inside one of your Projects |
 | 11 | Model and effort | Chooses which Claude model answers, and how hard it thinks |
-| 12 | Permissions | Manual or Auto: whether Claude asks before acting in other apps (Chapter 15) |
+| 12 | Permissions | Manual or Auto: whether Claude asks before acting in other apps (Chapter 12) |
 | 13 | Your name | Opens Settings: profile, appearance, memory, connectors, privacy and your plan |
 
 Take a minute to find each numbered part on your own screen. On the phone, the same parts are there; the sidebar hides behind the menu button in the top corner.
@@ -106,7 +110,7 @@ Claude reads this at the start of every conversation, so you never have to repea
 
 **2. Decide about memory.** In **Settings > Memory**, you can let Claude remember useful things from your past chats and search old conversations. Chapter 10 explains this fully. If you are unsure, leave it on; you can review and delete anything it remembers at any time.
 
-**3. Check your privacy choice.** In **Settings > Privacy**, look for the setting about using your chats to help improve Claude. Choose what you are comfortable with. Chapter 24 explains what it means.
+**3. Check your privacy choice.** In **Settings > Privacy**, look for the setting about using your chats to help improve Claude. Choose what you are comfortable with. Chapter 23 explains what it means.
 
 ## Exercise
 

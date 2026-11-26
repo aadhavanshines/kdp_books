@@ -12,13 +12,21 @@ Make me a simple tip calculator I can use on my phone: I type the bill, pick 15,
 
 About twenty seconds later, a working calculator appeared. The first version used my local currency, so I sent one follow-up: "Use US dollars, and put a sample bill of $84.50 split between 3 people in it so I can see how it looks." This is the real result.
 
-![A real artifact: the chat on the left, the working tip calculator on the right.](images/shot-artifact.png)
+The chat appears on the left:
 
-1. **The artifact card** in the chat. Click it any time to reopen the artifact.
+![The chat side: the artifact card and Claude's explanation.](images/shot-artifact-chat.png)
+
+1. **The artifact card.** Click it any time to reopen the artifact.
 2. **Claude's explanation** of what it built. It even added two things I hadn't asked for: a "round up" switch and a memory of the last bill.
-3. **The artifact's name and menu.** Click the name to see older versions.
-4. **The working tool.** It is live: type a new bill or tap 15% and the numbers change instantly.
-5. **Panel buttons** for sharing, opening a new tab and making the panel full screen.
+
+The artifact itself opens in a panel on the right:
+
+![The working tip calculator in the artifact panel.](images/shot-artifact-tool.png)
+
+3. **The result**, in big numbers, as requested.
+4. **The controls.** The tool is live: type a new bill or tap 15% and the numbers change instantly.
+
+At the top of the panel are the artifact's name (click it to see older versions) and buttons for sharing, opening it in a new tab, and making it full screen.
 
 Notice the label **Artifact · Only you** on the card. Your artifacts are private until you choose to share them.
 
@@ -47,7 +55,7 @@ You change an artifact the same way you change any answer: tell Claude what to c
 - "Add a 22% option and remove 15%."
 - "It shows $33.23 but my math says $33.24. Check the rounding."
 
-Each change creates a new **version**. If a change makes things worse, open the version menu (part 3 in the screenshot) and go back.
+Each change creates a new **version**. If a change makes things worse, click the artifact's name at the top of the panel to open the version menu, and go back.
 
 ## Keeping and Finding Artifacts
 
@@ -55,7 +63,7 @@ Every artifact you make is saved. Click **Artifacts** in the sidebar to see them
 
 ## Sharing an Artifact
 
-Click **Share** (part 5) to publish an artifact as a link. Anyone with the link can open and use it, even without a Claude account. You can unpublish it later.
+Click **Share** at the top of the artifact panel to publish an artifact as a link. Anyone with the link can open and use it, even without a Claude account. You can unpublish it later.
 
 Before you share, check that the artifact contains nothing private. A budget tracker with your real numbers in it is fine to keep, but not to publish.
 
