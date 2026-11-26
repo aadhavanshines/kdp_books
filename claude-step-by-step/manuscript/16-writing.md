@@ -244,3 +244,77 @@ It comes across as friendly, accountable and on top of the numbers, but the typo
 ```
 
 The table lets you accept or reject each change, so the email still sounds like you. Claude also caught something no spell-checker would: I sent this on a Thursday, so "Thursday afternoon" was ambiguous. **Make it repeatable:** Turn it into a skill called "Proofread, keep my voice" (Chapter 13).
+
+## Extra: Translate Without Losing Your Tone
+
+Claude translates well between dozens of languages, and it can tell you what a word-for-word translation would get wrong. The trick is to ask for a **back-translation**, so you can check a language you don't read.
+
+```prompt
+Translate this sign for our café into Spanish for our Spanish-speaking customers. Keep the warm, friendly tone; don't make it formal. Use Spanish that people from Mexico and Central America will find natural, keep the prices in US dollars, and leave our name "Harbor Beans" in English. Then give me a back-translation into English, word for word, so I can check nothing changed. Point out anything that doesn't translate well.
+
+The sign:
+Holiday hours at Harbor Beans!
+We're open 7am to 2pm on Christmas Eve and closed on Christmas Day so our crew can be with their families. Pre-order your holiday cookie box ($18) by Dec 20 and we'll have it ready to grab and go. Thanks for making this year so sweet. See you by the water!
+```
+
+```result
+Spanish sign
+
+¡Horario navideño en Harbor Beans!
+
+El 24 de diciembre (Nochebuena) abrimos de 7 a.m. a 2 p.m., y el 25 (Navidad) cerramos para que nuestro equipo pueda estar con sus familias. Encarga tu caja de galletas navideñas (US$18) a más tardar el 20 de diciembre y te la tendremos lista para que pases por ella. Gracias por hacer este año tan dulce. ¡Nos vemos junto al mar!
+
+Word-for-word back-translation
+
+Christmas schedule at Harbor Beans! The 24 of December (Christmas Eve) we open from 7 a.m. to 2 p.m., and the 25 (Christmas) we close so that our team can be with their families. Order-ahead your box of Christmas cookies (US$18) at the latest the 20 of December and we'll have it for you ready so that you pass by for it. [...]
+
+What doesn't translate cleanly
+- The price says US$18, not $18. In Mexico and much of Central America, a bare "$" usually means local currency, like pesos. "US" makes it clear the price is in dollars.
+- "By Dec 20" is spelled out. I used "a más tardar el 20," which means "no later than the 20th," so the 20th clearly counts. The shorter "antes del 20" could be read as "before the 20th" and leave that day out.
+- "See you by the water" became "by the sea." "Junto al agua" sounds odd in Spanish. If your café is on a lake, river, or bay, tell me and I'll change it.
+- Casual "you": I addressed readers with informal tú, which sounds warm on signs in Mexico. [...]
+```
+
+Two of those notes would have caused real problems: customers paying in pesos, and pre-orders on the 20th being turned away. **Check First:** For anything legal, medical or safety-related, have a fluent speaker read the translation before it goes up.
+
+## Extra: Make Your Writing Accessible
+
+Accessible writing helps everyone: people who use screen readers, people reading in a second language, and anyone reading on a phone in a hurry. I attached the mug photo from Chapter 21 and sent:
+
+```prompt
+Help me make our café website easier for everyone to use. Two things:
+
+1. Write alt text for the attached photo (it goes at the top of our home page): a short version under 125 characters for screen readers, and say whether it should be decorative instead.
+
+2. Rewrite this notice in plain language, at about a 6th-grade reading level, short sentences, the most important thing first. Keep every fact. Then tell me the reading level before and after.
+
+The notice:
+Patrons are advised that, commencing January 5, 2027, the establishment will be undergoing renovations to the restroom facilities, during which period accessible restroom access will be temporarily unavailable; patrons requiring accessible facilities may utilize those located at the Harbor Library (adjacent, 50 feet north), which is open 9am-6pm daily. Renovations are anticipated to conclude on or before January 19, 2027. We apologize for any inconvenience occasioned.
+```
+
+```result
+1. Alt text for the photo
+
+Alt text (85 characters): Teal Harbor Beans coffee mug with a white band, filled with coffee, on a wooden table.
+
+Should it be decorative? Probably not. The mug shows your café's name and look, so it tells visitors something about your brand. [...]
+
+2. Plain-language notice
+
+Our accessible restroom will be closed from January 5, 2027.
+
+We are fixing up our restrooms. The work starts on January 5. It should be done by January 19, 2027, or sooner.
+
+Need an accessible restroom while we work? You can use the one at the Harbor Library. The library is right next door, 50 feet north of us. It is open every day from 9 am to 6 pm.
+
+We are sorry for the trouble.
+
+Reading level
+Before: about grade 16 (college level). The first sentence is over 60 words long [...]
+After: about grade 4-5. The sentences average around 8 words. [...]
+You can confirm the numbers with a free checker like Hemingway Editor or readable.com.
+
+One thing to check: the original notice doesn't say whether your regular restrooms stay open during the work. If they do, adding "Our other restrooms will stay open" would answer a question many customers will have.
+```
+
+The most important fact now comes first, and Claude spotted the question the original never answered. Notice too that it said the reading levels were its own estimates and pointed to a free checker to confirm them. **Make it repeatable:** Add "Write at about a 6th-grade reading level, most important thing first" to your profile instructions or a Project (Chapter 9), and ask for alt text every time you add a picture to a website, newsletter or post.

@@ -373,6 +373,10 @@ def code_block(code, styles, source=""):
                 tight.pop()
             else:
                 rows.append([mini_table(data, styles)])
+    if len(rows) > 1:  # the label shares a cell with the first line, so it never sits alone at a page foot
+        rows[1] = [[rows[0][0], Spacer(1, 4), rows[1][0]]]
+        rows.pop(0)
+        tight = [r - 1 for r in tight if r >= 1]
     t = Table(rows, colWidths=[TEXT_W], splitByRow=1, repeatRows=0)
     look = [("LEFTPADDING", (0, 0), (-1, -1), 11), ("RIGHTPADDING", (0, 0), (-1, -1), 10),
             ("TOPPADDING", (0, 0), (-1, -1), 1.5), ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
