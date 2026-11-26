@@ -101,6 +101,38 @@ I typed one word, **Submit**, and Claude sent it.
 - **Read the status report.** Default boxes, the wrong résumé or the wrong job are easy to miss and impossible to unsend.
 - **Keep payments and passwords out of it.** Never let any AI enter your passwords or card numbers, and keep Manual mode or "Always ask" on for anything that sends, buys or deletes (Chapter 12).
 
+## Computer Use: Claude Works in Your Desktop Apps
+
+Connectors (Chapter 12) need an app to offer tools to Claude. Browser use works only inside Chrome. **Computer use** covers everything else: Claude looks at screenshots of your desktop and clicks, types and scrolls in ordinary apps like Numbers, Notes, Finder or Photos, the way you would. It's slower than a connector, so use it for apps that have no connector.
+
+**Turning it on.** Computer use works through the Claude desktop app. Turn it on in the desktop app's settings (look for **Computer use** under **System** or **Capabilities**). Then, before Claude touches any app, a dialog asks you to allow that specific app. Some apps get limited access automatically: web browsers can only be looked at (Claude uses Chrome's own tools instead), and terminal and coding apps can only be clicked, never typed into.
+
+### A Real Task: A Budget in Numbers
+
+I put a made-up list of 16 December household expenses in a spreadsheet file and asked Claude, in the Claude desktop app, to open it in Numbers, total the spending by category with formulas, add a pie chart and save it as "December Expenses." This is the finished result:
+
+![The real result, built by Claude on screen in Numbers.](images/shot-numbers-computer-use.png)
+
+1. **The original expense list**, untouched apart from its new name, "Expenses."
+2. **The summary table.** Each amount is a formula, so it updates if you edit an expense. The total, $2,570.84, matches the list exactly.
+3. **The pie chart**, made from the seven categories (not the total): housing is 56% of the month.
+
+Here's what actually happened along the way:
+
+1. **Permission.** Claude asked for access to Numbers, and I clicked **Allow**.
+2. **Background first.** Claude normally works "in the background," so you can keep using your computer. It opened the file and used Numbers' menus that way. But Numbers ignored typing into its cells from the background, so Claude stopped, said exactly which step needed more, and asked for **full-screen control**. Nothing had changed in the file.
+3. **Full screen, with your OK.** When I approved, a glow appeared around the screen while Claude worked. It added a table named "December by Category," typed a SUMIF formula for each category and a total, deleted the empty columns, and inserted a pie chart. One slip along the way: the chart's title overlapped its legend, so it turned the title off rather than leave a mess.
+4. **Saved and handed back.** It saved the file to Downloads and released the screen.
+
+**What this teaches:**
+
+- **Use a connector when there is one.** Computer use took several minutes of clicking; a connector or a file Claude creates directly (Chapter 7) would take seconds. Computer use shines for apps that have no other way in.
+- **Expect to approve twice:** once for the app, and again if Claude needs the full screen.
+- **Don't use your computer while Claude has the full screen.** Your clicks and Claude's can collide.
+- **The same safety rules apply.** Claude won't type your passwords or card numbers, won't move money or make trades in finance apps, and treats links in emails and messages as suspicious, opening them only in a browser it can check.
+
+> **Safety Tip:** Grant only the apps a task needs, and close anything private (email, banking, messages) before you let Claude take the full screen. It sees whatever is on the screen.
+
 ## In Excel and PowerPoint
 
 **Claude for Excel** and **Claude for PowerPoint** are add-ins that put Claude in a side panel inside those programs. In Excel, Claude can explain a complicated spreadsheet, fix broken formulas, build new sheets and charts, and tidy messy data, working directly in your workbook. In PowerPoint, it can build slides from your notes, tidy a deck, and keep the style consistent. The two share context, so you can build an analysis in Excel and turn it into slides without starting over.

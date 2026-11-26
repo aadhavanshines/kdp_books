@@ -47,3 +47,11 @@ game = game.resize((game.width * 2, game.height * 2), Image.LANCZOS)
 framed(game, "shot-harbor-run")
 
 framed(Image.open(SRC / "harbor-run-boat.png").convert("RGB"), "img-harbor-run-boat")
+
+# Computer use: the finished Numbers sheet Claude built on screen
+num = Image.open(SRC / "numbers" / "final.jpg").convert("RGB").crop((0, 85, 700, 640))
+num = num.resize((num.width * 2, num.height * 2), Image.LANCZOS)
+d = ImageDraw.Draw(num)
+for x, y, n in [(610, 62, 1), (1080, 330, 2), (1340, 840, 3)]:
+    label(d, x, y, n, 26)
+framed(num, "shot-numbers-computer-use")
