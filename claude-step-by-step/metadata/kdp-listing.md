@@ -61,13 +61,17 @@ I own the copyright and I hold the necessary publishing rights.
 - Sexually explicit images or title: No
 - Reading age: leave blank (adult book)
 
-## Categories (choose up to three)
+## Categories (as set on KDP, Nov 26 2026)
 
-1. Computers & Technology > Artificial Intelligence > Natural Language Processing (or Expert Systems)
-2. Computers & Technology > Software > Personal Productivity (or Business Technology > Software)
-3. Business & Money > Skills > Time Management
+Kindle eBook:
+1. Kindle Books > Computers & Technology > Computer Science > Artificial Intelligence > Generative AI
+2. Kindle Books > Computers & Technology > Applications & Software > Natural Language Processing
+3. Kindle Books > Business & Money > Skills > Office Automation
 
-KDP's category picker names change from time to time; pick the closest match.
+Paperback (print picker has no Office Automation):
+1. Books > Computers & Technology > Computer Science > AI & Machine Learning > Generative AI
+2. Books > Computers & Technology > Computer Science > AI & Machine Learning > Natural Language Processing
+3. Books > Business & Money > Skills > Business Writing
 
 ## Keywords (each 50 characters or fewer, no trademarks)
 
@@ -82,7 +86,9 @@ KDP's category picker names change from time to time; pick the closest match.
 ## AI-Generated Content
 
 - Texts: "Some sections, with minimal or no editing" (tool: Claude, Anthropic)
-- Images: "One or a few images, with minimal or no editing" (the cover art was made with GPT Image; screenshots are real captures)
+- Images: "One or a few AI-generated images, with minimal or no editing"; tools: GPT Image (OpenAI), Claude (Anthropic) (cover art by GPT Image; Blender renders and SVG logo by Claude; screenshots are real captures)
+- Texts tool: Claude (Anthropic)
+- Accessibility (eBook): all informative images include alternative text (all 46 EPUB images have alt text)
 - Translations: None
 
 ## Kindle eBook
@@ -92,7 +98,9 @@ KDP's category picker names change from time to time; pick the closest match.
 | Manuscript | `dist/claude-ai-step-by-step.epub` |
 | Cover | `dist/ebook-cover-bordered.jpg` (1600 x 2560 px, with the 4 px slate border used on all 2026 covers) |
 | Price | $9.99, 70% royalty |
-| KDP Select | Yes (enroll) |
+| KDP Select | Yes (enrolled) |
+| DRM | Yes |
+| Status | SUBMITTED Nov 26 2026 (KDP ID A174N7WSFA0REO), AI Skillup series book #11; US royalty $6.57 at 70% after $0.60 delivery (4.03 MB) |
 
 ## Paperback
 
@@ -105,6 +113,7 @@ KDP's category picker names change from time to time; pick the closest match.
 | Interior file | `dist/paperback-interior-6x9.pdf` (241 pages) |
 | Cover file | `dist/paperback-cover.pdf` (12.793 x 9.250 in, spine 0.543 in) |
 | Price | $19.99 |
+| Status | NOT CREATED: KDP weekly paperback title-creation limit reached Nov 26; resets Sunday Nov 29 2026 00:00 UTC. Start it from the eBook's bookshelf entry ("Create paperback") so details carry over |
 
 **Royalty check.** Printing 241 black-and-white pages at 6 x 9 in costs about $1.00 + 241 x $0.012 = $3.89, so the royalty at $19.99 is about 60% x $19.99 - $3.89 = **$8.10** per copy. KDP's pricing page shows the exact amount.
 
