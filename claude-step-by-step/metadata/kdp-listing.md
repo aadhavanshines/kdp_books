@@ -120,3 +120,14 @@ Paperback (print picker has no Office Automation):
 ## Ads (product targeting only, within the $5/day total)
 
 Target these competitor ASINs: The Claude AI Bible (B0H67CWG3G), plus the other Claude beginner guides found on Amazon on Nov 25, 2026 (Claude AI for Beginners Bible, Claude Visual Bible, Mastering Claude AI).
+
+## A+ Content (US)
+
+Draft "Claude AI Step by Step - A+" created Nov 27 2026 (A+ content id 00b1b361-69ff-495b-9615-8e73f21bde43), duplicated from "Proof Before Scale - A+". Images in `aplus/` (made by `aplus/make_csbs.py`, uploaded to Creative Assets with the `csbs-` prefix and alt text):
+- Header 970x600: cover + "Stop fixing AI drafts. Get finished work."
+- Three 300x300: Describe / Check / Repeat (the three-step habit)
+- Four 220x220, "Real Projects with Claude and Blender": 3D model, animation, website, arcade game (all real results from the book)
+- One 300x300: Claude + Blender window, "Claude and Blender, Step by Step"
+- Comparison chart: col1 this book (title + metrics typed; ASIN EMPTY), col2 Claude AI for Small Business, col3 Building AI Agents with Claude, col4 Prompt Engineering Mastery
+
+TO DO once the Kindle edition is live: type its ASIN in chart col1 (then retype the short title, because the ASIN overwrites it), Next: Apply ASINs (Kindle, plus paperback once it exists), Review, Submit. Then duplicate for UK.
