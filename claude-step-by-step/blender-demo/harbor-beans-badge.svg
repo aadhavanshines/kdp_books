@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <path id="arcTop" d="M 70 200 A 130 130 0 0 1 330 200"/>
+    <path id="arcBottom" d="M 82 214 A 118 118 0 0 0 318 214"/>
+    <clipPath id="inner"><circle cx="200" cy="200" r="104"/></clipPath>
+  </defs>
+  <!-- outer badge -->
+  <circle cx="200" cy="200" r="188" fill="#0F766E"/>
+  <circle cx="200" cy="200" r="174" fill="none" stroke="#F3EBDD" stroke-width="3"/>
+  <circle cx="200" cy="200" r="106" fill="#F3EBDD"/>
+  <!-- lettering around the ring -->
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" letter-spacing="6" fill="#F3EBDD">
+    <textPath href="#arcTop" startOffset="50%" text-anchor="middle">HARBOR BEANS</textPath>
+  </text>
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="20" letter-spacing="5" fill="#F3EBDD">
+    <textPath href="#arcBottom" startOffset="50%" text-anchor="middle">COFFEE · EST. 2027</textPath>
+  </text>
+  <circle cx="68" cy="214" r="5" fill="#F3EBDD"/>
+  <circle cx="332" cy="214" r="5" fill="#F3EBDD"/>
+  <!-- scene inside the circle: sea, mug, steam -->
+  <g clip-path="url(#inner)">
+    <path d="M 90 262 Q 115 250 140 262 T 190 262 T 240 262 T 290 262 T 340 262 V 320 H 90 Z" fill="#7FB8B0"/>
+    <path d="M 90 280 Q 115 268 140 280 T 190 280 T 240 280 T 290 280 T 340 280 V 320 H 90 Z" fill="#0F766E"/>
+    <!-- mug -->
+    <rect x="152" y="178" width="84" height="80" rx="10" fill="#0F766E"/>
+    <rect x="152" y="196" width="84" height="16" fill="#F3EBDD"/>
+    <path d="M 236 196 h 10 a 22 22 0 0 1 0 44 h -10" fill="none" stroke="#0F766E" stroke-width="10"/>
+    <ellipse cx="194" cy="178" rx="42" ry="8" fill="#5A3A22"/>
+    <!-- steam -->
+    <g fill="none" stroke="#0F766E" stroke-width="5" stroke-linecap="round">
+      <path d="M 178 162 q -10 -14 0 -28 q 10 -14 0 -28"/>
+      <path d="M 196 160 q -10 -14 0 -28 q 10 -14 0 -28"/>
+      <path d="M 214 162 q -10 -14 0 -28 q 10 -14 0 -28"/>
+    </g>
+  </g>
+</svg>

@@ -71,6 +71,33 @@ You can also set a single tool to **Always ask** in its connector settings, so C
 
 To remove access, go back to Settings > Connectors, click the connector, and choose **Disconnect**. You can also remove Claude's access from the other app's own security settings, such as your Google account's third-party access page.
 
+## Add Your Own Connector: MCP
+
+Every connector, from Gmail to Notion, works the same way underneath. It uses an open standard called **MCP** (Model Context Protocol): a common plug that lets any app offer "tools" Claude can use. Because it's a standard, you aren't limited to the directory. You can add a connector yourself in two ways.
+
+| Kind | What you add | Where it runs | Example |
+| --- | --- | --- | --- |
+| Custom connector | A web address (URL) a company gives you | On the internet | Microsoft Learn's documentation server: https://learn.microsoft.com/api/mcp |
+| Desktop extension | A file ending in **.mcpb** that you double-click | On your own computer | The official Blender extension |
+
+**To add a custom connector:** go to **Settings > Connectors**, click **Add custom connector**, give it a name, paste the URL, and click **Add**. If the service needs a sign-in, its own sign-in page opens, just as in Step 1. On Team and Enterprise plans, an admin may need to add it for you.
+
+**To add a desktop extension:** desktop extensions work only in the **Claude desktop app**, because they run on your computer. Double-click the .mcpb file, and the desktop app shows an install screen with the extension's name and maker. Click **Install**. You'll find it afterwards under **Settings > Extensions**, where you can turn it off or remove it.
+
+### A Real Example: Connecting Claude to Blender
+
+Blender is free, professional 3D software used for films, games and product design. Its developers, through their Blender Lab group, publish an official extension that lets Claude work inside Blender for you. Here's exactly how I set it up on a Mac in November 2026:
+
+1. **Install Blender** (version 5.1 or newer) from blender.org. It's free.
+2. **Download the two files** from the "Releases" page of the Blender Lab MCP project at projects.blender.org: the Blender add-on (a .zip file) and the Claude extension (a .mcpb file).
+3. **Install the add-on in Blender:** **Edit > Preferences > Get Extensions**, then the small menu at the top right, **Install from Disk**, and choose the .zip file. Under **Add-ons**, find **MCP** and click **Start**. This opens a private link that only programs on your own computer can use.
+4. **Install the extension in Claude:** double-click the .mcpb file and click **Install** in the Claude desktop app.
+5. **Try it:** in a new chat in the desktop app, ask "What's in my open Blender scene?" The first time, Claude asks permission to use the Blender tools. Allow it, and Claude lists the objects in your scene.
+
+Chapter 21 shows what you can make once it's connected.
+
+> **Warning:** The Blender extension lets Claude run commands inside Blender, and Blender can read and write files on your computer. Only install extensions and connectors from makers you trust, such as the app's own developers, and download them from the maker's own website. Save your Blender work before asking for big changes. Leave the add-on's **Auto-start** off, and click **Start** only when you want Claude to have access.
+
 ## Exercise
 
 1. Connect one app you use every day, such as your calendar.
@@ -84,3 +111,4 @@ To remove access, go back to Settings > Connectors, click the connector, and cho
 - Nothing is sent until you click Send, unless you've allowed Claude to act.
 - Manual asks before every action; Auto acts unless a check flags a risk; "Always ask" overrides Auto for one tool.
 - Disconnect any time from Settings.
+- Any app can offer a connector through MCP. Add one yourself with a URL (custom connector) or a .mcpb file (desktop extension), and only from makers you trust.

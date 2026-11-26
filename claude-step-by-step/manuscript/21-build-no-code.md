@@ -161,6 +161,68 @@ I've made your planner: Weekly_Planner_Jan_2027.pdf has four US Letter pages, on
 It's black, white and grey only, with no filled areas, so it won't use much ink. The 0.5-inch margins sit inside what home printers can print. Print it at "Actual size" rather than "Fit to page" so the boxes keep their spacing.
 ```
 
+## Bonus Project: A Café Brand Kit in 3D
+
+With the Blender extension from Chapter 12, Claude can do creative work too: 3D models, animation, product images, illustration and a website to show them off. To show you what's realistic, I made a complete small brand kit for an imaginary café, Harbor Beans, in one sitting in the Claude desktop app with Blender open beside it. Every picture below is the real result. Claude has no built-in photo generator, so the "images" come from two places: 3D renders made in Blender, and vector drawings Claude writes itself.
+
+### Step 1: A 3D Model
+
+```prompt
+In Blender, build a product mockup of a coffee mug for my café, Harbor Beans: a teal ceramic mug with a cream stripe around the middle and the name HARBOR BEANS raised on the stripe, coffee inside, on an oak table against a plain wall. Add soft studio lighting and a camera. Keep the default camera and light, and name every object clearly. Check a test render before you finish.
+```
+
+Claude built the mug piece by piece: the body, the handle, the stripe, the lettering wrapped around the curve, the coffee, the table and the lights. Then it rendered a small test image and looked at it. The first test showed the coffee floating above the mug and the edge of the wall showing, so it fixed both before going on. In Blender, everything it made appears as normal, named objects you can select and change by hand:
+
+![The mug Claude built, open in Blender.](images/shot-blender-window.png)
+
+1. **The model** in Blender's 3D view, which you can turn and zoom with the mouse.
+2. **The object list.** Claude named everything (Mug, Table, Backdrop, Rim Light), so you can find and change any part yourself.
+3. **Rotation Z**, shown in yellow because it's animated. You'll see why in Step 3.
+
+> **Tip:** Ask Claude to "check a test render" in every Blender request. Claude can see the picture it renders, so it catches its own mistakes.
+
+### Step 2: A Product Image
+
+```prompt
+Render the mug as a high-quality 1600 x 1200 product photo for my website and save it with the Blender file.
+```
+
+![The finished product render.](images/img-blender-mug.png)
+
+That's a usable website or catalog picture of a product that doesn't exist yet, made without a photographer.
+
+### Step 3: An Animation
+
+```prompt
+Make a 3-second turntable animation: the mug spins once, smoothly, at a steady speed, so it loops without a jump. Render it as an MP4 video and a small GIF for social media.
+```
+
+![Four frames from the real turntable video.](images/img-blender-turntable.png)
+
+Claude added two keyframes (the start and end of one full turn), set a steady speed so the loop is seamless, and rendered all 72 frames in about a minute and a half. Then it joined them into a video.
+
+### Step 4: An Illustration
+
+This step needs no Blender at all. Claude drew the logo itself as a vector image, which stays sharp at any size, from a business card to a sign:
+
+```prompt
+Draw a round logo badge for Harbor Beans as an SVG: teal and cream, the name curved around the top, "COFFEE · EST. 2027" around the bottom, and a simple steaming mug above a wave in the middle. Flat style, no gradients, so it prints well.
+```
+
+![The real logo badge Claude drew.](images/img-harbor-badge.png)
+
+### Step 5: A Professional Website
+
+```prompt
+Build a one-page website for Harbor Beans using the product render, the turntable video and the logo: a header with the logo, a big headline, a section about the mug, three menu favorites with prices, and opening hours. Warm, calm design, gentle animations as you scroll, and it must work on a phone.
+```
+
+![The top of the real website, using the render and the logo.](images/shot-harbor-site.png)
+
+The finished page has a sticky header, sections that fade in as you scroll, the spinning mug playing on a loop, and a layout that stacks into one column on a phone. Ask Claude to publish it as an artifact (Chapter 8) to share the link.
+
+> **Check First:** What Claude makes in Blender is real 3D work, but keep expectations sensible. Clean, simple objects like products, logos, furniture and room layouts come out well. Lifelike people, animals and detailed characters still need a 3D artist. And always replace sample prices, hours and email addresses with your own before you publish.
+
 ## When a Tool Doesn't Work
 
 Several of these answers ended with the same honest note: Claude had checked the code but hadn't clicked through the tool itself. So test it. If a button does nothing or a number looks wrong, tell Claude exactly what you did and what happened:
