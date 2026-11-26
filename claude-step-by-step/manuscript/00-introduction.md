@@ -18,7 +18,7 @@ It is written for:
 
 Many guides give you a list of prompts and leave you to work out the rest. This book does three things differently.
 
-**Every workflow shows the real answer.** For each of the 50 workflows you will see the exact request, Claude's actual answer (trimmed only where noted, to save space), and what I changed or asked next to make it finished. You can see what "good" looks like before you try it yourself.
+**Every workflow shows the real answer.** For each of the 50 workflows you will see the exact request, Claude's actual answer (trimmed only where noted, to save space), and what I changed or asked next to make it finished. You can see what "good" looks like before you try it yourself. I ran every workflow myself in November 2026, in the Claude app on the Sonnet model, using made-up sample files and names so no real person's data appears. Where Claude slipped, I left the slip in and pointed it out.
 
 **Every feature is shown, not just named.** Real screenshots of the Claude app, with numbered labels, show you where each button is and what each screen does. A few settings screens, which show private details, are drawn as simple labeled diagrams instead.
 

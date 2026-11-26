@@ -58,7 +58,7 @@ Click the **incognito** icon (it looks like a small ghost) at the top right of a
 
 ![An incognito chat. The note under the box explains what that means.](images/shot-incognito.png)
 
-As the note says, incognito chats **stay out of your history, memory and search, and aren't used to train Claude**. When you close the chat, it's gone from your list. You can still attach files and use most features. Click the **x** at the top right to leave incognito.
+As the note says, incognito chats **stay out of your history, memory and search, and aren't used to train Claude**. When you close the chat, it's gone from your list. You can still attach files and use most features, but incognito chats can't create Claude Docs, files or artifacts. For those, use a normal chat. Click the **x** at the top right to leave incognito.
 
 > **Remember:** Incognito keeps a chat out of *your* account history. It doesn't make it safe to share passwords or bank card numbers. The privacy rules in Chapter 23 still apply.
 

@@ -40,7 +40,21 @@ Priya runs the parents' association at her daughter's school. She needs to ask p
 Write a message asking parents to volunteer for the school fair.
 ```
 
-The answer was fine but generic: no date, no specific jobs, and placeholder brackets everywhere, such as [Date] and [Location]. She would have had to fill in every one of them herself, which is exactly the editing work she was hoping to avoid.
+Claude's real answer was a polite, well-organized email, but almost nothing in it was specific. It began:
+
+```result
+Can you lend a hand at our School Fair on [Date]?
+
+Dear Parents and Guardians,
+
+Our annual School Fair is coming up on [Day, Date] from [Start Time] to [End Time] at [Location], and we'd love your help to make it a day the children will remember!
+
+[...]
+
+To sign up, please [fill in the form at LINK / reply to this email / contact NAME at PHONE] by [Deadline], letting us know which role and time slot you'd prefer.
+```
+
+Claude even said so in its note: "Fill in the bracketed details, and change the volunteer roles to match your fair." Every bracket is a piece of raw material Priya had and Claude didn't. Filling them in by hand is exactly the editing work she was hoping to avoid.
 
 **With the formula:**
 
@@ -48,23 +62,28 @@ The answer was fine but generic: no date, no specific jobs, and placeholder brac
 Write a short message for our school parents' WhatsApp group (Result) asking for volunteers for the spring fair. The parents are busy and skim, so it must be readable in 20 seconds (Reader). Details: Saturday 14 March, 10am to 2pm, Oakfield Primary playground. We need 4 people for the bake stall, 3 for games, 2 for setup at 9am and 2 for cleanup at 2pm. Shifts are 1 hour. Sign-up sheet: link in my next message (Raw material). Friendly and upbeat, no emoji, no guilt-tripping, end with a clear call to action (Rules).
 ```
 
+Here is Claude's real answer:
+
 ```result
-Hi everyone!
+Here's a draft that reads in well under 20 seconds:
 
-Our Spring Fair is on Saturday 14 March, 10am to 2pm, in the Oakfield Primary playground, and we'd love your help.
+*Spring Fair volunteers wanted!*
+Saturday 14 March, 10am-2pm
+Oakfield Primary playground
 
-We need:
-- Bake stall: 4 people
-- Games: 3 people
-- Setup at 9am: 2 people
-- Cleanup at 2pm: 2 people
+We'd love a few extra hands to make the day a great one. Every shift is just 1 hour.
 
-Every shift is just 1 hour, so you'll still have plenty of time to enjoy the fair with your kids.
+Bake stall: 4 people
+Games: 3 people
+Setup at 9am: 2 people
+Cleanup at 2pm: 2 people
 
-Grab a slot using the sign-up link below. Thank you!
+Grab a slot on the sign-up sheet (link below) and you're all set. Thank you!
+
+The asterisks make the first line bold in WhatsApp.
 ```
 
-She pasted it into WhatsApp unchanged. The labels in brackets were only there to show you the four parts; you don't need to type them.
+No brackets, no blanks: she pasted it into WhatsApp unchanged. Claude even knew a WhatsApp formatting trick she didn't. (In the request above, the labels such as "(Result)" only show you the four parts; I left them out when I sent it, and you don't need to type them either.)
 
 ## When You Don't Know All Four
 

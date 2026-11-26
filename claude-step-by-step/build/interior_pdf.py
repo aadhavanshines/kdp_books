@@ -357,6 +357,7 @@ def code_block(code, styles, source=""):
     if cur:
         paras.append(cur)
     rows = [[Paragraph("CLAUDE'S ANSWER" if result else "YOUR REQUEST", styles["promptlabel"])]]
+    tight = []
     # prompts reflow to the box width; results keep their line breaks (lists, letters),
     # and pipe-table lines in a result become a small ruled table
     for p in paras:
@@ -365,20 +366,26 @@ def code_block(code, styles, source=""):
             continue
         for kind, data in result_segments(p):
             if kind == "text":
-                rows.append([Paragraph("<br/>".join(data), style)])
+                # one row per line, so a long answer can break between any two lines
+                for li in data:
+                    rows.append([Paragraph(li, style)])
+                    tight.append(len(rows) - 1)
+                tight.pop()
             else:
                 rows.append([mini_table(data, styles)])
     t = Table(rows, colWidths=[TEXT_W], splitByRow=1, repeatRows=0)
     look = [("LEFTPADDING", (0, 0), (-1, -1), 11), ("RIGHTPADDING", (0, 0), (-1, -1), 10),
             ("TOPPADDING", (0, 0), (-1, -1), 1.5), ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
             ("TOPPADDING", (0, 0), (0, 0), 8), ("BOTTOMPADDING", (0, -1), (-1, -1), 9)]
+    for r in tight:  # lines inside one paragraph sit close together
+        look += [("BOTTOMPADDING", (0, r), (-1, r), 0), ("TOPPADDING", (0, r + 1), (-1, r + 1), 0)]
     if result:
         look += [("BOX", (0, 0), (-1, -1), 0.8, colors.HexColor("#777777"))]
     else:
         look += [("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#EDEDED")),
                  ("LINEBEFORE", (0, 0), (0, -1), 4, colors.HexColor("#222222"))]
     t.setStyle(TableStyle(look))
-    short = len(paras) <= 3 or sum(len(p) for p in paras) <= 14   # short boxes never split
+    short = sum(len(p) for p in paras) <= 6 and sum(len(l) for p in paras for l in p) <= 500   # short boxes never split
     return [KeepTogether([Spacer(1, 3), t, Spacer(1, 11)])] if short else [Spacer(1, 3), t, Spacer(1, 11)]
 
 

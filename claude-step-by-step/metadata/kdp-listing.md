@@ -101,11 +101,11 @@ KDP's category picker names change from time to time; pick the closest match.
 | Trim size | 6 x 9 in |
 | Bleed | No bleed |
 | Cover finish | Matte |
-| Interior file | `dist/paperback-interior-6x9.pdf` (173 pages) |
-| Cover file | `dist/paperback-cover.pdf` (12.640 x 9.250 in, spine 0.390 in) |
+| Interior file | `dist/paperback-interior-6x9.pdf` (221 pages) |
+| Cover file | `dist/paperback-cover.pdf` (12.748 x 9.250 in, spine 0.498 in) |
 | Price | $19.99 |
 
-**Royalty check.** Printing 173 black-and-white pages at 6 x 9 in costs about $1.00 + 173 x $0.012 = $3.08, so the royalty at $19.99 is about 60% x $19.99 - $3.08 = **$8.91** per copy. KDP's pricing page shows the exact amount.
+**Royalty check.** Printing 221 black-and-white pages at 6 x 9 in costs about $1.00 + 221 x $0.012 = $3.65, so the royalty at $19.99 is about 60% x $19.99 - $3.65 = **$8.34** per copy. KDP's pricing page shows the exact amount.
 
 ## Ads (product targeting only, within the $5/day total)
 

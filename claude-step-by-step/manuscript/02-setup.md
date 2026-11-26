@@ -86,8 +86,8 @@ In late 2026 the choices are:
 | Model | What the menu says | Use it for |
 | --- | --- | --- |
 | Fable | For your toughest challenges | The hardest problems. Included on Max and Ultra; uses extra usage credits on Pro |
-| Opus | For complex work and everyday tasks | Almost everything. The default, and the model used in most of this book |
-| Sonnet | Most efficient for simpler tasks | Quick writing jobs, and making your allowance last longer |
+| Opus | For complex work and everyday tasks | Almost everything. The default for most accounts |
+| Sonnet | Most efficient for simpler tasks | Quick writing jobs, making your allowance last longer, and every workflow in this book |
 | Haiku | Fastest for quick answers | Short rewrites, quick questions, sorting and tidying |
 
 **Effort** controls how long Claude thinks before it answers. Low is quickest, Medium suits most work, and High is worth it for tricky analysis, long documents and anything you will act on. Higher effort uses more of your allowance.
