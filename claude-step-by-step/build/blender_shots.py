@@ -35,3 +35,15 @@ framed(badge, "img-harbor-badge")
 
 hero = Image.open(SRC / "site-hero.png").convert("RGB").crop((0, 0, 2400, 1214))
 framed(hero, "shot-harbor-site")
+
+# Harbor Run game: title, gameplay and game-over screens from the real artifact
+panels = [Image.open(SRC / "game" / f"{n}.jpg").convert("RGB").crop((893, 37, 1347, 679)) for n in ("title", "play", "over")]
+gw = sum(p.width for p in panels) + 2 * 14
+game = Image.new("RGB", (gw, panels[0].height), "white")
+x = 0
+for p in panels:
+    game.paste(p, (x, 0)); x += p.width + 14
+game = game.resize((game.width * 2, game.height * 2), Image.LANCZOS)
+framed(game, "shot-harbor-run")
+
+framed(Image.open(SRC / "harbor-run-boat.png").convert("RGB"), "img-harbor-run-boat")

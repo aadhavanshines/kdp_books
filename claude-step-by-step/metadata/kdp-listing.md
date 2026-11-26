@@ -38,6 +38,7 @@ AI Skillup (add as main content, same as the other ten series books)
 <li><b>Work from your own files and photos</b>: leases, reports, receipts, spreadsheets, whiteboards</li>
 <li><b>Create real documents</b>: Word files, Excel spreadsheets with working formulas, slide decks and PDFs</li>
 <li><b>Build small tools with no code</b>: calculators, trackers, chore charts, quizzes and one-page websites</li>
+<li><b>Make games, 3D models and animation</b>: a real arcade game, plus product renders and a spinning animation made in Blender through Claude's official connector</li>
 <li><b>Set up Projects</b> so Claude remembers the background of anything ongoing</li>
 <li><b>Control memory and use incognito</b>, so Claude knows what helps and forgets what you choose</li>
 <li><b>Get current, sourced answers</b> with web search and Research</li>
@@ -101,11 +102,11 @@ KDP's category picker names change from time to time; pick the closest match.
 | Trim size | 6 x 9 in |
 | Bleed | No bleed |
 | Cover finish | Matte |
-| Interior file | `dist/paperback-interior-6x9.pdf` (227 pages) |
-| Cover file | `dist/paperback-cover.pdf` (12.761 x 9.250 in, spine 0.511 in) |
+| Interior file | `dist/paperback-interior-6x9.pdf` (231 pages) |
+| Cover file | `dist/paperback-cover.pdf` (12.770 x 9.250 in, spine 0.520 in) |
 | Price | $19.99 |
 
-**Royalty check.** Printing 227 black-and-white pages at 6 x 9 in costs about $1.00 + 227 x $0.012 = $3.72, so the royalty at $19.99 is about 60% x $19.99 - $3.72 = **$8.27** per copy. KDP's pricing page shows the exact amount.
+**Royalty check.** Printing 231 black-and-white pages at 6 x 9 in costs about $1.00 + 231 x $0.012 = $3.77, so the royalty at $19.99 is about 60% x $19.99 - $3.77 = **$8.22** per copy. KDP's pricing page shows the exact amount.
 
 ## Ads (product targeting only, within the $5/day total)
 

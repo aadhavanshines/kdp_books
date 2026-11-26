@@ -4,13 +4,13 @@ Run `python3 build/screens.py` (needs the private `screens-raw/` captures), `pyt
 
 | Check | Result |
 | --- | --- |
-| Interior page count | 227 pages, 6 x 9 in |
+| Interior page count | 231 pages, 6 x 9 in |
 | Margins | Inside 0.80 in, outside 0.60 in (KDP minimums 0.375 / 0.25 in) |
 | Fonts embedded; every character drawable | Pass |
 | Chapters start on right-hand pages | Pass |
 | Unplanned gaps over 2.5 in | None |
 | EPUB | 41 XHTML/OPF/NCX files well-formed, no missing references, mimetype stored first (EPUBCheck not run: no Java on this machine) |
-| Spine | 227 x 0.002252 = 0.511 in; spine text allowed (100+ pages); spine name AADHAVAN |
+| Spine | 231 x 0.002252 = 0.520 in; spine text allowed (100+ pages); spine name AADHAVAN |
 | Cover | AI Skillup 2026 layout; textless GPT Image art; barcode area 2 x 1.2 in, 0.25 in from edges |
 | Screenshots | Real Claude app captures, Nov 25 to 26, 2026, light mode. Account name, chat titles and other artifacts pixelated and blurred. Every crop is 690 raw px wide or less, so interface text prints legibly |
 | Privacy scan | No private chat titles, email address or account details in the PDF or EPUB text |

@@ -223,6 +223,53 @@ The finished page has a sticky header, sections that fade in as you scroll, the 
 
 > **Check First:** What Claude makes in Blender is real 3D work, but keep expectations sensible. Clean, simple objects like products, logos, furniture and room layouts come out well. Lifelike people, animals and detailed characters still need a 3D artist. And always replace sample prices, hours and email addresses with your own before you publish.
 
+## Bonus Project: Make Your Own Game
+
+Workflows 30 and 41 were simple quiz games. Claude can also build a real arcade game, with movement, collisions, scoring, rising difficulty and sound, from one description. To keep the café theme going, I asked for a game about Harbor Beans' delivery boat, in a normal chat:
+
+```prompt
+Make an original arcade game I can play in the browser, called Harbor Run. You steer a little delivery boat left and right across the harbor while the water scrolls toward you. Collect coffee crates for points and dodge buoys and rocks. Every 30 seconds it gets a bit faster. 3 lives, a title screen, a pause button, sound on/off, and a "Game over" screen with my score and best score (remember the best score between visits). Controls: arrow keys or A/D on a computer, and tapping the left or right side of the screen on a phone. Bright, friendly cartoon style drawn in code, no images needed. Use US spelling.
+```
+
+Claude worked for about five minutes. Along the way it took its own screenshots of the game at computer and phone sizes, early and late in a round, to check how it looked. Then it published the game as an artifact:
+
+```result
+I've built Harbor Run and published it as a page you can open in any browser on your computer or your phone. I tested it at desktop and phone screen sizes, and steering, scoring, pausing and the game over screen all worked. I didn't test it on a real touchscreen, so phone tapping is the part to check first.
+
+- How it plays: your little red delivery boat steers smoothly left and right between stone harbor walls while the water scrolls toward you. On a wide screen there are wooden docks with barrels and crates on both sides.
+- Points: each coffee crate is worth +10. You also earn a few points for every second you stay afloat, and that bonus goes up as the speed level rises. I added this so surviving longer counts too, even when you miss crates.
+- Hazards: buoys and rocks each cost one life (some rocks have a seagull sitting on them). After a hit you get a short moment where you flash and can't be hit again.
+- Speed: every 30 seconds a "Faster!" banner pops up and the water speeds up. More obstacles start appearing as well.
+- Controls: arrow keys or A/D to steer. P or Esc pauses, M turns sound on or off, and Space starts or restarts. On a phone, press and hold the left or right half of the screen to steer.
+- Saved settings: the browser remembers your best score and your sound setting between visits. [...]
+
+The game also pauses automatically if you switch tabs or apps.
+```
+
+Then I played it:
+
+![The real game: title screen, a round in progress, and my (short) first game.](images/shot-harbor-run.png)
+
+My first round lasted eight seconds, which says more about my steering than the game. Notice the extras I never asked for: points for staying afloat, a moment of safety after a hit, seagulls on the rocks, and an automatic pause when you switch tabs.
+
+**Improve it by playing it.** Games get better one request at a time, the same way as any other tool. Play a few rounds, then ask for what's missing:
+
+```prompt
+It's too hard at the start. Make the first 20 seconds easier with fewer rocks, add a gold crate worth 50 points that appears now and then, and add a short shield power-up that protects the boat from one hit.
+```
+
+**Taking it into 3D.** For a game made in a game engine such as Godot or Unity, Claude can make the 3D models too, through the Blender connector. Here I asked for a game-ready version of the delivery boat:
+
+```prompt
+In Blender, make a low-poly version of the Harbor Run delivery boat for a game: red hull, white cabin with a teal roof, a chimney and three coffee crates on deck. Keep it simple, under 100 faces, with clear names for every part. Render a preview on blue water, then export only the boat as a .glb file for a game engine.
+```
+
+![The real game-ready boat, rendered in Blender.](images/img-harbor-run-boat.png)
+
+The boat came out at 62 faces, light enough for any game, and the .glb file opens directly in Godot and most web 3D tools. Unity and Unreal Engine import it with their glTF add-ons.
+
+> **Check First:** Make games your own. Ask for an original game "in the style of" a genre (racing, puzzle, platformer), not a copy of a famous game, its characters or its music. Those belong to their makers, and you can't share or sell a copy.
+
 ## When a Tool Doesn't Work
 
 Several of these answers ended with the same honest note: Claude had checked the code but hadn't clicked through the tool itself. So test it. If a button does nothing or a number looks wrong, tell Claude exactly what you did and what happened:
