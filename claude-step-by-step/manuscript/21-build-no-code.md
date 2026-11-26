@@ -266,7 +266,7 @@ In Blender, make a low-poly version of the Harbor Run delivery boat for a game: 
 
 ![The real game-ready boat, rendered in Blender.](images/img-harbor-run-boat.png)
 
-The boat came out at 62 faces, light enough for any game, and the .glb file opens directly in Godot and most web 3D tools. Unity and Unreal Engine import it with their glTF add-ons.
+The boat came out at 62 faces, a lightweight starting point for many small games, and the .glb file opens directly in Godot and most web 3D tools. Unity and Unreal Engine import it with their glTF add-ons.
 
 > **Check First:** Make games your own. Ask for an original game "in the style of" a genre (racing, puzzle, platformer), not a copy of a famous game, its characters or its music. Those belong to their makers, and you can't share or sell a copy.
 
@@ -278,4 +278,4 @@ Several of these answers ended with the same honest note: Claude had checked the
 When I tap "new week," Leo's points reset but Maya's don't. Please fix it, and check the other buttons for the same problem.
 ```
 
-Describing what you tapped and what you expected is all Claude needs. You never need to look at the code.
+Describing what you tapped and what you expected is usually all Claude needs. You can often fix a tool without ever editing the code yourself.

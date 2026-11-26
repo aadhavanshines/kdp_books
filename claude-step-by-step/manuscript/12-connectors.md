@@ -63,7 +63,7 @@ When a connector can *change* something, such as sending, deleting, booking or e
 | Manual | Claude asks you before each action in another app | You're new to connectors, or the account matters a lot |
 | Auto | Claude acts without asking, except for actions an automated check flags as risky | You trust the task and want it done quickly |
 
-You can also set a single tool to **Always ask** in its connector settings, so Claude asks even in Auto mode. A sensible setup for most people: Auto for reading, **Always ask** for sending email and deleting anything.
+You can also set a single tool to **Always ask** in its connector settings, so Claude asks even in Auto mode. A sensible setup for most people: Auto for reading, **Always ask** for sending email and deleting anything. "Always ask" covers the one tool you set it on, so set it on every tool that can send or delete.
 
 > **Safety Tip:** Start with Manual. Watch what Claude asks permission for during the first week. Once you're comfortable, switch to Auto for the tasks you trust, and keep "Always ask" on anything that sends messages or spends money.
 
@@ -90,11 +90,13 @@ Blender is free, professional 3D software used for films, games and product desi
 
 1. **Install Blender** (version 5.1 or newer) from blender.org. It's free.
 2. **Download the two files** from the "Releases" page of the Blender Lab MCP project at projects.blender.org: the Blender add-on (a .zip file) and the Claude extension (a .mcpb file).
-3. **Install the add-on in Blender:** **Edit > Preferences > Get Extensions**, then the small menu at the top right, **Install from Disk**, and choose the .zip file. Under **Add-ons**, find **MCP** and click **Start**. This opens a private link that only programs on your own computer can use.
+3. **Install the add-on in Blender:** **Edit > Preferences > Get Extensions**, then the small menu at the top right, **Install from Disk**, and choose the .zip file. Under **Add-ons**, find **MCP** and click **Start**. This opens a link that only programs on your own computer can use (read the security warning below).
 4. **Install the extension in Claude:** double-click the .mcpb file and click **Install** in the Claude desktop app.
 5. **Try it:** in a new chat in the desktop app, ask "What's in my open Blender scene?" The first time, Claude asks permission to use the Blender tools. Allow it, and Claude lists the objects in your scene.
 
 Chapter 21 shows what you can make once it's connected.
+
+> **Security Warning:** Blender's own documentation for this extension warns that it runs AI-generated Python code inside Blender without safeguards: that code could change or delete files, or send data elsewhere. The "private link" only means other computers can't connect to it; it doesn't make the code safe. Blender recommends using it on a virtual machine or a computer with no sensitive files. Don't use it on a computer that holds private, financial or confidential work.
 
 > **Warning:** The Blender extension lets Claude run commands inside Blender, and Blender can read and write files on your computer. Only install extensions and connectors from makers you trust, such as the app's own developers, and download them from the maker's own website. Save your Blender work before asking for big changes. Leave the add-on's **Auto-start** off, and click **Start** only when you want Claude to have access.
 

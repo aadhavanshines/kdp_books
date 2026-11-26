@@ -47,7 +47,7 @@ This is the finished project page. On the right are four panels:
 
 1. **Instructions:** click Edit to change them at any time.
 2. **Context:** the project's files (three here).
-3. **Memory:** what Claude has learned within this project. Each project keeps its own memory, separate from your other chats (Chapter 10).
+3. **Memory:** what Claude has learned within this project. Each project has its own memory. It can also use your account memory; turn off **Use account memory** in the project's settings if you want it fully separate (Chapter 10).
 4. **Scheduled:** tasks that run automatically for this project, for example a weekly update (Chapter 14).
 
 On the left are the project's name, its goal and its own message box:

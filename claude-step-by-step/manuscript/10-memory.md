@@ -60,6 +60,8 @@ Click the **incognito** icon (it looks like a small ghost) at the top right of a
 
 As the note says, incognito chats **stay out of your history, memory and search, and aren't used to train Claude**. When you close the chat, it's gone from your list. You can still attach files and use most features, but incognito chats can't create Claude Docs, files or artifacts. For those, use a normal chat. Click the **x** at the top right to leave incognito.
 
+> **Note:** Incognito doesn't mean instant deletion. Anthropic keeps incognito chats for a limited time (30 days by default) for safety, or longer if an organization's retention policy says so, and on Team and Enterprise plans the organization's data and compliance rules still apply.
+
 > **Remember:** Incognito keeps a chat out of *your* account history. It doesn't make it safe to share passwords or bank card numbers. The privacy rules in Chapter 23 still apply.
 
 ## Exercise
@@ -71,8 +73,9 @@ As the note says, incognito chats **stay out of your history, memory and search,
 
 ## Key Points
 
-- Memory lets Claude remember lasting facts from your chats and search past chats.
+- Memory lets Claude remember lasting facts from your chats.
+- Chat search, a separate feature, lets Claude look back through past conversations; it isn't on every plan.
 - Manage it in Settings > Memory: read, edit and delete topics.
 - Sensitive topics are only remembered if you turn that setting on.
-- Turn memory off for one chat from the + menu; projects keep their own separate memory.
+- Turn memory off for one chat from the + menu; projects have their own memory and can also use account memory unless you turn that off.
 - Incognito chats stay out of history, memory and search, and aren't used for training.

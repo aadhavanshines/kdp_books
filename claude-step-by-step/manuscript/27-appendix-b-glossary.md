@@ -14,7 +14,7 @@
 
 **Context:** Everything Claude can see while answering: your messages, attached files, project files and instructions.
 
-**Cowork:** The name Anthropic first gave to Claude doing multi-step tasks for you. Since September 2026 it's part of everyday Claude (Chapter 14).
+**Cowork:** The name Anthropic first gave to Claude doing multi-step tasks for you. Since September 2026 it has been merging into everyday Claude; some accounts still show it as a separate option (Chapter 14).
 
 **Design system:** Your saved colors, fonts and layout rules, so decks and designs match your brand (Chapter 13).
 
@@ -30,7 +30,9 @@
 
 **Manual mode:** A permission setting where Claude asks before each action in a connected app.
 
-**Memory:** Claude's ability to remember lasting facts from your past chats and search earlier conversations. You can view, edit and delete it (Chapter 10).
+**Memory:** Lasting facts Claude saves from your past chats. You can view, edit and delete it (Chapter 10).
+
+**Chat search:** A separate feature that lets Claude look back through your earlier conversations. Not available on every plan (Chapter 10).
 
 **Model:** The underlying AI that writes Claude's answers. In late 2026 the choices include Fable, Opus, Sonnet and Haiku (Chapter 2).
 

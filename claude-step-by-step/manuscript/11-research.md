@@ -2,9 +2,9 @@
 
 Claude learned most of what it knows from text gathered up to a certain date. For anything newer, or anything that changes, such as prices, opening hours, laws, news, product models or schedules, it needs to look things up. Claude has two ways to do that: quick **web search** inside a normal answer, and **Research**, which produces a full report.
 
-## Web Search Happens Automatically
+## Web Search: Automatic in the New Experience
 
-You don't need to switch anything on. When a question needs current or specific facts, Claude searches the web by itself. You saw this in Chapter 6: while checking the lease, Claude decided that one Ohio law mattered, searched for it, and quoted it. The gray line **Searched the web** appears in the answer. Click it to see exactly what was searched and which pages were read.
+In the current Claude experience you don't need to switch anything on. When a question needs current or specific facts, Claude searches the web by itself. (If your account still has the older chat screen, turn on **Web search** from the **+** menu.) To be sure, say "Search the web and cite your sources." You saw this in Chapter 6: while checking the lease, Claude decided that one Ohio law mattered, searched for it, and quoted it. The gray line **Searched the web** appears in the answer. Click it to see exactly what was searched and which pages were read.
 
 At the end of an answer that used the web, Claude lists its **sources** as links. Click them. Checking one or two sources takes seconds and is the best habit you can build with any AI tool.
 
@@ -71,7 +71,7 @@ Chapter 23 has a full five-minute checking routine.
 
 ## Key Points
 
-- Claude searches the web automatically when a question needs current facts.
+- Claude searches the web automatically when a question needs current facts (in older accounts, turn on Web search from the + menu).
 - "Searched the web" shows what it searched; sources appear as links at the end.
 - Research, from the + menu, writes a full cited report in a few minutes.
 - Give your situation, what matters and the format you want.

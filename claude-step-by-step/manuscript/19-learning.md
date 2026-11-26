@@ -155,7 +155,7 @@ Each task sheet tells you which yellow cells to fill. When you're done, save the
 You'll need Excel 2021, Excel 2024 or Microsoft 365, because older versions of Excel don't have XLOOKUP.
 ```
 
-Under the file, Claude also suggested installing Claude for Excel (Chapter 15), so it could check your work directly in the spreadsheet. **Make it repeatable:** "Next lesson" in the same chat continues where you stopped.
+Under the file, Claude also suggested installing Claude for Excel (Chapter 15; it needs a paid plan), so it could check your work directly in the spreadsheet. **Make it repeatable:** "Next lesson" in the same chat continues where you stopped.
 
 ## Workflow 30: A Learning Game for Kids
 

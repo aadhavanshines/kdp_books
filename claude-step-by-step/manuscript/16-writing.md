@@ -214,7 +214,7 @@ This is the real screen. Look at the first line of the answer.
 The Instagram caption finished with three hashtags, as asked:
 
 ```result
-Free family movie night at Maple Street Library! Join us Friday 12 December at 6pm in the community room for a G-rated holiday film and free popcorn. Bring a blanket and get cozy. No booking needed, just come along!
+Free family movie night at Maple Street Library! Join us Friday 12 December [AUTHOR'S CORRECTION: 12 December 2026 is a Saturday; fix the day or the date before posting] at 6pm in the community room for a G-rated holiday film and free popcorn. Bring a blanket and get cozy. No booking needed, just come along!
 
 #FamilyMovieNight #MapleStreetLibrary #HolidayFun
 ```

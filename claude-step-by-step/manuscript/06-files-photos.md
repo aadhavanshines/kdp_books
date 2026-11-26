@@ -40,7 +40,7 @@ You can add several files to one message. They appear as small cards above your 
 
 Claude reads charts and pictures inside PDFs too, not just the text.
 
-> **Note:** There are limits on file size and on how much text fits in one conversation. A few hundred pages is usually fine. For very large files, ask about one section at a time, or put the files in a Project (Chapter 9).
+> **Note:** There are limits on file size and on how much text fits in one conversation. Long PDFs often work, but large or scanned files may need splitting. For very large files, ask about one section at a time, or put the files in a Project (Chapter 9).
 
 ## A Real Example: Checking a Lease
 
@@ -55,7 +55,7 @@ The numbers show what happened:
 3. **It searched the web by itself** to check one Ohio rule on security deposits, because that rule mattered to the answer. You'll learn more about this in Chapter 11.
 4. **It answered in the format asked for:** a table of key terms first.
 
-After the table, Claude listed what to ask about, most important first. Here is part of the real answer:
+After the table, Claude listed what to ask about, most important first. Here is part of the real answer. (The deposit rule it quotes is Ohio Revised Code section 5321.16(B), "Security deposits," at codes.ohio.gov. I checked the wording against the statute; treat the point as a question to raise with the landlord or a local attorney, not a legal ruling.)
 
 ```result
 What to ask about, most important first

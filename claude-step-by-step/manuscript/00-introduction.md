@@ -40,7 +40,7 @@ You do not need to read the book in order. If you are brand new, read Part I fir
 
 ## A Note on Editions and Changing Screens
 
-Claude changes quickly. In 2026 alone Anthropic released new models, merged Cowork into everyday chat, added editable memory topics, and brought documents, slide decks and designs to every plan. This book describes Claude as it was in **November 2026**.
+Claude changes quickly. In 2026 alone Anthropic released new models, began merging Cowork into everyday chat, added editable memory topics, and brought documents, slide decks and designs to every plan. This book describes Claude as it was in **November 2026**.
 
 When a button moves or a menu is renamed, the ideas in this book still apply. Chapter 24 includes a short guide called "If your screen looks different," which shows you how to find any feature in a few seconds. I also avoid relying on exact button colors and positions; instead I tell you what each control does, so you can recognize it even after a redesign.
 

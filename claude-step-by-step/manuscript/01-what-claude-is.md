@@ -12,7 +12,7 @@ Claude is an AI assistant made by a company called Anthropic. You talk to it in 
 
 Think of Claude as a **very fast, very well-read assistant on their first day at your job.**
 
-- **Very fast:** It can draft a two-page report in under a minute and read a 100-page PDF in seconds.
+- **Very fast:** It can draft a two-page report in under a minute and can often read a long PDF in well under a minute.
 - **Very well-read:** It knows a great deal about writing, business, science, history, law, cooking, travel, software and much more.
 - **On their first day:** It knows nothing about *you* unless you tell it: your company, your customers, your style, your deadline, what happened in yesterday's meeting. The more you tell it, the better its work gets.
 
@@ -57,7 +57,7 @@ You will hear several names. Here is what they mean.
 | Claude Code | A tool for building software by describing it | Chapter 25 |
 | The API | How programmers build Claude into their own products | Chapter 25 |
 
-You can do everything in this book with the main Claude app. The other tools are bonuses you can add when you are ready.
+The main Claude app is enough to learn the core method and to do most of the workflows in this book. A few examples in Chapters 12, 15 and 21 also need the Claude desktop app, a connected app, Claude in Chrome, Microsoft Office or Blender. Those are optional extras you can add when you are ready.
 
 ## A Quick Word on Safety and Privacy
 
@@ -71,4 +71,4 @@ Anthropic publishes clear rules on how it handles your conversations, and you ca
 - Generic answers usually mean missing information, not missing ability.
 - Claude can be wrong. Check facts, numbers and anything important.
 - For anything current, ask Claude to search the web and show its sources.
-- You can do everything in this book in the main Claude app, with no code.
+- The main Claude app covers the core method and most workflows, with no code; a few optional examples need extra apps.

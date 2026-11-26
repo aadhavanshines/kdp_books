@@ -310,8 +310,10 @@ def wrap_code(code, size=CODE_SIZE, marker=""):
     return "\n".join(out)
 
 
-def mini_table(data, styles):
-    """A compact ruled table for tabular example results (cells are already escaped)."""
+def mini_table(data, styles, rows=None):
+    """A compact ruled table for tabular example results (cells are already escaped).
+    Column widths come from all of `data`; `rows` (a range) builds just those rows,
+    so a long table can be cut into pieces that still line up."""
     inner = TEXT_W - 21
     n = len(data[0])
     longest = [max(len(r[i]) for r in data) + 3 for i in range(n)]
@@ -330,11 +332,13 @@ def mini_table(data, styles):
             widths[i] -= excess * (widths[i] - mins[i]) / room
     cell = styles["resultcell"]
     head = styles["resultcellhead"]
-    t = Table([[Paragraph(c, head if ri == 0 else cell) for c in r] for ri, r in enumerate(data)],
+    rows = rows if rows is not None else range(len(data))
+    t = Table([[Paragraph(c, head if ri == 0 else cell) for c in data[ri]] for ri in rows],
               colWidths=widths, hAlign="LEFT")
-    t.setStyle(TableStyle([
-        ("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#999999")),
-        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#E6E6E6")),
+    look = [("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#999999"))]
+    if 0 in rows:
+        look.append(("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#E6E6E6")))
+    t.setStyle(TableStyle(look + [
         ("LEFTPADDING", (0, 0), (-1, -1), 3), ("RIGHTPADDING", (0, 0), (-1, -1), 3),
         ("TOPPADDING", (0, 0), (-1, -1), 1.5), ("BOTTOMPADDING", (0, 0), (-1, -1), 2.5),
         ("VALIGN", (0, 0), (-1, -1), "TOP")]))
@@ -372,7 +376,11 @@ def code_block(code, styles, source=""):
                     tight.append(len(rows) - 1)
                 tight.pop()
             else:
-                rows.append([mini_table(data, styles)])
+                # header + first row together, then one row per piece, so the box can break between rows
+                rows.append([mini_table(data, styles, range(0, min(2, len(data))))])
+                for ri in range(2, len(data)):
+                    tight.append(len(rows) - 1)
+                    rows.append([mini_table(data, styles, range(ri, ri + 1))])
     if len(rows) > 1:  # the label shares a cell with the first line, so it never sits alone at a page foot
         rows[1] = [[rows[0][0], Spacer(1, 4), rows[1][0]]]
         rows.pop(0)
@@ -393,7 +401,7 @@ def code_block(code, styles, source=""):
     return [KeepTogether([Spacer(1, 3), t, Spacer(1, 11)])] if short else [Spacer(1, 3), t, Spacer(1, 11)]
 
 
-def _print_jpeg(path):
+def _print_jpeg(path, print_w_pt=None):
     """Embed images as high-quality JPEGs no larger than 300 dpi at the full text
     width, so the interior PDF stays small enough to upload."""
     from PIL import Image as PILImage
@@ -401,13 +409,13 @@ def _print_jpeg(path):
     path = _P(path)
     cache = _P(__file__).resolve().parent / ".imgcache"
     cache.mkdir(exist_ok=True)
-    out = cache / (path.stem + ".jpg")
+    target = int(round((print_w_pt or TEXT_W) / 72 * 300))  # exactly 300 dpi at the printed width
+    out = cache / f"{path.stem}-{target}.jpg"
     if out.exists() and out.stat().st_mtime >= path.stat().st_mtime:
         return str(out)
     im = PILImage.open(path).convert("RGB")
-    max_w = int(TEXT_W / 72 * 300)
-    if im.width > max_w:
-        im = im.resize((max_w, round(im.height * max_w / im.width)), PILImage.LANCZOS)
+    if im.width != target:
+        im = im.resize((target, round(im.height * target / im.width)), PILImage.LANCZOS)
     im.save(out, "JPEG", quality=90, optimize=True, dpi=(300, 300))
     return str(out)
 
@@ -419,9 +427,9 @@ class Figure(Flowable):
         super().__init__()
         from PIL import Image as PILImage
         w_px, h_px = PILImage.open(path).size
-        self.path = _print_jpeg(path)
         self.ratio = h_px / w_px
         self.full_w = min(TEXT_W, max_h / self.ratio)
+        self.path = _print_jpeg(path, self.full_w)
         self.caption = Paragraph(inline(caption), style)
         self.scale = 1.0
 

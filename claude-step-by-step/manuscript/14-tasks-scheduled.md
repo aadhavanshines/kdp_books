@@ -2,7 +2,7 @@
 
 Until 2026, Claude mostly answered one message at a time. Now it can take on a **task**: a job with several steps, such as reading files, searching, using connected apps, making documents, and checking its own work, and carry it through to the end. It can also run tasks **on a schedule**, so a Monday briefing or a monthly summary simply appears.
 
-Anthropic first launched this as a separate mode called **Cowork**. In September 2026 it became part of everyday Claude: "Claude Cowork and chat are one Claude." You'll still see the name Cowork in some places, but you don't need to switch modes. You just ask.
+Anthropic first launched this as a separate mode called **Cowork**. In September 2026 it became part of everyday Claude: "Claude Cowork and chat are one Claude." In this unified experience you don't need to switch modes; you just ask. The change is rolling out gradually, so some accounts still show separate **Chat** and **Cowork** options. If you see them, choose Cowork for multi-step and scheduled tasks.
 
 ## Handing Over a Multi-Step Task
 
@@ -73,7 +73,7 @@ A good rule: do a job by hand with Claude two or three times first. When it's go
 ## Key Points
 
 - Claude can take on multi-step tasks and carry them through to a finished result.
-- Cowork is now part of everyday Claude; you just ask.
+- In the unified experience, Cowork is part of everyday Claude; if your account still shows a separate Cowork option, use it for tasks.
 - Scheduled tasks run at times you choose, from the sidebar or a project.
 - Auto lets a task act without pausing; "Always ask" still protects sensitive actions.
 - Test a task once by hand before scheduling it.

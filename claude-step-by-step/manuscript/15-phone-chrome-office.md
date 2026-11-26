@@ -4,7 +4,7 @@ Claude isn't only a website. The same account works on your phone, inside your w
 
 ## On Your Phone
 
-The Claude app for iPhone and Android has everything in this book, plus three things that work best on a phone.
+The Claude app for iPhone and Android covers the core chat features in this book, plus three things that work best on a phone. Features that run on a computer, such as desktop extensions and computer use, need the Claude desktop app.
 
 ### Voice
 
@@ -44,7 +44,7 @@ Open the **+** menu in any chat and choose **Devices**. You'll see a list headed
 1. **Your computer.** Choose it, and the task you type runs there, using that computer's Chrome, files and apps, even if you typed it on your phone or on another computer's web browser.
 2. **Manage computers.** Add or remove computers.
 
-This is what "remote control" means for most people: you ask from wherever you are, and the work happens on your own machine, signed in to your own accounts. (Developers also have **Remote Control** in Claude Code, which lets you watch and steer a coding session running on your computer from your phone.)
+Your computer must be switched on, online, with the Claude desktop app open, for a task that uses its files or apps. (Tasks that run entirely in the cloud don't need it.) This is what "remote control" means for most people: you ask from wherever you are, and the work happens on your own machine, signed in to your own accounts. (Developers also have **Remote Control** in Claude Code, which lets you watch and steer a coding session running on your computer from your phone.)
 
 ## A Real Task: Applying for a Job on LinkedIn
 
@@ -134,6 +134,8 @@ Here's what actually happened along the way:
 > **Safety Tip:** Grant only the apps a task needs, and close anything private (email, banking, messages) before you let Claude take the full screen. It sees whatever is on the screen.
 
 ## In Excel and PowerPoint
+
+> **Before You Start:** Claude for Excel and PowerPoint need an eligible paid Claude plan and a compatible Microsoft Office setup, and an organization's administrator may restrict them. If you can't find the add-in, check your plan or ask your administrator.
 
 **Claude for Excel** and **Claude for PowerPoint** are add-ins that put Claude in a side panel inside those programs. In Excel, Claude can explain a complicated spreadsheet, fix broken formulas, build new sheets and charts, and tidy messy data, working directly in your workbook. In PowerPoint, it can build slides from your notes, tidy a deck, and keep the style consistent. The two share context, so you can build an analysis in Excel and turn it into slides without starting over.
 

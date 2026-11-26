@@ -30,7 +30,7 @@ AI Skillup (add as main content, same as the other ten series books)
 
 <p>You've tried Claude. The answers are impressive, but you still spend ten minutes rewriting the email, double-checking the summary, or wondering where the buttons for Projects, memory and Research actually are. <i>Claude AI Step by Step</i> closes that gap, one screen at a time.</p>
 
-<p><b>Real screens, real answers.</b> Every feature is shown with real screenshots of the Claude app, numbered and explained. Every workflow shows the exact request, Claude's real answer, and what to change to make it finished. No vague prompt lists.</p>
+<p><b>Real screens, real answers.</b> Features are shown with real screenshots of the Claude app, numbered and explained (a few private settings screens are simple labeled drawings). Every workflow shows the exact request, Claude's real answer, and what to change to make it finished. No vague prompt lists.</p>
 
 <p><b>Inside you'll learn how to:</b></p>
 <ul>
