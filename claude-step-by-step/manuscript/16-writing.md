@@ -207,9 +207,9 @@ Write a Facebook post and a shorter Instagram caption for our library's free fam
 
 This is the real screen. Look at the first line of the answer.
 
-![Claude caught a date mistake before writing the posts.](images/shot-w07-movie.png)
+![Claude flagged a date mistake in its answer.](images/shot-w07-movie.png)
 
-1. **A mistake caught.** In 2026, 12 December is a Saturday, not a Friday. Claude noticed, wrote the posts as given, and told you to fix whichever part was wrong.
+1. **Claude flagged a date mistake in its answer.** In 2026, 12 December is a Saturday, not a Friday. Claude pointed this out, wrote the posts with the details as given, and told you to fix whichever part was wrong. The caption below is therefore an annotated example, not a copy-ready post.
 
 The Instagram caption finished with three hashtags, as asked:
 

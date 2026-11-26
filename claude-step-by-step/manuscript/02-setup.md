@@ -58,7 +58,7 @@ The two pictures below show the left side of the screen, called the **sidebar** 
 | # | Part | What it does |
 | --- | --- | --- |
 | 1 | New | Starts a fresh conversation with no history |
-| 2 | Search | Finds any past conversation by a word in it |
+| 2 | Search | Finds your past chats by a word in their title or text |
 | 3 | Projects | Your workspaces for ongoing topics (Chapter 9) |
 | 4 | Artifacts | Every document, deck and tool Claude has made for you (Chapter 8) |
 | 5 | Scheduled | Tasks Claude runs for you on a timetable (Chapter 14) |

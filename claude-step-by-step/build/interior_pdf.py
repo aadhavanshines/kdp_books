@@ -409,7 +409,7 @@ def _print_jpeg(path, print_w_pt=None):
     path = _P(path)
     cache = _P(__file__).resolve().parent / ".imgcache"
     cache.mkdir(exist_ok=True)
-    target = int(round((print_w_pt or TEXT_W) / 72 * 300))  # exactly 300 dpi at the printed width
+    target = int(round((print_w_pt or TEXT_W) / 72 * 305))  # 305 dpi at the printed width: a small margin above KDP's 300
     out = cache / f"{path.stem}-{target}.jpg"
     if out.exists() and out.stat().st_mtime >= path.stat().st_mtime:
         return str(out)

@@ -29,6 +29,14 @@ My book *Vibe Coding for Beginners* walks you through it from your first convers
 
 Developers use the **Claude API** to put Claude inside their own products, from customer support systems to research tools. If you run a business and want Claude working inside your own systems, that's the path, usually with a developer's help. My book *Building AI Agents with Claude* covers it step by step.
 
+## Keeping Up: Sources and the Date Checked
+
+Every feature in this book was checked in the Claude app in November 2026. Claude changes often, so when something looks different, check these official sources first:
+
+- **The Claude Help Center** (search for "Claude Help Center"): plans, memory, incognito, connectors, permissions and Office add-ins.
+- **Anthropic's news page** (anthropic.com/news): new models and features as they launch.
+- **Blender Lab's MCP page** (blender.org/lab/mcp-server): the official Blender extension and its security guidance.
+
 ## More from the AI Skillup Series
 
 If you enjoyed this book, these go deeper on specific topics:

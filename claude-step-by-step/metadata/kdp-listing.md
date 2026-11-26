@@ -49,7 +49,7 @@ AI Skillup (add as main content, same as the other ten series books)
 
 <p><b>50 worked workflows</b> for writing and email, reading and research, office work, learning, home and money, building tools, and routines that run themselves.</p>
 
-<p>Updated for Claude in late 2026, including the latest models, effort settings, Projects, Research and scheduled tasks. No technical background needed. If you can write an email, you can do everything in this book.</p>
+<p>Updated for Claude in late 2026, including the latest models, effort settings, Projects, Research and scheduled tasks. No technical background needed. If you can write an email, you can follow every step in this book.</p>
 ```
 
 ## Publishing Rights
@@ -102,11 +102,11 @@ KDP's category picker names change from time to time; pick the closest match.
 | Trim size | 6 x 9 in |
 | Bleed | No bleed |
 | Cover finish | Matte |
-| Interior file | `dist/paperback-interior-6x9.pdf` (239 pages) |
-| Cover file | `dist/paperback-cover.pdf` (12.788 x 9.250 in, spine 0.538 in) |
+| Interior file | `dist/paperback-interior-6x9.pdf` (241 pages) |
+| Cover file | `dist/paperback-cover.pdf` (12.793 x 9.250 in, spine 0.543 in) |
 | Price | $19.99 |
 
-**Royalty check.** Printing 239 black-and-white pages at 6 x 9 in costs about $1.00 + 239 x $0.012 = $3.87, so the royalty at $19.99 is about 60% x $19.99 - $3.87 = **$8.13** per copy. KDP's pricing page shows the exact amount.
+**Royalty check.** Printing 241 black-and-white pages at 6 x 9 in costs about $1.00 + 241 x $0.012 = $3.89, so the royalty at $19.99 is about 60% x $19.99 - $3.89 = **$8.10** per copy. KDP's pricing page shows the exact amount.
 
 ## Ads (product targeting only, within the $5/day total)
 

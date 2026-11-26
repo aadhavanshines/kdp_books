@@ -40,7 +40,7 @@ Open the **+** menu in the message box. **Memory** has a check mark when it's on
 
 ## Projects Have Their Own Memory
 
-Each project keeps its own memory, separate from your general chats (you saw the Memory panel on the project page in Chapter 9). What you discuss in your "Job Search" project stays there, and doesn't leak into your "Family Trip" project. This is another good reason to use projects for different parts of your life.
+Each project has its own project memory, separate from the memory of your other projects (you saw the Memory panel on the project page in Chapter 9). However, Claude may also use your account memory inside a project. To keep a project fully separate, so that what you discuss in your "Job Search" project stays out of everything else, turn off **Use account memory** in that project's memory settings. This is another good reason to use projects for different parts of your life.
 
 ## Bringing Memory from Another Assistant
 
@@ -48,11 +48,11 @@ If you've used another AI assistant for a long time, you can import what it know
 
 ## Chat Search
 
-Separate from memory, you can always search your chats yourself. Click **Search** in the sidebar, or press Ctrl+K (Cmd+K on a Mac), and type any word you remember. Search finds chats by their titles and contents. Inside a project, use the search icon at the top of the project page to search just that project.
+Separate from memory, you can search your own chat list yourself on any plan. Click **Search** in the sidebar, or press Ctrl+K (Cmd+K on a Mac), and type any word you remember. Search finds chats by their titles and contents. Inside a project, use the search icon at the top of the project page to search just that project. (This is different from **chat search**, the feature that lets *Claude* look back through your past conversations; if chat search is available on your plan, you can ask Claude about an earlier chat directly.)
 
-## Incognito: Nothing Kept
+## Incognito: Not Saved to History
 
-Sometimes you want a conversation that leaves no trace: a sensitive health question, a surprise gift you're planning on a shared computer, or simply trying something out.
+Sometimes you want a conversation that stays out of your chat history and memory: a sensitive health question, a surprise gift you're planning on a shared computer, or simply trying something out.
 
 Click the **incognito** icon (it looks like a small ghost) at the top right of a new chat. The screen changes to show you're incognito.
 
