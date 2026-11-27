@@ -100,7 +100,7 @@ Paperback (print picker has no Office Automation):
 | Price | $9.99, 70% royalty |
 | KDP Select | Yes (enrolled) |
 | DRM | Yes |
-| Status | SUBMITTED Nov 26 2026 (KDP ID A174N7WSFA0REO), AI Skillup series book #11; US royalty $6.57 at 70% after $0.60 delivery (4.03 MB) |
+| Status | LIVE, ASIN B0HS6NQM2T (KDP ID A174N7WSFA0REO), AI Skillup series book #11; US royalty $6.57 at 70% after $0.60 delivery (4.03 MB) |
 
 ## Paperback
 
@@ -119,15 +119,20 @@ Paperback (print picker has no Office Automation):
 
 ## Ads (product targeting only, within the $5/day total)
 
-Target these competitor ASINs: The Claude AI Bible (B0H67CWG3G), plus the other Claude beginner guides found on Amazon on Nov 25, 2026 (Claude AI for Beginners Bible, Claude Visual Bible, Mastering Claude AI).
+Live Nov 27 2026: ad group "Claude AI Step by Step - Claude Beginner Books" in the existing campaign "Product Targeting - Competitor Books + Categories" (A0296645182RIX9I7QYUO, $2/day budget unchanged). Advertises the Kindle edition B0HS6NQM2T. 16 exact ASIN targets at a $0.50 custom bid: B0H67CWG3G, 180556742X, B0H6VMXNYN, B0H6V8V96W, B0FLJFY8BD, B0HK17SNSZ, 1808502248, B0HQWRQW9R, B0H9PQKQ9M, B0H65VRL6T, B0GRBX2H7P, B0H3MVSRN7, B0HFZS5PJJ, B0H4X48CLN, B0H332WXYY, B0GX3751D6. Add the paperback ASIN to this ad group once it exists.
 
-## A+ Content (US)
+## A+ Content
 
-Draft "Claude AI Step by Step - A+" created Nov 27 2026 (A+ content id 00b1b361-69ff-495b-9615-8e73f21bde43), duplicated from "Proof Before Scale - A+". Images in `aplus/` (made by `aplus/make_csbs.py`, uploaded to Creative Assets with the `csbs-` prefix and alt text):
+Images in `aplus/` (made by `aplus/make_csbs.py`, in Creative Assets with the `csbs-` prefix; the library is shared by US and UK):
 - Header 970x600: cover + "Stop fixing AI drafts. Get finished work."
 - Three 300x300: Describe / Check / Repeat (the three-step habit)
 - Four 220x220, "Real Projects with Claude and Blender": 3D model, animation, website, arcade game (all real results from the book)
 - One 300x300: Claude + Blender window, "Claude and Blender, Step by Step"
-- Comparison chart: col1 this book (title + metrics typed; ASIN EMPTY), col2 Claude AI for Small Business, col3 Building AI Agents with Claude, col4 Prompt Engineering Mastery
+- Comparison chart: col1 this book (B0HS6NQM2T), col2 Claude AI for Small Business, col3 Building AI Agents with Claude, col4 Prompt Engineering Mastery
 
-TO DO once the Kindle edition is live: type its ASIN in chart col1 (then retype the short title, because the ASIN overwrites it), Next: Apply ASINs (Kindle, plus paperback once it exists), Review, Submit. Then duplicate for UK.
+| Marketplace | Content id | Status |
+| --- | --- | --- |
+| US (kdp.amazon.com) | 00b1b361-69ff-495b-9615-8e73f21bde43 | APPROVED and published Nov 27 2026, applied to B0HS6NQM2T |
+| UK (kdp.amazon.co.uk) | 5e6ef746-d365-4f12-9400-4dfb1c869d28 | APPROVED and published Nov 27 2026, applied to B0HS6NQM2T |
+
+TO DO after the paperback exists (not before Sun Nov 29 2026 UTC): apply its ASIN to both A+ docs (Edit, Next: Apply ASINs) and resubmit.
