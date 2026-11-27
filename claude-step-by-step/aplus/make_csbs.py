@@ -164,3 +164,24 @@ for f in files:
 sheet.paste(Image.open(f"{OUT}/04-blender-connector-300.jpg"), (940, 430))
 sheet.paste(Image.open(f"{OUT}/05-claude-step-by-step-150x300.jpg"), (10, 680))
 sheet.save(f"{OUT}/_sheet.jpg", quality=85)
+
+
+# 6. Flagship use case 300x300: computer use, the real budget Claude built on screen
+def flagship():
+    src = Image.open(B + "manuscript/images/shot-numbers-computer-use.png").convert("RGB")
+    dd = ImageDraw.Draw(src)
+    dd.ellipse([1050, 302, 1110, 362], fill="white")  # hide the book's callout badge
+    pic = src.crop((645, 40, 1300, 1092))
+    im, d = canvas(300, 300)
+    T(d, (150, 16), "CLAUDE USES YOUR COMPUTER", inter(14), TEAL, "ma")
+    r = min(264 * S / pic.width, 206 * S / pic.height)
+    pic = pic.resize((int(pic.width * r), int(pic.height * r)), Image.LANCZOS)
+    x0 = (300 * S - pic.width) // 2
+    im.paste(pic, (x0, 40 * S))
+    T(d, (150, 256), "A budget built on screen, with formulas", inter(13), INK, "ma")
+    T(d, (150, 276), "Real result from the book", inter(12, "Regular"), MUTED, "ma")
+    save(im, 300, 300, "06-computer-use-300.jpg")
+
+
+if True:
+    flagship()

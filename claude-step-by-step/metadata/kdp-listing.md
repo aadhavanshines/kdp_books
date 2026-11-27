@@ -127,12 +127,12 @@ Images in `aplus/` (made by `aplus/make_csbs.py`, in Creative Assets with the `c
 - Header 970x600: cover + "Stop fixing AI drafts. Get finished work."
 - Three 300x300: Describe / Check / Repeat (the three-step habit)
 - Four 220x220, "Real Projects with Claude and Blender": 3D model, animation, website, arcade game (all real results from the book)
-- One 300x300: Claude + Blender window, "Claude and Blender, Step by Step"
+- One 300x300 (single left image), flagship use case since Nov 27 2026: computer use, "Claude Works in Your Desktop Apps" (the real December budget from Chapter 15, `06-computer-use-300.jpg`). It replaced the Claude + Blender window module (`04-blender-connector-300.jpg`), because Basic A+ allows only 5 modules and the four Blender tiles already cover Blender
 - Comparison chart: col1 this book (B0HS6NQM2T), col2 Claude AI for Small Business, col3 Building AI Agents with Claude, col4 Prompt Engineering Mastery
 
 | Marketplace | Content id | Status |
 | --- | --- | --- |
-| US (kdp.amazon.com) | 00b1b361-69ff-495b-9615-8e73f21bde43 | APPROVED and published Nov 27 2026, applied to B0HS6NQM2T |
-| UK (kdp.amazon.co.uk) | 5e6ef746-d365-4f12-9400-4dfb1c869d28 | APPROVED and published Nov 27 2026, applied to B0HS6NQM2T |
+| US (kdp.amazon.com) | 00b1b361-69ff-495b-9615-8e73f21bde43 | APPROVED and published Nov 27 2026, applied to B0HS6NQM2T; computer-use revision SUBMITTED Nov 27 (old version stays live until approved) |
+| UK (kdp.amazon.co.uk) | 5e6ef746-d365-4f12-9400-4dfb1c869d28 | APPROVED and published Nov 27 2026, applied to B0HS6NQM2T; computer-use revision SUBMITTED Nov 27 |
 
 TO DO after the paperback exists (not before Sun Nov 29 2026 UTC): apply its ASIN to both A+ docs (Edit, Next: Apply ASINs) and resubmit.
